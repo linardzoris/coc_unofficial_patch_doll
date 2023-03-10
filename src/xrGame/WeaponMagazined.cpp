@@ -274,10 +274,16 @@ bool CWeaponMagazined::TryReload()
 
         m_pCurrentAmmo = smart_cast<CWeaponAmmo*>(m_pInventory->GetAny(m_ammoTypes[m_ammoType.type1].c_str()));
 
-        if (IsMisfire() && m_ammoElapsed.type1)
+        if (IsMisfire() && m_ammoElapsed.type1 && psWpnAnimsFlag.test(ANM_MISFIRE))
         {
             SetPending(true);
             SwitchState(eUnMisfire);
+            return true;
+        }
+        else if (IsMisfire() && m_ammoElapsed.type1 && !psWpnAnimsFlag.test(ANM_MISFIRE))
+        {
+            SetPending(true);
+            SwitchState(eReload);
             return true;
         }
 
