@@ -24,6 +24,9 @@ extern ECORE_API const xr_token qssao_mode_token[];
 extern ECORE_API u32 ps_r_sun_quality; //	=	0;
 extern ECORE_API const xr_token qsun_quality_token[];
 
+extern ECORE_API u32 r2_aa_mode;
+extern ECORE_API xr_token r2_aa_mode_token[];
+
 extern ECORE_API u32 ps_r2_smap_size; //	=	0;
 extern ECORE_API const xr_token qsmap_size_token[];
 

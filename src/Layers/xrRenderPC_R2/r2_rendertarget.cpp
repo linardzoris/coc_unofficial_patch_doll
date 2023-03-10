@@ -11,6 +11,7 @@
 #include "blender_bloom_build.h"
 #include "blender_luminance.h"
 #include "blender_ssao.h"
+#include "blender_fxaa.h"
 
 void CRenderTarget::u_setrt(const ref_rt& _1, const ref_rt& _2, const ref_rt& _3, IDirect3DSurface9* zb)
 {
@@ -232,6 +233,7 @@ CRenderTarget::CRenderTarget()
     b_ssao = new CBlender_SSAO();
     b_luminance = new CBlender_luminance();
     b_combine = new CBlender_combine();
+    b_fxaa = new CBlender_FXAA();
 
     //  NORMAL
     {
@@ -278,6 +280,13 @@ CRenderTarget::CRenderTarget()
     }
     // OCCLUSION
     s_occq.create(b_occq, "r2\\occq");
+
+	// FXAA
+    s_fxaa.create(b_fxaa, "r3\\fxaa");
+    g_fxaa.create(FVF::F_V, RCache.Vertex.Buffer(), RCache.QuadIB);
+
+    // DLAA
+    s_dlaa.create("effects_dlaa");
 
     // DIRECT (spot)
     pcstr smapTarget = r2_RT_smap_depth;
@@ -684,6 +693,7 @@ CRenderTarget::~CRenderTarget()
     xr_delete(b_accum_direct_cascade);
     xr_delete(b_accum_mask);
     xr_delete(b_occq);
+    xr_delete(b_fxaa);
 }
 
 void CRenderTarget::reset_light_marker(bool bResetStencil)

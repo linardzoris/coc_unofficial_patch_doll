@@ -49,6 +49,7 @@ public:
     IBlender* b_accum_reflected_msaa[8];
     IBlender* b_ssao;
     IBlender* b_ssao_msaa[8];
+    IBlender* b_fxaa;
 
     // compute shader for hdao
     IBlender* b_hdao_cs;
@@ -155,11 +156,14 @@ private:
     ref_shader s_accum_spot_msaa[8];
     ref_shader s_accum_reflected_msaa[8];
     ref_shader s_accum_volume_msaa[8];
+    ref_shader s_fxaa;
+    ref_shader s_dlaa;
 
     ref_geom g_accum_point;
     ref_geom g_accum_spot;
     ref_geom g_accum_omnipart;
     ref_geom g_accum_volumetric;
+    ref_geom g_fxaa;
 
     ID3DVertexBuffer* g_accum_point_vb;
     ID3DIndexBuffer* g_accum_point_ib;
@@ -274,6 +278,8 @@ public:
     void phase_accumulator();
     void phase_vol_accumulator();
     void shadow_direct(light* L, u32 dls_phase);
+    void phase_fxaa();
+    void phase_dlaa();
 
     //	Generates min/max sm
     void create_minmax_SM();

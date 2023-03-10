@@ -48,6 +48,7 @@ public:
     IBlender* b_accum_reflected_msaa[8];
     IBlender* b_ssao;
     IBlender* b_ssao_msaa[8];
+    IBlender* b_fxaa;
 
 #ifdef DEBUG
     struct dbg_line_t
@@ -133,6 +134,8 @@ private:
     ref_shader s_accum_spot;
     ref_shader s_accum_reflected;
     ref_shader s_accum_volume;
+    ref_shader s_fxaa;
+    ref_shader s_dlaa;
 
     //	generate min/max
     ref_shader s_create_minmax_sm;
@@ -154,6 +157,7 @@ private:
     ref_geom g_accum_spot;
     ref_geom g_accum_omnipart;
     ref_geom g_accum_volumetric;
+    ref_geom g_fxaa;
 
     ID3DVertexBuffer* g_accum_point_vb;
     ID3DIndexBuffer* g_accum_point_ib;
@@ -267,6 +271,8 @@ public:
     void phase_accumulator();
     void phase_vol_accumulator();
     void shadow_direct(light* L, u32 dls_phase);
+    void phase_fxaa();
+    void phase_dlaa();
 
     //	Generates min/max sm
     void create_minmax_SM();

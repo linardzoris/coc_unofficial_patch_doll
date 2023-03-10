@@ -321,6 +321,9 @@
     <ClInclude Include="..\xrRender\uber_deffer.h">
       <Filter>Shading templates</Filter>
     </ClInclude>
+    <ClInclude Include="blender_fxaa.h">
+      <Filter>Shading templates</Filter>
+    </ClInclude>	
     <ClInclude Include="..\xrRender\Blender_detail_still.h">
       <Filter>Shading templates\R1</Filter>
     </ClInclude>
@@ -902,6 +905,9 @@
     <ClCompile Include="..\xrRender\uber_deffer.cpp">
       <Filter>Shading templates</Filter>
     </ClCompile>
+    <ClCompile Include="blender_fxaa.cpp">
+      <Filter>Shading templates</Filter>
+    </ClCompile>	
     <ClCompile Include="..\xrRender\Blender_detail_still.cpp">
       <Filter>Shading templates\R1</Filter>
     </ClCompile>
@@ -1043,6 +1049,9 @@
     <ClCompile Include="r4_rendertarget_phase_ssao.cpp">
       <Filter>Core_Target</Filter>
     </ClCompile>
+    <ClCompile Include="r4_rendertarget_phase_FXAA.cpp">
+      <Filter>Core_Target</Filter>
+    </ClCompile>	
     <ClCompile Include="..\xrRender\ColorMapManager.cpp">
       <Filter>Core_Target\ColorMap</Filter>
     </ClCompile>
@@ -1247,6 +1256,9 @@
     <ClCompile Include="..\xrRender\dxUISequenceVideoItem.cpp">
       <Filter>Interfase implementations\UI\UISequenceVideoItem</Filter>
     </ClCompile>
+    <ClCompile Include="..\xrRender\rendertarget_phase_dlaa.cpp">
+      <Filter>Core_Target</Filter>
+    </ClCompile>	
     <ClCompile Include="..\xrRenderDX10\MSAA\dx10MSAABlender.cpp">
       <Filter>Interfase implementations\MSAARender</Filter>
     </ClCompile>

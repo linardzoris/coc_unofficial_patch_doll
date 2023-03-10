@@ -368,6 +368,21 @@ void CRenderTarget::phase_combine()
        */
     RCache.set_Stencil(FALSE);
 
+    // FXAA
+    if (r2_aa_mode == 2)
+    {
+        PIX_EVENT(FXAA);
+        phase_fxaa();
+        RCache.set_Stencil(FALSE);
+    }
+
+    // DLAA
+    if (r2_aa_mode == 3)
+    {
+        // PIX_EVENT(DLAA);
+        phase_dlaa();
+    }
+
     // PP enabled ?
     //	Render to RT texture to be able to copy RT even in windowed mode.
     BOOL PP_Complex = u_need_PP() | (BOOL)RImplementation.m_bMakeAsyncSS;

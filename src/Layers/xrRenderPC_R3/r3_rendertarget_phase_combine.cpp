@@ -350,6 +350,21 @@ void CRenderTarget::phase_combine()
         }
     }
 
+    // FXAA
+    if (r2_aa_mode == 2)
+    {
+        PIX_EVENT(FXAA);
+        phase_fxaa();
+        RCache.set_Stencil(FALSE);
+    }
+
+    // DLAA
+    if (r2_aa_mode == 3)
+    {
+        // PIX_EVENT(DLAA);
+        phase_dlaa();
+    }
+
     /*
        if( RImplementation.o.dx10_msaa )
        {

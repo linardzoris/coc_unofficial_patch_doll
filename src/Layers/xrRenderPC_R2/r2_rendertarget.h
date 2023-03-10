@@ -31,6 +31,7 @@ public:
     IBlender* b_ssao;
     IBlender* b_luminance;
     IBlender* b_combine;
+    IBlender* b_fxaa;
 
 #ifdef DEBUG
     struct dbg_line_t
@@ -100,11 +101,14 @@ private:
     ref_shader s_accum_spot;
     ref_shader s_accum_reflected;
     ref_shader s_accum_volume;
+    ref_shader s_fxaa;
+    ref_shader s_dlaa;
 
     ref_geom g_accum_point;
     ref_geom g_accum_spot;
     ref_geom g_accum_omnipart;
     ref_geom g_accum_volumetric;
+    ref_geom g_fxaa;
 
     IDirect3DVertexBuffer9* g_accum_point_vb;
     IDirect3DIndexBuffer9* g_accum_point_ib;
@@ -220,6 +224,8 @@ public:
     void phase_accumulator();
     void phase_vol_accumulator();
     void shadow_direct(light* L, u32 dls_phase);
+    void phase_fxaa();
+    void phase_dlaa();
 
     bool need_to_render_sunshafts();
 

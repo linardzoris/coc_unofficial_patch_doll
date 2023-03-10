@@ -4,6 +4,14 @@
 #include "xrRender_console.h"
 #include "xrCore/xr_token.h"
 
+u32 r2_aa_mode = 1;
+xr_token r2_aa_mode_token[] = {   
+    {"opt_noaa", 1}, 
+    {"opt_fxaa", 2}, 
+    {"opt_dlaa", 3},
+    {0, 0}
+};
+
 u32 ps_Preset = 2;
 const xr_token qpreset_token[] = {
     {"Minimum", 0},
@@ -930,6 +938,7 @@ void xrRender_initconsole()
     CMD3(CCC_Mask, "r2_detail_bump", &ps_r2_ls_flags, R2FLAG_DETAIL_BUMP);
 
     CMD3(CCC_Token, "r2_sun_quality", &ps_r_sun_quality, qsun_quality_token);
+    CMD3(CCC_Token, "r2_aa_mode", &r2_aa_mode, r2_aa_mode_token);
 
     // Igor: need restart
     CMD3(CCC_Mask, "r2_soft_water", &ps_r2_ls_flags, R2FLAG_SOFT_WATER);

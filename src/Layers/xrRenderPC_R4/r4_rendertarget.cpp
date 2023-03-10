@@ -10,6 +10,7 @@
 #include "blender_bloom_build.h"
 #include "blender_luminance.h"
 #include "blender_ssao.h"
+#include "blender_fxaa.h"
 #include "dx11MinMaxSMBlender.h"
 #include "dx11HDAOCSBlender.h"
 #include "Layers/xrRenderDX10/msaa/dx10MSAABlender.h"
@@ -335,6 +336,7 @@ CRenderTarget::CRenderTarget()
     b_luminance = new CBlender_luminance();
     b_combine = new CBlender_combine();
     b_ssao = new CBlender_SSAO_noMSAA();
+    b_fxaa = new CBlender_FXAA();
 
     // HDAO
     b_hdao_cs = new CBlender_CS_HDAO();
@@ -445,6 +447,13 @@ CRenderTarget::CRenderTarget()
 
     // OCCLUSION
     s_occq.create(b_occq, "r2\\occq");
+
+    // FXAA
+    s_fxaa.create(b_fxaa, "r3\\fxaa");
+    g_fxaa.create(FVF::F_V, RCache.Vertex.Buffer(), RCache.QuadIB);
+
+    // DLAA
+    s_dlaa.create("effects_dlaa");
 
     // DIRECT (spot)
     pcstr smapTarget = r2_RT_smap_depth;
@@ -1089,6 +1098,7 @@ CRenderTarget::~CRenderTarget()
     xr_delete(b_accum_point);
     xr_delete(b_accum_direct);
     xr_delete(b_ssao);
+    xr_delete(b_fxaa);
 
     if (RImplementation.o.dx10_msaa)
     {
