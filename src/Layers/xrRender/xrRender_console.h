@@ -2,7 +2,7 @@
 #define xrRender_consoleH
 #pragma once
 
-// Common
+// Common 
 //Alundaio
 extern ECORE_API BOOL ps_clear_models_on_unload;
 extern ECORE_API BOOL ps_use_precompiled_shaders;
@@ -154,6 +154,11 @@ extern ECORE_API float ps_rcol;       // Красный
 extern ECORE_API float ps_gcol;       // Зелёный
 extern ECORE_API float ps_bcol;       // Синий
 extern ECORE_API float ps_saturation; // Насыщенность
+
+// Оптимизация
+
+extern ECORE_API int opt_static;
+extern ECORE_API int opt_dynamic;
 
 enum
 {

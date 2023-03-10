@@ -11,6 +11,9 @@ class IRenderVisual
 {
 public:
     virtual ~IRenderVisual() { ; }
+    bool _ignore_optimization;
+    IRenderVisual() { _ignore_optimization = false; }
+
     virtual vis_data& getVisData() = 0;
     virtual u32 getType() = 0;
 

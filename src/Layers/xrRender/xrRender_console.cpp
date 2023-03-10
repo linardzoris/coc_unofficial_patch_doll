@@ -130,6 +130,12 @@ float ps_r__Detail_l_aniso = 0.25f;
 float ps_r__Detail_density = 0.3f;
 float ps_r__Detail_rainbow_hemi = 0.75f;
 
+// Оптимизация
+
+int opt_static = 2;
+int opt_dynamic = 2;
+Flags32 psDeviceFlags2 = {0};
+
 // Вращение древ
 
 float ps_r__Tree_w_rot = 10.0f;
@@ -755,6 +761,12 @@ public:
 //-----------------------------------------------------------------------
 void xrRender_initconsole()
 {
+    // Оптимизация
+    CMD4(CCC_Integer, "r__optimize_static_geom", &opt_static, 0, 4);
+    CMD4(CCC_Integer, "r__optimize_dynamic_geom", &opt_dynamic, 0, 4);
+    psDeviceFlags2.set(rsOptShadowGeom, TRUE);
+    CMD3(CCC_Mask, "r__optimize_shadow_geom", &psDeviceFlags2, rsOptShadowGeom);
+
     CMD3(CCC_Preset, "_preset", &ps_Preset, qpreset_token);
 
     CMD4(CCC_Integer, "rs_skeleton_update", &psSkeletonUpdate, 2, 128);
