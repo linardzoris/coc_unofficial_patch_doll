@@ -112,10 +112,25 @@ extern float r__dtex_range;
 // int ps_r__Supersample = 1;
 int ps_r__LightSleepFrames = 10;
 
+// Цветокоррекция
+
+float ps_rcol = 1;
+float ps_gcol = 1;
+float ps_bcol = 1;
+float ps_saturation = 0;
+//float ps_r2_tnmp_exposure   = 7.0f; // r2-only
+//float ps_r2_tnmp_gamma      = .25f; // r2-only
+//float ps_r2_img_exposure    = 1.0f; // r2-only
+//float ps_r2_img_gamma       = 1.0f; // r2-only
+
+// 
+
 float ps_r__Detail_l_ambient = 0.9f;
 float ps_r__Detail_l_aniso = 0.25f;
 float ps_r__Detail_density = 0.3f;
 float ps_r__Detail_rainbow_hemi = 0.75f;
+
+// Вращение древ
 
 float ps_r__Tree_w_rot = 10.0f;
 float ps_r__Tree_w_speed = 1.00f;
@@ -945,6 +960,14 @@ void xrRender_initconsole()
     CMD3(CCC_Mask, "r2_soft_particles", &ps_r2_ls_flags, R2FLAG_SOFT_PARTICLES);
 
     CMD3(CCC_Token, "r2_smap_size", &ps_r2_smap_size, qsmap_size_token);
+
+    // Цветокоррекция
+	CMD4(CCC_Float, "r_color_r",    &ps_rcol, 0.0f, 2.55f);
+    CMD4(CCC_Float, "r_color_g",    &ps_gcol, 0.0f, 2.55f);
+    CMD4(CCC_Float, "r_color_b",    &ps_bcol, 0.0f, 2.55f);
+    CMD4(CCC_Float, "r_saturation", &ps_saturation, -1.0f, +1.0f);
+//    CMD4(CCC_Float, "r__exposure",  &ps_r2_img_exposure, 0.5f, 4.0f);
+//    CMD4(CCC_Float, "r__gamma",     &ps_r2_img_gamma, 0.5f, 2.2f);
 
     // CMD3(CCC_Mask, "r3_msaa", &ps_r2_ls_flags, R3FLAG_MSAA);
     CMD3(CCC_Token, "r3_msaa", &ps_r3_msaa, qmsaa_token);

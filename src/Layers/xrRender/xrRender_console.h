@@ -148,6 +148,13 @@ extern ECORE_API int ps_r3_dyn_wet_surf_sm_res; // 256
 
 extern Ivector ps_r2_details_opt;
 
+// Цветокоррекция
+
+extern ECORE_API float ps_rcol;       // Красный
+extern ECORE_API float ps_gcol;       // Зелёный
+extern ECORE_API float ps_bcol;       // Синий
+extern ECORE_API float ps_saturation; // Насыщенность
+
 enum
 {
     R2FLAG_SUN = (1 << 0),
