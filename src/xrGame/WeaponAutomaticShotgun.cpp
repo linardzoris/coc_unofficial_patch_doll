@@ -97,11 +97,31 @@ void CWeaponAutomaticShotgun::Reload()
 
 void CWeaponAutomaticShotgun::TriStateReload()
 {
+    if (psWpnAnimsFlag.test(ANM_MISFIRE))
+    {
+        if (IsMisfire() && m_ammoElapsed.type1 == 0 || !IsMisfire())
+        {
+            CWeapon::Reload();
+            m_sub_state = eSubstateReloadBegin;
+            SwitchState(eReload);
+        }
+        else if (IsMisfire() && m_ammoElapsed.type1 > 0)
+        {
+            CWeapon::Reload();
+            m_sub_state = eSubstateUnMisfire;
+            SwitchState(eUnMisfire);
+        }
+    }
+
     if (m_magazine.size() == (u32)iMagazineSize || !HaveCartridgeInInventory(1))
         return;
-    CWeapon::Reload();
-    m_sub_state = eSubstateReloadBegin;
-    SwitchState(eReload);
+
+    if (!psWpnAnimsFlag.test(ANM_MISFIRE))
+    {
+        CWeapon::Reload();
+        m_sub_state = eSubstateReloadBegin;
+        SwitchState(eReload);
+    }
 }
 
 void CWeaponAutomaticShotgun::OnStateSwitch(u32 S, u32 oldState)
@@ -131,7 +151,13 @@ void CWeaponAutomaticShotgun::OnStateSwitch(u32 S, u32 oldState)
         if (HaveCartridgeInInventory(1))
             switch2_AddCartgidge();
         break;
-    case eSubstateReloadEnd: switch2_EndReload(); break;
+    case eSubstateReloadEnd: 
+        switch2_EndReload(); 
+        break;
+    case eSubstateUnMisfire:
+        if (IsMisfire() && m_ammoElapsed.type1 > 0 && psWpnAnimsFlag.test(ANM_MISFIRE))
+            switch2_UnMisfire();
+        break;
     };
 }
 
@@ -146,6 +172,19 @@ void CWeaponAutomaticShotgun::switch2_AddCartgidge()
 {
     PlaySound("sndAddCartridge", get_LastFP());
     PlayAnimAddOneCartridgeWeapon();
+    SetPending(TRUE);
+}
+
+void CWeaponAutomaticShotgun::switch2_UnMisfire()
+{
+    if (m_sounds_enabled)
+    {
+        if (m_sounds.FindSoundItem("sndReloadMisfire", false) && psWpnAnimsFlag.test(ANM_MISFIRE))
+            PlaySound("sndReloadMisfire", get_LastFP());
+        else
+            PlaySound("sndAddCartridge", get_LastFP());
+    }
+    PlayAnimUnMisfire();
     SetPending(TRUE);
 }
 
@@ -171,6 +210,16 @@ void CWeaponAutomaticShotgun::PlayAnimCloseWeapon()
     VERIFY(GetState() == eReload);
 
     PlayHUDMotion("anm_close", FALSE, this, GetState());
+}
+
+void CWeaponAutomaticShotgun::PlayAnimUnMisfire()
+{
+    VERIFY(GetState() == eUnMisfire);
+
+    if (psWpnAnimsFlag.test(ANM_MISFIRE) && m_ammoElapsed.type1 > 0)
+        PlayHUDMotion("anm_reload_misfire", TRUE, this, GetState());
+    else
+        PlayHUDMotion("anm_add_cartridge", FALSE, this, GetState());
 }
 
 bool CWeaponAutomaticShotgun::HaveCartridgeInInventory(u8 cnt)

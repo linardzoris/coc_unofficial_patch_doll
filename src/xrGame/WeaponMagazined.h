@@ -60,6 +60,12 @@ protected:
 
     bool TryReload();
 
+public:
+    // Новые параметры
+    virtual void CheckMagazine();
+    virtual void switch2_Unmis();
+    bool m_bNeedBulletInGun;
+
 protected:
     virtual void ReloadMagazine();
     void ApplySilencerKoeffs();
@@ -186,4 +192,52 @@ protected:
     HUD_SOUND_COLLECTION_LAYERED m_layered_sounds;
 #endif
     //-Alundaio
+
+    // Флаги анимаций
+
+    virtual void SetAnimFlag(u32 flag, LPCSTR anim_name);
+
+	enum
+    {
+        ANM_SHOW_EMPTY = (1 << 0),
+        ANM_HIDE_EMPTY = (1 << 1),
+        ANM_AIM_EMPTY = (1 << 2),
+        ANM_BORE_EMPTY = (1 << 3),
+        ANM_SHOT_EMPTY = (1 << 4),
+        ANM_SPRINT_EMPTY = (1 << 5),
+        ANM_MOVING_EMPTY = (1 << 6),
+        ANM_RELOAD_EMPTY = (1 << 7),
+        ANM_RELOAD_EMPTY_GL = (1 << 8),
+        ANM_SHOT_AIM = (1 << 9),
+        ANM_SHOT_AIM_GL = (1 << 10),
+        ANM_MISFIRE = (1 << 11),
+        ANM_MISFIRE_GL = (1 << 12),
+        ANM_IDLE_EMPTY = (1 << 13),
+        ANM_OPEN_EMPTY = (1 << 14),
+        ANM_CLOSE_EMPTY = (1 << 15),
+        ANM_ADD_CART_EMPTY = (1 << 16),
+        ANM_FIREMODE = (1 << 17),
+        ANM_FIREMODE_EMPTY = (1 << 18),
+        ANM_AIM_START = (1 << 19),
+        ANM_AIM_START_EMPTY = (1 << 20),
+        ANM_AIM_END = (1 << 21),
+        ANM_AIM_END_EMPTY = (1 << 22),
+        ANM_SHOT_AIM_EMPTY = (1 << 23),
+        ANM_SHOT_AUTO = (1 << 24),
+        ANM_SHOT_AUTO_EMPTY = (1 << 25),
+        ANM_SHOT_AUTO_AIM = (1 << 26),
+        ANM_SHOT_AUTO_AIM_EMPTY = (1 << 27),
+        ANM_AIM_START_G = (1 << 28),
+        ANM_AIM_START_G_EMPTY = (1 << 29),
+        ANM_AIM_END_G = (1 << 30),
+        ANM_AIM_END_G_EMPTY = (1 << 31),
+        ANM_AIM_START_W_GL = (1 << 32),
+        ANM_AIM_START_W_GL_EMPTY = (1 << 33),
+        ANM_AIM_END_W_GL = (1 << 34),
+        ANM_AIM_END_W_GL_EMPTY = (1 << 35),
+        ANM_FIREMODE_G = (1 << 36),
+        ANM_FIREMODE_G_EMPTY = (1 << 37),
+    };
+
+	Flags32 psWpnAnimsFlag;
 };

@@ -56,11 +56,23 @@ CWeaponMagazined::CWeaponMagazined(ESoundTypes eSoundType) : CWeapon()
     m_bHasDifferentFireModes = false;
     m_iCurFireMode = -1;
     m_iPrefferedFireMode = -1;
+
+	m_bNeedBulletInGun = false;
+
+	psWpnAnimsFlag = {0};
 }
 
 CWeaponMagazined::~CWeaponMagazined()
 {
     // sounds
+}
+
+void CWeaponMagazined::SetAnimFlag(u32 flag, LPCSTR anim_name)
+{
+    if (pSettings->line_exist(hud_sect, anim_name))
+        psWpnAnimsFlag.set(flag, TRUE);
+    else
+        psWpnAnimsFlag.set(flag, FALSE);
 }
 
 void CWeaponMagazined::net_Destroy() { inherited::net_Destroy(); }
@@ -83,6 +95,44 @@ bool CWeaponMagazined::WeaponSoundExist(pcstr section, pcstr sound_name) const
 void CWeaponMagazined::Load(LPCSTR section)
 {
     inherited::Load(section);
+
+// Проверяем наличие анимаций
+    SetAnimFlag(ANM_SHOW_EMPTY, "anm_show_empty");
+    SetAnimFlag(ANM_HIDE_EMPTY, "anm_hide_empty");
+    SetAnimFlag(ANM_IDLE_EMPTY, "anm_idle_empty");
+    SetAnimFlag(ANM_AIM_EMPTY, "anm_idle_aim_empty");
+    SetAnimFlag(ANM_AIM_START, "anm_idle_aim_start");
+    SetAnimFlag(ANM_AIM_START_EMPTY, "anm_idle_aim_start_empty");
+    SetAnimFlag(ANM_AIM_END, "anm_idle_aim_end");
+    SetAnimFlag(ANM_AIM_END_EMPTY, "anm_idle_aim_end_empty");
+    SetAnimFlag(ANM_AIM_START_G, "anm_idle_aim_start_g");
+    SetAnimFlag(ANM_AIM_START_G_EMPTY, "anm_idle_aim_start_g_empty");
+    SetAnimFlag(ANM_AIM_END_G, "anm_idle_aim_end_g");
+    SetAnimFlag(ANM_AIM_END_G_EMPTY, "anm_idle_aim_end_g_empty");
+    SetAnimFlag(ANM_AIM_START_W_GL, "anm_idle_aim_start_g");
+    SetAnimFlag(ANM_AIM_START_W_GL_EMPTY, "anm_idle_aim_start_g_empty");
+    SetAnimFlag(ANM_AIM_END_W_GL, "anm_idle_aim_end_g");
+    SetAnimFlag(ANM_AIM_END_W_GL_EMPTY, "anm_idle_aim_end_g_empty");
+    SetAnimFlag(ANM_BORE_EMPTY, "anm_bore_empty");
+    SetAnimFlag(ANM_SHOT_EMPTY, "anm_shot_l");
+    SetAnimFlag(ANM_SPRINT_EMPTY, "anm_idle_sprint_empty");
+    SetAnimFlag(ANM_MOVING_EMPTY, "anm_idle_moving_empty");
+    SetAnimFlag(ANM_RELOAD_EMPTY, "anm_reload_empty");
+    SetAnimFlag(ANM_MISFIRE, "anm_reload_misfire");
+    SetAnimFlag(ANM_SHOT_AIM, "anm_shots_when_aim");
+    SetAnimFlag(ANM_SHOT_AIM_EMPTY, "anm_shot_when_aim_l");
+    SetAnimFlag(ANM_OPEN_EMPTY, "anm_open_empty");
+    SetAnimFlag(ANM_CLOSE_EMPTY, "anm_close_empty");
+    SetAnimFlag(ANM_ADD_CART_EMPTY, "anm_add_cartridge_empty");
+    SetAnimFlag(ANM_FIREMODE, "anm_firemode");
+    SetAnimFlag(ANM_FIREMODE_EMPTY, "anm_firemode_empty");
+    SetAnimFlag(ANM_FIREMODE_G, "anm_firemode_g");
+    SetAnimFlag(ANM_FIREMODE_G_EMPTY, "anm_firemode_g_empty");
+    // Для SPAS-12
+    SetAnimFlag(ANM_SHOT_AUTO, "anm_shots_auto");
+    SetAnimFlag(ANM_SHOT_AUTO_EMPTY, "anm_shot_auto_l");
+    SetAnimFlag(ANM_SHOT_AUTO_AIM, "anm_shots_auto_when_aim");
+    SetAnimFlag(ANM_SHOT_AUTO_AIM_EMPTY, "anm_shots_auto_when_aim_l");
 
     // Sounds
     m_sounds.LoadSound(section, "snd_draw", "sndShow", false, m_eSoundShow);
@@ -172,6 +222,7 @@ void CWeaponMagazined::FireStart()
                 if (GetState() == eShowing) return;
                 if (GetState() == eHiding) return;
                 if (GetState() == eMisfire) return;
+                if (GetState() == eUnMisfire) return;
 
                 inherited::FireStart();
 				
@@ -226,7 +277,7 @@ bool CWeaponMagazined::TryReload()
         if (IsMisfire() && m_ammoElapsed.type1)
         {
             SetPending(true);
-            SwitchState(eReload);
+            SwitchState(eUnMisfire);
             return true;
         }
 
@@ -442,7 +493,14 @@ void CWeaponMagazined::OnStateSwitch(u32 S, u32 oldState)
         if (smart_cast<CActor*>(this->H_Parent()) && (Level().CurrentViewEntity() == H_Parent()))
             CurrentGameUI()->AddCustomStatic("gun_jammed", true);
         break;
-    case eMagEmpty: switch2_Empty(); break;
+    case eUnMisfire:
+        if (owner)
+            m_sounds_enabled = owner->CanPlayShHdRldSounds();
+        switch2_Unmis();
+        break;
+    case eMagEmpty: 
+        switch2_Empty(); 
+        break;
     case eReload:
         if (owner)
             m_sounds_enabled = owner->CanPlayShHdRldSounds();
@@ -703,10 +761,53 @@ void CWeaponMagazined::OnAnimationEnd(u32 state)
 {
     switch (state)
     {
-    case eReload:	ReloadMagazine();	SwitchState(eIdle); break;  // End of reload animation
-    case eHiding:	SwitchState(eHidden);   break; // End of Hide
-    case eShowing:	SwitchState(eIdle);		break; // End of Show
-    case eIdle:		switch2_Idle();			break; // Keep showing idle
+    case eReload: {
+        CheckMagazine(); // Основано на механизме из Lost Alpha: New Project // Авторы: rafa & Kondr48
+
+        CCartridge FirstBulletInGun;
+
+        bool bNeedputBullet = m_ammoElapsed.type1 > 0;
+
+        if (m_bNeedBulletInGun && bNeedputBullet)
+        {
+            FirstBulletInGun = m_magazine.back();
+            m_magazine.pop_back();
+            --m_ammoElapsed.type1;
+        }
+
+        ReloadMagazine();
+
+        if (m_bNeedBulletInGun && bNeedputBullet)
+        {
+            m_magazine.push_back(FirstBulletInGun);
+            ++m_ammoElapsed.type1;
+        }
+
+        SwitchState(eIdle);
+    }
+    break; // End of reload animation
+
+    case eHiding:	
+        SwitchState(eHidden);   
+    break; // End of Hide
+    case eShowing:	
+        SwitchState(eIdle);		
+    break; // End of Show
+    case eIdle:		
+        switch2_Idle();			
+    break; // Keep showing idle
+    case eUnMisfire: {
+        bMisfire = false;
+        // Здесь -1 патрон при расклине, ставим в условие опцию из конфига, чтобы имелось оружие, не сбрасывающее патрон
+        if (IsMisfireOneCartRemove() && m_ammoElapsed.type1 > 0 && psWpnAnimsFlag.test(ANM_MISFIRE))
+        {
+            --m_ammoElapsed.type1;
+            m_magazine.pop_back();
+        }
+
+        SwitchState(eIdle);
+    }
+    break; // End of UnMisfire animation
     }
     inherited::OnAnimationEnd(state);
 }
@@ -811,6 +912,29 @@ void CWeaponMagazined::switch2_Reload()
     PlayAnimReload();
     SetPending(true);
 }
+
+void CWeaponMagazined::switch2_Unmis()
+{
+    VERIFY(GetState() == eUnMisfire);
+
+    if (m_sounds_enabled)
+    {
+        if (m_sounds.FindSoundItem("sndReloadMisfire", false) && psWpnAnimsFlag.test(ANM_MISFIRE))
+            PlaySound("sndReloadMisfire", get_LastFP());
+        else if (m_sounds.FindSoundItem("sndReloadEmpty", false) && psWpnAnimsFlag.test(ANM_RELOAD_EMPTY))
+            PlaySound("sndReloadEmpty", get_LastFP());
+        else
+            PlaySound("sndReload", get_LastFP());
+    }
+
+    if (psWpnAnimsFlag.test(ANM_MISFIRE))
+        PlayHUDMotion("anm_reload_misfire", TRUE, this, GetState());
+    else if (psWpnAnimsFlag.test(ANM_RELOAD_EMPTY))
+        PlayHUDMotion("anm_reload_empty", TRUE, this, GetState());
+    else
+        PlayHUDMotion("anm_reload", TRUE, this, GetState());
+}
+
 void CWeaponMagazined::switch2_Hiding()
 {
     OnZoomOut();
@@ -854,7 +978,12 @@ bool CWeaponMagazined::Action(u16 cmd, u32 flags)
     {
         if (flags & CMD_START)
             if (m_ammoElapsed.type1 < iMagazineSize || IsMisfire())
+            {
+                if (GetState() == eUnMisfire) // Rietmon: Запрещаем перезарядку, если играет анима передергивания затвора
+                    return false;
+
                 Reload();
+            }
     }
         return true;
     case kWPN_FIREMODE_PREV:
@@ -1646,4 +1775,22 @@ void CWeaponMagazined::FireBullet(const Fvector& pos, const Fvector& shot_dir, f
         }
     }
     inherited::FireBullet(pos, shot_dir, fire_disp, cartridge, parent_id, weapon_id, send_hit, GetAmmoElapsed());
+}
+
+void CWeaponMagazined::CheckMagazine() // Остаётся ли патрон в патроннике?
+{
+    if (!ParentIsActor())
+    {
+        m_bNeedBulletInGun = false;
+        return;
+    }
+
+    if (psWpnAnimsFlag.test(ANM_RELOAD_EMPTY) && m_ammoElapsed.type1 >= 1 && m_bNeedBulletInGun == false)
+    {
+        m_bNeedBulletInGun = true;
+    }
+    else if (psWpnAnimsFlag.test(ANM_RELOAD_EMPTY) && m_ammoElapsed.type1 == 0 && m_bNeedBulletInGun == true)
+    {
+        m_bNeedBulletInGun = false;
+    }
 }
