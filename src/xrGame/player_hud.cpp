@@ -237,6 +237,7 @@ void attachable_hud_item::render()
 
 bool attachable_hud_item::render_item_ui_query() { return m_parent_hud_item->render_item_3d_ui_query(); }
 void attachable_hud_item::render_item_ui() { m_parent_hud_item->render_item_3d_ui(); }
+
 void hud_item_measures::load(const shared_str& sect_name, IKinematics* K)
 {
     bool is_16x9 = UI().is_widescreen();
@@ -317,6 +318,15 @@ void hud_item_measures::load(const shared_str& sect_name, IKinematics* K)
     m_inertion_params.m_origin_offset_aim = READ_IF_EXISTS(pSettings, r_float, sect_name, "inertion_origin_aim_offset", ORIGIN_OFFSET_AIM);
     m_inertion_params.m_tendto_speed = READ_IF_EXISTS(pSettings, r_float, sect_name, "inertion_tendto_speed", TENDTO_SPEED);
     m_inertion_params.m_tendto_speed_aim = READ_IF_EXISTS(pSettings, r_float, sect_name, "inertion_tendto_aim_speed", TENDTO_SPEED_AIM);
+
+	// Загрузка параметров смещения при стрельбе
+    m_shooting_params.bShootShake = READ_IF_EXISTS(pSettings, r_bool, sect_name, "shooting_hud_effect", false);
+    m_shooting_params.m_shot_max_offset_LRUD = READ_IF_EXISTS(pSettings, r_fvector4, sect_name, "shooting_max_LRUD", Fvector4().set(0, 0, 0, 0));
+    m_shooting_params.m_shot_max_offset_LRUD_aim = READ_IF_EXISTS(pSettings, r_fvector4, sect_name, "shooting_max_LRUD_aim", Fvector4().set(0, 0, 0, 0));
+    m_shooting_params.m_shot_offset_BACKW = READ_IF_EXISTS(pSettings, r_fvector2, sect_name, "shooting_backward_offset", Fvector2().set(0, 0));
+    m_shooting_params.m_ret_speed = READ_IF_EXISTS(pSettings, r_float, sect_name, "shooting_ret_speed", 1.0f);
+    m_shooting_params.m_ret_speed_aim = READ_IF_EXISTS(pSettings, r_float, sect_name, "shooting_ret_aim_speed", 1.0f);
+    m_shooting_params.m_min_LRUD_power = READ_IF_EXISTS(pSettings, r_float, sect_name, "shooting_min_LRUD_power", 0.0f);
     //--#SM+# End--
 }
 

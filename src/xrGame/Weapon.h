@@ -77,6 +77,11 @@ public:
     virtual void OnHiddenItem();
     virtual void SendHiddenItem(); // same as OnHiddenItem but for client... (sends message to a server)...
 
+// SWM3.0
+	float m_fLR_ShootingFactor; // Фактор горизонтального сдвига худа при стрельбе [-1; +1]
+    float m_fUD_ShootingFactor; // Фактор вертикального сдвига худа при стрельбе [-1; +1]
+    float m_fBACKW_ShootingFactor; // Фактор сдвига худа в сторону лица при стрельбе [0; +1]
+
 public:
     virtual bool can_kill() const;
     virtual CInventoryItem* can_kill(CInventory* inventory) const;
@@ -141,6 +146,7 @@ protected:
     virtual bool AllowBore();
 
 public:
+    void AddHUDShootingEffect();
     u8 m_sub_state; // Alundaio: made public
 
     bool IsGrenadeLauncherAttached() const;

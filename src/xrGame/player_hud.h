@@ -71,6 +71,19 @@ struct hud_item_measures
         float m_tendto_speed_aim;
     };
     inertion_params m_inertion_params; //--#SM+#--	
+
+	struct shooting_params
+    {
+        bool bShootShake;
+        Fvector4 m_shot_max_offset_LRUD;
+        Fvector4 m_shot_max_offset_LRUD_aim;
+        Fvector2 m_shot_offset_BACKW;
+        float m_ret_speed;
+        float m_ret_speed_aim;
+        float m_min_LRUD_power;
+    };
+
+    shooting_params m_shooting_params; //--#SM+#--
 };
 
 struct attachable_hud_item

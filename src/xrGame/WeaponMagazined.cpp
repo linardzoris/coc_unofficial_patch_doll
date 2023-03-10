@@ -755,6 +755,10 @@ void CWeaponMagazined::OnShot()
     //дым из ствола
     ForceUpdateFireParticles();
     StartSmokeParticles(get_LastFP(), vel);
+
+// Эффект сдвига (отдача)
+    AddHUDShootingEffect();
+
 #ifdef EXTENDED_WEAPON_CALLBACKS
 	IGameObject	*object = smart_cast<IGameObject*>(H_Parent());
 	if (object)
