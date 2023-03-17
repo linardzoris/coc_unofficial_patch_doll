@@ -13,8 +13,6 @@ void CBackend::dbg_DIP(D3DPRIMITIVETYPE pt, ref_geom geom, u32 baseV, u32 startV
     RCache.Render(pt, baseV, startV, countV, startI, PC);
 }
 
-#ifdef DEBUG
-
 void CBackend::dbg_Draw(D3DPRIMITIVETYPE T, FVF::L* pVerts, int vcnt, u16* pIdx, int pcnt)
 {
 #if defined(USE_DX10) || defined(USE_DX11) || defined(USE_OGL)
@@ -172,5 +170,3 @@ void CBackend::dbg_DrawEllipse(Fmatrix& T, u32 C)
     HW.pDevice->SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
 #endif //	USE_DX10
 }
-
-#endif

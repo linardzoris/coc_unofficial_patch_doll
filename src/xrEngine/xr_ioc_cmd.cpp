@@ -634,6 +634,12 @@ public:
 };
 
 ENGINE_API float psHUD_FOV = 0.45f;
+ENGINE_API float VIEWPORT_NEAR = 0.05f; //--#SM+#-- (Old: 0.2f)
+
+ENGINE_API float hud_adj_delta_pos = 0.0005f;
+ENGINE_API float hud_adj_delta_rot = 0.05f;
+ENGINE_API float adj_delta_pos     = 0.0005f;
+ENGINE_API float adj_delta_rot     = 0.05f;
 
 // extern int psSkeletonUpdate;
 extern int rsDVB_Size;
@@ -703,6 +709,7 @@ void CCC_Register()
     CMD3(CCC_Mask, "rs_stats", &psDeviceFlags, rsStatistic);
     CMD3(CCC_Mask, "rs_fps", &psDeviceFlags, rsShowFPS);
     CMD4(CCC_Float, "rs_vis_distance", &psVisDistance, 0.4f, 1.0f);
+    CMD4(CCC_Float, "r_viewport_near", &VIEWPORT_NEAR, 0.05f, 1.f);
 
     CMD3(CCC_Mask, "rs_cam_pos", &psDeviceFlags, rsCameraPos);
 #ifdef DEBUG
@@ -779,6 +786,11 @@ void CCC_Register()
 #ifdef DEBUG
     CMD1(CCC_DumpOpenFiles, "dump_open_files");
 #endif
+
+    CMD4(CCC_Float, "hud_adjust_delta_pos", &hud_adj_delta_pos, -10.f, 10.f);
+    CMD4(CCC_Float, "hud_adjust_delta_rot", &hud_adj_delta_rot, -10.f, 10.f);
+    CMD4(CCC_Float, "adjust_delta_pos",     &adj_delta_pos, -10.f, 10.f);
+    CMD4(CCC_Float, "adjust_delta_rot",     &adj_delta_rot, -10.f, 10.f);
 
     CMD1(CCC_ExclusiveMode, "input_exclusive_mode");
     CMD1(CCC_HideConsole, "hide");

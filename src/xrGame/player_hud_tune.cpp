@@ -12,12 +12,15 @@
 #include "debug_renderer.h"
 #include "xrEngine/GameFont.h"
 
-u32 hud_adj_mode = 0;
-u32 hud_adj_item_idx = 0;
 // "press SHIFT+NUM 0-return 1-hud_pos 2-hud_rot 3-itm_pos 4-itm_rot 5-fire_point 6-fire_2_point 7-shell_point";
 
-float _delta_pos = 0.0005f;
-float _delta_rot = 0.05f;
+u32 hud_adj_mode = 0;
+u32 hud_adj_item_idx = 0;
+
+//float _delta_pos = 0.0005f;
+//float _delta_rot = 0.0005f;
+
+extern ENGINE_API float hud_adj_delta_pos, hud_adj_delta_rot;
 
 bool is_attachable_item_tuning_mode()
 {
@@ -106,7 +109,6 @@ void calc_cam_diff_rot(Fmatrix item_transform, Fvector diff, Fvector& res)
 
 void attachable_hud_item::tune(Ivector values)
 {
-#ifndef MASTER_GOLD
     if (!is_attachable_item_tuning_mode())
         return;
 
@@ -118,11 +120,11 @@ void attachable_hud_item::tune(Ivector values)
         if (hud_adj_mode == 3)
         {
             if (values.x)
-                diff.x = (values.x > 0) ? _delta_pos : -_delta_pos;
+                diff.x = (values.x > 0) ? hud_adj_delta_pos : -hud_adj_delta_pos;
             if (values.y)
-                diff.y = (values.y > 0) ? _delta_pos : -_delta_pos;
+                diff.y = (values.y > 0) ? hud_adj_delta_pos : -hud_adj_delta_pos;
             if (values.z)
-                diff.z = (values.z > 0) ? _delta_pos : -_delta_pos;
+                diff.z = (values.z > 0) ? hud_adj_delta_pos : -hud_adj_delta_pos;
 
             Fvector d;
             Fmatrix ancor_m;
@@ -133,11 +135,11 @@ void attachable_hud_item::tune(Ivector values)
         else if (hud_adj_mode == 4)
         {
             if (values.x)
-                diff.x = (values.x > 0) ? _delta_rot : -_delta_rot;
+                diff.x = (values.x > 0) ? hud_adj_delta_rot : -hud_adj_delta_rot;
             if (values.y)
-                diff.y = (values.y > 0) ? _delta_rot : -_delta_rot;
+                diff.y = (values.y > 0) ? hud_adj_delta_rot : -hud_adj_delta_rot;
             if (values.z)
-                diff.z = (values.z > 0) ? _delta_rot : -_delta_rot;
+                diff.z = (values.z > 0) ? hud_adj_delta_rot : -hud_adj_delta_rot;
 
             Fvector d;
             Fmatrix ancor_m;
@@ -161,11 +163,11 @@ void attachable_hud_item::tune(Ivector values)
     if (hud_adj_mode == 5 || hud_adj_mode == 6 || hud_adj_mode == 7)
     {
         if (values.x)
-            diff.x = (values.x > 0) ? _delta_pos : -_delta_pos;
+            diff.x = (values.x > 0) ? hud_adj_delta_pos : -hud_adj_delta_pos;
         if (values.y)
-            diff.y = (values.y > 0) ? _delta_pos : -_delta_pos;
+            diff.y = (values.y > 0) ? hud_adj_delta_pos : -hud_adj_delta_pos;
         if (values.z)
-            diff.z = (values.z > 0) ? _delta_pos : -_delta_pos;
+            diff.z = (values.z > 0) ? hud_adj_delta_pos : -hud_adj_delta_pos;
 
         if (hud_adj_mode == 5)
         {
@@ -191,12 +193,10 @@ void attachable_hud_item::tune(Ivector values)
             Log("-----------");
         }
     }
-#endif // #ifndef MASTER_GOLD
 }
 
 void attachable_hud_item::debug_draw_firedeps()
 {
-#ifdef DEBUG
     bool bForce = (hud_adj_mode == 3 || hud_adj_mode == 4);
 
     if (hud_adj_mode == 5 || hud_adj_mode == 6 || hud_adj_mode == 7 || bForce)
@@ -215,12 +215,10 @@ void attachable_hud_item::debug_draw_firedeps()
         if (hud_adj_mode == 7)
             render.draw_aabb(fd.vLastSP, 0.005f, 0.005f, 0.005f, color_xrgb(0, 255, 0));
     }
-#endif // DEBUG
 }
 
 void player_hud::tune(Ivector _values)
 {
-#ifndef MASTER_GOLD
     Ivector values;
     tune_remap(_values, values);
 
@@ -231,25 +229,23 @@ void player_hud::tune(Ivector _values)
         Fvector diff;
         diff.set(0, 0, 0);
 
-        float _curr_dr = _delta_rot;
+        float _curr_dr = hud_adj_delta_rot;
 
         u8 idx = m_attached_items[hud_adj_item_idx]->m_parent_hud_item->GetCurrentHudOffsetIdx();
         if (idx)
             _curr_dr /= 20.0f;
 
-        Fvector& pos_ = (idx != 0) ? m_attached_items[hud_adj_item_idx]->hands_offset_pos() :
-                                     m_attached_items[hud_adj_item_idx]->hands_attach_pos();
-        Fvector& rot_ = (idx != 0) ? m_attached_items[hud_adj_item_idx]->hands_offset_rot() :
-                                     m_attached_items[hud_adj_item_idx]->hands_attach_rot();
+		Fvector& pos_ = (idx != 0) ? m_attached_items[hud_adj_item_idx]->hands_offset_pos() : m_attached_items[hud_adj_item_idx]->hands_attach_pos();
+		Fvector& rot_ = (idx != 0) ? m_attached_items[hud_adj_item_idx]->hands_offset_rot() : m_attached_items[hud_adj_item_idx]->hands_attach_rot();
 
         if (hud_adj_mode == 1)
         {
             if (values.x)
-                diff.x = (values.x < 0) ? _delta_pos : -_delta_pos;
+                diff.x = (values.x < 0) ? hud_adj_delta_pos : -hud_adj_delta_pos;
             if (values.y)
-                diff.y = (values.y > 0) ? _delta_pos : -_delta_pos;
+                diff.y = (values.y > 0) ? hud_adj_delta_pos : -hud_adj_delta_pos;
             if (values.z)
-                diff.z = (values.z > 0) ? _delta_pos : -_delta_pos;
+                diff.z = (values.z > 0) ? hud_adj_delta_pos : -hud_adj_delta_pos;
 
             pos_.add(diff);
         }
@@ -293,10 +289,10 @@ void player_hud::tune(Ivector _values)
     else if (hud_adj_mode == 8 || hud_adj_mode == 9)
     {
         if (hud_adj_mode == 8 && (values.z))
-            _delta_pos += (values.z > 0) ? 0.001f : -0.001f;
+            hud_adj_delta_pos += (values.z > 0) ? 0.001f : -0.001f;
 
         if (hud_adj_mode == 9 && (values.z))
-            _delta_rot += (values.z > 0) ? 0.1f : -0.1f;
+            hud_adj_delta_rot += (values.z > 0) ? 0.1f : -0.1f;
     }
     else
     {
@@ -305,7 +301,74 @@ void player_hud::tune(Ivector _values)
             return;
         hi->tune(values);
     }
-#endif // #ifndef MASTER_GOLD
+
+	// Сохранение в файл
+    if (pInput->iGetAsyncKeyState(DIK_LSHIFT) && pInput->iGetAsyncKeyState(DIK_RETURN))
+    {
+        attachable_hud_item* hi = m_attached_items[hud_adj_item_idx];
+        if (!hi)
+            return;
+
+        LPCSTR sect_name = hi->m_sect_name.c_str();
+        string_path fname;
+        FS.update_path(fname, "$game_data$", make_string("_hud\\%s.ltx", sect_name).c_str());
+
+        CInifile* pHudCfg = new CInifile(fname, FALSE, FALSE, TRUE);
+        //-----------------//
+        pHudCfg->w_string(sect_name, make_string("gl_hud_offset_pos%s", (is_16x9) ? "_16x9" : "").c_str(),
+            make_string("%f,%f,%f", hi->m_measures.m_hands_offset[0][2].x, hi->m_measures.m_hands_offset[0][2].y,
+                hi->m_measures.m_hands_offset[0][2].z)
+                .c_str());
+        pHudCfg->w_string(sect_name, make_string("gl_hud_offset_rot%s", (is_16x9) ? "_16x9" : "").c_str(),
+            make_string("%f,%f,%f", hi->m_measures.m_hands_offset[1][2].x, hi->m_measures.m_hands_offset[1][2].y,
+                hi->m_measures.m_hands_offset[1][2].z)
+                .c_str());
+
+        pHudCfg->w_string(sect_name, make_string("aim_hud_offset_pos%s", (is_16x9) ? "_16x9" : "").c_str(),
+            make_string("%f,%f,%f", hi->m_measures.m_hands_offset[0][1].x, hi->m_measures.m_hands_offset[0][1].y,
+                hi->m_measures.m_hands_offset[0][1].z)
+                .c_str());
+        pHudCfg->w_string(sect_name, make_string("aim_hud_offset_rot%s", (is_16x9) ? "_16x9" : "").c_str(),
+            make_string("%f,%f,%f", hi->m_measures.m_hands_offset[1][1].x, hi->m_measures.m_hands_offset[1][1].y,
+                hi->m_measures.m_hands_offset[1][1].z)
+                .c_str());
+
+        pHudCfg->w_string(sect_name, make_string("hands_position%s", (is_16x9) ? "_16x9" : "").c_str(),
+            make_string("%f,%f,%f", hi->m_measures.m_hands_attach[0].x, hi->m_measures.m_hands_attach[0].y,
+                hi->m_measures.m_hands_attach[0].z)
+                .c_str());
+        pHudCfg->w_string(sect_name, make_string("hands_orientation%s", (is_16x9) ? "_16x9" : "").c_str(),
+            make_string("%f,%f,%f", hi->m_measures.m_hands_attach[1].x, hi->m_measures.m_hands_attach[1].y,
+                hi->m_measures.m_hands_attach[1].z)
+                .c_str());
+
+        pHudCfg->w_string(sect_name, "item_position",
+            make_string("%f,%f,%f", hi->m_measures.m_item_attach[0].x, hi->m_measures.m_item_attach[0].y,
+                hi->m_measures.m_item_attach[0].z)
+                .c_str());
+        pHudCfg->w_string(sect_name, "item_orientation",
+            make_string("%f,%f,%f", hi->m_measures.m_item_attach[1].x, hi->m_measures.m_item_attach[1].y,
+                hi->m_measures.m_item_attach[1].z)
+                .c_str());
+
+        pHudCfg->w_string(sect_name, "fire_point",
+            make_string("%f,%f,%f", hi->m_measures.m_fire_point_offset.x, hi->m_measures.m_fire_point_offset.y,
+                hi->m_measures.m_fire_point_offset.z)
+                .c_str());
+        pHudCfg->w_string(sect_name, "fire_point2",
+            make_string("%f,%f,%f", hi->m_measures.m_fire_point2_offset.x, hi->m_measures.m_fire_point2_offset.y,
+                hi->m_measures.m_fire_point2_offset.z)
+                .c_str());
+        pHudCfg->w_string(sect_name, "shell_point",
+            make_string("%f,%f,%f", hi->m_measures.m_shell_point_offset.x, hi->m_measures.m_shell_point_offset.y,
+                hi->m_measures.m_shell_point_offset.z)
+                .c_str());
+
+        //-----------------//
+        xr_delete(pHudCfg);
+        Msg("-HUD data saved to %s", fname);
+        Sleep(250);
+    }
 }
 
 void hud_draw_adjust_mode()
@@ -340,8 +403,9 @@ void hud_draw_adjust_mode()
         F->SetColor(0xffffffff);
         F->OutNext(_text);
         F->OutNext("for item [%d]", hud_adj_item_idx);
-        F->OutNext("delta values dP=%f dR=%f", _delta_pos, _delta_rot);
+        F->OutNext("delta values dP=%f dR=%f", hud_adj_delta_pos, hud_adj_delta_rot);
         F->OutNext("[Z]-x axis [X]-y axis [C]-z axis");
+        F->OutNext("[SHIFT] + [ENTER] for save params into file");
     }
 }
 

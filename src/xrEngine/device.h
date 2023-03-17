@@ -20,7 +20,8 @@
 
 extern u32 g_dwFPSlimit;
 
-#define VIEWPORT_NEAR 0.1f
+//#define VIEWPORT_NEAR 0.1f
+extern ENGINE_API float VIEWPORT_NEAR;
 
 #define DEVICE_RESET_PRECACHE_FRAME_COUNT 10
 

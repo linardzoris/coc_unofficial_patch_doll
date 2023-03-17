@@ -844,6 +844,8 @@ void CActor::g_Physics(Fvector& _accel, float jump, float dt)
 float g_fov = 67.5f;
 float g_scope_fov = 75.0f;
 
+extern u32 hud_adj_mode;
+
 float CActor::currentFOV()
 {
     if (!psHUD_Flags.is(HUD_WEAPON | HUD_WEAPON_RT | HUD_WEAPON_RT2))

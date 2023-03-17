@@ -29,10 +29,7 @@ class CLevelSoundManager;
 class CGameTaskManager;
 class CZoneList;
 class CStreamReader;
-
-#ifdef DEBUG
 class CDebugRenderer;
-#endif
 
 extern float g_fov;
 extern float g_scope_fov;
@@ -97,8 +94,9 @@ protected:
     CAutosaveManager* m_autosave_manager = nullptr;
 #ifdef DEBUG
     LevelGraphDebugRender* levelGraphDebugRender = nullptr;
-    CDebugRenderer* m_debug_renderer = nullptr;
 #endif
+    CDebugRenderer* m_debug_renderer = nullptr;
+
     CPHCommander* m_ph_commander = nullptr;
     CPHCommander* m_ph_commander_scripts = nullptr;
     CPHCommander* m_ph_commander_physics_worldstep = nullptr;
@@ -276,9 +274,7 @@ public:
     IC CSeniorityHierarchyHolder& seniority_holder();
     IC CClientSpawnManager& client_spawn_manager();
     IC CAutosaveManager& autosave_manager();
-#ifdef DEBUG
     IC CDebugRenderer& debug_renderer();
-#endif
     void __stdcall script_gc(); // GC-cycle
     IC CPHCommander& ph_commander();
     IC CPHCommander& ph_commander_scripts();
@@ -370,13 +366,11 @@ IC CAutosaveManager& CLevel::autosave_manager()
     return *m_autosave_manager;
 }
 
-#ifdef DEBUG
 IC CDebugRenderer& CLevel::debug_renderer()
 {
     VERIFY(m_debug_renderer);
     return *m_debug_renderer;
 }
-#endif
 
 IC CPHCommander& CLevel::ph_commander()
 {

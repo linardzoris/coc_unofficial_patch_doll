@@ -2046,9 +2046,19 @@ BOOL CWeapon::ParentIsActor()
 
 extern u32 hud_adj_mode;
 
+bool CWeapon::ZoomHideCrosshair()
+{
+    CActor* pA = smart_cast<CActor*>(H_Parent());
+    if (hud_adj_mode != 0)
+        return false;
+
+    if (pA && pA->active_cam() == eacLookAt)
+        return false;
+    return m_zoom_params.m_bHideCrosshairInZoom || ZoomTexture();
+}
+
 void CWeapon::debug_draw_firedeps()
 {
-#ifdef DEBUG
     if (hud_adj_mode == 5 || hud_adj_mode == 6 || hud_adj_mode == 7)
     {
         CDebugRenderer& render = Level().debug_renderer();
@@ -2062,7 +2072,6 @@ void CWeapon::debug_draw_firedeps()
         if (hud_adj_mode == 7)
             render.draw_aabb(get_LastSP(), 0.005f, 0.005f, 0.005f, color_xrgb(0, 255, 0));
     }
-#endif // DEBUG
 }
 
 const float& CWeapon::hit_probability() const
@@ -2171,4 +2180,39 @@ void CWeapon::SyncronizeWeaponToServer()
     packet.w_u16(m_ammoElapsed.data);
     packet.w_u8(m_bGrenadeMode ? 1 : 0);
     obj->u_EventSend(packet);
+}
+
+void CWeapon::SaveAttachableParams()
+{
+    if (!m_dbgItem)
+        return;
+
+    LPCSTR sect_name = m_dbgItem->item().m_section_id.c_str();
+    string_path fname;
+    FS.update_path(fname, "$game_data$", make_string("_world\\%s.ltx", sect_name).c_str());
+
+    CInifile* pHudCfg = new CInifile(fname, FALSE, FALSE, TRUE);
+
+    pHudCfg->w_string(sect_name, "position", make_string("%f,%f,%f", m_Offset.c.x, m_Offset.c.y, m_Offset.c.z).c_str());
+    Fvector ypr;
+    m_Offset.getHPB(ypr.x, ypr.y, ypr.z);
+    ypr.mul(180.f / PI);
+    pHudCfg->w_string(sect_name, "orientation", make_string("%f,%f,%f", ypr.x, ypr.y, ypr.z).c_str());
+
+    if (pSettings->line_exist(sect_name, "strap_position") && pSettings->line_exist(sect_name, "strap_orientation"))
+    {
+        pHudCfg->w_string(sect_name, "strap_position",
+            make_string("%f,%f,%f", m_StrapOffset.c.x, m_StrapOffset.c.y, m_StrapOffset.c.z).c_str());
+        m_StrapOffset.getHPB(ypr.x, ypr.y, ypr.z);
+        ypr.mul(180.f / PI);
+        pHudCfg->w_string(sect_name, "strap_orientation", make_string("%f,%f,%f", ypr.x, ypr.y, ypr.z).c_str());
+    }
+
+    xr_delete(pHudCfg);
+    Msg("data saved to %s", fname);
+    Sleep(250);
+}
+void CWeapon::ParseCurrentItem(CGameFont* F) 
+{ 
+    F->OutNext("WEAPON IN STRAPPED MOD [%d]", m_strapped_mode); 
 }

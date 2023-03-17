@@ -33,9 +33,7 @@ public:
 #else
     ID3DVertexBuffer* old_pVB;
 #endif // USE_OGL
-#ifdef DEBUG
     u32 dbg_lock;
-#endif
 private:
     void _clear();
 

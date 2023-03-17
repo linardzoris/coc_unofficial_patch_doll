@@ -44,8 +44,6 @@
 #include "xrPhysics/IPHWorld.h"
 #include "xrPhysics/console_vars.h"
 #include "xrEngine/GameFont.h"
-
-#ifdef DEBUG
 #include "level_debug.h"
 #include "ai/stalker/ai_stalker.h"
 #include "debug_renderer.h"
@@ -53,7 +51,6 @@
 #include "PHDebug.h"
 #include "debug_text_tree.h"
 #include "LevelGraphDebugRender.hpp"
-#endif
 
 extern CUISequencer* g_tutorial;
 extern CUISequencer* g_tutorial2;
@@ -89,8 +86,9 @@ CLevel::CLevel()
         m_space_restriction_manager = new CSpaceRestrictionManager();
         m_client_spawn_manager = new CClientSpawnManager();
         m_autosave_manager = new CAutosaveManager();
-#ifdef DEBUG
+
         m_debug_renderer = new CDebugRenderer();
+#ifdef DEBUG
         levelGraphDebugRender = new LevelGraphDebugRender();
         m_level_debug = new CLevelDebug();
 #endif
@@ -143,8 +141,8 @@ CLevel::~CLevel()
     xr_delete(m_autosave_manager);
 #ifdef DEBUG
     xr_delete(levelGraphDebugRender);
-    xr_delete(m_debug_renderer);
 #endif
+    xr_delete(m_debug_renderer);
     if (!GEnv.isDedicatedServer)
         GEnv.ScriptEngine->remove_script_process(ScriptProcessor::Level);
     xr_delete(game);
@@ -438,6 +436,7 @@ void CLevel::OnRender()
     GEnv.Render->AfterWorldRender(); //--#SM+#-- +SecondVP+
 
     HUD().RenderUI();
+    debug_renderer().render();
 #ifdef DEBUG
     draw_wnds_rects();
     physics_world()->OnRender();

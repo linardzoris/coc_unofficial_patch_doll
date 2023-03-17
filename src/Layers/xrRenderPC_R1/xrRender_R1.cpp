@@ -11,9 +11,7 @@ XR_EXPORT void SetupEnv()
     GEnv.RenderFactory = &RenderFactoryImpl;
     GEnv.DU = &DUImpl;
     GEnv.UIRender = &UIRenderImpl;
-#ifdef DEBUG
     GEnv.DRender = &DebugRenderImpl;
-#endif
     xrRender_initconsole();
 }
 

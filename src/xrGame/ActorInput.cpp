@@ -35,11 +35,18 @@
 #include "holder_custom.h"
 
 extern u32 hud_adj_mode;
+extern u32 hud_adj_item_idx;
 
 void CActor::IR_OnKeyboardPress(int cmd)
 {
     if (hud_adj_mode && pInput->iGetAsyncKeyState(DIK_LSHIFT))
+    {
+        if (pInput->iGetAsyncKeyState(DIK_RETURN) || pInput->iGetAsyncKeyState(DIK_BACKSPACE) ||
+            pInput->iGetAsyncKeyState(DIK_DELETE))
+            g_player_hud->tune(Ivector().set(0, 0, 0));
+
         return;
+    }
 
     if (Remote())
         return;
@@ -280,8 +287,32 @@ void CActor::IR_OnKeyboardRelease(int cmd)
 
 void CActor::IR_OnKeyboardHold(int cmd)
 {
-    if (hud_adj_mode && pInput->iGetAsyncKeyState(DIK_LSHIFT))
+    if (hud_adj_mode && pInput->iGetAsyncKeyState(DIK_LSHIFT) && g_player_hud)
+    {
+        u8 idx = g_player_hud->attached_item(hud_adj_item_idx)->m_parent_hud_item->GetCurrentHudOffsetIdx();
+
+        bool bIsRot = (hud_adj_mode == 2) && (idx != 0);
+
+        if (pInput->iGetAsyncKeyState(bIsRot ? DIK_RIGHT : DIK_UP))
+            g_player_hud->tune(Ivector().set(0, 1, 0));
+        if (pInput->iGetAsyncKeyState(bIsRot ? DIK_LEFT : DIK_DOWN))
+            g_player_hud->tune(Ivector().set(0, -1, 0));
+        if (pInput->iGetAsyncKeyState(bIsRot ? DIK_DOWN : DIK_LEFT))
+            g_player_hud->tune(Ivector().set(1, 0, 0));
+        if (pInput->iGetAsyncKeyState(bIsRot ? DIK_UP : DIK_RIGHT))
+            g_player_hud->tune(Ivector().set(-1, 0, 0));
+        if (pInput->iGetAsyncKeyState(DIK_PRIOR))
+            g_player_hud->tune(Ivector().set(0, 0, 1));
+        if (pInput->iGetAsyncKeyState(DIK_NEXT))
+            g_player_hud->tune(Ivector().set(0, 0, -1));
+        if (pInput->iGetAsyncKeyState(DIK_RETURN))
+            g_player_hud->tune(Ivector().set(0, 0, 0));
+        if (pInput->iGetAsyncKeyState(DIK_PGUP))
+            g_player_hud->tune(Ivector{0, 0, 1});
+        if (pInput->iGetAsyncKeyState(DIK_PGDN))
+            g_player_hud->tune(Ivector{0, 0, -1});
         return;
+    }
 
     if (Remote() || !g_Alive())
         return;
