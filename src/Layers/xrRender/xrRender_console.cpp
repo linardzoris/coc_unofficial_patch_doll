@@ -123,6 +123,12 @@ float ps_saturation = 0;
 //float ps_r2_img_exposure    = 1.0f; // r2-only
 //float ps_r2_img_gamma       = 1.0f; // r2-only
 
+// Дождь на худе
+
+float ps_r2_rain_drops_intensity = 0.00025f;
+float ps_r2_rain_drops_speed     = 1.25f;
+Flags32 ps_r2_rain_drops_flags = {R2FLAG_RAIN_DROPS};
+
 // 
 
 float ps_r__Detail_l_ambient = 0.9f;
@@ -980,6 +986,11 @@ void xrRender_initconsole()
     CMD4(CCC_Float, "r_saturation", &ps_saturation, -1.0f, +1.0f);
 //    CMD4(CCC_Float, "r__exposure",  &ps_r2_img_exposure, 0.5f, 4.0f);
 //    CMD4(CCC_Float, "r__gamma",     &ps_r2_img_gamma, 0.5f, 2.2f);
+
+    // Дождь на худе
+    CMD3(CCC_Mask, "r2_raindrops", &ps_r2_rain_drops_flags, R2FLAG_RAIN_DROPS);
+    CMD4(CCC_Float, "r2_rain_drops_intensity", &ps_r2_rain_drops_intensity, 0.f, 1.f);
+    CMD4(CCC_Float, "r2_rain_drops_speed", &ps_r2_rain_drops_speed, 0.8f, 5.f);
 
     // CMD3(CCC_Mask, "r3_msaa", &ps_r2_ls_flags, R3FLAG_MSAA);
     CMD3(CCC_Token, "r3_msaa", &ps_r3_msaa, qmsaa_token);

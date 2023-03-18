@@ -1022,6 +1022,9 @@
     <ClCompile Include="r3_rendertarget_phase_ssao.cpp">
       <Filter>Core_Target</Filter>
     </ClCompile>
+    <ClCompile Include="..\xrRender\rendertarget_raindrops.cpp">
+      <Filter>Core_Target</Filter>
+    </ClCompile>	
     <ClCompile Include="r3_rendertarget_phase_FXAA.cpp">
       <Filter>Core_Target</Filter>
     </ClCompile>	

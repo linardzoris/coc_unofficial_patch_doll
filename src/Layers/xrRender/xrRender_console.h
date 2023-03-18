@@ -155,6 +155,11 @@ extern ECORE_API float ps_gcol;       // Зелёный
 extern ECORE_API float ps_bcol;       // Синий
 extern ECORE_API float ps_saturation; // Насыщенность
 
+// Дождь на худе
+
+extern ECORE_API float ps_r2_rain_drops_intensity; // Интенсивность капель
+extern ECORE_API float ps_r2_rain_drops_speed;     // Скорость капель
+
 // Оптимизация
 
 extern ECORE_API int opt_static;
@@ -223,6 +228,13 @@ extern ECORE_API Flags32 ps_actor_shadow_flags;
 enum
 {
     RFLAG_ACTOR_SHADOW = (1 << 0),
+};
+
+extern ECORE_API Flags32 ps_r2_rain_drops_flags;
+
+enum
+{
+    R2FLAG_RAIN_DROPS = (1 << 0),
 };
 
 extern void xrRender_initconsole();

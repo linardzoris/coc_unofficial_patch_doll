@@ -197,6 +197,8 @@ private:
     ref_shader s_combine;
     ref_shader s_combine_msaa[8];
     ref_shader s_combine_volumetric;
+    ref_geom   g_rain_drops;
+    ref_shader s_rain_drops;
 
 public:
     ref_shader s_postprocess;
@@ -273,6 +275,7 @@ public:
     void shadow_direct(light* L, u32 dls_phase);
     void phase_fxaa();
     void phase_dlaa();
+    void PhaseRainDrops();
 
     //	Generates min/max sm
     void create_minmax_SM();
