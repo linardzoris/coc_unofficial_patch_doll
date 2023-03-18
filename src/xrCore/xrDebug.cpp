@@ -502,7 +502,7 @@ LONG WINAPI xrDebug::UnhandledFilter(EXCEPTION_POINTERS* exPtrs)
         CONTEXT save = *exPtrs->ContextRecord;
         xr_vector<xr_string> stackTrace = BuildStackTrace(exPtrs->ContextRecord, 1024);
         *exPtrs->ContextRecord = save;
-        // clang-format off Дебил, ты хули в логе рисуешь?
+        // clang-format off / Р”РµР±РёР», С‚С‹ С…СѓР»Рё РІ Р»РѕРіРµ СЂРёСЃСѓРµС€СЊ?
         constexpr char unhandledText[] = ""
         " _   _       _                     _ _          _   _____                   _   _             \n"
         "| | | |     | |                   | | |        | | |  ___|                 | | (_)            \n"
