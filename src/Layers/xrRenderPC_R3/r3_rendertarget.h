@@ -49,6 +49,7 @@ public:
     IBlender* b_ssao;
     IBlender* b_ssao_msaa[8];
     IBlender* b_fxaa;
+    IBlender* b_hud_mask;
 
 #ifdef DEBUG
     struct dbg_line_t
@@ -136,6 +137,7 @@ private:
     ref_shader s_accum_volume;
     ref_shader s_fxaa;
     ref_shader s_dlaa;
+    ref_shader s_hud_mask;
 
     //	generate min/max
     ref_shader s_create_minmax_sm;
@@ -276,6 +278,7 @@ public:
     void phase_fxaa();
     void phase_dlaa();
     void PhaseRainDrops();
+    void phase_hud_mask();
 
     //	Generates min/max sm
     void create_minmax_SM();

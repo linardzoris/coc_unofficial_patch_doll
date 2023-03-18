@@ -32,6 +32,7 @@ public:
     IBlender* b_luminance;
     IBlender* b_combine;
     IBlender* b_fxaa;
+    IBlender* b_hud_mask;
 
 #ifdef DEBUG
     struct dbg_line_t
@@ -103,6 +104,7 @@ private:
     ref_shader s_accum_volume;
     ref_shader s_fxaa;
     ref_shader s_dlaa;
+    ref_shader s_hud_mask;
 
     ref_geom g_accum_point;
     ref_geom g_accum_spot;
@@ -229,6 +231,7 @@ public:
     void phase_fxaa();
     void phase_dlaa();
     void PhaseRainDrops();
+    void phase_hud_mask();
 
     bool need_to_render_sunshafts();
 

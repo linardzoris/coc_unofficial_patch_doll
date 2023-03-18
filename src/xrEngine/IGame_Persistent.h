@@ -122,6 +122,11 @@ public:
     virtual void OnSectorChanged(int /*sector*/) {};
     virtual void OnAssetsChanged();
 
+    virtual int  GetHudGlassElement()  { return 0; };
+    virtual bool GetHudGlassEnabled()  { return 0; };
+    virtual bool GetActorAliveStatus() { return 0; };
+    virtual bool GetActor()            { return 0; };
+
     virtual void RegisterModel(IRenderVisual* V)
 #ifndef _EDITOR
         = 0;

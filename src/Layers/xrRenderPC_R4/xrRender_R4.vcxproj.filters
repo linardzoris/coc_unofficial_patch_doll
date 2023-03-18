@@ -324,6 +324,9 @@
     <ClInclude Include="blender_fxaa.h">
       <Filter>Shading templates</Filter>
     </ClInclude>	
+    <ClInclude Include="blender_hud_mask.h">
+      <Filter>Shading templates</Filter>
+    </ClInclude>	
     <ClInclude Include="..\xrRender\Blender_detail_still.h">
       <Filter>Shading templates\R1</Filter>
     </ClInclude>
@@ -908,6 +911,9 @@
     <ClCompile Include="blender_fxaa.cpp">
       <Filter>Shading templates</Filter>
     </ClCompile>	
+    <ClCompile Include="blender_hud_mask.cpp">
+      <Filter>Shading templates</Filter>
+    </ClCompile>	
     <ClCompile Include="..\xrRender\Blender_detail_still.cpp">
       <Filter>Shading templates\R1</Filter>
     </ClCompile>
@@ -1050,6 +1056,9 @@
       <Filter>Core_Target</Filter>
     </ClCompile>
     <ClCompile Include="..\xrRender\rendertarget_raindrops.cpp">
+      <Filter>Core_Target</Filter>
+    </ClCompile>	
+    <ClCompile Include="..\xrRender\rendertarget_phase_hud_mask.cpp">
       <Filter>Core_Target</Filter>
     </ClCompile>	
     <ClCompile Include="r4_rendertarget_phase_FXAA.cpp">

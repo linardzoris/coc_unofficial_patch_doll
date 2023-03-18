@@ -50,6 +50,7 @@ public:
     IBlender* b_ssao;
     IBlender* b_ssao_msaa[8];
     IBlender* b_fxaa;
+    IBlender* b_hud_mask;
 
     // compute shader for hdao
     IBlender* b_hdao_cs;
@@ -158,6 +159,7 @@ private:
     ref_shader s_accum_volume_msaa[8];
     ref_shader s_fxaa;
     ref_shader s_dlaa;
+    ref_shader s_hud_mask;
 
     ref_geom g_accum_point;
     ref_geom g_accum_spot;
@@ -283,6 +285,7 @@ public:
     void phase_fxaa();
     void phase_dlaa();
     void PhaseRainDrops();
+    void phase_hud_mask();
 
     //	Generates min/max sm
     void create_minmax_SM();

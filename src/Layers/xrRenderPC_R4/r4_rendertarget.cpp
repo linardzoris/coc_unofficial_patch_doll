@@ -16,6 +16,7 @@
 #include "Layers/xrRenderDX10/msaa/dx10MSAABlender.h"
 #include "Layers/xrRenderDX10/DX10 Rain/dx10RainBlender.h"
 #include <D3DX10Tex.h>
+#include "blender_hud_mask.h"
 
 void CRenderTarget::u_setrt(const ref_rt& _1, const ref_rt& _2, const ref_rt& _3, ID3DDepthStencilView* zb)
 {
@@ -337,6 +338,7 @@ CRenderTarget::CRenderTarget()
     b_combine = new CBlender_combine();
     b_ssao = new CBlender_SSAO_noMSAA();
     b_fxaa = new CBlender_FXAA();
+    b_hud_mask = new CBlender_hud_mask();
 
     // HDAO
     b_hdao_cs = new CBlender_CS_HDAO();
@@ -454,6 +456,9 @@ CRenderTarget::CRenderTarget()
 
     // DLAA
     s_dlaa.create("effects_dlaa");
+
+	// Hud Mask
+    s_hud_mask.create(b_hud_mask, "r3\\hud_mask");
 
     // DIRECT (spot)
     pcstr smapTarget = r2_RT_smap_depth;
@@ -1102,6 +1107,7 @@ CRenderTarget::~CRenderTarget()
     xr_delete(b_accum_direct);
     xr_delete(b_ssao);
     xr_delete(b_fxaa);
+    xr_delete(b_hud_mask);
 
     if (RImplementation.o.dx10_msaa)
     {

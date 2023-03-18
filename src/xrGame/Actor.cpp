@@ -79,6 +79,7 @@ const float respawn_delay = 1.f;
 const float respawn_auto = 7.f;
 
 #include "ActorNightVision.h"
+#include "DynamicHudGlass.h"
 //Alundaio
 #include "ActorBackpack.h"
 #include "script_hit.h"
@@ -1359,6 +1360,9 @@ void CActor::shedule_Update(u32 DT)
     UpdateArtefactsOnBeltAndOutfit();
     m_pPhysics_support->in_shedule_Update(DT);
     Check_for_AutoPickUp();
+
+	if (Actor())
+        DynamicHudGlass::UpdateDynamicHudGlass();
 };
 #include "debug_renderer.h"
 void CActor::renderable_Render()
