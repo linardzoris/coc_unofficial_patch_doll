@@ -633,7 +633,8 @@ public:
     virtual void Info(TInfo& I) { xr_sprintf(I, sizeof(I), "hide console"); }
 };
 
-ENGINE_API float psHUD_FOV = 0.45f;
+ENGINE_API float psHUD_FOV_def = 0.45f;
+ENGINE_API float psHUD_FOV = psHUD_FOV_def;
 ENGINE_API float VIEWPORT_NEAR = 0.05f; //--#SM+#-- (Old: 0.2f)
 
 ENGINE_API float hud_adj_delta_pos = 0.0005f;

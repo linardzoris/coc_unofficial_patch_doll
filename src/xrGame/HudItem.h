@@ -185,6 +185,16 @@ public:
     void PlayAnimIdleMovingCrouch(); //AVO: new crouch idle animation
     bool isHUDAnimationExist(pcstr anim_name) const;
 
+// SWM 3
+    float m_hud_fov_add_mod;
+    float m_nearwall_dist_max;
+    float m_nearwall_dist_min;
+    float m_nearwall_last_hud_fov;
+    float m_nearwall_target_hud_fov;
+    float m_nearwall_speed_mod;
+    virtual float GetHudFov();
+    virtual BOOL ParentIsActor();
+
 	float m_fLR_MovingFactor;
     float m_fLR_CameraFactor; 
 	Fvector m_strafe_offset[3]; 

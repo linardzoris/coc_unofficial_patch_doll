@@ -26,6 +26,8 @@ extern const float ORIGIN_OFFSET_AIM = -0.03f;	// (zoomed inertia factor)
 extern const float TENDTO_SPEED = 5.f;			// barrel return speed
 extern const float TENDTO_SPEED_AIM = 8.f;		// (zoomed return speed)
 
+ENGINE_API extern float psHUD_FOV_def; //--#SM+#--
+
 CHudItem::CHudItem()
 {
     RenderHud(TRUE);
@@ -36,6 +38,7 @@ CHudItem::CHudItem()
     m_started_rnd_anim_idx = u8(-1);
     m_fLR_MovingFactor = 0.f;
     m_fLR_CameraFactor = 0.f;	
+	m_nearwall_last_hud_fov = psHUD_FOV_def;
 
 	//inertion
 	m_inertion_params.m_origin_offset = ORIGIN_OFFSET;
@@ -60,6 +63,7 @@ IFactoryObject* CHudItem::_construct()
 }
 
 CHudItem::~CHudItem() {}
+
 void CHudItem::Load(LPCSTR section)
 {
     hud_sect = pSettings->r_string(section, "hud");
@@ -76,6 +80,12 @@ void CHudItem::Load(LPCSTR section)
     bool bStrafeEnabled = !!READ_IF_EXISTS(pSettings, r_bool, hud_sect, "strafe_enabled", TRUE);
 
     m_strafe_offset[2].set(bStrafeEnabled ? 1.0f : 0.0f, fFullStrafeTime, 0.f); // normal
+
+	m_hud_fov_add_mod = READ_IF_EXISTS(pSettings, r_float, hud_sect, "hud_fov_addition_modifier", 0.f);
+    m_nearwall_dist_min = READ_IF_EXISTS(pSettings, r_float, hud_sect, "nearwall_dist_min", 0.5f);
+    m_nearwall_dist_max = READ_IF_EXISTS(pSettings, r_float, hud_sect, "nearwall_dist_max", 1.f);
+    m_nearwall_target_hud_fov = READ_IF_EXISTS(pSettings, r_float, hud_sect, "nearwall_target_hud_fov", 0.27f);
+    m_nearwall_speed_mod = READ_IF_EXISTS(pSettings, r_float, hud_sect, "nearwall_speed_mod", 10.f);
 
 	m_inertion_params.m_pitch_offset_r = READ_IF_EXISTS(pSettings, r_float, section, "pitch_offset_right", PITCH_OFFSET_R);
 	m_inertion_params.m_pitch_offset_n = READ_IF_EXISTS(pSettings, r_float, section, "pitch_offset_up", PITCH_OFFSET_N);
@@ -378,11 +388,18 @@ void CHudItem::UpdateCL()
 }
 
 void CHudItem::OnH_A_Chield() {}
-void CHudItem::OnH_B_Chield() { StopCurrentAnimWithoutCallback(); }
+
+void CHudItem::OnH_B_Chield() 
+{ 
+    StopCurrentAnimWithoutCallback();
+    m_nearwall_last_hud_fov = psHUD_FOV_def;
+}
+
 void CHudItem::OnH_B_Independent(bool just_before_destroy)
 {
     m_sounds.StopAllSounds();
     UpdateXForm();
+    m_nearwall_last_hud_fov = psHUD_FOV_def;
 
     // next code was commented
     /*
@@ -578,4 +595,40 @@ attachable_hud_item* CHudItem::HudItemData() const
         return hi;
 
     return NULL;
+}
+
+BOOL CHudItem::ParentIsActor()
+{
+    IGameObject* O = object().H_Parent();
+    if (!O)
+        return false;
+
+    CEntityAlive* EA = smart_cast<CEntityAlive*>(O);
+    if (!EA)
+        return false;
+
+    return !!EA->cast_actor();
+}
+
+float CHudItem::GetHudFov()
+{
+    if (smart_cast<CActor*>(this->object().H_Parent()) && (Level().CurrentViewEntity() == object().H_Parent()))
+    {
+        collide::rq_result& RQ = HUD().GetCurrentRayQuery();
+        float dist = RQ.range;
+
+        clamp(dist, m_nearwall_dist_min, m_nearwall_dist_max);
+        float fDistanceMod =
+            ((dist - m_nearwall_dist_min) / (m_nearwall_dist_max - m_nearwall_dist_min)); // 0.f ... 1.f
+
+        float fBaseFov = psHUD_FOV_def + m_hud_fov_add_mod;
+        clamp(fBaseFov, 0.0f, FLT_MAX);
+
+        float src = m_nearwall_speed_mod * Device.fTimeDelta;
+        clamp(src, 0.f, 1.f);
+
+        float fTrgFov = m_nearwall_target_hud_fov + fDistanceMod * (fBaseFov - m_nearwall_target_hud_fov);
+        m_nearwall_last_hud_fov = m_nearwall_last_hud_fov * (1 - src) + fTrgFov * src;
+    }
+    return m_nearwall_last_hud_fov;
 }
