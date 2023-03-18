@@ -13,6 +13,8 @@ class AISpaceBase;
 class ISoundManager;
 class ui_core;
 
+//extern XRAPI_API IDebugRender* DRender;
+
 class XRAPI_API EngineGlobalEnvironment
 {
 public:

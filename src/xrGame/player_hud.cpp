@@ -112,17 +112,16 @@ void player_hud_motion_container::load(IKinematicsAnimated* model, const shared_
 
 Fvector& attachable_hud_item::hands_attach_pos()
 {
-    Fvector v;
-    v.set(m_measures.m_hands_attach[0]).add(m_hand_offset_pos);
-    return v;
+	return m_measures.m_hands_attach[0];
 }
-Fvector& attachable_hud_item::hands_attach_rot() { return m_measures.m_hands_attach[1]; }
+Fvector& attachable_hud_item::hands_attach_rot() 
+{ 
+    return m_measures.m_hands_attach[1]; 
+}
 Fvector& attachable_hud_item::hands_offset_pos()
 {
     u8 idx = m_parent_hud_item->GetCurrentHudOffsetIdx();
-    Fvector v;
-    v.set(m_measures.m_hands_offset[0][idx]).add(m_hud_offset_pos);
-    return v;
+    return m_measures.m_hands_offset[0][idx];
 }
 
 Fvector& attachable_hud_item::hands_offset_rot()

@@ -307,9 +307,9 @@ void CActor::IR_OnKeyboardHold(int cmd)
             g_player_hud->tune(Ivector().set(0, 0, -1));
         if (pInput->iGetAsyncKeyState(DIK_RETURN))
             g_player_hud->tune(Ivector().set(0, 0, 0));
-        if (pInput->iGetAsyncKeyState(DIK_PGUP))
+        if (pInput->iGetAsyncKeyState(DIK_Q))
             g_player_hud->tune(Ivector{0, 0, 1});
-        if (pInput->iGetAsyncKeyState(DIK_PGDN))
+        if (pInput->iGetAsyncKeyState(DIK_E))
             g_player_hud->tune(Ivector{0, 0, -1});
         return;
     }
