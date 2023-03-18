@@ -184,6 +184,11 @@ public:
     virtual CHudItem* cast_hud_item() { return this; }
     void PlayAnimIdleMovingCrouch(); //AVO: new crouch idle animation
     bool isHUDAnimationExist(pcstr anim_name) const;
+
+	float m_fLR_MovingFactor;
+    float m_fLR_CameraFactor; 
+	Fvector m_strafe_offset[3]; 
+
 	struct inertion_params
 	{
 		float m_pitch_offset_r;

@@ -15,6 +15,7 @@
 
 #include "xrScriptEngine/script_callback_ex.h"
 #include "script_game_object.h"
+#include "HUDManager.h"
 
 extern const float PITCH_OFFSET_R = 0.00f;		// barrel movement sideways (to the left) with vertical camera turns
 extern const float PITCH_OFFSET_N = 0.00f;		// barrel rise / fall with vertical camera turns
@@ -33,7 +34,9 @@ CHudItem::CHudItem()
     m_bStopAtEndAnimIsRunning = false;
     m_current_motion_def = NULL;
     m_started_rnd_anim_idx = u8(-1);
-	
+    m_fLR_MovingFactor = 0.f;
+    m_fLR_CameraFactor = 0.f;	
+
 	//inertion
 	m_inertion_params.m_origin_offset = ORIGIN_OFFSET;
 	m_inertion_params.m_origin_offset_aim = ORIGIN_OFFSET_AIM;
@@ -63,6 +66,16 @@ void CHudItem::Load(LPCSTR section)
     m_animation_slot = pSettings->r_u32(section, "animation_slot");
 
     m_sounds.LoadSound(section, "snd_bore", "sndBore", true);
+
+	m_strafe_offset[0] =
+        READ_IF_EXISTS(pSettings, r_fvector3, hud_sect, "strafe_hud_offset_pos", Fvector().set(0.015f, 0.0f, 0.0f));
+    m_strafe_offset[1] =
+        READ_IF_EXISTS(pSettings, r_fvector3, hud_sect, "strafe_hud_offset_rot", Fvector().set(0.0f, 0.0f, 4.5f));
+
+    float fFullStrafeTime = READ_IF_EXISTS(pSettings, r_float, hud_sect, "strafe_transition_time", 0.25f);
+    bool bStrafeEnabled = !!READ_IF_EXISTS(pSettings, r_bool, hud_sect, "strafe_enabled", TRUE);
+
+    m_strafe_offset[2].set(bStrafeEnabled ? 1.0f : 0.0f, fFullStrafeTime, 0.f); // normal
 
 	m_inertion_params.m_pitch_offset_r = READ_IF_EXISTS(pSettings, r_float, section, "pitch_offset_right", PITCH_OFFSET_R);
 	m_inertion_params.m_pitch_offset_n = READ_IF_EXISTS(pSettings, r_float, section, "pitch_offset_up", PITCH_OFFSET_N);
@@ -204,7 +217,123 @@ void CHudItem::SendHiddenItem()
     }
 }
 
-void CHudItem::UpdateHudAdditonal(Fmatrix& hud_trans) {}
+void __inertion(float& _val_cur, const float& _val_trgt, const float& _friction)
+{
+    float friction_i = 1.f - _friction;
+    _val_cur = _val_cur * _friction + _val_trgt * friction_i;
+}
+
+void CHudItem::UpdateHudAdditonal(Fmatrix& hud_trans) 
+{
+    attachable_hud_item* hi = HudItemData();
+    R_ASSERT(hi);
+
+    CActor* pActor = smart_cast<CActor*>(object().H_Parent());
+    if (!pActor)
+        return;
+
+	float fInertiaPower = GetInertionPowerFactor();
+
+    u32 iMovingState = pActor->MovingState();
+
+    float fYMag = pActor->fFPCamYawMagnitude;
+    float fPMag = pActor->fFPCamPitchMagnitude;
+
+	static float fAvgTimeDelta = Device.fTimeDelta;
+    __inertion(fAvgTimeDelta, Device.fTimeDelta, 0.8f);
+
+	float fStrafeMaxTime =
+        m_strafe_offset[2].y;
+    if (fStrafeMaxTime <= EPS)
+        fStrafeMaxTime = 0.01f;
+
+    float fStepPerUpd = fAvgTimeDelta / fStrafeMaxTime;
+    float fCamReturnSpeedMod = 1.5f;
+    float fCamLimit = 0.8f;
+
+	if (fYMag != 0.0f)
+    { 
+        m_fLR_CameraFactor -= (fYMag * 0.005f);
+
+        float fCamLimitBlend = 1.0f - ((1.0f - fCamLimit) * 1.0f);
+        clamp(m_fLR_CameraFactor, -fCamLimitBlend, fCamLimitBlend);
+    }
+    else
+    { 
+        if (m_fLR_CameraFactor < 0.0f)
+        {
+            m_fLR_CameraFactor += fStepPerUpd * (fCamReturnSpeedMod);
+            clamp(m_fLR_CameraFactor, -1.0f, 0.0f);
+        }
+        else
+        {
+            m_fLR_CameraFactor -= fStepPerUpd * (fCamReturnSpeedMod);
+            clamp(m_fLR_CameraFactor, 0.0f, 1.0f);
+        }
+    }
+    float fChangeDirSpeedMod = 3;
+
+    if ((iMovingState & mcLStrafe) != 0)
+    { 
+        float fVal = (m_fLR_MovingFactor > 0.f ? fStepPerUpd * fChangeDirSpeedMod : fStepPerUpd);
+        m_fLR_MovingFactor -= fVal;
+    }
+    else if ((iMovingState & mcRStrafe) != 0)
+    { 
+        float fVal = (m_fLR_MovingFactor < 0.f ? fStepPerUpd * fChangeDirSpeedMod : fStepPerUpd);
+        m_fLR_MovingFactor += fVal;
+    }
+    else
+    { 
+        if (m_fLR_MovingFactor < 0.0f)
+        {
+            m_fLR_MovingFactor += fStepPerUpd;
+            clamp(m_fLR_MovingFactor, -1.0f, 0.0f);
+        }
+        else
+        {
+            m_fLR_MovingFactor -= fStepPerUpd;
+            clamp(m_fLR_MovingFactor, 0.0f, 1.0f);
+        }
+    }
+
+    clamp(m_fLR_MovingFactor, -1.0f, 1.0f);
+
+    float fLR_Factor = m_fLR_MovingFactor + m_fLR_CameraFactor;
+    clamp(fLR_Factor, -1.0f, 1.0f);
+
+    float fTrgStrafe = 1.f + fLR_Factor * (-1.f - 1.f);
+    float mStrafeFactor = fLR_Factor * (1 - fStepPerUpd) + fTrgStrafe * fStepPerUpd;
+
+    if (m_strafe_offset[2].x != 0.0f) 
+    {
+        Fvector curr_offs, curr_rot;
+
+        curr_offs = m_strafe_offset[0];
+        curr_offs.mul(mStrafeFactor);
+
+        curr_rot = m_strafe_offset[1];
+        curr_rot.mul(-PI / 180.f);
+        curr_rot.mul(mStrafeFactor);
+
+        Fmatrix hud_rotation;
+        Fmatrix hud_rotation_y;
+
+        hud_rotation.identity();
+        hud_rotation.rotateX(curr_rot.x);
+
+        hud_rotation_y.identity();
+        hud_rotation_y.rotateY(curr_rot.y);
+        hud_rotation.mulA_43(hud_rotation_y);
+
+        hud_rotation_y.identity();
+        hud_rotation_y.rotateZ(curr_rot.z);
+        hud_rotation.mulA_43(hud_rotation_y);
+
+        hud_rotation.translate_over(curr_offs);
+        hud_trans.mulB_43(hud_rotation);
+    }
+}
 void CHudItem::UpdateCL()
 {
     if (m_current_motion_def)

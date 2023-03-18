@@ -527,6 +527,39 @@ void CWeapon::Load(LPCSTR section)
 	m_flags.set( FUsingCondition, READ_IF_EXISTS( pSettings, r_bool, section, "use_condition", true ));
 
 	m_APk = READ_IF_EXISTS(pSettings, r_float, section, "ap_modifier",1.0f);
+
+// Настройки стрейфа (боковая ходьба)
+    const Fvector vZero = {0.f, 0.f, 0.f};
+    Fvector vDefStrafeValue;
+    vDefStrafeValue.set(vZero);
+
+    //--> Смещение в стрейфе
+    m_strafe_offset[0][0] = READ_IF_EXISTS(pSettings, r_fvector3, section, "strafe_hud_offset_pos", vDefStrafeValue);
+    m_strafe_offset[1][0] = READ_IF_EXISTS(pSettings, r_fvector3, section, "strafe_hud_offset_rot", vDefStrafeValue);
+
+    //--> Поворот в стрейфе
+    m_strafe_offset[0][1] =
+        READ_IF_EXISTS(pSettings, r_fvector3, section, "strafe_aim_hud_offset_pos", vDefStrafeValue);
+    m_strafe_offset[1][1] =
+        READ_IF_EXISTS(pSettings, r_fvector3, section, "strafe_aim_hud_offset_rot", vDefStrafeValue);
+
+    // Параметры стрейфа
+    bool bStrafeEnabled = READ_IF_EXISTS(pSettings, r_bool, section, "strafe_enabled", false);
+    bool bStrafeEnabled_aim = READ_IF_EXISTS(pSettings, r_bool, section, "strafe_aim_enabled", false);
+    float fFullStrafeTime = READ_IF_EXISTS(pSettings, r_float, section, "strafe_transition_time", 0.01f);
+    float fFullStrafeTime_aim = READ_IF_EXISTS(pSettings, r_float, section, "strafe_aim_transition_time", 0.01f);
+    float fStrafeCamLFactor = READ_IF_EXISTS(pSettings, r_float, section, "strafe_cam_limit_factor", 0.5f);
+    float fStrafeCamLFactor_aim = READ_IF_EXISTS(pSettings, r_float, section, "strafe_cam_limit_aim_factor", 1.0f);
+    float fStrafeMinAngle = READ_IF_EXISTS(pSettings, r_float, section, "strafe_cam_min_angle", 0.0f);
+    float fStrafeMinAngle_aim = READ_IF_EXISTS(pSettings, r_float, section, "strafe_cam_aim_min_angle", 7.0f);
+
+    //--> (Data 1)
+    m_strafe_offset[2][0].set((bStrafeEnabled ? 1.0f : 0.0f), fFullStrafeTime, NULL); // normal
+    m_strafe_offset[2][1].set((bStrafeEnabled_aim ? 1.0f : 0.0f), fFullStrafeTime_aim, NULL); // aim-GL
+
+    //--> (Data 2)
+    m_strafe_offset[3][0].set(fStrafeCamLFactor, fStrafeMinAngle, NULL); // normal
+    m_strafe_offset[3][1].set(fStrafeCamLFactor_aim, fStrafeMinAngle_aim, NULL); // aim-GL
 }
 
 void CWeapon::LoadFireParams(LPCSTR section)
@@ -1787,6 +1820,11 @@ void CWeapon::UpdateHudAdditonal(Fmatrix& trans)
     clamp(idx, u8(0), u8(1));
     bool bForAim = (idx == 1);
 
+	float fInertiaPower = GetInertionPowerFactor();
+
+    float fYMag = pActor->fFPCamYawMagnitude;
+    float fPMag = pActor->fFPCamPitchMagnitude;
+
 	static float fAvgTimeDelta = Device.fTimeDelta;
     _inertion(fAvgTimeDelta, Device.fTimeDelta, 0.8f);
 
@@ -1866,6 +1904,128 @@ void CWeapon::UpdateHudAdditonal(Fmatrix& trans)
             hud_rotation.translate_over(curr_offs);
             trans.mulB_43(hud_rotation);
         }
+    }
+    //============= Боковой стрейф с оружием =============//
+    float fStrafeMaxTime =
+        m_strafe_offset[2][idx].y; // Макс. время в секундах, за которое мы наклонимся из центрального положения
+    if (fStrafeMaxTime <= EPS)
+        fStrafeMaxTime = 0.01f;
+
+    float fStepPerUpd = fAvgTimeDelta / fStrafeMaxTime; // Величина изменение фактора поворота
+
+    // Добавляем боковой наклон от движения камеры
+    float fCamReturnSpeedMod =
+        1.5f; // Восколько ускоряем нормализацию наклона, полученного от движения камеры (только от бедра)
+
+    // Высчитываем минимальную скорость поворота камеры для начала инерции
+    float fStrafeMinAngle =
+        _lerp(m_strafe_offset[3][0].y, m_strafe_offset[3][1].y, m_zoom_params.m_fZoomRotationFactor);
+
+    // Высчитываем мксимальный наклон от поворота камеры
+    float fCamLimitBlend = _lerp(m_strafe_offset[3][0].x, m_strafe_offset[3][1].x, m_zoom_params.m_fZoomRotationFactor);
+
+    // Считаем стрейф от поворота камеры
+    if (abs(fYMag) > (m_fLR_CameraFactor == 0.0f ? fStrafeMinAngle : 0.0f))
+    { //--> Камера крутится по оси Y
+        m_fLR_CameraFactor -= (fYMag * 0.025f);
+
+        clamp(m_fLR_CameraFactor, -fCamLimitBlend, fCamLimitBlend);
+    }
+    else
+    { //--> Камера не поворачивается - убираем наклон
+        if (m_fLR_CameraFactor < 0.0f)
+        {
+            m_fLR_CameraFactor += fStepPerUpd * (bForAim ? 1.0f : fCamReturnSpeedMod);
+            clamp(m_fLR_CameraFactor, -fCamLimitBlend, 0.0f);
+        }
+        else
+        {
+            m_fLR_CameraFactor -= fStepPerUpd * (bForAim ? 1.0f : fCamReturnSpeedMod);
+            clamp(m_fLR_CameraFactor, 0.0f, fCamLimitBlend);
+        }
+    }
+
+    // Добавляем боковой наклон от ходьбы вбок
+    float fChangeDirSpeedMod =
+        3; // Восколько быстро меняем направление направление наклона, если оно в другую сторону от текущего
+
+    u32 iMovingState = pActor->MovingState();
+    if ((iMovingState & mcLStrafe) != 0)
+    { // Движемся влево
+        float fVal = (m_fLR_MovingFactor > 0.f ? fStepPerUpd * fChangeDirSpeedMod : fStepPerUpd);
+        m_fLR_MovingFactor -= fVal;
+    }
+    else if ((iMovingState & mcRStrafe) != 0)
+    { // Движемся вправо
+        float fVal = (m_fLR_MovingFactor < 0.f ? fStepPerUpd * fChangeDirSpeedMod : fStepPerUpd);
+        m_fLR_MovingFactor += fVal;
+    }
+    else
+    { // Двигаемся в любом другом направлении - плавно убираем наклон
+        if (m_fLR_MovingFactor < 0.0f)
+        {
+            m_fLR_MovingFactor += fStepPerUpd;
+            clamp(m_fLR_MovingFactor, -1.0f, 0.0f);
+        }
+        else
+        {
+            m_fLR_MovingFactor -= fStepPerUpd;
+            clamp(m_fLR_MovingFactor, 0.0f, 1.0f);
+        }
+    }
+
+    clamp(m_fLR_MovingFactor, -1.0f, 1.0f); // Фактор боковой ходьбы не должен превышать эти лимиты
+
+    // Вычисляем и нормализируем итоговый фактор наклона
+    float fLR_Factor = m_fLR_MovingFactor + (m_fLR_CameraFactor * fInertiaPower);
+    clamp(fLR_Factor, -1.0f, 1.0f); // Фактор боковой ходьбы не должен превышать эти лимиты
+
+    // Производим наклон ствола для нормального режима и аима
+    for (int _idx = 0; _idx <= 1; _idx++) //<-- Для плавного перехода
+    {
+        bool bEnabled = (m_strafe_offset[2][_idx].x != 0.0f);
+        if (!bEnabled)
+            continue;
+
+        Fvector curr_offs, curr_rot;
+
+        // Смещение позиции худа в стрейфе
+        curr_offs = m_strafe_offset[0][_idx]; // pos
+        curr_offs.mul(fLR_Factor); // Умножаем на фактор стрейфа
+
+        // Поворот худа в стрейфе
+        curr_rot = m_strafe_offset[1][_idx]; // rot
+        curr_rot.mul(-PI / 180.f); // Преобразуем углы в радианы
+        curr_rot.mul(fLR_Factor); // Умножаем на фактор стрейфа
+
+        // Мягкий переход между бедром \ прицелом
+        if (_idx == 0)
+        { // От бедра
+            curr_offs.mul(1.f - m_zoom_params.m_fZoomRotationFactor);
+            curr_rot.mul(1.f - m_zoom_params.m_fZoomRotationFactor);
+        }
+        else
+        { // Во время аима
+            curr_offs.mul(m_zoom_params.m_fZoomRotationFactor);
+            curr_rot.mul(m_zoom_params.m_fZoomRotationFactor);
+        }
+
+        Fmatrix hud_rotation;
+        Fmatrix hud_rotation_y;
+
+        hud_rotation.identity();
+        hud_rotation.rotateX(curr_rot.x);
+
+        hud_rotation_y.identity();
+        hud_rotation_y.rotateY(curr_rot.y);
+        hud_rotation.mulA_43(hud_rotation_y);
+
+        hud_rotation_y.identity();
+        hud_rotation_y.rotateZ(curr_rot.z);
+        hud_rotation.mulA_43(hud_rotation_y);
+
+        hud_rotation.translate_over(curr_offs);
+        trans.mulB_43(hud_rotation);
     }
 }
 

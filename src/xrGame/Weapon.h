@@ -82,6 +82,8 @@ public:
     float m_fUD_ShootingFactor; // Фактор вертикального сдвига худа при стрельбе [-1; +1]
     float m_fBACKW_ShootingFactor; // Фактор сдвига худа в сторону лица при стрельбе [0; +1]
 
+    Fvector m_strafe_offset[4][2]; // pos,rot,data1,data2/ normal,aim-GL --#SM+#--
+
 public:
     virtual bool can_kill() const;
     virtual CInventoryItem* can_kill(CInventory* inventory) const;
