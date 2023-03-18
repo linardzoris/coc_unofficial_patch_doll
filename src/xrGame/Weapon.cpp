@@ -92,6 +92,9 @@ CWeapon::CWeapon()
 	m_fLR_ShootingFactor = 0.f;
     m_fUD_ShootingFactor = 0.f;
     m_fBACKW_ShootingFactor = 0.f;
+
+	bHasBulletsToHide = false;
+    bullet_cnt = 0;
 }
 
 CWeapon::~CWeapon()
@@ -1409,6 +1412,40 @@ bool CWeapon::SetBoneVisible(IKinematics* m_model, const shared_str& bone_name, 
     if (bVisibleNow != bVisibility)
         m_model->LL_SetBoneVisible(bone_id, bVisibility, TRUE);
     return true;
+}
+
+void CWeapon::HUD_VisualBulletUpdate(bool force, int force_idx)
+{
+    if (!bHasBulletsToHide)
+        return;
+
+    /*if (m_pInventory->ModifyFrame() <= m_BriefInfo_CalcFrame)
+    {
+        return;
+    }*/
+
+    if (!GetHUDmode())
+        return;
+
+    // return;
+
+    bool hide = true;
+
+    Msg("Print %d bullets", last_hide_bullet);
+
+    if (last_hide_bullet == bullet_cnt || force)
+        hide = false;
+
+    for (u8 b = 0; b < bullet_cnt; b++)
+    {
+        u16 bone_id = HudItemData()->m_model->LL_BoneID(bullets_bones[b]);
+
+        if (bone_id != BI_NONE)
+            HudItemData()->set_bone_visible(bullets_bones[b], !hide);
+
+        if (b == last_hide_bullet)
+            hide = false;
+    }
 }
 
 void CWeapon::UpdateAddonsVisibility()

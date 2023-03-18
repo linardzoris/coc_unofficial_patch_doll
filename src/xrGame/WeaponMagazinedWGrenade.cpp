@@ -143,6 +143,11 @@ void CWeaponMagazinedWGrenade::OnShot()
         inherited::OnShot();
 }
 
+void CWeaponMagazinedWGrenade::OnMotionMark(u32 state, const motion_marks& M)
+{
+	inherited::OnMotionMark(state, M);
+}
+
 bool CWeaponMagazinedWGrenade::SwitchMode()
 {
     bool bUsefulStateToSwitch =
@@ -590,6 +595,9 @@ void CWeaponMagazinedWGrenade::PlayAnimShow()
     if (IsGrenadeLauncherAttached())
     {
         if (!m_bGrenadeMode)
+            HUD_VisualBulletUpdate();
+
+        if (!m_bGrenadeMode)
             PlayHUDMotion("anm_show_w_gl", FALSE, this, GetState());
         else
             PlayHUDMotion("anm_show_g", FALSE, this, GetState());
@@ -905,6 +913,15 @@ bool CWeaponMagazinedWGrenade::GetBriefInfo(II_BriefInfo& info)
         return false;
 
     string32 int_str;
+
+	int ae = GetAmmoElapsed();
+
+	if (bHasBulletsToHide && !m_bGrenadeMode)
+    {
+        last_hide_bullet = ae >= bullet_cnt ? bullet_cnt : bullet_cnt - ae - 1;
+        if (ae == 0)
+            last_hide_bullet = -1;
+    }
 
     if (m_bGrenadeMode || !IsGrenadeLauncherAttached())
     {

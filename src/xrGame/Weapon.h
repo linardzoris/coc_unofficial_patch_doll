@@ -85,6 +85,13 @@ public:
 
     Fvector m_strafe_offset[4][2]; // pos,rot,data1,data2/ normal,aim-GL --#SM+#--
 
+	xr_vector<shared_str> bullets_bones; // Mortan (BaS, STCoP)
+    int bullet_cnt;
+    int last_hide_bullet;
+    bool bHasBulletsToHide;
+
+    virtual void HUD_VisualBulletUpdate(bool force = false, int force_idx = -1);
+
 public:
     virtual bool can_kill() const;
     virtual CInventoryItem* can_kill(CInventory* inventory) const;
