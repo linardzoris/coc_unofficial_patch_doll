@@ -998,6 +998,9 @@ void CActor::UpdateCL()
             //g_pGamePersistent->m_pGShaderConstants->hud_params.x = pWeapon->GetZRotatingFactor(); //--#SM+#--
             //g_pGamePersistent->m_pGShaderConstants->hud_params.y = pWeapon->GetSecondVP_FovFactor(); //--#SM+#--
 
+			// Коллиматоры из BaS
+            g_pGamePersistent->m_pGShaderConstants->hud_params.x = pWeapon->GetZRotatingFactor();
+            g_pGamePersistent->m_pGShaderConstants->hud_params.z = pWeapon->m_nearwall_last_hud_fov;
         }
     }
     else

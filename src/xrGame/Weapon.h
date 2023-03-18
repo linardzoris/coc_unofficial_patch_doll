@@ -77,10 +77,11 @@ public:
     virtual void OnHiddenItem();
     virtual void SendHiddenItem(); // same as OnHiddenItem but for client... (sends message to a server)...
 
-// SWM3.0
-	float m_fLR_ShootingFactor; // Фактор горизонтального сдвига худа при стрельбе [-1; +1]
+// Новое
+	float m_fLR_ShootingFactor; // Фактор горизонтального сдвига худа при стрельбе [-1; +1] // SWM 3
     float m_fUD_ShootingFactor; // Фактор вертикального сдвига худа при стрельбе [-1; +1]
     float m_fBACKW_ShootingFactor; // Фактор сдвига худа в сторону лица при стрельбе [0; +1]
+    IC float GetZRotatingFactor() const { return m_zoom_params.m_fZoomRotationFactor; } // BaS
 
     Fvector m_strafe_offset[4][2]; // pos,rot,data1,data2/ normal,aim-GL --#SM+#--
 
