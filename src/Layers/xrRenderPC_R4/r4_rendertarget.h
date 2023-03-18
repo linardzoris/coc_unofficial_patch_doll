@@ -51,6 +51,9 @@ public:
     IBlender* b_ssao_msaa[8];
     IBlender* b_fxaa;
     IBlender* b_hud_mask;
+    IBlender* b_hud_blood;
+    IBlender* b_hud_power;
+    IBlender* b_hud_bleeding;
 
     // compute shader for hdao
     IBlender* b_hdao_cs;
@@ -160,6 +163,9 @@ private:
     ref_shader s_fxaa;
     ref_shader s_dlaa;
     ref_shader s_hud_mask;
+    ref_shader s_hud_blood;
+    ref_shader s_hud_power;
+    ref_shader s_hud_bleeding;
 
     ref_geom g_accum_point;
     ref_geom g_accum_spot;
@@ -286,6 +292,9 @@ public:
     void phase_dlaa();
     void PhaseRainDrops();
     void phase_hud_mask();
+    void phase_hud_blood();
+    void phase_hud_power();
+    void phase_hud_bleeding();
 
     //	Generates min/max sm
     void create_minmax_SM();

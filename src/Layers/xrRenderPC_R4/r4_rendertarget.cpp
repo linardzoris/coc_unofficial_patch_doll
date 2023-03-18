@@ -17,6 +17,9 @@
 #include "Layers/xrRenderDX10/DX10 Rain/dx10RainBlender.h"
 #include <D3DX10Tex.h>
 #include "blender_hud_mask.h"
+#include "blender_hud_blood.h"
+#include "blender_hud_stamina.h"
+#include "blender_hud_bleeding.h"
 
 void CRenderTarget::u_setrt(const ref_rt& _1, const ref_rt& _2, const ref_rt& _3, ID3DDepthStencilView* zb)
 {
@@ -339,6 +342,9 @@ CRenderTarget::CRenderTarget()
     b_ssao = new CBlender_SSAO_noMSAA();
     b_fxaa = new CBlender_FXAA();
     b_hud_mask = new CBlender_hud_mask();
+    b_hud_blood = new CBlender_Hud_Blood();
+    b_hud_power = new CBlender_Hud_Stamina();
+    b_hud_bleeding = new CBlender_Hud_Bleeding();
 
     // HDAO
     b_hdao_cs = new CBlender_CS_HDAO();
@@ -459,6 +465,12 @@ CRenderTarget::CRenderTarget()
 
 	// Hud Mask
     s_hud_mask.create(b_hud_mask, "r3\\hud_mask");
+    // Hud Blood
+    s_hud_blood.create(b_hud_blood, "r3\\hud_blood");
+    // Hud Stamina
+    s_hud_power.create(b_hud_power, "r3\\hud_power");
+    // Hud Bleeding
+    s_hud_bleeding.create(b_hud_bleeding, "r3\\hud_bleeding");
 
     // DIRECT (spot)
     pcstr smapTarget = r2_RT_smap_depth;
@@ -1108,6 +1120,9 @@ CRenderTarget::~CRenderTarget()
     xr_delete(b_ssao);
     xr_delete(b_fxaa);
     xr_delete(b_hud_mask);
+    xr_delete(b_hud_blood);
+    xr_delete(b_hud_power);
+    xr_delete(b_hud_bleeding);
 
     if (RImplementation.o.dx10_msaa)
     {

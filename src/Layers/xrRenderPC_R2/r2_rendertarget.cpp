@@ -13,6 +13,9 @@
 #include "blender_ssao.h"
 #include "blender_fxaa.h"
 #include "blender_hud_mask.h"
+#include "blender_hud_blood.h"
+#include "blender_hud_stamina.h"
+#include "blender_hud_bleeding.h"
 
 void CRenderTarget::u_setrt(const ref_rt& _1, const ref_rt& _2, const ref_rt& _3, IDirect3DSurface9* zb)
 {
@@ -236,6 +239,9 @@ CRenderTarget::CRenderTarget()
     b_combine = new CBlender_combine();
     b_fxaa = new CBlender_FXAA();
     b_hud_mask = new CBlender_hud_mask();
+    b_hud_blood = new CBlender_Hud_Blood();
+    b_hud_power = new CBlender_Hud_Stamina();
+    b_hud_bleeding = new CBlender_Hud_Bleeding();
 
     //  NORMAL
     {
@@ -292,6 +298,12 @@ CRenderTarget::CRenderTarget()
 
 	// Hud Mask
     s_hud_mask.create(b_hud_mask, "r2\\hud_mask");
+	// Hud Blood
+    s_hud_blood.create(b_hud_blood, "r2\\hud_blood");
+    // Hud Stamina
+    s_hud_power.create(b_hud_power, "r2\\hud_power");
+    // Hud Bleeding
+    s_hud_bleeding.create(b_hud_bleeding, "r2\\hud_bleeding");
 
     // DIRECT (spot)
     pcstr smapTarget = r2_RT_smap_depth;
@@ -703,6 +715,9 @@ CRenderTarget::~CRenderTarget()
     xr_delete(b_occq);
     xr_delete(b_fxaa);
     xr_delete(b_hud_mask);
+    xr_delete(b_hud_blood);
+    xr_delete(b_hud_power);
+    xr_delete(b_hud_bleeding);
 }
 
 void CRenderTarget::reset_light_marker(bool bResetStencil)

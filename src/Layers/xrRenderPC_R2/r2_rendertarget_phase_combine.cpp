@@ -275,6 +275,16 @@ void CRenderTarget::phase_combine()
             phase_hud_mask();
     }
 
+	// Hud Effects
+    if (!_menu_pp && g_pGamePersistent->GetActor())
+    {
+        bool IsActorAlive = g_pGamePersistent->GetActorAliveStatus();
+        if (ps_r2_hud_mask_flags.test(R_FLAG_HUD_DYN_EFFECTS) && IsActorAlive)
+            phase_hud_blood();
+            phase_hud_power();
+            phase_hud_bleeding();
+    }
+
     // PP enabled ?
     //  Render to RT texture to be able to copy RT even in windowed mode.
     BOOL PP_Complex = u_need_PP() | (BOOL)RImplementation.m_bMakeAsyncSS;

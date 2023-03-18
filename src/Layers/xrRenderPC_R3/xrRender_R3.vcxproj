@@ -279,6 +279,9 @@
     <ClInclude Include="blender_deffer_flat.h" />
     <ClInclude Include="blender_deffer_model.h" />
     <ClInclude Include="blender_fxaa.h" />	
+    <ClInclude Include="blender_hud_bleeding.h" />
+    <ClInclude Include="blender_hud_blood.h" />
+    <ClInclude Include="blender_hud_stamina.h" />		
     <ClInclude Include="blender_hud_mask.h" />	
     <ClInclude Include="blender_light_direct.h" />
     <ClInclude Include="blender_light_mask.h" />
@@ -399,6 +402,7 @@
     <ClCompile Include="..\xrRender\PSLibrary.cpp" />
     <ClCompile Include="..\xrRender\rendertarget_phase_dlaa.cpp" />	
     <ClCompile Include="..\xrRender\rendertarget_raindrops.cpp" />	
+    <ClCompile Include="..\xrRender\rendertarget_phase_hud_effects.cpp" />	
     <ClCompile Include="..\xrRender\rendertarget_phase_hud_mask.cpp" />	
     <ClCompile Include="..\xrRender\ResourceManager.cpp" />
     <ClCompile Include="..\xrRender\ResourceManager_Loader.cpp" />
@@ -443,6 +447,9 @@
     <ClCompile Include="blender_deffer_flat.cpp" />
     <ClCompile Include="blender_deffer_model.cpp" />
     <ClCompile Include="blender_fxaa.cpp" />
+    <ClCompile Include="blender_hud_bleeding.cpp" />
+    <ClCompile Include="blender_hud_blood.cpp" />
+    <ClCompile Include="blender_hud_stamina.cpp" />	
     <ClCompile Include="blender_hud_mask.cpp" />	
     <ClCompile Include="blender_light_direct.cpp" />
     <ClCompile Include="blender_light_mask.cpp" />
