@@ -26,7 +26,7 @@
   <Import Project="$(SolutionDir)Common.props" />
   <PropertyGroup Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)'=='Release_COC'" Label="Configuration">
@@ -68,6 +68,7 @@
       <BufferSecurityCheck Condition="'$(Configuration)|$(Platform)'=='Mixed_COC|Win32'">false</BufferSecurityCheck>
       <ControlFlowGuard Condition="'$(Configuration)|$(Platform)'=='Mixed_COC|Win32'">false</ControlFlowGuard>
       <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Mixed_COC|Win32'">stdcpp17</LanguageStandard>
+      <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Release_COC|x64'">stdcpp14</LanguageStandard>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
