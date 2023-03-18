@@ -243,6 +243,7 @@ protected:
 
     } m_zoom_params;
 
+	float m_fFactor;
     float m_fRTZoomFactor; // run-time zoom factor
     CUIWindow* m_UIScope;
 

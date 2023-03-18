@@ -27,10 +27,12 @@
 #include "xrCore/xr_token.h"
 #include "CameraLook.h"
 #include "ActorNightVision.h"
+#include "HUDManager.h"
 
 #define WEAPON_REMOVE_TIME 60000
 #define ROTATION_TIME 0.25f
 
+BOOL b_hud_collision = TRUE;
 BOOL b_toggle_weapon_aim = FALSE;
 extern CUIXml* pWpnScopeXml;
 
@@ -2035,6 +2037,46 @@ void CWeapon::UpdateHudAdditonal(Fmatrix& trans)
 
         hud_rotation.translate_over(curr_offs);
         trans.mulB_43(hud_rotation);
+    }
+
+	//============= Коллизия оружия =============//
+    if (b_hud_collision)
+    {
+        collide::rq_result& RQ = HUD().GetCurrentRayQuery();
+        float dist = RQ.range;
+
+        Fvector curr_offs, curr_rot;
+        curr_offs = hi->m_measures.m_collision_offset[0]; // pos,aim
+        curr_rot = hi->m_measures.m_collision_offset[1]; // rot,aim
+        curr_offs.mul(m_fFactor);
+        curr_rot.mul(m_fFactor);
+
+        if (dist <= 0.8 && !IsZoomed())
+            m_fFactor += Device.fTimeDelta / 0.3;
+        else
+            m_fFactor -= Device.fTimeDelta / 0.3;
+
+        Fmatrix hud_rotation;
+        hud_rotation.identity();
+        hud_rotation.rotateX(curr_rot.x);
+
+        Fmatrix hud_rotation_y;
+        hud_rotation_y.identity();
+        hud_rotation_y.rotateY(curr_rot.y);
+        hud_rotation.mulA_43(hud_rotation_y);
+
+        hud_rotation_y.identity();
+        hud_rotation_y.rotateZ(curr_rot.z);
+        hud_rotation.mulA_43(hud_rotation_y);
+
+        hud_rotation.translate_over(curr_offs);
+        trans.mulB_43(hud_rotation);
+
+        clamp(m_fFactor, 0.f, 1.f);
+    }
+    else
+    {
+        m_fFactor = 0.0;
     }
 }
 
