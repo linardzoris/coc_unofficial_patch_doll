@@ -23,6 +23,7 @@ CCustomOutfit::CCustomOutfit()
     m_boneProtection = new SBoneProtections();
     m_artefact_count = 0;
     m_BonesProtectionSect = NULL;
+    m_b_HasGlass = false;
 }
 
 CCustomOutfit::~CCustomOutfit() { xr_delete(m_boneProtection); }
@@ -108,6 +109,8 @@ void CCustomOutfit::Load(LPCSTR section)
 
     // Added by Axel, to enable optional condition use on any item
     m_flags.set(FUsingCondition, READ_IF_EXISTS(pSettings, r_bool, section, "use_condition", true));
+
+	m_b_HasGlass = !!READ_IF_EXISTS(pSettings, r_bool, section, "has_glass", FALSE);
 }
 
 void CCustomOutfit::ReloadBonesProtection()
