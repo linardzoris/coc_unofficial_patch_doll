@@ -482,7 +482,7 @@ void CTorch::ConditionUpdate()
     // Last_Dawn: √асим фонарик постепенно, то есть его €ркость зависит от состо€ни€ предмета
     if (IsUsingCondition())
     {
-        fBrightness = this->GetCondition();
+        fBrightness = GetCondition();
     }
 
     // Last_Dawn, ’ельги(Olil-byte): убивает кондицию предмета активно и пассивно
