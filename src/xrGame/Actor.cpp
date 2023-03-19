@@ -2096,6 +2096,7 @@ void CActor::SwitchNightVision(bool vision_on, bool use_sounds, bool send_event)
     if (!m_bNightVisionOn && bIsActiveNow)
     {
         m_night_vision->Stop(100000.0f, use_sounds);
+        m_bTorchNightVision = false;
     }
     // Alun: Update flags and send message they were changed
     if (send_event)

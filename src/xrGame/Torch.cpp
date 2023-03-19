@@ -518,6 +518,8 @@ void CTorch::enable(bool value)
 
 void CTorch::ConditionUpdate()
 {
+    CActor* pActor = smart_cast<CActor*>(H_Parent());
+
     // Last_Dawn: √асим фонарик постепенно, то есть его €ркость зависит от состо€ни€ предмета
     if (IsUsingCondition())
     {
@@ -529,7 +531,7 @@ void CTorch::ConditionUpdate()
     {
         this->ChangeCondition(-m_fDecayRate * Device.fTimeDelta);
     }
-    if (!m_switched_on && IsUsingCondition() && GetCondition() <= 0.0)
+    if (!m_switched_on && IsUsingCondition() && GetCondition() > 0.0 && pActor && !pActor->m_bTorchNightVision)
     {
         this->ChangeCondition(-m_fPassiveDecayRate * Device.fTimeDelta);
     }
@@ -538,5 +540,14 @@ void CTorch::ConditionUpdate()
     if (IsUsingCondition() && GetCondition() <= 0.0)
     {
         Switch(false);
+    }
+    if (IsUsingCondition() && GetCondition() <= 0.0 && pActor && pActor->m_bTorchNightVision)
+    {
+        pActor->SwitchNightVision(false);
+    }
+
+    if (pActor && pActor->m_bTorchNightVision)
+    {
+        this->ChangeCondition(-m_fDecayRate * Device.fTimeDelta);
     }
 }
