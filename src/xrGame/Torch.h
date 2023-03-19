@@ -37,6 +37,9 @@ protected:
     float m_torch_inertion_speed_max;
     float m_torch_inertion_speed_min;
 
+	float m_fDecayRate;
+    float m_fPassiveDecayRate;
+
 private:
     inline bool can_use_dynamic_lights();
 
@@ -57,6 +60,7 @@ public:
     virtual void OnMoveToRuck(const SInvItemPlace& prev);
     virtual void UpdateCL();
 
+    void ConditionUpdate();
 	void SwitchTorchMode();
     void Switch();
     void Switch(bool light_on);

@@ -93,8 +93,11 @@ void CTorch::Load(LPCSTR section)
     light_trace_bone = pSettings->r_string(section, "light_trace_bone");
 
     m_light_section            = READ_IF_EXISTS(pSettings, r_string, section, "light_section", "torch_definition");
-    if (pSettings->line_exist(section, "snd_turn_on"))  m_sounds.LoadSound(section, "snd_turn_on",  "sndTurnOn",  false, SOUND_TYPE_ITEM_USING);
-    if (pSettings->line_exist(section, "snd_turn_off")) m_sounds.LoadSound(section, "snd_turn_off", "sndTurnOff", false, SOUND_TYPE_ITEM_USING);
+
+	if (pSettings->line_exist(section, "snd_turn_on"))
+        m_sounds.LoadSound(section, "snd_turn_on", "SndTurnOn", false, SOUND_TYPE_ITEM_USING);
+    if (pSettings->line_exist(section, "snd_turn_off"))
+        m_sounds.LoadSound(section, "snd_turn_off", "SndTurnOff", false, SOUND_TYPE_ITEM_USING);
 
     m_torch_offset             = READ_IF_EXISTS(pSettings, r_fvector3, section, "torch_offset", TORCH_OFFSET);
     m_omni_offset              = READ_IF_EXISTS(pSettings, r_fvector3, section, "omni_offset", OMNI_OFFSET);
@@ -108,6 +111,9 @@ void CTorch::Load(LPCSTR section)
         m_torch_offset.x = 0;
         m_torch_offset.z = 0;
     }
+
+	m_fDecayRate = READ_IF_EXISTS(pSettings, r_float, section, "power_decay_rate", 0.f);
+    m_fPassiveDecayRate = READ_IF_EXISTS(pSettings, r_float, section, "passive_decay_rate", 0.f);
 }
 
 void CTorch::Switch()
@@ -266,7 +272,8 @@ void CTorch::SwitchTorchMode()
 
 void CTorch::net_Destroy()
 {
-    Switch(false);
+    // При выкидывании любого предмета не отрубаем уже имеющийся
+    //Switch(false);
 
     inherited::net_Destroy();
 }
@@ -287,6 +294,7 @@ void CTorch::OnH_B_Independent(bool just_before_destroy)
 void CTorch::UpdateCL()
 {
     inherited::UpdateCL();
+    ConditionUpdate();
 
     if (!m_switched_on) return;
 
@@ -467,4 +475,29 @@ void CTorch::enable(bool value)
 
     if (!enabled() && m_switched_on)
         Switch(false);
+}
+
+void CTorch::ConditionUpdate()
+{
+    // Last_Dawn: Гасим фонарик постепенно, то есть его яркость зависит от состояния предмета
+    if (IsUsingCondition())
+    {
+        fBrightness = this->GetCondition();
+    }
+
+    // Last_Dawn, Хельги(Olil-byte): убивает кондицию предмета активно и пассивно
+    if (m_switched_on && IsUsingCondition() && GetCondition() > 0.0)
+    {
+        this->ChangeCondition(-m_fDecayRate * Device.fTimeDelta);
+    }
+    if (!m_switched_on && IsUsingCondition() && GetCondition() <= 0.0)
+    {
+        this->ChangeCondition(-m_fPassiveDecayRate * Device.fTimeDelta);
+    }
+
+    // Вырубает когда кончается заряд
+    if (IsUsingCondition() && GetCondition() <= 0.0)
+    {
+        Switch(false);
+    }
 }
