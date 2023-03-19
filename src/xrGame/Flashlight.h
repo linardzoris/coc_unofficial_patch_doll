@@ -25,6 +25,10 @@ protected:
 
 	bool			CheckCompatibilityInt(CHudItem* itm, u16* slot_to_activate);
 	void			UpdateVisibility();
+
+	float m_fDecayRate;
+    float m_fPassiveDecayRate;
+
 public:
 	enum EFlashlightStates
 	{
@@ -70,4 +74,5 @@ public:
 	void	Switch(bool light_on, bool b_play_sound = true);
 	bool	torch_active() const;
 	void	ToggleSwitch();
+    void    ConditionUpdate();
 };

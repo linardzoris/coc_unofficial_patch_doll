@@ -306,6 +306,9 @@ void CFlashlight::Load(LPCSTR section)
 	light_trace_bone = READ_IF_EXISTS(pSettings, r_string, section, "light_trace_bone", "");
 
 	m_light_section = READ_IF_EXISTS(pSettings, r_string, section, "light_section", "torch_definition");
+
+    m_fDecayRate = READ_IF_EXISTS(pSettings, r_float, section, "power_decay_rate", 0.f);
+    m_fPassiveDecayRate = READ_IF_EXISTS(pSettings, r_float, section, "passive_decay_rate", 0.f);
 }
 
 
@@ -384,6 +387,7 @@ void CFlashlight::UpdateVisibility()
 void CFlashlight::UpdateCL()
 {
 	inherited::UpdateCL();
+    ConditionUpdate();
 
 	if (H_Parent() != Level().CurrentEntity())			
 		return;
@@ -539,4 +543,29 @@ void CFlashlight::ToggleSwitch()
 			SwitchState(eToggle);
 		}
 	}
+}
+
+void CFlashlight::ConditionUpdate()
+{
+    // Last_Dawn: Гасим фонарик постепенно, то есть его яркость зависит от состояния предмета
+    if (IsUsingCondition())
+    {
+        fBrightness = GetCondition();
+    }
+
+    // Last_Dawn, Хельги(Olil-byte): убивает кондицию предмета активно и пассивно
+    if (m_switched_on && IsUsingCondition() && GetCondition() > 0.0)
+    {
+        this->ChangeCondition(-m_fDecayRate * Device.fTimeDelta);
+    }
+    if (!m_switched_on && IsUsingCondition() && GetCondition() <= 0.0)
+    {
+        this->ChangeCondition(-m_fPassiveDecayRate * Device.fTimeDelta);
+    }
+
+    // Вырубает когда кончается заряд
+    if (IsUsingCondition() && GetCondition() <= 0.0)
+    {
+        Switch(false);
+    }
 }
