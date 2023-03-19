@@ -66,12 +66,32 @@ void CTorch::OnMoveToSlot(const SInvItemPlace& prev)
     {
         owner->attach(this->cast_inventory_item());
     }
+
+    if (m_pInventory && (prev.type == eItemPlaceSlot))
+    {
+        CActor* pActor = smart_cast<CActor*>(H_Parent());
+        if (pActor)
+        {
+            if (pActor->GetNightVisionStatus())
+                pActor->SwitchNightVision(true, false);
+        }
+    }
 }
+
 void CTorch::OnMoveToRuck(const SInvItemPlace& prev)
 {
     if (prev.type == eItemPlaceSlot)
     {
         Switch(false);
+    }
+
+    if (m_pInventory && (prev.type == eItemPlaceSlot))
+    {
+        CActor* pActor = smart_cast<CActor*>(H_Parent());
+        if (pActor)
+        {
+            pActor->SwitchNightVision(false);
+        }
     }
 }
 
@@ -114,10 +134,23 @@ void CTorch::Load(LPCSTR section)
 
 	m_fDecayRate = READ_IF_EXISTS(pSettings, r_float, section, "power_decay_rate", 0.f);
     m_fPassiveDecayRate = READ_IF_EXISTS(pSettings, r_float, section, "passive_decay_rate", 0.f);
+
+    if (pSettings->line_exist(section, "torch_allowed"))
+        m_bTorchModeEnabled = !!pSettings->r_bool(section, "torch_allowed");
+
+    // Возвращаем ПНВ-настройки
+    if (pSettings->line_exist(section, "night_vision_allowed"))
+        m_bNightVisionEnabled = !!pSettings->r_bool(section, "night_vision_allowed");
+
+    if (pSettings->line_exist(section, "nightvision_sect"))
+        m_NightVisionSect = pSettings->r_string(section, "nightvision_sect");
+    else
+        m_NightVisionSect = "";
 }
 
 void CTorch::Switch()
 {
+    if (!m_bTorchModeEnabled)   return;
 	if (OnClient())			return;
 	bool bActive			= !m_switched_on;
 	Switch					(bActive);
@@ -467,6 +500,12 @@ void CTorch::afterDetach()
 {
     inherited::afterDetach();
     Switch(false);
+
+    CActor* pActor = smart_cast<CActor*>(H_Parent());
+    if (pActor)
+    {
+        pActor->SwitchNightVision(false);
+    }
 }
 void CTorch::renderable_Render() { inherited::renderable_Render(); }
 void CTorch::enable(bool value)

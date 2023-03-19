@@ -207,6 +207,7 @@ CActor::CActor() : CEntityAlive(), current_ik_cam_shift(0)
     m_night_vision = NULL;
     m_bNightVisionAllow = true;
     m_bNightVisionOn = false;
+    m_bTorchNightVision = false;
 }
 
 CActor::~CActor()
@@ -2073,6 +2074,25 @@ void CActor::SwitchNightVision(bool vision_on, bool use_sounds, bool send_event)
             }
         }
     }
+    CTorch* pTorch = smart_cast<CTorch*>(inventory().ItemFromSlot(TORCH_SLOT));
+    if (pTorch && pTorch->m_NightVisionSect.size() && pTorch->m_bNightVisionEnabled)
+    {
+        if (m_bNightVisionAllow)
+        {
+            if (m_bNightVisionOn && !bIsActiveNow)
+            {
+                m_night_vision->Start(pTorch->m_NightVisionSect, this, use_sounds);
+                m_bTorchNightVision = true;
+            }
+        }
+        else
+        {
+            m_night_vision->OnDisabled(this, use_sounds);
+            m_bNightVisionOn = false;
+            m_bTorchNightVision = false;
+        }
+    }
+
     if (!m_bNightVisionOn && bIsActiveNow)
     {
         m_night_vision->Stop(100000.0f, use_sounds);

@@ -40,6 +40,8 @@ protected:
 	float m_fDecayRate;
     float m_fPassiveDecayRate;
 
+    bool m_bTorchModeEnabled; // Режим фонаря
+
 private:
     inline bool can_use_dynamic_lights();
 
@@ -71,6 +73,8 @@ public:
     // CAttachableItem
     virtual void enable(bool value);
 
+    shared_str m_NightVisionSect;
+    bool m_bNightVisionEnabled; // Режим ПНВ
 protected:
     HUD_SOUND_COLLECTION m_sounds;
     enum EStats

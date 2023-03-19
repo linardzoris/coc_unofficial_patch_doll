@@ -774,6 +774,9 @@ public:
     bool GetNightVisionStatus() { return m_bNightVisionOn; }
     void SetNightVisionAllowed(bool bAllow) { m_bNightVisionAllow = bAllow; }
     CNightVisionEffector* GetNightVision() { return m_night_vision; }
+
+    bool m_bTorchNightVision;
+
 protected:
     bool m_bNightVisionOn;
     bool m_bNightVisionAllow;
