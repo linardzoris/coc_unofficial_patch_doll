@@ -7,13 +7,24 @@
 #include "xrUICore/Static/UIStatic.h"
 #include "ui/ArtefactDetectorUI.h"
 
-CEliteDetector::CEliteDetector() { m_artefacts.m_af_rank = 3; }
+CEliteDetector::CEliteDetector() 
+{ 
+    m_artefacts.m_af_rank = 3; 
+}
+
 CEliteDetector::~CEliteDetector() {}
+
 void CEliteDetector::CreateUI()
 {
     R_ASSERT(NULL == m_ui);
     m_ui = new CUIArtefactDetectorElite();
     ui().construct(this);
+}
+
+void CEliteDetector::ResetUI()
+{
+    if (m_ui)
+        ui().Clear();
 }
 
 CUIArtefactDetectorElite& CEliteDetector::ui() { return *((CUIArtefactDetectorElite*)m_ui); }

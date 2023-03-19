@@ -126,6 +126,10 @@ void CCustomDetector::OnStateSwitch(u32 S, u32 oldState)
     case eShowing:
     {
         g_player_hud->attach_item(this);
+
+		if (!IsUsingCondition() || (IsUsingCondition() && GetCondition() > 0.0))
+            TurnDetectorInternal(true);
+
         m_sounds.PlaySound("sndShow", Fvector().set(0, 0, 0), this, true, false);
         PlayHUDMotion(m_bFastAnimMode ? "anm_show_fast" : "anm_show", FALSE /*TRUE*/, this, GetState());
         SetPending(TRUE);
@@ -158,8 +162,6 @@ void CCustomDetector::OnAnimationEnd(u32 state)
     case eShowing:
     {
         SwitchState(eIdle);
-        if (IsUsingCondition() && m_fDecayRate > 0.f)
-            this->SetCondition(-m_fDecayRate);
     }
     break;
     case eHiding:
@@ -203,7 +205,8 @@ void CCustomDetector::Load(LPCSTR section)
 
     m_fAfDetectRadius = pSettings->r_float(section, "af_radius");
     m_fAfVisRadius = pSettings->r_float(section, "af_vis_radius");
-    m_fDecayRate = READ_IF_EXISTS(pSettings, r_float, section, "decay_rate", 0.f); //Alundaio
+    m_fDecayRate = READ_IF_EXISTS(pSettings, r_float, section, "power_decay_rate", 0.f); // Alundaio
+    m_fPassiveDecayRate = READ_IF_EXISTS(pSettings, r_float, section, "passive_decay_rate", 0.f); // Alundaio
     m_artefacts.load(section, "af");
 
     m_sounds.LoadSound(section, "snd_draw", "sndShow");
@@ -284,8 +287,41 @@ void CCustomDetector::UpdateCL()
         return;
 
     UpdateVisibility();
+
+	if (IsUsingCondition())
+    {
+        if (m_bWorking && GetCondition() <= 0.0)
+            TurnDetectorInternal(false);
+        else if (!m_bWorking && (GetState() == eIdle) && GetCondition() > 0.0)
+            TurnDetectorInternal(true);
+    }
+
+    if (m_bWorking && IsUsingCondition() && m_fDecayRate > 0.f)
+    {
+        this->ChangeCondition(-m_fDecayRate * Device.fTimeDelta);
+    }
+
+    if (!m_bWorking && IsUsingCondition() && m_fPassiveDecayRate > 0.f)
+    {
+        this->ChangeCondition(-m_fPassiveDecayRate * Device.fTimeDelta);
+    }
+
+	if (ParentIsActor())
+    {
+        if (GetCondition() >= 0.01)
+        {
+            g_pGamePersistent->pda_shader_data.pda_display_factor = 1.f;
+        }
+        else
+        {
+            g_pGamePersistent->pda_shader_data.pda_display_factor = 0.f;
+            ResetUI();
+        }
+    }
+
     if (!IsWorking())
         return;
+
     UpfateWork();
 }
 
@@ -326,7 +362,7 @@ void CCustomDetector::TurnDetectorInternal(bool b)
     }
     else
     {
-        //.		xr_delete			(m_ui);
+        //xr_delete(m_ui);
     }
 
     UpdateNightVisionMode(b);

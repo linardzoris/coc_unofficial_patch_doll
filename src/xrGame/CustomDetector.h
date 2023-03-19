@@ -163,10 +163,12 @@ protected:
     virtual void UpfateWork();
     virtual void UpdateAf(){};
     virtual void CreateUI(){};
+    virtual void ResetUI(){};
 
     bool m_bWorking;
     float m_fAfVisRadius;
     float m_fDecayRate; //Alundaio
+    float m_fPassiveDecayRate; //Alundaio
     CAfList m_artefacts;
 };
 

@@ -352,6 +352,21 @@ class cl_entity_data : public R_constant_setup //--#SM+#--
 };
 static cl_entity_data binder_entity_data;
 
+static class cl_pda_params : public R_constant_setup
+{
+    u32 marker;
+    Fvector4 result;
+
+    virtual void setup(R_constant* C)
+    {
+        float pda_factor = g_pGamePersistent->pda_shader_data.pda_display_factor;
+        float pda_psy_factor = g_pGamePersistent->pda_shader_data.pda_psy_influence;
+        float pda_display_brightness = g_pGamePersistent->pda_shader_data.pda_displaybrightness;
+        RCache.set_c(C, pda_factor, pda_psy_factor, pda_display_brightness, 0.0f);
+    }
+
+} binder_pda_params;
+
 // Standart constant-binding
 void CBlender_Compile::SetMapping()
 {
@@ -416,6 +431,7 @@ void CBlender_Compile::SetMapping()
     r_Constant("L_ambient", &binder_amb_color);
 #endif
     r_Constant("screen_res", &binder_screen_res);
+    r_Constant("pda_params", &binder_pda_params);
 
     // detail
     // if (bDetail  && detail_scaler)
