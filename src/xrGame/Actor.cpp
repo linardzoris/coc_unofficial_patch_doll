@@ -2029,7 +2029,7 @@ void CActor::SwitchNightVision(bool vision_on, bool use_sounds, bool send_event)
         CWeapon* pWeapon = smart_cast<CWeapon*>(inventory().ActiveItem());
         if (pWeapon && pWeapon->IsZoomed())
         {
-            if (!pWeapon->IsRotatingToZoom() && pWeapon->ZoomTexture())
+            if (!pWeapon->IsRotatingToZoom() && pWeapon->ZoomTexture() && pWeapon->bScopeIsHasTexture)
                 pWeapon->AllowNightVision(!pWeapon->AllowNightVision());
             return;
         }

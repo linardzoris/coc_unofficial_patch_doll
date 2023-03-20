@@ -103,8 +103,7 @@ public:
 
     shared_str GetNameWithAttachment();
 
-    // При попадании во что-то
-    virtual void OnBulletHit();
+    virtual void OnBulletHit(); // При попадании во что-то
 
 public:
     virtual bool can_kill() const;
@@ -274,7 +273,7 @@ public:
     void GetZoomData(const float scope_factor, float& delta, float& min_zoom_factor)
     {
         float def_fov = 1.0f; // float(g_fov);
-        float min_zoom_k = m_zoom_params.m_fScopeZoomFactorMin; // 1.0f; Приравняем, дабы не было разрывов, если захочу его использовать
+        float min_zoom_k = m_zoom_params.m_fScopeZoomFactorMin; // 0.3f;
         float zoom_step_count = 3.0f;
         float delta_factor_total = def_fov - scope_factor;
         // VERIFY(delta_factor_total>0);

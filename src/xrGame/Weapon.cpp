@@ -64,9 +64,9 @@ CWeapon::CWeapon()
     m_zoom_params.m_fZoomRotationFactor = 0.f;
     m_zoom_params.m_pVision = nullptr;
     m_zoom_params.m_pNight_vision = nullptr;
-    m_zoom_params.m_bNightVisionAllow = true;
+    m_zoom_params.m_bNightVisionAllow = false;
     m_zoom_params.m_fScopeZoomFactor = 1.0f;
-    m_zoom_params.m_fScopeZoomFactorMin = 1.0f;
+    m_zoom_params.m_fScopeZoomFactorMin = 0.3f;
 
     m_pCurrentAmmo = nullptr;
 
@@ -500,6 +500,13 @@ void CWeapon::Load(LPCSTR section)
     m_zoom_params.m_bUseDynamicZoom = READ_IF_EXISTS(pSettings, r_bool, section, "scope_dynamic_zoom", false);
     m_zoom_params.m_sUseZoomPostprocess = READ_IF_EXISTS(pSettings, r_string, section, "scope_nightvision", 0);
     m_zoom_params.m_sUseBinocularVision = READ_IF_EXISTS(pSettings, r_string, section, "scope_alive_detector", 0);
+
+    if (!bScopeIsHasTexture)
+    {
+        m_zoom_params.m_sUseZoomPostprocess = 0;
+        m_zoom_params.m_sUseBinocularVision = 0;
+        m_zoom_params.m_bUseDynamicZoom = false;
+    }
 
 	// Added by Axel, to enable optional condition use on any item
 	m_flags.set( FUsingCondition, READ_IF_EXISTS( pSettings, r_bool, section, "use_condition", true ));
@@ -2580,7 +2587,7 @@ void CWeapon::LoadCurrentScopeParams(LPCSTR section)
             bScopeIsHasTexture = true;
     }
 
-	m_zoom_params.m_fScopeZoomFactorMin = READ_IF_EXISTS(pSettings, r_float, cNameSect(), "scope_zoom_factor_min", 1.0f);
+	m_zoom_params.m_fScopeZoomFactorMin = READ_IF_EXISTS(pSettings, r_float, cNameSect(), "scope_zoom_factor_min", 0.3f);
     m_zoom_params.m_fScopeZoomFactor = pSettings->r_float(section, "scope_zoom_factor");
 
     if (bScopeIsHasTexture)
@@ -2588,6 +2595,12 @@ void CWeapon::LoadCurrentScopeParams(LPCSTR section)
         m_zoom_params.m_sUseZoomPostprocess = READ_IF_EXISTS(pSettings, r_string, section, "scope_nightvision", 0);
         m_zoom_params.m_bUseDynamicZoom = READ_IF_EXISTS(pSettings, r_bool, section, "scope_dynamic_zoom", FALSE);
         m_zoom_params.m_sUseBinocularVision = READ_IF_EXISTS(pSettings, r_string, section, "scope_alive_detector", 0);
+    }
+    if (!bScopeIsHasTexture)
+    {
+	    m_zoom_params.m_sUseZoomPostprocess = 0;
+        m_zoom_params.m_sUseBinocularVision = 0;
+        m_zoom_params.m_bUseDynamicZoom = false;
     }
 
     // Васянство r7
