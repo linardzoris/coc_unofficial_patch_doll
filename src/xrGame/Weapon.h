@@ -103,6 +103,9 @@ public:
 
     shared_str GetNameWithAttachment();
 
+    // При попадании во что-то
+    virtual void OnBulletHit();
+
 public:
     virtual bool can_kill() const;
     virtual CInventoryItem* can_kill(CInventory* inventory) const;
@@ -271,7 +274,7 @@ public:
     void GetZoomData(const float scope_factor, float& delta, float& min_zoom_factor)
     {
         float def_fov = 1.0f; // float(g_fov);
-        float min_zoom_k = m_zoom_params.m_fScopeZoomFactorMin; // 0.3f;
+        float min_zoom_k = m_zoom_params.m_fScopeZoomFactorMin; // 1.0f; Приравняем, дабы не было разрывов, если захочу его использовать
         float zoom_step_count = 3.0f;
         float delta_factor_total = def_fov - scope_factor;
         // VERIFY(delta_factor_total>0);
@@ -430,6 +433,7 @@ protected:
     float misfireEndProbability; //шанс осечки при изношености больше чем misfireEndCondition
     float conditionDecreasePerQueueShot; //увеличение изношености при выстреле очередью
     float conditionDecreasePerShot; //увеличение изношености при одиночном выстреле
+    float conditionDecreasePerShotOnHit; //увеличение изношености при ударе(выстреле) о поверхность
 
 public:
     float GetMisfireStartCondition() const { return misfireStartCondition; };

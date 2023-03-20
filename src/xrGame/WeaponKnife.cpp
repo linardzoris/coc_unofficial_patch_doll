@@ -14,6 +14,7 @@
 #include "xrCore/Animation/SkeletonMotions.hpp"
 #include "player_hud.h"
 #include "ActorEffector.h"
+#include "Level_Bullet_Manager.h"
 #ifdef DEBUG
 #include <iterator>
 #endif
@@ -193,8 +194,14 @@ void CWeaponKnife::MakeShot(Fvector const& pos, Fvector const& dir, float const 
 
     PlaySound("sndShot", pos);
 
-    Level().BulletManager().AddBullet(pos, dir, m_fStartBulletSpeed, fCurrentHit, fHitImpulse_cur, H_Parent()->ID(),
+    if (ParentIsActor() && !fis_zero(conditionDecreasePerShotOnHit) && GetCondition() < 0.95f)
+        fCurrentHit = fCurrentHit * (GetCondition() / 0.95f);
+        SBullet& bullet = Level().BulletManager().AddBullet(pos, dir, m_fStartBulletSpeed, fCurrentHit, fHitImpulse_cur,
+        H_Parent()->ID(),
         ID(), m_eHitType, fireDistance, cartridge, 1.f, SendHit);
+
+		if (ParentIsActor())
+            bullet.setOnBulletHit(true);
 }
 
 void CWeaponKnife::OnMotionMark(u32 state, const motion_marks& M)

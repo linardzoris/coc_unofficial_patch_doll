@@ -9,7 +9,7 @@
 #include "Actor.h"
 #include "gamepersistent.h"
 #include "mt_config.h"
-
+#include "Weapon.h"
 
 #include "Include/xrRender/UIRender.h"
 #include "Include/xrRender/Kinematics.h"
@@ -31,7 +31,8 @@ static float const air_resistance_epsilon = .1f;
 #endif // #ifdef DEBUG
 float g_bullet_time_factor = 1.f;
 
-SBullet::SBullet() {}
+SBullet::SBullet() : m_on_bullet_hit(false) {}
+
 SBullet::~SBullet() {}
 void SBullet::Init(const Fvector& position, const Fvector& direction, float starting_speed, float power,
     float impulse, u16 sender_id, u16 sendersweapon_id, ALife::EHitType e_hit_type, float maximum_distance,
@@ -182,9 +183,7 @@ void CBulletManager::Clear()
     m_Events.clear();
 }
 
-void CBulletManager::AddBullet(const Fvector& position, const Fvector& direction, float starting_speed, float power,
-    float impulse, u16 sender_id, u16 sendersweapon_id, ALife::EHitType e_hit_type, float maximum_distance,
-    const CCartridge& cartridge, float const air_resistance_factor, bool SendHit, bool AimBullet, int iShotNum)
+SBullet& CBulletManager::AddBullet(const Fvector& position, const Fvector& direction, float starting_speed, float power, float impulse, u16 sender_id, u16 sendersweapon_id, ALife::EHitType e_hit_type, float maximum_distance, const CCartridge& cartridge, float const air_resistance_factor, bool SendHit, bool AimBullet, int iShotNum)
 {
 #ifdef DEBUG
     VERIFY(m_thread_id == ThreadUtil::GetCurrThreadId());
@@ -195,11 +194,10 @@ void CBulletManager::AddBullet(const Fvector& position, const Fvector& direction
     //	u32 OwnerID					= sender_id;
     m_Bullets.push_back(SBullet());
     SBullet& bullet = m_Bullets.back();
-    bullet.Init(position, direction, starting_speed, power, /*power_critical,*/ impulse, sender_id, sendersweapon_id,
-        e_hit_type, maximum_distance, cartridge, air_resistance_factor, SendHit, iShotNum);
+    bullet.Init(position, direction, starting_speed, power, /*power_critical,*/ impulse, sender_id, sendersweapon_id, e_hit_type, maximum_distance, cartridge, air_resistance_factor, SendHit, iShotNum);
     //	bullet.frame_num			= Device.dwFrame;
     bullet.flags.aim_bullet = AimBullet;
-
+    return bullet;
 }
 
 void CBulletManager::UpdateWorkload()
@@ -915,6 +913,17 @@ void CBulletManager::CommitEvents() // @ the start of frame
                 DynamicObjectHit(E);
             else
                 StaticObjectHit(E);
+
+            if (E.bullet.isOnBulletHit())
+            {
+                IGameObject* O = Level().Objects.net_Find(E.bullet.weapon_id);
+                if (O)
+                {
+                    CWeapon* W = smart_cast<CWeapon*>(O);
+                    if (W)
+                        W->OnBulletHit();
+                }
+            }
         }
         break;
         case EVENT_REMOVE:

@@ -66,7 +66,7 @@ CWeapon::CWeapon()
     m_zoom_params.m_pNight_vision = nullptr;
     m_zoom_params.m_bNightVisionAllow = true;
     m_zoom_params.m_fScopeZoomFactor = 1.0f;
-    m_zoom_params.m_fScopeZoomFactorMin = 0.3f;
+    m_zoom_params.m_fScopeZoomFactorMin = 1.0f;
 
     m_pCurrentAmmo = nullptr;
 
@@ -393,8 +393,8 @@ void CWeapon::Load(LPCSTR section)
     misfireStartProbability = READ_IF_EXISTS(pSettings, r_float, section, "misfire_start_prob", 0.f);
     misfireEndProbability = pSettings->r_float(section, "misfire_end_prob");
     conditionDecreasePerShot = pSettings->r_float(section, "condition_shot_dec");
-    conditionDecreasePerQueueShot =
-        READ_IF_EXISTS(pSettings, r_float, section, "condition_queue_shot_dec", conditionDecreasePerShot);
+    conditionDecreasePerQueueShot = READ_IF_EXISTS(pSettings, r_float, section, "condition_queue_shot_dec", conditionDecreasePerShot);
+    conditionDecreasePerShotOnHit = READ_IF_EXISTS(pSettings, r_float, section, "condition_shot_dec_on_hit", 0.f);
 
     vLoadedFirePoint = pSettings->r_fvector3(section, "fire_point");
 
@@ -1445,8 +1445,8 @@ void CWeapon::UpdateAddonsVisibility()
     UpdateHUDAddonsVisibility();
 
     pWeaponVisual->CalculateBones_Invalidate();
-
     bone_id = pWeaponVisual->LL_BoneID(wpn_scope);
+
     if (m_eScopeStatus == ALife::eAddonAttachable)
        if (IsScopeAttached())
             SetBoneVisible(pWeaponVisual, GetScopeBoneName(), TRUE, TRUE);
@@ -1462,8 +1462,11 @@ void CWeapon::UpdateAddonsVisibility()
                     SetBoneVisible(pWeaponVisual, bone_name, FALSE, TRUE);
             }
         }
-    else if (m_eScopeStatus == ALife::eAddonDisabled) SetBoneVisible(pWeaponVisual, wpn_scope, FALSE, TRUE);
-    else if (m_eScopeStatus == ALife::eAddonPermanent) SetBoneVisible(pWeaponVisual, wpn_scope, TRUE, TRUE);
+    else if (m_eScopeStatus == ALife::eAddonDisabled) 
+        SetBoneVisible(pWeaponVisual, wpn_scope, FALSE, TRUE);
+    else if (m_eScopeStatus == ALife::eAddonPermanent) 
+        SetBoneVisible(pWeaponVisual, wpn_scope, TRUE, TRUE);
+
     if (m_eSilencerStatus == ALife::eAddonAttachable)
         if (IsSilencerAttached())
             SetBoneVisible(pWeaponVisual, GetSilencerBoneName(), TRUE, TRUE);
@@ -2458,6 +2461,12 @@ void CWeapon::ParseCurrentItem(CGameFont* F)
     F->OutNext("WEAPON IN STRAPPED MOD [%d]", m_strapped_mode); 
 }
 
+void CWeapon::OnBulletHit()
+{
+    if (!fis_zero(conditionDecreasePerShotOnHit))
+        ChangeCondition(-conditionDecreasePerShotOnHit);
+}
+
 // Mortan scope system
 
 void createWpnScopeXML()
@@ -2571,7 +2580,7 @@ void CWeapon::LoadCurrentScopeParams(LPCSTR section)
             bScopeIsHasTexture = true;
     }
 
-	m_zoom_params.m_fScopeZoomFactorMin = READ_IF_EXISTS(pSettings, r_float, cNameSect(), "scope_zoom_factor_min", 0.3f);
+	m_zoom_params.m_fScopeZoomFactorMin = READ_IF_EXISTS(pSettings, r_float, cNameSect(), "scope_zoom_factor_min", 1.0f);
     m_zoom_params.m_fScopeZoomFactor = pSettings->r_float(section, "scope_zoom_factor");
 
     if (bScopeIsHasTexture)
