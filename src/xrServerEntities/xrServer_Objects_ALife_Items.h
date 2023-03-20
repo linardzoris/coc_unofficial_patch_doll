@@ -210,6 +210,9 @@ public:
         };
     };
     ammo_elapsed_t a_elapsed;
+
+	u8 cur_scope;
+
     struct current_addon_t
     {
         union

@@ -92,6 +92,17 @@ public:
 
     virtual void HUD_VisualBulletUpdate(bool force = false, int force_idx = -1);
 
+    // Mortan scope system
+	bool bUseAltScope;
+    bool bScopeIsHasTexture;
+    bool bLoadAltScopesParams(LPCSTR section);
+    bool bReloadSectionScope(LPCSTR section);
+    void LoadOriginalScopesParams(LPCSTR section);
+    void LoadCurrentScopeParams(LPCSTR section);
+    void UpdateAltScope();
+
+    shared_str GetNameWithAttachment();
+
 public:
     virtual bool can_kill() const;
     virtual CInventoryItem* can_kill(CInventory* inventory) const;
@@ -178,14 +189,14 @@ public:
     virtual void InitAddons();
 
     //для отоброажения иконок апгрейдов в интерфейсе
-    int GetScopeX() { return pSettings->r_s32(m_scopes[m_cur_addon.scope], "scope_x"); }
-    int GetScopeY() { return pSettings->r_s32(m_scopes[m_cur_addon.scope], "scope_y"); }
+    int GetScopeX();
+    int GetScopeY();
     int GetSilencerX() { return pSettings->r_s32(m_silencers[m_cur_addon.silencer], "silencer_x"); }
     int GetSilencerY() { return pSettings->r_s32(m_silencers[m_cur_addon.silencer], "silencer_y"); }
     int GetGrenadeLauncherX() { return pSettings->r_s32(m_launchers[m_cur_addon.launcher], "grenade_launcher_x"); }
     int GetGrenadeLauncherY() { return pSettings->r_s32(m_launchers[m_cur_addon.launcher], "grenade_launcher_y"); }
     const shared_str GetGrenadeLauncherName() const { return pSettings->r_string(m_launchers[m_cur_addon.launcher], "grenade_launcher_name"); }
-    const shared_str GetScopeName() const { return pSettings->r_string(m_scopes[m_cur_addon.scope], "scope_name"); }
+    const shared_str GetScopeName() const;
     const shared_str GetSilencerName() const { return pSettings->r_string(m_silencers[m_cur_addon.silencer], "silencer_name"); }
     const shared_str GetGrenadeLauncherBoneName() const { return READ_IF_EXISTS(pSettings, r_string, GetGrenadeLauncherName(), "addon_bone", "wpn_launcher"); }
     const shared_str GetScopeBoneName() const { return READ_IF_EXISTS(pSettings, r_string, GetScopeName(), "addon_bone", "wpn_scope"); }
@@ -267,6 +278,7 @@ public:
         min_zoom_factor = (def_fov - delta_factor_total) * min_zoom_k;
         delta = (delta_factor_total * (1 - min_zoom_k)) / zoom_step_count;
     }
+
     void AllowNightVision(bool value) { m_zoom_params.m_bNightVisionAllow = value; };
     bool AllowNightVision() { return m_zoom_params.m_bNightVisionAllow; };
 
