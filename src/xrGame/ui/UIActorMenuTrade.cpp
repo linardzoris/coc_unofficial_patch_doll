@@ -382,6 +382,10 @@ void CUIActorMenu::UpdateActor()
 
 void CUIActorMenu::UpdatePartnerBag()
 {
+    // Регулировка денежного эквивалента через конфиг
+    LPCSTR money_str = CStringTable().translate("st_money").c_str();
+    LPCSTR money_infinitive_str = CStringTable().translate("st_money_infinitive").c_str();
+
     string64 buf;
 
     CBaseMonster* monster = smart_cast<CBaseMonster*>(m_pPartnerInvOwner);
@@ -391,11 +395,11 @@ void CUIActorMenu::UpdatePartnerBag()
     }
     else if (m_pPartnerInvOwner->InfinitiveMoney())
     {
-        m_PartnerMoney->SetText("--- RU");
+        m_PartnerMoney->SetText(money_infinitive_str);
     }
     else
     {
-        xr_sprintf(buf, "%d RU", m_pPartnerInvOwner->get_money());
+        xr_sprintf(buf, money_str, m_pPartnerInvOwner->get_money());
         m_PartnerMoney->SetText(buf);
     }
 
