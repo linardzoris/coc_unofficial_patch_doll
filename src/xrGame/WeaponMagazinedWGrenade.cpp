@@ -964,17 +964,17 @@ void CWeaponMagazinedWGrenade::switch2_Unmis()
     {
         if (m_sounds_enabled)
         {
-            if (m_sounds.FindSoundItem("sndReloadMisfire", false) && psWpnAnimsFlag.test(ANM_MISFIRE_GL))
+            if (m_sounds.FindSoundItem("sndReloadMisfire", false) && isHUDAnimationExist("anm_reload_misfire_w_gl"))
                 PlaySound("sndReloadMisfire", get_LastFP());
-            else if (m_sounds.FindSoundItem("sndReloadEmpty", false) && psWpnAnimsFlag.test(ANM_RELOAD_EMPTY_GL))
+            else if (m_sounds.FindSoundItem("sndReloadEmpty", false) && isHUDAnimationExist("anm_reload_misfire_w_gl"))
                 PlaySound("sndReloadEmpty", get_LastFP());
             else
                 PlaySound("sndReload", get_LastFP());
         }
 
-        if (psWpnAnimsFlag.test(ANM_MISFIRE_GL))
+        if (isHUDAnimationExist("anm_reload_misfire_w_gl"))
             PlayHUDMotion("anm_reload_misfire_w_gl", TRUE, this, GetState());
-        else if (psWpnAnimsFlag.test(ANM_RELOAD_EMPTY_GL))
+        else if (isHUDAnimationExist("anm_reload_empty_w_gl"))
             PlayHUDMotion("anm_reload_empty_w_gl", TRUE, this, GetState());
         else
             PlayHUDMotion("anm_reload_w_gl", TRUE, this, GetState());
@@ -988,12 +988,12 @@ void CWeaponMagazinedWGrenade::CheckMagazine()
     if (m_bGrenadeMode)
         return;
 
-    if ((psWpnAnimsFlag.test(ANM_RELOAD_EMPTY_GL) || psWpnAnimsFlag.test(ANM_RELOAD_EMPTY)) &&
+    if ((isHUDAnimationExist("anm_reload_empty_w_gl") || isHUDAnimationExist("anm_reload_empty")) &&
         m_ammoElapsed.type1 >= 1 && m_bNeedBulletInGun == false)
     {
         m_bNeedBulletInGun = true;
     }
-    else if ((psWpnAnimsFlag.test(ANM_RELOAD_EMPTY_GL) || psWpnAnimsFlag.test(ANM_RELOAD_EMPTY)) &&
+    else if ((isHUDAnimationExist("anm_reload_empty_w_gl") || isHUDAnimationExist("anm_reload_empty")) &&
         m_ammoElapsed.type1 == 0 && m_bNeedBulletInGun == true)
     {
         m_bNeedBulletInGun = false;
