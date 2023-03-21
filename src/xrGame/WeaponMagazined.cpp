@@ -98,6 +98,20 @@ void CWeaponMagazined::Load(LPCSTR section)
 
 	if (WeaponSoundExist(section, "snd_changefiremode"))
         m_sounds.LoadSound(section, "snd_changefiremode", "sndFireModes", false, m_eSoundEmptyClick);
+    if (WeaponSoundExist(section, "snd_pump_gun"))
+        m_sounds.LoadSound(section, "snd_pump_gun", "sndPumpGun", true, m_eSoundReload);
+    if (WeaponSoundExist(section, "snd_draw_empty"))
+        m_sounds.LoadSound(section, "snd_draw_empty", "sndShowEmpty", false, m_eSoundShowEmpty);
+    if (WeaponSoundExist(section, "snd_holster_empty"))
+        m_sounds.LoadSound(section, "snd_holster_empty", "sndHideEmpty", false, m_eSoundHideEmpty);
+    if (WeaponSoundExist(section, "snd_aim_start"))
+        m_sounds.LoadSound(section, "snd_aim_start", "sndAimStart", true, m_eSoundEmptyClick);
+    if (WeaponSoundExist(section, "snd_aim_end"))
+        m_sounds.LoadSound(section, "snd_aim_end", "sndAimEnd", true, m_eSoundEmptyClick);
+    if (WeaponSoundExist(section, "snd_tape"))
+        m_sounds.LoadSound(section, "snd_tape", "sndTape", true, m_eSoundShot);
+    if (WeaponSoundExist(section, "snd_shoot_auto"))
+        m_sounds.LoadSound(section, "snd_shoot_auto", "sndShot_a", false, m_eSoundShot);
 
 #ifdef NEW_SOUNDS //AVO: custom sounds go here
     if (WeaponSoundExist(section, "snd_reload_empty"))
@@ -593,7 +607,14 @@ void CWeaponMagazined::UpdateSounds()
     Fvector P = get_LastFP();
     m_sounds.SetPosition("sndShow", P);
     m_sounds.SetPosition("sndHide", P);
-    //. nah	m_sounds.SetPosition("sndShot", P);
+    m_sounds.SetPosition("sndShowEmpty", P);
+
+    if (isHUDAnimationExist("anm_hide_empty") && WeaponSoundExist(m_section_id.c_str(), "snd_holster_empty"))
+        m_sounds.SetPosition("sndHideEmpty", P);
+    m_sounds.SetPosition("sndHideEmpty", P);
+    if (isHUDAnimationExist("anm_show_empty") && WeaponSoundExist(m_section_id.c_str(), "snd_draw_empty"))
+        m_sounds.SetPosition("sndShowEmpty", P);
+
     m_sounds.SetPosition("sndReload", P);
 
 	if (WeaponSoundExist(m_section_id.c_str(), "snd_changefiremode"))
@@ -663,6 +684,11 @@ void CWeaponMagazined::state_Fire(float dt)
             //Alundaio: Cycle down RPM after two shots; used for Abakan/AN-94
             if (GetCurrentFireMode() == 2 || (cycleDown == true && m_iShotNum < 1))
                 fShotTimeCounter = modeShotTime;
+            // Позволяет применять иной rpm для оружия с IsDiffShotModes и в авторежиме огня, применимо для SPAS-12.
+            else if (IsDiffShotModes() && GetCurrentFireMode() == -1)
+            {
+                fShotTimeCounter = modeShotTime;
+            }
             else
                 fShotTimeCounter = fOneShotTime;
             //Alundaio: END
@@ -766,6 +792,19 @@ void CWeaponMagazined::OnShot()
     else
         PlaySound(m_sSndShotCurrent.c_str(), get_LastFP(), (u8)-1); //Alundaio: Play sound at index (ie. snd_shoot, snd_shoot1, snd_shoot2, snd_shoot3)
 #endif
+
+    // Передёргивание затвора отдельным звуком
+    if (m_sounds.FindSoundItem("sndPumpGun", false) && !IsDiffShotModes() || m_sounds.FindSoundItem("sndPumpGun", false) && IsDiffShotModes() && GetCurrentFireMode() == 1) // && m_ammoElapsed.type1 > 1 - не надо пока, потом сделаю опцией конфига, если надо будет.
+    {
+        PlaySound("sndPumpGun", get_LastFP());
+    }
+
+    // Звук лязгающей ленты для пулемёта
+    if (m_sounds.FindSoundItem("sndTape", false) && m_ammoElapsed.type1 > 3)
+    {
+        PlaySound("sndTape", get_LastFP());
+    }
+
     //-Alundaio
 
     // Camera
@@ -888,7 +927,7 @@ void CWeaponMagazined::PlayAnimFireMode()
     if (!IsMisfire() && IsGrenadeLauncherAttached() && m_ammoElapsed.type1 > 0)
         PlayHUDMotion("anm_changefiremode_w_gl", true, this, GetState());
     if (!IsMisfire() && IsGrenadeLauncherAttached() && m_ammoElapsed.type1 == 0)
-        PlayHUDMotion("anm_changefiremode_w_gl_empty", true, this, GetState());
+        PlayHUDMotion("anm_changefiremode_empty_w_gl", true, this, GetState());
 
     if (!IsMisfire() && !IsGrenadeLauncherAttached() && m_ammoElapsed.type1 > 0)
         PlayHUDMotion("anm_changefiremode", true, this, GetState());
@@ -901,9 +940,9 @@ void CWeaponMagazined::PlayAnimFireMode()
         PlayHUDMotion("anm_changefiremode_empty_jammed", true, this, GetState());
 
     if (IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 > 0)
-        PlayHUDMotion("anm_changefiremode_w_gl_jammed", true, this, GetState());
+        PlayHUDMotion("anm_changefiremode_jammed_w_gl", true, this, GetState());
     if (IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 == 0)
-        PlayHUDMotion("anm_changefiremode_w_gl_empty_jammed", true, this, GetState());
+        PlayHUDMotion("anm_changefiremode_empty_jammed_w_gl", true, this, GetState());
 }
 
 #ifdef DEBUG
@@ -1024,8 +1063,13 @@ void CWeaponMagazined::switch2_Hiding()
     OnZoomOut();
     CWeapon::FireEnd();
 
-    if (m_sounds_enabled)
-        PlaySound("sndHide", get_LastFP());
+	if (m_sounds_enabled)
+    {
+        if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_hide_empty") && WeaponSoundExist(m_section_id.c_str(), "snd_holster_empty"))
+            PlaySound("sndHideEmpty", get_LastFP());
+        else
+            PlaySound("sndHide", get_LastFP());
+    }
 
     PlayAnimHide();
     SetPending(true);
@@ -1043,7 +1087,12 @@ void CWeaponMagazined::switch2_Hidden()
 void CWeaponMagazined::switch2_Showing()
 {
     if (m_sounds_enabled)
-        PlaySound("sndShow", get_LastFP());
+    {
+        if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_show_empty") && WeaponSoundExist(m_section_id.c_str(), "snd_draw_empty"))
+            PlaySound("sndShowEmpty", get_LastFP());
+        else
+            PlaySound("sndShow", get_LastFP());
+    }
 
     SetPending(true);
     PlayAnimShow();
@@ -1466,13 +1515,64 @@ void CWeaponMagazined::PlayAnimShow()
     VERIFY(GetState() == eShowing);
     HUD_VisualBulletUpdate();
 
-    PlayHUDMotion("anm_show", false, this, GetState());
+	if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_show_empty"))
+        PlayHUDMotion("anm_show_empty", FALSE, this, GetState());
+    else if (IsMisfire() && isHUDAnimationExist("anm_show_jammed"))
+        PlayHUDMotion("anm_show_jammed", false, this, GetState());
+    else
+        PlayHUDMotion("anm_show", FALSE, this, GetState());
 }
 
 void CWeaponMagazined::PlayAnimHide()
 {
     VERIFY(GetState() == eHiding);
-    PlayHUDMotion("anm_hide", true, this, GetState());
+
+	if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_hide_empty"))
+        PlayHUDMotion("anm_hide_empty", TRUE, this, GetState());
+    else if (IsMisfire() && isHUDAnimationExist("anm_hide_jammed"))
+        PlayHUDMotion("anm_hide_jammed", true, this, GetState());
+    else
+        PlayHUDMotion("anm_hide", TRUE, this, GetState());
+}
+
+void CWeaponMagazined::PlayAnimBore()
+{
+    if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_bore_empty"))
+        PlayHUDMotion("anm_bore_empty", TRUE, this, GetState());
+    else if (IsMisfire() && isHUDAnimationExist("anm_bore_jammed"))
+        PlayHUDMotion("anm_bore_jammed", true, nullptr, GetState());
+    else
+        inherited::PlayAnimBore();
+}
+
+void CWeaponMagazined::PlayAnimIdleSprint()
+{
+    if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_idle_sprint_empty"))
+        PlayHUDMotion("anm_idle_sprint_empty", TRUE, NULL, GetState());
+    else if (IsMisfire() && isHUDAnimationExist("anm_idle_sprint_jammed"))
+        PlayHUDMotion("anm_idle_sprint_jammed", true, nullptr, GetState());
+    else
+        inherited::PlayAnimIdleSprint();
+}
+
+void CWeaponMagazined::PlayAnimIdleMoving()
+{
+    if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_idle_moving_empty"))
+        PlayHUDMotion("anm_idle_moving_empty", TRUE, NULL, GetState());
+    else if (IsMisfire() && isHUDAnimationExist("anm_idle_moving_jammed"))
+        PlayHUDMotion("anm_idle_moving_jammed", true, nullptr, GetState());
+    else
+        inherited::PlayAnimIdleMoving();
+}
+
+void CWeaponMagazined::PlayAnimIdleMovingCrouch()
+{
+    if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_idle_moving_empty"))
+        PlayHUDMotion("anm_idle_moving_empty", TRUE, NULL, GetState());
+    else if (IsMisfire() && isHUDAnimationExist("anm_idle_moving_jammed"))
+        PlayHUDMotion("anm_idle_moving_jammed", true, nullptr, GetState());
+    else
+        inherited::PlayAnimIdleMovingCrouch();
 }
 
 void CWeaponMagazined::PlayAnimReload()
@@ -1502,22 +1602,80 @@ void CWeaponMagazined::PlayAnimReload()
 #endif //-NEW_ANIM
 }
 
-void CWeaponMagazined::PlayAnimAim() { PlayHUDMotion("anm_idle_aim", true, nullptr, GetState()); }
+void CWeaponMagazined::PlayAnimAim() 
+{ 
+	if (IsRotatingToZoom())
+    {
+        if (isHUDAnimationExist("anm_idle_aim_start"))
+        {
+            PlayHUDMotionNew("anm_idle_aim_start", true, GetState());
+            return;
+        }
+    }
+
+	if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_idle_aim_empty"))
+        PlayHUDMotion("anm_idle_aim_empty", TRUE, NULL, GetState());
+    else if (IsMisfire() && isHUDAnimationExist("anm_idle_aim_jammed"))
+        PlayHUDMotion("anm_idle_aim_jammed", true, nullptr, GetState());
+    else
+        PlayHUDMotion("anm_idle_aim", TRUE, NULL, GetState());
+
+    PlayHUDMotion("anm_idle_aim", true, nullptr, GetState()); 
+}
+
 void CWeaponMagazined::PlayAnimIdle()
 {
     if (GetState() != eIdle) return;
-    if (IsZoomed())
-    {
+
+    if (TryPlayAnimIdle()) return;
+
+	if (IsZoomed())
         PlayAnimAim();
-    }
+    else if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_idle_empty"))
+        PlayHUDMotion("anm_idle_empty", TRUE, NULL, GetState());
+    else if (IsMisfire() && isHUDAnimationExist("anm_idle_jammed") && !TryPlayAnimIdle())
+        PlayHUDMotion("anm_idle_jammed", true, nullptr, GetState());
     else
+    {
+        if (IsRotatingFromZoom())
+        {
+            if (isHUDAnimationExist("anm_idle_aim_end"))
+            {
+                PlayHUDMotionNew("anm_idle_aim_end", true, GetState());
+                return;
+            }
+        }
         inherited::PlayAnimIdle();
+    }
 }
 
 void CWeaponMagazined::PlayAnimShoot()
 {
     VERIFY(GetState() == eFire);
-    PlayHUDMotion("anm_shots", false, this, GetState());
+
+	if (!IsDiffShotModes() || IsDiffShotModes() && GetCurrentFireMode() != -1)
+    {
+        if (IsZoomed() && m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_idle_empty"))
+            PlayHUDMotion("anm_shot_when_aim_l", FALSE, this, GetState());
+        if (IsZoomed() && isHUDAnimationExist("anm_idle_empty"))
+            PlayHUDMotion("anm_shots_when_aim", FALSE, this, GetState());
+        else if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_idle_empty"))
+            PlayHUDMotion("anm_shot_l", FALSE, this, GetState());
+        else
+            PlayHUDMotion("anm_shots", FALSE, this, GetState());
+    }
+    // Если IsDiffShotModes и авторежим стрельбы (для SPAS-12).
+    if (IsDiffShotModes() && GetCurrentFireMode() == -1)
+    {
+        if (IsZoomed() && m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_idle_empty"))
+            PlayHUDMotion("anm_shots_auto_when_aim_l", FALSE, this, GetState());
+        if (IsZoomed() && isHUDAnimationExist("anm_idle_empty"))
+            PlayHUDMotion("anm_shots_auto_when_aim", FALSE, this, GetState());
+        else if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_idle_empty"))
+            PlayHUDMotion("anm_shot_auto_l", FALSE, this, GetState());
+        else
+            PlayHUDMotion("anm_shots_auto", FALSE, this, GetState());
+    }
 }
 
 void CWeaponMagazined::OnZoomIn()
@@ -1811,6 +1969,20 @@ bool CWeaponMagazined::install_upgrade_impl(LPCSTR section, bool test)
     if (result2 && !test)
     {
         m_sounds.LoadSound(section, "snd_reload", "sndReload", true, m_eSoundReload);
+    }
+    result |= result2;
+
+	result2 = process_if_exists_set(section, "snd_draw_empty", &CInifile::r_string, str, test);
+    if (result2 && !test)
+    {
+        m_sounds.LoadSound(section, "snd_draw_empty", "sndShowEmpty", false, m_eSoundShowEmpty);
+    }
+    result |= result2;
+
+    result2 = process_if_exists_set(section, "snd_holster_empty", &CInifile::r_string, str, test);
+    if (result2 && !test)
+    {
+        m_sounds.LoadSound(section, "snd_holster_empty", "sndHideEmpty", false, m_eSoundHideEmpty);
     }
     result |= result2;
 

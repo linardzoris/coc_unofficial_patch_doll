@@ -130,7 +130,9 @@ public:
     virtual void UpdateXForm() = 0;
 
     u32 PlayHUDMotion(const shared_str& M, BOOL bMixIn, CHudItem* W, u32 state);
-    u32 PlayHUDMotion_noCB(const shared_str& M, BOOL bMixIn);
+    u32 PlayHUDMotionNew(const shared_str& M, const BOOL bMixIn, const u32 state, const bool randomAnim = true);
+    u32 PlayHUDMotionIfExists(std::initializer_list<const char*>, const BOOL bMixIn, const u32 state, const bool randomAnim = true);
+    u32 PlayHUDMotion_noCB(const shared_str& M, const BOOL bMixIn, const bool randomAnim = true);
     void StopCurrentAnimWithoutCallback();
 
     IC void RenderHud(BOOL B) { m_huditem_flags.set(fl_renderhud, B); }

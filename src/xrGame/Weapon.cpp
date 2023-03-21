@@ -403,6 +403,8 @@ void CWeapon::Load(LPCSTR section)
     else
         vLoadedFirePoint2 = vLoadedFirePoint;
 
+    m_bDiffShotModes = READ_IF_EXISTS(pSettings, r_bool, section, "different_shot_modes", false);
+
     // hands
     eHandDependence = EHandDependence(pSettings->r_s32(section, "hand_dependence"));
     m_bIsSingleHanded = true;

@@ -29,10 +29,10 @@ protected:
     ESoundTypes m_eSoundShot;
     ESoundTypes m_eSoundEmptyClick;
     ESoundTypes m_eSoundReload;
-#ifdef NEW_SOUNDS //AVO: new sounds go here
+    ESoundTypes m_eSoundShowEmpty;
+    ESoundTypes m_eSoundHideEmpty;
     ESoundTypes m_eSoundReloadEmpty;
     ESoundTypes m_eSoundReloadMisfire;
-#endif //-NEW_SOUNDS
 
     bool m_sounds_enabled;
     // General
@@ -178,6 +178,10 @@ protected:
     //виртуальные функции для проигрывания анимации HUD
     virtual void PlayAnimShow();
     virtual void PlayAnimHide();
+    virtual void PlayAnimBore();
+    virtual void PlayAnimIdleSprint();
+    virtual void PlayAnimIdleMoving();
+    virtual void PlayAnimIdleMovingCrouch();
     virtual void PlayAnimReload();
     virtual void PlayAnimIdle();
     virtual void PlayAnimShoot();

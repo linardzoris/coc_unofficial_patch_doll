@@ -157,12 +157,14 @@ public:
 
     BOOL AutoSpawnAmmo() const { return m_bAutoSpawnAmmo; };
     bool IsTriStateReload() const { return m_bTriStateReload; }
+    bool IsDiffShotModes() const { return m_bDiffShotModes; }
     EWeaponSubStates GetReloadState() const { return (EWeaponSubStates)m_sub_state; }
     bool IsMisfireOneCartRemove() const { return m_bMisfireOneCartRemove; }
 
 protected:
     bool m_bMisfireOneCartRemove;
     bool m_bTriStateReload;
+    bool m_bDiffShotModes;
 
     // a misfire happens, you'll need to rearm weapon
     bool bMisfire;
@@ -301,6 +303,8 @@ public:
     virtual float CurrentZoomFactor();
     //показывает, что оружие находится в соостоянии поворота для приближенного прицеливания
     bool IsRotatingToZoom() const { return (m_zoom_params.m_fZoomRotationFactor < 1.f); }
+    bool IsRotatingFromZoom() const { return (m_zoom_params.m_fZoomRotationFactor > 0.f); }
+
     virtual u8 GetCurrentHudOffsetIdx();
 
     virtual float Weight() const;
