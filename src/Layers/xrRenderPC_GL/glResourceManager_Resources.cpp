@@ -311,7 +311,10 @@ SPS* CResourceManager::_CreatePS(LPCSTR _name)
         _ps->constants.parse(_result, RC_dest_pixel);
     }
 
-    R_ASSERT3(SUCCEEDED(_hr), "Can't compile shader", name);
+    CHECK_OR_EXIT(
+        !FAILED(_hr),
+        "Your video card doesn't meet game requirements.\n\nTry to lower game settings."
+    );
 
     return _ps;
 }
