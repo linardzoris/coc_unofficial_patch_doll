@@ -41,7 +41,7 @@ CEffect_Rain::CEffect_Rain()
 	if (!bWinterMode)
     {
         snd_Ambient.create("ambient\\weather\\rain", st_Effect, sg_Undefined);
-        snd_RainOnMask.create("mfs_team\\ambient\\weather\\rain_on_mask", st_Effect, sg_Undefined);
+        snd_RainOnMask.create("ambient\\weather\\rain_on_mask", st_Effect, sg_Undefined);
         drop_speed_min = READ_IF_EXISTS(pSettings, r_float, "rain_params", "min_rain_drop_speed", 40.0f);
         drop_speed_max = READ_IF_EXISTS(pSettings, r_float, "rain_params", "man_rain_drop_speed", 80.0f);
         drop_length = READ_IF_EXISTS(pSettings, r_float, "rain_params", "rain_drop_length", 5.0f);
