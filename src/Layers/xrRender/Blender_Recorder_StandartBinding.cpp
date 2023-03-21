@@ -388,6 +388,9 @@ static class cl_pda_params : public R_constant_setup
 // Standart constant-binding
 void CBlender_Compile::SetMapping()
 {
+
+    r_Constant("rain_params", &binder_rain_params);
+
     // misc
     r_Constant("m_hud_params", &binder_hud_params); //--#SM+#--
     r_Constant("m_script_params", &binder_script_params); //--#SM+#--

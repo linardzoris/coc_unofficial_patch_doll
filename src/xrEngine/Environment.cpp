@@ -156,6 +156,7 @@ void CEnvironment::Invalidate()
 	if (eff_Rain)
 	{
 		eff_Rain->snd_Ambient.stop();
+        eff_Rain->snd_RainOnMask.stop();
 		eff_Rain->InvalidateState();
 	}
     if (eff_LensFlare) eff_LensFlare->Invalidate();
