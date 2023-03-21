@@ -353,8 +353,11 @@ bool CUIActorMenu::CanMoveToPartner(PIItem pItem)
 
 void CUIActorMenu::UpdateActor()
 {
+    // Регулировка денежного эквивалента через конфиг
+    LPCSTR money_str = StringTable().translate("st_money").c_str();
+
     string64 buf;
-    xr_sprintf(buf, "%d RU", m_pActorInvOwner->get_money());
+    xr_sprintf(buf, money_str, m_pActorInvOwner->get_money());
     m_ActorMoney->SetText(buf);
 
     CActor* actor = smart_cast<CActor*>(m_pActorInvOwner);
@@ -383,8 +386,8 @@ void CUIActorMenu::UpdateActor()
 void CUIActorMenu::UpdatePartnerBag()
 {
     // Регулировка денежного эквивалента через конфиг
-    LPCSTR money_str = CStringTable().translate("st_money").c_str();
-    LPCSTR money_infinitive_str = CStringTable().translate("st_money_infinitive").c_str();
+    LPCSTR money_str = StringTable().translate("st_money").c_str();
+    LPCSTR money_infinitive_str = StringTable().translate("st_money_infinitive").c_str();
 
     string64 buf;
 
@@ -419,6 +422,8 @@ void CUIActorMenu::UpdatePartnerBag()
 void CUIActorMenu::UpdatePrices()
 {
     LPCSTR kg_str = StringTable().translate("st_kg").c_str();
+    // Регулировка денежного эквивалента через конфиг
+    LPCSTR money_str = StringTable().translate("st_money").c_str();
 
     UpdateActor();
     UpdatePartnerBag();
@@ -426,10 +431,10 @@ void CUIActorMenu::UpdatePrices()
     u32 partner_price = CalcItemsPrice(m_pTradePartnerList, m_partner_trade, false);
 
     string64 buf;
-    xr_sprintf(buf, "%d RU", actor_price);
+    xr_sprintf(buf, money_str, actor_price);
     m_ActorTradePrice->SetText(buf);
     m_ActorTradePrice->AdjustWidthToText();
-    xr_sprintf(buf, "%d RU", partner_price);
+    xr_sprintf(buf, money_str, partner_price);
     m_PartnerTradePrice->SetText(buf);
     m_PartnerTradePrice->AdjustWidthToText();
 

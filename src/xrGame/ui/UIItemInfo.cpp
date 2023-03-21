@@ -235,9 +235,12 @@ void CUIItemInfo::InitItem(CUICellItem* pCellItem, CInventoryItem* pCompareItem,
             UIWeight->SetWndPos(pos);
         }
     }
+    // Регулировка денежного эквивалента через конфиг
+    LPCSTR money_str = StringTable().translate("st_money").c_str();
+
     if (UICost && item_price != u32(-1))
     {
-        xr_sprintf(str, "%d RU", item_price); // will be overwritten in multiplayer
+        xr_sprintf(str, money_str, item_price); // will be overwritten in multiplayer
         UICost->SetText(str);
         pos.x = UICost->GetWndPos().x;
         if (m_complex_desc)
