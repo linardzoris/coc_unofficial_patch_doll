@@ -38,11 +38,17 @@ IC float recon_mindist() { return 2.f; }
 IC float recon_maxdist() { return 50.f; }
 IC float recon_minspeed() { return 0.5f; }
 IC float recon_maxspeed() { return 10.f; }
+
+u32 crosshair_type = 1;
+
 CHUDTarget::CHUDTarget()
 {
     fuzzyShowInfo = 0.f;
     PP.RQ.range = 0.f;
-    hShader->create("hud\\cursor", "ui\\cursor");
+    hShader->create("hud\\cursor", "ui\\crosshair\\crosshair_default");
+    hShaderCrosshairBuild->create("hud\\cursor", "ui\\crosshair\\crosshair_build");
+    hShaderCrosshairPoint->create("hud\\cursor", "ui\\crosshair\\crosshair_point");
+    hShaderCrosshairCustom->create("hud\\cursor", "ui\\crosshair\\crosshair_custom");
 
     PP.RQ.set(NULL, 0.f, -1);
 
@@ -214,7 +220,7 @@ void CHUDTarget::Render()
     }
 
     //отрендерить кружочек или крестик
-    if (!m_bShowCrosshair)
+    if (!m_bShowCrosshair && crosshair_type == 1 || crosshair_type == 2 || crosshair_type == 3 || crosshair_type == 4)
     {
         GEnv.UIRender->StartPrimitive(6, IUIRender::ptTriList, UI().m_currentPointType);
 
@@ -243,12 +249,22 @@ void CHUDTarget::Render()
         GEnv.UIRender->PushPoint(cx + size_x, cy - size_y, 0, C, 1, 0);
 
         // unlock VB and Render it as triangle LIST
-        GEnv.UIRender->SetShader(*hShader);
+        if (crosshair_type == 1)
+            GEnv.UIRender->SetShader(*hShader);
+
+        if (crosshair_type == 2)
+            GEnv.UIRender->SetShader(*hShaderCrosshairBuild);
+
+        if (crosshair_type == 3)
+            GEnv.UIRender->SetShader(*hShaderCrosshairPoint);
+
+        if (crosshair_type == 4)
+            GEnv.UIRender->SetShader(*hShaderCrosshairCustom);
+
         GEnv.UIRender->FlushPrimitive();
     }
     else
     {
-        //отрендерить прицел
         HUDCrosshair.cross_color = C;
         HUDCrosshair.OnRender();
     }
