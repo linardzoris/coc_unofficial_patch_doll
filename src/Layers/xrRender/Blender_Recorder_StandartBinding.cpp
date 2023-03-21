@@ -181,6 +181,24 @@ class cl_fog_color : public R_constant_setup
 static cl_fog_color binder_fog_color;
 #endif
 
+// DWM: set weather params
+
+class cl_rain_params : public R_constant_setup
+{
+    virtual void setup(R_constant* C)
+    {
+        float rainDensity = g_pGamePersistent->Environment().CurrentEnv->rain_density;
+        float wetness_accum = g_pGamePersistent->Environment().wetness_accum;
+
+        LPCSTR wetness_comment = "Wetness accumulator:";
+
+        // Log(wetness_comment, wetness_accum);
+
+        RCache.set_c(C, rainDensity, wetness_accum, 0, 0);
+    }
+};
+static cl_rain_params binder_rain_params;
+
 // times
 class cl_times : public R_constant_setup
 {

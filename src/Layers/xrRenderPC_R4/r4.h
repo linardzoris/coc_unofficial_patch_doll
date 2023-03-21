@@ -62,6 +62,7 @@ public:
         u32 ssao_hdao : 1;
         u32 ssao_ultra : 1;
         u32 hbao_vectorized : 1;
+        u32 dx10_winter_mode : 1;
 
         u32 smapsize : 16;
         u32 depth16 : 1;

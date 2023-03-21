@@ -9,13 +9,6 @@ static const float source_radius = 12.5f;
 static const float source_offset = 40.f;
 static const float max_distance = source_offset * 1.25f;
 static const float sink_offset = -(max_distance - source_offset);
-static const float drop_length = 5.f;
-static const float drop_width = 0.30f;
-static const float drop_angle = 3.0f;
-static const float drop_max_angle = deg2rad(10.f);
-static const float drop_max_wind_vel = 20.0f;
-static const float drop_speed_min = 40.f;
-static const float drop_speed_max = 80.f;
 
 const int max_particles = 1000;
 const int particles_cache = 400;
@@ -23,17 +16,36 @@ const float particles_time = .3f;
 
 dxRainRender::dxRainRender()
 {
-    IReader* F = FS.r_open("$game_meshes$", "dm\\rain.dm");
-    VERIFY3(F, "Can't open file.", "dm\\rain.dm");
+    bWinterMode = READ_IF_EXISTS(pSettings, r_bool, "environment", "winter_mode", false);
 
-    DM_Drop = ::RImplementation.model_CreateDM(F);
+    if (bWinterMode)
+    {
+        IReader* F = FS.r_open("$game_meshes$", "dm\\snow.dm");
+        VERIFY3(F, "Can't open file.", "dm\\snow.dm");
 
-    //
-    SH_Rain.create("effects\\rain", "fx\\fx_rain");
-    hGeom_Rain.create(FVF::F_LIT, RCache.Vertex.Buffer(), RCache.QuadIB);
-    hGeom_Drops.create(D3DFVF_XYZ | D3DFVF_DIFFUSE | D3DFVF_TEX1, RCache.Vertex.Buffer(), RCache.Index.Buffer());
+        DM_Drop = ::RImplementation.model_CreateDM(F);
 
-    FS.r_close(F);
+        //
+        SH_Rain.create("effects\\snow", "fx\\fx_snow");
+        hGeom_Rain.create(FVF::F_LIT, RCache.Vertex.Buffer(), RCache.QuadIB);
+        hGeom_Drops.create(D3DFVF_XYZ | D3DFVF_DIFFUSE | D3DFVF_TEX1, RCache.Vertex.Buffer(), RCache.Index.Buffer());
+
+        FS.r_close(F);
+    }
+    else
+    {
+        IReader* F = FS.r_open("$game_meshes$", "dm\\rain.dm");
+        VERIFY3(F, "Can't open file.", "dm\\rain.dm");
+
+        DM_Drop = ::RImplementation.model_CreateDM(F);
+
+        //
+        SH_Rain.create("effects\\rain", "fx\\fx_rain");
+        hGeom_Rain.create(FVF::F_LIT, RCache.Vertex.Buffer(), RCache.QuadIB);
+        hGeom_Drops.create(D3DFVF_XYZ | D3DFVF_DIFFUSE | D3DFVF_TEX1, RCache.Vertex.Buffer(), RCache.Index.Buffer());
+
+        FS.r_close(F);
+    }
 }
 
 dxRainRender::~dxRainRender() { ::RImplementation.model_Delete(DM_Drop); }
@@ -145,7 +157,15 @@ void dxRainRender::Render(CEffect_Rain& owner)
         // Build line
         Fvector& pos_head = one.P;
         Fvector pos_trail;
-        pos_trail.mad(pos_head, one.D, -drop_length * factor_visual);
+
+		if (!bWinterMode)
+        {
+            pos_trail.mad(pos_head, one.D, -owner.drop_length * factor_visual);
+        }
+        else
+        {
+            pos_trail.mad(pos_head, one.D, -owner.drop_length * 5.5f);
+        }
 
         // Culling
         Fvector sC, lineD;
@@ -165,7 +185,7 @@ void dxRainRender::Render(CEffect_Rain& owner)
         camDir.sub(sC, vEye);
         camDir.normalize();
         lineTop.crossproduct(camDir, lineD);
-        float w = drop_width;
+        float w = owner.drop_width;
         u32 s = one.uv_set;
         P.mad(pos_trail, lineTop, -w);
         verts->set(P, u_rain_color, UV[s][0].x, UV[s][0].y);

@@ -20,13 +20,6 @@ static const float source_radius = 12.5f;
 static const float source_offset = 40.f;
 static const float max_distance = source_offset * 1.25f;
 static const float sink_offset = -(max_distance - source_offset);
-static const float drop_length = 5.f;
-static const float drop_width = 0.30f;
-static const float drop_angle = 3.0f;
-static const float drop_max_angle = deg2rad(89.f);
-static const float drop_max_wind_vel = 100.0f;
-static const float drop_speed_min = 40.f;
-static const float drop_speed_max = 85.f;
 
 const int max_particles = 1000;
 const int particles_cache = 400;
@@ -40,7 +33,33 @@ CEffect_Rain::CEffect_Rain()
 {
     state = stIdle;
 
-    snd_Ambient.create("ambient\\rain", st_Effect, sg_Undefined);
+    //snd_Ambient.create("ambient\\rain", st_Effect, sg_Undefined);
+    snd_Wind.create("ambient\\weather\\wind", st_Effect, sg_Undefined);
+    m_bWindWorking = false;
+    bWinterMode = READ_IF_EXISTS(pSettings, r_bool, "environment", "winter_mode", false);
+
+	if (!bWinterMode)
+    {
+        snd_Ambient.create("ambient\\weather\\rain", st_Effect, sg_Undefined);
+        snd_RainOnMask.create("mfs_team\\ambient\\weather\\rain_on_mask", st_Effect, sg_Undefined);
+        drop_speed_min = READ_IF_EXISTS(pSettings, r_float, "rain_params", "min_rain_drop_speed", 40.0f);
+        drop_speed_max = READ_IF_EXISTS(pSettings, r_float, "rain_params", "man_rain_drop_speed", 80.0f);
+        drop_length = READ_IF_EXISTS(pSettings, r_float, "rain_params", "rain_drop_length", 5.0f);
+        drop_width = READ_IF_EXISTS(pSettings, r_float, "rain_params", "rain_drop_width", 0.30f);
+        drop_angle = READ_IF_EXISTS(pSettings, r_float, "rain_params", "rain_drop_angle", 3.0f);
+        drop_max_wind_vel = READ_IF_EXISTS(pSettings, r_float, "rain_params", "rain_drop_max_wind_vel", 20.0f);
+        drop_max_angle = deg2rad(READ_IF_EXISTS(pSettings, r_float, "rain_params", "rain_drop_max_angle", 10.0f));
+    }
+    else
+    {
+        drop_speed_min = READ_IF_EXISTS(pSettings, r_float, "snow_params", "min_rain_drop_speed", 1.0f);
+        drop_speed_max = READ_IF_EXISTS(pSettings, r_float, "snow_params", "man_rain_drop_speed", 1.5f);
+        drop_length = READ_IF_EXISTS(pSettings, r_float, "snow_params", "rain_drop_length", 0.1f);
+        drop_width = READ_IF_EXISTS(pSettings, r_float, "snow_params", "rain_drop_width", 0.25f);
+        drop_angle = READ_IF_EXISTS(pSettings, r_float, "snow_params", "rain_drop_angle", 3.0f);
+        drop_max_wind_vel = READ_IF_EXISTS(pSettings, r_float, "snow_params", "rain_drop_max_wind_vel", 60.0f);
+        drop_max_angle = deg2rad(READ_IF_EXISTS(pSettings, r_float, "snow_params", "rain_drop_max_angle", 5.0f));
+    }
 
     // Moced to p_Render constructor
     /*
@@ -59,12 +78,17 @@ CEffect_Rain::CEffect_Rain()
 
 CEffect_Rain::~CEffect_Rain()
 {
-    snd_Ambient.destroy();
+    //snd_Ambient.destroy();
+
+	if (!bWinterMode)
+    {
+        snd_Ambient.destroy();
+        snd_RainOnMask.destroy();
+    }
+    snd_Wind.destroy();
 
     // Cleanup
     p_destroy();
-    // Moved to p_Render destructor
-    // GEnv.Render->model_Delete (DM_Drop);
 }
 
 // Born
@@ -140,6 +164,8 @@ void CEffect_Rain::OnFrame()
 
     // Parse states
     float factor = g_pGamePersistent->Environment().CurrentEnv->rain_density;
+    float wind_volume = g_pGamePersistent->Environment().CurrentEnv->wind_velocity / 6;
+    bool wind_enabled = (wind_volume >= EPS_L);
     static float hemi_factor = 0.f;
 #ifndef _EDITOR
     IGameObject* E = g_pGameLevel->CurrentViewEntity();
@@ -160,33 +186,74 @@ void CEffect_Rain::OnFrame()
     }
 #endif
 
-    switch (state)
+    // Ветер
+	if (!m_bWindWorking)
     {
-    case stIdle:
-        if (factor < EPS_L)
-            return;
-        state = stWorking;
-        snd_Ambient.play(0, sm_Looped);
-        snd_Ambient.set_position(Fvector().set(0, 0, 0));
-        snd_Ambient.set_range(source_offset, source_offset * 2.f);
-        break;
-    case stWorking:
-        if (factor < EPS_L)
+        if (wind_enabled)
         {
-            state = stIdle;
-            snd_Ambient.stop();
-            return;
+            snd_Wind.play(0, sm_Looped);
+            snd_Wind.set_position(Fvector().set(0, 0, 0));
+            snd_Wind.set_range(source_offset, source_offset * 2.f);
+
+            m_bWindWorking = true;
         }
-        break;
+    }
+    else
+    {
+        if (wind_enabled)
+        {
+            // Wind Sound
+            if (snd_Wind._feedback())
+            {
+                snd_Wind.set_volume(_max(0.1f, wind_volume) * hemi_factor);
+            }
+        }
+        else
+        {
+            snd_Wind.stop();
+            m_bWindWorking = false;
+        }
     }
 
-    // ambient sound
-    if (snd_Ambient._feedback())
+    // Дождь/Снег
+	if (!bWinterMode)
     {
-        // Fvector sndP;
-        // sndP.mad (Device.vCameraPosition,Fvector().set(0,1,0),source_offset);
-        // snd_Ambient.set_position(sndP);
-        snd_Ambient.set_volume(_max(0.1f, factor) * hemi_factor);
+        switch (state)
+        {
+        case stIdle:
+            if (factor < EPS_L)
+                return;
+            state = stWorking;
+            snd_Ambient.play(0, sm_Looped);
+            snd_Ambient.set_position(Fvector().set(0, 0, 0));
+            snd_Ambient.set_range(source_offset, source_offset * 2.f);
+
+			snd_RainOnMask.play(0, sm_Looped);
+            snd_RainOnMask.set_position(Fvector().set(0, 0, 0));
+            snd_RainOnMask.set_range(source_offset, source_offset * 2.f);
+            break;
+        case stWorking:
+            if (factor < EPS_L)
+            {
+                state = stIdle;
+                snd_Ambient.stop();
+                snd_RainOnMask.stop();
+                return;
+            }
+            break;
+        }
+
+		// Rain Sound
+        if (snd_Ambient._feedback())
+        {
+            snd_Ambient.set_volume(_max(0.1f, factor) * hemi_factor);
+        }
+
+		// Rain On Mask Sound
+        if (snd_RainOnMask._feedback())
+        {
+            snd_RainOnMask.set_volume(_max(0.0f, hemi_factor) * factor);
+        }
     }
 }
 

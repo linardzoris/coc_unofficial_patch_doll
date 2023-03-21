@@ -65,9 +65,24 @@ private:
     Particle* particle_active;
     Particle* particle_idle;
 
-    // Sounds
+	// Rain params
+    float drop_speed_min;
+    float drop_speed_max;
+    float drop_length;
+    float drop_width;
+    float drop_angle;
+    float drop_max_wind_vel;
+    float drop_max_angle;
+
+    bool m_bWindWorking;
+
 	public:
-    ref_sound snd_Ambient;
+
+     // Sounds
+     ref_sound snd_Ambient;
+     ref_sound snd_Wind;
+     ref_sound snd_RainOnMask;
+
 
 	private:
     // Utilities
@@ -96,6 +111,7 @@ public:
     void StopAmbient();
     void SetInvalidateState();
 	void InvalidateState()		{ state = stIdle; }
+    bool bWinterMode;
 };
 
 #endif // RainH

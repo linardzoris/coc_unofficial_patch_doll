@@ -311,6 +311,9 @@ void CRender::create()
     o.ssao_hdao = ps_r2_ls_flags_ext.test(R2FLAGEXT_SSAO_HDAO) && (ps_r_ssao != 0);
     o.ssao_hbao = !o.ssao_hdao && ps_r2_ls_flags_ext.test(R2FLAGEXT_SSAO_HBAO) && (ps_r_ssao != 0);
 
+    bool bWinterMode = READ_IF_EXISTS(pSettings, r_bool, "environment", "winter_mode", false);
+	o.dx10_winter_mode = !bWinterMode;
+
     //	TODO: fix hbao shader to allow to perform per-subsample effect!
     o.hbao_vectorized = false;
     if (o.ssao_hbao)
@@ -1287,6 +1290,15 @@ HRESULT CRender::shader_compile(LPCSTR name, IReader* fs, LPCSTR pFunctionName,
         def_it++;
     }
     sh_name[len] = '0' + char(o.dx10_sm4_1);
+    ++len;
+
+	if (o.dx10_winter_mode)
+    {
+        defines[def_it].Name = "WINTER_MODE";
+        defines[def_it].Definition = "1";
+        def_it++;
+    }
+    sh_name[len] = '0' + char(o.dx10_winter_mode);
     ++len;
 
     R_ASSERT(HW.FeatureLevel >= D3D_FEATURE_LEVEL_11_0);

@@ -290,6 +290,9 @@ void CRender::create()
     o.ssao_half_data = ps_r2_ls_flags_ext.test(R2FLAGEXT_SSAO_HALF_DATA) && o.ssao_opt_data && (ps_r_ssao != 0);
     o.ssao_hbao = ps_r2_ls_flags_ext.test(R2FLAGEXT_SSAO_HBAO) && (ps_r_ssao != 0);
 
+    bool bWinterMode = READ_IF_EXISTS(pSettings, r_bool, "environment", "winter_mode", false);
+	o.winter_mode = !bWinterMode;
+
     if ((HW.Caps.id_vendor == 0x1002) && (HW.Caps.id_device <= 0x72FF))
     {
         o.ssao_opt_data = false;
@@ -878,6 +881,15 @@ HRESULT CRender::shader_compile(LPCSTR name, IReader* fs, LPCSTR pFunctionName, 
         def_it++;
     }
     sh_name[len] = '0' + char(o.ssao_hbao);
+    ++len;
+
+	if (o.winter_mode)
+    {
+        defines[def_it].Name = "WINTER_MODE";
+        defines[def_it].Definition = "1";
+        def_it++;
+    }
+    sh_name[len] = '0' + char(o.winter_mode);
     ++len;
 
     if (o.ssao_opt_data)

@@ -453,7 +453,9 @@ void CRender::Render()
     }
 
     //	TODO: DX10: Implement DX10 rain.
-    if (ps_r2_ls_flags.test(R3FLAG_DYN_WET_SURF))
+    bool bWinterMode = READ_IF_EXISTS(pSettings, r_bool, "environment", "winter_mode", false);
+
+    if (ps_r2_ls_flags.test(R3FLAG_DYN_WET_SURF) && !bWinterMode)
     {
         PIX_EVENT(DEFER_RAIN);
         render_rain();

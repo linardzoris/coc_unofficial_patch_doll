@@ -413,7 +413,8 @@ void CRenderTarget::phase_combine()
 
 	if (!_menu_pp)
     {
-        if (ps_r2_rain_drops_flags.test(R2FLAG_RAIN_DROPS))
+        bool bWinterMode = READ_IF_EXISTS(pSettings, r_bool, "environment", "winter_mode", false);
+        if (ps_r2_rain_drops_flags.test(R2FLAG_RAIN_DROPS) && !bWinterMode)
             PhaseRainDrops();
     }
 
