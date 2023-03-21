@@ -211,6 +211,7 @@ void CPseudoGigant::Load(LPCSTR section)
     read_delay(section, "HugeKick_MinMaxDelay", m_threaten_delay_min, m_threaten_delay_max);
 
     m_time_kick_actor_slow_down = pSettings->r_u32(section, "HugeKick_Time_SlowDown");
+    m_kick_hit_jumping_actor = READ_IF_EXISTS(pSettings, r_bool, section, "HugeKick_Hit_Jumping_Actor", false);
 
     PostLoad(section);
 }
@@ -319,7 +320,7 @@ void CPseudoGigant::on_threaten_execute()
     CActor* pA = const_cast<CActor*>(smart_cast<const CActor*>(EnemyMan.get_enemy()));
     if (!pA)
         return;
-    if ((pA->MovingState() & ACTOR_DEFS::mcJump) != 0)
+    if (pA->is_jump() && !m_kick_hit_jumping_actor) // Не наносит урона, если прыгаем
         return;
 
     float dist_to_enemy = pA->Position().distance_to(Position());

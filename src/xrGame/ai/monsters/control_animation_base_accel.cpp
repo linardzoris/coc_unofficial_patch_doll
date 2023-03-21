@@ -137,6 +137,8 @@ bool CControlAnimationBase::accel_check_braking(float before_interval, float nom
         return (braking_mode = false);
     if (!accel_active(eAV_Braking))
         return (braking_mode = false);
+    if (m_man->path_builder().detail().path()[m_man->path_builder().detail().curr_travel_point_index()].velocity == MonsterMovement::eVelocityParameterStand)
+        return (braking_mode = false);
 
     float acceleration = accel_get(eAV_Braking);
     float braking_dist =
