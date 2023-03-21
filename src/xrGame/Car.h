@@ -147,6 +147,9 @@ public:
     float m_power_neutral_factor; // multiplier for power when accelerator is not pressed (0-1,0.25)
     bool b_exploded;
 
+    void SwitchHorn();
+    ref_sound snd_horn;
+
     struct SWheel : public CDamagableHealthItem
     {
         typedef CDamagableHealthItem inherited;

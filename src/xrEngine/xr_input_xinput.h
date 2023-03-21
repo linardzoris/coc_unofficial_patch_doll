@@ -32,6 +32,12 @@ enum EGameActions
     kTORCH,
     kNIGHT_VISION,
     kDETECTOR,
+
+    kTURN_ENGINE,
+    kSWITCH_HORN,
+    kCAR_TRANSMISSION_UP,
+    kCAR_TRANSMISSION_DOWN,
+
     kWPN_1,
     kWPN_2,
     kWPN_3,

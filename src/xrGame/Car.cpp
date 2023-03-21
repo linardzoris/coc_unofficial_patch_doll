@@ -1066,6 +1066,15 @@ void CCar::SwitchEngine()
     else
         StartEngine();
 }
+
+void CCar::SwitchHorn()
+{
+    IKinematics* pKinematics = smart_cast<IKinematics*>(Visual());
+    CInifile* ini = pKinematics->LL_UserData();
+    snd_horn.create(ini->r_string("car_sound", "snd_horn_name"), st_Effect, sg_SourceType);
+    snd_horn.play_at_pos(Actor(), Actor()->Position());
+}
+
 void CCar::Clutch() { b_clutch = true; }
 void CCar::Unclutch() { b_clutch = false; }
 void CCar::Starter()
@@ -1711,12 +1720,15 @@ void CCar::PhDataUpdate(float step)
 {
     if (m_repairing)
         Revert();
+
     LimitWheels();
     UpdateFuel(step);
+    UpdatePower();
 
-    // if(fwp)
+    // Теперь движок начинает глохнуть тогда, когда машина повреждена
+    float current_health = GetfHealth();
+    if (current_health <= 0.30)
     {
-        UpdatePower();
         if (b_engine_on && !b_starting && m_current_rpm < m_min_rpm)
             Stall();
     }
@@ -1759,6 +1771,8 @@ void CCar::CarExplode()
     if (m_car_weapon)
         m_car_weapon->Action(CCarWeapon::eWpnActivate, 0);
     m_lights.TurnOffHeadLights();
+    m_damage_particles.Stop1(this);
+    m_damage_particles.Stop2(this);
     b_exploded = true;
     CExplosive::GenExplodeEvent(Position(), Fvector().set(0.f, 1.f, 0.f));
 

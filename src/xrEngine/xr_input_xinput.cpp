@@ -15,12 +15,23 @@ _action actions[] = {
 
     {"forward", kFWD, _both}, {"back", kBACK, _both}, {"lstrafe", kL_STRAFE, _both}, {"rstrafe", kR_STRAFE, _both},
 
-    {"llookout", kL_LOOKOUT, _both}, {"rlookout", kR_LOOKOUT, _both},
+    {"llookout", kL_LOOKOUT, _both}, 
+    {"rlookout", kR_LOOKOUT, _both},
 
-    {"cam_1", kCAM_1, _both}, {"cam_2", kCAM_2, _both}, {"cam_3", kCAM_3, _both}, {"cam_zoom_in", kCAM_ZOOM_IN, _both},
+    {"cam_1", kCAM_1, _both},
+    {"cam_2", kCAM_2, _both}, 
+    {"cam_3", kCAM_3, _both}, 
+    {"cam_zoom_in", kCAM_ZOOM_IN, _both},
     {"cam_zoom_out", kCAM_ZOOM_OUT, _both},
-	{ "flashlight",			kFLASH					,_both},	//Romann
-    {"torch", kTORCH, _both}, {"night_vision", kNIGHT_VISION, _both}, {"show_detector", kDETECTOR, _sp},
+	{"flashlight",	kFLASH, _both},	//Romann
+    {"torch", kTORCH, _both}, 
+    {"night_vision", kNIGHT_VISION, _both}, 
+    {"show_detector", kDETECTOR, _sp},
+
+    {"turn_engine", kTURN_ENGINE, _both},
+    {"switch_horn", kSWITCH_HORN, _both},
+    {"car_transmission_up", kCAR_TRANSMISSION_UP, _both},
+    {"car_transmission_down", kCAR_TRANSMISSION_DOWN, _both},
 
     {"wpn_1", kWPN_1, _both}, {"wpn_2", kWPN_2, _both}, {"wpn_3", kWPN_3, _both}, {"wpn_4", kWPN_4, _both},
     {"wpn_5", kWPN_5, _both}, {"wpn_6", kWPN_6, _both}, {"artefact", kARTEFACT, _both /*_mp*/},
