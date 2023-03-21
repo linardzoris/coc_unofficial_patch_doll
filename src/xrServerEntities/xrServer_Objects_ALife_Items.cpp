@@ -953,8 +953,8 @@ void CSE_ALifeItemBolt::STATE_Read(NET_Packet& tNetPacket, u16 size) { inherited
 void CSE_ALifeItemBolt::UPDATE_Write(NET_Packet& tNetPacket) { inherited::UPDATE_Write(tNetPacket); };
 void CSE_ALifeItemBolt::UPDATE_Read(NET_Packet& tNetPacket) { inherited::UPDATE_Read(tNetPacket); };
 bool CSE_ALifeItemBolt::can_save() const noexcept
-{
-    return false; //! attached());
+{ 
+    return true; 
 }
 bool CSE_ALifeItemBolt::used_ai_locations() const noexcept { return false; }
 #ifndef XRGAME_EXPORTS

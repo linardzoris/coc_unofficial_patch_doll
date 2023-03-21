@@ -23,7 +23,7 @@ void CBolt::State(u32 state, u32 old_state)
     switch (GetState())
     {
     case eThrowEnd: {
-        if (bLessBolts)
+        if (bLessBolts && smart_cast<CActor*>(this->H_Parent()) && (Level().CurrentViewEntity() == H_Parent()))
         {
             if (m_pPhysicsShell)
                 m_pPhysicsShell->Deactivate();
@@ -40,6 +40,19 @@ void CBolt::State(u32 state, u32 old_state)
     break;
     }
     inherited::State(state, old_state);
+}
+
+void CBolt::OnAnimationEnd(u32 state)
+{
+    switch (state)
+    {
+    case eThrowEnd: {
+        if (smart_cast<CActor*>(this->H_Parent()) && (Level().CurrentViewEntity() == H_Parent()))
+            SwitchState(eHidden);
+    }
+    break;
+    }
+    inherited::OnAnimationEnd(state);
 }
 
 void CBolt::Throw()

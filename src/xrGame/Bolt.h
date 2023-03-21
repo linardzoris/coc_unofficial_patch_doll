@@ -22,6 +22,7 @@ public:
 
 	void PutNextToSlot();
     virtual void State(u32 state, u32 old_state);
+    virtual void OnAnimationEnd(u32 state);
 
     virtual BOOL UsedAI_Locations() { return FALSE; }
     virtual IDamageSource* cast_IDamageSource() { return this; }
