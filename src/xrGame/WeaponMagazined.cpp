@@ -1973,18 +1973,18 @@ bool CWeaponMagazined::install_upgrade_impl(LPCSTR section, bool test)
     result |= result2;
 
 	result2 = process_if_exists_set(section, "snd_draw_empty", &CInifile::r_string, str, test);
-    if (result2 && !test)
-    {
-        m_sounds.LoadSound(section, "snd_draw_empty", "sndShowEmpty", false, m_eSoundShowEmpty);
-    }
-    result |= result2;
+	if (result2 && !test)
+	{
+		m_sounds.LoadSound(section, "snd_draw_empty", "sndShowEmpty", false, m_eSoundShowEmpty);
+	}
+	result |= result2;
 
-    result2 = process_if_exists_set(section, "snd_holster_empty", &CInifile::r_string, str, test);
-    if (result2 && !test)
-    {
-        m_sounds.LoadSound(section, "snd_holster_empty", "sndHideEmpty", false, m_eSoundHideEmpty);
-    }
-    result |= result2;
+	result2 = process_if_exists_set(section, "snd_holster_empty", &CInifile::r_string, str, test);
+	if (result2 && !test)
+	{
+		m_sounds.LoadSound(section, "snd_holster_empty", "sndHideEmpty", false, m_eSoundHideEmpty);
+	}
+	result |= result2;
 
 #ifdef NEW_SOUNDS //AVO: custom sounds go here
     result2 = process_if_exists_set(section, "snd_reload_empty", &CInifile::r_string, str, test);

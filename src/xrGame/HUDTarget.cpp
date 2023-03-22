@@ -220,7 +220,7 @@ void CHUDTarget::Render()
     }
 
     //отрендерить кружочек или крестик
-    if (!m_bShowCrosshair && crosshair_type == 1 || crosshair_type == 2 || crosshair_type == 3 || crosshair_type == 4)
+    if (!m_bShowCrosshair && crosshair_type == 1 || !m_bShowCrosshair && crosshair_type == 2 || !m_bShowCrosshair && crosshair_type == 3 || !m_bShowCrosshair && crosshair_type == 4)
     {
         GEnv.UIRender->StartPrimitive(6, IUIRender::ptTriList, UI().m_currentPointType);
 
