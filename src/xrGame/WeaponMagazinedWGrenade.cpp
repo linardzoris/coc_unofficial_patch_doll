@@ -664,53 +664,168 @@ void CWeaponMagazinedWGrenade::PlayAnimReload()
 
 void CWeaponMagazinedWGrenade::PlayAnimIdle()
 {
-    if (GetState() != eIdle)
-            return;
-
-    if (TryPlayAnimIdle())
-        return;
-
     if (IsGrenadeLauncherAttached())
     {
-        if (!m_bGrenadeMode)
+        if (IsZoomed())
         {
-            if (IsZoomed())
-                PlayAnimAim();
-            else if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_idle_empty_w_gl"))
-                PlayHUDMotion("anm_idle_empty_w_gl", TRUE, nullptr, GetState());
-            else if (IsMisfire() && isHUDAnimationExist("anm_idle_jammed_w_gl") && !TryPlayAnimIdle())
-                PlayHUDMotion("anm_idle_jammed_w_gl", true, nullptr, GetState());
+            if (IsRotatingToZoom())
+            {
+                PlayHUDMotionIfExists({"anm_idle_aim_start_w_gl"}, true, GetState());
+                return;
+            }
+			if (m_bGrenadeMode)
+                PlayHUDMotionIfExists({"anm_idle_aim_g", "anm_idle_g_aim"}, true, GetState());
+            else if (IsMisfire() && isHUDAnimationExist("anm_idle_jammed_w_gl_aim"))
+                PlayHUDMotion("anm_idle_jammed_w_gl_aim", TRUE, nullptr, GetState());
             else
-                PlayHUDMotion("anm_idle_w_gl", true, nullptr, GetState());
+                PlayHUDMotionIfExists({"anm_idle_aim_w_gl", "anm_idle_w_gl_aim"}, true, GetState());
         }
-        else if (m_bGrenadeMode)
+        else
         {
-            if (IsZoomed())
-                PlayAnimAim();
-            else if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_idle_empty_g"))
-                PlayHUDMotion("anm_idle_empty_g", TRUE, nullptr, GetState());
-            else if (IsMisfire() && isHUDAnimationExist("anm_idle_jammed_g") && !TryPlayAnimIdle())
-                PlayHUDMotion("anm_idle_jammed_g", true, nullptr, GetState());
+            if (IsRotatingFromZoom())
+            {
+                PlayHUDMotionIfExists({"anm_idle_aim_end_w_gl"}, true, GetState());
+                return;
+            }
+
+            int act_state = 0;
+            CActor* pActor = smart_cast<CActor*>(H_Parent());
+
+			if (pActor)
+            {
+                const u32 State = pActor->get_state();
+                if (State & mcSprint)
+                {
+                    act_state = 1;
+                }
+                else if (State & mcAnyMove)
+                {
+                    if (!(State & mcCrouch))
+                    {
+                        if (State & mcAccel) //Ходьба медленная (SHIFT)
+                            act_state = 5;
+                        else
+                            act_state = 2;
+                    }
+                    else if (State & mcAccel) //Ходьба в присяде (CTRL+SHIFT)
+                        act_state = 4;
+                    else
+                        act_state = 3;
+                }
+            }
+
+			if (m_bGrenadeMode)
+            {
+                switch (act_state)
+                {
+                case 0:
+                    if (IsMisfire() && isHUDAnimationExist("anm_idle_jammed_g"))
+                        PlayHUDMotion("anm_idle_jammed_g", TRUE, nullptr, GetState());
+                    else if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_idle_empty_g"))
+                        PlayHUDMotion("anm_idle_empty_g", TRUE, nullptr, GetState());
+                    else
+                        PlayHUDMotionNew({"anm_idle_g"}, true, GetState());
+                    break;
+                case 1:
+                    if (IsMisfire())
+                        PlayHUDMotionIfExists({"anm_idle_sprint_jammed_g", "anm_idle_sprint_g", "anm_idle_g"}, true, GetState());
+                    else if (m_ammoElapsed.type1 == 0)
+                        PlayHUDMotionIfExists({"anm_idle_sprint_empty_g", "anm_idle_g"}, true, GetState());
+                    else
+                        PlayHUDMotionIfExists({"anm_idle_sprint_g", "anm_idle_g"}, true, GetState());
+                    break;
+                case 2:
+                    if (IsMisfire())
+                        PlayHUDMotionIfExists({"anm_idle_moving_jammed_g", "anm_idle_moving_g", "anm_idle_g"}, true, GetState());
+                    else if (m_ammoElapsed.type1 == 0)
+                        PlayHUDMotionIfExists({"anm_idle_moving_empty_g", "anm_idle_g"}, true, GetState());
+                    else
+                        PlayHUDMotionIfExists({"anm_idle_moving_g", "anm_idle_g"}, true, GetState());
+                    break;
+                case 3:
+                    if (IsMisfire())
+                        PlayHUDMotionIfExists({"anm_idle_moving_crouch_jammed_g", "anm_idle_moving_crouch_g", "anm_idle_g"}, true, GetState());
+                    else if (m_ammoElapsed.type1 == 0)
+                        PlayHUDMotionIfExists({"anm_idle_moving_crouch_empty_g", "anm_idle_moving_crouch_g", "anm_idle_g"}, true, GetState());
+                    else
+                        PlayHUDMotionIfExists({"anm_idle_moving_crouch_g", "anm_idle_moving_g", "anm_idle_g"}, true, GetState());
+                    break;
+                case 4:
+                    if (IsMisfire())
+                        PlayHUDMotionIfExists({"anm_idle_moving_crouch_slow_jammed_g", "anm_idle_moving_crouch_slow_g", "anm_idle_g"}, true, GetState());
+                    else if (m_ammoElapsed.type1 == 0)
+                        PlayHUDMotionIfExists({"anm_idle_moving_crouch_empty_g", "anm_idle_moving_crouch_slow_g", "anm_idle_g"}, true, GetState());
+                    else
+                        PlayHUDMotionIfExists({"anm_idle_moving_crouch_slow_g", "anm_idle_moving_crouch_g", "anm_idle_moving_g", "anm_idle_g"}, true, GetState());
+                    break;
+                case 5:
+                    if (IsMisfire())
+                        PlayHUDMotionIfExists({"anm_idle_moving_slow_jammed_g", "anm_idle_moving_slow_g", "anm_idle_g"}, true, GetState());
+                    else if (m_ammoElapsed.type1 == 0)
+                        PlayHUDMotionIfExists({"anm_idle_moving_slow_empty_g", "anm_idle_moving_slow_g", "anm_idle_g"}, true, GetState());
+                    else
+                        PlayHUDMotionIfExists({"anm_idle_moving_slow_g", "anm_idle_moving_g", "anm_idle_g"}, true, GetState());
+                    break;
+                }
+            }
             else
-                PlayHUDMotion("anm_idle_g", true, nullptr, GetState());
-        }
-    else if (IsRotatingFromZoom())
-    {
-        if (!m_bGrenadeMode)
-        {
-        if (isHUDAnimationExist("anm_idle_aim_end_w_gl"))
-            PlayHUDMotionNew("anm_idle_aim_end_w_gl", true, GetState());
-            return;
-        }
-        else if (m_bGrenadeMode)
-        {
-        if (isHUDAnimationExist("anm_idle_aim_end_g"))
-            PlayHUDMotionNew("anm_idle_aim_end_g", true, GetState());
-            return;
+            {
+                switch (act_state)
+                {
+                case 0:
+                    if (IsMisfire() && isHUDAnimationExist("anm_idle_jammed_w_gl"))
+                        PlayHUDMotion("anm_idle_jammed_w_gl", TRUE, nullptr, GetState());
+                    else if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_idle_empty_w_gl"))
+                        PlayHUDMotion("anm_idle_empty_w_gl", TRUE, nullptr, GetState());
+                    else
+                        PlayHUDMotionNew({"anm_idle_w_gl"}, true, GetState());
+                    break;
+                case 1:
+                    if (IsMisfire())
+                        PlayHUDMotionIfExists({"anm_idle_sprint_jammed_w_gl", "anm_idle_sprint_w_gl", "anm_idle_w_gl"}, true, GetState());
+                    else if (m_ammoElapsed.type1 == 0)
+                        PlayHUDMotionIfExists({"anm_idle_sprint_empty_w_gl", "anm_idle_w_gl"}, true, GetState());
+                    else
+                        PlayHUDMotionIfExists({"anm_idle_sprint_w_gl", "anm_idle_w_gl"}, true, GetState());
+                    break;
+                case 2:
+                    if (IsMisfire())
+                        PlayHUDMotionIfExists({"anm_idle_moving_jammed_w_gl", "anm_idle_moving_w_gl", "anm_idle_w_gl"}, true, GetState());
+                    else if (m_ammoElapsed.type1 == 0)
+                        PlayHUDMotionIfExists({"anm_idle_moving_empty_w_gl", "anm_idle_w_gl"}, true, GetState());
+                    else
+                        PlayHUDMotionIfExists({"anm_idle_moving_w_gl", "anm_idle_w_gl"}, true, GetState());
+                    break;
+                case 3:
+                    if (IsMisfire())
+                        PlayHUDMotionIfExists({"anm_idle_moving_crouch_jammed_w_gl", "anm_idle_moving_crouch_w_gl", "anm_idle_w_gl"}, true, GetState());
+                    else if (m_ammoElapsed.type1 == 0)
+                        PlayHUDMotionIfExists({"anm_idle_moving_crouch_empty_w_gl", "anm_idle_moving_crouch_w_gl", "anm_idle_w_gl"}, true, GetState());
+                    else
+                        PlayHUDMotionIfExists({"anm_idle_moving_crouch_w_gl", "anm_idle_moving_w_gl", "anm_idle_w_gl"}, true, GetState());
+                    break;
+                case 4:
+                    if (IsMisfire())
+                        PlayHUDMotionIfExists({"anm_idle_moving_crouch_slow_jammed_w_gl", "anm_idle_moving_crouch_slow_w_gl", "anm_idle_w_gl"}, true, GetState());
+                    else if (m_ammoElapsed.type1 == 0)
+                        PlayHUDMotionIfExists({"anm_idle_moving_crouch_empty_w_gl", "anm_idle_moving_crouch_slow_w_gl", "anm_idle_w_gl"}, true, GetState());
+                    else
+                        PlayHUDMotionIfExists({"anm_idle_moving_crouch_slow_w_gl", "anm_idle_moving_crouch_w_gl", "anm_idle_moving_w_gl", "anm_idle_w_gl"}, true, GetState());
+                    break;
+                case 5:
+                    if (IsMisfire())
+                        PlayHUDMotionIfExists({"anm_idle_moving_slow_jammed_w_gl", "anm_idle_moving_slow_w_gl", "anm_idle_w_gl"}, true, GetState());
+                    else if (m_ammoElapsed.type1 == 0)
+                        PlayHUDMotionIfExists({"anm_idle_moving_slow_empty_w_gl", "anm_idle_moving_slow_w_gl", "anm_idle_w_gl"}, true, GetState());
+                    else
+                        PlayHUDMotionIfExists({"anm_idle_moving_slow_w_gl", "anm_idle_moving_w_gl", "anm_idle_w_gl"}, true, GetState());
+                    break;
+                }
+            }
         }
     }
-    inherited::PlayAnimIdle();
-    }
+    else
+        inherited::PlayAnimIdle();
 }
 
 void CWeaponMagazinedWGrenade::PlayAnimShoot()
@@ -719,6 +834,10 @@ void CWeaponMagazinedWGrenade::PlayAnimShoot()
     {
         if (IsZoomed())
             PlayHUDMotion("anm_shots_aim_g", FALSE, this, eFire);
+        else if (IsZoomed() && IsMisfire())
+            PlayHUDMotion("anm_shots_aim_jammed_g", FALSE, this, eFire);
+        else if (IsMisfire())
+            PlayHUDMotion("anm_shots_jammed_g", FALSE, this, eFire);
         else
             PlayHUDMotion("anm_shots_g", FALSE, this, eFire);
     }
@@ -727,58 +846,16 @@ void CWeaponMagazinedWGrenade::PlayAnimShoot()
         VERIFY(GetState() == eFire);
         if (IsGrenadeLauncherAttached())
         {
-            if (IsZoomed() && isHUDAnimationExist("anm_idle_empty"))
+            if (IsZoomed() && isHUDAnimationExist("anm_shots_when_aim_w_gl"))
                 PlayHUDMotion("anm_shots_when_aim_w_gl", FALSE, this, GetState());
+            else if (IsZoomed() && isHUDAnimationExist("anm_shots_when_aim_w_gl") && m_ammoElapsed.type1 == 1)
+                PlayHUDMotion("anm_shots_when_aim_l_w_gl", FALSE, this, GetState());
             else
                 PlayHUDMotion("anm_shots_w_gl", FALSE, this, GetState());
         }
         else
             inherited::PlayAnimShoot();
     }
-}
-
-void CWeaponMagazinedWGrenade::PlayAnimAim()
-{
-    if (IsGrenadeLauncherAttached())
-    {
-        if (!m_bGrenadeMode)
-        {
-            if (IsRotatingToZoom())
-            {
-                if (isHUDAnimationExist("anm_idle_aim_start_w_gl"))
-                {
-                    PlayHUDMotionNew("anm_idle_aim_start_w_gl", true, GetState());
-                    return;
-                }
-            }
-
-            if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_idle_aim_empty_w_gl"))
-                PlayHUDMotion("anm_idle_aim_empty_w_gl", TRUE, nullptr, GetState());
-            else if (IsMisfire() && isHUDAnimationExist("anm_idle_aim_jammed_w_gl"))
-                PlayHUDMotion("anm_idle_aim_jammed_w_gl", true, nullptr, GetState());
-            else
-                PlayHUDMotion("anm_idle_aim_w_gl", TRUE, nullptr, GetState());
-        }
-        else if (m_bGrenadeMode)
-        {
-            if (IsRotatingToZoom())
-            {
-                if (isHUDAnimationExist("anm_idle_aim_start_w_gl"))
-                {
-                    PlayHUDMotionNew("anm_idle_aim_start_w_gl", true, GetState());
-                    return;
-                }
-            }
-
-            if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_idle_aim_empty_g"))
-                PlayHUDMotion("anm_idle_aim_empty_g", TRUE, nullptr, GetState());
-            else if (IsMisfire() && isHUDAnimationExist("anm_idle_aim_jammed_g"))
-                PlayHUDMotion("anm_idle_aim_jammed_g", true, nullptr, GetState());
-            else
-                PlayHUDMotion("anm_idle_aim_g", TRUE, nullptr, GetState());
-        }
-    }
-    inherited::PlayAnimAim();
 }
 
 void CWeaponMagazinedWGrenade::PlayAnimModeSwitch()
@@ -815,90 +892,6 @@ void CWeaponMagazinedWGrenade::PlayAnimBore()
     }
     else
         inherited::PlayAnimBore();
-}
-
-void CWeaponMagazinedWGrenade::PlayAnimIdleSprint()
-{
-    if (IsGrenadeLauncherAttached())
-    {
-        if (!m_bGrenadeMode)
-        {
-            if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_idle_sprint_empty_w_gl"))
-                PlayHUDMotion("anm_idle_sprint_empty_w_gl", TRUE, this, GetState());
-            else if (IsMisfire() && isHUDAnimationExist("anm_idle_sprint_jammed_w_gl"))
-                PlayHUDMotion("anm_idle_sprint_jammed_w_gl", true, nullptr, GetState());
-            else
-                PlayHUDMotion("anm_idle_sprint_w_gl", true, nullptr, GetState());
-        }
-
-        if (m_bGrenadeMode)
-        {
-            if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_idle_sprint_empty_g"))
-                PlayHUDMotion("anm_idle_sprint_empty_g", TRUE, this, GetState());
-            else if (IsMisfire() && isHUDAnimationExist("anm_idle_sprint_jammed_g"))
-                PlayHUDMotion("anm_idle_sprint_jammed_g", true, nullptr, GetState());
-            else
-                PlayHUDMotion("anm_idle_sprint_g", TRUE, this, GetState());
-        }
-    }
-    else
-        inherited::PlayAnimIdleSprint();
-}
-
-void CWeaponMagazinedWGrenade::PlayAnimIdleMoving()
-{
-    if (IsGrenadeLauncherAttached())
-    {
-        if (!m_bGrenadeMode)
-        {
-            if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_idle_moving_empty_w_gl"))
-                PlayHUDMotion("anm_idle_moving_empty_w_gl", TRUE, this, GetState());
-            else if (IsMisfire() && isHUDAnimationExist("anm_idle_moving_jammed_w_gl"))
-                PlayHUDMotion("anm_idle_sprint_moving_w_gl", true, nullptr, GetState());
-            else
-                PlayHUDMotion("anm_idle_moving_w_gl", true, nullptr, GetState());
-        }
-
-        if (m_bGrenadeMode)
-        {
-            if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_idle_moving_empty_g"))
-                PlayHUDMotion("anm_idle_moving_empty_g", TRUE, this, GetState());
-            else if (IsMisfire() && isHUDAnimationExist("anm_idle_moving_jammed_g"))
-                PlayHUDMotion("anm_idle_moving_jammed_g", true, nullptr, GetState());
-            else
-                PlayHUDMotion("anm_idle_moving_g", TRUE, this, GetState());
-        }
-    }
-    else
-        inherited::PlayAnimIdleMoving();
-}
-
-void CWeaponMagazinedWGrenade::PlayAnimIdleMovingCrouch()
-{
-    if (IsGrenadeLauncherAttached())
-    {
-        if (!m_bGrenadeMode)
-        {
-            if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_idle_crouch_empty_w_gl"))
-                PlayHUDMotion("anm_idle_crouch_empty_w_gl", TRUE, this, GetState());
-            else if (IsMisfire() && isHUDAnimationExist("anm_idle_crouch_jammed_w_gl"))
-                PlayHUDMotion("anm_idle_crouch_moving_w_gl", true, nullptr, GetState());
-            else
-                PlayHUDMotion("anm_idle_crouch_w_gl", true, nullptr, GetState());
-        }
-
-        if (m_bGrenadeMode)
-        {
-            if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_idle_crouch_empty_g"))
-                PlayHUDMotion("anm_idle_crouch_empty_g", TRUE, this, GetState());
-            else if (IsMisfire() && isHUDAnimationExist("anm_idle_crouch_jammed_g"))
-                PlayHUDMotion("anm_idle_crouch_jammed_g", true, nullptr, GetState());
-            else
-                PlayHUDMotion("anm_idle_crouch_g", TRUE, this, GetState());
-        }
-    }
-    else
-        inherited::PlayAnimIdleMovingCrouch();
 }
 
 void CWeaponMagazinedWGrenade::UpdateSounds()

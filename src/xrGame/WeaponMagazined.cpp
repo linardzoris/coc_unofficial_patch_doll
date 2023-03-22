@@ -1542,7 +1542,7 @@ void CWeaponMagazined::PlayAnimBore()
     else if (IsMisfire() && isHUDAnimationExist("anm_bore_jammed"))
         PlayHUDMotion("anm_bore_jammed", true, nullptr, GetState());
     else
-        inherited::PlayAnimBore();
+        PlayHUDMotion("anm_bore", true, nullptr, GetState());
 }
 
 void CWeaponMagazined::PlayAnimIdleSprint()
@@ -1552,7 +1552,7 @@ void CWeaponMagazined::PlayAnimIdleSprint()
     else if (IsMisfire() && isHUDAnimationExist("anm_idle_sprint_jammed"))
         PlayHUDMotion("anm_idle_sprint_jammed", true, nullptr, GetState());
     else
-        inherited::PlayAnimIdleSprint();
+        PlayHUDMotion("anm_idle_sprint", true, nullptr, GetState());
 }
 
 void CWeaponMagazined::PlayAnimIdleMoving()
@@ -1562,27 +1562,25 @@ void CWeaponMagazined::PlayAnimIdleMoving()
     else if (IsMisfire() && isHUDAnimationExist("anm_idle_moving_jammed"))
         PlayHUDMotion("anm_idle_moving_jammed", true, nullptr, GetState());
     else
-        inherited::PlayAnimIdleMoving();
+        PlayHUDMotion("anm_idle_moving", true, nullptr, GetState());
 }
 
 void CWeaponMagazined::PlayAnimIdleMovingCrouch()
 {
-    if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_idle_moving_empty"))
-        PlayHUDMotion("anm_idle_moving_empty", TRUE, NULL, GetState());
-    else if (IsMisfire() && isHUDAnimationExist("anm_idle_moving_jammed"))
-        PlayHUDMotion("anm_idle_moving_jammed", true, nullptr, GetState());
+    if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_idle_moving_crouch_empty"))
+        PlayHUDMotion("anm_idle_moving_crouch_empty", TRUE, NULL, GetState());
+    else if (IsMisfire() && isHUDAnimationExist("anm_idle_moving_crouch_jammed"))
+        PlayHUDMotion("anm_idle_moving_crouch_jammed", true, nullptr, GetState());
     else
-        inherited::PlayAnimIdleMovingCrouch();
+        PlayHUDMotion("anm_idle_moving_crouch", true, nullptr, GetState());
 }
 
 void CWeaponMagazined::PlayAnimReload()
 {
     auto state = GetState();
     VERIFY(state == eReload);
-#ifdef NEW_ANIMS //AVO: use new animations
+
     if (bMisfire)
-
-
         if (isHUDAnimationExist("anm_reload_misfire"))
             PlayHUDMotion("anm_reload_misfire", true, this, state);
         else
@@ -1597,9 +1595,6 @@ void CWeaponMagazined::PlayAnimReload()
         else
             PlayHUDMotion("anm_reload", true, this, state);
     }
-#else
-    PlayHUDMotion("anm_reload", true, this, state);
-#endif //-NEW_ANIM
 }
 
 void CWeaponMagazined::PlayAnimAim() 
@@ -1620,7 +1615,6 @@ void CWeaponMagazined::PlayAnimAim()
     else
         PlayHUDMotion("anm_idle_aim", TRUE, nullptr, GetState());
 
-    PlayHUDMotion("anm_idle_aim", true, nullptr, GetState()); 
 }
 
 void CWeaponMagazined::PlayAnimIdle()
@@ -1655,11 +1649,11 @@ void CWeaponMagazined::PlayAnimShoot()
 
 	if (!IsDiffShotModes() || IsDiffShotModes() && GetCurrentFireMode() != -1)
     {
-        if (IsZoomed() && m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_idle_empty"))
+        if (IsZoomed() && m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shot_when_aim_l"))
             PlayHUDMotion("anm_shot_when_aim_l", false, this, GetState());
-        if (IsZoomed() && isHUDAnimationExist("anm_idle_empty"))
+        if (IsZoomed() && isHUDAnimationExist("anm_shots_when_aim"))
             PlayHUDMotion("anm_shots_when_aim", false, this, GetState());
-        else if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_idle_empty"))
+        else if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shot_l"))
             PlayHUDMotion("anm_shot_l", false, this, GetState());
         else
             PlayHUDMotion("anm_shots", false, this, GetState());
@@ -1667,11 +1661,11 @@ void CWeaponMagazined::PlayAnimShoot()
     // Если IsDiffShotModes и авторежим стрельбы (для SPAS-12).
     if (IsDiffShotModes() && GetCurrentFireMode() == -1)
     {
-        if (IsZoomed() && m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_idle_empty"))
+        if (IsZoomed() && m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shots_auto_when_aim_l"))
             PlayHUDMotion("anm_shots_auto_when_aim_l", false, this, GetState());
-        if (IsZoomed() && isHUDAnimationExist("anm_idle_empty"))
+        if (IsZoomed() && isHUDAnimationExist("anm_shots_auto_when_aim"))
             PlayHUDMotion("anm_shots_auto_when_aim", false, this, GetState());
-        else if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_idle_empty"))
+        else if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shot_auto_l"))
             PlayHUDMotion("anm_shot_auto_l", false, this, GetState());
         else
             PlayHUDMotion("anm_shots_auto", false, this, GetState());
