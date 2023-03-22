@@ -304,32 +304,6 @@ void CActor::g_cl_CheckControls(u32 mstate_wf, Fvector& vControlAccel, float& Ju
             if (scale > EPS)
             {
                 float accel_k = m_fWalkAccel;
-                TIItemContainer::iterator it = inventory().m_belt.begin();
-                TIItemContainer::iterator ite = inventory().m_belt.end();
-                for (; it != ite; ++it)
-                {
-                    CArtefact* artefact = smart_cast<CArtefact*>(*it);
-                    if (artefact)
-                    {
-                        accel_k *= (artefact->m_fWalkAccel * artefact->GetCondition());
-                    }
-                }
-                CCustomOutfit* outfit = GetOutfit();
-                if (outfit)
-                {
-                    accel_k *= outfit->m_fWalkAccel;
-
-                    if (inventory().TotalWeight() > MaxCarryWeight())
-                        accel_k *= outfit->m_fOverweightWalkK;
-                }
-
-                CBackpack* backpack = smart_cast<CBackpack*>(inventory().ItemFromSlot(BACKPACK_SLOT));
-                if (backpack)
-                {
-                    accel_k *= backpack->m_fWalkAccel;
-                    if (inventory().TotalWeight() > MaxCarryWeight())
-                        accel_k *= backpack->m_fOverweightWalkK;
-                }
 
 				if (inventory().TotalWeight() > MaxCarryWeight())
 					accel_k *= m_fOverweightWalkAccel;

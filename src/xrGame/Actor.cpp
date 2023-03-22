@@ -320,9 +320,13 @@ void CActor::Load(LPCSTR section)
     set_box(section, *character_physics_support()->movement(), 1);
     set_box(section, *character_physics_support()->movement(), 0);
 
-    m_fWalkAccel = pSettings->r_float(section, "walk_accel");
+	m_fBaseWalkAccel = pSettings->r_float(section, "walk_accel");
+    m_fWalkAccel = m_fBaseWalkAccel;
+    m_fWalkAccelLimit = pSettings->r_float(section, "walk_accel_limit");
 	m_fOverweightWalkAccel = READ_IF_EXISTS(pSettings, r_float, section, "overweight_walk_accel", 1.0f);
-    m_fJumpSpeed = pSettings->r_float(section, "jump_speed");
+    m_fBaseJumpSpeed = pSettings->r_float(section, "jump_speed");
+    m_fJumpSpeed = m_fBaseJumpSpeed;
+    m_fJumpSpeedLimit = pSettings->r_float(section, "jump_speed_limit");
     m_fRunFactor = pSettings->r_float(section, "run_coef");
     m_fRunBackFactor = pSettings->r_float(section, "run_back_coef");
     m_fWalkBackFactor = pSettings->r_float(section, "walk_back_coef");
@@ -1696,6 +1700,9 @@ void CActor::UpdateArtefactsOnBeltAndOutfit()
         update_time = 0.0f;
     }
 
+	float jump_speed_add = 0.00;
+    float walk_accel_add = 0.00;
+
     for (auto& it : inventory().m_belt)
     {
         const auto artefact = smart_cast<CArtefact*>(it);
@@ -1706,6 +1713,9 @@ void CActor::UpdateArtefactsOnBeltAndOutfit()
             conditions().ChangeHealth(artefact->m_fHealthRestoreSpeed * art_cond * f_update_time);
             conditions().ChangePower(artefact->m_fPowerRestoreSpeed * art_cond * f_update_time);
             conditions().ChangeSatiety(artefact->m_fSatietyRestoreSpeed * art_cond * f_update_time);
+            jump_speed_add += (artefact->m_fJumpSpeed * art_cond);
+            walk_accel_add += (artefact->m_fWalkAccel * art_cond);
+
             if (artefact->m_fRadiationRestoreSpeed * art_cond > 0.0f)
             {
                 float val = artefact->m_fRadiationRestoreSpeed * art_cond - conditions().GetBoostRadiationImmunity();
@@ -1718,22 +1728,61 @@ void CActor::UpdateArtefactsOnBeltAndOutfit()
     }
 
     CCustomOutfit* outfit = GetOutfit();
+
+    if (outfit)
+    {
+        conditions().ChangeBleeding(outfit->m_fBleedingRestoreSpeed * f_update_time);
+        conditions().ChangeHealth(outfit->m_fHealthRestoreSpeed * f_update_time);
+        conditions().ChangePower(outfit->m_fPowerRestoreSpeed * f_update_time);
+        conditions().ChangeSatiety(outfit->m_fSatietyRestoreSpeed * f_update_time);
+        conditions().ChangeRadiation(outfit->m_fRadiationRestoreSpeed * f_update_time);
+        jump_speed_add += (outfit->m_fJumpSpeed);
+        walk_accel_add += (outfit->m_fWalkAccel);
+
+        if (inventory().TotalWeight() > MaxCarryWeight())
+            m_fBaseWalkAccel *= outfit->m_fOverweightWalkK;
+    }
+
     CHelmet* pHelmet = smart_cast<CHelmet*>(inventory().ItemFromSlot(HELMET_SLOT));
-    if (!outfit && !pHelmet)
+
+    if (pHelmet)
     {
-/*      if (GetNightVisionStatus())
-        {
-                SwitchNightVision(false);
-		} */
+        conditions().ChangeBleeding(pHelmet->m_fBleedingRestoreSpeed * f_update_time);
+        conditions().ChangeHealth(pHelmet->m_fHealthRestoreSpeed * f_update_time);
+        conditions().ChangePower(pHelmet->m_fPowerRestoreSpeed * f_update_time);
+        conditions().ChangeSatiety(pHelmet->m_fSatietyRestoreSpeed * f_update_time);
+        conditions().ChangeRadiation(pHelmet->m_fRadiationRestoreSpeed * f_update_time);
+        //jump_speed_add += (pHelmet->m_fJumpSpeed);
+        //walk_accel_add += (pHelmet->m_fWalkAccel);
     }
+
+	CBackpack* pBackpack = smart_cast<CBackpack*>(inventory().ItemFromSlot(BACKPACK_SLOT));
+
+    if (pBackpack)
+    {
+        conditions().ChangePower(pBackpack->m_fPowerRestoreSpeed * f_update_time);
+        jump_speed_add += (pBackpack->m_fJumpSpeed);
+
+        if (inventory().TotalWeight() > MaxCarryWeight())
+            m_fBaseWalkAccel *= pBackpack->m_fOverweightWalkK;
+    }
+
+    // Предельно общее
+	if (m_fBaseJumpSpeed + jump_speed_add <= 0)
+        m_fJumpSpeed = 0.01;
+    else if (m_fBaseJumpSpeed + jump_speed_add > m_fJumpSpeedLimit)
+        m_fJumpSpeed = m_fJumpSpeedLimit;
     else
-    {
-        conditions().ChangeBleeding(((outfit ? outfit->m_fBleedingRestoreSpeed : 0.f) + (pHelmet ? pHelmet->m_fBleedingRestoreSpeed : 0.f))  * f_update_time);
-        conditions().ChangeHealth(((outfit ? outfit->m_fHealthRestoreSpeed : 0.f) + (pHelmet ? pHelmet->m_fHealthRestoreSpeed : 0.f))    * f_update_time);
-        conditions().ChangePower(((outfit ? outfit->m_fPowerRestoreSpeed : 0.f) + (pHelmet ? pHelmet->m_fPowerRestoreSpeed : 0.f))     * f_update_time);
-        conditions().ChangeSatiety(((outfit ? outfit->m_fSatietyRestoreSpeed : 0.f) + (pHelmet ? pHelmet->m_fSatietyRestoreSpeed : 0.f))   * f_update_time);
-        conditions().ChangeRadiation(((outfit ? outfit->m_fRadiationRestoreSpeed : 0.f) + (pHelmet ? pHelmet->m_fRadiationRestoreSpeed : 0.f)) * f_update_time);
-    }
+        m_fJumpSpeed = m_fBaseJumpSpeed + jump_speed_add;
+
+    character_physics_support()->movement()->SetJumpUpVelocity(m_fJumpSpeed);
+
+	if (m_fBaseWalkAccel + walk_accel_add <= 0)
+        m_fWalkAccel = 1;
+    else if (m_fBaseWalkAccel + walk_accel_add > m_fWalkAccelLimit)
+        m_fWalkAccel = m_fWalkAccelLimit;
+    else
+        m_fWalkAccel = m_fBaseWalkAccel + walk_accel_add;
 }
 
 float CActor::HitArtefactsOnBelt(float hit_power, ALife::EHitType hit_type)
