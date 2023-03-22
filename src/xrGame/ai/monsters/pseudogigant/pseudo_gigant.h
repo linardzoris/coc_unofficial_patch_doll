@@ -31,6 +31,7 @@ private:
 
     float m_kick_damage;
     bool m_kick_hit_jumping_actor;
+    bool m_kick_drop_actor_weapon;
 
     u32 m_time_kick_actor_slow_down;
 

@@ -15,6 +15,7 @@
 #include "detail_path_manager.h"
 #include "CharacterPhysicsSupport.h"
 #include "ai/monsters/control_path_builder_base.h"
+#include "Inventory.h"
 
 CPseudoGigant::CPseudoGigant()
 {
@@ -212,6 +213,7 @@ void CPseudoGigant::Load(LPCSTR section)
 
     m_time_kick_actor_slow_down = pSettings->r_u32(section, "HugeKick_Time_SlowDown");
     m_kick_hit_jumping_actor = READ_IF_EXISTS(pSettings, r_bool, section, "HugeKick_Hit_Jumping_Actor", false);
+    m_kick_drop_actor_weapon = READ_IF_EXISTS(pSettings, r_bool, section, "HugeKick_Knock_Actor_Weapon", false);
 
     PostLoad(section);
 }
@@ -361,6 +363,12 @@ void CPseudoGigant::on_threaten_execute()
     HS.hit_type = (ALife::eHitTypeStrike); //	l_P.w_u16	( u16(ALife::eHitTypeWound) );
     HS.Write_Packet(l_P);
     u_EventSend(l_P);
+
+	if (Actor() && m_kick_drop_actor_weapon)
+    {
+        CInventoryItem* active_item = Actor()->inventory().ActiveItem();
+        active_item->SetDropManual(true);
+    }
 }
 
 void CPseudoGigant::HitEntityInJump(const CEntity* pEntity)
