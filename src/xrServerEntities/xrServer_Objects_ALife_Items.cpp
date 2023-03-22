@@ -938,6 +938,7 @@ CSE_ALifeItemBolt::CSE_ALifeItemBolt(LPCSTR caSection) : CSE_ALifeItem(caSection
 {
     m_flags.set(flUseSwitches, false);
     m_flags.set(flSwitchOffline, false);
+    m_can_save = true;
     m_ef_weapon_type = READ_IF_EXISTS(pSettings, r_u32, caSection, "ef_weapon_type", u32(-1));
 }
 
@@ -952,10 +953,12 @@ void CSE_ALifeItemBolt::STATE_Write(NET_Packet& tNetPacket) { inherited::STATE_W
 void CSE_ALifeItemBolt::STATE_Read(NET_Packet& tNetPacket, u16 size) { inherited::STATE_Read(tNetPacket, size); }
 void CSE_ALifeItemBolt::UPDATE_Write(NET_Packet& tNetPacket) { inherited::UPDATE_Write(tNetPacket); };
 void CSE_ALifeItemBolt::UPDATE_Read(NET_Packet& tNetPacket) { inherited::UPDATE_Read(tNetPacket); };
+
 bool CSE_ALifeItemBolt::can_save() const noexcept
 { 
-    return true; 
+    return m_can_save; 
 }
+
 bool CSE_ALifeItemBolt::used_ai_locations() const noexcept { return false; }
 #ifndef XRGAME_EXPORTS
 void CSE_ALifeItemBolt::FillProps(LPCSTR pref, PropItemVec& values) { inherited::FillProps(pref, values); }

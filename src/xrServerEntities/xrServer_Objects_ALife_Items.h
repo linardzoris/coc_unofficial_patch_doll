@@ -439,6 +439,7 @@ class CSE_ALifeItemBolt : public CSE_ALifeItem
 
 public:
     u32 m_ef_weapon_type;
+    bool m_can_save;
     CSE_ALifeItemBolt(LPCSTR caSection);
     virtual ~CSE_ALifeItemBolt();
     virtual bool can_save() const noexcept;
