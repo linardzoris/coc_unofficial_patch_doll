@@ -951,7 +951,7 @@ void CWeapon::UpdateCL()
             {
                 CActor* pA = smart_cast<CActor*>(H_Parent());
                 if (!pA->GetNightVisionStatus())
-                    m_zoom_params.m_pNight_vision->Start(m_zoom_params.m_sUseZoomPostprocess, pA, false);
+                    m_zoom_params.m_pNight_vision->StartForScope(m_zoom_params.m_sUseZoomPostprocess, pA, false);
             }
         }
         else
@@ -960,7 +960,7 @@ void CWeapon::UpdateCL()
             {
                 if (m_zoom_params.m_pNight_vision->IsActive())
                 {
-                    m_zoom_params.m_pNight_vision->Stop(100000.0f, false);
+                    m_zoom_params.m_pNight_vision->StopForScope(100000.0f, false);
                 }
             }
         }
