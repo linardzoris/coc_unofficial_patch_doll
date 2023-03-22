@@ -147,17 +147,30 @@ void CUIActorMenu::PlaySnd(eActorMenuSndAction a)
 void CUIActorMenu::SendMessage(CUIWindow* pWnd, s16 msg, void* pData) { CUIWndCallback::OnEvent(pWnd, msg, pData); }
 void CUIActorMenu::Show(bool status)
 {
+    CActor* pActor = smart_cast<CActor*>(Level().CurrentEntity());
+    bool bHideWeaponInvOpen = READ_IF_EXISTS(pSettings, r_bool, "gameplay", "hide_weapon_when_inventory_open", false);
+
     inherited::Show(status);
     if (status)
     {
         SetMenuMode(m_currMenuMode);
         PlaySnd(eSndOpen);
         m_ActorStateInfo->UpdateActorInfo(m_pActorInvOwner);
+
+		if (pActor && bHideWeaponInvOpen)
+        {
+            Actor()->SetWeaponHideState(INV_STATE_BLOCK_ALL, true);
+        }
     }
     else
     {
         PlaySnd(eSndClose);
         SetMenuMode(mmUndefined);
+
+		if (pActor && bHideWeaponInvOpen)
+        {
+            Actor()->SetWeaponHideState(INV_STATE_BLOCK_ALL, false);
+        }
     }
     m_ActorStateInfo->Show(status);
 }
