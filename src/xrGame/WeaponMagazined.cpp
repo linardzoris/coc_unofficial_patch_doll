@@ -1614,11 +1614,11 @@ void CWeaponMagazined::PlayAnimAim()
     }
 
 	if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_idle_aim_empty"))
-        PlayHUDMotion("anm_idle_aim_empty", TRUE, NULL, GetState());
+        PlayHUDMotion("anm_idle_aim_empty", TRUE, nullptr, GetState());
     else if (IsMisfire() && isHUDAnimationExist("anm_idle_aim_jammed"))
         PlayHUDMotion("anm_idle_aim_jammed", true, nullptr, GetState());
     else
-        PlayHUDMotion("anm_idle_aim", TRUE, NULL, GetState());
+        PlayHUDMotion("anm_idle_aim", TRUE, nullptr, GetState());
 
     PlayHUDMotion("anm_idle_aim", true, nullptr, GetState()); 
 }
@@ -1632,7 +1632,7 @@ void CWeaponMagazined::PlayAnimIdle()
 	if (IsZoomed())
         PlayAnimAim();
     else if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_idle_empty"))
-        PlayHUDMotion("anm_idle_empty", TRUE, NULL, GetState());
+        PlayHUDMotion("anm_idle_empty", TRUE, nullptr, GetState());
     else if (IsMisfire() && isHUDAnimationExist("anm_idle_jammed") && !TryPlayAnimIdle())
         PlayHUDMotion("anm_idle_jammed", true, nullptr, GetState());
     else
@@ -1656,25 +1656,25 @@ void CWeaponMagazined::PlayAnimShoot()
 	if (!IsDiffShotModes() || IsDiffShotModes() && GetCurrentFireMode() != -1)
     {
         if (IsZoomed() && m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_idle_empty"))
-            PlayHUDMotion("anm_shot_when_aim_l", FALSE, this, GetState());
+            PlayHUDMotion("anm_shot_when_aim_l", false, this, GetState());
         if (IsZoomed() && isHUDAnimationExist("anm_idle_empty"))
-            PlayHUDMotion("anm_shots_when_aim", FALSE, this, GetState());
+            PlayHUDMotion("anm_shots_when_aim", false, this, GetState());
         else if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_idle_empty"))
-            PlayHUDMotion("anm_shot_l", FALSE, this, GetState());
+            PlayHUDMotion("anm_shot_l", false, this, GetState());
         else
-            PlayHUDMotion("anm_shots", FALSE, this, GetState());
+            PlayHUDMotion("anm_shots", false, this, GetState());
     }
     // Если IsDiffShotModes и авторежим стрельбы (для SPAS-12).
     if (IsDiffShotModes() && GetCurrentFireMode() == -1)
     {
         if (IsZoomed() && m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_idle_empty"))
-            PlayHUDMotion("anm_shots_auto_when_aim_l", FALSE, this, GetState());
+            PlayHUDMotion("anm_shots_auto_when_aim_l", false, this, GetState());
         if (IsZoomed() && isHUDAnimationExist("anm_idle_empty"))
-            PlayHUDMotion("anm_shots_auto_when_aim", FALSE, this, GetState());
+            PlayHUDMotion("anm_shots_auto_when_aim", false, this, GetState());
         else if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_idle_empty"))
-            PlayHUDMotion("anm_shot_auto_l", FALSE, this, GetState());
+            PlayHUDMotion("anm_shot_auto_l", false, this, GetState());
         else
-            PlayHUDMotion("anm_shots_auto", FALSE, this, GetState());
+            PlayHUDMotion("anm_shots_auto", false, this, GetState());
     }
 }
 

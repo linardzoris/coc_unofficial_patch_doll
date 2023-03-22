@@ -600,9 +600,21 @@ bool CHudItem::isHUDAnimationExist(pcstr anim_name) const
     return false;
 }
 
-void CHudItem::PlayAnimIdleMovingCrouch() { PlayHUDMotion("anm_idle_moving_crouch", true, nullptr, GetState()); }
-void CHudItem::PlayAnimIdleMoving() { PlayHUDMotion("anm_idle_moving", true, nullptr, GetState()); }
-void CHudItem::PlayAnimIdleSprint() { PlayHUDMotion("anm_idle_sprint", true, nullptr, GetState()); }
+void CHudItem::PlayAnimIdleMovingCrouch() 
+{ 
+    PlayHUDMotion("anm_idle_moving_crouch", false, nullptr, GetState()); 
+}
+
+void CHudItem::PlayAnimIdleMoving() 
+{ 
+    PlayHUDMotion("anm_idle_moving", false, nullptr, GetState()); 
+}
+
+void CHudItem::PlayAnimIdleSprint() 
+{ 
+    PlayHUDMotion("anm_idle_sprint", false, nullptr, GetState()); 
+}
+
 void CHudItem::OnMovementChanged(ACTOR_DEFS::EMoveCommand cmd)
 {
     if (GetState() == eIdle && !m_bStopAtEndAnimIsRunning)

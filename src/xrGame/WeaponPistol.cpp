@@ -23,42 +23,22 @@ void CWeaponPistol::PlayAnimShow()
 {
     VERIFY(GetState() == eShowing);
 
-    if (m_ammoElapsed.type1 == 0)
-        PlayHUDMotion("anm_show_empty", FALSE, this, GetState());
-    else
-        inherited::PlayAnimShow();
+    inherited::PlayAnimShow();
 }
 
 void CWeaponPistol::PlayAnimBore()
 {
-    if (m_ammoElapsed.type1 == 0)
-        PlayHUDMotion("anm_bore_empty", TRUE, this, GetState());
-    else
-        inherited::PlayAnimBore();
+    inherited::PlayAnimBore();
 }
 
 void CWeaponPistol::PlayAnimIdleSprint()
 {
-    if (m_ammoElapsed.type1 == 0)
-    {
-        PlayHUDMotion("anm_idle_sprint_empty", TRUE, NULL, GetState());
-    }
-    else
-    {
-        inherited::PlayAnimIdleSprint();
-    }
+    inherited::PlayAnimIdleSprint();
 }
 
 void CWeaponPistol::PlayAnimIdleMoving()
 {
-    if (m_ammoElapsed.type1 == 0)
-    {
-        PlayHUDMotion("anm_idle_moving_empty", TRUE, NULL, GetState());
-    }
-    else
-    {
-        inherited::PlayAnimIdleMoving();
-    }
+    inherited::PlayAnimIdleMoving();
 }
 
 void CWeaponPistol::PlayAnimIdle()
@@ -66,22 +46,12 @@ void CWeaponPistol::PlayAnimIdle()
     if (TryPlayAnimIdle())
         return;
 
-    if (m_ammoElapsed.type1 == 0)
-    {
-        PlayHUDMotion("anm_idle_empty", TRUE, NULL, GetState());
-    }
-    else
-    {
-        inherited::PlayAnimIdle();
-    }
+    inherited::PlayAnimIdle();
 }
 
 void CWeaponPistol::PlayAnimAim()
 {
-    if (m_ammoElapsed.type1 == 0)
-        PlayHUDMotion("anm_idle_aim_empty", TRUE, NULL, GetState());
-    else
-        inherited::PlayAnimAim();
+    inherited::PlayAnimAim();
 }
 
 void CWeaponPistol::PlayAnimReload()
@@ -92,26 +62,15 @@ void CWeaponPistol::PlayAnimReload()
 void CWeaponPistol::PlayAnimHide()
 {
     VERIFY(GetState() == eHiding);
-    if (m_ammoElapsed.type1 == 0)
-    {
-        PlaySound("sndClose", get_LastFP());
-        PlayHUDMotion("anm_hide_empty", TRUE, this, GetState());
-    }
-    else
-        inherited::PlayAnimHide();
+
+    inherited::PlayAnimHide();
 }
 
 void CWeaponPistol::PlayAnimShoot()
 {
     VERIFY(GetState() == eFire);
-    if (m_ammoElapsed.type1 > 1)
-    {
-        PlayHUDMotion("anm_shots", FALSE, this, GetState());
-    }
-    else
-    {
-        PlayHUDMotion("anm_shot_l", FALSE, this, GetState());
-    }
+
+    inherited::PlayAnimShoot();
 }
 
 void CWeaponPistol::switch2_Reload() { inherited::switch2_Reload(); }
