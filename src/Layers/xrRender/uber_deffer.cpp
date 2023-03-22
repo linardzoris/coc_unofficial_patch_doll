@@ -11,7 +11,7 @@ void uber_deffer(CBlender_Compile& C, bool hq, LPCSTR _vspec, LPCSTR _pspec, BOO
     fix_texture_name(fname);
     ref_texture _t;
     _t.create(fname);
-    bool bump = _t.bump_exist();
+    bool bump = ps_r2_use_bump_flags.test(R2FLAG_USE_BUMP) && _t.bump_exist();
 
     // detect lmap
     bool lmap = true;

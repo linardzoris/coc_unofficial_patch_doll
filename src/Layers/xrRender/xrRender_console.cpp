@@ -133,6 +133,10 @@ Flags32 ps_r2_rain_drops_flags = {R2FLAG_RAIN_DROPS};
 
 Flags32 ps_r2_hud_mask_flags = {R_FLAG_HUD_MASK | R_FLAG_HUD_DYN_EFFECTS};
 
+// Отключить бампы на r2+
+
+Flags32 ps_r2_use_bump_flags = {R2FLAG_USE_BUMP};
+
 // 
 
 float ps_r__Detail_l_ambient = 0.9f;
@@ -973,6 +977,7 @@ void xrRender_initconsole()
     CMD3(CCC_Mask, "r4_wireframe", &ps_r2_ls_flags_ext, R2FLAGEXT_WIREFRAME); // Need restart
     CMD3(CCC_Mask, "r2_steep_parallax", &ps_r2_ls_flags, R2FLAG_STEEP_PARALLAX);
     CMD3(CCC_Mask, "r2_detail_bump", &ps_r2_ls_flags, R2FLAG_DETAIL_BUMP);
+    CMD3(CCC_Mask, "r2_use_bump", &ps_r2_use_bump_flags, R2FLAG_USE_BUMP); // Need restart
 
     CMD3(CCC_Token, "r2_sun_quality", &ps_r_sun_quality, qsun_quality_token);
     CMD3(CCC_Token, "r2_aa_mode", &r2_aa_mode, r2_aa_mode_token);

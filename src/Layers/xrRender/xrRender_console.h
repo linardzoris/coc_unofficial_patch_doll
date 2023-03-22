@@ -245,6 +245,13 @@ enum
     R_FLAG_HUD_DYN_EFFECTS = (1 << 1),
 };
 
+extern ECORE_API Flags32 ps_r2_use_bump_flags;
+
+enum
+{
+    R2FLAG_USE_BUMP = (1 << 0),
+};
+
 extern void xrRender_initconsole();
 extern BOOL xrRender_test_hw();
 extern void xrRender_apply_tf();
