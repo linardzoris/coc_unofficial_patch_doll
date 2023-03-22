@@ -195,7 +195,8 @@ void CPolterTele::tele_find_objects(xr_vector<IGameObject*>& objects, const Fvec
             (obj->spawn_ini() && obj->spawn_ini()->section_exist("ph_heavy")) ||
             (obj->m_pPhysicsShell->getMass() < m_pmt_object_min_mass) ||
             (obj->m_pPhysicsShell->getMass() > m_pmt_object_max_mass) || (obj == m_object) ||
-            m_object->CTelekinesis::is_active_object(obj) || !obj->m_pPhysicsShell->get_ApplyByGravity())
+            m_object->CTelekinesis::is_active_object(obj) || (pSettings->line_exist(obj->cNameSect().c_str(), "quest_item") && pSettings->r_bool(obj->cNameSect().c_str(), "quest_item")) ||
+            !obj->m_pPhysicsShell->get_ApplyByGravity())
             continue;
 
         Fvector center;

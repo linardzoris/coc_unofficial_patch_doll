@@ -205,7 +205,8 @@ void CStateBurerAttackTele<Object>::FindFreeObjects(xr_vector<IGameObject*>& tpO
             (obj->spawn_ini() && obj->spawn_ini()->section_exist("ph_heavy")) ||
             (obj->m_pPhysicsShell->getMass() < this->object->m_tele_object_min_mass) ||
             (obj->m_pPhysicsShell->getMass() >this->object->m_tele_object_max_mass) || (obj == this->object) ||
-            this->object->CTelekinesis::is_active_object(obj) || !obj->m_pPhysicsShell->get_ApplyByGravity())
+            this->object->CTelekinesis::is_active_object(obj) || (pSettings->line_exist(obj->cNameSect().c_str(), "quest_item") &&
+            pSettings->r_bool(obj->cNameSect().c_str(), "quest_item")) || !obj->m_pPhysicsShell->get_ApplyByGravity())
             continue;
 
         tele_objects.push_back(obj);
