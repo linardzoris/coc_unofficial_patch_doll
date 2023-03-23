@@ -1644,10 +1644,19 @@ void CActor::OnItemDrop(CInventoryItem* inventory_item, bool just_before_destroy
 {
     CInventoryOwner::OnItemDrop(inventory_item, just_before_destroy);
 
-    CCustomOutfit* outfit = smart_cast<CCustomOutfit*>(inventory_item);
-    if (outfit && inventory_item->m_ItemCurrPlace.type == eItemPlaceSlot)
+	// Меняем худ рук, если в слоте рюкзака есть экза
+    CBackpack* backpack = smart_cast<CBackpack*>(inventory_item);
+    CCustomOutfit* outfit_slot = smart_cast<CCustomOutfit*>(Actor()->inventory().ItemFromSlot(OUTFIT_SLOT));
+
+    if (outfit_slot)
     {
-        outfit->ApplySkinModel(this, false, false);
+        if (backpack && inventory_item->m_ItemCurrPlace.type == eItemPlaceSlot)
+            outfit_slot->ApplySkinModel(this, true, false);
+    }
+    if (!outfit_slot)
+    {
+        if (backpack && inventory_item->m_ItemCurrPlace.type == eItemPlaceSlot)
+            g_player_hud->load_default();
     }
 
     CWeapon* weapon = smart_cast<CWeapon*>(inventory_item);

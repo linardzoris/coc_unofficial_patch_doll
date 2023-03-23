@@ -138,7 +138,8 @@ public:
     player_hud();
     ~player_hud();
     void load(const shared_str& model_name);
-    void load_default() { load("actor_hud_05"); };
+    void load_default() { load("actor_hud_without_outfit"); };
+    void load_default_exo() { load("actor_hud_without_outfit_exo"); };
     void update(const Fmatrix& trans);
     void render_hud();
     void render_item_ui();

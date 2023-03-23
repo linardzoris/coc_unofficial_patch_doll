@@ -12,6 +12,7 @@
 #include "player_hud.h"
 #include "ActorHelmet.h"
 #include "DynamicHudGlass.h"
+#include "ActorBackpack.h"
 
 CCustomOutfit::CCustomOutfit()
 {
@@ -243,6 +244,8 @@ void CCustomOutfit::OnMoveToSlot(const SInvItemPlace& prev)
 
 void CCustomOutfit::ApplySkinModel(CActor* pActor, bool bDress, bool bHUDOnly)
 {
+    CBackpack* backpack = smart_cast<CBackpack*>(Actor()->inventory().ItemFromSlot(BACKPACK_SLOT));
+
     if (bDress)
     {
         if (!bHUDOnly && m_ActorVisual.size())
@@ -251,7 +254,11 @@ void CCustomOutfit::ApplySkinModel(CActor* pActor, bool bDress, bool bHUDOnly)
             pActor->ChangeVisual(NewVisual);
         }
 
-        if (pActor == Level().CurrentViewEntity())
+		// Меняем худ рук, если в слоте рюкзака есть экза
+        if (pActor == Level().CurrentViewEntity() && backpack && backpack->bIsExoskeleton)
+            g_player_hud->load(pSettings->r_string(cNameSect(), "player_hud_section_exo"));
+
+		if (pActor == Level().CurrentViewEntity() && !backpack || pActor == Level().CurrentViewEntity() && backpack && !backpack->bIsExoskeleton)
             g_player_hud->load(pSettings->r_string(cNameSect(), "player_hud_section"));
     }
     else
@@ -265,7 +272,11 @@ void CCustomOutfit::ApplySkinModel(CActor* pActor, bool bDress, bool bHUDOnly)
             };
         }
 
-        if (pActor == Level().CurrentViewEntity())
+		// Меняем худ рук, если в слоте рюкзака есть экза
+        if (pActor == Level().CurrentViewEntity() && backpack && backpack->bIsExoskeleton)
+            g_player_hud->load_default_exo();
+
+        if (pActor == Level().CurrentViewEntity() && !backpack || pActor == Level().CurrentViewEntity() && backpack && !backpack->bIsExoskeleton)
             g_player_hud->load_default();
     }
 }

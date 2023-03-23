@@ -54,6 +54,7 @@ public:
     void AddBonesProtection(LPCSTR bones_section);
 
     bool m_bShowStats;
+    bool bIsExoskeleton;
 
 protected:
     virtual bool install_upgrade_impl(LPCSTR section, bool test);
