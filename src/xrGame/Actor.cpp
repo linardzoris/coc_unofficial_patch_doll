@@ -1696,6 +1696,8 @@ void CActor::OnItemBelt(CInventoryItem* inventory_item, const SInvItemPlace& pre
 
 #define ARTEFACTS_UPDATE_TIME 0.100f
 
+bool bAFRadiationFromBackpack = READ_IF_EXISTS(pSettings, r_bool, "gameplay", "af_radiation_backpack", false);
+
 void CActor::UpdateArtefactsOnBeltAndOutfit()
 {
     static float update_time = 0;
@@ -1716,28 +1718,59 @@ void CActor::UpdateArtefactsOnBeltAndOutfit()
 	float jump_speed_add = 0.00;
     float walk_accel_add = 0.00;
 
-    for (auto& it : inventory().m_belt)
+    if (bAFRadiationFromBackpack)
     {
-        const auto artefact = smart_cast<CArtefact*>(it);
-
-        if (artefact)
+        for (auto& it : inventory().m_all)
         {
-            float art_cond = artefact->GetCondition();
-            conditions().ChangeBleeding(artefact->m_fBleedingRestoreSpeed * art_cond * f_update_time);
-            conditions().ChangeHealth(artefact->m_fHealthRestoreSpeed * art_cond * f_update_time);
-            conditions().ChangePower(artefact->m_fPowerRestoreSpeed * art_cond * f_update_time);
-            conditions().ChangeSatiety(artefact->m_fSatietyRestoreSpeed * art_cond * f_update_time);
-            jump_speed_add += (artefact->m_fJumpSpeed * art_cond);
-            walk_accel_add += (artefact->m_fWalkAccel * art_cond);
+            const auto artefact = smart_cast<CArtefact*>(it);
 
-            if (artefact->m_fRadiationRestoreSpeed * art_cond > 0.0f)
+            if (artefact)
             {
-                float val = artefact->m_fRadiationRestoreSpeed * art_cond - conditions().GetBoostRadiationImmunity();
-                clamp(val, 0.0f, val);
-                conditions().ChangeRadiation(val * f_update_time);
+                float art_cond = artefact->GetCondition();
+                conditions().ChangeBleeding(artefact->m_fBleedingRestoreSpeed * art_cond * f_update_time);
+                conditions().ChangeHealth(artefact->m_fHealthRestoreSpeed * art_cond * f_update_time);
+                conditions().ChangePower(artefact->m_fPowerRestoreSpeed * art_cond * f_update_time);
+                conditions().ChangeSatiety(artefact->m_fSatietyRestoreSpeed * art_cond * f_update_time);
+                jump_speed_add += (artefact->m_fJumpSpeed * art_cond);
+                walk_accel_add += (artefact->m_fWalkAccel * art_cond);
+
+                if (artefact->m_fRadiationRestoreSpeed * art_cond > 0.0f)
+                {
+                    float val = artefact->m_fRadiationRestoreSpeed * art_cond - conditions().GetBoostRadiationImmunity();
+                    clamp(val, 0.0f, val);
+                    conditions().ChangeRadiation(val * f_update_time);
+                }
+                else
+                    conditions().ChangeRadiation(artefact->m_fRadiationRestoreSpeed * art_cond * f_update_time);
             }
-            else
-                conditions().ChangeRadiation(artefact->m_fRadiationRestoreSpeed * art_cond * f_update_time);
+        }
+    }
+    else
+    {
+        for (auto& it : inventory().m_belt)
+        {
+            const auto artefact = smart_cast<CArtefact*>(it);
+
+            if (artefact)
+            {
+                float art_cond = artefact->GetCondition();
+                conditions().ChangeBleeding(artefact->m_fBleedingRestoreSpeed * art_cond * f_update_time);
+                conditions().ChangeHealth(artefact->m_fHealthRestoreSpeed * art_cond * f_update_time);
+                conditions().ChangePower(artefact->m_fPowerRestoreSpeed * art_cond * f_update_time);
+                conditions().ChangeSatiety(artefact->m_fSatietyRestoreSpeed * art_cond * f_update_time);
+                jump_speed_add += (artefact->m_fJumpSpeed * art_cond);
+                walk_accel_add += (artefact->m_fWalkAccel * art_cond);
+
+                if (artefact->m_fRadiationRestoreSpeed * art_cond > 0.0f)
+                {
+                    float val =
+                        artefact->m_fRadiationRestoreSpeed * art_cond - conditions().GetBoostRadiationImmunity();
+                    clamp(val, 0.0f, val);
+                    conditions().ChangeRadiation(val * f_update_time);
+                }
+                else
+                    conditions().ChangeRadiation(artefact->m_fRadiationRestoreSpeed * art_cond * f_update_time);
+            }
         }
     }
 
@@ -1995,11 +2028,23 @@ float CActor::GetRestoreSpeed(ALife::EConditionRestoreType const& type)
     }
     case ALife::eRadiationRestoreSpeed:
     {
-        for (auto& it : inventory().m_belt)
+        if (bAFRadiationFromBackpack)
         {
-            const auto artefact = smart_cast<CArtefact*>(it);
-            if (artefact)
-                res += artefact->m_fRadiationRestoreSpeed * artefact->GetCondition();
+            for (auto& it : inventory().m_all)
+            {
+                const auto artefact = smart_cast<CArtefact*>(it);
+                if (artefact)
+                    res += artefact->m_fRadiationRestoreSpeed * artefact->GetCondition();
+            }
+        }
+        else
+        {
+            for (auto& it : inventory().m_belt)
+            {
+                const auto artefact = smart_cast<CArtefact*>(it);
+                if (artefact)
+                    res += artefact->m_fRadiationRestoreSpeed * artefact->GetCondition();
+            }
         }
 
         const auto outfit = GetOutfit();
