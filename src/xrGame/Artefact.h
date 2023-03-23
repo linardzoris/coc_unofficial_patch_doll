@@ -94,6 +94,11 @@ public:
     float m_fBleedingRestoreSpeed;
     CHitImmunity m_ArtefactHitImmunities;
 
+    bool m_bVolumetricLights;
+    float m_fVolumetricQuality;
+    float m_fVolumetricDistance;
+    float m_fVolumetricIntensity;
+
 public:
     enum EAFHudStates
     {
