@@ -823,6 +823,20 @@ local weapon_classes
 local artefact_classes
 local anomaly_classes
 
+function IsTorch(o,c)
+	if not c then
+		c = o and o:clsid()
+	end
+	return c and (c == clsid.device_torch_s or c == clsid.device_torch)
+end
+
+function IsColdWeapon(o,c)
+	if not c then
+		c = o and o:clsid()
+	end
+	return c and (c == clsid.wpn_knife_s or c == clsid.wpn_knife)
+end
+
 function IsDetectorSimple(o,c)
 	if not c then
 		c = o and o:clsid()
