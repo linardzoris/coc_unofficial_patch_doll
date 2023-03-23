@@ -87,7 +87,7 @@ void CBackpack::Load(LPCSTR section)
     m_fWalkAccel = READ_IF_EXISTS(pSettings, r_float, section, "walk_accel", 1.f);
     m_fOverweightWalkK = READ_IF_EXISTS(pSettings, r_float, section, "overweight_walk_accel", 1.f);
 
-    m_flags.set(FUsingCondition, READ_IF_EXISTS(pSettings, r_bool, section, "use_condition", TRUE));
+	m_bShowStats = READ_IF_EXISTS(pSettings, r_bool, section, "show_protect_stats", FALSE);
 }
 
 void CBackpack::ReloadBonesProtection()

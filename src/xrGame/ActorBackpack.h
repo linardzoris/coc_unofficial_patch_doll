@@ -53,6 +53,7 @@ public:
     void ReloadBonesProtection();
     void AddBonesProtection(LPCSTR bones_section);
 
+    bool m_bShowStats;
 
 protected:
     virtual bool install_upgrade_impl(LPCSTR section, bool test);

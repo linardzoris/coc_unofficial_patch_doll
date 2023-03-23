@@ -409,7 +409,7 @@ void CUIItemInfo::TryAddOutfitInfo(CInventoryItem& pInvItem, CInventoryItem* pCo
         UIOutfitInfo->UpdateInfo(helmet, comp_helmet);
         UIDesc->AddWindow(UIOutfitInfo, false);
     }
-    else if (backpack)
+    else if (backpack && backpack->m_bShowStats)
     {
         CBackpack* comp_backpack = smart_cast<CBackpack*>(pCompareItem);
         UIOutfitInfo->UpdateInfo(backpack, comp_backpack);
