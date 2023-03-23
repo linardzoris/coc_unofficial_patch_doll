@@ -69,6 +69,12 @@
 	<string id="st_repair_mod_message_box_ask">
 		<text>Точно хотите отремонтировать: %s?\n\n%c[255,1,255,1]+%s%</text>
 	</string>
+	<string id="st_charge_mod_message_box_ask">
+		<text>Вы действительно хотите зарядить %s?\n\n%c[255,1,255,1]+%s%</text>
+	</string>
+	<string id="st_charge_mod_message_box_condition_to_high">
+		<text>В данный момент смена аккумулятора нецелесообразна.</text>
+	</string>		
 	<string id="st_repair_mod_message_box_condition_to_low">
 		<text>Нельзя отремонтировать этим набором.</text>
 	</string>

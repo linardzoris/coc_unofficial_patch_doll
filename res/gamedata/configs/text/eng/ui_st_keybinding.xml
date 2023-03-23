@@ -292,4 +292,32 @@
 	<string id="kb_pda_tab6">
 		<text>PDA Guide</text>
 	</string>
+	
+	<string id="kb_grp_auto">
+		<text>Transport</text>
+	</string>	
+	<string id="kb_turn_engine">
+		<text>Start the engine</text>
+	</string>
+	<string id="kb_switch_horn">
+		<text>Switch the horn</text>
+	</string>	
+	<string id="kb_car_moving_break">
+		<text>Handbrake</text>
+	</string>	
+	<string id="kb_car_transmission_up">
+		<text>Boost transmission</text>
+	</string>	
+	<string id="kb_car_transmission_down">
+		<text>Lower gear</text>
+	</string>	
+	<string id="kb_car_lights_on">
+		<text>Headlights</text>
+	</string>	
+	<string id="kb_car_weapon_fire">
+		<text>Fire from the main gun</text>
+	</string>	
+	<string id="kb_car_weapon_zoom">
+		<text>Take aim</text>
+	</string>	
 </string_table>

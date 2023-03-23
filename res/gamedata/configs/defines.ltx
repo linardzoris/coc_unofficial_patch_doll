@@ -1,0 +1,355 @@
+[hud_base]
+aim_hud_offset_pos				= 0,0,0
+aim_hud_offset_rot				= 0,0,0
+
+aim_hud_offset_pos_16x9			= 0,0,0
+aim_hud_offset_rot_16x9			= 0,0,0
+
+gl_hud_offset_pos_16x9			= 0,0,0
+gl_hud_offset_rot_16x9			= 0,0,0
+
+gl_hud_offset_pos				= 0,0,0
+gl_hud_offset_rot				= 0,0,0
+
+lean_hud_offset_pos				= 0,0,0
+lean_hud_offset_rot				= 0,0,0
+
+attach_place_idx				= 0
+
+[hud_base_weapon]
+item_position                                      = 0,0,0
+item_orientation                                   = 0,0,0
+aim_hud_offset_pos                                 = 0,0,0
+aim_hud_offset_pos_16x9                            = 0,0,0
+aim_hud_offset_rot                                 = 0,0,0
+aim_hud_offset_rot_16x9                            = 0,0,0
+gl_hud_offset_pos                                  = 0,0,0
+gl_hud_offset_pos_16x9                             = 0,0,0
+gl_hud_offset_rot                                  = 0,0,0
+gl_hud_offset_rot_16x9                             = 0,0,0
+lean_hud_offset_pos                                = 0,0,0
+lean_hud_offset_rot                                = 0,0,0
+attach_place_idx				                   = 0
+zoom_hide_crosshair				                   = true
+
+;Эффект при стрельбе. Это не для камеры, а для рук с оружием. Немного двигает руки с ним в разные стороны, хорошо заметно, если разрядить магазин в небо не отжимая.
+shooting_hud_effect                				   = true
+shooting_max_LRUD                  				   = 0.005,0.005,0.005,0
+shooting_max_LRUD_aim              				   = 0.0025,0.0025,0,0
+shooting_backward_offset           				   = 0.02,0.015
+shooting_ret_speed                 				   = 7.5
+shooting_ret_aim_speed             				   = 15
+shooting_min_LRUD_power            				   = 0.01
+
+;Смещение худа рук по координатам, когда мы вплотную к стене. Вычислять не через худ аджаст, это просто модификатор текущих координат рук.
+hud_collision_enabled 			 				   = true
+hud_collision_offset_pos		 				   = 0,-0.25,0
+hud_collision_offset_pos_16x9	 				   = 0,-0.25,0
+hud_collision_offset_rot		 				   = -0.8,0,0
+hud_collision_offset_rot_16x9	 				   = -0.8,0,0
+
+[sect_identity_immunities]
+burn_immunity			= 1.0
+strike_immunity			= 1.0
+shock_immunity			= 1.0
+wound_immunity			= 1.0
+wound_2_immunity		= 1.0
+radiation_immunity		= 1.0
+telepatic_immunity		= 1.0
+chemical_burn_immunity	= 1.0
+explosion_immunity		= 1.0
+fire_wound_immunity		= 1.0
+
+[sect_helm_immunities]
+burn_immunity			= 1.0
+strike_immunity			= 0.0
+shock_immunity			= 1.0
+wound_immunity			= 0.0
+wound_2_immunity		= 0.0
+radiation_immunity		= 0.0
+telepatic_immunity		= 0.0
+chemical_burn_immunity	= 1.0
+explosion_immunity		= 1.0
+fire_wound_immunity		= 1.0
+
+[sect_zero_immunities]
+burn_immunity			= 0.0
+strike_immunity			= 0.0
+shock_immunity			= 0.0
+wound_immunity			= 0.0
+wound_2_immunity		= 0.0
+radiation_immunity		= 0.0
+telepatic_immunity		= 0.0
+chemical_burn_immunity	= 0.0
+explosion_immunity		= 0.0
+fire_wound_immunity		= 0.0
+
+[identity_immunities]
+cform						= skeleton
+immunities_sect				= sect_identity_immunities
+slot 						= -1
+description					= no_description
+default_to_ruck				= false
+sprint_allowed				= true
+control_inertion_factor		= 1.0
+zoom_rotate_time			= 0.25
+
+;Наклоны с оружием и предметами
+strafe_enabled              = true
+strafe_transition_time      = 0.4
+strafe_hud_offset_pos       = 0.015,0.0,0.00
+strafe_hud_offset_rot       = 0.0,0.0,4.5
+
+strafe_aim_enabled          = false
+strafe_aim_transition_time  = 0.15
+strafe_aim_hud_offset_pos   = 0.003,0.0,0.00
+strafe_aim_hud_offset_rot   = 0.0,0.0,0.5
+
+;Приближение оружия при упарывании в стену
+nearwall_target_hud_fov     = 0.45
+nearwall_speed_mod          = 10
+
+[booster]:identity_immunities
+GroupControlSection			= spawn_group
+discovery_dependency		=
+$prefetch					= 8
+class						= II_FOOD			; Change to S_FOOD to use se_item.eatable_item script binding!
+visual						= dynamics\devices\dev_aptechka\dev_aptechka_low.ogf
+description					= default
+inv_name					= default
+inv_name_short				= default
+inv_weight					= 0.01
+
+inv_grid_width				= 1
+inv_grid_height				= 1
+inv_grid_x					= 3
+inv_grid_y					= 18
+cost						= 1
+
+; eatable item
+eat_health					= 0
+eat_satiety					= 0
+eat_power					= 0
+eat_max_power				= 0
+eat_radiation				= 0
+eat_alcohol					= 0
+wounds_heal_perc			= 0
+
+boost_time					= 0.0
+boost_max_weight			= 0.0
+boost_health_restore		= 0.0
+boost_power_restore			= 0.0
+boost_radiation_restore		= 0.0
+boost_bleeding_restore		= 0.0
+
+boost_radiation_protection	= 0.0
+boost_telepat_protection	= 0.0
+boost_chemburn_protection	= 0.0
+
+boost_burn_immunity			= 0.0
+boost_shock_immunity		= 0.0
+boost_radiation_immunity	= 0.0
+boost_telepat_immunity		= 0.0
+boost_chemburn_immunity		= 0.0
+boost_strike_immunity		= 0.0
+boost_wound_immunity		= 0.0
+boost_explosion_immunity	= 0.0
+boost_fire_wound_immunity	= 0.0
+
+;New fields
+use_condition				= false
+max_uses					= 1
+remove_after_use			= true
+empty_weight				= 0.1
+allow_repair				= false
+dont_stack					= false
+
+;USE THIS IF YOU WANT ITEM TO HAVE STORY ID
+[booster_script]:booster
+class						= S_FOOD
+
+[zero_immunities]:identity_immunities
+immunities_sect				= sect_zero_immunities
+
+[default_weapon_params]:identity_immunities
+use_aim_bullet				= false
+use_first_bullet			= false
+k_hit_critical				= 0
+hit_power					= 0.50, 0.50, 0.50, 0.50
+hit_power_critical			= 1.00, 1.00, 1.00, 1.00
+hit_probability_gd_novice	= 1
+hit_probability_gd_stalker	= 1
+hit_probability_gd_veteran	= 1
+hit_probability_gd_master	= 1
+hit_type					= fire_wound
+silencer_hit_power			= 0.45, 0.45, 0.45, 0.45
+hit_impulse					= 10						; size of physic impulse by bullet
+silencer_hit_impulse		= 9
+slot 						= -1
+description					= no_description
+;-----------
+default_to_ruck				= false
+hand_dependence				= 1
+sprint_allowed				= true
+control_inertion_factor		= 1.0
+zoom_rotate_time			= 0.25
+scope_zoom_factor			= 1.25
+ironsight_zoom_factor		= 1.25		;Really only used for Grenade Launcher Attachments
+holder_fov_modifier			= 1.0
+holder_range_modifier		= 1.0
+installed_upgrades			= 
+launch_speed				= 0
+
+$npc						= on
+$prefetch					= 8
+GroupControlSection			= spawn_group
+scheduled					= off
+
+light_color                 = 0.6,0.5,0.3
+light_disabled				= false
+light_time					= 0.2
+light_var_color				= 0.05
+light_var_range				= 0.5
+silencer_light_color		= 0.6,0.5,0.3
+silencer_light_range		= 0.01
+silencer_light_time			= 0.2
+silencer_light_var_color	= 0.05
+silencer_light_var_range	= 0.5
+
+min_radius = 1
+max_radius = 500
+
+scope_name				    = wpn_addon_scope
+scope_x					    = 0
+scope_y					    = 0
+
+; Удалять ли один патрон при расклине
+misfire_one_cartridge_remove                       = false
+; Меняет анимации и скорострельность для авторежима, используется rpm_mode_2
+different_shot_modes                               = false
+
+[common_ph_friction_params_on_npc_death] ; Parameters for setting change of friction at the time of the death of a character
+
+ph_skeleton_airr_lin_factor   = 2.0 ;550.0 (Precisely because of the fact that the multiplication factor of 0.002 removed from the code)
+ph_skeleton_airr_ang_factor   = 0.0 ;0.0 (Precisely because of the fact that removed the multiplication by a factor of 0.3 from the code (0.0 * 0.3 = 0.0))
+ph_skeleton_hinger_factor1    = 1.0 ;1.0 (Because of the fact that the multiplication factor removed from the code 5.0)
+ph_skeleton_ddelay	     	  = 15.0 ;Time changes in friction values ??in the joint since the inception of the shell, s
+
+ph_skel_fatal_impulse_factor  = 6.0
+ph_after_death_velocity_factor= 0.75
+ph_skel_shot_up_factor        = 0.25
+
+
+
+ph_skeleton_skin_friction_start	= 0.0   ; The starting value for the shell friction
+ph_skeleton_skin_friction_end	= 2.0   ; The final value for the shell friction
+ph_skeleton_skin_ddelay			= 6.0		; Time changes in friction values since the inception of the shell, s.
+ph_skeleton_skin_ddelay_after_wound = 2.0 ; Changes in the friction values time since the creation of shell, s (for the character after injury).
+ph_pelvis_factor_low_pose_detect =0.3	; Length of the beam in the collision with the ground from the center pelvisa
+										; If the collision, the character is in the lower position (or hurt) (in this case zadayutsya other options for him
+										; Friction and no pulse multiplication for the first hit)
+ph_character_have_wounded_state = false; имеет ли персонаж состояние раненый
+
+[monster_base]:common_ph_friction_params_on_npc_death
+actor_hit_effect 	= effector_monster_hit
+custom_data			= default_custom_data.ltx		; option for Level Editor
+
+feel_enemy_who_made_sound_max_distance = 30
+feel_enemy_who_just_hit_max_distance = 200
+feel_enemy_max_distance = 50
+
+[wpn_vodka_hud]:identity_immunities,hud_base
+fire_point                               = 0.0, 0.0, 0.06
+fire_bone                                = bip01_head
+orientation                              = 0, 0, 0
+position                                 = 0, 0, 0
+visual                                   = dynamics\devices\dev_vodka\dev_vodka.ogf
+
+anim_idle                                = vodka_2
+anim_show                                = vodka_1
+anim_hide                                = vodka_4
+anim_play                                = vodka_5
+anim_prepare                             = vodka_5
+anim_eat                                 = vodka_3
+
+;;;;;;;;;;;;;;;;;Оружие
+
+[new_weapon_params]
+scope_texture                                      = none
+snd_on_take								 		   = weapon
+ammo_current                                       = 180
+ammo_limit                                         = 210
+startup_ammo                                       = 90
+GroupControlSection                                = spawn_group
+cform                                              = skeleton
+installed_upgrades                                 = 
+kill_msg_height                                    = 28
+kill_msg_width                                     = 84
+kill_msg_x                                         = 0
+kill_msg_y                                         = 28
+upgr_icon_height                                   = 200
+upgr_icon_width                                    = 300
+upgr_icon_x									       = 0
+upgr_icon_y 									   = 0
+gl_zoom_factor                  				   = 1.1
+
+; Удалять ли один патрон при расклине
+misfire_one_cartridge_remove                       = false
+; Меняет анимации и скорострельность для авторежима, используется rpm_mode_2
+different_shot_modes                               = false
+
+hit_probability_gd_master                          = 0.95
+hit_probability_gd_novice                          = 0.40
+hit_probability_gd_stalker                         = 0.60
+hit_probability_gd_veteran                         = 0.80
+
+immunities_sect                                    = sect_identity_immunities
+
+scope_name				                           = wpn_addon_scope
+scope_x					                           = 0
+scope_y					                           = 0
+control_inertion_factor                            = 1.0
+default_to_ruck                                    = false
+description                                        = no_description
+frag_hit_critical                                  = 0
+hit_impulse                                        = 10
+hit_power                                          = 0.50, 0.50, 0.50, 0.50
+hit_power_critical                                 = 1.00, 1.00, 1.00, 1.00
+k_hit_critical                                     = 0
+silencer_hit_impulse                               = 9
+silencer_hit_power                                 = 0.45, 0.45, 0.45, 0.45
+slot                                               = -1
+sprint_allowed                                     = true
+use1_action_functor                                = dxr_scopes.context_action_functor
+use1_functor                                       = dxr_scopes.context_functor
+use_aim_bullet                                     = false
+use_first_bullet                                   = false
+zoom_rotate_time                                   = 0.25
+scope_dynamic_zoom                       		   = off
+fire_modes                                         = 1
+launch_speed				                       = 0
+grenade_class                                      = ammo_vog-25, ammo_vog-25p
+grenade_launcher_name                              = wpn_addon_grenade_launcher
+grenade_launcher_status                            = 0
+grenade_launcher_x                                 = 0
+grenade_launcher_y                                 = 0
+
+strafe_enabled                                     = true
+strafe_transition_time                             = 0.4
+strafe_hud_offset_pos                              = 0.015,0.0,0.00
+strafe_hud_offset_rot                              = 0.0,0.0,4.5
+
+strafe_aim_enabled                                 = false
+strafe_aim_transition_time                         = 0.15
+strafe_aim_hud_offset_pos                          = 0.003,0.0,0.00
+strafe_aim_hud_offset_rot                          = 0.0,0.0,0.5
+
+;Приближение оружия при упарывании в стену
+nearwall_target_hud_fov                            = 0.45
+nearwall_speed_mod                                 = 10
+
+;То ли для оружия со встроенными глушителями, то ли не работают вовсе
+silencer_bullet_speed                    		   = 700
+silencer_fire_distance                   		   = 200
+silencer_hit_impulse                     		   = 100
+silencer_hit_power                       		   = 0.42, 0.42, 0.42, 0.42

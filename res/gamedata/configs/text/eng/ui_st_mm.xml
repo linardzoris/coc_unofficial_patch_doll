@@ -618,4 +618,64 @@
 	<string id="ui_mm_draw_fps">
 		<text>FPS counter</text>
 	</string>
+	
+	<string id="ui_mm_clr_red">
+		<text>Color Correction: Red</text>
+	</string>
+	<string id="ui_mm_clr_green">
+		<text>Color Correction: Green</text>
+	</string>
+	<string id="ui_mm_clr_blue">
+		<text>Color Correction: Blue</text>
+	</string>		
+	<string id="ui_mm_saturation">
+		<text>Color saturation</text>
+	</string>		
+	
+	<string id="ui_mm_r2_aa_mode">
+		<text>Additional smoothing</text>
+	</string>
+	<string id="opt_noaa">
+		<text>Disable</text>
+	</string>
+	<string id="opt_dlaa">
+		<text>DLAA</text>
+	</string>
+	<string id="opt_fxaa">
+		<text>FXAA</text>
+	</string>		
+	
+	<string id="ui_mm_optimize_static_geom">
+		<text>Optim. stat. geometry</text>
+	</string>
+	<string id="ui_mm_optimize_dynamic_geom">
+		<text>Optim. dyn. geometry</text>
+	</string>
+	<string id="ui_mm_optimize_shadow_geom">
+		<text>Shadow map optimize</text>
+	</string>	
+
+	<string id="ui_mm_raindrops">
+		<text>Rain Drops</text>
+	</string>	
+	<string id="ui_mm_hud_mask">
+		<text>HUD's shader glass</text>
+	</string>			
+
+	<string id="ui_mm_crosshair_type">
+		<text>Crosshair Type</text>
+	</string>
+	<string id="default_crosshair">
+		<text>Default</text>
+	</string>
+	<string id="builds_crosshair">
+		<text>Old</text>
+	</string>
+	<string id="point_crosshair">
+		<text>Point</text>
+	</string>		
+	
+	<string id="ui_mm_show_first_name">
+		<text>NPC has first names</text>
+	</string>	
 </string_table>

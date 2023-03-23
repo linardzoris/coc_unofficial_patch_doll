@@ -91,7 +91,7 @@ description                              = st_device_torch_descr
 cost                                     = 500
 inv_name                                 = st_device_torch_name
 inv_name_short                           = st_device_torch_name
-inv_weight                               = 0.0
+inv_weight                               = 0.1
 inv_grid_width							 = 2
 inv_grid_height							 = 1
 inv_grid_x								 = 14
@@ -109,6 +109,11 @@ volumetric_quality				 	= 0.7
 volumetric_intensity				= 0.25
 volumetric_distance				 	= 0.5
 
+power_decay_rate 						 = 0.000057 ;скорость израсходовани€ зар€да
+passive_decay_rate 						 = 0.000027 ;пассивна€ скорость израсходовани€ (в инвентаре)
+use_condition							 = true
+condition_bar							 = power_progess_bar
+
 switch_sound						     = torch\snd_switch_off
 
 attach_angle_offset                      = 3.062, 0.008, -1.532
@@ -117,10 +122,9 @@ attach_position_offset                   = 0.134, -0.007, 0.09
 attach_bone_name                         = bip01_head
 auto_attach                              = false
 
-night_vision                             = on
-night_vision_texture                     = wpn\wpn_night
-night_vision_effector                    = postprocess_night
-
+torch_allowed                            = on ;Ќовый параметр, работать ли нам в режиме фонарика?
+night_vision_allowed                     = off ;Ќовый параметр, работать ли нам в режиме ѕЌ¬?
+nightvision_sect                         = ;effector_nightvision_1 ;“ип ѕЌ¬
 
 snd_switch_on                      		= torch\snd_switch_off
 snd_switch_off							= torch\snd_switch_off
@@ -140,6 +144,174 @@ default_to_ruck                          = false
 sprint_allowed                           = false
 control_inertion_factor                  = 1
 disabled_maps                            = ai_test,ai_test2, andy_test_
+
+[device_torch_bad]:device_torch
+inv_name                                 = st_device_torch_bad_name
+inv_name_short                           = st_device_torch_bad_name
+description                              = st_device_torch_bad_descr
+
+torch_allowed                            = on 
+night_vision_allowed                     = off
+nightvision_sect                         = ;effector_nightvision_1
+
+cost                                     = 500
+inv_weight                               = 0.15
+inv_grid_width							 = 2
+inv_grid_height							 = 1
+inv_grid_x								 = 24
+inv_grid_y								 = 0
+
+power_decay_rate 						 = 0.000057 ;скорость израсходовани€ зар€да
+passive_decay_rate 						 = 0.000027 ;пассивна€ скорость израсходовани€ (в инвентаре)
+
+visual                                   = dynamics\devices\dev_torch_light\device_torch_bad.ogf
+
+[device_torch_mid]:device_torch
+inv_name                                 = st_device_torch_mid_name
+inv_name_short                           = st_device_torch_mid_name
+description                              = st_device_torch_mid_descr
+
+torch_allowed                            = on
+night_vision_allowed                     = off
+nightvision_sect                         = ;effector_nightvision_1
+
+cost                                     = 1000
+inv_weight                               = 0.2
+inv_grid_width							 = 2
+inv_grid_height							 = 1
+inv_grid_x								 = 22
+inv_grid_y								 = 0
+
+power_decay_rate 						 = 0.000057 ;скорость израсходовани€ зар€да
+passive_decay_rate 						 = 0.000027 ;пассивна€ скорость израсходовани€ (в инвентаре)
+
+visual                                   = dynamics\devices\dev_torch_light\device_torch_mid.ogf
+
+[device_torch_far]:device_torch
+inv_name                                 = st_device_torch_far_name
+inv_name_short                           = st_device_torch_far_name
+description                              = st_device_torch_far_descr
+
+torch_allowed                            = on 
+night_vision_allowed                     = off
+nightvision_sect                         = ;effector_nightvision_1
+
+cost                                     = 1500
+inv_weight                               = 0.2
+inv_grid_width							 = 2
+inv_grid_height							 = 1
+inv_grid_x								 = 22
+inv_grid_y								 = 1
+
+power_decay_rate 						 = 0.000087 ;скорость израсходовани€ зар€да
+passive_decay_rate 						 = 0.000047 ;пассивна€ скорость израсходовани€ (в инвентаре)
+
+visual                                   = dynamics\devices\dev_torch_light\device_torch_far.ogf
+
+[device_torch_wid]:device_torch
+inv_name                                 = st_device_torch_wid_name
+inv_name_short                           = st_device_torch_wid_name
+description                              = st_device_torch_wid_descr
+
+torch_allowed                            = on
+night_vision_allowed                     = off
+nightvision_sect                         = ;effector_nightvision_1
+
+cost                                     = 1500
+inv_weight                               = 0.25
+inv_grid_width							 = 2
+inv_grid_height							 = 1
+inv_grid_x								 = 24
+inv_grid_y								 = 1
+
+power_decay_rate 						 = 0.000087 ;скорость израсходовани€ зар€да
+passive_decay_rate 						 = 0.000047 ;пассивна€ скорость израсходовани€ (в инвентаре)
+
+visual                                   = dynamics\devices\dev_torch_light\device_torch_far.ogf
+
+[device_torch_top]:device_torch
+inv_name                                 = st_device_torch_top_name
+inv_name_short                           = st_device_torch_top_name
+description                              = st_device_torch_top_descr
+
+torch_allowed                            = on
+night_vision_allowed                     = off
+nightvision_sect                         = ;effector_nightvision_1
+
+cost                                     = 3000
+inv_weight                               = 0.2
+inv_grid_width							 = 2
+inv_grid_height							 = 1
+inv_grid_x								 = 22
+inv_grid_y								 = 2
+
+power_decay_rate 						 = 0.000097 ;скорость израсходовани€ зар€да
+passive_decay_rate 						 = 0.000037 ;пассивна€ скорость израсходовани€ (в инвентаре)
+
+visual                                   = dynamics\devices\dev_torch_light\device_torch_top.ogf
+
+[device_nvg_1]:device_torch
+inv_name                                 = st_device_nvg_1_name
+inv_name_short                           = st_device_nvg_1_name
+description                              = st_device_nvg_1_descr
+
+torch_allowed                            = off
+night_vision_allowed                     = on
+nightvision_sect                         = effector_nightvision_1
+
+cost                                     = 5000
+inv_weight                               = 0.4
+inv_grid_width							 = 2
+inv_grid_height							 = 1
+inv_grid_x								 = 20
+inv_grid_y								 = 2
+
+power_decay_rate 						 = 0.000297 ;скорость израсходовани€ зар€да
+passive_decay_rate 						 = 0.000137 ;пассивна€ скорость израсходовани€ (в инвентаре)
+
+visual                                   = dynamics\devices\dev_torch_light\dev_torch_light.ogf
+
+[device_nvg_2]:device_torch
+inv_name                                 = st_device_nvg_2_name
+inv_name_short                           = st_device_nvg_2_name
+description                              = st_device_nvg_2_descr
+
+torch_allowed                            = off
+night_vision_allowed                     = on
+nightvision_sect                         = effector_nightvision_2
+
+cost                                     = 10000
+inv_weight                               = 0.6
+inv_grid_width							 = 2
+inv_grid_height							 = 1
+inv_grid_x								 = 20
+inv_grid_y								 = 3
+
+power_decay_rate 						 = 0.0002 ;скорость израсходовани€ зар€да
+passive_decay_rate 						 = 0.0001 ;пассивна€ скорость израсходовани€ (в инвентаре)
+
+visual                                   = dynamics\devices\dev_torch_light\dev_torch_light.ogf
+
+[device_nvg_3]:device_torch
+inv_name                                 = st_device_nvg_3_name
+inv_name_short                           = st_device_nvg_3_name
+description                              = st_device_nvg_3_descr
+
+torch_allowed                            = off
+night_vision_allowed                     = on
+nightvision_sect                         = effector_nightvision_3
+
+cost                                     = 10000
+inv_weight                               = 0.3
+inv_grid_width							 = 2
+inv_grid_height							 = 1
+inv_grid_x								 = 20
+inv_grid_y								 = 4
+
+power_decay_rate 						 = 0.0004 ;скорость израсходовани€ зар€да
+passive_decay_rate 						 = 0.00025 ;пассивна€ скорость израсходовани€ (в инвентаре)
+
+visual                                   = dynamics\devices\dev_torch_light\dev_torch_light.ogf
 
 [device_flare]:identity_immunities
 class                                    = D_FLARE

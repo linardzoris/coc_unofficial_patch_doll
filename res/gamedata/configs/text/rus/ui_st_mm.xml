@@ -615,4 +615,64 @@
 	<string id="ui_mm_wpn_aim_toggle">
 		<text>Переключение прицела по кнопке</text>
 	</string>
+	
+	<string id="ui_mm_clr_red">
+		<text>Цветокоррекция: Красный</text>
+	</string>
+	<string id="ui_mm_clr_green">
+		<text>Цветокоррекция: Зелёный</text>
+	</string>
+	<string id="ui_mm_clr_blue">
+		<text>Цветокоррекция: Синий</text>
+	</string>		
+	<string id="ui_mm_saturation">
+		<text>Насыщенность цветов</text>
+	</string>		
+	
+	<string id="ui_mm_r2_aa_mode">
+		<text>Тип доп. сглаживания</text>
+	</string>
+	<string id="opt_noaa">
+		<text>Отключено</text>
+	</string>
+	<string id="opt_dlaa">
+		<text>DLAA</text>
+	</string>
+	<string id="opt_fxaa">
+		<text>FXAA</text>
+	</string>	
+	
+	<string id="ui_mm_optimize_static_geom">
+		<text>Оптим. дин. геометрии</text>
+	</string>
+	<string id="ui_mm_optimize_dynamic_geom">
+		<text>Оптим. стат. геометрии</text>
+	</string>
+	<string id="ui_mm_optimize_shadow_geom">
+		<text>Оптимизация карт теней</text>
+	</string>	
+
+	<string id="ui_mm_raindrops">
+		<text>Капли на худе</text>
+	</string>	
+	<string id="ui_mm_hud_mask">
+		<text>Шейдер стекла на HUDе</text>
+	</string>		
+	
+	<string id="ui_mm_crosshair_type">
+		<text>Тип прицела</text>
+	</string>
+	<string id="default_crosshair">
+		<text>Обычный</text>
+	</string>
+	<string id="builds_crosshair">
+		<text>Старый</text>
+	</string>
+	<string id="point_crosshair">
+		<text>Точка</text>
+	</string>		
+	
+	<string id="ui_mm_show_first_name">
+		<text>NPC имеют имена</text>
+	</string>		
 </string_table>

@@ -345,4 +345,10 @@
 	<string id="ui_st_create_stash">
 		<text>Создать тайник</text>
 	</string>
+	<string id="st_money">
+		<text>%d RU</text>
+	</string>
+	<string id="st_money_infinitive">
+		<text>--- RU</text>
+	</string>		
 </string_table>

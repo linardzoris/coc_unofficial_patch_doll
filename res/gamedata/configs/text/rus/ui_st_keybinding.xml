@@ -289,4 +289,32 @@
 	<string id="kb_kick">
 		<text>Пинок</text>
 	</string>
+	
+	<string id="kb_grp_auto">
+		<text>Транспорт</text>
+	</string>	
+	<string id="kb_turn_engine">
+		<text>Завести двигатель</text>
+	</string>
+	<string id="kb_switch_horn">
+		<text>Посигналить</text>
+	</string>	
+	<string id="kb_car_moving_break">
+		<text>Ручной тормоз</text>
+	</string>	
+	<string id="kb_car_transmission_up">
+		<text>Повысить передачу</text>
+	</string>	
+	<string id="kb_car_transmission_down">
+		<text>Понизить передачу</text>
+	</string>	
+	<string id="kb_car_lights_on">
+		<text>Фары</text>
+	</string>	
+	<string id="kb_car_weapon_fire">
+		<text>Огонь из основного орудия</text>
+	</string>	
+	<string id="kb_car_weapon_zoom">
+		<text>Прицелиться</text>
+	</string>	
 </string_table>

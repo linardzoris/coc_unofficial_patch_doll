@@ -4,6 +4,8 @@
 -- by Alundaio
 ---------------------------------
 local ini = ini_file("plugins\\itms_manager.ltx")
+local repair_section = "repair_mod_tools"
+local charge_section = "batteries_for_charge"
 
 	--Backpack stash mod
 	local BackPackStashEnable = ini:r_bool_ex("backpack_stash","enable",false)
@@ -22,7 +24,7 @@ local ini = ini_file("plugins\\itms_manager.ltx")
 
 	-- Repair mod
 	local RepairModEnable = ini:r_bool_ex("repair_mod","enable",true)
-	local RepairTools = RepairModEnable and alun_utils.collect_section(ini,"repair_mod_tools",true)
+	local RepairTools = RepairModEnable and alun_utils.collect_sections(ini,{repair_section, charge_section}) 
 	local RepairUI = RepairModEnable and ini:r_bool_ex("repair_mod","use_ui",false)
 
 	-- Loot Mutant mod
@@ -81,6 +83,14 @@ function on_item_focus(itm)
 					return true 
 				elseif (repair_type == "outfit") and (IsOutfit(obj) or IsHeadgear(obj)) then 
 					return true
+				elseif (repair_type == "cold_weapon") and (IsColdWeapon(obj)) then 
+					return true					
+				elseif (repair_type == "detector_simple") and (IsDetectorSimple(obj)) then 
+					return true	
+				elseif (repair_type == "detector_elite") and (IsDetectorElite(obj)) then 
+					return true		
+				elseif (repair_type == "device_torch") and (IsTorch(obj)) then 
+					return true						
 				elseif (repair_type == "all") then 
 					local cls = obj:clsid()
 					if (IsWeapon(nil,cls) or IsOutfit(nil,cls) or IsHeadgear(nil,cls)) then 
@@ -201,6 +211,22 @@ function on_item_drag_dropped(itm1,itm2,from_slot,to_slot)
 		if not (IsOutfit(itm2) or IsHeadgear(itm2)) then 
 			return 
 		end
+	elseif (repair_type == "cold_weapon") then 
+		if not (IsColdWeapon(itm2)) then 
+			return 
+		end		
+	elseif (repair_type == "detector_simple") then 
+		if not (IsDetectorSimple(itm2)) then 
+			return 
+		end
+	elseif (repair_type == "detector_elite") then 
+		if not (IsDetectorElite(itm2)) then 
+			return 
+		end	
+	elseif (repair_type == "device_torch") then 
+		if not (IsTorch(itm2)) then 
+			return 
+		end			
 	elseif (repair_type == "all") then 
 		if not (IsWeapon(itm2) or IsOutfit(itm2) or IsHeadgear(itm2)) then
 			return
@@ -213,13 +239,22 @@ function on_item_drag_dropped(itm1,itm2,from_slot,to_slot)
 	local c_min = ini:r_float_ex(section,"repair_min_condition") or 0
 	local c_max = ini:r_float_ex(section,"repair_max_condition") or 0.75
 	
-	if (cur_condition < c_min) then 
-		ui_dyn_msg_box.msg_box_ui("message_box_ok",true,game.translate_string("st_repair_mod_message_box_condition_to_low"))
-		return
-	elseif (cur_condition >= c_max) then 
-		ui_dyn_msg_box.msg_box_ui("message_box_ok",true,game.translate_string("st_repair_mod_message_box_condition_to_high"))
-		return	
-	end
+	if (repair_type == "weapon" or repair_type == "outfit" or repair_type == "all" or repair_type == "cold_weapon") then	
+		if (cur_condition < c_min) then 
+			ui_dyn_msg_box.msg_box_ui("message_box_ok",true,game.translate_string("st_repair_mod_message_box_condition_to_low"))
+			return
+		elseif (cur_condition >= c_max) then 
+			ui_dyn_msg_box.msg_box_ui("message_box_ok",true,game.translate_string("st_repair_mod_message_box_condition_to_high"))
+			return	
+		end
+	end	
+	
+	if (repair_type == "detector_simple" or repair_type == "detector_elite" or repair_type == "device_torch") then
+		if (cur_condition >= c_max) then 
+			ui_dyn_msg_box.msg_box_ui("message_box_ok",true,game.translate_string("st_charge_mod_message_box_condition_to_high"))
+			return	
+		end
+	end 	
 	
 	local c_add = ini:r_float_ex(section,"repair_add_condition") or 0.15
 	if (dxr_achievements.has_achievement("mechanized_warfare")) then 
@@ -266,8 +301,14 @@ function on_item_drag_dropped(itm1,itm2,from_slot,to_slot)
 	
 	local inv_name = game.translate_string(ini:r_string_ex(itm2:section(),"inv_name") or "st_none")
 	local msg = strformat(game.translate_string("st_repair_mod_message_box_ask"),inv_name,c_add*100)
-
-	ui_dyn_msg_box.msg_box_ui("message_box_yes_no",true,msg,on_yes,on_no)
+	local msg_charge = strformat(game.translate_string("st_charge_mod_message_box_ask"),inv_name,c_add*100)
+	
+	if (repair_type == "weapon" or repair_type == "outfit" or repair_type == "cold_weapon" or repair_type == "all") then
+		ui_dyn_msg_box.msg_box_ui("message_box_yes_no",true,msg,on_yes,on_no)
+	end
+	if (repair_type == "detector_simple" or repair_type == "detector_elite" or repair_type == "device_torch") then
+		ui_dyn_msg_box.msg_box_ui("message_box_yes_no",true,msg_charge,on_yes,on_no)	
+	end	
 end 
 
 -- bind_stalker on_trade

@@ -70,6 +70,8 @@ function opt_menu_on_init(menu)
 			con:execute("ai_aim_predict_time 0.40")
 		end
 	end}	
+	-- ѕоказывать ли у сталкеров только кличку?
+	menu.gameplay_options["show_first_name"]				= {default=false, 	debug_only=false, 	typ="check"}		
 	-- release dropped items 
 	menu.gameplay_options["release_dropped_items"]	= {default=true, 	debug_only=false, 	typ="check"}
 	-- show_enemy_health
