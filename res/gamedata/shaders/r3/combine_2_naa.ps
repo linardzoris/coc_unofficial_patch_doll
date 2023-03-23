@@ -25,6 +25,7 @@ Texture2DMS<float4, MSAA_SAMPLES> s_distort;
 uniform float4 		e_barrier;	// x=norm(.8f), y=depth(.1f), z=clr
 uniform float4 		e_weights;	// x=norm, y=depth, z=clr
 uniform float4 		e_kernel;	// x=norm, y=depth, z=clr
+uniform float4 		r_color_drag;
 //////////////////////////////////////////////////////////////////////////////////////////
 // Pixel
 
@@ -109,6 +110,10 @@ c2_out main( v2p_aa_AA I )
 	float4 ptp = mul(m_P, float4(gbd.P, 1));
 	res.Depth = ptp.w==0?1:ptp.z/ptp.w;
 #endif
+	
+	float oluma = dot(res.Color.xyz, LUMINANCE_VECTOR);
+	
+	res.Color.xyz = lerp(res.Color.xyz, oluma, -r_color_drag.w) * r_color_drag.xyz;	
 	
 	return res;
 }

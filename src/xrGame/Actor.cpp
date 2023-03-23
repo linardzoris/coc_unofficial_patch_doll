@@ -1706,6 +1706,7 @@ void CActor::UpdateArtefactsOnBeltAndOutfit()
     for (auto& it : inventory().m_belt)
     {
         const auto artefact = smart_cast<CArtefact*>(it);
+
         if (artefact)
         {
             float art_cond = artefact->GetCondition();
@@ -1727,7 +1728,7 @@ void CActor::UpdateArtefactsOnBeltAndOutfit()
         }
     }
 
-    CCustomOutfit* outfit = GetOutfit();
+    const auto outfit = GetOutfit();
 
     if (outfit)
     {
@@ -1743,7 +1744,7 @@ void CActor::UpdateArtefactsOnBeltAndOutfit()
             m_fBaseWalkAccel *= outfit->m_fOverweightWalkK;
     }
 
-    CHelmet* pHelmet = smart_cast<CHelmet*>(inventory().ItemFromSlot(HELMET_SLOT));
+    const auto pHelmet = smart_cast<CHelmet*>(inventory().ItemFromSlot(HELMET_SLOT));
 
     if (pHelmet)
     {
@@ -1756,7 +1757,7 @@ void CActor::UpdateArtefactsOnBeltAndOutfit()
         //walk_accel_add += (pHelmet->m_fWalkAccel);
     }
 
-	CBackpack* pBackpack = smart_cast<CBackpack*>(inventory().ItemFromSlot(BACKPACK_SLOT));
+	const auto pBackpack = smart_cast<CBackpack*>(inventory().ItemFromSlot(BACKPACK_SLOT));
 
     if (pBackpack)
     {

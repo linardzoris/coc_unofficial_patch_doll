@@ -4,6 +4,7 @@
 // #define USE_SUPER_SPECULAR
 
 #include "shared\common.h"
+#include "common_functions.h"
 //////////////////////////////////////////////////////////////////////////////////////////
 // *** options
 
@@ -46,6 +47,8 @@
 #  define xmaterial half(L_material.w)
 #endif
 //////////////////////////////////////////////////////////////////////////////////////////
+uniform half4 				 rain_params; // .x - rain density, .y - wetness accumulator, .zw = 0
+uniform half4 				 u_weather; // .xyz - sky color, .w - rain line param
 uniform half4                hemi_cube_pos_faces;
 uniform half4                hemi_cube_neg_faces;
 uniform half4                L_material;                            // 0,0,0,mid

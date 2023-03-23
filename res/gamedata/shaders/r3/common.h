@@ -19,6 +19,17 @@
 #  define xmaterial float(L_material.w)
 #endif
 
+	float4 proj_to_screen(float4 proj) 
+	{ 
+		float4 screen = proj; 
+		screen.x = (proj.x + proj.w); 
+		screen.y = (proj.w - proj.y); 
+		screen.xy *= 0.5; 
+		return screen; 
+	}
+
+uniform float4 		rain_params; // .x - rain density, .y - wetness accumulator, .zw = 0
+
 /*
 //////////////////////////////////////////////////////////////////////////////////////////
 // *** options
@@ -84,21 +95,17 @@ struct         v_shadow_direct
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
-//////////////////////////////////////////////////////////////////////////////////////////
-
-//////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////
 struct  				p_screen                {
         float4          hpos               		: POSITION;
         float2          tc0                		: TEXCOORD0;        // Texture coordinates         (for sampling maps)
 };
-
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
 float3	v_hemi_wrap     (float3 n, float w)                	{        return L_hemi_color*(w + (1-w)*n.y);                   }
 float3	v_sun_wrap      (float3 n, float w)                	{        return L_sun_color*(w+(1-w)*dot(n,-L_sun_dir_w));      }
 */
+
 #define FXPS technique _render{pass _code{PixelShader=compile ps_3_0 main();}}
 #define FXVS technique _render{pass _code{VertexShader=compile vs_3_0 main();}}
 
