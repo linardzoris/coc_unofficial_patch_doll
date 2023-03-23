@@ -256,7 +256,10 @@ void CCustomOutfit::ApplySkinModel(CActor* pActor, bool bDress, bool bHUDOnly)
 
 		// Меняем худ рук, если в слоте рюкзака есть экза
         if (pActor == Level().CurrentViewEntity() && backpack && backpack->bIsExoskeleton)
-            g_player_hud->load(pSettings->r_string(cNameSect(), "player_hud_section_exo"));
+            if (pSettings->line_exist(cNameSect(), "player_hud_section_exo"))
+                g_player_hud->load(pSettings->r_string(cNameSect(), "player_hud_section_exo"));
+            else
+                g_player_hud->load_default_exo();
 
 		if (pActor == Level().CurrentViewEntity() && !backpack || pActor == Level().CurrentViewEntity() && backpack && !backpack->bIsExoskeleton)
             g_player_hud->load(pSettings->r_string(cNameSect(), "player_hud_section"));
