@@ -395,6 +395,8 @@ void CUIItemInfo::TryAddOutfitInfo(CInventoryItem& pInvItem, CInventoryItem* pCo
 
     CCustomOutfit* outfit = smart_cast<CCustomOutfit*>(&pInvItem);
     CHelmet* helmet = smart_cast<CHelmet*>(&pInvItem);
+    CBackpack* backpack = smart_cast<CBackpack*>(&pInvItem);
+
     if (outfit)
     {
         CCustomOutfit* comp_outfit = smart_cast<CCustomOutfit*>(pCompareItem);
@@ -405,6 +407,12 @@ void CUIItemInfo::TryAddOutfitInfo(CInventoryItem& pInvItem, CInventoryItem* pCo
     {
         CHelmet* comp_helmet = smart_cast<CHelmet*>(pCompareItem);
         UIOutfitInfo->UpdateInfo(helmet, comp_helmet);
+        UIDesc->AddWindow(UIOutfitInfo, false);
+    }
+    else if (backpack)
+    {
+        CBackpack* comp_backpack = smart_cast<CBackpack*>(pCompareItem);
+        UIOutfitInfo->UpdateInfo(backpack, comp_backpack);
         UIDesc->AddWindow(UIOutfitInfo, false);
     }
 }

@@ -683,11 +683,9 @@ float CActor::get_additional_weight() const
     if (outfit)
         res += outfit->m_additional_weight;
 
-#ifdef COC_BACKPACK
     CBackpack* pBackpack = smart_cast<CBackpack*>(inventory().ItemFromSlot(BACKPACK_SLOT));
     if (pBackpack)
         res += pBackpack->m_additional_weight;
-#endif
 
     for (auto& it : inventory().m_belt)
     {

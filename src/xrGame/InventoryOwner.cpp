@@ -338,11 +338,9 @@ float CInventoryOwner::MaxCarryWeight() const
     if (outfit)
         ret += outfit->m_additional_weight2;
 
-#ifdef COC_BACKPACK
     CBackpack* pBackpack = smart_cast<CBackpack*>(inventory().ItemFromSlot(BACKPACK_SLOT));
     if (pBackpack)
         ret += pBackpack->m_additional_weight2;
-#endif
 
     return ret;
 }

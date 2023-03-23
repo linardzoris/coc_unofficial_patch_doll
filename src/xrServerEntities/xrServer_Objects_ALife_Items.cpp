@@ -997,6 +997,7 @@ void CSE_ALifeItemCustomOutfit::FillProps(LPCSTR pref, PropItemVec& items) { inh
 #endif // #ifndef XRGAME_EXPORTS
 
 BOOL CSE_ALifeItemCustomOutfit::Net_Relevant() { return (true); }
+
 ////////////////////////////////////////////////////////////////////////////
 // CSE_ALifeItemHelmet
 ////////////////////////////////////////////////////////////////////////////
@@ -1021,3 +1022,29 @@ void CSE_ALifeItemHelmet::FillProps(LPCSTR pref, PropItemVec& items) { inherited
 #endif // #ifndef XRGAME_EXPORTS
 
 BOOL CSE_ALifeItemHelmet::Net_Relevant() { return (true); }
+
+////////////////////////////////////////////////////////////////////////////
+// CSE_ALifeItemBackpack
+////////////////////////////////////////////////////////////////////////////
+
+CSE_ALifeItemBackpack::CSE_ALifeItemBackpack(LPCSTR caSection) : CSE_ALifeItem(caSection) {}
+CSE_ALifeItemBackpack::~CSE_ALifeItemBackpack() {}
+void CSE_ALifeItemBackpack::STATE_Read(NET_Packet& tNetPacket, u16 size) { inherited::STATE_Read(tNetPacket, size); }
+void CSE_ALifeItemBackpack::STATE_Write(NET_Packet& tNetPacket) { inherited::STATE_Write(tNetPacket); }
+void CSE_ALifeItemBackpack::UPDATE_Read(NET_Packet& tNetPacket)
+{
+    inherited::UPDATE_Read(tNetPacket);
+    tNetPacket.r_float_q8(m_fCondition, 0.0f, 1.0f);
+}
+
+void CSE_ALifeItemBackpack::UPDATE_Write(NET_Packet& tNetPacket)
+{
+    inherited::UPDATE_Write(tNetPacket);
+    tNetPacket.w_float_q8(m_fCondition, 0.0f, 1.0f);
+}
+
+#ifndef XRGAME_EXPORTS
+void CSE_ALifeItemBackpack::FillProps(LPCSTR pref, PropItemVec& items) { inherited::FillProps(pref, items); }
+#endif // #ifndef XRGAME_EXPORTS
+
+BOOL CSE_ALifeItemBackpack::Net_Relevant() { return (true); }

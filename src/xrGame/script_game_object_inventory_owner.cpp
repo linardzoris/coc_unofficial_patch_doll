@@ -1975,103 +1975,71 @@ void CScriptGameObject::SetActorMaxWalkWeight(float max_walk_weight)
 float CScriptGameObject::GetAdditionalMaxWeight() const
 {
     CCustomOutfit* outfit = smart_cast<CCustomOutfit*>(&object());
-#ifdef COC_BACKPACK
     CBackpack* pBackpack = smart_cast<CBackpack*>(&object());
     if (!outfit && !pBackpack)
-#else
-    if (!outfit)
-#endif
     {
         GEnv.ScriptEngine->script_log(LuaMessageType::Error,
                                         "CCustomOutfit : cannot access class member GetAdditionalMaxWeight!");
         return false;
     }
 
-#ifdef COC_BACKPACK
     if (outfit)
         return (outfit->m_additional_weight2);
 
     return (pBackpack->m_additional_weight2);
-#else
-    return outfit->m_additional_weight2;
-#endif
 }
 
 float CScriptGameObject::GetAdditionalMaxWalkWeight() const
 {
     CCustomOutfit* outfit = smart_cast<CCustomOutfit*>(&object());
-#ifdef COC_BACKPACK
     CBackpack* pBackpack = smart_cast<CBackpack*>(&object());
     if (!outfit && !pBackpack)
-#else
-    if (!outfit)
-#endif
     {
         GEnv.ScriptEngine->script_log(LuaMessageType::Error,
                                         "CCustomOutfit : cannot access class member GetAdditionalMaxWalkWeight!");
         return false;
     }
 
-#ifdef COC_BACKPACK
     if (outfit)
         return (outfit->m_additional_weight);
 
     return (pBackpack->m_additional_weight);
-#else
-    return outfit->m_additional_weight;
-#endif
 }
 
 void CScriptGameObject::SetAdditionalMaxWeight(float add_max_weight)
 {
     CCustomOutfit* outfit = smart_cast<CCustomOutfit*>(&object());
-#ifdef COC_BACKPACK
     CBackpack* pBackpack = smart_cast<CBackpack*>(&object());
     if (!outfit && !pBackpack)
-#else
-    if (!outfit)
-#endif
     {
         GEnv.ScriptEngine->script_log(LuaMessageType::Error,
                                         "CCustomOutfit : cannot access class member SetAdditionalMaxWeight!");
         return;
     }
 
-#ifdef COC_BACKPACK
     if (outfit)
         outfit->m_additional_weight2 = add_max_weight;
 
     if (pBackpack)
         pBackpack->m_additional_weight2 = add_max_weight;
-#else
-    outfit->m_additional_weight2 = add_max_weight;
-#endif
 }
 
 void CScriptGameObject::SetAdditionalMaxWalkWeight(float add_max_walk_weight)
 {
     CCustomOutfit* outfit = smart_cast<CCustomOutfit*>(&object());
-#ifdef COC_BACKPACK
     CBackpack* pBackpack = smart_cast<CBackpack*>(&object());
     if (!outfit && !pBackpack)
-#else
-    if (!outfit)
-#endif
     {
         GEnv.ScriptEngine->script_log(LuaMessageType::Error,
                                         "CCustomOutfit : cannot access class member SetAdditionalMaxWalkWeight!");
         return;
     }
 
-#ifdef COC_BACKPACK
     if (outfit)
         outfit->m_additional_weight = add_max_walk_weight;
 
     if (pBackpack)
         pBackpack->m_additional_weight = add_max_walk_weight;
-#else
-    outfit->m_additional_weight = add_max_walk_weight;
-#endif
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////

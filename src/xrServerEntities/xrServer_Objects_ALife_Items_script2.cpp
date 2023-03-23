@@ -35,6 +35,9 @@ SCRIPT_EXPORT(CSE_ALifeItemCustomOutfit, (CSE_ALifeItem), {
 SCRIPT_EXPORT(CSE_ALifeItemHelmet, (CSE_ALifeItem),
     { module(luaState)[luabind_class_item1(CSE_ALifeItemHelmet, "cse_alife_item_helmet", CSE_ALifeItem)]; });
 
+SCRIPT_EXPORT(CSE_ALifeItemBackpack, (CSE_ALifeItem),
+    { module(luaState)[luabind_class_item1(CSE_ALifeItemBackpack, "cse_alife_item_backpack", CSE_ALifeItem)]; });
+
 SCRIPT_EXPORT(CSE_ALifeItemWeaponMagazined, (CSE_ALifeItemWeapon), {
     module(luaState)[luabind_class_item1(
         CSE_ALifeItemWeaponMagazined, "cse_alife_item_weapon_magazined", CSE_ALifeItemWeapon)];

@@ -42,7 +42,6 @@
 #   define COC_ENABLE_AUTOSAVE // Enable autosave manager
 #   define COC_KICK
 #   define COC_LOADSCREEN
-#   define COC_BACKPACK
 #   define COC_SLOTS
 #   define COC_DISABLE_ANOMALY_AND_ITEMS_PLANNER // need editing xr_* scripts!
 #   define COC_SPRINT_FIX

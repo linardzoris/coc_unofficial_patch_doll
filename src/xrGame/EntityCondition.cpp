@@ -305,15 +305,21 @@ float CEntityCondition::HitOutfitEffect(
 
     CCustomOutfit* pOutfit = (CCustomOutfit*)pInvOwner->inventory().ItemFromSlot(OUTFIT_SLOT);
     CHelmet* pHelmet = (CHelmet*)pInvOwner->inventory().ItemFromSlot(HELMET_SLOT);
-    if (!pOutfit && !pHelmet)
+    CBackpack* pBackpack = (CBackpack*)pInvOwner->inventory().ItemFromSlot(BACKPACK_SLOT);
+
+    if (!pOutfit && !pHelmet && !pBackpack)
         return hit_power;
 
     float new_hit_power = hit_power;
+
     if (pOutfit)
         new_hit_power = pOutfit->HitThroughArmor(hit_power, element, ap, add_wound, hit_type);
 
     if (pHelmet)
         new_hit_power = pHelmet->HitThroughArmor(new_hit_power, element, ap, add_wound, hit_type);
+
+    if (pBackpack)
+        new_hit_power = pBackpack->HitThroughArmor(new_hit_power, element, ap, add_wound, hit_type);
 
     if (bDebug)
         Msg("new_hit_power = %.3f  hit_type = %s  ap = %.3f", new_hit_power, ALife::g_cafHitType2String(hit_type), ap);
@@ -329,14 +335,9 @@ float CEntityCondition::HitPowerEffect(float power_loss)
 
     CCustomOutfit* pOutfit = pInvOwner->GetOutfit();
     CHelmet* pHelmet = (CHelmet*)pInvOwner->inventory().ItemFromSlot(HELMET_SLOT);
-#ifdef COC_BACKPACK
     CBackpack* pBackpack = (CBackpack*)pInvOwner->inventory().ItemFromSlot(BACKPACK_SLOT);
-    return power_loss *
-        (0.5f + (pOutfit ? pOutfit->m_fPowerLoss : EPS) + (pHelmet ? pHelmet->m_fPowerLoss : EPS) +
-            (pBackpack ? pBackpack->m_fPowerLoss : EPS));
-#else
-    return power_loss * (0.5f + (pOutfit ? pOutfit->m_fPowerLoss : EPS) + (pHelmet ? pHelmet->m_fPowerLoss : EPS));
-#endif
+
+    return power_loss * (0.5f + (pOutfit ? pOutfit->m_fPowerLoss : EPS) + (pHelmet ? pHelmet->m_fPowerLoss : EPS) + (pBackpack ? pBackpack->m_fPowerLoss : EPS));
 }
 
 CWound* CEntityCondition::AddWound(float hit_power, ALife::EHitType hit_type, u16 element)

@@ -281,7 +281,7 @@ float CHelmet::HitThroughArmor(float hit_power, s16 element, float ap, bool& add
     Hit(hit_power, hit_type);
 
     if (Core.ParamFlags.test(Core.dbgbullet))
-        Msg("CCustomOutfit::HitThroughArmor hit_type=%d | After immunities hit_power=%f", (u32)hit_type, NewHitPower);
+        Msg("CHelmet::HitThroughArmor hit_type=%d | After immunities hit_power=%f", (u32)hit_type, NewHitPower);
 
     return NewHitPower;
 }

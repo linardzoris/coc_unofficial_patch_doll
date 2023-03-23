@@ -1761,7 +1761,12 @@ void CActor::UpdateArtefactsOnBeltAndOutfit()
 
     if (pBackpack)
     {
+        conditions().ChangeBleeding(pBackpack->m_fBleedingRestoreSpeed * f_update_time);
+        conditions().ChangeHealth(pBackpack->m_fHealthRestoreSpeed * f_update_time);
         conditions().ChangePower(pBackpack->m_fPowerRestoreSpeed * f_update_time);
+        conditions().ChangeSatiety(pBackpack->m_fSatietyRestoreSpeed * f_update_time);
+        conditions().ChangeRadiation(pBackpack->m_fRadiationRestoreSpeed * f_update_time);
+
         jump_speed_add += (pBackpack->m_fJumpSpeed);
 
         if (inventory().TotalWeight() > MaxCarryWeight())
@@ -1969,8 +1974,9 @@ float CActor::GetRestoreSpeed(ALife::EConditionRestoreType const& type)
         }
 
         const auto outfit = GetOutfit();
-        CHelmet* pHelmet = (CHelmet*)inventory().ItemFromSlot(HELMET_SLOT);
-        res += ((outfit ? outfit->m_fHealthRestoreSpeed : 0.f) + (pHelmet ? pHelmet->m_fHealthRestoreSpeed : 0.f));
+        const auto pHelmet = (CHelmet*)inventory().ItemFromSlot(HELMET_SLOT);
+        const auto pBackpack = (CBackpack*)inventory().ItemFromSlot(BACKPACK_SLOT);
+        res += ((outfit ? outfit->m_fHealthRestoreSpeed : 0.f) + (pHelmet ? pHelmet->m_fHealthRestoreSpeed : 0.f) + (pBackpack ? pBackpack->m_fHealthRestoreSpeed : 0.f));
 
         break;
     }
@@ -1984,8 +1990,9 @@ float CActor::GetRestoreSpeed(ALife::EConditionRestoreType const& type)
         }
 
         const auto outfit = GetOutfit();
-        CHelmet* pHelmet = (CHelmet*)inventory().ItemFromSlot(HELMET_SLOT);
-        res += ((outfit ? outfit->m_fRadiationRestoreSpeed : 0.f) + (pHelmet ? pHelmet->m_fRadiationRestoreSpeed : 0.f));
+        const auto pHelmet = (CHelmet*)inventory().ItemFromSlot(HELMET_SLOT);
+        const auto pBackpack = (CBackpack*)inventory().ItemFromSlot(BACKPACK_SLOT);
+        res += ((outfit ? outfit->m_fRadiationRestoreSpeed : 0.f) + (pHelmet ? pHelmet->m_fRadiationRestoreSpeed : 0.f) + (pBackpack ? pBackpack->m_fRadiationRestoreSpeed : 0.f));
 
         break;
     }
@@ -2001,8 +2008,9 @@ float CActor::GetRestoreSpeed(ALife::EConditionRestoreType const& type)
         }
 
         const auto outfit = GetOutfit();
-        CHelmet* pHelmet = (CHelmet*)inventory().ItemFromSlot(HELMET_SLOT);
-        res += ((outfit ? outfit->m_fSatietyRestoreSpeed : 0.f) + (pHelmet ? pHelmet->m_fSatietyRestoreSpeed : 0.f));
+        const auto pHelmet = (CHelmet*)inventory().ItemFromSlot(HELMET_SLOT);
+        const auto pBackpack = (CBackpack*)inventory().ItemFromSlot(BACKPACK_SLOT);
+        res += ((outfit ? outfit->m_fSatietyRestoreSpeed : 0.f) + (pHelmet ? pHelmet->m_fSatietyRestoreSpeed : 0.f) + (pBackpack ? pBackpack->m_fSatietyRestoreSpeed : 0.f));
 
         break;
     }
@@ -2017,24 +2025,16 @@ float CActor::GetRestoreSpeed(ALife::EConditionRestoreType const& type)
                 res += artefact->m_fPowerRestoreSpeed * artefact->GetCondition();
         }
         auto outfit = GetOutfit();
-        CHelmet* pHelmet = (CHelmet*)inventory().ItemFromSlot(HELMET_SLOT);
-#ifdef COC_BACKPACK
-        CBackpack* pBackpack = (CBackpack*)inventory().ItemFromSlot(BACKPACK_SLOT);
+        const auto pHelmet = (CHelmet*)inventory().ItemFromSlot(HELMET_SLOT);
+        const auto pBackpack = (CBackpack*)inventory().ItemFromSlot(BACKPACK_SLOT);
         if (!outfit && !pHelmet && !pBackpack)
-#else
-        if (!outfit && !pHelmet)
-#endif
             res /= 0.5f;
         else
         {
             res += outfit ? outfit->m_fPowerRestoreSpeed : 0.f;
             res += pHelmet ? pHelmet->m_fPowerRestoreSpeed : 0.f;
-#ifdef COC_BACKPACK
             res += pBackpack ? pBackpack->m_fPowerRestoreSpeed : 0.f;
             res /= (0.5f + (outfit ? outfit->m_fPowerLoss : EPS) + (pHelmet ? pHelmet->m_fPowerLoss : EPS) + (pBackpack ? pBackpack->m_fPowerLoss : EPS));
-#else
-            res /= (0.5f + (outfit ? outfit->m_fPowerLoss : EPS) + (pHelmet ? pHelmet->m_fPowerLoss : EPS));
-#endif
         }
 
         break;
@@ -2051,8 +2051,9 @@ float CActor::GetRestoreSpeed(ALife::EConditionRestoreType const& type)
         }
 
         const auto outfit = GetOutfit();
-        CHelmet* pHelmet = (CHelmet*)inventory().ItemFromSlot(HELMET_SLOT);
-        res += ((outfit ? outfit->m_fBleedingRestoreSpeed : 0.f) + (pHelmet ? pHelmet->m_fBleedingRestoreSpeed : 0.f));
+        const auto pHelmet = (CHelmet*)inventory().ItemFromSlot(HELMET_SLOT);
+        const auto pBackpack = (CBackpack*)inventory().ItemFromSlot(BACKPACK_SLOT);
+        res += ((outfit ? outfit->m_fBleedingRestoreSpeed : 0.f) + (pHelmet ? pHelmet->m_fBleedingRestoreSpeed : 0.f) + (pBackpack ? pBackpack->m_fBleedingRestoreSpeed : 0.f));
 
         break;
     }

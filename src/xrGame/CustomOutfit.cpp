@@ -27,7 +27,11 @@ CCustomOutfit::CCustomOutfit()
     m_b_HasGlass = false;
 }
 
-CCustomOutfit::~CCustomOutfit() { xr_delete(m_boneProtection); }
+CCustomOutfit::~CCustomOutfit() 
+{ 
+    xr_delete(m_boneProtection);
+}
+
 BOOL CCustomOutfit::net_Spawn(CSE_Abstract* DC)
 {
     if (IsGameTypeSingle())
