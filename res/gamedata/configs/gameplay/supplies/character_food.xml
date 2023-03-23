@@ -1,0 +1,10 @@
+bread = 1, prob=0.05 \n
+kolbasa = 1, prob=0.05 \n
+vodka = 1, prob=0.15 \n
+energy_drink = 1, prob=0.05 \n
+
+meat_tushkano = 1, prob=0.03 \n
+meat_dog = 2, prob=0.03 \n
+meat_flesh = 2, prob=0.03 \n
+meat_boar = 1, prob=0.03 \n
+water_drink = 1, prob=0.05 \n

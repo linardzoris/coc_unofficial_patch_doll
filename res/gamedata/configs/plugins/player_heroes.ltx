@@ -1,0 +1,29 @@
+; This plugin determines the default settings for the character creator.
+; When the character creator is first opened during a session a random hero is selected.
+; If any attributes of the selected hero are missing they will all be defaulted to Strelok's.
+
+; Note: If the character creator crashes after making changes here it's because you've used an invalid faction, so look for typos!
+; Valid factions in this case are: "army", "bandit", "csky", "dolg", "ecolog", "freedom", "killer", "monolith", "stalker", and "zombied"
+
+[heroes]
+hero_major_degtyarev
+hero_scar
+hero_strelok
+
+; Major Degtyarev
+[hero_major_degtyarev]
+comm = army
+icon = ui_inGame2_hero_degtyarev
+name = st_actor_name
+
+; Scar
+[hero_scar]
+comm = killer
+icon = ui_inGame2_hero_scar
+name = st_actor_cs_name
+
+; Strelok
+[hero_strelok]
+comm = stalker
+icon = ui_inGame2_hero_strelok
+name = pri_b305_strelok_name
