@@ -836,6 +836,38 @@
             <options_item entry="mouse_invert" group="mm_opt_controls"/>
         </check_mouseinvert>
 
+<!--         <cap_check_aim_toggle x="15" y="33" width="108" height="24">
+            <text r="170" g="170" b="170" font="letterica16" align="r" vert_align="c">ui_mm_aim_toggle</text>
+        </cap_check_aim_toggle>
+        <check_aim_toggle x="132" y="30" width="35" stretch="1" height="29">
+	        <texture>ui_inGame2_checkbox</texture>
+            <options_item entry="g_mode_wpn_aim_toggle" group="mm_opt_controls"/>
+        </check_aim_toggle>
+		
+        <cap_check_crouch_toggle x="15" y="33" width="108" height="24">
+            <text r="170" g="170" b="170" font="letterica16" align="r" vert_align="c">ui_mm_crouch_toggle</text>
+        </cap_check_crouch_toggle>
+        <check_crouch_toggle x="132" y="30" width="35" stretch="1" height="29">
+	        <texture>ui_inGame2_checkbox</texture>
+            <options_item entry="g_mode_crouch_toggle" group="mm_opt_controls"/>
+        </check_crouch_toggle>		
+	
+        <cap_check_walk_toggle x="15" y="33" width="108" height="24">
+            <text r="170" g="170" b="170" font="letterica16" align="r" vert_align="c">ui_mm_walk_toggle</text>
+        </cap_check_walk_toggle>
+        <check_walk_toggle x="132" y="30" width="35" stretch="1" height="29">
+	        <texture>ui_inGame2_checkbox</texture>
+            <options_item entry="g_mode_walk_toggle" group="mm_opt_controls"/>
+        </check_walk_toggle>
+		
+        <cap_check_sprint_toggle x="15" y="33" width="108" height="24">
+            <text r="170" g="170" b="170" font="letterica16" align="r" vert_align="c">ui_mm_sprint_toggle</text>
+        </cap_check_sprint_toggle>
+        <check_sprint_toggle x="132" y="30" width="35" stretch="1" height="29">
+	        <texture>ui_inGame2_checkbox</texture>
+            <options_item entry="g_mode_sprint_toggle" group="mm_opt_controls"/>
+        </check_sprint_toggle>	 -->
+
         <cap_keyboardsetup x="0" y="65" width="424" height="15">
             <texture a="150">ui_inGame2_servers_list_button</texture>
             <auto_static x="8" y="0" width="108" height="15">

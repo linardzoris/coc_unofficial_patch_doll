@@ -22,6 +22,17 @@ function opt_controls:InitControls(x, y, xml, handler)
 	xml:InitTrackBar	("tab_controls:track_mousesens",		self)
 	xml:InitStatic		("tab_controls:cap_check_mouseinvert",	self)
 	xml:InitCheck		("tab_controls:check_mouseinvert",		self)
+
+-- ѕо идее должно быть здесь, но размера окна не хватит
+--	xml:InitStatic		("tab_controls:cap_check_aim_toggle",	self)
+--	xml:InitCheck		("tab_controls:check_aim_toggle",		self)
+--	xml:InitStatic		("tab_controls:cap_check_crouch_toggle",self)
+--	xml:InitCheck		("tab_controls:check_crouch_toggle",	self)
+--	xml:InitStatic		("tab_controls:cap_check_walk_toggle",	self)
+--	xml:InitCheck		("tab_controls:check_walk_toggle",		self)
+--	xml:InitStatic		("tab_controls:cap_check_sprint_toggle",self)
+--	xml:InitCheck		("tab_controls:check_sprint_toggle",	self)	
+	
 	xml:InitKeyBinding	("tab_controls:key_binding",			self)
 
 	local btn

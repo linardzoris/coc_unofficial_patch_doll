@@ -678,4 +678,17 @@
 	<string id="ui_mm_show_first_name">
 		<text>NPC has first names</text>
 	</string>	
+	
+	<string id="ui_mm_mode_wpn_aim_toggle">
+		<text>Mode: always in sight</text>
+	</string>
+	<string id="ui_mm_mode_crouch_toggle">
+		<text>Mode: always crouch</text>
+	</string>
+	<string id="ui_mm_mode_walk_toggle">
+		<text>Mode: always walking</text>
+	</string>
+	<string id="ui_mm_mode_sprint_toggle">
+		<text>Mode: always running</text>
+	</string>		
 </string_table>

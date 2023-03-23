@@ -612,9 +612,6 @@
 	<string id="ui_mm_draw_fps">
 		<text>Счетчик фпс</text>
 	</string>
-	<string id="ui_mm_wpn_aim_toggle">
-		<text>Переключение прицела по кнопке</text>
-	</string>
 	
 	<string id="ui_mm_clr_red">
 		<text>Цветокоррекция: Красный</text>
@@ -675,4 +672,17 @@
 	<string id="ui_mm_show_first_name">
 		<text>NPC имеют имена</text>
 	</string>		
+	
+	<string id="ui_mm_mode_wpn_aim_toggle">
+		<text>Режим: всегда в прицеле</text>
+	</string>
+	<string id="ui_mm_mode_crouch_toggle">
+		<text>Режим: всегда в присяде</text>
+	</string>
+	<string id="ui_mm_mode_walk_toggle">
+		<text>Режим: всегда ходьба</text>
+	</string>
+	<string id="ui_mm_mode_sprint_toggle">
+		<text>Режим: всегда бег</text>
+	</string>	
 </string_table>

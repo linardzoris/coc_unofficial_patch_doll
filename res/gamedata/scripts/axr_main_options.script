@@ -2,6 +2,43 @@
 -- IMPORTANT! SEE opt_menu_on_init to add a new game options (new as of 5/28/2016)
 
 function opt_menu_on_init(menu)
+-- Режимы 
+	menu.gameplay_options["mode_wpn_aim_toggle"]			= {default=false, 	debug_only=false, 	typ="check", on_accept=function(handler,optMgr,ctrl)	
+		local con = get_console()
+			if (ctrl:GetCheck()) then
+				con:execute("g_mode_wpn_aim_toggle on")
+			else
+				con:execute("g_mode_wpn_aim_toggle off")
+			end	
+		end}
+			
+	menu.gameplay_options["mode_crouch_toggle"]				= {default=false, 	debug_only=false, 	typ="check", on_accept=function(handler,optMgr,ctrl)
+		local con = get_console()
+			if (ctrl:GetCheck()) then
+				con:execute("g_mode_crouch_toggle on")
+			else
+				con:execute("g_mode_crouch_toggle off")
+			end
+		end}
+		
+	menu.gameplay_options["mode_walk_toggle"]				= {default=false, 	debug_only=false, 	typ="check", on_accept=function(handler,optMgr,ctrl)	
+		local con = get_console()
+			if (ctrl:GetCheck()) then
+				con:execute("g_mode_walk_toggle on")
+			else
+				con:execute("g_mode_walk_toggle off")
+			end	
+		end}		
+	
+	menu.gameplay_options["mode_sprint_toggle"]				= {default=true, 	debug_only=true, 	typ="check", on_accept=function(handler,optMgr,ctrl)
+		local con = get_console()
+			if (ctrl:GetCheck()) then
+				con:execute("g_mode_sprint_toggle on")
+			else
+				con:execute("g_mode_sprint_toggle off")
+			end
+		end}
+		
 	-- simply add new line and a ui_mm_<name> in ui_st_mm.xml to create a new option. Script automatically does the rest for you
 	-- debug_hud
 	menu.gameplay_ui_options["debug_hud"]			= {default=false, 	debug_only=true, 	typ="check", on_accept=function(handler,optMgr,ctrl)
