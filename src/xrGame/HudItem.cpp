@@ -657,6 +657,12 @@ BOOL CHudItem::ParentIsActor()
     return !!EA->cast_actor();
 }
 
+void CHudItem::ReplaceHudSection(LPCSTR hud_section)
+{
+    if (hud_section != hud_sect)
+        hud_sect = hud_section;
+}
+
 float CHudItem::GetHudFov()
 {
     if (smart_cast<CActor*>(this->object().H_Parent()) && (Level().CurrentViewEntity() == object().H_Parent()))

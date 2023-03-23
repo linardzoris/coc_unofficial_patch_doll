@@ -196,6 +196,7 @@ public:
     float m_nearwall_speed_mod;
     virtual float GetHudFov();
     virtual BOOL ParentIsActor();
+    void ReplaceHudSection(LPCSTR hud_section);
 
 	float m_fLR_MovingFactor;
     float m_fLR_CameraFactor; 

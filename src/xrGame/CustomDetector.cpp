@@ -387,6 +387,8 @@ bool CAfList::feel_touch_contact(IGameObject* O)
 
 bool CCustomDetector::install_upgrade_impl(LPCSTR section, bool test)
 {
+    LPCSTR str;
+
     // Msg("Detector Upgrade");
     bool result = inherited::install_upgrade_impl(section, test);
 
@@ -395,6 +397,11 @@ bool CCustomDetector::install_upgrade_impl(LPCSTR section, bool test)
     result |= process_if_exists(section, "passive_decay_rate", &CInifile::r_float, m_fPassiveDecayRate, test);
     result |= process_if_exists(section, "power_decay_rate", &CInifile::r_float, m_fDecayRate, test);
     result |= process_if_exists(section, "inv_weight", &CInifile::r_float, m_weight, test);
+
+	// name of the ltx-section of hud
+    bool result2 = process_if_exists_set(section, "hud", &CInifile::r_string, str, test);
+    if (result2 && !test)
+        this->ReplaceHudSection(str);
 
     return result;
 }

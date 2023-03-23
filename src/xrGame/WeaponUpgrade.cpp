@@ -30,6 +30,7 @@ bool CWeapon::install_upgrade_impl(LPCSTR section, bool test)
 	result |= install_upgrade_disp(section, test);
 	result |= install_upgrade_hit(section, test);
 	result |= install_upgrade_addon(section, test);
+    result |= install_upgrade_other(section, test);
 	result |= install_upgrade_hud(section, test);
 	return result;
 }
@@ -150,6 +151,18 @@ bool CWeapon::install_upgrade_hud(LPCSTR section, bool test)
 	result |= process_if_exists(section, "inertion_tendto_aim_speed", &CInifile::r_float, m_inertion_params.m_tendto_speed_aim, test);
 
 	return result;
+}
+
+bool CWeapon::install_upgrade_other(LPCSTR section, bool test)
+{
+    LPCSTR str;
+
+    // name of the ltx-section of hud
+    bool result = process_if_exists_set(section, "hud", &CInifile::r_string, str, test);
+    if (result && !test)
+        this->ReplaceHudSection(str);
+
+    return result;
 }
 
 bool CWeapon::install_upgrade_hit(LPCSTR section, bool test)

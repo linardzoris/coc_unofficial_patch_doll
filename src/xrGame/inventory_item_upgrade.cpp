@@ -204,6 +204,16 @@ bool CInventoryItem::install_upgrade_impl(LPCSTR section, bool test)
 	if (result2 && !test)
 		m_nameShort = str;
 	result |= result2;
+
+	result2 = process_if_exists_set(section, "description", &CInifile::r_string, str, test);
+    if (result2 && !test)
+        m_Description = str;
+    result |= result2;
+
+	result2 = process_if_exists_set(section, "visual", &CInifile::r_string, str, test);
+    if (result2 && !test)
+        this->object().cNameVisual_set(str);
+
     return result;
 }
 
