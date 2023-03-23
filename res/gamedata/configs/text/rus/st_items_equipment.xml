@@ -173,36 +173,6 @@
 	<string id="st_memory_stick_name">
 		<text>Флеш-карта</text>
 	</string>
-	<string id="st_equ_backpack_name">
-		<text>Рюкзак</text>
-	</string>
-	<string id="st_equ_backpack_desc">
-		<text>Обычный водостойкий рюкзак. Популярен среди сталкеров, совершающих вылазки глубоко в Зону.</text>
-	</string>
-	<string id="st_equ_smallpack_name">
-		<text>Ранец</text>
-	</string>
-	<string id="st_equ_smallpack_desc">
-		<text>Небольшой заплечный ранец, используемый, как правило, новичками. Внутренняя прокладка заменена водонепроницаемым слоем. Не очень хорош, но лучше, чем ничего.</text>
-	</string>
-	<string id="st_equ_smilpack_name">
-		<text>Вещмешок</text>
-	</string>
-	<string id="st_equ_smilpack_desc">
-		<text>Холстяной мешок, используемый военными уже более ста лет.</text>
-	</string>
-	<string id="st_equ_milpack_name">
-		<text>Военный рюкзак</text>
-	</string>
-	<string id="st_equ_milpack_desc">
-		<text>Традиционно используется военными для переноски боеприпасов, еды и медикаментов в длительных походах.</text>
-	</string>
-	<string id="st_equ_touristpack_name">
-		<text>Туристический рюкзак</text>
-	</string>
-	<string id="st_equ_touristpack_desc">
-		<text>Рюкзак большой вместимости, хорошо подходящий для туристических походов. Не очень популярен из-за излишней громоздкости.</text>
-	</string>	
 	<string id="st_device_flashlight_name">
 		<text>Фонарик</text>
 	</string>

@@ -189,21 +189,21 @@ function actor_on_before_death(whoID,flags)
 	local section = se_obj:section_name()
 	if (string.find(section,"_4")) then 
 		local f = {
-			["stalker"] = "exo_outfit",
-			["bandit"] = "bandit_exo_outfit",
+			["stalker"] = "radiation_outfit",
+			["bandit"] = "radiation_outfit",
 			["csky"] = "cs_heavy_outfit",
-			["killer"] = "exo_outfit",
+			["killer"] = "merc_radiation_outfit",
 			["army"] = "military_exo_outfit",
-			["dolg"] = "dolg_exo_outfit",
-			["freedom"] = "svoboda_exo_outfit",
+			["dolg"] = "dolg_radiation_outfit",
+			["freedom"] = "svoboda_radiation_outfit",
 			["ecolog"] = "ecolog_outfit_orange",
-			["monolith"] = "monolith_exo_outfit"
+			["monolith"] = "monolith_radiation_outfit"
 		}
 		give_object_to_actor(f[faction] or "novice_outfit")
 	elseif (string.find(section,"_3")) then 
 		local f = {
-			["stalker"] = "exo_outfit",
-			["bandit"] = "bandit_exo_outfit",
+			["stalker"] = "radiation_outfit",
+			["bandit"] = "radiation_outfit",
 			["csky"] = "cs_heavy_outfit",
 			["killer"] = "merc_scientific_outfit",
 			["army"] = "commander_outfit",

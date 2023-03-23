@@ -43,13 +43,6 @@
 		<text>A regular trench coat that hides a stalker bodysuit underneath it. Said bodysuit comes with reinforced body armour made by bandit craftsmen providing good protection against anomalies. The suit cannot be modified with an artefact container, but may be upgraded with a combat support system instead.</text>
 	</string>
 
-	<string id="bandit_exo_outfit_name">
-		<text>Bandit exoskeleton</text>
-	</string>
-	<string id="bandit_exo_outfit_description">
-		<text>An experimental sample of an exoskeleton that was never mass-produced due to extraordinary cost and design flaws. The colours and materials of this sample have been adjusted by bandits in the Zone, giving it a brown appearance and an overall lighter load. Comes with a built-in artefact container.</text>
-	</string>
-
 	<!-- Clear Sky -->
 	<string id="csky_novice_outfit_name">
 		<text>Clear Sky leather jacket</text>
@@ -104,13 +97,6 @@
 		<text>This suit, produced by one of Kiev's Defence Research Institutes, is a great alternative to home-made stalker suits. It has been adopted by Clear Sky and repainted in the faction's primary colours. While its built-in body armour can only stop light rounds, the anomaly and radiation protection system is second to none. Fully upgradeable and boasting two built-in artefact containers, this bodysuit is the equipment of choice for many experienced stalkers.</text>
 	</string>
 
-	<string id="cs_exo_outfit_name">
-		<text>Clear Sky exoskeleton</text>
-	</string>
-	<string id="cs_exo_outfit_description">
-		<text>An experimental sample of an exoskeleton painted in Clear Sky colours, their demand is high between veterans of the Clear Sky faction. Comes with a built-in artefact containers.</text>
-	</string>
-
 	<!-- Duty -->
 	<string id="dolg_novice_outfit_name">
 		<text>Duty leather jacket</text>
@@ -142,13 +128,6 @@
 	</string>
 	<string id="dolg_radiation_outfit_description">
 		<text>A suit of armour specifically made to withstand radiation hazards. It is composed of three elements: a reinforced jumpsuit, a heavy armoured vest, and a tactical helmet. The vest consists of several thick layers of Kevlar and can be reinforced with composite or titanium plates for increased protection. Does not come with a built-in artefact container.</text>
-	</string>
-
-	<string id="dolg_exo_outfit_name">
-		<text>Duty exoskeleton</text>
-	</string>
-	<string id="dolg_exo_outfit_description">
-		<text>The exoskeleton variant produced by Duty uses heavier materials to improve bullet resistance over that of other exoskeletons. At the cost of its resistance towards projectiles is its weak anomaly protection. Does not come with an artefact container.</text>
 	</string>
 
 	<!-- Ecologists -->
@@ -216,13 +195,6 @@
 		<text>A suit of armour specifically made to withstand radiation hazards. It is composed of three elements: a reinforced jumpsuit, a heavy armoured vest, and a tactical helmet. The vest consists of several thick layers of Kevlar and can be reinforced with composite or titanium plates for increased protection. Comes with a built-in artefact container.</text>
 	</string>
 
-	<string id="svoboda_exo_outfit_name">
-		<text>Freedom exoskeleton</text>
-	</string>
-	<string id="svoboda_exo_outfit_description">
-		<text>An upgraded version of a regular exoskeleton. The use of lighter materials has allowed its designers to reduce the weight of the suit, and with Freedom's usual trademark of high quality anomaly protection, the only thing that suffers is its overall armour and impact protection. Comes with a built-in artefact container.</text>
-	</string>
-
 	<!-- ISG -->
 	<string id="isg_outfit_name">
 		<text>ISG outfit</text>
@@ -267,13 +239,6 @@
 		<text>A suit of armour specifically made to withstand radiation hazards. It is composed of three elements: a reinforced jumpsuit, a heavy armoured vest, and a tactical helmet. The vest consists of several thick layers of Kevlar and can be reinforced with composite or titanium plates for increased protection. Comes with two built-in artefact containers.</text>
 	</string>
 
-	<string id="merc_exo_outfit_name">
-		<text>Mercenary exoskeleton</text>
-	</string>
-	<string id="merc_exo_outfit_description">
-		<text>An experimental sample of the exoskeleton often worn by veterans of the Mercenary faction, repainted in the faction's typical colours. Comes with two built-in artefact containers.</text>
-	</string>
-
 	<!-- Military -->
 	<string id="army_outfit_name">
 		<text>Soldier uniform</text>
@@ -301,13 +266,6 @@
 	</string>
 	<string id="commander_outfit_description">
 		<text>The Skat-9M bulletproof military suit is designed for assault operations in areas of anomalous activity. It includes a PSZ-12p heavy military bulletproof suit and an integrated compensation suit. Among its features are perfect protection from bullets, splinters, and anomalies alike, as well as its complete lack of any hindrance to the mobility of its wearer.</text>
-	</string>
-
-	<string id="military_exo_outfit_name">
-		<text>Military exoskeleton</text>
-	</string>
-	<string id="military_exo_outfit_description">
-		<text>The military variant of the exoskeleton uses heavier materials to improve bullet resistance, this version of the exoskeleton though heavy makes one feel like a tank. The only downfall is the weak anomaly protection provided with the armour is very lacking and even the most basic of anomalies can often incapacitate or kill whoever sits inside it. Does not come with an artefact container.</text>
 	</string>
 
 	<!-- Monolith -->
@@ -346,13 +304,6 @@
 		<text>A suit of armour specifically made to withstand radiation hazards. It is composed of three elements: a reinforced jumpsuit, a heavy armoured vest, and a tactical helmet. The vest consists of several thick layers of Kevlar and can be reinforced with composite or titanium plates for increased protection. Comes with two built-in artefact containers.</text>
 	</string>
 
-	<string id="monolith_exo_outfit_name">
-		<text>Monolith exoskeleton</text>
-	</string>
-	<string id="monolith_exo_outfit_description">
-		<text>Painted in Monolith colours, this exoskeleton includes a flak vest of unknown origin and also features unique modifications creating a slight resistance to radiation. The system has been upgraded to near-military levels of protection at the cost of having no psi-protection whatsoever. Comes with two artefact containers.</text>
-	</string>
-
 	<!-- Loners -->
 	<string id="novice_outfit_name">
 		<text>Leather jacket</text>
@@ -366,13 +317,6 @@
 	</string>
 	<string id="stalker_outfit_description">
 		<text>This DIY stalker bodysuit is a combination of twin-layered rubberised cloth with Plexiglas lining and built-in body armour. Despite the fact that the body armour is often strained by anything beyond even pistol bullets, the suit enjoys great popularity due to its low cost and modification potential. Comes with a built-in artefact container.</text>
-	</string>
-
-	<string id="exo_proto_outfit_name">
-		<text>Sunrise exoskeleton</text>
-	</string>
-	<string id="exo_proto_outfit_description">
-		<text>A standard Sunrise bodysuit fitted into a old military grade exoskeleton. Offers the same amount of protection as a standard Sunrise but with greatly increased carrying capacity. Where the hell did you find this?</text>
 	</string>
 
 	<string id="nbc_outfit_name">
@@ -408,13 +352,6 @@
 	</string>
 	<string id="radiation_outfit_description">
 		<text>A suit of armour specifically made to withstand radiation hazards. It is composed of three elements: a reinforced jumpsuit, a heavy armoured vest, and a tactical helmet. The vest consists of several thick layers of Kevlar and can be reinforced with composite or titanium plates for increased protection. Comes with a built-in artefact container.</text>
-	</string>
-
-	<string id="exo_outfit_name">
-		<text>Exoskeleton</text>
-	</string>
-	<string id="exo_outfit_description">
-		<text>An experimental sample of an exoskeleton that was never mass-produced due to extraordinary cost and design flaws. Despite this, it is in demand due to its ability to take on the weight of all carried equipment, and therefore small batches are made in underground facilities outside of Ukraine. Comes with a built-in artefact container.</text>
 	</string>
 
 	<!-- Helmets -->
@@ -550,4 +487,48 @@
 	<string id="st_helm_tactic_2_descr">
 		<text>A dated aluminium/titanium helmet with an armour face mask and a cloth exterior that comes with pockets for additional steel armour pieces, providing the maximum head protection possible. The Tactical M12 is normally used as part of a combination that includes the PSZ series Spetsnaz body armour. It is quite rare in the Zone thanks to its limited production. It comes with a built-in first generation night vision device as well as electronics slots.</text>
 	</string>
+	
+<!--			Backpacks				-->
+
+	<string id="st_equ_backpack_name">
+		<text>Backpack</text>
+	</string>
+	<string id="st_equ_backpack_desc">
+		<text>An ordinary waterproof backpack. It is popular among stalkers who make forays deep into the Zone.</text>
+	</string>
+
+	<string id="st_equ_duffel_bag_name">
+		<text>Duffel bag</text>
+	</string>
+	<string id="st_equ_duffel_bag_desc">
+		<text>An ordinary hiking duffel bag. It accommodates a lot, but it is very uncomfortable, which makes the body get tired quickly. It weighs almost nothing.</text>
+	</string>	
+	
+	<string id="st_equ_small_pack_name">
+		<text>Small pack</text>
+	</string>
+	<string id="st_equ_small_pack_desc">
+		<text>A frequent attribute of newcomers who drag them from outside the perimeter. There is practically no capacity, but you can comfortably place it on your back and not worry about the loss of swag.</text>
+	</string>	
+	
+	<string id="st_equ_tourist_pack_name">
+		<text>Tourist backpack</text>
+	</string>
+	<string id="st_equ_tourist_pack_desc">
+		<text>A good sample in terms of price / quality ratio. It fits like a duffel bag, while it is relatively comfortable to carry on your back, although it is still far from ideal.</text>
+	</string>	
+	
+	<string id="st_equ_military_pack_name">
+		<text>Army Backpack</text>
+	</string>
+	<string id="st_equ_military_pack_desc">
+		<text>You don't often meet such people in the military themselves, and they don't need them. Basically, it is an attribute of various mercenaries and special purpose groups. Very expensive, but accommodates a lot while distributing the weight evenly over the body, from which you practically do not get tired.</text>
+	</string>	
+
+	<string id="st_equ_exoskeleton_name">
+		<text>Prototype exoskeleton</text>
+	</string>
+	<string id="st_equ_exoskeleton_desc">
+		<text>A sample from the X-17 laboratory, on which an unknown symbolism is applied. It weighs quite a lot, but when you put it on, it doesn't matter. Allows you to easily carry a very large weight and not get tired. In addition, it has a positive effect on other characteristics of the body.</text>
+	</string>		
 </string_table>

@@ -762,7 +762,6 @@ function jup_b1_actor_have_good_suit(first_speaker, second_speaker)
 						["scientific_outfit"] = true,
 						["military_outfit"] = true,
 						["dolg_heavy_outfit"] = true,
-						["exo_outfit"] = true,
 						["svoboda_light_outfit"] = true,
 						["svoboda_heavy_outfit"] = true,
 						["cs_heavy_outfit"] = true,
