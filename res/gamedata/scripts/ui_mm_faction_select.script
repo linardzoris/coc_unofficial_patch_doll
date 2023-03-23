@@ -671,14 +671,6 @@ function faction_ui:OnRandomize()
 		--printf(icon_name)
 	end
 	
-	if (axr_main.config:r_value("mm_options","enable_show_first_name",1,true) == true) then
-		self.character_name:SetText(first_name .. " " .. last_name)	
-		get_console():execute("a_ui_show_first_name on")	
-	elseif (axr_main.config:r_value("mm_options","enable_show_first_name",1,true) ~= true) then
-		self.character_name:SetText(last_name)	
-		get_console():execute("a_ui_show_first_name off")
-	end 	
-	
 	--[[ set random difficulty
 	if (self.difficulty_list and self.difficulty_tbl) then
 		local t = self.difficulty_tbl

@@ -1,46 +1,10 @@
 -- Extensions to Game Options
 -- IMPORTANT! SEE opt_menu_on_init to add a new game options (new as of 5/28/2016)
 
-function opt_menu_on_init(menu)
--- Режимы 
-	menu.gameplay_options["mode_wpn_aim_toggle"]			= {default=false, 	debug_only=false, 	typ="check", on_accept=function(handler,optMgr,ctrl)	
-		local con = get_console()
-			if (ctrl:GetCheck()) then
-				con:execute("g_mode_wpn_aim_toggle on")
-			else
-				con:execute("g_mode_wpn_aim_toggle off")
-			end	
-		end}
-			
-	menu.gameplay_options["mode_crouch_toggle"]				= {default=false, 	debug_only=false, 	typ="check", on_accept=function(handler,optMgr,ctrl)
-		local con = get_console()
-			if (ctrl:GetCheck()) then
-				con:execute("g_mode_crouch_toggle on")
-			else
-				con:execute("g_mode_crouch_toggle off")
-			end
-		end}
-		
-	menu.gameplay_options["mode_walk_toggle"]				= {default=false, 	debug_only=false, 	typ="check", on_accept=function(handler,optMgr,ctrl)	
-		local con = get_console()
-			if (ctrl:GetCheck()) then
-				con:execute("g_mode_walk_toggle on")
-			else
-				con:execute("g_mode_walk_toggle off")
-			end	
-		end}		
-	
-	menu.gameplay_options["mode_sprint_toggle"]				= {default=true, 	debug_only=true, 	typ="check", on_accept=function(handler,optMgr,ctrl)
-		local con = get_console()
-			if (ctrl:GetCheck()) then
-				con:execute("g_mode_sprint_toggle on")
-			else
-				con:execute("g_mode_sprint_toggle off")
-			end
-		end}
-		
+function opt_menu_on_init(menu)	
 	-- simply add new line and a ui_mm_<name> in ui_st_mm.xml to create a new option. Script automatically does the rest for you
-	-- debug_hud
+	
+	-- Debug Hud
 	menu.gameplay_ui_options["debug_hud"]			= {default=false, 	debug_only=true, 	typ="check", on_accept=function(handler,optMgr,ctrl)
 		if (level.present() and xrs_debug_tools) then
 			if (ctrl:GetCheck()) then
@@ -50,7 +14,8 @@ function opt_menu_on_init(menu)
 			end
 		end
 	end}
-	-- localization
+	
+	-- Localization
 	local localization_list = {}
 	local flist = getFS():file_list_open("$game_text$",bit_or(FS.FS_ListFolders,FS.FS_RootOnly))
 	local f_cnt = flist:Size()
@@ -70,7 +35,8 @@ function opt_menu_on_init(menu)
 			end
 		end
 	end}
-	-- debug_hud_map
+	
+	-- Debug Hud Map
 	menu.gameplay_ui_options["debug_map_hud"]		= {default=false, 	debug_only=true, 	typ="check",on_accept=function(handler,optMgr,ctrl)
 			if (level.present() and ui_map_debug_ex) then
 				if (ctrl:GetCheck()) then
@@ -80,7 +46,8 @@ function opt_menu_on_init(menu)
 				end
 			end
 		end}	
-	-- slot Hud
+		
+	-- Slot Hud
 	if (slot_hud) then
 		menu.gameplay_ui_options["slot_hud"]		= {default=false, 	debug_only=false, 	typ="check", on_accept=function(handler,optMgr,ctrl)
 			if (level.present() and slot_hud) then
@@ -92,6 +59,7 @@ function opt_menu_on_init(menu)
 			end
 		end}
 	end
+	
 	-- Hardcore AI Aim
 	menu.gameplay_options["hardcore_ai_aim"]		= {default=false, 	debug_only=false, 	typ="check", on_accept=function(handler,optMgr,ctrl)
 		local con = get_console()
@@ -107,21 +75,36 @@ function opt_menu_on_init(menu)
 			con:execute("ai_aim_predict_time 0.40")
 		end
 	end}	
-	-- Показывать ли у сталкеров только кличку?
-	menu.gameplay_options["show_first_name"]				= {default=false, 	debug_only=false, 	typ="check"}		
-	-- release dropped items 
+	
+	-- Показывать ли у сталкеров имена или оставить лишь клички?
+	menu.gameplay_options["show_first_name"] = {default=false, 	debug_only=false, 	typ="check", on_accept=function(handler,optMgr,ctrl)	
+		local con = get_console()
+			if (ctrl:GetCheck()) then
+				con:execute("a_ui_show_first_name on")
+			else
+				con:execute("a_ui_show_first_name off")
+			end	
+		end}
+		
+	-- Release dropped items 
 	menu.gameplay_options["release_dropped_items"]	= {default=true, 	debug_only=false, 	typ="check"}
-	-- show_enemy_health
+	
+	-- Show_enemy_health
 	menu.gameplay_ui_options["show_enemy_health"]	= {default=false, 	debug_only=true, 	typ="check"}
-	-- radio_mod
+	
+	-- Radio_mod
 	menu.gameplay_options["radio_mod"]				= {default=true, 	debug_only=false, 	typ="check"}
-	-- mechanic_feature
+	
+	-- Mechanic_feature
 	menu.gameplay_options["mechanic_feature"]		= {default=false, 	debug_only=false, 	typ="check"}
-	-- heli_engine_sound
+	
+	-- Heli_engine_sound
 	menu.gameplay_options["heli_engine_sound"]		= {default=true, 	debug_only=false, 	typ="check"}
-	-- heli_spawn
+	
+	-- Heli_spawn
 	menu.gameplay_options["heli_spawn"]				= {default=true, 	debug_only=false, 	typ="check"}
-	-- dynamic_news
+	
+	-- Dynamic News
 	menu.gameplay_ui_options["dynamic_news"]		= {default=true, 	debug_only=false, 	typ="check", on_accept=function(handler,optMgr,ctrl)
 		if (level.present() and dynamic_news_manager) then 
 			if (ctrl:GetCheck()) then 
@@ -131,7 +114,8 @@ function opt_menu_on_init(menu)
 			end
 		end	
 	end}
-	-- sleep_deprived
+	
+	-- Sleep Deprived
 	menu.gameplay_options["sleep_deprived"]			= {default=false, 	debug_only=false, 	typ="check", on_accept=function(handler,optMgr,ctrl)
 		if (level.present() and sleep_dep) then
 			if (ctrl:GetCheck()) then
@@ -141,7 +125,8 @@ function opt_menu_on_init(menu)
 			end
 		end
 	end}
-	-- art_degrade
+	
+	-- Art Degrade
 	menu.gameplay_options["art_degrade"]			= {default=true, 	debug_only=false, 	typ="check", on_accept=function(handler,optMgr,ctrl)
 		if (level.present() and artefact_degradation) then
 			if (ctrl:GetCheck()) then
@@ -151,7 +136,8 @@ function opt_menu_on_init(menu)
 			end
 		end
 	end}
-	-- enhanced_recoil
+	
+	-- Enhanced Recoil
 	menu.gameplay_options["enhanced_recoil"]		= {default=false,	debug_only=false,	typ="check", on_accept=function(handler, optMgr, ctrl)
 		if (ctrl:GetCheck()) then
 			dxr_enhanced_recoil.activate_feature()
@@ -159,7 +145,8 @@ function opt_menu_on_init(menu)
 			dxr_enhanced_recoil.deactivate_feature()
 		end
 	end}
-	-- weapon_hide
+	
+	-- Weapon Hide
 	menu.gameplay_options["weapon_hide"]			= {default=false,	debug_only=false,	typ="check", on_accept=function(handler,optMgr,ctrl)
 		if (ctrl:GetCheck()) then
 			hide_wpn.activate_feature()
@@ -167,16 +154,60 @@ function opt_menu_on_init(menu)
 			hide_wpn.deactivate_feature()
 		end
 	end}
+	
+	-- Режим прицеливания 
+	menu.gameplay_options["mode_wpn_aim_toggle"]			= {default=false, 	debug_only=false, 	typ="check", on_accept=function(handler,optMgr,ctrl)	
+		local con = get_console()
+			if (ctrl:GetCheck()) then
+				con:execute("g_mode_wpn_aim_toggle on")
+			else
+				con:execute("g_mode_wpn_aim_toggle off")
+			end	
+		end}
+		
+	-- Режим в присяде 			
+	menu.gameplay_options["mode_crouch_toggle"]				= {default=false, 	debug_only=false, 	typ="check", on_accept=function(handler,optMgr,ctrl)
+		local con = get_console()
+			if (ctrl:GetCheck()) then
+				con:execute("g_mode_crouch_toggle on")
+			else
+				con:execute("g_mode_crouch_toggle off")
+			end
+		end}
+		
+	-- Режим ходьбы
+	menu.gameplay_options["mode_walk_toggle"]				= {default=false, 	debug_only=false, 	typ="check", on_accept=function(handler,optMgr,ctrl)	
+		local con = get_console()
+			if (ctrl:GetCheck()) then
+				con:execute("g_mode_walk_toggle on")
+			else
+				con:execute("g_mode_walk_toggle off")
+			end	
+		end}	
+		
+	-- Режим бега	
+	menu.gameplay_options["mode_sprint_toggle"]				= {default=true, 	debug_only=true, 	typ="check", on_accept=function(handler,optMgr,ctrl)
+		local con = get_console()
+			if (ctrl:GetCheck()) then
+				con:execute("g_mode_sprint_toggle on")
+			else
+				con:execute("g_mode_sprint_toggle off")
+			end
+		end}	
+		
 	-- I do not recommend allowing a factor greater than 1.5 because there are not enough smart terrain jobs
 	menu.gameplay_options["alife_mutant_pop"]		= {default=1.0,		debug_only=false,	typ="list", list={0.25,0.50,1.0,1.5}}
 	menu.gameplay_options["alife_stalker_pop"]		= {default=0.5,		debug_only=false,	typ="list", list={0.25,0.50,1.0,1.5}}
-	-- excl_dist
+	
+	-- Excl Dist
 	-- note: shouldn't be greater than switch distance or no simulation squads will come online. Instead it should create a border zone between excl_dist and switch_distance where stuff can come online
 	-- so that when actor walks stuff will naturally come online but if squad teleports very close to actor it will stay offline until player walks far enough away.
 	menu.gameplay_options["excl_dist"]				= {default=25,		debug_only=false,	typ="list", list={0,25,50,100}}  
-	-- number of rotating quicksaves
+	
+	-- Number of rotating quicksaves
 	menu.gameplay_options["quicksave_cnt"]			= {default=5,		debug_only=false,	typ="list", list={1,5,10,20}}
-	-- character portraits
+	
+	-- Character Portraits
 	if (db.actor) then -- Options will only show while in-game
 		local l = get_character_icon_list()
 		local selected = nil 
