@@ -170,6 +170,7 @@ protected:
     float m_fDecayRate; //Alundaio
     float m_fPassiveDecayRate; //Alundaio
     CAfList m_artefacts;
+    virtual bool install_upgrade_impl(LPCSTR section, bool test);
 };
 
 class CZoneList : public CDetectList<CCustomZone>

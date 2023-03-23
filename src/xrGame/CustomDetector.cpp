@@ -384,3 +384,17 @@ bool CAfList::feel_touch_contact(IGameObject* O)
     }
     return res;
 }
+
+bool CCustomDetector::install_upgrade_impl(LPCSTR section, bool test)
+{
+    // Msg("Detector Upgrade");
+    bool result = inherited::install_upgrade_impl(section, test);
+
+    result |= process_if_exists(section, "af_radius", &CInifile::r_float, m_fAfDetectRadius, test);
+    result |= process_if_exists(section, "af_vis_radius", &CInifile::r_float, m_fAfVisRadius, test);
+    result |= process_if_exists(section, "passive_decay_rate", &CInifile::r_float, m_fPassiveDecayRate, test);
+    result |= process_if_exists(section, "power_decay_rate", &CInifile::r_float, m_fDecayRate, test);
+    result |= process_if_exists(section, "inv_weight", &CInifile::r_float, m_weight, test);
+
+    return result;
+}
