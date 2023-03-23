@@ -106,16 +106,31 @@ void CActor::IR_OnKeyboardPress(int cmd)
 #endif // DEBUG
     switch (cmd)
     {
-    case kJUMP: { mstate_wishful |= mcJump;
+    case kJUMP: 
+    { 
+        mstate_wishful |= mcJump;
     }
     break;
-    case kSPRINT_TOGGLE: { mstate_wishful ^= mcSprint;
+    case kSPRINT_TOGGLE: 
+    { 
+		if (psActorFlags.test(AF_SPRINT_TOGGLE))
+        {
+            if (psActorFlags.test(AF_WALK_TOGGLE)) mstate_wishful &= ~mcAccel;
+            if (psActorFlags.test(AF_CROUCH_TOGGLE)) mstate_wishful &= ~mcCrouch;
+            mstate_wishful ^= mcSprint;
+        }
     }
     break;
-    case kCROUCH:
+    case kCROUCH: 
     {
         if (psActorFlags.test(AF_CROUCH_TOGGLE))
             mstate_wishful ^= mcCrouch;
+    }
+    break;
+    case kACCEL: 
+    {
+        if (psActorFlags.test(AF_WALK_TOGGLE))
+            mstate_wishful ^= mcAccel;
     }
     break;
     case kCAM_1: cam_Set(eacFirstEye); break;
@@ -347,18 +362,32 @@ void CActor::IR_OnKeyboardHold(int cmd)
         if (eacFreeLook != cam_active)
             cam_Active()->Move(cmd, 0, LookFactor);
         break;
-
-    case kACCEL: mstate_wishful |= mcAccel; break;
     case kL_STRAFE: mstate_wishful |= mcLStrafe; break;
     case kR_STRAFE: mstate_wishful |= mcRStrafe; break;
     case kL_LOOKOUT: mstate_wishful |= mcLLookout; break;
     case kR_LOOKOUT: mstate_wishful |= mcRLookout; break;
     case kFWD: mstate_wishful |= mcFwd; break;
     case kBACK: mstate_wishful |= mcBack; break;
-    case kCROUCH:
+    case kCROUCH: 
     {
         if (!psActorFlags.test(AF_CROUCH_TOGGLE))
             mstate_wishful |= mcCrouch;
+    }
+    break;
+    case kACCEL: 
+    {
+        if (!psActorFlags.test(AF_WALK_TOGGLE))
+            mstate_wishful |= mcAccel;
+    }
+    break;
+    case kSPRINT_TOGGLE: {
+        if (!psActorFlags.test(AF_SPRINT_TOGGLE))
+        {
+            if (psActorFlags.test(AF_WALK_TOGGLE)) mstate_wishful &= ~mcAccel;
+            if (psActorFlags.test(AF_CROUCH_TOGGLE)) mstate_wishful &= ~mcCrouch;
+
+            mstate_wishful |= mcSprint;
+        }
     }
     break;
     }

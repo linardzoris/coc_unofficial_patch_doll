@@ -1044,7 +1044,7 @@ bool CWeapon::Action(u16 cmd, u32 flags)
     case kWPN_ZOOM:
         if (IsZoomEnabled())
         {
-            if (b_toggle_weapon_aim)
+            if (psActorFlags.test(AF_AIM_TOGGLE))
             {
                 if (flags & CMD_START)
                 {
@@ -1054,7 +1054,7 @@ bool CWeapon::Action(u16 cmd, u32 flags)
                         {
                             if (GetState() != eIdle)
                                 SwitchState(eIdle);
-                            OnZoomIn();
+                                OnZoomIn();
                         }
                     }
                     else
@@ -1069,7 +1069,7 @@ bool CWeapon::Action(u16 cmd, u32 flags)
                     {
                         if (GetState() != eIdle)
                             SwitchState(eIdle);
-                        OnZoomIn();
+                            OnZoomIn();
                     }
                 }
                 else if (IsZoomed())

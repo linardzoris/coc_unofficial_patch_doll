@@ -13,6 +13,9 @@ enum
     AF_IMPORTANT_SAVE = (1 << 9),
     AF_CROUCH_TOGGLE = (1 << 10),
     AF_USE_TRACERS = (1 << 11),
+    AF_WALK_TOGGLE = (1 << 12),
+    AF_SPRINT_TOGGLE = (1 << 13),
+    AF_AIM_TOGGLE = (1 << 14),
 };
 
 extern Flags32 psActorFlags;

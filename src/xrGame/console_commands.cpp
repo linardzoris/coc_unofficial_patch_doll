@@ -1751,7 +1751,14 @@ void CCC_RegisterCommands()
 
     CMD1(CCC_MemStats, "stat_memory");
     // game
-    CMD3(CCC_Mask, "g_crouch_toggle", &psActorFlags, AF_CROUCH_TOGGLE);
+    psActorFlags.set(AF_AIM_TOGGLE, FALSE);
+    CMD3(CCC_Mask, "g_mode_wpn_aim_toggle", &psActorFlags, AF_AIM_TOGGLE);
+    psActorFlags.set(AF_CROUCH_TOGGLE, FALSE);
+    CMD3(CCC_Mask, "g_mode_crouch_toggle", &psActorFlags, AF_CROUCH_TOGGLE);
+    psActorFlags.set(AF_WALK_TOGGLE, FALSE);
+    CMD3(CCC_Mask, "g_mode_walk_toggle", &psActorFlags, AF_WALK_TOGGLE);
+    psActorFlags.set(AF_SPRINT_TOGGLE, TRUE);
+    CMD3(CCC_Mask, "g_mode_sprint_toggle", &psActorFlags, AF_SPRINT_TOGGLE);
     CMD1(CCC_GameDifficulty, "g_game_difficulty");
     CMD1(CCC_GameLanguage, "g_language");
 
