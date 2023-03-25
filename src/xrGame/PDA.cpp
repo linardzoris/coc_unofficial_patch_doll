@@ -84,7 +84,7 @@ void CPda::Load(LPCSTR section)
 
     if (!pda_light && m_bLightsEnabled && psActorFlags.test(AF_3D_PDA))
     {
-        pda_light = ::Render->light_create();
+        pda_light = GEnv.Render->light_create();
         pda_light->set_shadow(READ_IF_EXISTS(pSettings, r_string, section, "light_shadow", false));
 
         m_bVolumetricLights = READ_IF_EXISTS(pSettings, r_bool, section, "volumetric_lights", false);
@@ -119,7 +119,7 @@ void CPda::Load(LPCSTR section)
 
         if (!pda_glow && m_bGlowEnabled)
         {
-            pda_glow = ::Render->glow_create();
+            pda_glow = GEnv.Render->glow_create();
             pda_glow->set_texture(READ_IF_EXISTS(pSettings, r_string, section, "glow_texture", nullptr));
             pda_glow->set_color(clr);
             pda_glow->set_radius(READ_IF_EXISTS(pSettings, r_float, section, "glow_radius", 0.3f));
