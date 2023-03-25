@@ -407,7 +407,7 @@ void CPda::OnMoveToRuck(const SInvItemPlace& prev)
 }
 
 
-/*void CPda::UpdateHudAdditional(Fmatrix& trans)
+void CPda::UpdateHudAdditional(Fmatrix& trans)
 {
     CActor* pActor = smart_cast<CActor*>(H_Parent());
     if (!pActor)
@@ -552,7 +552,7 @@ void CPda::OnMoveToRuck(const SInvItemPlace& prev)
     hud_rotation.identity();
     hud_rotation.translate_over(curr_offs);
     trans.mulB_43(hud_rotation);
-}*/
+}
 
 void CPda::UpdateXForm() { CInventoryItem::UpdateXForm(); }
 
