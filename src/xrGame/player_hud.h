@@ -60,26 +60,18 @@ struct hud_item_measures
 
     void load(const shared_str& sect_name, IKinematics* K);
 	
-	struct inertion_params
+    struct inertion_params
     {
         float m_pitch_offset_r;
         float m_pitch_offset_n;
         float m_pitch_offset_d;
         float m_pitch_low_limit;
-        float m_origin_offset; //<-- outdated
-        float m_origin_offset_aim; //<-- outdated
+        float m_origin_offset;
+        float m_origin_offset_aim;
         float m_tendto_speed;
         float m_tendto_speed_aim;
-        float m_tendto_ret_speed;
-        float m_tendto_ret_speed_aim;
-
-        float m_min_angle;
-        float m_min_angle_aim;
-
-        Fvector4 m_offset_LRUD;
-        Fvector4 m_offset_LRUD_aim;
     };
-    inertion_params m_inertion_params; //--#SM+#--
+    inertion_params m_inertion_params; //--#SM+#--	
 
 	struct shooting_params
     {
@@ -205,6 +197,7 @@ private:
 public:
     Fvector target_thumb0rot, target_thumb01rot, target_thumb02rot;
     Fvector thumb0rot, thumb01rot, thumb02rot;
+    u8 script_anim_part;
 
     void reset_thumb(bool bForce)
     {

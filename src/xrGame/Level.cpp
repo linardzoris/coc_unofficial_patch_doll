@@ -54,7 +54,6 @@
 #include "UIGameCustom.h"
 #include "ui/UIPdaWnd.h"
 #include "xrUICore/Cursor/UICursor.h"
-#include "PDA.h"
 
 extern CUISequencer* g_tutorial;
 extern CUISequencer* g_tutorial2;
@@ -429,22 +428,18 @@ extern void draw_wnds_rects();
 void CLevel::OnRender()
 {
     // PDA
-    if (game && CurrentGameUI() && &CurrentGameUI()->GetPdaMenu())
+    if (game && CurrentGameUI() && &CurrentGameUI()->GetPdaMenu() != nullptr)
     {
-        const auto pda = &CurrentGameUI()->GetPdaMenu();
-        const auto pda_actor = Actor() ? Actor()->GetPDA() : nullptr;
-        if (psActorFlags.test(AF_3D_PDA) && pda && pda->IsShown())
+        CUIPdaWnd* pda = &CurrentGameUI()->GetPdaMenu();
+        if (psActorFlags.test(AF_3D_PDA) && pda->IsShown())
         {
             pda->Draw();
             CUICursor* cursor = &UI().GetUICursor();
 
             if (cursor)
             {
-                static bool need_reset{};
-                if (pda_actor && pda_actor->m_bZoomed && CurrentGameUI()->TopInputReceiver() != pda)
-                    CurrentGameUI()->SetMainInputReceiver(pda, false);
-
-                const bool is_top = CurrentGameUI()->TopInputReceiver() == pda;
+                static bool need_reset;
+                bool is_top = CurrentGameUI()->TopInputReceiver() == pda;
 
                 if (pda->IsEnabled() && is_top && !Console->bVisible)
                 {
@@ -473,7 +468,8 @@ void CLevel::OnRender()
                 else
                     need_reset = true;
 
-                cursor->OnRender();
+                if (is_top)
+                    cursor->OnRender();
             }
             GEnv.Render->RenderToTarget(GEnv.Render->rtPDA);
         }

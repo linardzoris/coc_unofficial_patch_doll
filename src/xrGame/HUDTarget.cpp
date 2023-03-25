@@ -20,8 +20,6 @@
 
 #include "inventory_item.h"
 #include "inventory.h"
-#include "Actor.h"
-#include "PDA.h"
 
 #include "ai/monsters/poltergeist/poltergeist.h"
 
@@ -121,8 +119,6 @@ void CHUDTarget::CursorOnFrame()
 extern ENGINE_API BOOL g_bRendering;
 void CHUDTarget::Render()
 {
-    CActor* Actor = smart_cast<CActor*>(Level().CurrentEntity());
-
     BOOL b_do_rendering = (psHUD_Flags.is(HUD_CROSSHAIR | HUD_CROSSHAIR_RT | HUD_CROSSHAIR_RT2));
 
     if (!b_do_rendering)
@@ -222,9 +218,6 @@ void CHUDTarget::Render()
         F->OutNext("%4.1f", PP.RQ.range);
 #endif
     }
-
-	if (smart_cast<CPda*>(Actor->inventory().ActiveItem()))
-        return;
 
     //отрендерить кружочек или крестик
     if (!m_bShowCrosshair && crosshair_type == 1 || !m_bShowCrosshair && crosshair_type == 2 || !m_bShowCrosshair && crosshair_type == 3 || !m_bShowCrosshair && crosshair_type == 4)

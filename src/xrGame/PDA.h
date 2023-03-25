@@ -10,7 +10,6 @@
 
 class CInventoryOwner;
 class CPda;
-class CLAItem;
 
 using PDA_LIST = xr_vector<CPda*>;
 
@@ -93,31 +92,10 @@ protected:
     static void JoystickCallback(CBoneInstance* B);
     bool m_bNoticedEmptyBattery;
 
-	// Light
-    bool m_bLightsEnabled;
-    bool m_bGlowEnabled;
-    bool m_bVolumetricLights;
-    float m_fVolumetricQuality;
-    float m_fVolumetricDistance;
-    float m_fVolumetricIntensity;
-    float fBrightness{0.25f};
-    int m_iLightType;
-    ref_light pda_light;
-    ref_glow pda_glow;
-    CLAItem* light_lanim;
-
-    virtual void processing_deactivate() override
-    {
-        UpdateLights();
-        inherited::processing_deactivate();
-    }
-
-    void UpdateLights();
-
 public:
     virtual void OnStateSwitch(u32 S, u32 oldState);
     virtual void OnAnimationEnd(u32 state);
-    virtual void UpdateHudAdditional(Fmatrix& trans);
+    //virtual void UpdateHudAdditional(Fmatrix& trans);
     virtual void OnMoveToRuck(const SInvItemPlace& prev);
     virtual void UpdateCL();
     virtual void UpdateXForm();
