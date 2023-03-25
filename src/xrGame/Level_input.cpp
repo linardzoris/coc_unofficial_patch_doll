@@ -155,7 +155,8 @@ void CLevel::IR_OnKeyboardPress(int key)
         return;
 
 	if (auto pda = b_ui_exist ? &CurrentGameUI()->GetPdaMenu() : nullptr) // Fix PDA hotkey input for disabled state
-        if (pda->IsShown() && pda->OnKeyboardAction(key, WINDOW_KEY_PRESSED)) return;
+        if (pda->IsShown() && pda->OnKeyboardAction(key, WINDOW_KEY_PRESSED))
+            return;
 
     switch (_curr)
     {

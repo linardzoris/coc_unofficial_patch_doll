@@ -140,8 +140,7 @@ void CPda::OnStateSwitch(u32 S, u32 oldState)
         g_player_hud->attach_item(this);
         g_pGamePersistent->pda_shader_data.pda_display_factor = 0.f;
 
-        m_sounds.PlaySound(
-            hasEnoughBatteryPower() ? "sndShow" : "sndShowEmpty", Position(), H_Root(), !!GetHUDmode(), false);
+        m_sounds.PlaySound(hasEnoughBatteryPower() ? "sndShow" : "sndShowEmpty", Position(), H_Root(), !!GetHUDmode(), false);
         PlayHUDMotion(!m_bNoticedEmptyBattery ? "anm_show" : "anm_show_empty", false, this, GetState());
 
         if (auto pda = CurrentGameUI() && &CurrentGameUI()->GetPdaMenu() ? &CurrentGameUI()->GetPdaMenu() : nullptr)
@@ -152,8 +151,7 @@ void CPda::OnStateSwitch(u32 S, u32 oldState)
     }
     break;
     case eHiding: {
-        m_sounds.PlaySound(
-            hasEnoughBatteryPower() ? "sndHide" : "sndHideEmpty", Position(), H_Root(), !!GetHUDmode(), false);
+        m_sounds.PlaySound(hasEnoughBatteryPower() ? "sndHide" : "sndHideEmpty", Position(), H_Root(), !!GetHUDmode(), false);
         PlayHUDMotion(!m_bNoticedEmptyBattery ? "anm_hide" : "anm_hide_empty", true, this, GetState());
         SetPending(true);
         m_bZoomed = false;
@@ -293,15 +291,18 @@ void CPda::JoystickCallback(CBoneInstance* B)
     B->mTransform.mulB_43(rotation);
 }
 
+// extern bool IsMainMenuActive();
+
 void CPda::UpdateCL()
 {
     inherited::UpdateCL();
+
     if (!ParentIsActor())
         return;
 
     UpdateLights();
 
-    const u32 state = GetState();
+	const u32 state = GetState();
     const bool enoughBatteryPower = hasEnoughBatteryPower();
     const bool b_main_menu_is_active = (g_pGamePersistent->m_pMainMenu && g_pGamePersistent->m_pMainMenu->IsActive());
 
