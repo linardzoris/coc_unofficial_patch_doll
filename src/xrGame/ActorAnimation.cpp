@@ -570,14 +570,15 @@ void CActor::g_SetAnimation(u32 mstate_rl)
                     {
                         switch (P->GetState())
                         {
-                        case CPda::eIdle: M_torso = P->m_bZoomed ? TW->zoom : (moving_idx == STorsoWpn::eSprint ? ST->m_torso[0].moving[moving_idx] : ST->m_torso[4].moving[moving_idx]); 
+                        case CPda::eIdle:
+                            M_torso = P->m_bZoomed ?
+                                TW->zoom :
+                                (moving_idx == STorsoWpn::eSprint ? ST->m_torso[0].moving[moving_idx] :
+                                                                    ST->m_torso[4].moving[moving_idx]);
                             break;
-                        case CPda::eShowing: M_torso = TW->draw; 
-                            break;
-                        case CPda::eHiding: M_torso = TW->holster; 
-                            break;
-                        default: M_torso = ST->m_torso[4].moving[moving_idx]; 
-                            break;
+                        case CPda::eShowing: M_torso = TW->draw; break;
+                        case CPda::eHiding: M_torso = TW->holster; break;
+                        default: M_torso = ST->m_torso[4].moving[moving_idx]; break;
                         }
                     }
                 }
