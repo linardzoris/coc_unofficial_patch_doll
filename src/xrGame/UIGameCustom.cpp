@@ -15,6 +15,7 @@
 #include "actor.h"
 #include "inventory.h"
 #include "game_cl_base.h"
+#include "PDA.h"
 
 #include "xrEngine/x_ray.h"
 
@@ -69,8 +70,11 @@ void CUIGameCustom::OnFrame()
         g_b_ClearGameCaptions = false;
     }
     Window->Update();
+
+    CPda* pda = Actor()->GetPDA();
+
     // update windows
-    if (GameIndicatorsShown() && psHUD_Flags.is(HUD_DRAW | HUD_DRAW_RT))
+    if (GameIndicatorsShown() && psHUD_Flags.is(HUD_DRAW | HUD_DRAW_RT) && !pda->m_bZoomed)
         UIMainIngameWnd->Update();
     m_pMessagesWnd->Update();
 }
@@ -80,7 +84,10 @@ void CUIGameCustom::Render()
     for (StaticDrawableWrapper* item : CustomStatics)
         item->Draw();
     Window->Draw();
+
     CEntity* pEntity = smart_cast<CEntity*>(Level().CurrentEntity());
+    CPda* pda = Actor()->GetPDA();
+
     if (pEntity)
     {
         CActor* pActor = smart_cast<CActor*>(pEntity);
@@ -96,7 +103,7 @@ void CUIGameCustom::Render()
                     item->render_item_ui();
             }
         }
-        if (GameIndicatorsShown() && psHUD_Flags.is(HUD_DRAW | HUD_DRAW_RT))
+        if (GameIndicatorsShown() && psHUD_Flags.is(HUD_DRAW | HUD_DRAW_RT) && !pda->m_bZoomed)
             UIMainIngameWnd->Draw();
     }
     m_pMessagesWnd->Draw();
