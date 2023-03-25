@@ -832,11 +832,11 @@ void CWeaponMagazinedWGrenade::PlayAnimShoot()
 {
     if (m_bGrenadeMode)
     {
-        if (IsZoomed())
+        if (IsZoomed() && isHUDAnimationExist("anm_shots_aim_g"))
             PlayHUDMotion("anm_shots_aim_g", FALSE, this, eFire);
-        else if (IsZoomed() && IsMisfire())
+        else if (IsZoomed() && IsMisfire() && isHUDAnimationExist("anm_shots_aim_jammed_g"))
             PlayHUDMotion("anm_shots_aim_jammed_g", FALSE, this, eFire);
-        else if (IsMisfire())
+        else if (IsMisfire() && isHUDAnimationExist("anm_shots_jammed_g"))
             PlayHUDMotion("anm_shots_jammed_g", FALSE, this, eFire);
         else
             PlayHUDMotion("anm_shots_g", FALSE, this, eFire);
