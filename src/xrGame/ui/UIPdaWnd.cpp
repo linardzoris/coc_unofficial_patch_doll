@@ -41,6 +41,7 @@ constexpr const char* PDA_XML = "pda.xml";
 u32 g_pda_info_state = 0;
 
 void RearrangeTabButtons(CUITabControl* pTab);
+CDialogHolder* CurrentDialogHolder();
 
 CUIPdaWnd::CUIPdaWnd()
 {
@@ -283,13 +284,15 @@ void CUIPdaWnd::SetActiveSubdialog(const shared_str& section)
         m_pActiveDialog = pUILogsWnd;
     }
 
-    luabind::functor<CUIDialogWndEx*> funct;
-    if (GEnv.ScriptEngine->functor("pda.set_active_subdialog", funct))
+    luabind::functor<CUIDialogWndEx*> functor;
+    if (GEnv.ScriptEngine->functor("pda.set_active_subdialog", functor))
     {
-        CUIDialogWndEx* ret = funct((LPCSTR)section.c_str());
-        CUIWindow* pScriptWnd = ret ? smart_cast<CUIWindow*>(ret) : (0);
-        if (pScriptWnd)
-            m_pActiveDialog = pScriptWnd;
+        CUIDialogWndEx* scriptWnd = functor(section.c_str());
+        if (scriptWnd)
+        {
+            scriptWnd->SetHolder(CurrentDialogHolder());
+            m_pActiveDialog = scriptWnd;
+        }
     }
 
     if (m_pActiveDialog)
@@ -410,6 +413,7 @@ void CUIPdaWnd::Reset()
 }
 
 void CUIPdaWnd::SetCaption(LPCSTR text) { m_caption->SetText(text); }
+
 void RearrangeTabButtons(CUITabControl* pTab)
 {
     TABS_VECTOR* btn_vec = pTab->GetButtonsVector();

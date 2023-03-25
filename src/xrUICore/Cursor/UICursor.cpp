@@ -71,7 +71,7 @@ void CUICursor::OnRender()
         return;
 #ifdef DEBUG
     VERIFY(last_render_frame != Device.dwFrame);
-    last_render_frame = Device.dwFrame;
+    //last_render_frame = Device.dwFrame;
 
     if (bDebug)
     {
