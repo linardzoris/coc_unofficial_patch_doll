@@ -3,6 +3,20 @@ coc_ranking_list = {}
 local actor_rank_place
 dialog_closed = false
 
+
+function get_max_member_count()
+	return 10
+end
+
+function get_max_resource()
+	return 10
+end
+
+function get_max_power()
+	return 10
+end
+
+
 ----------------------------------------------------------------------------
 -- Engine->lua function calls 
 ----------------------------------------------------------------------------
@@ -372,4 +386,11 @@ function is_map_spot_present(sid, location)
 		return level.map_has_object_spot(obj_id, location) ~= 0
 	end
 	return false
+end
+
+function pda_use() -- from engine
+	return true
+end
+
+function on_low_battery() -- from engine
 end

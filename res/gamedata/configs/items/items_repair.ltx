@@ -32,23 +32,6 @@ empty_weight                             = 1.5
 
 hide_time_wpn = 10
 
-[itm_handgun_toolkit]:itm_gunsmith_toolkit
-$spawn                                   = "repair\handgun_toolkit"
-description                              = st_itm_handgun_toolkit_descr
-inv_name                                 = st_itm_handgun_toolkit
-inv_name_short                           = st_itm_handgun_toolkit
-cost                                     = 4000
-inv_weight                               = 2.5
-visual                                   = dynamics\equipments\item_handgunkit.ogf
-
-inv_grid_x                               = 6
-inv_grid_y                               = 39
-
-repair_type                              = weapon ;weapon or outfit
-repair_only                              = wpn_beretta,wpn_colt1911,wpn_desert_eagle,wpn_desert_eagle_nimble,wpn_fort,wpn_fort_nimble,wpn_hpsa,wpn_pb,wpn_pm,wpn_sig220,wpn_sig220_nimble,wpn_usp,wpn_usp_nimble,wpn_walther
-
-empty_weight                             = 0.9
-
 [itm_outfit_toolkit]:itm_gunsmith_toolkit
 $spawn                                   = "repair\outfit_toolkit"
 description                              = st_itm_outfit_toolkit_descr
@@ -63,30 +46,10 @@ inv_grid_y                               = 11
 
 repair_min_condition                     = 0.39
 repair_type                              = outfit ;weapon or outfit
-repair_refuse                            = helm_respirator,helm_hardhat,helm_protective,helm_tactic,helm_battle,helm_m40,helm_sphere,helm_tactic_2,helm_respirator_old,helm_respirator_half,helm_respirator_gp5,helm_cs_1,helm_cs_2,helm_cs_3
+repair_refuse                            = 
 
 max_uses                                 = 4
 empty_weight                             = 0.6
-
-[itm_helmet_toolkit]:itm_outfit_toolkit
-$spawn                                   = "repair\helmet_toolkit"
-description                              = st_itm_helmet_toolkit_descr
-inv_name                                 = st_itm_helmet_toolkit
-inv_name_short                           = st_itm_helmet_toolkit
-cost                                     = 6000
-inv_weight                               = 2.0
-visual                                   = dynamics\equipments\item_helmetkit.ogf
-
-inv_grid_height                          = 1
-inv_grid_x                               = 6
-inv_grid_y                               = 40
-
-repair_type                              = outfit ;weapon or outfit
-repair_refuse                            = 
-repair_only                              = helm_respirator,helm_hardhat,helm_protective,helm_tactic,helm_battle,helm_m40,helm_sphere,helm_tactic_2,helm_respirator_old,helm_respirator_half,helm_respirator_gp5,helm_cs_1,helm_cs_2,helm_cs_3,helm_hardhat_respirator,helm_sphere_respirator
-
-max_uses                                 = 3
-empty_weight                             = 0.5
 
 [itm_cold_weapon_toolkit]:itm_gunsmith_toolkit
 $spawn                                   = "devices\itm_cold_weapon_toolkit"

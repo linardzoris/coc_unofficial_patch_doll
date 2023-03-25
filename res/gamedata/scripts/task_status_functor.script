@@ -275,8 +275,7 @@ function specific_check_smart_under_faction_control(tsk,task_id)
 							["actor_freedom"] = "freedom",
 							["actor_monolith"] = "monolith",
 							["actor_army"] = "army",
-							["actor_killer"] = "killer",
-							["actor_csky"] = "csky"
+							["actor_killer"] = "killer"
 		}
 		
 		smart.faction = a_to_f[character_community(db.actor)] or smart.faction

@@ -3164,22 +3164,6 @@ function remove_map_spot(actor, npc, p)
 	end
 end
 
-function show_csky_squads_on_map(actor, npc)
-	local csky_squads_tbl =
-	{	{target="csky_sim_squad_novice",   hint="csky"},
-		{target="csky_sim_squad_advanced", hint="csky"},
-		{target="csky_sim_squad_veteran",  hint="csky"}
-	}
-	if (squad.player_id == "csky") then 
-		for k,v in pairs(csky_squads_tbl) do
-			local obj_id = get_story_squad(v.target)
-			if(obj_id) then
-			level.map_add_object_spot_ser(obj_id, "alife_presentation_squad_friend_1", v.hint)
-			end
-		end
-	end
-end
-
 function make_actor_visible_to_npc(actor, npc, p)
 	local act = db.actor
 	if act then

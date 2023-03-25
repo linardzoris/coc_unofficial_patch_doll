@@ -104,6 +104,7 @@ character_portrait                       = ui_inGame2_neutral_4
 ;---------------------------------------------------------------------------------------------
 ;		Radiation Suit
 ;---------------------------------------------------------------------------------------------
+
 [radiation_outfit]
 $spawn                                   = "outfit\radiation_outfit"
 visual                                   = dynamics\outfit\stalker_rad_outfit
@@ -195,120 +196,9 @@ explosion_immunity                       = -0.01
 fire_wound_immunity                      = -0.007
 
 ;---------------------------------------------------------------------------------------------
-;		Duty Radiation Suit
-;---------------------------------------------------------------------------------------------
-[dolg_radiation_outfit]:radiation_outfit
-$spawn                                   = "outfit\dolg_radiation_outfit"
-visual                                   = dynamics\outfit\duty_rad_outfit
-actor_visual                             = actors\stalker_dolg\stalker_dolg_5.ogf
-player_hud_section                       = actor_hud_duty_radiation
-
-inv_name                                 = dolg_radiation_outfit_name
-inv_name_short                           = dolg_radiation_outfit_name
-description                              = dolg_radiation_outfit_description
-
-inv_weight                               = 16
-
-inv_grid_x                               = 10
-inv_grid_y                               = 36
-
-upgr_icon_x                              = 1858
-upgr_icon_y                              = 676
-upgr_icon_width                          = 290
-upgr_icon_height                         = 153
-
-cost                                     = 77500
-
-hit_fraction_actor                       = 0.25
-
-burn_protection                          = 0.074
-shock_protection                         = 0.2
-radiation_protection                     = 0.007
-chemical_burn_protection                 = 0.074
-strike_protection                        = 0.32
-explosion_protection                     = 0.32
-wound_protection                         = 0.275
-
-immunities_sect                          = sect_dolg_rad_outfit_immunities
-
-bones_koeff_protection                   = actor_armor_duty_rad
-
-artefact_count                           = 0
-
-upgrades                                 = up_gr_firstab_dolg_rad_outfit, up_gr_seconab_dolg_rad_outfit, up_gr_thirdab_dolg_rad_outfit, up_gr_fourtab_dolg_rad_outfit
-
-character_portrait                       = ui_inGame2_Dolg_4a
-
-[sect_dolg_rad_outfit_immunities]
-burn_immunity                            = 0.068
-strike_immunity                          = 0.01
-shock_immunity                           = 0.034
-wound_immunity                           = 0.026
-radiation_immunity                       = 0.0
-telepatic_immunity                       = 0.0
-chemical_burn_immunity                   = 0.068
-explosion_immunity                       = 0.034
-fire_wound_immunity                      = 0.019
-
-;---------------------------------------------------------------------------------------------
-;		Freedom Radiation Suit
-;---------------------------------------------------------------------------------------------
-[svoboda_radiation_outfit]:radiation_outfit
-$spawn                                   = "outfit\svoboda_radiation_outfit"
-visual                                   = dynamics\outfit\freedom_rad_outfit
-actor_visual                             = actors\stalker_freedom\stalker_freedom_5.ogf
-player_hud_section                       = actor_hud_freedom_radiation
-
-inv_name                                 = svoboda_radiation_outfit_name
-inv_name_short                           = svoboda_radiation_outfit_name
-description                              = svoboda_radiation_outfit_description
-
-inv_weight                               = 15.5
-
-inv_grid_x                               = 12
-inv_grid_y                               = 36
-
-upgr_icon_x                              = 1861
-upgr_icon_y                              = 842
-upgr_icon_width                          = 298
-upgr_icon_height                         = 157
-
-cost                                     = 77500
-
-power_loss                               = 0.28
-
-hit_fraction_actor                       = 0.25
-
-burn_protection                          = 0.078
-shock_protection                         = 0.24
-radiation_protection                     = 0.007
-chemical_burn_protection                 = 0.078
-strike_protection                        = 0.305
-explosion_protection                     = 0.305
-wound_protection                         = 0.26
-
-immunities_sect                          = sect_free_rad_outfit_immunities
-
-bones_koeff_protection                   = actor_armor_free_rad
-
-upgrades                                 = up_gr_firstab_svoboda_rad_outfit, up_gr_seconab_svoboda_rad_outfit, up_gr_thirdab_svoboda_rad_outfit, up_gr_fourtab_svoboda_rad_outfit
-
-character_portrait                       = ui_inGame2_Freedom_5
-
-[sect_free_rad_outfit_immunities]
-burn_immunity                            = 0.065
-strike_immunity                          = 0.01
-shock_immunity                           = 0.032
-wound_immunity                           = 0.028
-radiation_immunity                       = 0.0
-telepatic_immunity                       = 0.0
-chemical_burn_immunity                   = 0.036
-explosion_immunity                       = 0.028
-fire_wound_immunity                      = 0.021
-
-;---------------------------------------------------------------------------------------------
 ;		Merc Radiation Suit
 ;---------------------------------------------------------------------------------------------
+
 [merc_radiation_outfit]:radiation_outfit
 $spawn                                   = "outfit\merc_radiation_outfit"
 visual                                   = dynamics\outfit\killer_rad_outfit
@@ -338,6 +228,7 @@ character_portrait                       = ui_inGame2_merc_3
 ;---------------------------------------------------------------------------------------------
 ;		Monolith Radiation Suit
 ;---------------------------------------------------------------------------------------------
+
 [monolith_radiation_outfit]:radiation_outfit
 $spawn                                   = "outfit\monolith_radiation_outfit"
 visual                                   = dynamics\outfit\monolith_rad_outfit

@@ -15,10 +15,6 @@
 		<class>actor</class>
 		<specific_character>actor_bandit</specific_character>
 	</character>
-	<character id="actor_csky">
-		<class>actor</class>
-		<specific_character>actor_csky</specific_character>
-	</character>
 	<character id="actor_dolg">
 		<class>actor</class>
 		<specific_character>actor_dolg</specific_character>
@@ -64,39 +60,16 @@
 	<character id="sim_default_duty_1">
 		<class>sim_default_duty_1</class>
 	</character>
-	<character id="sim_default_duty_2">
-		<class>sim_default_duty_2</class>
-	</character>
-	<character id="sim_default_duty_3">
-		<class>sim_default_duty_3</class>
-	</character>
-	<character id="sim_default_duty_4">
-		<class>sim_default_duty_4</class>
-	</character>
-	<!-- sim monolith
+	
+	<!-- sim monolith-->
 	<character id="sim_default_monolith_0">
 		<class>sim_default_monolith_0</class>
-	</character>-->
+	</character>
 	<character id="sim_default_monolith_1">
 		<class>sim_default_monolith_1</class>
 	</character>
-	<character id="sim_default_monolith_2">
-		<class>sim_default_monolith_2</class>
-	</character>
-	<character id="sim_default_monolith_3">
-		<class>sim_default_monolith_3</class>
-	</character>
-	<character id="sim_default_monolith_4">
-		<class>sim_default_monolith_4</class>
-	</character>
-	<character id="sim_monolith_specnaz_rg6">
-		<class>sim_monolith_specnaz_rg6</class>
-	</character>
-	<character id="sim_monolith_sniper">
-		<class>sim_monolith_sniper</class>
-	</character>
-	<character id="sim_monolith_sniper_gauss">
-		<class>sim_monolith_sniper_gauss</class>
+	<character id="sim_default_monolith_sniper">
+		<class>sim_default_monolith_sniper</class>
 	</character>
 
 
@@ -106,15 +79,6 @@
 	</character>
 	<character id="sim_default_freedom_1">
 		<class>sim_default_freedom_1</class>
-	</character>
-	<character id="sim_default_freedom_2">
-		<class>sim_default_freedom_2</class>
-	</character>
-	<character id="sim_default_freedom_3">
-		<class>sim_default_freedom_3</class>
-	</character>
-	<character id="sim_default_freedom_4">
-		<class>sim_default_freedom_4</class>
 	</character>
 
 	<!-- sim bandit -->
@@ -127,13 +91,7 @@
 	<character id="sim_default_bandit_2">
 		<class>sim_default_bandit_2</class>
 	</character>
-	<character id="sim_default_bandit_3">
-		<class>sim_default_bandit_3</class>
-	</character>
-	<character id="sim_default_bandit_4">
-		<class>sim_default_bandit_4</class>
-	</character>
-
+	
 	<!-- sim stalker -->
 	<character id="sim_default_stalker_0">
 		<class>sim_default_stalker_0</class>
@@ -147,9 +105,6 @@
 	<character id="sim_default_stalker_3">
 		<class>sim_default_stalker_3</class>
 	</character>
-	<character id="sim_default_stalker_4">
-		<class>sim_default_stalker_4</class>
-	</character>
 
 	<!-- sim military -->
 	<character id="sim_default_military_0">
@@ -158,90 +113,35 @@
 	<character id="sim_default_military_1">
 		<class>sim_default_military_1</class>
 	</character>
-	<character id="sim_default_military_2">
-		<class>sim_default_military_2</class>
-	</character>
-	<character id="sim_default_military_3">
-		<class>sim_default_military_3</class>
-	</character>
-	<character id="sim_default_military_3_sniper">
-		<class>sim_default_military_3_sniper</class>
-	</character>
-	<character id="sim_default_military_4">
-		<class>sim_default_military_4</class>
+	<character id="sim_default_military_sniper">
+		<class>sim_default_military_sniper</class>
 	</character>
 
-	<!-- sim mercenary
+	<!-- sim mercenary -->
 	<character id="sim_default_killer_0">
 		<class>sim_default_killer_0</class>
-	</character>-->
+	</character>
 	<character id="sim_default_killer_1">
 		<class>sim_default_killer_1</class>
 	</character>
-	<character id="sim_default_killer_2">
-		<class>sim_default_killer_2</class>
-	</character>
-	<character id="sim_default_killer_3">
-		<class>sim_default_killer_3</class>
-	</character>
-	<character id="sim_default_killer_4">
-		<class>sim_default_killer_4</class>
-	</character>
 
 	<!-- sim zombied -->
+	<character id="sim_default_zombied_0">
+		<class>sim_default_zombied_0</class>
+	</character>
 	<character id="sim_default_zombied_1">
 		<class>sim_default_zombied_1</class>
-	</character>
+	</character>	
 	<character id="sim_default_zombied_2">
 		<class>sim_default_zombied_2</class>
-	</character>
-	<character id="sim_default_zombied_3">
-		<class>sim_default_zombied_3</class>
-	</character>
-	<character id="sim_default_zombied_4">
-		<class>sim_default_zombied_4</class>
 	</character>
 
 	<!-- sim ecolog -->
     <character id="sim_default_ecolog_0">
 		<class>sim_default_ecolog_0</class>
 	</character>
-	<character id="sim_default_ecolog_1">
-		<class>sim_default_ecolog_1</class>
-	</character>
-	<character id="sim_default_ecolog_2">
-		<class>sim_default_ecolog_2</class>
-	</character>
-	<character id="sim_default_ecolog_3">
-		<class>sim_default_ecolog_3</class>
-	</character>
-
-	<!-- sim clear sky -->
-	<character id="sim_default_csky_0">
-		<class>sim_default_csky_0</class>
-	</character>
-	<character id="sim_default_csky_1">
-		<class>sim_default_csky_1</class>
-	</character>
-	<character id="sim_default_csky_2">
-		<class>sim_default_csky_2</class>
-	</character>
-	<character id="sim_default_csky_3">
-		<class>sim_default_csky_3</class>
-	</character>
-	<character id="sim_default_csky_4">
-		<class>sim_default_csky_4</class>
-	</character>
-
-	<!-- sim renegade -->
-	<character id="sim_default_renegade_0">
-		<class>sim_default_renegade_0</class>
-	</character>
-	<character id="sim_default_renegade_1">
-		<class>sim_default_renegade_1</class>
-	</character>
-	<character id="sim_default_renegade_2">
-		<class>sim_default_renegade_2</class>
+	<character id="sim_default_ecolog_escort">
+		<class>sim_default_ecolog_escort</class>
 	</character>
 
 <!-- Marsh -->
@@ -604,9 +504,6 @@
 	<character id="zat_b5_stalker_3">
 		<class>zat_b5_stalker_3</class>
 	</character>
-	<character id="zat_b5_stalker_4">
-		<class>zat_b5_stalker_4</class>
-	</character>
 	<character id="zat_b5_dealer_assistant_1">
 		<class>zat_b5_dealer_assistant_1</class>
 	</character>
@@ -884,9 +781,6 @@
 	<character id="jup_b1_stalker_3">
 		<class>jup_b1_stalker_3</class>
 	</character>
-	<character id="jup_b1_stalker_4">
-		<class>jup_b1_stalker_4</class>
-	</character>
 	<character id="jup_b1_pro_stalker_1">
 		<class>jup_b1_pro_stalker_1</class>
 	</character>
@@ -895,9 +789,6 @@
 	</character>
 	<character id="jup_b1_pro_stalker_3">
 		<class>jup_b1_pro_stalker_3</class>
-	</character>
-	<character id="jup_b1_pro_stalker_4">
-		<class>jup_b1_pro_stalker_4</class>
 	</character>
 
 	<character id="jup_b6_freedom_stalker_1">
@@ -909,9 +800,6 @@
 	<character id="jup_b6_freedom_stalker_3">
 		<class>jup_b6_freedom_stalker_3</class>
 	</character>
-	<character id="jup_b6_freedom_stalker_4">
-		<class>jup_b6_freedom_stalker_4</class>
-	</character>
 
 	<character id="jup_b6_duty_stalker_1">
 		<class>jup_b6_duty_stalker_1</class>
@@ -921,9 +809,6 @@
 	</character>
 	<character id="jup_b6_duty_stalker_3">
 		<class>jup_b6_duty_stalker_3</class>
-	</character>
-	<character id="jup_b6_duty_stalker_4">
-		<class>jup_b6_duty_stalker_4</class>
 	</character>
 
 	<character id="jup_b6_stalker_prisoner">
@@ -1035,12 +920,6 @@
 
    <character id="zat_b100_military_1">
 		<class>zat_b100_military_1</class>
-   </character>
-   <character id="zat_b100_military_2">
-		<class>zat_b100_military_2</class>
-   </character>
-   <character id="zat_b100_military_3">
-		<class>zat_b100_military_3</class>
    </character>
 
 	<!--- Jupiter B42 -->

@@ -15,7 +15,7 @@ end
 function init_drop_settings()
 	-- Create a list by community of the percent chance to spawn an item
 	SetDiffModifications()
-	local community_list = { "stalker", "dolg", "freedom", "bandit", "renegade", "army", "zombied", "ecolog", "killer", "monolith", "csky" }
+	local community_list = { "stalker", "dolg", "freedom", "bandit", "army", "zombied", "ecolog", "killer", "monolith" }
 	for k,v in pairs(community_list) do
 		item_by_community[v] = {}
 		if death_ini:section_exist(v) then

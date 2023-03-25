@@ -30,23 +30,11 @@
 	<string id="st_itm_gunsmith_toolkit_descr">
 		<text>A kit containing oils and tools used for basic firearm maintenance. Useful when out exploring, but also quite heavy.\n \n%c[255,255,255,0]Drag onto the item you wish to repair.</text>
 	</string>
-	<string id="st_itm_handgun_toolkit">
-		<text>Handgun kit</text>
-	</string>
-	<string id="st_itm_handgun_toolkit_descr">
-		<text>A small kit containing oils and tools only suitable for handgun maintenance. Cheaper and lighter than a universal set.\n \n%c[255,255,255,0]Drag onto the item you wish to repair.</text>
-	</string>
 	<string id="st_itm_outfit_toolkit">
 		<text>Sewing kit</text>
 	</string>
 	<string id="st_itm_outfit_toolkit_descr">
 		<text>A makeshift kit of sewing equipment and spare materials for outfit maintenance. Useful for repairing holes and tears in armour.\n \n%c[255,255,255,0]Drag onto the item you wish to repair.</text>
-	</string>
-	<string id="st_itm_helmet_toolkit">
-		<text>Headgear kit</text>
-	</string>
-	<string id="st_itm_helmet_toolkit_descr">
-		<text>A kit containing glues, tape and spare materials for helmet maintenance. Usable for patching or filling holes.\n \n%c[255,255,255,0]Drag onto the item you wish to repair.</text>
 	</string>
 	<string id="st_itm_repairkit_tier_1_name">
 		<text>Basic tools</text>

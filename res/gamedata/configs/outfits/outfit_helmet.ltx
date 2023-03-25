@@ -73,8 +73,9 @@ explosion_immunity                       = 0
 fire_wound_immunity                      = 0
 
 ;---------------------------------------------------------------------------------------------
-;		Gas Mask
+;		Противогаз
 ;---------------------------------------------------------------------------------------------
+
 [helm_respirator]:helmet_base
 $spawn                                   = "outfit\helm_respirator"
 visual                                   = dynamics\outfit\helm_respirator
@@ -120,8 +121,9 @@ explosion_immunity                       = 0.1
 fire_wound_immunity                      = 0.1
 
 ;---------------------------------------------------------------------------------------------
-;		Steel helmet
+;		Стальной шлем
 ;---------------------------------------------------------------------------------------------
+
 [helm_hardhat]:helmet_base
 $spawn                                   = "outfit\helm_hardhat"
 visual                                   = dynamics\outfit\helm_hardhat
@@ -168,8 +170,9 @@ explosion_immunity                       = 0.075
 fire_wound_immunity                      = 0.075
 
 ;---------------------------------------------------------------------------------------------
-;		Screen helmet "Zaslon"
+;		Шлем "Заслон" (выглядит как аквариум "Сёвы", наверно надо удалить)
 ;---------------------------------------------------------------------------------------------
+
 [helm_protective]:helmet_base
 $spawn                                   = "outfit\helm_protective"
 visual                                   = dynamics\outfit\helm_protective
@@ -216,8 +219,9 @@ explosion_immunity                       = 0.075
 fire_wound_immunity                      = 0.075
 
 ;---------------------------------------------------------------------------------------------
-;		Tactical helmet
+;		Тактический шлем (армейский)
 ;---------------------------------------------------------------------------------------------
+
 [helm_tactic]:helmet_base
 $spawn                                   = "outfit\helm_tactic"
 visual                                   = dynamics\outfit\helm_tactic
@@ -266,8 +270,9 @@ explosion_immunity                       = 0.05
 fire_wound_immunity                      = 0.05
 
 ;---------------------------------------------------------------------------------------------
-;		Sphere M12 helmet
+;		Шлем "Сфера М12" (армейский)
 ;---------------------------------------------------------------------------------------------
+
 [helm_battle]:helmet_base
 $spawn                                   = "outfit\helm_battle"
 visual                                   = dynamics\outfit\helm_battle
@@ -279,8 +284,8 @@ has_glass 								 = true
 
 inv_weight                               = 4
 
-inv_grid_x                               = 18
-inv_grid_y                               = 12
+inv_grid_x                               = 10
+inv_grid_y                               = 13
 
 upgr_icon_x                              = 150
 upgr_icon_y                              = 619
@@ -316,8 +321,9 @@ explosion_immunity                       = 0.05
 fire_wound_immunity                      = 0.05
 
 ;---------------------------------------------------------------------------------------------
-;		M40 "Merc Mask"
+;		Противогаз М40 (наёмники)
 ;---------------------------------------------------------------------------------------------
+
 [helm_m40]:helmet_base
 $spawn                                   = "outfit\helm_m40"
 visual                                   = dynamics\outfit\helm_m40
@@ -366,132 +372,9 @@ explosion_immunity                       = 0.08
 fire_wound_immunity                      = 0.08
 
 ;---------------------------------------------------------------------------------------------
-;		Sphere helmet
+;		Тряпичная маска (ну я хуй знает)
 ;---------------------------------------------------------------------------------------------
-[helm_sphere]:helmet_base
-$spawn                                   = "outfit\helm_sphere"
-visual                                   = dynamics\outfit\helm_sfera
-inv_name                                 = st_helm_sphere
-inv_name_short                           = st_helm_sphere
-description                              = st_helm_sphere_descr
 
-has_glass 								 = true
-
-inv_weight                               = 3.0
-
-inv_grid_x                               = 25
-inv_grid_y                               = 31
-
-upgr_icon_x                              = 0
-upgr_icon_y                              = 1460
-upgr_icon_width                          = 140
-upgr_icon_height                         = 140
-
-cost                                     = 10000
-
-nightvision_sect                         = effector_nightvision_1
-
-immunities_sect                          = sect_helm_sphere_immunities
-bones_koeff_protection                   = actor_helm_sphere
-
-power_loss                               = 0.04
-
-telepatic_protection                     = 0.025
-
-upgrades                                 = up_gr_firstab_helm_sphere, up_gr_seconab_helm_sphere, up_gr_seconcd_helm_sphere
-upgrade_scheme                           = upgrade_scheme_helm_sphere
-mask_hud                                 = helm_hardhat
-
-[sect_helm_sphere_immunities]
-burn_immunity                            = 0.08
-strike_immunity                          = 0.0
-shock_immunity                           = 0.04
-wound_immunity                           = 0.0
-radiation_immunity                       = 0.0
-telepatic_immunity                       = 0.0
-chemical_burn_immunity                   = 0.08
-explosion_immunity                       = 0.05
-fire_wound_immunity                      = 0.05
-
-;---------------------------------------------------------------------------------------------
-;		Tactical M12 helmet
-;---------------------------------------------------------------------------------------------
-[helm_tactic_2]:helmet_base
-$spawn                                   = "outfit\helm_tactic_2"
-visual                                   = dynamics\outfit\helm_tactic_2
-inv_name                                 = st_helm_tactic_2
-inv_name_short                           = st_helm_tactic_2
-description                              = st_helm_tactic_2_descr
-
-has_glass 								 = true
-
-inv_weight                               = 4
-
-inv_grid_x                               = 18
-inv_grid_y                               = 39
-
-upgr_icon_x                              = 373
-upgr_icon_y                              = 950
-upgr_icon_width                          = 135
-upgr_icon_height                         = 142
-
-cost                                     = 35000
-
-nightvision_sect                         = effector_nightvision_1
-
-immunities_sect                          = sect_helm_tactic_2_immunities
-bones_koeff_protection                   = actor_helm_tacticm12
-
-power_loss                               = 0.11
-
-radiation_protection                     = 0.002
-chemical_burn_protection                 = 0.02
-telepatic_protection                     = 0.035
-
-upgrades                                 = up_gr_firstab_helm_battle, up_gr_seconab_helm_battle
-upgrade_scheme                           = upgrade_scheme_helm_battle
-mask_hud                                 = helm_tactic
-
-[sect_helm_tactic_2_immunities]
-burn_immunity                            = 0.075
-strike_immunity                          = 0.0
-shock_immunity                           = 0.035
-wound_immunity                           = 0.0
-radiation_immunity                       = 0.0
-telepatic_immunity                       = 0.0
-chemical_burn_immunity                   = 0.075
-explosion_immunity                       = 0.05
-fire_wound_immunity                      = 0.04
-
-;---------------------------------------------------------------------------------------------
-;		Gas Mask Old
-;---------------------------------------------------------------------------------------------
-[helm_respirator_old]:helm_respirator
-$spawn                                   = "outfit\helm_respirator_old"
-visual                                   = dynamics\outfit\helm_respirator_2
-inv_name                                 = st_helm_respirator_2
-inv_name_short                           = st_helm_respirator_2
-description                              = st_helm_respirator_2_descr
-
-has_glass 								 = true
-
-inv_weight                               = 2.0
-
-inv_grid_x                               = 14
-inv_grid_y                               = 39
-
-upgr_icon_x                              = 401
-upgr_icon_y                              = 1129
-upgr_icon_width                          = 104
-upgr_icon_height                         = 141
-
-cost                                     = 4000
-
-power_loss                               = 0.09
-
-;---------------------------------------------------------------------------------------------
-;		Cloth mask
-;---------------------------------------------------------------------------------------------
 [helm_facemask]:helmet_base
 $spawn                                   = "outfit\helm_facemask"
 visual                                   = dynamics\outfit\cloth_mask
@@ -531,8 +414,9 @@ explosion_immunity                       = 0.2
 fire_wound_immunity                      = 0.125
 
 ;---------------------------------------------------------------------------------------------
-;		Balaclava (world model needed)
+;		Балаклава
 ;---------------------------------------------------------------------------------------------
+
 [helm_balaclava]:helm_facemask
 $spawn                                   = "outfit\helm_balaclava"
 inv_name                                 = st_helm_balaclava
@@ -551,132 +435,9 @@ radiation_protection                     = 0.0005
 chemical_burn_protection                 = 0.002
 
 ;---------------------------------------------------------------------------------------------
-;		Respirator (half mask)
+;		Противогаз ГП-5
 ;---------------------------------------------------------------------------------------------
-[helm_respirator_half]:helmet_base
-$spawn                                   = "outfit\helm_respirator_half"
-visual                                   = dynamics\outfit\helm_respirator_half
-inv_name                                 = st_helm_respirator_half
-inv_name_short                           = st_helm_respirator_half
-description                              = st_helm_respirator_half_descr
 
-inv_weight                               = 1
-
-inv_grid_x                               = 16
-inv_grid_y                               = 39
-
-upgr_icon_x                              = 277
-upgr_icon_y                              = 1129
-upgr_icon_width                          = 107
-upgr_icon_height                         = 141
-
-cost                                     = 2500
-
-immunities_sect                          = sect_helm_respirator_half_immunities
-bones_koeff_protection                   = actor_helm_mask
-
-power_loss                               = 0.06
-
-radiation_protection                     = 0.001
-chemical_burn_protection                 = 0.02
-
-upgrades                                 = up_gr_firstab_helm_respirator_half
-upgrade_scheme                           = upgrade_scheme_helm_respirator_half
-mask_hud                                 = helm_invisible
-
-[sect_helm_respirator_half_immunities]
-burn_immunity                            = 0.08
-strike_immunity                          = 0.0
-shock_immunity                           = 0.04
-wound_immunity                           = 0.0
-radiation_immunity                       = 0.0
-telepatic_immunity                       = 0.0
-chemical_burn_immunity                   = 0.08
-explosion_immunity                       = 0.1
-fire_wound_immunity                      = 0.1
-
-;---------------------------------------------------------------------------------------------
-;		Steel helmet with respirator
-;---------------------------------------------------------------------------------------------
-[helm_hardhat_respirator]:helmet_base
-$spawn                                   = "outfit\helm_hardhat_respirator"
-visual                                   = dynamics\outfit\helm_hardhat_respirator_half
-inv_name                                 = st_helm_hardhat_respirator
-inv_name_short                           = st_helm_hardhat_respirator
-description                              = st_helm_hardhat_respirator_descr
-
-has_glass 								 = true
-
-inv_weight                               = 3.0
-
-inv_grid_x                               = 0
-inv_grid_y                               = 13
-
-upgr_icon_x                              = 474
-upgr_icon_y                              = 619
-upgr_icon_width                          = 149
-upgr_icon_height                         = 143
-
-cost                                     = 5000
-
-immunities_sect                          = sect_helm_hardhat_immunities
-bones_koeff_protection                   = actor_helm_hardhat
-
-power_loss                               = 0.09
-
-radiation_protection                     = 0.001
-chemical_burn_protection                 = 0.02
-telepatic_protection                     = 0.02
-
-upgrades                                 = up_gr_firstab_helm_battle, up_gr_seconab_helm_battle
-upgrade_scheme                           = upgrade_scheme_helm_battle
-mask_hud                                 = helm_hardhat
-
-;---------------------------------------------------------------------------------------------
-;		Sphere helmet with respirator
-;---------------------------------------------------------------------------------------------
-[helm_sphere_respirator]:helmet_base
-$spawn                                   = "outfit\helm_sphere_respirator"
-visual                                   = dynamics\outfit\helm_sfera_respirator_half
-inv_name                                 = st_helm_sphere_respirator
-inv_name_short                           = st_helm_sphere_respirator
-description                              = st_helm_sphere_respirator_descr
-
-has_glass 								 = true
-
-inv_weight                               = 4.0
-
-inv_grid_width    						 = 2
-inv_grid_height    						 = 2
-inv_grid_x         						 = 25
-inv_grid_y         						 = 29
-
-upgr_icon_x                              = 325
-upgr_icon_y                              = 619
-upgr_icon_width                          = 136
-upgr_icon_height                         = 143
-
-cost                                     = 12500
-
-nightvision_sect                         = effector_nightvision_1
-
-immunities_sect                          = sect_helm_sphere_immunities
-bones_koeff_protection                   = actor_helm_sphere
-
-power_loss                               = 0.1
-
-radiation_protection                     = 0.001
-chemical_burn_protection                 = 0.02
-telepatic_protection                     = 0.025
-
-upgrades                                 = up_gr_firstab_helm_tactic, up_gr_seconab_helm_tactic
-upgrade_scheme                           = upgrade_scheme_helm_tactic
-mask_hud                                 = helm_tactic
-
-
-;---------------------------------------------------------------------------------------------
-;		GP-5 gas mask
-;---------------------------------------------------------------------------------------------
 [helm_respirator_gp5]:helmet_base
 $spawn                                   = "outfit\helm_respirator_gp5"
 visual                                   = dynamics\outfit\helm_respirator_gp5
@@ -719,188 +480,3 @@ telepatic_immunity                       = 0.0
 chemical_burn_immunity                   = 0.075
 explosion_immunity                       = 0.09
 fire_wound_immunity                      = 0.09
-
-;---------------------------------------------------------------------------------------------
-;		CS-H1 basic helmet
-;---------------------------------------------------------------------------------------------
-[helm_cs_1]:helmet_base
-$spawn                                   = "outfit\helm_cs_1"
-visual                                   = dynamics\outfit\helm_cs_1
-inv_name                                 = st_helm_cs_1
-inv_name_short                           = st_helm_cs_1
-description                              = st_helm_cs_1_descr
-
-has_glass 								 = true
-
-inv_weight                               = 3
-
-inv_grid_x                               = 19
-inv_grid_y                               = 31
-
-upgr_icon_x                              = 132
-upgr_icon_y                              = 1125
-upgr_icon_width                          = 115
-upgr_icon_height                         = 155
-
-cost                                     = 9000
-
-immunities_sect                          = sect_helm_cs_1_immunities
-bones_koeff_protection                   = actor_helm_cs_1
-
-power_loss                               = 0.1
-
-radiation_protection                     = 0.002
-chemical_burn_protection                 = 0.03
-telepatic_protection                     = 0.02
-
-upgrades                                 = up_gr_firstab_helm_cs_1, up_gr_seconab_helm_cs_1
-upgrade_scheme                           = upgrade_scheme_helm_hardhat
-mask_hud                                 = helm_hardhat
-
-[sect_helm_cs_1_immunities]
-burn_immunity                            = 0.075
-strike_immunity                          = 0.0
-shock_immunity                           = 0.04
-wound_immunity                           = 0.0
-radiation_immunity                       = 0.0
-telepatic_immunity                       = 0.0
-chemical_burn_immunity                   = 0.07
-explosion_immunity                       = 0.08
-fire_wound_immunity                      = 0.08
-
-;---------------------------------------------------------------------------------------------
-;		CS-H2 protective helmet
-;---------------------------------------------------------------------------------------------
-[helm_cs_2]:helmet_base
-$spawn                                   = "outfit\helm_cs_2"
-visual                                   = dynamics\outfit\helm_cs_2
-inv_name                                 = st_helm_cs_2
-inv_name_short                           = st_helm_cs_2
-description                              = st_helm_cs_2_descr
-
-has_glass 								 = true
-
-inv_weight                               = 3.5
-
-inv_grid_x                               = 21
-inv_grid_y                               = 31
-
-upgr_icon_x                              = 1
-upgr_icon_y                              = 1294
-upgr_icon_width                          = 146
-upgr_icon_height                         = 159
-
-cost                                     = 20000
-
-nightvision_sect                         = effector_nightvision_1
-
-immunities_sect                          = sect_helm_cs_2_immunities
-bones_koeff_protection                   = actor_helm_cs_2
-
-power_loss                               = 0.11
-
-radiation_protection                     = 0.003
-chemical_burn_protection                 = 0.046
-telepatic_protection                     = 0.03
-
-upgrades                                 = up_gr_firstab_helm_cs_2, up_gr_seconab_helm_cs_2
-upgrade_scheme                           = upgrade_scheme_helm_hardhat
-mask_hud                                 = helm_hardhat
-
-[sect_helm_cs_2_immunities]
-burn_immunity                            = 0.065
-strike_immunity                          = 0.0
-shock_immunity                           = 0.033
-wound_immunity                           = 0.0
-radiation_immunity                       = 0.0
-telepatic_immunity                       = 0.0
-chemical_burn_immunity                   = 0.06
-explosion_immunity                       = 0.075
-fire_wound_immunity                      = 0.075
-
-;---------------------------------------------------------------------------------------------
-;		CS-H3 battle helmet
-;---------------------------------------------------------------------------------------------
-[helm_cs_3]:helmet_base
-$spawn                                   = "outfit\helm_cs_3"
-visual                                   = dynamics\outfit\helm_cs_3
-inv_name                                 = st_helm_cs_3
-inv_name_short                           = st_helm_cs_3
-description                              = st_helm_cs_3_descr
-
-has_glass 								 = true
-
-inv_weight                               = 3.5
-
-inv_grid_x                               = 23
-inv_grid_y                               = 31
-
-upgr_icon_x                              = 165
-upgr_icon_y                              = 1292
-upgr_icon_width                          = 128
-upgr_icon_height                         = 162
-
-cost                                     = 25000
-
-nightvision_sect                         = effector_nightvision_1
-
-immunities_sect                          = sect_helm_cs_3_immunities
-bones_koeff_protection                   = actor_helm_cs_3
-
-power_loss                               = 0.11
-
-radiation_protection                     = 0.0027
-chemical_burn_protection                 = 0.042
-telepatic_protection                     = 0.035
-
-upgrades                                 = up_gr_firstab_helm_cs_2, up_gr_seconab_helm_cs_2
-upgrade_scheme                           = upgrade_scheme_helm_hardhat
-mask_hud                                 = helm_hardhat
-
-[sect_helm_cs_3_immunities]
-burn_immunity                            = 0.07
-strike_immunity                          = 0.0
-shock_immunity                           = 0.035
-wound_immunity                           = 0.0
-radiation_immunity                       = 0.0
-telepatic_immunity                       = 0.0
-chemical_burn_immunity                   = 0.065
-explosion_immunity                       = 0.07
-fire_wound_immunity                      = 0.07
-
-;---------------------------------------------------------------------------------------------
-;		Black Beret
-;---------------------------------------------------------------------------------------------
-[helm_beret]:helmet_base
-$spawn                                   = "outfit\helm_beret"
-visual                                   = dynamics\outfit\helm_beret
-inv_name                                 = st_helm_beret
-inv_name_short                           = st_helm_beret
-description                              = st_helm_beret_descr
-
-inv_weight                               = 0.1
-
-inv_grid_x                               = 27
-inv_grid_y                               = 31
-
-upgr_icon_x                              = 306
-upgr_icon_y                              = 1294
-upgr_icon_width                          = 155
-upgr_icon_height                         = 150
-
-cost                                     = 500
-
-immunities_sect                          = sect_helm_beret_immunities
-
-power_loss                               = 0.0
-
-[sect_helm_beret_immunities]
-burn_immunity                            = 0.0
-strike_immunity                          = 0.0
-shock_immunity                           = 0.0
-wound_immunity                           = 0.0
-radiation_immunity                       = 0.0
-telepatic_immunity                       = 0.0
-chemical_burn_immunity                   = 0.0
-explosion_immunity                       = 0.0
-fire_wound_immunity                      = 0.0

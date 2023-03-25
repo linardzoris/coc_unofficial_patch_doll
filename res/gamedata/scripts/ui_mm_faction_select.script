@@ -123,7 +123,6 @@ local function on_game_load(binder)
 		
 		-- Only give the story quests to factions in this table.
 		local story_factions = {
-			["csky"] = true,
 			["dolg"] = true,
 			["ecolog"] = true,
 			["freedom"] = true,
@@ -311,7 +310,7 @@ function faction_ui:__init(owner) super()
 	
 	self.ini = ini_file("plugins\\player_loadouts.ltx")
 	self.selected_faction = nil
-	self.f = {"stalker","bandit","csky","dolg","freedom","killer","army","ecolog","monolith"}
+	self.f = {"stalker","bandit","dolg","freedom","killer","army","ecolog","monolith"}
 	
 	self:InitControls(self.f)
 	self:InitCallBacks(self.f)
@@ -643,7 +642,7 @@ function faction_ui:load_list_economy()
 end
 
 function faction_ui:OnRandomize()
-	local faction = random_choice("stalker","bandit","csky","ecolog","army","monolith","dolg","freedom","killer")
+	local faction = random_choice("stalker","bandit","ecolog","army","monolith","dolg","freedom","killer")
 	self:OnFactionSelect(faction)
 	
 	local subset
@@ -694,7 +693,7 @@ function faction_ui:OnFactionSelect(faction)
 	
 	desc = desc .. "%c[0,245,245,220]st_mm_faction_relations:\\n"
 	
-	local t = {"stalker","bandit","csky","ecolog","army","monolith","dolg","freedom","killer"}
+	local t = {"stalker","bandit","ecolog","army","monolith","dolg","freedom","killer"}
 	for i=1,#t do
 		if not (t[i] == faction) then
 			local v = relation_registry.community_relation("actor_"..faction, t[i])
@@ -815,9 +814,6 @@ function faction_ui:OnFaction_stalker()
 end
 function faction_ui:OnFaction_bandit()
 	self:OnFactionSelect("bandit")
-end
-function faction_ui:OnFaction_csky()
-	self:OnFactionSelect("csky")
 end
 function faction_ui:OnFaction_dolg()
 	self:OnFactionSelect("dolg")

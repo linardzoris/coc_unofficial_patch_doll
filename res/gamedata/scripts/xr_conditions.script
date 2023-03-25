@@ -2856,13 +2856,11 @@ function smart_under_faction_control(actor,npc,p)
 		local f = {
 			["stalker"] = "stalker",
 			["bandit"] = "bandit",
-			["renegade"] = "renegade",
 			["killer"] = "merc",
 			["dolg"] = "duty",
 			["freedom"] = "freedom",
 			["monolith"] = "monolith",
 			["ecolog"] = "ecolog",
-			["csky"] = "csky",
 			["army"] = "military"
 		}
 		if not (f[p[2]]) then 

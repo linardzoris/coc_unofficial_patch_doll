@@ -76,41 +76,18 @@ explosion_immunity                       = -0.01
 fire_wound_immunity                      = -0.01
 
 ;---------------------------------------------------------------------------------------------
-;       CS Novice Outfit
+;		Куртка новичка
 ;---------------------------------------------------------------------------------------------
-[cs_novice_outfit]:outfit_novice_base
-$spawn                                   = "outfit\cs_novice_outfit"
-visual                                   = dynamics\outfit\cs_rookie_outfit
-actor_visual                             = actors\stalker_nebo\stalker_nebo_r.ogf
-npc_visual                               = actors\stalker_nebo\stalker_nebo_r.ogf
-player_hud_section                       = actor_hud_cs_novice
 
-
-inv_name                                 = csky_novice_outfit_name
-inv_name_short                           = csky_novice_outfit_name
-description                              = novice_outfit_description
-
-inv_grid_x                               = 12
-inv_grid_y                               = 11
-
-upgr_icon_x                              = 2195
-upgr_icon_y                              = 1009
-upgr_icon_width                          = 297
-upgr_icon_height                         = 145
-
-character_portrait                       = ui_inGame2_csky_r_gas
-
-upgrades                                 = up_gr_firstab_rookie_outfit, up_gr_seconab_rookie_outfit, up_gr_thirdab_rookie_outfit
-
-;---------------------------------------------------------------------------------------------
-;		Novice Outfit
-;---------------------------------------------------------------------------------------------
 [novice_outfit]:outfit_novice_base
 $spawn                                   = "outfit\novice_outfit"
 visual                                   = dynamics\outfit\rookie_outfit
 actor_visual                             = actors\stalker_neutral\stalker_neutral_1_gas.ogf
 npc_visual                               = actors\stalker_neutral\stalker_neutral_1_gas.ogf
 player_hud_section                       = actor_hud_loner_novice
+
+inv_grid_x                               = 12
+inv_grid_y                               = 11
 
 inv_name                                 = novice_outfit_name
 inv_name_short                           = novice_outfit_name
@@ -126,8 +103,9 @@ character_portrait                       = ui_inGame2_neutral_1_gas
 upgrades                                 = up_gr_firstab_rookie_outfit, up_gr_seconab_rookie_outfit, up_gr_thirdab_rookie_outfit
 
 ;---------------------------------------------------------------------------------------------
-;		Bandit Novice Outfit
+;		Бандитская куртка
 ;---------------------------------------------------------------------------------------------
+
 [bandit_novice_outfit]:outfit_novice_base
 $spawn                                   = "outfit\novice_outfit_bandit"
 visual                                   = dynamics\outfit\bandit_outfit
@@ -153,62 +131,9 @@ character_portrait                       = ui_inGame2_bandit_1
 upgrades                                 = up_gr_firstab_bandit_outfit, up_gr_seconab_bandit_outfit, up_gr_thirdab_bandit_outfit
 
 ;---------------------------------------------------------------------------------------------
-;		Duty Novice Outfit
+;		Чёрный плащ
 ;---------------------------------------------------------------------------------------------
-[dolg_novice_outfit]:outfit_novice_base
-$spawn                                   = "outfit\novice_outfit_duty"
-visual                                   = dynamics\outfit\duty_rookie_outfit
-actor_visual                             = actors\stalker_dolg\stalker_dolg_r_gas.ogf
-npc_visual                               = actors\stalker_dolg\stalker_dolg_r_gas.ogf
-player_hud_section                       = actor_hud_duty_novice
 
-
-inv_name                                 = dolg_novice_outfit_name
-inv_name_short                           = dolg_novice_outfit_name
-description                              = novice_outfit_description
-
-inv_grid_x                               = 10
-inv_grid_y                               = 39
-
-upgr_icon_x                              = 2185
-upgr_icon_y                              = 506
-upgr_icon_width                          = 295
-upgr_icon_height                         = 140
-
-character_portrait                       = ui_inGame2_Dolg_r
-
-upgrades                                 = up_gr_firstab_bandit_outfit, up_gr_seconab_bandit_outfit, up_gr_thirdab_bandit_outfit
-
-;---------------------------------------------------------------------------------------------
-;       Novice Outfit (White)
-;---------------------------------------------------------------------------------------------
-[novice_2_outfit]:outfit_novice_base
-$spawn                                   = "outfit\novice_outfit_monolith"
-visual                                   = dynamics\outfit\monolith_rookie_outfit
-actor_visual                             = actors\stalker_neutral\stalker_neutral_1a_gas.ogf
-npc_visual                               = actors\stalker_neutral\stalker_neutral_1a_gas.ogf
-player_hud_section                       = actor_hud_white_novice
-
-
-inv_name                                 = novice_outfit_name
-inv_name_short                           = novice_outfit_name
-description                              = novice_outfit_description
-
-inv_grid_x                               = 16
-inv_grid_y                               = 12
-
-upgr_icon_x                              = 2191
-upgr_icon_y                              = 831
-upgr_icon_width                          = 289
-upgr_icon_height                         = 140
-
-character_portrait                       = ui_inGame2_neutral_1w_gas
-
-upgrades                                 = up_gr_firstab_rookie_outfit, up_gr_seconab_rookie_outfit, up_gr_thirdab_rookie_outfit
-
-;---------------------------------------------------------------------------------------------
-;		Trench Coat
-;---------------------------------------------------------------------------------------------
 [trenchcoat_outfit]:outfit_novice_base
 $spawn                                   = "outfit\trenchcoat_outfit"
 visual                                   = dynamics\outfit\novice_outfit
@@ -223,8 +148,8 @@ description                              = trenchcoat_outfit_description
 inv_weight                               = 2
 
 inv_grid_height                          = 3
-inv_grid_x                               = 17
-inv_grid_y                               = 30
+inv_grid_x                               = 16
+inv_grid_y                               = 12
 
 upgr_icon_x                              = 636
 upgr_icon_y                              = 0
@@ -262,6 +187,73 @@ explosion_immunity                       = 0.05
 fire_wound_immunity                      = 0.038
 
 [sect_trenchcoat_outfit_immunities_add]
+burn_immunity                            = -0.02
+strike_immunity                          = 0.0
+shock_immunity                           = -0.01
+wound_immunity                           = -0.01
+radiation_immunity                       = 0.0
+telepatic_immunity                       = 0.0
+chemical_burn_immunity                   = -0.02
+explosion_immunity                       = -0.01
+fire_wound_immunity                      = -0.01
+
+;---------------------------------------------------------------------------------------------
+;		Коричневый плащ
+;---------------------------------------------------------------------------------------------
+
+[trenchcoat_brown_outfit]:outfit_novice_base
+$spawn                                   = "outfit\trenchcoat_brown_outfit"
+visual                                   = dynamics\outfit\bandit_commander_outfit
+actor_visual                             = actors\stalker_bandit\stalker_bandit_5_merc.ogf
+npc_visual                               = actors\stalker_bandit\stalker_bandit_5_merc.ogf
+player_hud_section                       = actor_hud_bandit_trench
+
+
+inv_name                                 = trenchcoat_brown_outfit_name
+inv_name_short                           = trenchcoat_brown_outfit_name
+description                              = trenchcoat_brown_outfit_description
+inv_weight                               = 2
+
+inv_grid_height                          = 3
+inv_grid_x                               = 14
+inv_grid_y                               = 12
+
+upgr_icon_x                              = 942
+upgr_icon_y                              = 0
+upgr_icon_width                          = 303
+upgr_icon_height                         = 162
+
+cost                                     = 3000
+
+power_loss                               = 0.05
+
+hit_fraction_actor                       = 0.85
+
+immunities_sect                          = sect_trenchcoat_brown_outfit_immunities
+
+burn_protection                          = 0.024
+shock_protection                         = 0.0
+radiation_protection                     = 0.0
+chemical_burn_protection                 = 0.012
+telepatic_protection                     = 0.0
+strike_protection                        = 0.05
+explosion_protection                     = 0.05
+wound_protection                         = 0.04
+
+character_portrait                       = ui_inGame2_bandit_6d
+
+[sect_trenchcoat_brown_outfit_immunities]
+burn_immunity                            = 0.095
+strike_immunity                          = 0.01
+shock_immunity                           = 0.05
+wound_immunity                           = 0.05
+radiation_immunity                       = 0.0
+telepatic_immunity                       = 0.0
+chemical_burn_immunity                   = 0.095
+explosion_immunity                       = 0.05
+fire_wound_immunity                      = 0.038
+
+[sect_trenchcoat_brown_outfit_immunities_add]
 burn_immunity                            = -0.02
 strike_immunity                          = 0.0
 shock_immunity                           = -0.01

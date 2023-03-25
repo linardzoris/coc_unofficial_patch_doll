@@ -156,28 +156,6 @@
 		<texture id="ui_inGame2_upgrade_svoboda_scientific_outfit_20" x="180" y="1055" width="90" height="44" />
 		<texture id="ui_inGame2_upgrade_svoboda_scientific_outfit_21" x="180" y="1099" width="90" height="44" />
 
-		<texture id="ui_inGame2_upgrade_dolg_scientific_outfit_1" x="270" y="747" width="90" height="44" />
-		<texture id="ui_inGame2_upgrade_dolg_scientific_outfit_2" x="360" y="747" width="90" height="44" />
-		<texture id="ui_inGame2_upgrade_dolg_scientific_outfit_3" x="450" y="747" width="90" height="44" />
-		<texture id="ui_inGame2_upgrade_dolg_scientific_outfit_4" x="360" y="791" width="90" height="44" />
-		<texture id="ui_inGame2_upgrade_dolg_scientific_outfit_5" x="450" y="791" width="90" height="44" />
-		<texture id="ui_inGame2_upgrade_dolg_scientific_outfit_6" x="270" y="835" width="90" height="44" />
-		<texture id="ui_inGame2_upgrade_dolg_scientific_outfit_7" x="360" y="835" width="90" height="44" />
-		<texture id="ui_inGame2_upgrade_dolg_scientific_outfit_8" x="450" y="835" width="90" height="44" />
-		<texture id="ui_inGame2_upgrade_dolg_scientific_outfit_9" x="360" y="879" width="90" height="44" />
-		<texture id="ui_inGame2_upgrade_dolg_scientific_outfit_10" x="450" y="879" width="90" height="44" />
-		<texture id="ui_inGame2_upgrade_dolg_scientific_outfit_11" x="270" y="923" width="90" height="44" />
-		<texture id="ui_inGame2_upgrade_dolg_scientific_outfit_12" x="360" y="923" width="90" height="44" />
-		<texture id="ui_inGame2_upgrade_dolg_scientific_outfit_13" x="450" y="923" width="90" height="44" />
-		<texture id="ui_inGame2_upgrade_dolg_scientific_outfit_14" x="360" y="967" width="90" height="44" />
-		<texture id="ui_inGame2_upgrade_dolg_scientific_outfit_15" x="270" y="1011" width="90" height="44" />
-		<texture id="ui_inGame2_upgrade_dolg_scientific_outfit_16" x="360" y="1011" width="90" height="44" />
-		<texture id="ui_inGame2_upgrade_dolg_scientific_outfit_17" x="450" y="1011" width="90" height="44" />
-		<texture id="ui_inGame2_upgrade_dolg_scientific_outfit_18" x="270" y="1055" width="90" height="44" />
-		<texture id="ui_inGame2_upgrade_dolg_scientific_outfit_19" x="360" y="1055" width="90" height="44" />
-		<texture id="ui_inGame2_upgrade_dolg_scientific_outfit_20" x="450" y="1055" width="90" height="44" />
-		<texture id="ui_inGame2_upgrade_dolg_scientific_outfit_21" x="450" y="1099" width="90" height="44" />
-
 		<texture id="ui_inGame2_upgrade_soldier_outfit_1" x="540" y="967" width="90" height="44" />
 		<texture id="ui_inGame2_upgrade_soldier_outfit_2" x="630" y="967" width="90" height="44" />
 		<texture id="ui_inGame2_upgrade_soldier_outfit_3" x="720" y="967" width="90" height="44" />
@@ -246,23 +224,6 @@
 		<texture id="ui_inGame2_upgrade_banditmerc_outfit_12" x="1530" y="615" width="90" height="44" />
 		<texture id="ui_inGame2_upgrade_banditmerc_outfit_13" x="1440" y="659" width="90" height="44" />
 
-		<texture id="ui_inGame2_upgrade_csky_heavy_outfit_1" x="810" y="439" width="90" height="44" />
-		<texture id="ui_inGame2_upgrade_csky_heavy_outfit_2" x="900" y="439" width="90" height="44" />
-		<texture id="ui_inGame2_upgrade_csky_heavy_outfit_3" x="990" y="439" width="90" height="44" />
-		<texture id="ui_inGame2_upgrade_csky_heavy_outfit_4" x="900" y="483" width="90" height="44" />
-		<texture id="ui_inGame2_upgrade_csky_heavy_outfit_5" x="990" y="483" width="90" height="44" />
-		<texture id="ui_inGame2_upgrade_csky_heavy_outfit_6" x="810" y="527" width="90" height="44" />
-		<texture id="ui_inGame2_upgrade_csky_heavy_outfit_7" x="900" y="527" width="90" height="44" />
-		<texture id="ui_inGame2_upgrade_csky_heavy_outfit_8" x="990" y="527" width="90" height="44" />
-		<texture id="ui_inGame2_upgrade_csky_heavy_outfit_9" x="900" y="571" width="90" height="44" />
-		<texture id="ui_inGame2_upgrade_csky_heavy_outfit_10" x="990" y="571" width="90" height="44" />
-		<texture id="ui_inGame2_upgrade_csky_heavy_outfit_11" x="810" y="615" width="90" height="44" />
-		<texture id="ui_inGame2_upgrade_csky_heavy_outfit_12" x="900" y="615" width="90" height="44" />
-		<texture id="ui_inGame2_upgrade_csky_heavy_outfit_13" x="990" y="615" width="90" height="44" />
-		<texture id="ui_inGame2_upgrade_csky_heavy_outfit_14" x="900" y="659" width="90" height="44" />
-		<texture id="ui_inGame2_upgrade_csky_heavy_outfit_15" x="810" y="703" width="90" height="44" />
-		<texture id="ui_inGame2_upgrade_csky_heavy_outfit_16" x="900" y="703" width="90" height="44" />
-		<texture id="ui_inGame2_upgrade_csky_heavy_outfit_17" x="990" y="703" width="90" height="44" />
 
 		<texture id="ui_inGame2_upgrade_military_outfit_1" x="540" y="439" width="90" height="44" />
 		<texture id="ui_inGame2_upgrade_military_outfit_2" x="630" y="439" width="90" height="44" />

@@ -65,7 +65,6 @@ function ecolog_companion_task_2_give_reward(a,b)
 		coc_treasure_manager.reveal_random_stash("treasure","st_stash_reward")
 	end
 	game_relations.change_factions_community_num("ecolog",0,50)
-	game_relations.change_factions_community_num("csky",0,25)
 	game_relations.change_factions_community_num("killer",0,25)
 end
 

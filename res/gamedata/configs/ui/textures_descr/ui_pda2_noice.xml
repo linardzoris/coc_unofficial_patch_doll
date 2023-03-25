@@ -98,7 +98,6 @@
     <texture id="trader_wide"    x="255" y="956" width="125" height="54" />
     
 	<texture id="bandit_wide"    x="382" y="956" width="125" height="54" />
-    <texture id="csky_wide"      x="509" y="956" width="125" height="54" />
     <texture id="renegade_wide"  x="636" y="956" width="125" height="54" />
     <texture id="monolith_wide"  x="751" y="847" width="125" height="54" />
     <texture id="army_wide"      x="889" y="847" width="125" height="54" />
@@ -117,7 +116,6 @@
     <texture id="trader_icon"    x="289" y="956" width="56" height="54" />
     
 	<texture id="bandit_icon"    x="416" y="956" width="56" height="54" />
-    <texture id="csky_icon"      x="543" y="956" width="56" height="54" />
     <texture id="renegade_icon"  x="670" y="956" width="56" height="54" />
     <texture id="monolith_icon"  x="785" y="847" width="56" height="54" />
     <texture id="army_icon"      x="922" y="847" width="56" height="54" />

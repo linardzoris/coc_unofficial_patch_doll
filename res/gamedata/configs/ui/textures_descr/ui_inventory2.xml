@@ -17,12 +17,6 @@
 <!--    <texture id="ui_inv_mechanic_back"		x="624" y="249" width="331" height="627" /> -->
 
 <!-- war states -->
-    <texture id="st_stage_icon_csky_power_no"			x="0" y="900" width="65" height="35" />
-    <texture id="st_stage_icon_csky_power_yes"			x="70" y="900" width="65" height="35" />
-    <texture id="st_stage_icon_csky_capture_base_no"		x="140" y="900" width="65" height="35" />
-    <texture id="st_stage_icon_csky_capture_base_yes"		x="210" y="900" width="65" height="35" />
-    <texture id="st_stage_icon_csky_secure_marsh_no"		x="280" y="900" width="65" height="35" />
-    <texture id="st_stage_icon_csky_secure_marsh_yes"		x="350" y="900" width="65" height="35" />
     <texture id="st_stage_icon_stalker_power_no"		x="420" y="900" width="65" height="35" />
     <texture id="st_stage_icon_stalker_power_yes"		x="490" y="900" width="65" height="35" />
     <texture id="st_stage_icon_stalker_secure_escape_no"	x="560" y="900" width="65" height="35" />
