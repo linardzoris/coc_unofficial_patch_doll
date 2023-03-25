@@ -57,8 +57,8 @@ function register(object_factory)
 	cs_register	(object_factory, "CPsyDogPhantom",  			"se_monster.se_monster",				"SM_DOG_F",			"psy_dog_phantom_s")
 	cs_register	(object_factory, "CBurer",       				"se_monster.se_monster",				"SM_KAR",			"karlik_s")
 	-- DEVICES ----------------------------------------------------------------------------------------------------------------------------
-
 	cs_register	(object_factory, "CTorch",          			"se_item.se_item_torch",				"TORCH_S",			"device_torch_s")
+--	cs_register	(object_factory, "CFlashlight",          		"se_item.se_item_torch",				"D_FLALIT",			"device_flashlight_s")	
 	cs_register	(object_factory, "CScientificDetector",         "se_item.se_detector",					"DET_SCIE",			"detector_scientific_s")
 	cs_register	(object_factory, "CEliteDetector",          	"se_item.se_detector",			   		"DET_ELIT",			"detector_elite_s")
 	cs_register	(object_factory, "CAdvancedDetector",          	"se_item.se_detector",			   		"DET_ADVA",			"detector_advanced_s")

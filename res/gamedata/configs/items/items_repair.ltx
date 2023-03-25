@@ -25,7 +25,7 @@ repair_parts_include                     = ;Add sections of items to include to 
 repair_parts_exclude                     = ;Add sections of items to exclude from being considered repair parts
 
 use_condition                            = true
-consume_charge_on_use                    = false
+
 max_uses                                 = 4
 remove_after_use                         = false
 empty_weight                             = 1.5
@@ -69,8 +69,7 @@ repair_type                              = cold_weapon ;weapon or outfit
 repair_parts_include                     =
 
 max_uses                                 = 5
-empty_weight                             = 0.1
-snd_on_take								 = part
+empty_weight                             = 0.75
 
 [itm_battery_detectors_simple]:booster_script
 $spawn                                   = "devices\itm_battery_detector"
@@ -82,7 +81,7 @@ inv_name_short                           = st_itm_battery_detectors_simple
 can_trade                                = true
 quest_item                               = false
 cost                                     = 500
-inv_weight                               = 0.4
+inv_weight                               = 0.2
 
 inv_grid_width                           = 1
 inv_grid_height                          = 1
@@ -94,7 +93,7 @@ repair_max_condition                     = 0.90              ;Максимально
 repair_add_condition                     = 1.0               ;Сколько чинит (где 0.1 = 10%)
 repair_part_bonus                        = 0.0               ;Сколько прибавляют части деталей к ремонту, если они есть
 repair_use_parts                         = false             ;Общий бонус к ремонту от других изношенных частей
-repair_type                              = detectors_simple  ;Что чиним? Используется из скриптов
+repair_type                              = detector_simple  ;Что чиним? Используется из скриптов
 repair_refuse                            = ;Добавьте разделы, разделенные запятыми, которые не могут быть восстановлены с помощью этого элемента
 repair_only                              = ;Добавьте разделы, разделенные запятыми, которые исключают все разделы, кроме этих
 repair_parts_include                     = ;Добавьте разделы, разделенные запятыми, которые будут рассматриваться как запасные части
@@ -103,7 +102,7 @@ repair_parts_exclude                     = ;Добавьте разделы, разделенные запяты
 use_condition                            = false
 max_uses                                 = 1
 remove_after_use                         = true
-empty_weight                             = 0.3
+empty_weight                             = 0.2
 
 visual                                   = dynamics\devices\dev_instrument_1\dev_instrument_1.ogf
 
@@ -117,7 +116,7 @@ inv_name_short                           = st_itm_battery_detectors_elite
 can_trade                                = true
 quest_item                               = false
 cost                                     = 1500
-inv_weight                               = 0.20
+inv_weight                               = 0.2
 
 inv_grid_width                           = 1
 inv_grid_height                          = 1
@@ -129,7 +128,7 @@ repair_max_condition                     = 0.90
 repair_add_condition                     = 1.0 
 repair_part_bonus                        = 0.0 
 repair_use_parts                         = false 
-repair_type                              = detectors_elite
+repair_type                              = detector_elite
 repair_refuse                            = ;nil
 repair_only                              = ;nil
 repair_parts_include                     = ;nil
@@ -138,7 +137,7 @@ repair_parts_exclude                     = ;nil
 use_condition                            = false
 max_uses                                 = 1
 remove_after_use                         = true
-empty_weight                             = 0.3
+empty_weight                             = 0.2	
 
 visual                                   = dynamics\devices\dev_instrument_1\dev_instrument_1.ogf
 
@@ -192,7 +191,7 @@ inv_weight                               = 0.2
 inv_grid_width                           = 1
 inv_grid_height                          = 1
 inv_grid_x                               = 9
-inv_grid_y                               = 39
+inv_grid_y                               = 38
 
 repair_min_condition                     = 0.00  
 repair_max_condition                     = 0.90 

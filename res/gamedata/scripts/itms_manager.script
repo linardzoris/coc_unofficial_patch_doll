@@ -81,7 +81,7 @@ function on_item_focus(itm)
 			if (repair_only and repair_only[obj:section()]) then
 				if (repair_type == "weapon" and IsWeapon(obj)) then 
 					return true 
-				elseif (repair_type == "outfit") and (IsOutfit(obj) or IsHeadgear(obj)) then 
+				elseif (repair_type == "outfit") and (IsOutfit(obj)) then 
 					return true
 				elseif (repair_type == "cold_weapon") and (IsColdWeapon(obj)) then 
 					return true					
@@ -90,10 +90,12 @@ function on_item_focus(itm)
 				elseif (repair_type == "detector_elite") and (IsDetectorElite(obj)) then 
 					return true		
 				elseif (repair_type == "device_torch") and (IsTorch(obj)) then 
+					return true	
+				elseif (repair_type == "actor_pda") and (IsActorPda(obj)) then 
 					return true						
 				elseif (repair_type == "all") then 
 					local cls = obj:clsid()
-					if (IsWeapon(nil,cls) or IsOutfit(nil,cls) or IsHeadgear(nil,cls)) then 
+					if (IsWeapon(nil,cls) or IsOutfit(nil,cls)) then 
 						return true 
 					end
 				end
@@ -208,7 +210,7 @@ function on_item_drag_dropped(itm1,itm2,from_slot,to_slot)
 			return 
 		end
 	elseif (repair_type == "outfit") then 
-		if not (IsOutfit(itm2) or IsHeadgear(itm2)) then 
+		if not (IsOutfit(itm2)) then 
 			return 
 		end
 	elseif (repair_type == "cold_weapon") then 
@@ -226,9 +228,13 @@ function on_item_drag_dropped(itm1,itm2,from_slot,to_slot)
 	elseif (repair_type == "device_torch") then 
 		if not (IsTorch(itm2)) then 
 			return 
-		end			
+		end		
+	elseif (repair_type == "actor_pda") then 
+		if not (IsActorPda(itm2)) then 
+			return 
+		end				
 	elseif (repair_type == "all") then 
-		if not (IsWeapon(itm2) or IsOutfit(itm2) or IsHeadgear(itm2)) then
+		if not (IsWeapon(itm2) or IsOutfit(itm2)) then
 			return
 		end
 	else 

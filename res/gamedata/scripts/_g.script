@@ -823,11 +823,18 @@ local weapon_classes
 local artefact_classes
 local anomaly_classes
 
+function IsActorPda(o,c)
+	if not c then
+		c = o and o:clsid()
+	end
+	return c and (c == clsid.obj_pda_s or c == clsid.obj_pda)
+end
+
 function IsTorch(o,c)
 	if not c then
 		c = o and o:clsid()
 	end
-	return c and (c == clsid.device_torch_s or c == clsid.device_torch)
+	return c and (c == clsid.device_torch_s or c == clsid.device_torch or c == clsid.device_flashlight_s or c == clsid.device_flashlight)
 end
 
 function IsColdWeapon(o,c)
