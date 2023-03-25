@@ -78,6 +78,11 @@ public:
     virtual void SendHiddenItem(); // same as OnHiddenItem but for client... (sends message to a server)...
 
 // Новое
+    float m_fLR_MovingFactor; // Фактор бокового наклона худа при ходьбе [-1; +1]
+    float m_fLR_CameraFactor; // Фактор бокового наклона худа при движении камеры [-1; +1]
+    float m_fLR_InertiaFactor; // Фактор горизонтальной инерции худа при движении камеры [-1; +1]
+    float m_fUD_InertiaFactor; // Фактор вертикальной инерции худа при движении камеры [-1; +1]
+
 	float m_fLR_ShootingFactor; // Фактор горизонтального сдвига худа при стрельбе [-1; +1] // SWM 3
     float m_fUD_ShootingFactor; // Фактор вертикального сдвига худа при стрельбе [-1; +1]
     float m_fBACKW_ShootingFactor; // Фактор сдвига худа в сторону лица при стрельбе [0; +1]
@@ -608,7 +613,6 @@ private:
     virtual bool install_upgrade_ammo_class(LPCSTR section, bool test);
     bool install_upgrade_disp(LPCSTR section, bool test);
     bool install_upgrade_hit(LPCSTR section, bool test);
-    bool install_upgrade_hud(LPCSTR section, bool test);
     bool install_upgrade_addon(LPCSTR section, bool test);
     bool install_upgrade_other(LPCSTR section, bool test);
 

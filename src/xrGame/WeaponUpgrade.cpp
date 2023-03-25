@@ -31,7 +31,6 @@ bool CWeapon::install_upgrade_impl(LPCSTR section, bool test)
 	result |= install_upgrade_hit(section, test);
 	result |= install_upgrade_addon(section, test);
     result |= install_upgrade_other(section, test);
-	result |= install_upgrade_hud(section, test);
 	return result;
 }
 
@@ -139,18 +138,6 @@ bool CWeapon::install_upgrade_disp(LPCSTR section, bool test)
     result |= result2;
 
     return result;
-}
-
-bool CWeapon::install_upgrade_hud(LPCSTR section, bool test)
-{
-	bool result = false;
-	//	Inertion additions
-	result = process_if_exists(section, "inertion_origin_offset", &CInifile::r_float, m_inertion_params.m_origin_offset, test);
-	result |= process_if_exists(section, "inertion_origin_aim_offset", &CInifile::r_float, m_inertion_params.m_origin_offset_aim, test);
-	result |= process_if_exists(section, "inertion_tendto_speed", &CInifile::r_float,m_inertion_params.m_tendto_speed, test);
-	result |= process_if_exists(section, "inertion_tendto_aim_speed", &CInifile::r_float, m_inertion_params.m_tendto_speed_aim, test);
-
-	return result;
 }
 
 bool CWeapon::install_upgrade_other(LPCSTR section, bool test)

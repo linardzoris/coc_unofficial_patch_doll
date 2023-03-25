@@ -60,7 +60,7 @@ struct hud_item_measures
 
     void load(const shared_str& sect_name, IKinematics* K);
 	
-    struct inertion_params
+	struct inertion_params
     {
         float m_pitch_offset_r;
         float m_pitch_offset_n;
@@ -79,7 +79,7 @@ struct hud_item_measures
         Fvector4 m_offset_LRUD;
         Fvector4 m_offset_LRUD_aim;
     };
-    inertion_params m_inertion_params; //--#SM+#--	
+    inertion_params m_inertion_params; //--#SM+#--
 
 	struct shooting_params
     {

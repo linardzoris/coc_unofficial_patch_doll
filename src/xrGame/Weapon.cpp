@@ -89,6 +89,11 @@ CWeapon::CWeapon()
     m_cur_addon.data = 0;
     m_fRTZoomFactor = 1.f;
 
+	m_fLR_MovingFactor = 0.f;
+    m_fLR_CameraFactor = 0.f;
+    m_fLR_InertiaFactor = 0.f;
+    m_fUD_InertiaFactor = 0.f;
+
 	m_fLR_ShootingFactor = 0.f;
     m_fUD_ShootingFactor = 0.f;
     m_fBACKW_ShootingFactor = 0.f;
@@ -838,11 +843,17 @@ void CWeapon::OnH_B_Independent(bool just_before_destroy)
 
 void CWeapon::OnH_A_Independent()
 {
+    m_dwWeaponIndependencyTime = Level().timeServer();
+
+    m_fLR_MovingFactor = 0.f;
+    m_fLR_CameraFactor = 0.f;
+    m_fLR_InertiaFactor = 0.f;
+    m_fUD_InertiaFactor = 0.f;
+
     m_fLR_ShootingFactor = 0.f;
     m_fUD_ShootingFactor = 0.f;
     m_fBACKW_ShootingFactor = 0.f;
 
-    m_dwWeaponIndependencyTime = Level().timeServer();
     inherited::OnH_A_Independent();
     Light_Destroy();
     UpdateAddonsVisibility();
@@ -990,6 +1001,11 @@ void CWeapon::renderable_Render()
 
 void CWeapon::signal_HideComplete()
 {
+    m_fLR_MovingFactor = 0.f;
+    m_fLR_CameraFactor = 0.f;
+    m_fLR_InertiaFactor = 0.f;
+    m_fUD_InertiaFactor = 0.f;
+
     m_fLR_ShootingFactor = 0.f;
     m_fUD_ShootingFactor = 0.f;
     m_fBACKW_ShootingFactor = 0.f;
@@ -1868,6 +1884,40 @@ void CWeapon::UpdateHudAdditonal(Fmatrix& trans)
 
     u8 idx = GetCurrentHudOffsetIdx();
 
+	//============= Поворот ствола во время аима =============//
+    if ((IsZoomed() && m_zoom_params.m_fZoomRotationFactor <= 1.f) ||
+        (!IsZoomed() && m_zoom_params.m_fZoomRotationFactor > 0.f))
+    {
+        Fvector curr_offs, curr_rot;
+        curr_offs = hi->m_measures.m_hands_offset[0][idx]; // pos,aim
+        curr_rot = hi->m_measures.m_hands_offset[1][idx]; // rot,aim
+        curr_offs.mul(m_zoom_params.m_fZoomRotationFactor);
+        curr_rot.mul(m_zoom_params.m_fZoomRotationFactor);
+
+        Fmatrix hud_rotation;
+        hud_rotation.identity();
+        hud_rotation.rotateX(curr_rot.x);
+
+        Fmatrix hud_rotation_y;
+        hud_rotation_y.identity();
+        hud_rotation_y.rotateY(curr_rot.y);
+        hud_rotation.mulA_43(hud_rotation_y);
+
+        hud_rotation_y.identity();
+        hud_rotation_y.rotateZ(curr_rot.z);
+        hud_rotation.mulA_43(hud_rotation_y);
+
+        hud_rotation.translate_over(curr_offs);
+        trans.mulB_43(hud_rotation);
+
+        if (pActor->IsZoomAimingMode())
+            m_zoom_params.m_fZoomRotationFactor += Device.fTimeDelta / m_zoom_params.m_fZoomRotateTime;
+        else
+            m_zoom_params.m_fZoomRotationFactor -= Device.fTimeDelta / m_zoom_params.m_fZoomRotateTime;
+
+        clamp(m_zoom_params.m_fZoomRotationFactor, 0.f, 1.f);
+    }
+
 	//============= Подготавливаем общие переменные =============//
     clamp(idx, u8(0), u8(1));
     bool bForAim = (idx == 1);
@@ -2119,6 +2169,106 @@ void CWeapon::UpdateHudAdditonal(Fmatrix& trans)
     {
         m_fFactor = 0.0;
     }
+
+	//============= Инерция оружия =============//
+    // Параметры инерции
+    float fInertiaSpeedMod = _lerp(hi->m_measures.m_inertion_params.m_tendto_speed,
+        hi->m_measures.m_inertion_params.m_tendto_speed_aim, m_zoom_params.m_fZoomRotationFactor);
+
+    float fInertiaReturnSpeedMod = _lerp(hi->m_measures.m_inertion_params.m_tendto_ret_speed,
+        hi->m_measures.m_inertion_params.m_tendto_ret_speed_aim, m_zoom_params.m_fZoomRotationFactor);
+
+    float fInertiaMinAngle = _lerp(hi->m_measures.m_inertion_params.m_min_angle,
+        hi->m_measures.m_inertion_params.m_min_angle_aim, m_zoom_params.m_fZoomRotationFactor);
+
+    Fvector4 vIOffsets; // x = L, y = R, z = U, w = D
+    vIOffsets.x = _lerp(hi->m_measures.m_inertion_params.m_offset_LRUD.x,
+                      hi->m_measures.m_inertion_params.m_offset_LRUD_aim.x, m_zoom_params.m_fZoomRotationFactor) *
+        fInertiaPower;
+    vIOffsets.y = _lerp(hi->m_measures.m_inertion_params.m_offset_LRUD.y,
+                      hi->m_measures.m_inertion_params.m_offset_LRUD_aim.y, m_zoom_params.m_fZoomRotationFactor) *
+        fInertiaPower;
+    vIOffsets.z = _lerp(hi->m_measures.m_inertion_params.m_offset_LRUD.z,
+                      hi->m_measures.m_inertion_params.m_offset_LRUD_aim.z, m_zoom_params.m_fZoomRotationFactor) *
+        fInertiaPower;
+    vIOffsets.w = _lerp(hi->m_measures.m_inertion_params.m_offset_LRUD.w,
+                      hi->m_measures.m_inertion_params.m_offset_LRUD_aim.w, m_zoom_params.m_fZoomRotationFactor) *
+        fInertiaPower;
+
+    // Высчитываем инерцию из поворотов камеры
+    bool bIsInertionPresent = m_fLR_InertiaFactor != 0.0f || m_fUD_InertiaFactor != 0.0f;
+    if (abs(fYMag) > fInertiaMinAngle || bIsInertionPresent)
+    {
+        float fSpeed = fInertiaSpeedMod;
+        if (fYMag > 0.0f && m_fLR_InertiaFactor > 0.0f || fYMag < 0.0f && m_fLR_InertiaFactor < 0.0f)
+        {
+            fSpeed *= 2.f; //--> Ускоряем инерцию при движении в противоположную сторону
+        }
+
+        m_fLR_InertiaFactor -= (fYMag * fAvgTimeDelta * fSpeed); // Горизонталь (м.б. > |1.0|)
+    }
+
+    if (abs(fPMag) > fInertiaMinAngle || bIsInertionPresent)
+    {
+        float fSpeed = fInertiaSpeedMod;
+        if (fPMag > 0.0f && m_fUD_InertiaFactor > 0.0f || fPMag < 0.0f && m_fUD_InertiaFactor < 0.0f)
+        {
+            fSpeed *= 2.f; //--> Ускоряем инерцию при движении в противоположную сторону
+        }
+
+        m_fUD_InertiaFactor -= (fPMag * fAvgTimeDelta * fSpeed); // Вертикаль (м.б. > |1.0|)
+    }
+
+    clamp(m_fLR_InertiaFactor, -1.0f, 1.0f);
+    clamp(m_fUD_InertiaFactor, -1.0f, 1.0f);
+
+    // Плавное затухание инерции (основное, но без линейной никогда не опустит инерцию до полного 0.0f)
+    m_fLR_InertiaFactor *= clampr(1.f - fAvgTimeDelta * fInertiaReturnSpeedMod, 0.0f, 1.0f);
+    m_fUD_InertiaFactor *= clampr(1.f - fAvgTimeDelta * fInertiaReturnSpeedMod, 0.0f, 1.0f);
+
+    // Минимальное линейное затухание инерции при покое (горизонталь)
+    if (fYMag == 0.0f)
+    {
+        float fRetSpeedMod = (fYMag == 0.0f ? 1.0f : 0.75f) * (fInertiaReturnSpeedMod * 0.075f);
+        if (m_fLR_InertiaFactor < 0.0f)
+        {
+            m_fLR_InertiaFactor += fAvgTimeDelta * fRetSpeedMod;
+            clamp(m_fLR_InertiaFactor, -1.0f, 0.0f);
+        }
+        else
+        {
+            m_fLR_InertiaFactor -= fAvgTimeDelta * fRetSpeedMod;
+            clamp(m_fLR_InertiaFactor, 0.0f, 1.0f);
+        }
+    }
+
+    // Минимальное линейное затухание инерции при покое (вертикаль)
+    if (fPMag == 0.0f)
+    {
+        float fRetSpeedMod = (fPMag == 0.0f ? 1.0f : 0.75f) * (fInertiaReturnSpeedMod * 0.075f);
+        if (m_fUD_InertiaFactor < 0.0f)
+        {
+            m_fUD_InertiaFactor += fAvgTimeDelta * fRetSpeedMod;
+            clamp(m_fUD_InertiaFactor, -1.0f, 0.0f);
+        }
+        else
+        {
+            m_fUD_InertiaFactor -= fAvgTimeDelta * fRetSpeedMod;
+            clamp(m_fUD_InertiaFactor, 0.0f, 1.0f);
+        }
+    }
+
+    // Применяем инерцию к худу
+    float fLR_lim = (m_fLR_InertiaFactor < 0.0f ? vIOffsets.x : vIOffsets.y);
+    float fUD_lim = (m_fUD_InertiaFactor < 0.0f ? vIOffsets.z : vIOffsets.w);
+
+    Fvector curr_offs;
+    curr_offs = {fLR_lim * -1.f * m_fLR_InertiaFactor, fUD_lim * m_fUD_InertiaFactor, 0.0f};
+
+    Fmatrix hud_rotation;
+    hud_rotation.identity();
+    hud_rotation.translate_over(curr_offs);
+    trans.mulB_43(hud_rotation);
 }
 
 // Добавить эффект сдвига оружия от выстрела

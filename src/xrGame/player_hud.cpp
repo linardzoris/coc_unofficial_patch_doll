@@ -8,9 +8,14 @@
 #include "actoreffector.h"
 #include "xrEngine/IGame_Persistent.h"
 
-//Alun: defined in HudItem.cpp now
-#define PITCH_OFFSET_R		   0.017f   // Насколько сильно ствол смещается вбок (влево) при вертикальных поворотах камеры	--#SM+#--
-#define PITCH_OFFSET_N		   0.012f   // Насколько сильно ствол поднимается\опускается при вертикальных поворотах камеры	--#SM+#--
+player_hud* g_player_hud = NULL;
+Fvector _ancor_pos;
+Fvector _wpn_root_pos;
+Fvector m_hud_offset_pos = { 0.f, 0.f, 0.f }; //only in hud adj mode
+Fvector m_hand_offset_pos = { 0.f, 0.f, 0.f };
+
+#define PITCH_OFFSET_R		   0.014f   // Насколько сильно ствол смещается вбок (влево) при вертикальных поворотах камеры	--#SM+#--
+#define PITCH_OFFSET_N		   0.010f   // Насколько сильно ствол поднимается\опускается при вертикальных поворотах камеры	--#SM+#--
 #define PITCH_OFFSET_D		   0.02f    // Насколько сильно ствол приближается\отдаляется при вертикальных поворотах камеры --#SM+#--
 #define PITCH_LOW_LIMIT		   -PI      // Минимальное значение pitch при использовании совместно с PITCH_OFFSET_N			--#SM+#--
 #define TENDTO_SPEED           1.0f     // Модификатор силы инерции (больше - чувствительней)
@@ -29,12 +34,6 @@
 #define TENDTO_SPEED_AIM_OLD   8.f      // (Для прицеливания)
 #define ORIGIN_OFFSET_OLD     -0.05f    // Фактор влияния инерции на положение ствола (чем меньше, тем маштабней инерция)
 #define ORIGIN_OFFSET_AIM_OLD -0.03f    // (Для прицеливания)
-
-player_hud* g_player_hud = NULL;
-Fvector _ancor_pos;
-Fvector _wpn_root_pos;
-Fvector m_hud_offset_pos = { 0.f, 0.f, 0.f }; //only in hud adj mode
-Fvector m_hand_offset_pos = { 0.f, 0.f, 0.f };
 
 float CalcMotionSpeed(const shared_str& anim_name)
 {
@@ -482,7 +481,6 @@ player_hud::player_hud()
     m_transform_2.identity();
     m_attach_offset.identity();
     //m_attach_offset2.identity();
-    script_anim_part = u8(-1);
     reset_thumb(true);
 }
 
@@ -705,10 +703,8 @@ void player_hud::render_hud()
     if (!m_attached_items[0] && !m_attached_items[1])
         return;
 
-	bool b_r0 = ((m_attached_items[0] &&
-        m_attached_items[0]->need_renderable()) /*|| script_anim_part == 0 || script_anim_part == 2*/);
-    bool b_r1 = ((m_attached_items[1] &&
-        m_attached_items[1]->need_renderable()) /*|| script_anim_part == 1 || script_anim_part == 2*/);
+	bool b_r0 = (m_attached_items[0] && m_attached_items[0]->need_renderable());
+    bool b_r1 = (m_attached_items[1] && m_attached_items[1]->need_renderable());
 
     if (!b_r0 && !b_r1)
         return;
@@ -789,37 +785,6 @@ void player_hud::update(const Fmatrix& cam_trans)
         m_attached_items[1]->update_hud_additional(trans_2);
     else
         trans_2 = trans;
-
-    // override hand offset for single hand animation
-    /*if (script_anim_offset_factor != 0.f)
-    {
-        if (script_anim_part == 2 || (!m_attached_items[0] && !m_attached_items[1]))
-        {
-            m1pos = script_anim_offset[0];
-            m2pos = script_anim_offset[0];
-            m1rot = script_anim_offset[1];
-            m2rot = script_anim_offset[1];
-            trans = trans_b;
-            trans_2 = trans_b;
-        }
-        else
-        {
-            Fvector& hand_pos = script_anim_part == 0 ? m1pos : m2pos;
-            Fvector& hand_rot = script_anim_part == 0 ? m1rot : m2rot;
-            hand_pos.lerp(script_anim_part == 0 ? m1pos : m2pos, script_anim_offset[0], script_anim_offset_factor);
-            hand_rot.lerp(script_anim_part == 0 ? m1rot : m2rot, script_anim_offset[1], script_anim_offset_factor);
-            if (script_anim_part == 0)
-            {
-                trans_b.inertion(trans, script_anim_offset_factor);
-                trans = trans_b;
-            }
-            else
-            {
-                trans_b.inertion(trans_2, script_anim_offset_factor);
-                trans_2 = trans_b;
-            }
-        }
-    }*/
 
     m1rot.mul(PI / 180.f);
     m_attach_offset.setHPB(m1rot.x, m1rot.y, m1rot.z);
@@ -928,8 +893,9 @@ void player_hud::update_inertion(Fmatrix& trans)
 
 		static Fvector						st_last_dir = { 0, 0, 0 };
 
+		// load params
         hud_item_measures::inertion_params inertion_data;
-		if (pMainHud)
+        if (pMainHud != NULL)
         { // Загружаем параметры инерции из основного худа
             inertion_data.m_pitch_offset_r = pMainHud->m_measures.m_inertion_params.m_pitch_offset_r;
             inertion_data.m_pitch_offset_n = pMainHud->m_measures.m_inertion_params.m_pitch_offset_n;
@@ -966,45 +932,6 @@ void player_hud::update_inertion(Fmatrix& trans)
             inertion_data.m_min_angle_aim = INERT_MIN_ANGLE_AIM;
         }
 
-        // Replaced by CWeapon::UpdateHudAdditonal()
-        // Very FPS sensitive and hard to control
-        /*
-        // calc difference
-        Fvector								diff_dir;
-        diff_dir.sub						(xform.k, st_last_dir);
-        // clamp by PI_DIV_2
-        Fvector last;						last.normalize_safe(st_last_dir);
-        float dot							= last.dotproduct(xform.k);
-        if (dot<EPS){
-            Fvector v0;
-            v0.crossproduct					(st_last_dir,xform.k);
-            st_last_dir.crossproduct		(xform.k,v0);
-            diff_dir.sub					(xform.k, st_last_dir);
-        }
-        // tend to forward
-        float _tendto_speed, _origin_offset;
-        if (pMainHud != NULL && pMainHud->m_parent_hud_item->GetCurrentHudOffsetIdx() > 0)
-        { // Худ в режиме "Прицеливание"
-            float factor = pMainHud->m_parent_hud_item->GetInertionFactor();
-            _tendto_speed = inertion_data.m_tendto_speed_aim - (inertion_data.m_tendto_speed_aim -
-        inertion_data.m_tendto_speed) * factor; _origin_offset = inertion_data.m_origin_offset_aim -
-        (inertion_data.m_origin_offset_aim - inertion_data.m_origin_offset) * factor;
-        }
-        else
-        { // Худ в режиме "От бедра"
-            _tendto_speed = inertion_data.m_tendto_speed;
-            _origin_offset = inertion_data.m_origin_offset;
-        }
-        // Фактор силы инерции
-        if (pMainHud != NULL)
-        {
-            float power_factor = pMainHud->m_parent_hud_item->GetInertionPowerFactor();
-            _tendto_speed *= power_factor;
-            _origin_offset *= power_factor;
-        }
-        st_last_dir.mad(diff_dir, _tendto_speed * Device.fTimeDelta);
-        origin.mad(diff_dir, _origin_offset);
-        */
         // pitch compensation
         float pitch = angle_normalize_signed(xform.k.getP());
 
