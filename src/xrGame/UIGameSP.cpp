@@ -20,6 +20,7 @@
 #include "ui/UIPdaWnd.h"
 #include "ui/UITalkWnd.h"
 #include "xrUICore/MessageBox/UIMessageBox.h"
+#include "PDA.h"
 
 CUIGameSP::CUIGameSP() : m_game(NULL), m_game_objective(NULL)
 {
