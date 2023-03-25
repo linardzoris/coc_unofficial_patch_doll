@@ -160,7 +160,10 @@ bool CUIGameCustom::ShowActorMenu()
     }
     else
     {
-        HidePdaMenu();
+        if (!psActorFlags.test(AF_3D_PDA))
+            HidePdaMenu();
+
+        // HidePdaMenu();
         auto actor = smart_cast<CInventoryOwner*>(Level().CurrentViewEntity());
         VERIFY(actor);
         ActorMenu->SetActor(actor);

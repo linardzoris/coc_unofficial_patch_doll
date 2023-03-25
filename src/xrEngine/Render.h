@@ -253,6 +253,12 @@ public:
         }
     };
 
+	enum RRT
+    {
+        rtPDA = 1,
+        rtSVP,
+    };
+
 public:
     // options
     s32 m_skinning;
@@ -374,6 +380,7 @@ public:
     virtual void rmFar() = 0;
     virtual void rmNormal() = 0;
     virtual u32 active_phase () = 0;
+    virtual void RenderToTarget(RRT target) = 0;
 
     // Constructor/destructor
     virtual ~IRender() {}

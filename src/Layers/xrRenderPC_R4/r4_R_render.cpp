@@ -531,3 +531,20 @@ void CRender::AfterWorldRender()
         pBuffer->Release(); // Корректно очищаем ссылку на бэкбуфер (иначе игра зависнет в опциях)
     }
 }
+
+void CRender::RenderToTarget(RRT target)
+{
+    ref_rt* RT;
+
+    switch (target)
+    {
+    case rtPDA: RT = &Target->rt_ui_pda; break;
+    case rtSVP: RT = &Target->rt_secondVP; break;
+    default: xrDebug::Fatal(DEBUG_INFO, "None or wrong Target specified: %i", target); break;
+    }
+
+    ID3DTexture2D* pBuffer = nullptr;
+    HW.m_pSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (LPVOID*)&pBuffer);
+    HW.pContext->CopyResource((*RT)->pSurface, pBuffer);
+    pBuffer->Release();
+}

@@ -19,6 +19,7 @@ class CUILogsWnd;
 class CUIAnimatedStatic;
 class UIHint;
 class CMapSpot;
+class CUIProgressBar;
 
 class CUIPdaWnd : public CUIDialogWnd
 {
@@ -27,26 +28,30 @@ class CUIPdaWnd : public CUIDialogWnd
 protected:
     CUITabControl* UITabControl;
     CUI3tButton* m_btn_close;
-
     CUIStatic* UIMainPdaFrame;
     CUIStatic* UINoice;
-
     CUITextWnd* m_caption;
     shared_str m_caption_const;
     //	CUIAnimatedStatic*		m_anim_static;
     CUITextWnd* m_clock;
 
-    // Текущий активный диалог
     CUIWindow* m_pActiveDialog;
     shared_str m_sActiveSection;
 
     UIHint* m_hint_wnd;
 
+    u32 dwPDAFrame;
+
+    CUIProgressBar* m_battery_bar;
+
+    bool bButtonL, bButtonR;
+
 public:
     CUITaskWnd* pUITaskWnd;
-    CUIFactionWarWnd*		pUIFactionWarWnd;
+    //-	CUIFactionWarWnd*		pUIFactionWarWnd;
     CUIRankingWnd* pUIRankingWnd;
     CUILogsWnd* pUILogsWnd;
+    Frect m_cursor_box;
     CMapSpot* pSelectedMapSpot;
 
     virtual void Reset();
@@ -62,11 +67,10 @@ public:
     virtual void Draw();
     virtual void Update();
     virtual void Show(bool status);
-    virtual bool OnMouseAction(float x, float y, EUIMessages mouse_action)
-    {
-        CUIDialogWnd::OnMouseAction(x, y, mouse_action);
-        return true;
-    } // always true because StopAnyMove() == false
+
+    virtual bool OnMouseAction(float x, float y, EUIMessages mouse_action);
+    void MouseMovement(float x, float y);
+    virtual void Enable(bool status);
     virtual bool OnKeyboardAction(int dik, EUIMessages keyboard_action);
 
     UIHint* get_hint_wnd() const { return m_hint_wnd; }
@@ -85,6 +89,24 @@ public:
     void SetActiveSubdialog(const shared_str& section);
     void SetActiveSubdialog_script(LPCSTR section) { SetActiveSubdialog((const shared_str&)section); };
     virtual bool StopAnyMove() { return false; }
+
     void UpdatePda();
     void UpdateRankingWnd();
+    void ResetCursor();
+    float m_power;
+    Fvector2 last_cursor_pos;
+
+    Fvector target_joystickrot, joystickrot;
+    float target_buttonpress, buttonpress;
+
+    void ResetJoystick(bool bForce)
+    {
+        if (bForce)
+        {
+            joystickrot.set(0.f, 0.f, 0.f);
+            buttonpress = 0.f;
+        }
+        target_joystickrot.set(0.f, 0.f, 0.f);
+        target_buttonpress = 0.f;
+    }
 };

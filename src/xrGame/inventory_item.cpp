@@ -124,6 +124,8 @@ void CInventoryItem::Load(LPCSTR section)
         m_fControlInertionFactor = pSettings->r_float(section, "control_inertion_factor");
     }
     m_icon_name = READ_IF_EXISTS(pSettings, r_string, section, "icon_name", NULL);
+
+    m_fLowestBatteryCharge = READ_IF_EXISTS(pSettings, r_float, section, "power_critical", .03f);
 }
 
 void CInventoryItem::ReloadNames()

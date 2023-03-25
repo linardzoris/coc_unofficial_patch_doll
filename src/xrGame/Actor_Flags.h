@@ -16,6 +16,8 @@ enum
     AF_WALK_TOGGLE = (1 << 12),
     AF_SPRINT_TOGGLE = (1 << 13),
     AF_AIM_TOGGLE = (1 << 14),
+    AF_SIMPLE_PDA = (1 << 15),
+    AF_3D_PDA = (1 << 16),
 };
 
 extern Flags32 psActorFlags;
