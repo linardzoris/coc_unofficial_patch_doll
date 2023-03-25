@@ -477,12 +477,6 @@ void CLevel::OnRender()
             }
             GEnv.Render->RenderToTarget(GEnv.Render->rtPDA);
         }
-
-        /*if (Actor() && Actor()->m_bDelayDrawPickupItems)
-        {
-            Actor()->m_bDelayDrawPickupItems = false;
-            Actor()->DrawPickupItems();
-        }*/
     }
 
     GEnv.Render->BeforeWorldRender();	//--#SM+#-- +SecondVP+

@@ -158,8 +158,7 @@ bool CUIPdaWnd::OnMouseAction(float x, float y, EUIMessages mouse_action)
     switch (mouse_action)
     {
     case WINDOW_LBUTTON_DOWN:
-    case WINDOW_LBUTTON_UP:
-    {
+    case WINDOW_LBUTTON_UP: {
         CPda* pda = Actor()->GetPDA();
         if (pda)
         {
