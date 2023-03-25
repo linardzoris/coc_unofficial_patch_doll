@@ -407,8 +407,9 @@ void CPda::OnMoveToRuck(const SInvItemPlace& prev)
 }
 
 
-void CPda::UpdateHudAdditional(Fmatrix& trans)
+void CPda::UpdateHudAdditonal(Fmatrix& trans)
 {
+
     CActor* pActor = smart_cast<CActor*>(H_Parent());
     if (!pActor)
         return;
