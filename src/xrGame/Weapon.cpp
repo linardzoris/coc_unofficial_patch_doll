@@ -1885,7 +1885,7 @@ void CWeapon::UpdateHudAdditonal(Fmatrix& trans)
     u8 idx = GetCurrentHudOffsetIdx();
 
 	//============= Поворот ствола во время аима =============//
-    if ((IsZoomed() && m_zoom_params.m_fZoomRotationFactor <= 1.f) ||
+    /* if ((IsZoomed() && m_zoom_params.m_fZoomRotationFactor <= 1.f) ||
         (!IsZoomed() && m_zoom_params.m_fZoomRotationFactor > 0.f))
     {
         Fvector curr_offs, curr_rot;
@@ -1916,7 +1916,7 @@ void CWeapon::UpdateHudAdditonal(Fmatrix& trans)
             m_zoom_params.m_fZoomRotationFactor -= Device.fTimeDelta / m_zoom_params.m_fZoomRotateTime;
 
         clamp(m_zoom_params.m_fZoomRotationFactor, 0.f, 1.f);
-    }
+    }*/
 
 	//============= Подготавливаем общие переменные =============//
     clamp(idx, u8(0), u8(1));
