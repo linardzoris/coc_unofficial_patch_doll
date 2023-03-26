@@ -81,7 +81,7 @@ void CUIPdaWnd::Init()
     m_clock = UIHelper::CreateTextWnd(uiXml, "clock_wnd", this);
 
     /*
-        m_anim_static			= xr_new<CUIAnimatedStatic>();
+        m_anim_static			= new CUIAnimatedStatic();
         AttachChild				(m_anim_static);
         m_anim_static->SetAutoDelete(true);
         CUIXmlInit::InitAnimatedStatic(uiXml, "anim_static", 0, m_anim_static);

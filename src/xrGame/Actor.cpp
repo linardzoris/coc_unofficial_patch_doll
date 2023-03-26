@@ -126,9 +126,6 @@ CActor::CActor() : CEntityAlive(), current_ik_cam_shift(0)
     // эффекторы
     pCamBobbing = 0;
 
-    // Вот на этот моменте надо было чёто внести, а я не внёс
-    // https://github.com/DanceManiac/Advanced-X-Ray-Public/commit/dd042a6e14c39bc2ee812277e3a58c584e7e65c0
-
     r_torso.yaw = 0;
     r_torso.pitch = 0;
     r_torso.roll = 0;
