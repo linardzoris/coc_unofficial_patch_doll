@@ -33,7 +33,6 @@
 #include "hudmanager.h"
 #include "Weapon.h"
 #include "holder_custom.h"
-#include "ui\UIPdaWnd.h"
 
 extern u32 hud_adj_mode;
 extern u32 hud_adj_item_idx;
@@ -486,11 +485,6 @@ void CActor::ActorUse()
         CGameObject::u_EventSend(P);
         return;
     }
-
-	CUIPdaWnd* pda = &CurrentGameUI()->GetPdaMenu();
-
-	if (pda->IsShown())
-        return;
 
     if (character_physics_support()->movement()->PHCapture())
         character_physics_support()->movement()->PHReleaseObject();

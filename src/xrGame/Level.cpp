@@ -440,11 +440,8 @@ void CLevel::OnRender()
 
             if (cursor)
             {
-                static bool need_reset{};
-                if (pda_actor && pda_actor->m_bZoomed && CurrentGameUI()->TopInputReceiver() != pda)
-                    CurrentGameUI()->SetMainInputReceiver(pda, false);
-
-                const bool is_top = CurrentGameUI()->TopInputReceiver() == pda;
+                static bool need_reset;
+                bool is_top = CurrentGameUI()->TopInputReceiver() == pda;
 
                 if (pda->IsEnabled() && is_top && !Console->bVisible)
                 {
@@ -473,7 +470,8 @@ void CLevel::OnRender()
                 else
                     need_reset = true;
 
-                cursor->OnRender();
+                if (is_top)
+                    cursor->OnRender();
             }
             GEnv.Render->RenderToTarget(GEnv.Render->rtPDA);
         }

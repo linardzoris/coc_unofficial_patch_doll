@@ -16,6 +16,7 @@
 #include "inventory.h"
 #include "game_cl_base.h"
 #include "PDA.h"
+
 #include "xrEngine/x_ray.h"
 
 #include "ui\UICellItem.h" //Alundaio
@@ -69,6 +70,7 @@ void CUIGameCustom::OnFrame()
         g_b_ClearGameCaptions = false;
     }
     Window->Update();
+
     // update windows
     if (GameIndicatorsShown() && psHUD_Flags.is(HUD_DRAW | HUD_DRAW_RT))
         UIMainIngameWnd->Update();
@@ -85,8 +87,7 @@ void CUIGameCustom::Render()
     {
         CActor* pActor = smart_cast<CActor*>(pEntity);
         CPda* pda = pActor->GetPDA();
-        if (pActor && pActor->HUDview() && pActor->g_Alive() &&
-            psHUD_Flags.is(HUD_WEAPON | HUD_WEAPON_RT | HUD_WEAPON_RT2))
+        if (pActor && pActor->HUDview() && pActor->g_Alive() && psHUD_Flags.is(HUD_WEAPON | HUD_WEAPON_RT | HUD_WEAPON_RT2))
         {
             CInventory& inventory = pActor->inventory();
             u16 lastSlot = inventory.LastSlot();
@@ -97,16 +98,8 @@ void CUIGameCustom::Render()
                     item->render_item_ui();
             }
         }
-        if (pda)
-        {
-            if (GameIndicatorsShown() && psHUD_Flags.is(HUD_DRAW | HUD_DRAW_RT) && !pda->m_bZoomed)
-                UIMainIngameWnd->Draw();
-        }
-        else
-        {
-            if (GameIndicatorsShown() && psHUD_Flags.is(HUD_DRAW | HUD_DRAW_RT))
-                UIMainIngameWnd->Draw();
-        }
+        if (GameIndicatorsShown() && psHUD_Flags.is(HUD_DRAW | HUD_DRAW_RT))
+            UIMainIngameWnd->Draw();
     }
     m_pMessagesWnd->Draw();
     DoRenderDialogs();
