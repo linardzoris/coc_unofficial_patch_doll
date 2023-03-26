@@ -154,31 +154,34 @@ void CUIPdaWnd::SendMessage(CUIWindow* pWnd, s16 msg, void* pData)
 
 bool CUIPdaWnd::OnMouseAction(float x, float y, EUIMessages mouse_action)
 {
-    switch (mouse_action)
+    if (psActorFlags.test(AF_3D_PDA)) // Чтобы во время пользования обычным КПК при нажатии на ПКМ он не ломался
     {
-    case WINDOW_LBUTTON_DOWN:
-    case WINDOW_LBUTTON_UP: {
-        CPda* pda = Actor()->GetPDA();
-        if (pda)
+        switch (mouse_action)
         {
-            if (pda->IsPending())
-                return true;
+        case WINDOW_LBUTTON_DOWN:
+        case WINDOW_LBUTTON_UP: {
+            CPda* pda = Actor()->GetPDA();
+            if (pda)
+            {
+                if (pda->IsPending())
+                    return true;
 
-            if (mouse_action == WINDOW_LBUTTON_DOWN)
-                bButtonL = true;
-            else if (mouse_action == WINDOW_LBUTTON_UP)
-                bButtonL = false;
+                if (mouse_action == WINDOW_LBUTTON_DOWN)
+                    bButtonL = true;
+                else if (mouse_action == WINDOW_LBUTTON_UP)
+                    bButtonL = false;
+            }
+            break;
         }
-        break;
-    }
-    case WINDOW_RBUTTON_DOWN:
-        if (auto pda = Actor()->GetPDA())
-        {
-            pda->m_bZoomed = false;
-            CurrentGameUI()->SetMainInputReceiver(nullptr, false);
-            return true;
+        case WINDOW_RBUTTON_DOWN:
+            if (auto pda = Actor()->GetPDA())
+            {
+                pda->m_bZoomed = false;
+                CurrentGameUI()->SetMainInputReceiver(nullptr, false);
+                return true;
+            }
+            break;
         }
-        break;
     }
     CUIDialogWnd::OnMouseAction(x, y, mouse_action);
     return true; // always true because StopAnyMove() == false
@@ -397,7 +400,11 @@ void CUIPdaWnd::UpdatePda()
     }
 }
 
-void CUIPdaWnd::UpdateRankingWnd() { pUIRankingWnd->Update(); }
+void CUIPdaWnd::UpdateRankingWnd() 
+{ 
+    pUIRankingWnd->Update(); 
+}
+
 void CUIPdaWnd::Reset()
 {
     inherited::ResetAll();
@@ -410,7 +417,11 @@ void CUIPdaWnd::Reset()
         pUILogsWnd->ResetAll();
 }
 
-void CUIPdaWnd::SetCaption(LPCSTR text) { m_caption->SetText(text); }
+void CUIPdaWnd::SetCaption(LPCSTR text) 
+{
+    m_caption->SetText(text); 
+}
+
 void RearrangeTabButtons(CUITabControl* pTab)
 {
     TABS_VECTOR* btn_vec = pTab->GetButtonsVector();

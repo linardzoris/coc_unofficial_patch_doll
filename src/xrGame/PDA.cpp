@@ -840,9 +840,15 @@ void CPda::load(IReader& input_packet)
     load_data(m_sFullName, input_packet);
 }
 
-IGameObject* CPda::GetOwnerObject() { return Level().Objects.net_Find(GetOriginalOwnerID()); }
+IGameObject* CPda::GetOwnerObject() 
+{ 
+    return Level().Objects.net_Find(GetOriginalOwnerID()); 
+}
 
-CPda* CPda::GetPdaFromOwner(IGameObject* owner) { return smart_cast<CInventoryOwner*>(owner)->GetPDA(); }
+CPda* CPda::GetPdaFromOwner(IGameObject* owner) 
+{ 
+    return smart_cast<CInventoryOwner*>(owner)->GetPDA(); 
+}
 
 void CPda::PlayScriptFunction()
 {
