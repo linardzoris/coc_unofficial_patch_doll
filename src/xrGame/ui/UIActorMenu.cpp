@@ -35,6 +35,7 @@
 #include "xrUICore/PropertiesBox/UIPropertiesBox.h"
 #include "UIMainIngameWnd.h"
 #include "Trade.h"
+#include "PDA.h"
 
 void CUIActorMenu::SetActor(CInventoryOwner* io)
 {
@@ -177,8 +178,15 @@ void CUIActorMenu::Show(bool status)
 
 void CUIActorMenu::Draw()
 {
-    CurrentGameUI()->UIMainIngameWnd->DrawZoneMap();
-    CurrentGameUI()->UIMainIngameWnd->DrawMainIndicatorsForInventory();
+    CInventoryOwner* pInvOwner = smart_cast<CInventoryOwner*>(Level().CurrentEntity());
+    CActor* pActor = smart_cast<CActor*>(pInvOwner);
+    CPda* pda = pActor->GetPDA();
+
+    if (pInvOwner && pActor && pda && pda->GetCondition() > 0.0) // Скрываем мини-карту, если КПК нет в слоте или если у него нет энергии
+    {
+        CurrentGameUI()->UIMainIngameWnd->DrawZoneMap();
+        CurrentGameUI()->UIMainIngameWnd->DrawMainIndicatorsForInventory();
+    }
 
     inherited::Draw();
     m_ItemInfo->Draw();

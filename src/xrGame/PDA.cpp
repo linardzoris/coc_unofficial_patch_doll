@@ -63,6 +63,10 @@ void CPda::Load(LPCSTR section)
 {
     inherited::Load(section);
 
+    // Активный и пассивный расход заряда в секунду
+    m_fDecayRate = READ_IF_EXISTS(pSettings, r_float, section, "power_decay_rate", 0.f);
+    m_fPassiveDecayRate = READ_IF_EXISTS(pSettings, r_float, section, "passive_decay_rate", 0.f);
+
 	m_fRadius = pSettings->r_float(section, "radius");
     m_functor_str = READ_IF_EXISTS(pSettings, r_string, section, "play_function", "");
     m_fDisplayBrightnessPowerSaving = READ_IF_EXISTS(pSettings, r_float, section, "power_saving_brightness", .6f);
@@ -95,8 +99,7 @@ void CPda::Load(LPCSTR section)
         m_iLightType = READ_IF_EXISTS(pSettings, r_u8, section, "light_type", 1);
         light_lanim = LALib.FindItem(READ_IF_EXISTS(pSettings, r_string, section, "color_animator", ""));
 
-        const Fcolor clr =
-            READ_IF_EXISTS(pSettings, r_fcolor, section, "light_color", (Fcolor{1.0f, 0.0f, 0.0f, 1.0f}));
+        const Fcolor clr = READ_IF_EXISTS(pSettings, r_fcolor, section, "light_color", (Fcolor{1.0f, 0.0f, 0.0f, 1.0f}));
 
         fBrightness = clr.intensity();
         pda_light->set_color(clr);
@@ -140,8 +143,7 @@ void CPda::OnStateSwitch(u32 S, u32 oldState)
         g_player_hud->attach_item(this);
         g_pGamePersistent->pda_shader_data.pda_display_factor = 0.f;
 
-        m_sounds.PlaySound(
-            hasEnoughBatteryPower() ? "sndShow" : "sndShowEmpty", Position(), H_Root(), !!GetHUDmode(), false);
+        m_sounds.PlaySound(hasEnoughBatteryPower() ? "sndShow" : "sndShowEmpty", Position(), H_Root(), !!GetHUDmode(), false);
         PlayHUDMotion(!m_bNoticedEmptyBattery ? "anm_show" : "anm_show_empty", false, this, GetState());
 
         if (auto pda = CurrentGameUI() && &CurrentGameUI()->GetPdaMenu() ? &CurrentGameUI()->GetPdaMenu() : nullptr)
@@ -152,8 +154,7 @@ void CPda::OnStateSwitch(u32 S, u32 oldState)
     }
     break;
     case eHiding: {
-        m_sounds.PlaySound(
-            hasEnoughBatteryPower() ? "sndHide" : "sndHideEmpty", Position(), H_Root(), !!GetHUDmode(), false);
+        m_sounds.PlaySound(hasEnoughBatteryPower() ? "sndHide" : "sndHideEmpty", Position(), H_Root(), !!GetHUDmode(), false);
         PlayHUDMotion(!m_bNoticedEmptyBattery ? "anm_hide" : "anm_hide_empty", true, this, GetState());
         SetPending(true);
         m_bZoomed = false;
@@ -294,8 +295,6 @@ void CPda::JoystickCallback(CBoneInstance* B)
     B->mTransform.mulB_43(rotation);
 }
 
-// extern bool IsMainMenuActive();
-
 void CPda::UpdateCL()
 {
     inherited::UpdateCL();
@@ -304,6 +303,7 @@ void CPda::UpdateCL()
         return;
 
 	UpdateLights();
+    UpdatePower();
 
  	const u32 state = GetState();
     const bool enoughBatteryPower = hasEnoughBatteryPower();
@@ -355,7 +355,7 @@ void CPda::UpdateCL()
             }
 
             // Turn on "power saving" on low battery charge (dims the screen).
-            if (IsUsingCondition() && condition < m_fPowerSavingCharge)
+            /* if (IsUsingCondition() && condition < m_fPowerSavingCharge)
             {
                 if (!m_bPowerSaving)
                 {
@@ -368,7 +368,7 @@ void CPda::UpdateCL()
 
             // Turn off "power saving" if battery has sufficient charge.
             else if (m_bPowerSaving)
-                m_bPowerSaving = false;
+                m_bPowerSaving = false;*/
         }
     }
     else
@@ -415,6 +415,35 @@ void CPda::UpdateCL()
     }
 }
 
+void CPda::UpdatePower()
+{
+    const auto pda = &CurrentGameUI()->GetPdaMenu();
+
+    // Снижение заряда активно и пассивно, если 2д КПК
+    if (!psActorFlags.test(AF_3D_PDA))
+    {
+        if (pda->IsShown() && IsUsingCondition() && this->GetCondition() > 0.0)
+        {
+            this->ChangeCondition(-m_fDecayRate * Device.fTimeDelta);
+        }
+        else if (!pda->IsShown() && IsUsingCondition() && this->GetCondition() > 0.0)
+            this->ChangeCondition(-m_fPassiveDecayRate * Device.fTimeDelta);
+    }
+    else // Если 3д
+        if (pda->IsShown() && IsUsingCondition() && this->GetCondition() > 0.0)
+        {
+            this->ChangeCondition(-m_fDecayRate * Device.fTimeDelta);
+        }
+        else if (!pda->IsShown() && IsUsingCondition() && this->GetCondition() > 0.0)
+            this->ChangeCondition(-m_fPassiveDecayRate * Device.fTimeDelta);
+
+    // Скрываем диалог с картой, если 2д КПК сел
+    if (!psActorFlags.test(AF_3D_PDA) && IsUsingCondition() && this->GetCondition() <= 0.0)
+    {
+        pda->HideDialog();
+    }
+
+}
 void CPda::shedule_Update(u32 dt)
 {
     inherited::shedule_Update(dt);
@@ -758,8 +787,7 @@ void CPda::OnH_B_Independent(bool just_before_destroy)
 	if (!ParentIsActor())
         return;
 
-    m_sounds.PlaySound(
-        hasEnoughBatteryPower() ? "sndHide" : "sndHideEmpty", Position(), H_Root(), !!GetHUDmode(), false);
+    m_sounds.PlaySound(hasEnoughBatteryPower() ? "sndHide" : "sndHideEmpty", Position(), H_Root(), !!GetHUDmode(), false);
 
     SwitchState(eHidden);
     SetPending(false);

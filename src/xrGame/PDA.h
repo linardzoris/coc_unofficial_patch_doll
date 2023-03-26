@@ -113,6 +113,7 @@ protected:
     }
 
     void UpdateLights();
+    void UpdatePower();
 
 public:
     virtual void OnStateSwitch(u32 S, u32 oldState);
@@ -137,6 +138,8 @@ public:
         eEmptyBattery = 7
     };
 
+    float m_fDecayRate; // Расход состояния
+    float m_fPassiveDecayRate; // Пассивный расход состояния
     bool m_bZoomed;
     eDeferredEnableState m_eDeferredEnable;
     bool m_bPowerSaving;

@@ -490,12 +490,9 @@ bool CUIPdaWnd::OnKeyboardAction(int dik, EUIMessages keyboard_action)
                     return true;
                 }
 
-                if (action == kUSE || action == kACTIVE_JOBS || action == kINVENTORY ||
-                    (action > kCAM_ZOOM_OUT && action < kWPN_NEXT)) // Since UI no longer passes non-movement inputs to
-                                                                    // the actor input receiver this is needed now.
+                if (action == kUSE || action == kACTIVE_JOBS || action == kINVENTORY || (action > kCAM_ZOOM_OUT && action < kWPN_NEXT)) // Since UI no longer passes non-movement inputs to // the actor input receiver this is needed now.
                 {
-                    IGameObject* obj =
-                        (GameID() == eGameIDSingle) ? Level().CurrentEntity() : Level().CurrentControlEntity();
+                    IGameObject* obj = (GameID() == eGameIDSingle) ? Level().CurrentEntity() : Level().CurrentControlEntity();
                     {
                         IInputReceiver* IR = smart_cast<IInputReceiver*>(smart_cast<CGameObject*>(obj));
                         if (IR)
@@ -544,7 +541,6 @@ bool CUIPdaWnd::OnKeyboardAction(int dik, EUIMessages keyboard_action)
                     }
 
                     /*
-                    ×å çà êàë âîîáùå
                     if (action == kWPN_FUNC || (!IsEnabled() && action == kWPN_FIRE))
                     {
                         if (IsEnabled())
