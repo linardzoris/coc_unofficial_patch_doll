@@ -29,7 +29,8 @@ void CNightVisionEffector::Start(const shared_str& sect, CActor* pA, bool play_s
 void CNightVisionEffector::Stop(const float factor, bool play_sound)
 {
 	CActor* pActor = smart_cast<CActor*>(Level().CurrentControlEntity());
-	if (!pActor)		return;
+	if (!pActor)		
+        return;
 	CEffectorPP* pp = pActor->Cameras().GetPPEffector((EEffectorPPType)effectorID);
 	if (pp)
 	{
@@ -43,7 +44,7 @@ void CNightVisionEffector::Stop(const float factor, bool play_sound)
 
 void CNightVisionEffector::StartForScope(const shared_str& sect, CActor* pA, bool play_sound)
 {
-    AddEffector(pA, effNightvision, sect);
+    AddEffector(pA, effectorID, sect);
 
     if (play_sound)
     {
@@ -57,12 +58,14 @@ void CNightVisionEffector::StopForScope(const float factor, bool play_sound)
     CActor* pActor = smart_cast<CActor*>(Level().CurrentControlEntity());
     if (!pActor)
         return;
-    CEffectorPP* pp = pActor->Cameras().GetPPEffector((EEffectorPPType)effNightvision);
+    CEffectorPP* pp = pActor->Cameras().GetPPEffector((EEffectorPPType)effectorID);
     if (pp)
     {
         pp->Stop(factor);
         if (play_sound)
             PlaySounds(eStopSound);
+
+		m_sounds.StopSound("NightVisionIdleSnd");
     }
 }
 
