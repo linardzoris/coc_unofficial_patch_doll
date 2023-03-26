@@ -16,6 +16,7 @@
 #include "Level.h"
 #include "clsid_game.h"
 #include "hudmanager.h"
+#include "ui\UIPdaWnd.h"
 
 #define PICKUP_INFO_COLOR 0xFFDDDDDD
 
@@ -119,9 +120,13 @@ BOOL CActor::CanPickItem(const CFrustum& frustum, const Fvector& from, IGameObje
 
 void CActor::PickupModeUpdate()
 {
+    CUIPdaWnd* pda = &CurrentGameUI()->GetPdaMenu();
+
     if (!m_bInfoDraw)
         return; // kUSE key pressed
     if (!IsGameTypeSingle())
+        return;
+    if (pda->IsShown())
         return;
 
     feel_touch_update(Position(), m_fPickupInfoRadius);
@@ -131,7 +136,7 @@ void CActor::PickupModeUpdate()
 
     for (xr_vector<IGameObject*>::iterator it = feel_touch.begin(); it != feel_touch.end(); it++)
     {
-        if (CanPickItem(frustum, Device.vCameraPosition, *it))
+        if (CanPickItem(frustum, Device.vCameraPosition, *it) && m_fPickupInfoRadius > 0)
             PickupInfoDraw(*it);
     }
 }
