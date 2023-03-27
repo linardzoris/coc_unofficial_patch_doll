@@ -297,4 +297,10 @@ function opt_video_adv:InitControls(x, y, xml, handler)
 	xml:InitStatic("video_adv:cap_hud_mask", _st)
 	ctl = xml:InitCheck("video_adv:check_hud_mask", _st)
 	table.insert(handler.m_preconditions, {func=mode_ge_2, control=_st})	
+	
+--3D PDA	
+	_st = xml:InitStatic("video_adv:templ_item", nil)
+	xml:InitStatic("video_adv:cap_3d_pda_enable", _st)
+	ctl = xml:InitCheck("video_adv:check_3d_pda_enable", _st)
+	table.insert(handler.m_preconditions, {func=all_modes, control=_st})	
 end

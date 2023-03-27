@@ -691,4 +691,8 @@
 	<string id="ui_mm_mode_sprint_toggle">
 		<text>Mode: always running</text>
 	</string>		
+	
+	<string id="ui_mm_3d_pda">
+		<text>3D PDA</text>
+	</string>	
 </string_table>
