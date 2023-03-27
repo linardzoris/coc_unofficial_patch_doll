@@ -9,6 +9,9 @@
 #include "UIHelper.h"
 #include "string_table.h"
 
+u32 const red_clr = color_argb(255, 210, 50, 50);
+u32 const green_clr = color_argb(255, 170, 170, 170);
+
 CUIBoosterInfo::CUIBoosterInfo()
 {
     for (u32 i = 0; i < eBoostExplImmunity; ++i)
@@ -189,6 +192,7 @@ UIBoosterInfoItem::UIBoosterInfoItem()
     m_value = NULL;
     m_magnitude = 1.0f;
     m_show_sign = false;
+    m_sign_inverse = false;
 
     m_unit_str._set("");
     m_texture_minus._set("");
@@ -205,6 +209,7 @@ void UIBoosterInfoItem::Init(CUIXml& xml, LPCSTR section)
     m_value = UIHelper::CreateTextWnd(xml, "value", this);
     m_magnitude = xml.ReadAttribFlt("value", 0, "magnitude", 1.0f);
     m_show_sign = (xml.ReadAttribInt("value", 0, "show_sign", 1) == 1);
+    m_sign_inverse = (xml.ReadAttribInt("value", 0, "sign_inverse", 0) == 1);
 
     LPCSTR unit_str = xml.ReadAttrib("value", 0, "unit_str", "");
     m_unit_str._set(StringTable().translate(unit_str));
@@ -239,7 +244,9 @@ void UIBoosterInfoItem::SetValue(float value)
     m_value->SetText(str);
 
     bool positive = (value >= 0.0f);
-    m_value->SetTextColor(color_rgba(170, 170, 170, 255));
+    positive = (m_sign_inverse) ? !positive : positive;
+    u32 color = (positive) ? green_clr : red_clr;
+    m_value->SetTextColor(color);
 
     if (m_texture_minus.size())
     {
