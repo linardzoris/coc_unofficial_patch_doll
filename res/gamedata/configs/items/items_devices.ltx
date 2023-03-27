@@ -14,6 +14,10 @@ sprint_allowed                                     = true
 control_inertion_factor                            = 1
 script_binding                                     = bind_physic_object.init
 
+use_condition							 		   = true
+power_decay_rate 						 		   = 0.000057 ;скорость израсходования заряда
+passive_decay_rate 						 		   = 0.000027 ;пассивная скорость израсходования (в инвентаре)
+
 inv_name                                           = st_pda_name
 inv_name_short                                     = st_pda_name
 inv_weight                                         = 0.1	                                       ;0.2
@@ -468,6 +472,14 @@ attach_angle_offset                      = 3.062, 0.008, -1.532
 attach_position_offset                   = 0.134, -0.007, 0.09
 
 [device_flashlight_hud]:detector_base_hud
+hands_position							 = 0.033,-0.1895,0.039
+hands_orientation						 = 2,2,0
+hands_position_16x9						 = 0.033,-0.1895,0.039
+hands_orientation_16x9					 = 2,2,0
+
+aim_hud_offset_pos						 = 0,0,0
+aim_hud_offset_rot						 = 0,0,0
+
 item_position 							 = -0.053, 0.027, 0.015
 item_orientation 						 = -8, -11.5,50
 item_visual                              = dynamics\devices\dev_tactical_torch\dev_tactical_torch_hud

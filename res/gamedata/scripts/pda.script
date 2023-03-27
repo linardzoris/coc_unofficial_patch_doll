@@ -3,20 +3,6 @@ coc_ranking_list = {}
 local actor_rank_place
 dialog_closed = false
 
-
-function get_max_member_count()
-	return 10
-end
-
-function get_max_resource()
-	return 10
-end
-
-function get_max_power()
-	return 10
-end
-
-
 ----------------------------------------------------------------------------
 -- Engine->lua function calls 
 ----------------------------------------------------------------------------
