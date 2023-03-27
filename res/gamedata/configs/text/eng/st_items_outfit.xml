@@ -30,43 +30,11 @@
 	</string>
 
 	<!-- Clear Sky -->
-	<string id="csky_novice_outfit_name">
-		<text>Clear Sky leather jacket</text>
-	</string>
-
 	<string id="csky_light_outfit_name">
 		<text>CS-1a body armour</text>
 	</string>
 	<string id="csky_light_outfit_description">
 		<text>The most basic body armour worn by the Clear Sky faction providing good protection from anomalous exposure, its design is reminiscent of the popular Sunrise suit. Includes a container capable of holding one artefact.</text>
-	</string>
-
-	<string id="csky_light_original_outfit_name">
-		<text>CS-1b body armour</text>
-	</string>
-	<string id="csky_light_original_outfit_description">
-		<text>The CS-1b is a heavier variant of the CS-1a body armour and consists of a military bulletproof vest with an additional load-bearing vest worn over the top. Comes with a built-in artefact container.</text>
-	</string>
-
-	<string id="csky_medium_outfit_name">
-		<text>CS-2 body armour</text>
-	</string>
-	<string id="csky_medium_outfit_description">
-		<text>This body armour is often used for conducting search operations in areas of low anomalous activity and as such is a notable improvement over the CS-1. Comes with a built-in artefact container.</text>
-	</string>
-
-	<string id="csky_heavy_outfit_name">
-		<text>CS-3a body armour</text>
-	</string>
-	<string id="csky_heavy_outfit_description">
-		<text>The CS-3a consists of a military bulletproof vest. The armour is capable of stopping a pistol bullet, while the wearer is also well protected from anomalies. Comes with a built-in artefact container.</text>
-	</string>
-
-	<string id="csky_heavy_assault_outfit_name">
-		<text>CS-3b body armour</text>
-	</string>
-	<string id="csky_heavy_assault_outfit_description">
-		<text>The CS-3b body armour is a suit originally designed by Clear Sky for combat during the faction wars, but has long since been re-purposed. The majority of its bulk comes from the materials made to shield the wearer against any bullets, and its protection against anomalies is likewise sturdy. Comes with a built-in artefact container.</text>
 	</string>
 
 	<!-- Duty -->

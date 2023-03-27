@@ -297,10 +297,10 @@
 	
 <!--		-- Уникальное --		-->
 	
-	<string id="csky_light_novice_outfit_name">
+	<string id="csky_light_outfit_name">
 		<text>Бронежилет ЧН-1a</text>
 	</string>
-	<string id="csky_light_novice_outfit_description">
+	<string id="csky_light_outfit_description">
 		<text>Данный бронекостюм разрабатывался для проведения исследовательских экспедиций в областях с аномальной активностью, поэтому снабжён контейнером для артефактов. Использование специальной пропитки материалов повысило устойчивость к аномальным воздействиям.</text>
 	</string>
 

@@ -102,7 +102,6 @@
 	<!-- Factions, Factions (Historic) & Factions (Other) -->
 	<file name="ui\guide\encyclopedia_factions">
 		<texture id="encyclopedia_factions_bandit_image" x="0" y="0" width="256" height="256"/>
-		<texture id="encyclopedia_factions_clear_sky_image" x="256" y="0" width="256" height="256"/>
 		<texture id="encyclopedia_factions_duty_image" x="512" y="0" width="256" height="256"/>
 		<texture id="encyclopedia_factions_ecologist_image" x="0" y="256" width="256" height="256"/>
 		<texture id="encyclopedia_factions_freedom_image" x="256" y="256" width="256" height="256"/>
@@ -111,8 +110,8 @@
 		<texture id="encyclopedia_factions_military_image" x="256" y="512" width="256" height="256"/>
 		<texture id="encyclopedia_factions_monolith_image" x="512" y="512" width="256" height="256"/>
 		<texture id="encyclopedia_factions_historic_final_day_image" x="0" y="0" width="0" height="0"/>
-		<texture id="encyclopedia_factions_historic_isg_image" x="0" y="768" width="256" height="256"/>
 		<texture id="encyclopedia_factions_historic_renegade_image" x="256" y="768" width="256" height="256"/>
+		<texture id="encyclopedia_factions_historic_csky_image" x="256" y="0" width="256" height="256"/>
 		<texture id="encyclopedia_factions_other_zombified_image" x="512" y="768" width="256" height="256"/>
 	</file>
 	
