@@ -374,8 +374,8 @@ void CPda::UpdateCL()
             }
 
             // Turn off "power saving" if battery has sufficient charge.
-            else if (m_bPowerSaving)
-                m_bPowerSaving = false;*/
+            else if (m_bPowerSaving)*/
+                m_bPowerSaving = false;
         }
     }
     else
