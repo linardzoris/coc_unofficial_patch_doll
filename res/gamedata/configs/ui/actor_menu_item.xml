@@ -215,11 +215,11 @@
 		<texture a="180">ui_upgrade_arrow2</texture>
 	</cell_item_upgrade>
 
-    <condition_progess_bar x="1" y="1" width="38" height="5" horz="1" min="0" max="1" pos="1">
-	    <background x="0" y="0" width="38" height="5">
+    <condition_progess_bar x="-1" y="0" width="26" height="3" horz="1" min="0" max="1" pos="1" stretch="1">
+	    <background x="0" y="0" width="28" height="3" stretch="1">
             <texture r="62" g="74" b="74">ui_inGame2_inventory_item_status_bar</texture>
 	    </background>
-        <progress>
+        <progress stretch="1">
             <texture r="142" g="149" b="149">ui_inGame2_inventory_item_status_bar</texture>
         </progress>
 		<min_color r="196" g="18" b="18"/>
@@ -237,7 +237,8 @@
 		<min_color r="86" g="196" b="209"/>
 		<middle_color r="86" g="196" b="209"/>
 		<max_color r="86" g="196" b="209"/>
-    </power_progess_bar>		
+    </power_progess_bar>
+	
 	<!-- ============================ outfit_info ====================================   -->
 
 	<outfit_info x="0" y="0" width="265" height="180">
