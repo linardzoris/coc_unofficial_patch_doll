@@ -43,7 +43,7 @@
 		</text>
 	</hint_wnd>
 
-	<battery_bar x="703" y="28" width="24" height="15" horz="1" min="0" max="1.1" pos="1" stretch="1">
+	<battery_bar x="822" y="63" width="19" height="15" horz="1" min="0" max="1.1" pos="1" stretch="1">
 		<background stretch="1">
 			<texture>ui_inGame2_pda_battery_bar_background</texture>
 		</background>
