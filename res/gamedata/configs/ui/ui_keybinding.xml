@@ -48,6 +48,17 @@
 		<command id="kb_quick_use_4"					exe="quick_use_4"/>
 		<command id="kb_drop"						  	exe="drop"/>		
 	</group>
+	<group name="kb_grp_auto">
+		<command id="kb_turn_engine"					exe="turn_engine"/>
+		<command id="kb_car_moving_break"				exe="jump"/>
+		<command id="kb_car_transmission_up"			exe="car_transmission_up"/>
+		<command id="kb_car_transmission_down"			exe="car_transmission_down"/>	
+		<command id="kb_car_lights_on"					exe="torch"/>
+		<command id="kb_switch_horn"					exe="switch_horn"/>	
+		<command id="kb_car_trunk"						exe="car_trunk"/>		
+		<command id="kb_car_weapon_fire"				exe="wpn_fire"/>	
+		<command id="kb_car_weapon_zoom"				exe="wpn_zoom"/>		
+	</group>		
 	<group name="kb_grp_common">
 		<command id="kb_kick"							exe="kick"/>
 		<command id="kb_cam_autoaim"					exe="cam_autoaim"/>

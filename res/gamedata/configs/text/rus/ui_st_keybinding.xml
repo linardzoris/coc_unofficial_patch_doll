@@ -299,6 +299,9 @@
 	<string id="kb_switch_horn">
 		<text>Посигналить</text>
 	</string>	
+	<string id="kb_car_trunk">
+		<text>Открыть багажник</text>
+	</string>		
 	<string id="kb_car_moving_break">
 		<text>Ручной тормоз</text>
 	</string>	

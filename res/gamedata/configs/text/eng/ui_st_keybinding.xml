@@ -302,6 +302,9 @@
 	<string id="kb_switch_horn">
 		<text>Switch the horn</text>
 	</string>	
+	<string id="kb_car_trunk">
+		<text>Open the trunk</text>
+	</string>		
 	<string id="kb_car_moving_break">
 		<text>Handbrake</text>
 	</string>	
