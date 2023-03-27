@@ -63,4 +63,5 @@ public:
     void NetRelcase(IPhysicsShellHolder* O);
 };
 
+extern XRPHYSICS_API bool g_actor_allow_ladder;
 #endif

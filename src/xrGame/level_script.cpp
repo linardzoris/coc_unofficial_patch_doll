@@ -41,9 +41,12 @@
 #include "raypick.h"
 #include "xrCDB/xr_collide_defs.h"
 #include "GamePersistent.h"
+#include "player_hud.h"
+#include "../xrPhysics/ElevatorState.h"
 
 using namespace luabind;
 using namespace luabind::policy;
+bool g_block_all_except_movement;
 
 LPCSTR command_line() { return Core.Params; }
 bool IsDynamicMusic() { return !!psActorFlags.test(AF_DYNAMIC_MUSIC); }
@@ -578,6 +581,31 @@ LPCSTR tutorial_name()
     return "invalid";
 }
 
+u32 PlayHudMotion(u8 hand, LPCSTR itm_name, LPCSTR anm_name, bool bMixIn = true, float speed = 1.f)
+{
+    return g_player_hud->script_anim_play(hand, itm_name, anm_name, bMixIn, speed);
+}
+
+void StopHudMotion() { g_player_hud->StopScriptAnim(); }
+
+float MotionLength(LPCSTR section, LPCSTR name, float speed)
+{
+    return g_player_hud->motion_length_script(section, name, speed);
+}
+
+bool AllowHudMotion() { return g_player_hud->allow_script_anim(); }
+
+void PlayBlendAnm(LPCSTR name, u8 part, float speed, float power, bool bLooped, bool no_restart)
+{
+    g_player_hud->PlayBlendAnm(name, part, speed, power, bLooped, no_restart);
+}
+
+void StopBlendAnm(LPCSTR name, bool bForce) { g_player_hud->StopBlendAnm(name, bForce); }
+
+void StopAllBlendAnms(bool bForce) { g_player_hud->StopAllBlendAnms(bForce); }
+
+float SetBlendAnmTime(LPCSTR name, float time) { return g_player_hud->SetBlendAnmTime(name, time); }
+
 LPCSTR translate_string(LPCSTR str) { return *StringTable().translate(str); }
 bool has_active_tutotial() { return (g_tutorial != NULL); }
 
@@ -633,6 +661,26 @@ u32 g_get_target_element()
 		return RQ.element;
 
 	return 0;
+}
+
+void block_all_except_movement(bool b)
+{
+	g_block_all_except_movement = b;
+}
+
+bool only_movement_allowed()
+{
+	return g_block_all_except_movement;
+}
+
+void set_actor_allow_ladder(bool b)
+{
+	g_actor_allow_ladder = b;
+}
+
+bool actor_allow_ladder()
+{
+	return g_actor_allow_ladder;
 }
 
 u8 get_active_cam()
@@ -949,6 +997,19 @@ IC static void CLevel_Export(lua_State* luaState)
         def("has_active_tutorial", &has_active_tutotial),
 	    def("active_tutorial_name", &tutorial_name),
         def("translate_string", &translate_string),
+	    def("play_hud_motion",		PlayHudMotion), 
+	    def("stop_hud_motion",		StopHudMotion), 
+	    def("get_motion_length",	MotionLength),
+	    def("hud_motion_allowed",	AllowHudMotion),
+	    def("play_hud_anm",			PlayBlendAnm), 
+	    def("stop_hud_anm",			StopBlendAnm), 
+	    def("stop_all_hud_anms",	StopAllBlendAnms),
+	    def("set_hud_anm_time",		SetBlendAnmTime),
+	    def("set_hud_anm_time",		SetBlendAnmTime),
+	    def("only_allow_movekeys",	block_all_except_movement),
+	    def("only_movekeys_allowed",only_movement_allowed),
+	    def("set_actor_allow_ladder", set_actor_allow_ladder),
+	    def("actor_ladder_allowed", actor_allow_ladder),
         def("reload_language", &reload_language),
         def("log_stack_trace", &xrDebug::LogStackTrace)
 

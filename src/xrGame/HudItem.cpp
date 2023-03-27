@@ -155,6 +155,7 @@ void CHudItem::OnStateSwitch(u32 S, u32 oldState)
 
         break;
     }
+    g_player_hud->updateMovementLayerState();
 }
 
 void CHudItem::OnAnimationEnd(u32 state)
@@ -468,6 +469,12 @@ bool CHudItem::isHUDAnimationExist(pcstr anim_name) const
 void CHudItem::PlayAnimIdleMovingCrouch() 
 { 
     PlayHUDMotion("anm_idle_moving_crouch", false, nullptr, GetState()); 
+}
+
+bool CHudItem::NeedBlendAnm()
+{
+    u32 state = GetState();
+    return (state != eIdle && state != eHidden);
 }
 
 void CHudItem::PlayAnimIdleMoving() 

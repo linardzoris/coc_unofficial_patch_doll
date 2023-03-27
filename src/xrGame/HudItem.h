@@ -119,6 +119,8 @@ public:
     virtual void PlayAnimBore();
     bool TryPlayAnimIdle();
     virtual bool MovingAnimAllowedNow() { return true; }
+    virtual bool NeedBlendAnm();
+
     virtual void PlayAnimIdleMoving();
     virtual void PlayAnimIdleSprint();
 

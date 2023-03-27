@@ -1569,6 +1569,7 @@ void CWeapon::OnZoomIn()
             m_zoom_params.m_pNight_vision = new CNightVisionEffector(m_zoom_params.m_sUseZoomPostprocess, effNightvisionScope);
         }
     }
+    g_player_hud->updateMovementLayerState();
 }
 
 void CWeapon::OnZoomOut()
@@ -1595,6 +1596,7 @@ void CWeapon::OnZoomOut()
             m_zoom_params.m_pNight_vision->Stop(100000.0f, false);
         xr_delete(m_zoom_params.m_pNight_vision);
     }
+    g_player_hud->updateMovementLayerState();
 }
 
 CUIWindow* CWeapon::ZoomTexture()
