@@ -254,7 +254,7 @@ protected:
     void InitUpgradeMode();
     void DeInitUpgradeMode();
     void InitDeadBodySearchMode();
-    void DeInitDeadBodySearchMode() const;
+    void DeInitDeadBodySearchMode();
 
     void CurModeToScript();
     void RepairEffect_CurItem();
