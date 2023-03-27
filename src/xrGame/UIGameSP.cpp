@@ -222,6 +222,19 @@ void CUIGameSP::StartCarBody(CInventoryOwner* pActorInv, CInventoryBox* pBox) //
     ActorMenu->ShowDialog(true);
 }
 
+void CUIGameSP::StartCarBody(CInventoryOwner* pActorInv, CCar* pCar) // Car trunk search
+{
+    if (TopInputReceiver())
+        return;
+
+    ActorMenu->SetActor(pActorInv);
+    ActorMenu->SetCarTrunk(pCar);
+    VERIFY(pCar);
+
+    ActorMenu->SetMenuMode(mmDeadBodySearch);
+    ActorMenu->ShowDialog(true);
+}
+
 extern ENGINE_API BOOL bShowPauseString;
 void CUIGameSP::ChangeLevel(GameGraph::_GRAPH_ID game_vert_id, u32 level_vert_id, Fvector pos, Fvector ang,
     Fvector pos2, Fvector ang2, bool b_use_position_cancel, const shared_str& message_str, bool b_allow_change_level)

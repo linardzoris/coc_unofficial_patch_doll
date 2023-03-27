@@ -35,6 +35,7 @@ enum EGameActions
 
     kTURN_ENGINE,
     kSWITCH_HORN,
+    kCAR_TRUNK,
     kCAR_TRANSMISSION_UP,
     kCAR_TRANSMISSION_DOWN,
 

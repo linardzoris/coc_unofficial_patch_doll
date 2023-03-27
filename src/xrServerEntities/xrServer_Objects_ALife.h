@@ -623,6 +623,9 @@ public:
     virtual void load(NET_Packet& tNetPacket);
     virtual bool can_save() const noexcept;
     virtual CSE_Abstract* cast_abstract() { return this; }
+	virtual void add_offline(const xr_vector<ALife::_OBJECT_ID>& saved_children, const bool& update_registries);
+    virtual void add_online(const bool& update_registries);
+
 protected:
     virtual void data_load(NET_Packet& tNetPacket);
     virtual void data_save(NET_Packet& tNetPacket);

@@ -17,6 +17,8 @@
 #include "Level.h"
 #include "CarWeapon.h"
 #include "HUDManager.h"
+#include "UIGameCustom.h"
+
 void CCar::OnMouseMove(int dx, int dy)
 {
     if (Remote())
@@ -167,6 +169,10 @@ void CCar::OnKeyboardPress(int cmd)
     case kUSE: break;
     case kWPN_FUNC: m_repairing = true; break;
     case kSWITCH_HORN: SwitchHorn(); break;
+    case kCAR_TRUNK:
+        if (!CurrentGameUI()->TopInputReceiver())
+            ShowTrunk();
+        break;
     };
 }
 

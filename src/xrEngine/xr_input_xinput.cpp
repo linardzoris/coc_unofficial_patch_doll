@@ -30,6 +30,7 @@ _action actions[] = {
 
     {"turn_engine", kTURN_ENGINE, _both},
     {"switch_horn", kSWITCH_HORN, _both},
+    {"car_trunk", kCAR_TRUNK, _both},
     {"car_transmission_up", kCAR_TRANSMISSION_UP, _both},
     {"car_transmission_down", kCAR_TRANSMISSION_DOWN, _both},
 
