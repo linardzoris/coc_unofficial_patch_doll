@@ -246,8 +246,7 @@ void CWeapon::UpdateUIScope()
     }
     else // Main Sight
     {
-        if (ALife::eAddonPermanent != m_eScopeStatus &&
-            0 != (m_flagsAddOnState & CSE_ALifeItemWeapon::eWeaponAddonScope) && m_scopes.size())
+        if (ALife::eAddonPermanent != m_eScopeStatus && 0 != (m_flagsAddOnState & CSE_ALifeItemWeapon::eWeaponAddonScope) && m_scopes.size())
         {
             m_zoom_params.m_fScopeZoomFactor = pSettings->r_float(GetScopeName(), "scope_zoom_factor");
         }
@@ -290,7 +289,6 @@ void CWeapon::UpdateUIScope()
 void CWeapon::SwitchZoomType()
 {
     CActor* pA = smart_cast<CActor*>(H_Parent());
-    CTorch* pTorch = smart_cast<CTorch*>(pA->inventory().ItemFromSlot(TORCH_SLOT));
 
     if (m_zoomtype == 0 && (m_zoom_params.m_altAimPos) || m_zoomtype == 0 && (m_altAimPos))
     {
@@ -1168,11 +1166,6 @@ bool CWeapon::Action(u16 cmd, u32 flags)
     }
 
     case kWPN_ZOOM:
-        // Альт. прицеливание
-        if (m_zoomtype != 1 || m_zoomtype == 1 && bAltScopeIsHasTexture)
-            return false;
-
-
         if (IsZoomEnabled())
         {
             if (psActorFlags.test(AF_AIM_TOGGLE))
@@ -1224,7 +1217,6 @@ bool CWeapon::Action(u16 cmd, u32 flags)
             return true;
         }
     }
-
     case kWPN_ZOOM_INC:
     case kWPN_ZOOM_DEC:
         if (IsZoomEnabled() && IsZoomed() && (flags&CMD_START) )
