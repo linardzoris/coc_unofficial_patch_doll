@@ -179,7 +179,11 @@ void CWeaponMagazinedWGrenade::PerformSwitchGL()
 {
     m_bGrenadeMode = !m_bGrenadeMode;
 
-   std::swap(iMagazineSize, iMagazineSize2);
+	// Альт. прицеливание
+    m_zoomtype = m_bGrenadeMode ? 2 : 0;
+    UpdateUIScope();
+
+    std::swap(iMagazineSize, iMagazineSize2);
 
     m_ammoTypes.swap(m_ammoTypes2);
 
@@ -958,10 +962,14 @@ u8 CWeaponMagazinedWGrenade::GetCurrentHudOffsetIdx()
 
     if (!b_aiming)
         return 0;
-    else if (m_bGrenadeMode)
-        return 2;
     else
-        return 1;
+        // Альт. прицеливание
+        if (m_bGrenadeMode)
+            return 2;
+        else if (m_zoomtype == 1)
+            return 3;
+        else
+            return 1;
 }
 
 bool CWeaponMagazinedWGrenade::install_upgrade_ammo_class(LPCSTR section, bool test)

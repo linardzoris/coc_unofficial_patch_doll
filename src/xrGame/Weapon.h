@@ -97,9 +97,10 @@ public:
 
     virtual void HUD_VisualBulletUpdate(bool force = false, int force_idx = -1);
 
-    // Mortan scope system
+    // Mortan/SWM 3 scope system
 	bool bUseAltScope;
     bool bScopeIsHasTexture;
+    bool bAltScopeIsHasTexture; // Альт. прицеливание
     bool bLoadAltScopesParams(LPCSTR section);
     bool bReloadSectionScope(LPCSTR section);
     void LoadOriginalScopesParams(LPCSTR section);
@@ -258,6 +259,7 @@ protected:
         float m_fIronSightZoomFactor; //коэффициент увеличения прицеливания
         float m_fScopeZoomFactor; //коэффициент увеличения прицела
         float m_fScopeZoomFactorMin;
+        bool  m_altAimPos; // Альт. прицеливание
 
         float m_fZoomRotationFactor;
 
@@ -344,6 +346,9 @@ private:
     firedeps m_current_firedeps;
 
 protected:
+    void UpdateUIScope(); // Альт. прицеливание
+    void SwitchZoomType(); // Альт. прицеливание
+
     virtual void UpdateFireDependencies_internal();
     virtual void UpdatePosition(const Fmatrix& transform); //.
     virtual void UpdateXForm();
@@ -608,6 +613,10 @@ public:
     bool show_indicators();
     virtual BOOL ParentMayHaveAimBullet();
     virtual BOOL ParentIsActor();
+
+	// Альт. прицеливание
+	bool m_altAimPos;
+    u8 m_zoomtype;
 
 private:
     virtual bool install_upgrade_ammo_class(LPCSTR section, bool test);

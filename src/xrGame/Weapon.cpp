@@ -103,6 +103,11 @@ CWeapon::CWeapon()
 
 	bUseAltScope = false;
     bScopeIsHasTexture = false;
+
+	// Альт. прицеливание
+    m_altAimPos = false;
+    m_zoom_params.m_altAimPos = false;
+    m_zoomtype = 0;
 }
 
 CWeapon::~CWeapon()
@@ -220,6 +225,90 @@ void CWeapon::UpdateFireDependencies_internal()
     }
 }
 
+// Альт. прицеливание
+void CWeapon::UpdateUIScope()
+{
+    // Load scopes.xml if it's not loaded
+    if (pWpnScopeXml == nullptr)
+    {
+        pWpnScopeXml = new CUIXml();
+        pWpnScopeXml->Load(CONFIG_PATH, UI_PATH, "scopes.xml");
+    }
+
+    // update zoom factor
+    if (m_zoomtype == 2) // GL
+    {
+        m_zoom_params.m_fScopeZoomFactor = READ_IF_EXISTS(pSettings, r_float, cNameSect(), "gl_zoom_factor", 0);
+    }
+    else if (m_zoomtype == 1) // Alt
+    {
+        m_zoom_params.m_fScopeZoomFactor = READ_IF_EXISTS(pSettings, r_float, cNameSect(), "scope_zoom_factor_alt", 0);
+    }
+    else // Main Sight
+    {
+        if (ALife::eAddonPermanent != m_eScopeStatus &&
+            0 != (m_flagsAddOnState & CSE_ALifeItemWeapon::eWeaponAddonScope) && m_scopes.size())
+        {
+            m_zoom_params.m_fScopeZoomFactor = pSettings->r_float(GetScopeName(), "scope_zoom_factor");
+        }
+        else
+        {
+            m_zoom_params.m_fScopeZoomFactor = m_zoom_params.m_fScopeZoomFactor;
+        }
+    }
+
+    if (IsZoomed())
+        m_zoom_params.m_fCurrentZoomFactor = m_zoom_params.m_fScopeZoomFactor;
+
+    // Change or remove scope texture
+    shared_str scope_tex_name;
+    if (m_zoomtype == 0)
+    {
+        if (0 != (m_flagsAddOnState & CSE_ALifeItemWeapon::eWeaponAddonScope) && m_scopes.size())
+        {
+            scope_tex_name = pSettings->r_string(GetScopeName(), "scope_texture");
+        }
+        else
+        {
+            scope_tex_name = READ_IF_EXISTS(pSettings, r_string, cNameSect(), "scope_texture", NULL);
+        }
+    }
+    else if (m_zoomtype == 1)
+    {
+        scope_tex_name = READ_IF_EXISTS(pSettings, r_string, cNameSect(), "scope_texture_alt", NULL);
+    }
+
+    xr_delete(m_UIScope);
+
+    if (!scope_tex_name || scope_tex_name.equal("none"))
+        return;
+
+    m_UIScope = new CUIWindow();
+    CUIXmlInit::InitWindow(*pWpnScopeXml, scope_tex_name.c_str(), 0, m_UIScope);
+}
+
+void CWeapon::SwitchZoomType()
+{
+    CActor* pA = smart_cast<CActor*>(H_Parent());
+    CTorch* pTorch = smart_cast<CTorch*>(pA->inventory().ItemFromSlot(TORCH_SLOT));
+
+    if (m_zoomtype == 0 && (m_zoom_params.m_altAimPos) || m_zoomtype == 0 && (m_altAimPos))
+    {
+        m_zoomtype = 1;
+    }
+    else if (IsGrenadeLauncherAttached())
+    {
+        SwitchState(eSwitch);
+        return;
+    }
+    else if (m_zoomtype != 0)
+    {
+        m_zoomtype = 0;
+    }
+
+    UpdateUIScope();
+}
+
 void CWeapon::ForceUpdateFireParticles()
 {
     if (!GetHUDmode())
@@ -245,6 +334,9 @@ void CWeapon::Load(LPCSTR section)
 {
     inherited::Load(section);
     CShootingObject::Load(section);
+
+    // Альт. прицеливание
+	bAltScopeIsHasTexture = false;
 
     // Дропается ли патрон при расклине?
     if (pSettings->line_exist(section, "misfire_one_cartridge_remove"))
@@ -427,6 +519,9 @@ void CWeapon::Load(LPCSTR section)
     m_zoom_params.m_bZoomEnabled = !!pSettings->r_bool(section, "zoom_enabled");
     m_zoom_params.m_fZoomRotateTime = pSettings->r_float(section, "zoom_rotate_time");
 
+	// Альт. прицеливание
+    m_altAimPos = READ_IF_EXISTS(pSettings, r_bool, section, "use_alt_aim_hud", false);
+
  	bUseAltScope = !!bLoadAltScopesParams(section);
 
     if (!bUseAltScope)
@@ -561,6 +656,14 @@ void CWeapon::Load(LPCSTR section)
     //--> (Data 2)
     m_strafe_offset[3][0].set(fStrafeCamLFactor, fStrafeMinAngle, NULL); // normal
     m_strafe_offset[3][1].set(fStrafeCamLFactor_aim, fStrafeMinAngle_aim, NULL); // aim-GL
+
+	// Альт. прицеливание
+    if (pSettings->line_exist(section, "scope_texture_alt") && m_zoomtype == 1)
+    {
+        bAltScopeIsHasTexture = true;
+    }
+
+    UpdateUIScope();
 }
 
 void CWeapon::LoadFireParams(LPCSTR section)
@@ -979,6 +1082,13 @@ void CWeapon::UpdateCL()
 
     if (m_zoom_params.m_pVision)
         m_zoom_params.m_pVision->Update();
+
+	// Если отсоединили прицел, альт. прицел от прицела не работает.
+    if (!IsScopeAttached())
+        m_zoom_params.m_altAimPos = false;
+    // После снятия прицела переключаем в дефолт.
+    if (!m_altAimPos && !m_zoom_params.m_altAimPos)
+        m_zoomtype = 0;
 }
 
 bool CWeapon::need_renderable() { return !(IsZoomed() && ZoomTexture() && !IsRotatingToZoom()); }
@@ -1058,6 +1168,11 @@ bool CWeapon::Action(u16 cmd, u32 flags)
     }
 
     case kWPN_ZOOM:
+        // Альт. прицеливание
+        if (m_zoomtype != 1 || m_zoomtype == 1 && bAltScopeIsHasTexture)
+            return false;
+
+
         if (IsZoomEnabled())
         {
             if (psActorFlags.test(AF_AIM_TOGGLE))
@@ -1095,6 +1210,20 @@ bool CWeapon::Action(u16 cmd, u32 flags)
         }
         else
             return false;
+
+	// Альт. прицеливание
+    case kWPN_FUNC: {
+        if (flags & CMD_START && !IsPending() && m_zoom_params.m_altAimPos)
+        {
+            SwitchZoomType();
+            return true;
+        }
+        else if (flags & CMD_START && !IsPending() && m_altAimPos)
+        {
+            SwitchZoomType();
+            return true;
+        }
+    }
 
     case kWPN_ZOOM_INC:
     case kWPN_ZOOM_DEC:
@@ -2534,8 +2663,11 @@ u8 CWeapon::GetCurrentHudOffsetIdx()
     bool b_aiming = ((IsZoomed() && m_zoom_params.m_fZoomRotationFactor <= 1.f) ||
         (!IsZoomed() && m_zoom_params.m_fZoomRotationFactor > 0.f));
 
+	// Альт. прицеливание
     if (!b_aiming)
         return 0;
+    else if (m_zoomtype == 1)
+        return 3;
     else
         return 1;
 }
@@ -2756,15 +2888,23 @@ void CWeapon::LoadCurrentScopeParams(LPCSTR section)
 {
     shared_str scope_tex_name = "none";
     bScopeIsHasTexture = false;
+    bAltScopeIsHasTexture = false; // Альт. прицеливание
     if (pSettings->line_exist(section, "scope_texture"))
     {
         scope_tex_name = pSettings->r_string(section, "scope_texture");
         if (xr_strcmp(scope_tex_name, "none") != 0)
             bScopeIsHasTexture = true;
     }
+    if (pSettings->line_exist(section, "scope_texture_alt") && m_zoomtype == 1) // Альт. прицеливание
+    {
+        bAltScopeIsHasTexture = true;
+    }
 
 	m_zoom_params.m_fScopeZoomFactorMin = READ_IF_EXISTS(pSettings, r_float, cNameSect(), "scope_zoom_factor_min", 0.3f);
     m_zoom_params.m_fScopeZoomFactor = pSettings->r_float(section, "scope_zoom_factor");
+
+	// Альт. прицеливание
+    m_zoom_params.m_altAimPos = READ_IF_EXISTS(pSettings, r_bool, section, "use_alt_aim_hud", false);
 
     if (bScopeIsHasTexture)
     {
