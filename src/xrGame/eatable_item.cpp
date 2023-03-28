@@ -17,12 +17,34 @@
 #include "UIGameCustom.h"
 #include "ui/UIActorMenu.h"
 
+#include "Actor.h"
+#include "Inventory.h"
+#include "game_object_space.h"
+#include "xrAICore/Navigation/ai_object_location.h"
+#include "Weapon.h"
+#include "actorEffector.h"
+#include "HudManager.h"
+#include "player_hud.h"
+#include "../xrPhysics/ElevatorState.h"
+#include "CustomDetector.h"
+
+extern bool g_block_all_except_movement;
+
 CEatableItem::CEatableItem() : m_fWeightFull(0), m_fWeightEmpty(0)
 {
     m_physic_item = 0;
     m_iMaxUses = 1;
     m_bRemoveAfterUse = true;
     m_bConsumeChargeOnUse = true;
+
+	m_bHasAnimation = false;
+	use_cam_effector = nullptr;
+	m_fEffectorIntensity = 1.0f;
+    anim_sect = nullptr;
+    m_iAnimHandsCnt = 1;
+    m_iAnimLength = 0;
+    m_bActivated = false;
+    m_bItmStartAnim = false;
 }
 
 CEatableItem::~CEatableItem() {}
@@ -44,6 +66,11 @@ void CEatableItem::Load(LPCSTR section)
     m_bConsumeChargeOnUse = READ_IF_EXISTS(pSettings, r_bool, section, "consume_charge_on_use", true);
     m_fWeightFull = m_weight;
     m_fWeightEmpty = READ_IF_EXISTS(pSettings, r_float, section, "empty_weight", 0.0f);
+
+	m_bHasAnimation = READ_IF_EXISTS(pSettings, r_bool, section, "has_anim", false);
+    anim_sect = READ_IF_EXISTS(pSettings, r_string, section, "hud_section", nullptr);
+    m_fEffectorIntensity = READ_IF_EXISTS(pSettings, r_float, section, "cam_effector_intensity", 1.0f);
+    use_cam_effector = READ_IF_EXISTS(pSettings, r_string, section, "use_cam_effector", nullptr);
 }
 
 void CEatableItem::load(IReader& packet)
@@ -110,6 +137,92 @@ void CEatableItem::OnH_B_Independent(bool just_before_destroy)
             m_physic_item->m_ready_to_destroy = true;
     }
     inherited::OnH_B_Independent(just_before_destroy);
+}
+
+void CEatableItem::HideWeapon()
+{
+    CEffectorCam* effector = Actor()->Cameras().GetCamEffector((ECamEffectorType)effUseItem);
+    CCustomDetector* pDet = smart_cast<CCustomDetector*>(Actor()->inventory().ItemFromSlot(DETECTOR_SLOT));
+
+    Actor()->SetWeaponHideState(INV_STATE_BLOCK_ALL, true);
+
+	if (pDet)
+        pDet->HideDetector(true);
+
+    m_bItmStartAnim = true;
+
+    if (!Actor()->inventory_disabled())
+        CurrentGameUI()->HideActorMenu();
+}
+
+void CEatableItem::StartAnimation()
+{
+    m_bActivated = true;
+
+    CEffectorCam* effector = Actor()->Cameras().GetCamEffector((ECamEffectorType)effUseItem);
+
+    if (pSettings->line_exist(anim_sect, "single_handed_anim"))
+        m_iAnimHandsCnt = pSettings->r_u32(anim_sect, "single_handed_anim");
+
+    m_bItmStartAnim = false;
+    g_block_all_except_movement = true;
+    g_actor_allow_ladder = false;
+
+    if (pSettings->line_exist(anim_sect, "anm_use"))
+    {
+        g_player_hud->script_anim_play(m_iAnimHandsCnt, anim_sect, "anm_use", false, 1.0f);
+        m_iAnimLength = Device.dwTimeGlobal + g_player_hud->motion_length_script(anim_sect, "anm_use", 1.0f);
+    }
+
+    if (!effector && use_cam_effector != nullptr)
+        AddEffector(Actor(), effUseItem, use_cam_effector, m_fEffectorIntensity);
+
+    if (pSettings->line_exist(anim_sect, "snd_using"))
+    {
+        if (m_using_sound._feedback())
+            m_using_sound.stop();
+
+        shared_str snd_name = pSettings->r_string(anim_sect, "snd_using");
+        m_using_sound.create(snd_name.c_str(), st_Effect, sg_SourceType);
+        m_using_sound.play(NULL, sm_2D);
+    }
+}
+
+void CEatableItem::UpdateInRuck(void) 
+{ 
+    UpdateUseAnim(); 
+}
+
+void CEatableItem::UpdateUseAnim()
+{
+    if (!m_bHasAnimation)
+        return;
+
+    CCustomDetector* pDet = smart_cast<CCustomDetector*>(Actor()->inventory().ItemFromSlot(DETECTOR_SLOT));
+    CEffectorCam* effector = Actor()->Cameras().GetCamEffector((ECamEffectorType)effUseItem);
+    bool IsActorAlive = g_pGamePersistent->GetActorAliveStatus();
+
+    if (m_bItmStartAnim && Actor()->inventory().GetActiveSlot() == NO_ACTIVE_SLOT && pDet->IsHidden())
+        StartAnimation();
+
+    if (m_bActivated)
+    {
+        if (m_iAnimLength <= Device.dwTimeGlobal || !IsActorAlive)
+        {
+            Actor()->SetWeaponHideState(INV_STATE_BLOCK_ALL, false);
+
+            m_iAnimLength = Device.dwTimeGlobal;
+            m_bActivated = false;
+            g_block_all_except_movement = false;
+            g_actor_allow_ladder = true;
+
+            if (effector)
+                RemoveEffector(Actor(), effUseItem);
+
+			if (IsActorAlive)
+                Actor()->inventory().Eat(this);
+        }
+    }
 }
 
 bool CEatableItem::UseBy(CEntityAlive* entity_alive)

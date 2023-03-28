@@ -208,6 +208,7 @@ CActor::CActor() : CEntityAlive(), current_ik_cam_shift(0)
     m_bNightVisionAllow = true;
     m_bNightVisionOn = false;
     m_bTorchNightVision = false;
+    m_bEatAnimActive = false;
 }
 
 CActor::~CActor()
@@ -1372,8 +1373,12 @@ void CActor::shedule_Update(u32 DT)
 
 	if (Actor())
         DynamicHudGlass::UpdateDynamicHudGlass();
+
+	UpdateInventoryItems();
 };
+
 #include "debug_renderer.h"
+
 void CActor::renderable_Render()
 {
     VERIFY(_valid(XFORM()));
@@ -1835,6 +1840,21 @@ void CActor::UpdateArtefactsOnBeltAndOutfit()
         m_fWalkAccel = m_fWalkAccelLimit;
     else
         m_fWalkAccel = m_fBaseWalkAccel + walk_accel_add;
+}
+
+void CActor::UpdateInventoryItems()
+{
+    TIItemContainer::iterator it = inventory().m_ruck.begin();
+    TIItemContainer::iterator ite = inventory().m_ruck.end();
+
+    for (; it != ite; ++it)
+    {
+        CEatableItem* current_eatable = smart_cast<CEatableItem*>(*it);
+        if (current_eatable)
+        {
+            current_eatable->UpdateInRuck();
+        }
+    }
 }
 
 float CActor::HitArtefactsOnBelt(float hit_power, ALife::EHitType hit_type)

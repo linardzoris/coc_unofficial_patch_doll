@@ -191,8 +191,8 @@ public:
     virtual ALife::_TIME_ID TimePassedAfterDeath() const;
 
 public:
-    //свойства артефактов
     virtual void UpdateArtefactsOnBeltAndOutfit();
+    virtual void UpdateInventoryItems();
     float HitArtefactsOnBelt(float hit_power, ALife::EHitType hit_type);
     float GetProtection_ArtefactsOnBelt(ALife::EHitType hit_type);
 
@@ -781,6 +781,7 @@ public:
     CNightVisionEffector* GetNightVision() { return m_night_vision; }
 
     bool m_bTorchNightVision;
+    bool m_bEatAnimActive;
 
 protected:
     bool m_bNightVisionOn;

@@ -36,6 +36,21 @@ public:
     virtual void OnH_B_Independent(bool just_before_destroy);
     virtual void OnH_A_Independent();
     virtual bool UseBy(CEntityAlive* npc);
+
+	void UpdateInRuck();
+	void UpdateUseAnim();
+    void HideWeapon();
+    void StartAnimation();
+    bool m_bHasAnimation;
+    bool m_bActivated;
+    bool m_bItmStartAnim;
+    int m_iAnimHandsCnt;
+    int m_iAnimLength;
+    float m_fEffectorIntensity;
+    LPCSTR anim_sect;
+    shared_str use_cam_effector;
+    ref_sound m_using_sound;
+
     virtual bool Empty() const { return GetRemainingUses() == 0; }
     bool CanDelete() const { return m_bRemoveAfterUse == true; }
     bool CanConsumeCharge() const { return m_bConsumeChargeOnUse; };

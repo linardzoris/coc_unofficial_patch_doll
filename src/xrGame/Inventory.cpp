@@ -1027,6 +1027,22 @@ CInventoryItem* CInventory::get_object_by_id(ALife::_OBJECT_ID tObjectID)
 #include "game_object_space.h"
 #include "xrScriptEngine/script_callback_ex.h"
 #include "script_game_object.h"
+
+void CInventory::ChooseItmAnimOrNot(PIItem pIItem)
+{
+    CEatableItem* pItemToEat = smart_cast<CEatableItem*>(pIItem);
+    if (!pItemToEat)
+        return;
+
+    bool HasAnim = pItemToEat->m_bHasAnimation;
+    bool AnimSect = pItemToEat->anim_sect != nullptr;
+
+    if (HasAnim && AnimSect)
+        pItemToEat->HideWeapon();
+    else
+        Eat(pItemToEat);
+}
+
 bool CInventory::Eat(PIItem pIItem)
 {
     //устанаовить съедобна ли вещь

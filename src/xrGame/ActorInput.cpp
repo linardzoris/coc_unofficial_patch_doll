@@ -214,16 +214,18 @@ void CActor::IR_OnKeyboardPress(int cmd)
     {
 		if (!CurrentGameUI()->GetActorMenu().m_pQuickSlot)
 			break;
+
         const shared_str& item_name = g_quick_use_slots[cmd - kQUICK_USE_1];
         if (item_name.size())
         {
             PIItem itm = inventory().GetAny(item_name.c_str());
+            CEatableItem* pItemToEat = smart_cast<CEatableItem*>(itm);
 
             if (itm)
             {
                 if (IsGameTypeSingle())
                 {
-                    inventory().Eat(itm);
+                    inventory().ChooseItmAnimOrNot(itm);
                 }
                 else
                 {
