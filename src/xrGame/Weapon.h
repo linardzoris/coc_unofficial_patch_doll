@@ -78,11 +78,6 @@ public:
     virtual void SendHiddenItem(); // same as OnHiddenItem but for client... (sends message to a server)...
 
 // Новое
-    float m_fLR_MovingFactor; // Фактор бокового наклона худа при ходьбе [-1; +1]
-    float m_fLR_CameraFactor; // Фактор бокового наклона худа при движении камеры [-1; +1]
-    float m_fLR_InertiaFactor; // Фактор горизонтальной инерции худа при движении камеры [-1; +1]
-    float m_fUD_InertiaFactor; // Фактор вертикальной инерции худа при движении камеры [-1; +1]
-
 	float m_fLR_ShootingFactor; // Фактор горизонтального сдвига худа при стрельбе [-1; +1] // SWM 3
     float m_fUD_ShootingFactor; // Фактор вертикального сдвига худа при стрельбе [-1; +1]
     float m_fBACKW_ShootingFactor; // Фактор сдвига худа в сторону лица при стрельбе [0; +1]
@@ -256,9 +251,8 @@ protected:
         float m_fCurrentZoomFactor; //текущий фактор приближения
         float m_fZoomRotateTime; //время приближения
 
-        float m_fIronSightZoomFactor; //коэффициент увеличения прицеливания
-        float m_fScopeZoomFactor; //коэффициент увеличения прицела
-        float m_fScopeZoomFactorMin;
+		float m_fBaseZoomFactor; // Базовый коэффициент
+        float m_fScopeZoomFactor; // Коэффициент увеличения прицела (аддоны)
         bool  m_altAimPos; // Альт. прицеливание
 
         float m_fZoomRotationFactor;
@@ -280,17 +274,6 @@ protected:
     CUIWindow* m_UIScope;
 
 public:
-
-    void GetZoomData(const float scope_factor, float& delta, float& min_zoom_factor)
-    {
-        float def_fov = 1.0f; // float(g_fov);
-        float min_zoom_k = m_zoom_params.m_fScopeZoomFactorMin; // 0.3f;
-        float zoom_step_count = 3.0f;
-        float delta_factor_total = def_fov - scope_factor;
-        // VERIFY(delta_factor_total>0);
-        min_zoom_factor = (def_fov - delta_factor_total) * min_zoom_k;
-        delta = (delta_factor_total * (1 - min_zoom_k)) / zoom_step_count;
-    }
 
     void AllowNightVision(bool value) { m_zoom_params.m_bNightVisionAllow = value; };
     bool AllowNightVision() { return m_zoom_params.m_bNightVisionAllow; };
@@ -431,7 +414,7 @@ public:
 
 public:
     CameraRecoil cam_recoil; // simple mode (walk, run)
-    CameraRecoil zoom_cam_recoil; // using zoom =(ironsight or scope)
+    CameraRecoil zoom_cam_recoil; // using zoom =(scope)
 
 protected:
     //фактор увеличения дисперсии при максимальной изношености

@@ -1448,15 +1448,9 @@ bool CWeaponMagazined::Detach(const char* item_section_name, bool b_spawn_item)
     else
         return inherited::Detach(item_section_name, b_spawn_item);;
 }
-/*
-void CWeaponMagazined::LoadAddons()
-{
-    m_zoom_params.m_fIronSightZoomFactor = READ_IF_EXISTS( pSettings, r_float, cNameSect(), "ironsight_zoom_factor", 50.0f );
-}
-*/
+
 void CWeaponMagazined::InitAddons()
 {
-    m_zoom_params.m_fIronSightZoomFactor = READ_IF_EXISTS(pSettings, r_float, cNameSect(), "ironsight_zoom_factor", 1.03f);
     if (IsScopeAttached())
     {
         if (m_eScopeStatus == ALife::eAddonAttachable)
@@ -1469,11 +1463,6 @@ void CWeaponMagazined::InitAddons()
         if (m_UIScope)
         {
             xr_delete(m_UIScope);
-        }
-
-        if (IsZoomEnabled())
-        {
-            m_zoom_params.m_fIronSightZoomFactor = pSettings->r_float(cNameSect(), "scope_zoom_factor");
         }
     }
 
@@ -2025,23 +2014,10 @@ bool CWeaponMagazined::install_upgrade_impl(LPCSTR section, bool test)
         result |= result2;
     }
 
-    // fov for zoom mode
-    result |= process_if_exists(section, "ironsight_zoom_factor", &CInifile::r_float, m_zoom_params.m_fIronSightZoomFactor, test);
+    result |= process_if_exists(section, "scope_zoom_factor", &CInifile::r_float, m_zoom_params.m_fBaseZoomFactor, test);
 
-    if (IsScopeAttached())
-    {
-        // if ( m_eScopeStatus == ALife::eAddonAttachable )
-        {
-            result |= process_if_exists(section, "scope_zoom_factor", &CInifile::r_float, m_zoom_params.m_fScopeZoomFactor, test);
-        }
-    }
-    else
-    {
-        if (IsZoomEnabled())
-        {
-            result |= process_if_exists(section, "scope_zoom_factor", &CInifile::r_float, m_zoom_params.m_fIronSightZoomFactor, test);
-        }
-    }
+    // Альт. прицеливание
+	UpdateUIScope();
 
     return result;
 }

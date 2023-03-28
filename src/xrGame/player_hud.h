@@ -220,7 +220,7 @@ struct hud_item_measures
         Fvector4 m_offset_LRUD;
         Fvector4 m_offset_LRUD_aim;
     };
-    inertion_params m_inertion_params; //--#SM+#--
+    inertion_params m_inertion_params; //--#SM+#--	
 
 	struct shooting_params
     {

@@ -588,7 +588,7 @@ bool CWeaponMagazinedWGrenade::UseScopeTexture()
 float CWeaponMagazinedWGrenade::CurrentZoomFactor()
 {
     if (IsGrenadeLauncherAttached() && m_bGrenadeMode)
-        return m_zoom_params.m_fIronSightZoomFactor;
+        return m_zoom_params.m_fScopeZoomFactor;
     return inherited::CurrentZoomFactor();
 }
 
@@ -960,16 +960,14 @@ u8 CWeaponMagazinedWGrenade::GetCurrentHudOffsetIdx()
     bool b_aiming = ((IsZoomed() && m_zoom_params.m_fZoomRotationFactor <= 1.f) ||
         (!IsZoomed() && m_zoom_params.m_fZoomRotationFactor > 0.f));
 
-    if (!b_aiming)
+    if (!IsZoomed())
         return 0;
+    else if (m_bGrenadeMode)
+        return 2;
+    else if (m_zoomtype == 1)
+        return 3;
     else
-        // Альт. прицеливание
-        if (m_bGrenadeMode)
-            return 2;
-        else if (m_zoomtype == 1)
-            return 3;
-        else
-            return 1;
+        return 1;
 }
 
 bool CWeaponMagazinedWGrenade::install_upgrade_ammo_class(LPCSTR section, bool test)

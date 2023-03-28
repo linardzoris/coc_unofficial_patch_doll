@@ -202,4 +202,22 @@ public:
     virtual float GetHudFov();
     virtual BOOL ParentIsActor();
     void ReplaceHudSection(LPCSTR hud_section);
+
+	float m_fLR_MovingFactor;
+    float m_fLR_CameraFactor;
+    float m_fLR_InertiaFactor;
+    float m_fUD_InertiaFactor; 
+
+    struct inertion_params
+    {
+        float m_pitch_offset_r;
+        float m_pitch_offset_n;
+        float m_pitch_offset_d;
+        float m_pitch_low_limit;
+        float m_origin_offset;
+        float m_origin_offset_aim;
+        float m_tendto_speed;
+        float m_tendto_speed_aim;
+    };
+    inertion_params m_inertion_params;
 };

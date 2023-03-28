@@ -14,8 +14,9 @@ Fvector _wpn_root_pos;
 Fvector m_hud_offset_pos = { 0.f, 0.f, 0.f }; //only in hud adj mode
 Fvector m_hand_offset_pos = { 0.f, 0.f, 0.f };
 
-#define PITCH_OFFSET_R		   0.014f   // Насколько сильно ствол смещается вбок (влево) при вертикальных поворотах камеры	--#SM+#--
-#define PITCH_OFFSET_N		   0.010f   // Насколько сильно ствол поднимается\опускается при вертикальных поворотах камеры	--#SM+#--
+// Alun: defined in HudItem.cpp now
+#define PITCH_OFFSET_R		   0.0f		//0.017f Насколько сильно ствол смещается вбок (влево) при вертикальных поворотах камеры	--#SM+#--
+#define PITCH_OFFSET_N		   0.0f		//0.012f Насколько сильно ствол поднимается\опускается при вертикальных поворотах камеры	--#SM+#--
 #define PITCH_OFFSET_D		   0.02f    // Насколько сильно ствол приближается\отдаляется при вертикальных поворотах камеры --#SM+#--
 #define PITCH_LOW_LIMIT		   -PI      // Минимальное значение pitch при использовании совместно с PITCH_OFFSET_N			--#SM+#--
 #define TENDTO_SPEED           1.0f     // Модификатор силы инерции (больше - чувствительней)
@@ -315,14 +316,6 @@ void hud_item_measures::load(const shared_str& sect_name, IKinematics* K)
     strconcat(sizeof(val_name), val_name, "gl_hud_offset_rot", _prefix);
     m_hands_offset[1][2] = pSettings->r_fvector3(sect_name, val_name);
 
-	// Альт. прицеливание
-    const Fvector vZero = {0.f, 0.f, 0.f};
-
-    strconcat(sizeof(val_name), val_name, "aim_hud_offset_alt_pos", _prefix);
-    m_hands_offset[0][3] = READ_IF_EXISTS(pSettings, r_fvector3, sect_name, val_name, vZero);
-    strconcat(sizeof(val_name), val_name, "aim_hud_offset_alt_rot", _prefix);
-    m_hands_offset[1][3] = READ_IF_EXISTS(pSettings, r_fvector3, sect_name, val_name, vZero);
-
 	if (pSettings->line_exist(sect_name, "hud_collision_enabled"))
     {
         strconcat(sizeof(val_name), val_name, "hud_collision_offset_pos", _prefix);
@@ -346,7 +339,16 @@ void hud_item_measures::load(const shared_str& sect_name, IKinematics* K)
 
     m_prop_flags.set(e_16x9_mode_now, is_16x9);
 
+	// Альт. прицеливание
+    const Fvector vZero = {0.f, 0.f, 0.f};
+
+    strconcat(sizeof(val_name), val_name, "aim_hud_offset_alt_pos", _prefix);
+    m_hands_offset[0][3] = READ_IF_EXISTS(pSettings, r_fvector3, sect_name, val_name, vZero);
+    strconcat(sizeof(val_name), val_name, "aim_hud_offset_alt_rot", _prefix);
+    m_hands_offset[1][3] = READ_IF_EXISTS(pSettings, r_fvector3, sect_name, val_name, vZero);
+
 	//Загрузка параметров инерции --#SM+# Begin--
+
 	m_inertion_params.m_pitch_offset_r = READ_IF_EXISTS(pSettings, r_float, sect_name, "pitch_offset_right", PITCH_OFFSET_R);
 	m_inertion_params.m_pitch_offset_n = READ_IF_EXISTS(pSettings, r_float, sect_name, "pitch_offset_up", PITCH_OFFSET_N);
 	m_inertion_params.m_pitch_offset_d = READ_IF_EXISTS(pSettings, r_float, sect_name, "pitch_offset_forward", PITCH_OFFSET_D);
@@ -356,7 +358,6 @@ void hud_item_measures::load(const shared_str& sect_name, IKinematics* K)
 	m_inertion_params.m_origin_offset_aim = READ_IF_EXISTS(pSettings, r_float, sect_name, "inertion_origin_aim_offset", ORIGIN_OFFSET_AIM_OLD);
 	m_inertion_params.m_tendto_speed = READ_IF_EXISTS(pSettings, r_float, sect_name, "inertion_tendto_speed", TENDTO_SPEED);
 	m_inertion_params.m_tendto_speed_aim = READ_IF_EXISTS(pSettings, r_float, sect_name, "inertion_tendto_aim_speed", TENDTO_SPEED_AIM);
-
 	m_inertion_params.m_tendto_ret_speed = READ_IF_EXISTS(pSettings, r_float, sect_name, "inertion_tendto_ret_speed", TENDTO_SPEED_RET);
 	m_inertion_params.m_tendto_ret_speed_aim = READ_IF_EXISTS(pSettings, r_float, sect_name, "inertion_tendto_ret_aim_speed", TENDTO_SPEED_RET_AIM);
 
@@ -365,6 +366,7 @@ void hud_item_measures::load(const shared_str& sect_name, IKinematics* K)
 
 	m_inertion_params.m_offset_LRUD = READ_IF_EXISTS(pSettings, r_fvector4, sect_name, "inertion_offset_LRUD", Fvector4().set(ORIGIN_OFFSET));
 	m_inertion_params.m_offset_LRUD_aim = READ_IF_EXISTS(pSettings, r_fvector4, sect_name, "inertion_offset_LRUD_aim", Fvector4().set(ORIGIN_OFFSET_AIM));
+
 
 	// Загрузка параметров смещения при стрельбе
     m_shooting_params.bShootShake = READ_IF_EXISTS(pSettings, r_bool, sect_name, "shooting_hud_effect", false);
@@ -1394,7 +1396,7 @@ void player_hud::update_inertion(Fmatrix& trans)
 
 		static Fvector						st_last_dir = { 0, 0, 0 };
 
-		// load params
+// load params
         hud_item_measures::inertion_params inertion_data;
         if (pMainHud != NULL)
         { // Загружаем параметры инерции из основного худа
@@ -1435,7 +1437,6 @@ void player_hud::update_inertion(Fmatrix& trans)
 
         // pitch compensation
         float pitch = angle_normalize_signed(xform.k.getP());
-
         if (pMainHud != NULL)
             pitch *= pMainHud->m_parent_hud_item->GetInertionFactor();
 

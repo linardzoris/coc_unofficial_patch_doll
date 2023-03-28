@@ -17,6 +17,15 @@
 #include "script_game_object.h"
 #include "HUDManager.h"
 
+extern const float PITCH_OFFSET_R = 0.00f; // barrel movement sideways (to the left) with vertical camera turns
+extern const float PITCH_OFFSET_N = 0.00f; // barrel rise / fall with vertical camera turns
+extern const float PITCH_OFFSET_D = 0.00f; // barrel toward / away when the camera rotates vertically
+extern const float PITCH_LOW_LIMIT = 0.14f; // minimum pitch value when used in conjunction with PITCH_OFFSET_N
+extern const float ORIGIN_OFFSET = -0.05f; // inertia factor influence on position of torso (the smaller, the larger the inertia)
+extern const float ORIGIN_OFFSET_AIM = -0.03f; // (zoomed inertia factor)
+extern const float TENDTO_SPEED = 5.f; // barrel return speed
+extern const float TENDTO_SPEED_AIM = 8.f; // (zoomed return speed)
+
 ENGINE_API extern float psHUD_FOV_def; //--#SM+#--
 
 CHudItem::CHudItem()
@@ -28,6 +37,20 @@ CHudItem::CHudItem()
     m_current_motion_def = NULL;
     m_started_rnd_anim_idx = u8(-1);
 	m_nearwall_last_hud_fov = psHUD_FOV_def;
+    m_fLR_MovingFactor = 0.f;
+    m_fLR_CameraFactor = 0.f;
+    m_fLR_InertiaFactor = 0.f;
+    m_fUD_InertiaFactor = 0.f;
+
+	// inertion
+    m_inertion_params.m_origin_offset = ORIGIN_OFFSET;
+    m_inertion_params.m_origin_offset_aim = ORIGIN_OFFSET_AIM;
+    m_inertion_params.m_pitch_low_limit = PITCH_LOW_LIMIT;
+    m_inertion_params.m_pitch_offset_d = PITCH_OFFSET_D;
+    m_inertion_params.m_pitch_offset_n = PITCH_OFFSET_N;
+    m_inertion_params.m_pitch_offset_r = PITCH_OFFSET_R;
+    m_inertion_params.m_tendto_speed = TENDTO_SPEED;
+    m_inertion_params.m_tendto_speed_aim = TENDTO_SPEED_AIM;
 }
 
 IFactoryObject* CHudItem::_construct()
@@ -63,6 +86,16 @@ void CHudItem::Load(LPCSTR section)
     m_nearwall_dist_max = READ_IF_EXISTS(pSettings, r_float, hud_sect, "nearwall_dist_max", 1.f);
     m_nearwall_target_hud_fov = READ_IF_EXISTS(pSettings, r_float, hud_sect, "nearwall_target_hud_fov", 0.45f);
     m_nearwall_speed_mod = READ_IF_EXISTS(pSettings, r_float, hud_sect, "nearwall_speed_mod", 10.f);
+
+	m_inertion_params.m_pitch_offset_r = READ_IF_EXISTS(pSettings, r_float, section, "pitch_offset_right", PITCH_OFFSET_R);
+	m_inertion_params.m_pitch_offset_n = READ_IF_EXISTS(pSettings, r_float, section, "pitch_offset_up", PITCH_OFFSET_N);
+	m_inertion_params.m_pitch_offset_d = READ_IF_EXISTS(pSettings, r_float, section, "pitch_offset_forward", PITCH_OFFSET_D);
+	m_inertion_params.m_pitch_low_limit = READ_IF_EXISTS(pSettings, r_float, section, "pitch_offset_up_low_limit", PITCH_LOW_LIMIT);
+
+	m_inertion_params.m_origin_offset = READ_IF_EXISTS(pSettings, r_float, section, "inertion_origin_offset", ORIGIN_OFFSET);
+	m_inertion_params.m_origin_offset_aim = READ_IF_EXISTS(pSettings, r_float, section, "inertion_origin_aim_offset", ORIGIN_OFFSET_AIM);
+	m_inertion_params.m_tendto_speed = READ_IF_EXISTS(pSettings, r_float, section, "inertion_tendto_speed", TENDTO_SPEED);
+	m_inertion_params.m_tendto_speed_aim = READ_IF_EXISTS(pSettings, r_float, section, "inertion_tendto_aim_speed", TENDTO_SPEED_AIM);
 }
 
 void CHudItem::PlaySound(LPCSTR alias, const Fvector& position)
@@ -209,6 +242,208 @@ void CHudItem::UpdateHudAdditonal(Fmatrix& hud_trans)
     CActor* pActor = smart_cast<CActor*>(object().H_Parent());
     if (!pActor)
         return;
+
+	float fInertiaPower = GetInertionPowerFactor();
+
+    u32 iMovingState = pActor->MovingState();
+
+    float fYMag = pActor->fFPCamYawMagnitude;
+    float fPMag = pActor->fFPCamPitchMagnitude;
+
+    static float fAvgTimeDelta = Device.fTimeDelta;
+    __inertion(fAvgTimeDelta, Device.fTimeDelta, 0.8f);
+
+    //============= Aieiaie no?aeo n i?o?eai =============//
+    float fStrafeMaxTime =
+        m_strafe_offset[2].y; // Iaen. a?aiy a naeoiaao, ca eioi?ia iu iaeeiieiny ec oaio?aeuiiai iiei?aiey
+    if (fStrafeMaxTime <= EPS)
+        fStrafeMaxTime = 0.01f;
+
+    float fStepPerUpd = fAvgTimeDelta / fStrafeMaxTime; // Aaee?eia eciaiaiea oaeoi?a iiai?ioa
+
+    // Aiaaaeyai aieiaie iaeeii io aae?aiey eaia?u
+    float fCamReturnSpeedMod = 1.5f;
+
+    float fCamLimit = 0.8f;
+
+    // N?eoaai no?aeo io iiai?ioa eaia?u
+    if (fYMag != 0.0f)
+    { //--> Eaia?a e?ooeony ii ine Y
+        m_fLR_CameraFactor -= (fYMag * 0.005f);
+
+        float fCamLimitBlend = 1.0f - ((1.0f - fCamLimit) * 1.0f);
+        clamp(m_fLR_CameraFactor, -fCamLimitBlend, fCamLimitBlend);
+    }
+    else
+    { //--> Eaia?a ia iiai?a?eaaaony - oae?aai iaeeii
+        if (m_fLR_CameraFactor < 0.0f)
+        {
+            m_fLR_CameraFactor += fStepPerUpd * (fCamReturnSpeedMod);
+            clamp(m_fLR_CameraFactor, -1.0f, 0.0f);
+        }
+        else
+        {
+            m_fLR_CameraFactor -= fStepPerUpd * (fCamReturnSpeedMod);
+            clamp(m_fLR_CameraFactor, 0.0f, 1.0f);
+        }
+    }
+    // Aiaaaeyai aieiaie iaeeii io oiauau aaie
+    float fChangeDirSpeedMod =
+        3; // Aineieuei auno?i iaiyai iai?aaeaiea iai?aaeaiea iaeeiia, anee iii a a?oao? noi?iio io oaeouaai
+
+    if ((iMovingState & mcLStrafe) != 0)
+    { // Aae?ainy aeaai
+        float fVal = (m_fLR_MovingFactor > 0.f ? fStepPerUpd * fChangeDirSpeedMod : fStepPerUpd);
+        m_fLR_MovingFactor -= fVal;
+    }
+    else if ((iMovingState & mcRStrafe) != 0)
+    { // Aae?ainy ai?aai
+        float fVal = (m_fLR_MovingFactor < 0.f ? fStepPerUpd * fChangeDirSpeedMod : fStepPerUpd);
+        m_fLR_MovingFactor += fVal;
+    }
+    else
+    { // Aaeaaainy a e?aii a?oaii iai?aaeaiee - ieaaii oae?aai iaeeii
+        if (m_fLR_MovingFactor < 0.0f)
+        {
+            m_fLR_MovingFactor += fStepPerUpd;
+            clamp(m_fLR_MovingFactor, -1.0f, 0.0f);
+        }
+        else
+        {
+            m_fLR_MovingFactor -= fStepPerUpd;
+            clamp(m_fLR_MovingFactor, 0.0f, 1.0f);
+        }
+    }
+
+    clamp(m_fLR_MovingFactor, -1.0f, 1.0f); // Oaeoi? aieiaie oiauau ia aie?ai i?aauoaou yoe eeieou
+
+    // Au?eneyai e ii?iaeece?oai eoiaiaue oaeoi? iaeeiia
+    float fLR_Factor = m_fLR_MovingFactor + m_fLR_CameraFactor;
+    clamp(fLR_Factor, -1.0f, 1.0f); // Oaeoi? aieiaie oiauau ia aie?ai i?aauoaou yoe eeieou
+
+    float fTrgStrafe = 1.f + fLR_Factor * (-1.f - 1.f);
+    float mStrafeFactor = fLR_Factor * (1 - fStepPerUpd) + fTrgStrafe * fStepPerUpd;
+
+    // I?iecaiaei iaeeii noaiea aey ii?iaeuiiai ?a?eia e aeia
+    if (m_strafe_offset[2].x != 0.0f) //<-- Aey ieaaiiai ia?aoiaa
+    {
+        Fvector curr_offs, curr_rot;
+
+        // Niauaiea iiceoee ooaa a no?aeoa
+        curr_offs = m_strafe_offset[0]; // pos
+        curr_offs.mul(mStrafeFactor); // Oiii?aai ia oaeoi? no?aeoa
+
+        // Iiai?io ooaa a no?aeoa
+        curr_rot = m_strafe_offset[1]; // rot
+        curr_rot.mul(-PI / 180.f); // I?aia?acoai oaeu a ?aaeaiu
+        curr_rot.mul(mStrafeFactor); // Oiii?aai ia oaeoi? no?aeoa
+
+        Fmatrix hud_rotation;
+        Fmatrix hud_rotation_y;
+
+        hud_rotation.identity();
+        hud_rotation.rotateX(curr_rot.x);
+
+        hud_rotation_y.identity();
+        hud_rotation_y.rotateY(curr_rot.y);
+        hud_rotation.mulA_43(hud_rotation_y);
+
+        hud_rotation_y.identity();
+        hud_rotation_y.rotateZ(curr_rot.z);
+        hud_rotation.mulA_43(hud_rotation_y);
+
+        hud_rotation.translate_over(curr_offs);
+        hud_trans.mulB_43(hud_rotation);
+    }
+
+    //============= Eia?oey i?o?ey =============//
+    // Ia?aiao?u eia?oee
+    float fInertiaSpeedMod = hi->m_measures.m_inertion_params.m_tendto_speed;
+
+    float fInertiaReturnSpeedMod = hi->m_measures.m_inertion_params.m_tendto_ret_speed;
+
+    float fInertiaMinAngle = hi->m_measures.m_inertion_params.m_min_angle;
+
+    Fvector4 vIOffsets; // x = L, y = R, z = U, w = D
+    vIOffsets.x = hi->m_measures.m_inertion_params.m_offset_LRUD.x * fInertiaPower;
+    vIOffsets.y = hi->m_measures.m_inertion_params.m_offset_LRUD.y * fInertiaPower;
+    vIOffsets.z = hi->m_measures.m_inertion_params.m_offset_LRUD.z * fInertiaPower;
+    vIOffsets.w = hi->m_measures.m_inertion_params.m_offset_LRUD.w * fInertiaPower;
+
+    // Aun?eouaaai eia?oe? ec iiai?ioia eaia?u
+    bool bIsInertionPresent = m_fLR_InertiaFactor != 0.0f || m_fUD_InertiaFactor != 0.0f;
+    if (abs(fYMag) > fInertiaMinAngle || bIsInertionPresent)
+    {
+        float fSpeed = fInertiaSpeedMod;
+        if (fYMag > 0.0f && m_fLR_InertiaFactor > 0.0f || fYMag < 0.0f && m_fLR_InertiaFactor < 0.0f)
+        {
+            fSpeed *= 2.f; //--> Onei?yai eia?oe? i?e aae?aiee a i?ioeaiiiei?io? noi?iio
+        }
+
+        m_fLR_InertiaFactor -= (fYMag * fAvgTimeDelta * fSpeed); // Ai?eciioaeu (i.a. > |1.0|)
+    }
+
+    if (abs(fPMag) > fInertiaMinAngle || bIsInertionPresent)
+    {
+        float fSpeed = fInertiaSpeedMod;
+        if (fPMag > 0.0f && m_fUD_InertiaFactor > 0.0f || fPMag < 0.0f && m_fUD_InertiaFactor < 0.0f)
+        {
+            fSpeed *= 2.f; //--> Onei?yai eia?oe? i?e aae?aiee a i?ioeaiiiei?io? noi?iio
+        }
+
+        m_fUD_InertiaFactor -= (fPMag * fAvgTimeDelta * fSpeed); // Aa?oeeaeu (i.a. > |1.0|)
+    }
+
+    clamp(m_fLR_InertiaFactor, -1.0f, 1.0f);
+    clamp(m_fUD_InertiaFactor, -1.0f, 1.0f);
+
+    // Ieaaiia caoooaiea eia?oee (iniiaiia, ii aac eeiaeiie ieeiaaa ia iionoeo eia?oe? ai iieiiai 0.0f)
+    m_fLR_InertiaFactor *= clampr(1.f - fAvgTimeDelta * fInertiaReturnSpeedMod, 0.0f, 1.0f);
+    m_fUD_InertiaFactor *= clampr(1.f - fAvgTimeDelta * fInertiaReturnSpeedMod, 0.0f, 1.0f);
+
+    // Ieieiaeuiia eeiaeiia caoooaiea eia?oee i?e iieia (ai?eciioaeu)
+    if (fYMag == 0.0f)
+    {
+        float fRetSpeedMod = (fYMag == 0.0f ? 1.0f : 0.75f) * (fInertiaReturnSpeedMod * 0.075f);
+        if (m_fLR_InertiaFactor < 0.0f)
+        {
+            m_fLR_InertiaFactor += fAvgTimeDelta * fRetSpeedMod;
+            clamp(m_fLR_InertiaFactor, -1.0f, 0.0f);
+        }
+        else
+        {
+            m_fLR_InertiaFactor -= fAvgTimeDelta * fRetSpeedMod;
+            clamp(m_fLR_InertiaFactor, 0.0f, 1.0f);
+        }
+    }
+
+    // Ieieiaeuiia eeiaeiia caoooaiea eia?oee i?e iieia (aa?oeeaeu)
+    if (fPMag == 0.0f)
+    {
+        float fRetSpeedMod = (fPMag == 0.0f ? 1.0f : 0.75f) * (fInertiaReturnSpeedMod * 0.075f);
+        if (m_fUD_InertiaFactor < 0.0f)
+        {
+            m_fUD_InertiaFactor += fAvgTimeDelta * fRetSpeedMod;
+            clamp(m_fUD_InertiaFactor, -1.0f, 0.0f);
+        }
+        else
+        {
+            m_fUD_InertiaFactor -= fAvgTimeDelta * fRetSpeedMod;
+            clamp(m_fUD_InertiaFactor, 0.0f, 1.0f);
+        }
+    }
+
+    // I?eiaiyai eia?oe? e ooao
+    float fLR_lim = (m_fLR_InertiaFactor < 0.0f ? vIOffsets.x : vIOffsets.y);
+    float fUD_lim = (m_fUD_InertiaFactor < 0.0f ? vIOffsets.z : vIOffsets.w);
+
+    Fvector curr_offs;
+    curr_offs = {fLR_lim * -1.f * m_fLR_InertiaFactor, fUD_lim * m_fUD_InertiaFactor, 0.0f};
+
+    Fmatrix hud_rotation;
+    hud_rotation.identity();
+    hud_rotation.translate_over(curr_offs);
+    hud_trans.mulB_43(hud_rotation);
 }
 void CHudItem::UpdateCL()
 {
