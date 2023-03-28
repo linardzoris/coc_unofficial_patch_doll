@@ -61,6 +61,11 @@ protected:
 
     bool TryReload();
 
+private:
+    LPCSTR empty_click_layer;
+    float empty_click_speed;
+    float empty_click_power;
+
 public:
     // Новые параметры
     virtual void CheckMagazine();

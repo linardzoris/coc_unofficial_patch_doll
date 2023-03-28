@@ -399,6 +399,15 @@ BOOL CHudItem::GetHUDmode()
         return FALSE;
 }
 
+void CHudItem::PlayBlendAnm(LPCSTR name, float speed, float power, bool stop_old)
+{
+    u8 part = (object().cast_weapon()->IsZoomed() ? 2 : (g_player_hud->attached_item(1) ? 0 : 2));
+
+    if (stop_old)
+        g_player_hud->StopBlendAnm(name, true);
+    g_player_hud->PlayBlendAnm(name, part, speed, power, false);
+}
+
 void CHudItem::PlayAnimIdle()
 {
     if (TryPlayAnimIdle())

@@ -97,6 +97,7 @@ public:
 
     virtual u8 GetCurrentHudOffsetIdx() { return 0; }
     BOOL GetHUDmode();
+    void PlayBlendAnm(LPCSTR name, float speed = 1.f, float power = 1.f, bool stop_old = true);
     IC BOOL IsPending() const { return !!m_huditem_flags.test(fl_pending); }
     virtual bool ActivateItem();
     virtual void DeactivateItem();

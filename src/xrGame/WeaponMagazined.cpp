@@ -181,6 +181,14 @@ void CWeaponMagazined::Load(LPCSTR section)
         m_bHasDifferentFireModes = false;
     }
     LoadSilencerKoeffs();
+
+	empty_click_layer = READ_IF_EXISTS(pSettings, r_string, *hud_sect, "empty_click_anm", nullptr);
+
+    if (empty_click_layer)
+    {
+        empty_click_speed = READ_IF_EXISTS(pSettings, r_float, *hud_sect, "empty_click_anm_speed", 1.f);
+        empty_click_power = READ_IF_EXISTS(pSettings, r_float, *hud_sect, "empty_click_anm_power", 1.f);
+    }
 }
 
 bool CWeaponMagazined::UseScopeTexture()
@@ -838,7 +846,14 @@ void CWeaponMagazined::OnShot()
 #endif
 }
 
-void CWeaponMagazined::OnEmptyClick() { PlaySound("sndEmptyClick", get_LastFP()); }
+void CWeaponMagazined::OnEmptyClick() 
+{ 
+    PlaySound("sndEmptyClick", get_LastFP()); 
+
+	if (empty_click_layer)
+        PlayBlendAnm(empty_click_layer, empty_click_speed, empty_click_power);
+}
+
 void CWeaponMagazined::OnAnimationEnd(u32 state)
 {
     switch (state)
