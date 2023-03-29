@@ -596,16 +596,16 @@ void CWeapon::Load(LPCSTR section)
         m_hit_probability[i] = READ_IF_EXISTS(pSettings, r_float, section, temp, 1.f);
     }
 
-    m_zoom_params.m_bUseDynamicZoom = READ_IF_EXISTS(pSettings, r_bool, section, "scope_dynamic_zoom", false);
-    m_zoom_params.m_sUseZoomPostprocess = READ_IF_EXISTS(pSettings, r_string, section, "scope_nightvision", 0);
-    m_zoom_params.m_sUseBinocularVision = READ_IF_EXISTS(pSettings, r_string, section, "scope_alive_detector", 0);
-
-    if (!bScopeIsHasTexture)
+    if (bScopeIsHasTexture)
     {
+        m_zoom_params.m_bUseDynamicZoom = READ_IF_EXISTS(pSettings, r_bool, section, "scope_dynamic_zoom", false);
+        m_zoom_params.m_sUseZoomPostprocess = READ_IF_EXISTS(pSettings, r_string, section, "scope_nightvision", 0);
+        m_zoom_params.m_sUseBinocularVision = READ_IF_EXISTS(pSettings, r_string, section, "scope_alive_detector", 0);
+    }
+    else
         m_zoom_params.m_sUseZoomPostprocess = 0;
         m_zoom_params.m_sUseBinocularVision = 0;
         m_zoom_params.m_bUseDynamicZoom = false;
-    }
 
 	// Added by Axel, to enable optional condition use on any item
 	m_flags.set( FUsingCondition, READ_IF_EXISTS( pSettings, r_bool, section, "use_condition", true ));
@@ -2862,12 +2862,10 @@ void CWeapon::LoadCurrentScopeParams(LPCSTR section)
         m_zoom_params.m_bUseDynamicZoom = READ_IF_EXISTS(pSettings, r_bool, section, "scope_dynamic_zoom", FALSE);
         m_zoom_params.m_sUseBinocularVision = READ_IF_EXISTS(pSettings, r_string, section, "scope_alive_detector", 0);
     }
-    if (!bScopeIsHasTexture)
-    {
+    else
 	    m_zoom_params.m_sUseZoomPostprocess = 0;
         m_zoom_params.m_sUseBinocularVision = 0;
         m_zoom_params.m_bUseDynamicZoom = false;
-    }
 
     if (m_UIScope)
     {
