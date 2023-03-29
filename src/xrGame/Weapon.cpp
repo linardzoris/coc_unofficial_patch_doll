@@ -100,6 +100,7 @@ CWeapon::CWeapon()
 
 	bUseAltScope = false;
     bScopeIsHasTexture = false;
+    bGrenadeLauncherNSilencer = false;
 
 	// Альт. прицеливание
     m_altAimPos = false;
@@ -517,6 +518,8 @@ void CWeapon::Load(LPCSTR section)
 
 	// Альт. прицеливание
     m_altAimPos = READ_IF_EXISTS(pSettings, r_bool, section, "use_alt_aim_hud", false);
+    // Можно ли установить глушитель и ПГ одновременно?
+    bGrenadeLauncherNSilencer = READ_IF_EXISTS(pSettings, r_bool, section, "GrenadeLauncherNSilencer", false);
 
  	bUseAltScope = !!bLoadAltScopesParams(section);
 

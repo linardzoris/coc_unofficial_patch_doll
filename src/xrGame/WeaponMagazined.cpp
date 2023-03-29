@@ -1182,27 +1182,31 @@ bool CWeaponMagazined::CanAttach(PIItem pIItem)
         }
         return false;
     }
-    else if (pSilencer && m_eSilencerStatus == ALife::eAddonAttachable &&
-        (m_flagsAddOnState&CSE_ALifeItemWeapon::eWeaponAddonSilencer) == 0 /*&&
-        (m_sSilencerName == pIItem->object().cNameSect())*/)
+    else if (pSilencer && m_eSilencerStatus == ALife::eAddonAttachable && (m_flagsAddOnState&CSE_ALifeItemWeapon::eWeaponAddonSilencer) == 0)
     {
-        auto it = m_silencers.begin();
-        for (; it != m_silencers.end(); it++)
-        {
-            if (pSettings->r_string((*it), "silencer_name") == pIItem->object().cNameSect())
-                return true;
+		// Если есть опция на запрет глушителя и ПГ одновременно
+		if (!bGrenadeLauncherNSilencer || bGrenadeLauncherNSilencer && (m_flagsAddOnState&CSE_ALifeItemWeapon::eWeaponAddonGrenadeLauncher) == 0)
+		{
+            auto it = m_silencers.begin();
+            for (; it != m_silencers.end(); it++)
+            {
+                if (pSettings->r_string((*it), "silencer_name") == pIItem->object().cNameSect())
+                    return true;
+            }
         }
         return false;
     }
-    else if (pGrenadeLauncher && m_eGrenadeLauncherStatus == ALife::eAddonAttachable &&
-        (m_flagsAddOnState&CSE_ALifeItemWeapon::eWeaponAddonGrenadeLauncher) == 0 /*&&
-        (m_sGrenadeLauncherName == pIItem->object().cNameSect())*/)
+    else if (pGrenadeLauncher && m_eGrenadeLauncherStatus == ALife::eAddonAttachable && (m_flagsAddOnState&CSE_ALifeItemWeapon::eWeaponAddonGrenadeLauncher) == 0)
     {
-        auto it = m_launchers.begin();
-        for (; it != m_launchers.end(); it++)
-        {
-            if (pSettings->r_string((*it), "grenade_launcher_name") == pIItem->object().cNameSect())
-                return true;
+		// Если есть опция на запрет глушителя и ПГ одновременно
+		if (!bGrenadeLauncherNSilencer || bGrenadeLauncherNSilencer && (m_flagsAddOnState&CSE_ALifeItemWeapon::eWeaponAddonSilencer) == 0)
+		{
+            auto it = m_launchers.begin();
+            for (; it != m_launchers.end(); it++)
+            {
+                if (pSettings->r_string((*it), "grenade_launcher_name") == pIItem->object().cNameSect())
+                    return true;
+            }
         }
         return false;
     }
