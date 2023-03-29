@@ -1611,7 +1611,7 @@ void CWeaponMagazined::PlayAnimAim()
     {
         if (isHUDAnimationExist("anm_idle_aim_start"))
         {
-            PlayHUDMotionNew("anm_idle_aim_start", true, GetState());
+            PlayHUDMotion("anm_idle_aim_start", TRUE, nullptr, GetState());
             return;
         }
     }
@@ -1643,7 +1643,7 @@ void CWeaponMagazined::PlayAnimIdle()
         {
             if (isHUDAnimationExist("anm_idle_aim_end"))
             {
-                PlayHUDMotionNew("anm_idle_aim_end", true, GetState());
+                PlayHUDMotion("anm_idle_aim_end", true, nullptr, GetState());
                 return;
             }
         }

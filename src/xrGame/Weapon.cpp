@@ -236,11 +236,11 @@ void CWeapon::UpdateUIScope()
     // update zoom factor
     if (m_zoomtype == 2) // GL
     {
-        m_zoom_params.m_fScopeZoomFactor = READ_IF_EXISTS(pSettings, r_float, cNameSect(), "gl_zoom_factor", 0);
+        m_zoom_params.m_fScopeZoomFactor = READ_IF_EXISTS(pSettings, r_float, cNameSect(), "gl_zoom_factor", 1.1);
     }
     else if (m_zoomtype == 1) // Alt
     {
-        m_zoom_params.m_fScopeZoomFactor = READ_IF_EXISTS(pSettings, r_float, cNameSect(), "scope_zoom_factor_alt", 0);
+        m_zoom_params.m_fScopeZoomFactor = READ_IF_EXISTS(pSettings, r_float, cNameSect(), "scope_zoom_factor_alt", 1.1);
     }
     else // Main Sight
     {
@@ -1204,16 +1204,12 @@ bool CWeapon::Action(u16 cmd, u32 flags)
 
 	// Альт. прицеливание
     case kWPN_FUNC: 
-    {
-        if (flags & CMD_START && !IsPending() && m_zoom_params.m_altAimPos)
+	{
+        if (flags & CMD_START && !IsPending() && m_altAimPos || flags & CMD_START && !IsPending() && m_zoom_params.m_altAimPos)
         {
             SwitchZoomType();
+            return true;
         }
-        else if (flags & CMD_START && !IsPending() && m_altAimPos)
-        {
-            SwitchZoomType();
-        }
-        return true;
     }
     case kWPN_ZOOM_INC:
     case kWPN_ZOOM_DEC:
@@ -2613,7 +2609,11 @@ u8 CWeapon::GetCurrentHudOffsetIdx()
     if (!pActor)
         return 0;
 
-    if (!IsZoomed())
+	bool b_aiming = ((IsZoomed() && m_zoom_params.m_fZoomRotationFactor <= 1.f) ||
+        (!IsZoomed() && m_zoom_params.m_fZoomRotationFactor > 0.f));
+
+	// Альт. прицел
+    if (!b_aiming)
         return 0;
     else if (m_zoomtype == 1)
         return 3;

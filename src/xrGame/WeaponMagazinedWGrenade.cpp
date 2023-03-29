@@ -224,13 +224,14 @@ bool CWeaponMagazinedWGrenade::Action(u16 cmd, u32 flags)
 
     switch (cmd)
     {
-    case kWPN_FUNC:
+    case kWPN_FUNC: 
     {
         if (flags & CMD_START && !IsPending())
             SwitchState(eSwitch);
         return true;
     }
     }
+
     return false;
 }
 
@@ -672,23 +673,23 @@ void CWeaponMagazinedWGrenade::PlayAnimIdle()
     {
         if (IsZoomed())
         {
-            if (IsRotatingToZoom())
+            if (IsRotatingToZoom() && isHUDAnimationExist("anm_idle_aim_start_w_gl"))
             {
-                PlayHUDMotionIfExists({"anm_idle_aim_start_w_gl"}, true, GetState());
+                PlayHUDMotion("anm_idle_aim_start_w_gl", TRUE, nullptr, GetState());
                 return;
             }
 			if (m_bGrenadeMode)
                 PlayHUDMotionIfExists({"anm_idle_aim_g", "anm_idle_g_aim"}, true, GetState());
-            else if (IsMisfire() && isHUDAnimationExist("anm_idle_jammed_w_gl_aim"))
-                PlayHUDMotion("anm_idle_jammed_w_gl_aim", TRUE, nullptr, GetState());
+            else if (IsMisfire() && isHUDAnimationExist("anm_idle_aim_jammed_w_gl"))
+                PlayHUDMotion("anm_idle_aim_jammed_w_gl", TRUE, nullptr, GetState());
             else
                 PlayHUDMotionIfExists({"anm_idle_aim_w_gl", "anm_idle_w_gl_aim"}, true, GetState());
         }
         else
         {
-            if (IsRotatingFromZoom())
+            if (IsRotatingFromZoom() && isHUDAnimationExist("anm_idle_aim_end_w_gl"))
             {
-                PlayHUDMotionIfExists({"anm_idle_aim_end_w_gl"}, true, GetState());
+                PlayHUDMotion("anm_idle_aim_end_w_gl", TRUE, nullptr, GetState());
                 return;
             }
 
@@ -960,9 +961,11 @@ u8 CWeaponMagazinedWGrenade::GetCurrentHudOffsetIdx()
     bool b_aiming = ((IsZoomed() && m_zoom_params.m_fZoomRotationFactor <= 1.f) ||
         (!IsZoomed() && m_zoom_params.m_fZoomRotationFactor > 0.f));
 
-    if (!IsZoomed())
+    if (!b_aiming)
         return 0;
-    else if (m_bGrenadeMode)
+    else
+        // Альт. прицел
+        if (m_bGrenadeMode)
         return 2;
     else if (m_zoomtype == 1)
         return 3;
