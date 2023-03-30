@@ -161,11 +161,13 @@ public:
     bool IsDiffShotModes() const { return m_bDiffShotModes; }
     EWeaponSubStates GetReloadState() const { return (EWeaponSubStates)m_sub_state; }
     bool IsMisfireOneCartRemove() const { return m_bMisfireOneCartRemove; }
+    bool IsMotionMarkShell() const { return m_bMotionMarkShell; }
 
 protected:
     bool m_bMisfireOneCartRemove;
     bool m_bTriStateReload;
     bool m_bDiffShotModes;
+    bool m_bMotionMarkShell;
 
     // a misfire happens, you'll need to rearm weapon
     bool bMisfire;

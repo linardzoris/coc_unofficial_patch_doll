@@ -102,6 +102,10 @@ CWeapon::CWeapon()
     bScopeIsHasTexture = false;
     bGrenadeLauncherNSilencer = false;
 
+    m_bDiffShotModes = false;
+    m_bMotionMarkShell = false;
+    m_bMisfireOneCartRemove = false;
+
 	// Альт. прицеливание
     m_altAimPos = false;
     m_zoom_params.m_altAimPos = false;
@@ -334,12 +338,6 @@ void CWeapon::Load(LPCSTR section)
     // Альт. прицеливание
 	bAltScopeIsHasTexture = false;
 
-    // Дропается ли патрон при расклине?
-    if (pSettings->line_exist(section, "misfire_one_cartridge_remove"))
-    {
-        m_bMisfireOneCartRemove = !!pSettings->r_bool(section, "misfire_one_cartridge_remove");
-    }
-
     if (pSettings->line_exist(section, "flame_particles_2"))
         m_sFlameParticles2 = pSettings->r_string(section, "flame_particles_2");
 
@@ -497,6 +495,9 @@ void CWeapon::Load(LPCSTR section)
         vLoadedFirePoint2 = vLoadedFirePoint;
 
     m_bDiffShotModes = READ_IF_EXISTS(pSettings, r_bool, section, "different_shot_modes", false);
+    m_bMotionMarkShell = READ_IF_EXISTS(pSettings, r_bool, section, "motion_mark_shell", false);
+    m_bMisfireOneCartRemove = READ_IF_EXISTS(pSettings, r_bool, section, "misfire_one_cartridge_remove", false);
+
 
     // hands
     eHandDependence = EHandDependence(pSettings->r_s32(section, "hand_dependence"));

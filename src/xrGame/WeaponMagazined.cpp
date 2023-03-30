@@ -1015,8 +1015,6 @@ void CWeaponMagazined::switch2_Fire()
 
 void CWeaponMagazined::switch2_Empty()
 {
-    OnZoomOut();
-
 	if (m_bAutoreloadEnabled)
     {
         if (!TryReload())
@@ -1030,6 +1028,7 @@ void CWeaponMagazined::switch2_Empty()
     }
     else
     {
+        OnZoomOut();
         OnEmptyClick();
     }
 }
@@ -2128,5 +2127,19 @@ void CWeaponMagazined::OnMotionMark(u32 state, const motion_marks& M)
         Msg("Next reload: count %d with type %d", ae, ammo_type);
 
         HUD_VisualBulletUpdate();
+    }
+    //-- Дропаем гильзу, если есть MotionMark в анимации расклина во время расклина.
+    if (IsMisfireOneCartRemove() && GetState() == eUnMisfire)
+    {
+        Fvector vel;
+        PHGetLinearVell(vel);
+        OnShellDrop(get_LastSP(), vel);
+    }
+    //-- Дропаем гильзу во время стрельбы (для дробовиков и болтовок).
+    if (IsMotionMarkShell() && GetState() == eFire)
+    {
+        Fvector vel;
+        PHGetLinearVell(vel);
+        OnShellDrop(get_LastSP(), vel);
     }
 }
