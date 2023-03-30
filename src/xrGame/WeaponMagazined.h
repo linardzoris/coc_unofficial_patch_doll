@@ -154,9 +154,8 @@ protected:
     int m_iCurFireMode;
     int m_iPrefferedFireMode;
 
-    //переменная блокирует использование
-    //только разных типов патронов
-    bool m_bLockType;
+    bool m_bLockType;     //переменная блокирует использование только разных типов патронов
+    bool m_bAutoreloadEnabled; // Автоперезарядка
 
 public:
     virtual void OnZoomIn();

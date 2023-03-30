@@ -49,6 +49,8 @@ CWeaponMagazined::CWeaponMagazined(ESoundTypes eSoundType) : CWeapon()
 
 	m_bNeedBulletInGun = false;
     bHasBulletsToHide = false;
+
+	m_bAutoreloadEnabled = READ_IF_EXISTS(pSettings, r_bool, "gameplay", "autoreload_enabled", false);
 }
 
 CWeaponMagazined::~CWeaponMagazined()
@@ -246,7 +248,18 @@ void CWeaponMagazined::FireStart()
     }
 }
 
-void CWeaponMagazined::FireEnd() { inherited::FireEnd(); }
+void CWeaponMagazined::FireEnd() 
+{ 
+    inherited::FireEnd(); 
+
+	if (m_bAutoreloadEnabled)
+    {
+        CActor* actor = smart_cast<CActor*>(H_Parent());
+
+        if (m_pInventory && !m_ammoElapsed.type1 && actor && GetState() != eReload)
+            Reload();
+    }
+}
 
 void CWeaponMagazined::Reload() { inherited::Reload(); TryReload(); }
 
@@ -1004,13 +1017,20 @@ void CWeaponMagazined::switch2_Empty()
 {
     OnZoomOut();
 
-    if (!TryReload())
+	if (m_bAutoreloadEnabled)
     {
-        OnEmptyClick();
+        if (!TryReload())
+        {
+            OnEmptyClick();
+        }
+        else
+        {
+            inherited::FireEnd();
+        }
     }
     else
     {
-        inherited::FireEnd();
+        OnEmptyClick();
     }
 }
 void CWeaponMagazined::PlayReloadSound()
