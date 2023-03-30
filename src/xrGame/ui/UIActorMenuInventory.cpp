@@ -33,6 +33,7 @@
 #include "PDA.h"
 #include "actor_defs.h"
 #include "ActorBackpack.h"
+#include "../WeaponRPG26.h"
 
 void move_item_from_to(u16 from_id, u16 to_id, u16 what_id);
 
@@ -1057,6 +1058,8 @@ void CUIActorMenu::PropertiesBoxForWeapon(CUICellItem* cell_item, PIItem item, b
         {
         }
     }
+    CWeaponRPG26* pRPG26 = smart_cast<CWeaponRPG26*>(item);
+
     if (smart_cast<CWeaponMagazined*>(pWeapon) && IsGameTypeSingle())
     {
         bool b = (pWeapon->GetAmmoElapsed() != 0);
@@ -1072,7 +1075,7 @@ void CUIActorMenu::PropertiesBoxForWeapon(CUICellItem* cell_item, PIItem item, b
                 }
             }
         }
-        if (b)
+        if (b && !pRPG26)
         {
             m_UIPropertiesBox->AddItem("st_unload_magazine", NULL, INVENTORY_UNLOAD_MAGAZINE);
             b_show = true;
@@ -1438,8 +1441,9 @@ void CUIActorMenu::ProcessPropertiesBoxClicked(CUIWindow* w, void* d)
         break;
     case INVENTORY_UNLOAD_MAGAZINE:
     {
+        CWeaponRPG26* pRPG26 = smart_cast<CWeaponRPG26*>(item);
         CWeaponMagazined* weap_mag = smart_cast<CWeaponMagazined*>((CWeapon*)cell_item->m_pData);
-        if (!weap_mag)
+        if (!weap_mag || pRPG26)
         {
             break;
         }
