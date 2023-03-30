@@ -4887,9 +4887,6 @@
     <ClInclude Include="WeaponRPG26.h">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\RPG26</Filter>
     </ClInclude>
-    <ClInclude Include="WeaponDP28.h">
-      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\DP28</Filter>
-    </ClInclude>	
     <ClInclude Include="F1.h">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Grenade F1</Filter>
     </ClInclude>
@@ -7503,9 +7500,6 @@
     <ClCompile Include="WeaponRPG26.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\RPG26</Filter>
     </ClCompile>
-    <ClCompile Include="WeaponDP28.cpp">
-      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\DP28</Filter>
-    </ClCompile>	
     <ClCompile Include="WeaponSVD.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\SVD</Filter>
     </ClCompile>

@@ -87,7 +87,6 @@
 #define CLSID_OBJECT_W_SVU MK_CLSID('W', '_', 'S', 'V', 'U', ' ', ' ', ' ')
 #define CLSID_OBJECT_W_RPG7 MK_CLSID('W', '_', 'R', 'P', 'G', '7', ' ', ' ')
 #define CLSID_OBJECT_W_RPG26 MK_CLSID('W', '_', 'R', 'P', 'G', '2', '6', ' ')
-#define CLSID_OBJECT_W_DP28 MK_CLSID('W', '_', 'D', 'P', '2', '8', ' ', ' ')
 #define CLSID_OBJECT_W_VAL MK_CLSID('W', '_', 'V', 'A', 'L', ' ', ' ', ' ')
 #define CLSID_OBJECT_W_VINTOREZ MK_CLSID('W', '_', 'V', 'I', 'N', 'T', ' ', ' ')
 #define CLSID_OBJECT_W_WALTHER MK_CLSID('W', '_', 'W', 'A', 'L', 'T', 'H', 'R')
