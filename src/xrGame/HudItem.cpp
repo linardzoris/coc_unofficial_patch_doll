@@ -672,13 +672,11 @@ bool CHudItem::TryPlayAnimIdle()
                     PlayAnimIdleMoving();
                     return true;
                 }
-#ifdef NEW_ANIMS //AVO: new crouch idle animation
-                if (st.bCrouch && isHUDAnimationExist("anm_idle_moving_crouch"))
+                if (st.bCrouch)
                 {
                     PlayAnimIdleMovingCrouch();
                     return true;
                 }
-#endif //-NEW_ANIMS
             }
         }
     }
@@ -710,11 +708,6 @@ bool CHudItem::isHUDAnimationExist(pcstr anim_name) const
     return false;
 }
 
-void CHudItem::PlayAnimIdleMovingCrouch() 
-{ 
-    PlayHUDMotion("anm_idle_moving_crouch", false, nullptr, GetState()); 
-}
-
 bool CHudItem::NeedBlendAnm()
 {
     u32 state = GetState();
@@ -724,6 +717,14 @@ bool CHudItem::NeedBlendAnm()
 void CHudItem::PlayAnimIdleMoving() 
 { 
     PlayHUDMotion("anm_idle_moving", false, nullptr, GetState()); 
+}
+
+void CHudItem::PlayAnimIdleMovingCrouch()
+{
+    if (IsMisfireNow() && isHUDAnimationExist("anm_idle_moving_crouch_jammed"))
+        PlayHUDMotion("anm_idle_moving_crouch_jammed", true, nullptr, GetState());
+    else if (!IsMisfireNow() && isHUDAnimationExist("anm_idle_moving_crouch"))
+        PlayHUDMotion("anm_idle_moving_crouch", false, nullptr, GetState());
 }
 
 void CHudItem::PlayAnimIdleSprint() 

@@ -41,6 +41,11 @@ void CWeaponPistol::PlayAnimIdleMoving()
     inherited::PlayAnimIdleMoving();
 }
 
+void CWeaponPistol::PlayAnimIdleMovingCrouch() 
+{ 
+    inherited::PlayAnimIdleMovingCrouch(); 
+}
+
 void CWeaponPistol::PlayAnimIdle()
 {
     if (TryPlayAnimIdle())

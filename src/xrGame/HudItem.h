@@ -123,6 +123,7 @@ public:
     virtual bool NeedBlendAnm();
 
     virtual void PlayAnimIdleMoving();
+    virtual void PlayAnimIdleMovingCrouch();
     virtual void PlayAnimIdleSprint();
 
     virtual void UpdateCL();
@@ -187,10 +188,10 @@ public:
     virtual void debug_draw_firedeps(){};
 
     virtual CHudItem* cast_hud_item() { return this; }
-    void PlayAnimIdleMovingCrouch(); //AVO: new crouch idle animation
     bool isHUDAnimationExist(pcstr anim_name) const;
+    virtual bool IsMisfireNow() { return false; }
 
-// SWM 3
+    // SWM 3
     Fvector m_strafe_offset[3]; 
 
     float m_hud_fov_add_mod;

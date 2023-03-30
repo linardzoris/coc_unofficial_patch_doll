@@ -673,9 +673,19 @@ void CWeaponMagazinedWGrenade::PlayAnimIdle()
     {
         if (IsZoomed())
         {
-            if (IsRotatingToZoom() && isHUDAnimationExist("anm_idle_aim_start_w_gl"))
+            if (IsRotatingToZoom() &&  m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_idle_aim_start_empty_w_gl"))
             {
-                PlayHUDMotion("anm_idle_aim_start_w_gl", TRUE, nullptr, GetState());
+                PlayHUDMotionNew("anm_idle_aim_start_empty_w_gl", true, GetState());
+                return;
+            }
+            else if (IsRotatingToZoom() && IsMisfire() && isHUDAnimationExist("anm_idle_aim_start_jammed_w_gl"))
+            {
+                PlayHUDMotionNew("anm_idle_aim_start_jammed_w_gl", true, GetState());
+                return;
+            }
+            else if (IsRotatingToZoom() && isHUDAnimationExist("anm_idle_aim_start_w_gl"))
+            {
+                PlayHUDMotionNew("anm_idle_aim_start_w_gl", true, GetState());
                 return;
             }
 			if (m_bGrenadeMode)
@@ -687,9 +697,19 @@ void CWeaponMagazinedWGrenade::PlayAnimIdle()
         }
         else
         {
-            if (IsRotatingFromZoom() && isHUDAnimationExist("anm_idle_aim_end_w_gl"))
+            if (IsRotatingFromZoom() && m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_idle_aim_end_empty_w_gl"))
             {
-                PlayHUDMotion("anm_idle_aim_end_w_gl", TRUE, nullptr, GetState());
+                PlayHUDMotionNew("anm_idle_aim_end_empty_w_gl", true, GetState());
+                return;
+            }
+            else if (IsRotatingFromZoom() && IsMisfire() && isHUDAnimationExist("anm_idle_aim_end_jammed_w_gl"))
+            {
+                PlayHUDMotionNew("anm_idle_aim_end_jammed_w_gl", true, GetState());
+                return;
+            }
+            else if (IsRotatingFromZoom() && isHUDAnimationExist("anm_idle_aim_end_w_gl"))
+            {
+                PlayHUDMotionNew("anm_idle_aim_end_w_gl", true, GetState());
                 return;
             }
 

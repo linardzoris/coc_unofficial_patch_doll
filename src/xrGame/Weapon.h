@@ -384,6 +384,7 @@ protected:
     virtual bool MovingAnimAllowedNow();
     virtual void OnStateSwitch(u32 S, u32 oldState);
     virtual void OnAnimationEnd(u32 state);
+    virtual bool IsMisfireNow() { return IsMisfire(); }
 
     //трассирование полета пули
     virtual void FireTrace(const Fvector& P, const Fvector& D);
