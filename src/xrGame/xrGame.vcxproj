@@ -1330,6 +1330,8 @@
     <ClInclude Include="WeaponRevolver.h" />
     <ClInclude Include="WeaponRG6.h" />
     <ClInclude Include="WeaponRPG7.h" />
+    <ClInclude Include="WeaponRPG26.h" />	
+    <ClInclude Include="WeaponDP28.h" />	
     <ClInclude Include="WeaponShotgun.h" />
     <ClInclude Include="WeaponStatMgun.h" />
     <ClInclude Include="HolderEntityObject.h" />
@@ -3095,6 +3097,8 @@
     <ClCompile Include="WeaponRevolver.cpp" />
     <ClCompile Include="WeaponRG6.cpp" />
     <ClCompile Include="WeaponRPG7.cpp" />
+    <ClCompile Include="WeaponRPG26.cpp" />
+    <ClCompile Include="WeaponDP28.cpp" />	
     <ClCompile Include="WeaponScript.cpp">
       <PrecompiledHeaderFile>pch_script.h</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>$(IntDir)$(ProjectName)_script.pch</PrecompiledHeaderOutputFile>

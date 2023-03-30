@@ -30,6 +30,7 @@
 #include "xrUICore/ui_defs.h"
 #include "Weapon.h"
 #include "WeaponRPG7.h"
+#include "WeaponRPG26.h"
 #include "CustomOutfit.h"
 #include "ActorHelmet.h"
 #include "script_game_object.h" //Alundaio
@@ -100,7 +101,7 @@ void CUIInventoryUpgradeWnd::InitInventory(CInventoryItem* item, bool can_upgrad
     {
         is_shader = true;
         m_item->SetShader(InventoryUtilities::GetWeaponUpgradeIconsShader());
-        if (smart_cast<CWeaponRPG7*>(item))
+        if (smart_cast<CWeaponRPG7*>(item) || smart_cast<CWeaponRPG26*>(item))
             m_item->SetShader(InventoryUtilities::GetOutfitUpgradeIconsShader());
     }
     else if (smart_cast<CCustomOutfit*>(item) || smart_cast<CHelmet*>(item) || smart_cast<CBackpack*>(item))

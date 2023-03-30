@@ -14,6 +14,8 @@
 #include "WeaponPM.h"
 #include "RGD5.h"
 #include "WeaponRPG7.h"
+#include "WeaponRPG26.h"
+#include "WeaponDP28.h"
 #include "WeaponSVD.h"
 #include "WeaponSVU.h"
 #include "WeaponAK74.h"
@@ -110,6 +112,12 @@ SCRIPT_EXPORT(CRGD5, (CGameObject, CExplosive),
 
 SCRIPT_EXPORT(CWeaponRPG7, (CWeaponMagazined),
     { module(luaState)[class_<CWeaponRPG7, CWeaponMagazined>("CWeaponRPG7").def(constructor<>())]; });
+
+SCRIPT_EXPORT(CWeaponRPG26, (CWeaponMagazined),
+    { module(luaState)[class_<CWeaponRPG26, CWeaponMagazined>("CWeaponRPG26").def(constructor<>())]; });
+
+SCRIPT_EXPORT(CWeaponDP28, (CWeaponMagazined),
+    { module(luaState)[class_<CWeaponDP28, CWeaponMagazined>("CWeaponRPG7").def(constructor<>())]; });
 
 SCRIPT_EXPORT(CWeaponSVD, (CWeaponMagazined),
     { module(luaState)[class_<CWeaponSVD, CWeaponMagazined>("CWeaponSVD").def(constructor<>())]; });
