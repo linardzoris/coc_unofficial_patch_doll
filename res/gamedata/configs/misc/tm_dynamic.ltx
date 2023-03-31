@@ -98,7 +98,7 @@ target_functor = general_fetch_task
 task_complete_descr = simulation_task_4_fetch_finish
 precondition = true
 repeat_timeout = 86400
-on_complete = %=reward_random_item(wpn_val:1:wpn_lr300:1:wpn_ak74:1:wpn_sig550:1) =complete_task_inc_goodwill(25:stalker) =remove_fetch_item(simulation_task_4_fetch) =reward_stash(true) =inc_task_stage(simulation_task_4)%
+on_complete = %=reward_random_item(wpn_val:1:wpn_lr300:1:wpn_ak74m:1:wpn_sig550:1) =complete_task_inc_goodwill(25:stalker) =remove_fetch_item(simulation_task_4_fetch) =reward_stash(true) =inc_task_stage(simulation_task_4)%
 on_fail = %=fail_task_dec_goodwill(25:stalker)%
 condlist_0 = {!task_giver_alive(simulation_task_4)} fail
 
@@ -375,7 +375,7 @@ target_functor = general_fetch_task
 task_complete_descr = simulation_task_15_fetch_finish
 precondition = true
 repeat_timeout = 86400
-on_complete = %=reward_random_item(wpn_abakan:1:wpn_ak74:1:wpn_val:1:wpn_groza:1) =complete_task_inc_goodwill(25:army) =remove_fetch_item(simulation_task_15_fetch) =reward_stash(true) =inc_task_stage(simulation_task_15)%
+on_complete = %=reward_random_item(wpn_abakan:1:wpn_ak74m:1:wpn_val:1:wpn_groza:1) =complete_task_inc_goodwill(25:army) =remove_fetch_item(simulation_task_15_fetch) =reward_stash(true) =inc_task_stage(simulation_task_15)%
 on_fail = %=fail_task_dec_goodwill(25:army)%
 condlist_0 = {!task_giver_alive(simulation_task_15)} fail
 

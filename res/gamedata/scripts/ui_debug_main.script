@@ -137,10 +137,11 @@ function get_spawn_table(name)
 		["WP_PM"] = "Weapons (Pistol)",
 		["WP_RG6"] = "Weapons (Rifle)",
 		["WP_RPG7"] = "Weapons (Rifle)",
+		["WP_RPG26"] = "Weapons (Rifle)",		
 		["WP_SVD"] = "Weapons (Rifle)",
 		["WP_SVU"] = "Weapons (Rifle)",
 		["WP_VAL"] = "Weapons (Rifle)",
-
+		
 		["S_EXPLO"]  = "Physic (Misc.)",
 		["II_EXPLO"]  = "Physic (Misc.)",
 

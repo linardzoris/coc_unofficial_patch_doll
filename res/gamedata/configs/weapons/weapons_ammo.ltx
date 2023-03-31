@@ -278,7 +278,7 @@ description                              = ammo-7.62x54-pkm_descr
 
 inv_grid_width                           = 2
 inv_grid_height                          = 1
-inv_grid_x                               = 0
+inv_grid_x                               = 18
 inv_grid_y                               = 9
 
 box_size                                 = 100
@@ -464,12 +464,39 @@ description                              = ammo-og-7b_descr
 
 inv_grid_width                           = 3
 inv_grid_height                          = 1
-inv_grid_x                               = 10
-inv_grid_y                               = 13
+inv_grid_x                               = 0
+inv_grid_y                               = 6
 
 box_size                                 = 1
 cost                                     = 5000
 inv_weight                               = 2.0
+
+k_ap                                     = 0.25
+buck_shot                                = 0
+tracer                                   = off
+wm_size                                  = 0.5
+
+wallmark_section                         = explosion_marks
+
+;могут ли боеприпасы быть неограниченными : 1 - могут, 0 - не могут
+can_be_unlimited                         = true
+
+[ammo_pg_26]:ammo_base
+$spawn                                   = "weapons\ammo\ammo_pg_26"
+class                                    = S_OG7B
+visual                                   = dynamics\weapons\wpn_rpg_26\ammo_pg26.ogf
+inv_name                                 = ammo_pg_26
+inv_name_short                           = ammo_pg_26_s
+description                              = ammo_pg_26_descr
+
+inv_grid_width                           = 2
+inv_grid_height                          = 1
+inv_grid_x                               = 3
+inv_grid_y                               = 6
+
+box_size                                 = 1
+cost                                     = 4000
+inv_weight                               = 1.8
 
 k_ap                                     = 0.25
 buck_shot                                = 0

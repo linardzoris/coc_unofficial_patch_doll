@@ -1,0 +1,81 @@
+[up_sect_firsta_binoc_old]
+cost		      		= 4000
+value					= +5
+scope_zoom_factor       = 11
+
+[up_sect_firstc_binoc_old]
+cost					= 1500
+value					= -0.4
+inv_weight  			= -0.4
+
+[up_sect_firste_binoc_old]
+cost		      		= 8000
+scope_nightvision 		= scope_contrast
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;PART2
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[up_firsta_binoc_old]
+scheme_index            = 0, 0
+known                   = 1
+effects                 = 
+section                 = up_sect_firsta_binoc_old
+property                = prop_scope_5x
+precondition_functor    = inventory_upgrades.precondition_functor_a
+precondition_parameter  = true
+effect_functor          = inventory_upgrades.effect_functor_a
+effect_parameter        = something_here
+prereq_functor          = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor  = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params           = 
+name                    = st_binocular_upgrade_zoom_name
+description             = st_binocular_upgrade_zoom_descr
+icon                    = ui_inGame2_upgrade_binocular_ZOOM
+
+[up_firstc_binoc_old]
+scheme_index            = 0, 1
+known                   = 1
+effects                 = 
+section                 = up_sect_firstc_binoc_old
+property                = prop_weight
+precondition_functor    = inventory_upgrades.precondition_functor_a
+precondition_parameter  = true
+effect_functor          = inventory_upgrades.effect_functor_a
+effect_parameter        = something_here
+prereq_functor          = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor  = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params           = 
+name                    = st_binocular_upgrade_weight_name
+description             = st_binocular_upgrade_weight_descr
+icon                    = ui_inGame2_binocular_upgrade_WEIGHT
+
+[up_firste_binoc_old]
+scheme_index            = 0, 2
+known                   = 1
+effects                 = 
+section                 = up_sect_firste_binoc_old
+property                = prop_contrast
+precondition_functor    = inventory_upgrades.precondition_functor_a
+precondition_parameter  = true
+effect_functor          = inventory_upgrades.effect_functor_a
+effect_parameter        = something_here
+prereq_functor          = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor  = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params           = 
+name                    = st_binocular_upgrade_high_contrast_name
+description             = st_binocular_upgrade_high_contrast_descr
+icon                    = ui_inGame2_binocular_upgrade_HIGH_CONTRAST
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;PART3
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[up_gr_firstab_binoc_old]
+elements                = up_firsta_binoc_old
+
+[up_gr_firstcd_binoc_old]
+elements                = up_firstc_binoc_old
+
+[up_gr_firstef_binoc_old]
+elements                = up_firste_binoc_old

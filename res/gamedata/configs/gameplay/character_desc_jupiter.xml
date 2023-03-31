@@ -2180,8 +2180,6 @@
         [spawn] \n
         device_torch \n
         wpn_binoc \n
-        wpn_pkm_zulus \n
-        ammo_pkm_100 \n
         wpn_usp \n
         ammo_11.43x23_hydro \n
         vodka = 1 \n
@@ -2957,7 +2955,7 @@
     <visual>actors\stalker_dolg\stalker_dolg_1</visual>
     <supplies>
         [spawn] \n
-        wpn_pkm_zulus \n
+        wpn_pkm \n
         ammo_pkm_100 \n
         wpn_usp \n
         ammo_11.43x23_hydro \n

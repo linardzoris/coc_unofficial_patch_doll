@@ -337,28 +337,19 @@ end
 function jup_a10_proverka_wpn(first_speaker, second_speaker)
 	local table = {
 					"wpn_desert_eagle",
-					"wpn_desert_eagle_nimble",
 					"wpn_sig550",
 					"wpn_g36",
-					"wpn_g36_nimble",
-					"wpn_fn2000",
-					"wpn_fn2000_nimble",
 					"wpn_groza",
-					"wpn_groza_nimble",
 					"wpn_val",
 					"wpn_vintorez",
-					"wpn_vintorez_nimble",
 					"wpn_svd",
 					"wpn_svu",
 					"wpn_pkm",
 					"wpn_spas12",
-					"wpn_spas12_nimble",
 					"wpn_protecta",
-					"wpn_protecta_nimble",
 					"wpn_gauss",
 					"wpn_rpg7",
 					"wpn_rg-6",
-					"wpn_pkm_zulus",
 
 					}
 

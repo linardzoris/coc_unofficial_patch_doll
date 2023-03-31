@@ -547,7 +547,7 @@
     <snd_config>characters_voice\human\killer_3\</snd_config>
     <supplies>
         [spawn] \n
-        wpn_fn2000 \n
+        wpn_g36 \n
         ammo_5.56x45_ap = 1 \n
     </supplies>
     <start_dialog>hello_dialog</start_dialog>
@@ -1167,7 +1167,7 @@
     <snd_config>characters_voice\human\monolith_3\</snd_config>
     <supplies>
         [spawn] \n
-        wpn_fn2000 \n
+        wpn_g36 \n
         ammo_5.56x45_ap = 1 \n
     </supplies>
     <start_dialog>hello_dialog</start_dialog>
@@ -1187,7 +1187,7 @@
     <snd_config>characters_voice\human\monolith_3\</snd_config>
     <supplies>
         [spawn] \n
-        wpn_fn2000 \n
+        wpn_g36 \n
         ammo_5.56x45_ap = 1 \n
     </supplies>
     <start_dialog>hello_dialog</start_dialog>

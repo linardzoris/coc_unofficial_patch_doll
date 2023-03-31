@@ -649,7 +649,6 @@ function setup_weapon_fetch_task(actor,npc,p)
 				"wpn_svu",
 				"wpn_svd",
 				"wpn_g36",
-				"wpn_fn2000",
 				"wpn_pkm"
 		}
 		wpn = itm[math.random(#itm)]
@@ -3614,7 +3613,7 @@ function jup_b10_spawn_drunk_dead_items(actor, npc, p)
 
 	local items = {
 					[2] = 	{
-							["wpn_sig550_luckygun"] = 1,
+							["wpn_sig550"] = 1,
 							},
 					[1] = 	{
 							["ammo_5.45x39_fmj"] = 5,
@@ -3929,11 +3928,6 @@ function damage_actor_items_on_start(actor, npc)
 	obj = actor:object("stalker_outfit")
 	if obj ~= nil then
 		obj:set_condition(0.76)
-	end
-
-	obj = actor:object("wpn_pm_actor")
-	if obj ~= nil then
-		obj:set_condition(0.9)
 	end
 
 	obj = actor:object("wpn_ak74u")

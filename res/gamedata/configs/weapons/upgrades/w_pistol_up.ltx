@@ -1,0 +1,322 @@
+[up_sect_firsta_pistol]
+cost                                               = 4000
+rpm                                                = +20
+value                                              = +10
+
+[up_sect_firstc_pistol]
+hit_power                                          = +0.1
+bullet_speed                                       = +90
+cost                                               = 6000
+fire_dispersion_base                               = -0.01
+value                                              = +20
+
+[up_sect_firstd_pistol]
+cam_dispersion                                     = -0.07
+cam_dispersion_inc                                 = -0.07
+cam_step_angle_horz                                = -0.065
+cost                                               = 6000
+value                                              = -20
+
+[up_sect_firste_pistol]
+cost                                               = 4000
+fire_dispersion_base                               = -0.065
+value                                              = +45
+required_materials								   = af_medusa
+required_materials_count						   = 1
+
+[up_sect_secona_pistol]
+hit_power                                          = +0.05
+bullet_speed                                       = +60
+cost                                               = 4000
+value                                              = +10
+
+[up_sect_seconc_pistol]
+cost                                               = 4000
+rpm                                                = +30
+value                                              = +15
+
+[up_sect_second_pistol]
+condition_queue_shot_dec                           = -0.001
+condition_shot_dec                                 = -0.001
+cost                                               = 6000
+fire_dispersion_condition_factor                   = -0.5
+misfire_end_prob                                   = -0.02
+misfire_start_prob                                 = -0.002
+value                                              = +15
+
+[up_sect_thirda_pistol]
+cost                                               = 2000
+crosshair_inertion                                 = -0.3
+inv_weight                                         = -0.4
+PDM_disp_accel_factor                              = -0.15
+PDM_disp_base                                      = -0.05
+PDM_disp_vel_factor                                = -0.15
+value                                              = -0.4
+required_materials								   = af_gravi
+required_materials_count						   = 1
+
+[up_sect_thirdc_pistol]
+cost                                               = 6000
+crosshair_inertion                                 = -0.7
+PDM_disp_accel_factor                              = -0.35
+PDM_disp_base                                      = -0.15
+PDM_disp_vel_factor                                = -0.35
+value                                              = +15
+
+[up_sect_thirdd_pistol]
+condition_queue_shot_dec                           = -0.001
+condition_shot_dec                                 = -0.001
+cost                                               = 6000
+fire_dispersion_condition_factor                   = -0.5
+misfire_end_prob                                   = -0.02
+misfire_start_prob                                 = -0.002
+value                                              = +15
+
+[up_sect_fourta_pistol]
+cost                                               = 4000
+fire_dispersion_base                               = -0.02
+value                                              = +10
+
+[up_sect_fourtc_pistol]
+cost                                               = 6000
+fire_dispersion_base                               = -0.04
+value                                              = +20
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;PART2
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[up_firsta_pistol]
+description                                        = st_up_zatp_a1_descr
+effect_functor                                     = inventory_upgrades.effect_functor_a
+effect_parameter                                   = on_weapon_upgrade_something_here
+effects                                            = up_gr_firstcd_pistol
+icon                                               = ui_inGame2_pistol_upgrade_RPM
+known                                              = 1
+name                                               = st_up_zatp_a1_name
+precondition_functor                               = inventory_upgrades.precondition_functor_a
+precondition_parameter                             = a & b
+prereq_functor                                     = inventory_upgrades.prereq_functor_a
+prereq_params                                      = 
+prereq_tooltip_functor                             = inventory_upgrades.prereq_tooltip_functor_a
+property                                           = prop_rpm
+scheme_index                                       = 0, 0
+section                                            = up_sect_firsta_pistol
+
+[up_firstc_pistol]
+description                                        = st_up_zatp_b1_descr
+effect_functor                                     = inventory_upgrades.effect_functor_a
+effect_parameter                                   = something_here
+effects                                            = up_gr_firstef_pistol
+icon                                               = ui_inGame2_pistol_upgrade_BULLET_SPEED
+known                                              = 1
+name                                               = st_up_zatp_b1_name
+precondition_functor                               = inventory_upgrades.precondition_functor_a
+precondition_parameter                             = a & b
+prereq_functor                                     = inventory_upgrades.prereq_functor_a
+prereq_params                                      = 
+prereq_tooltip_functor                             = inventory_upgrades.prereq_tooltip_functor_a
+property                                           = prop_bullet_speed
+scheme_index                                       = 1, 0
+section                                            = up_sect_firstc_pistol
+
+[up_firstd_pistol]
+description                                        = st_up_zatp_b2_descr
+effect_functor                                     = inventory_upgrades.effect_functor_a
+effect_parameter                                   = something_here
+effects                                            = up_gr_firstef_pistol
+icon                                               = ui_inGame2_pistol_upgrade_RECOIL
+known                                              = 1
+name                                               = st_up_zatp_b2_name
+precondition_functor                               = inventory_upgrades.precondition_functor_a
+precondition_parameter                             = a & b
+prereq_functor                                     = inventory_upgrades.prereq_functor_a
+prereq_params                                      = 
+prereq_tooltip_functor                             = inventory_upgrades.prereq_tooltip_functor_a
+property                                           = prop_recoil
+scheme_index                                       = 1, 1
+section                                            = up_sect_firstd_pistol
+
+[up_firste_pistol]
+description                                        = st_up_assault_rifle_mlr_DISPERSION_2_descr
+effect_functor                                     = inventory_upgrades.effect_functor_a
+effect_parameter                                   = something_here
+effects                                            = 
+icon                                               = ui_inGame2_pistol_upgrade_DISPERSION
+known                                              = 1
+name                                               = st_up_assault_rifle_mlr_DISPERSION_name
+precondition_functor                               = inventory_upgrades.precondition_functor_a
+precondition_parameter                             = a & b
+prereq_functor                                     = inventory_upgrades.prereq_functor_a
+prereq_params                                      = 
+prereq_tooltip_functor                             = inventory_upgrades.prereq_tooltip_functor_a
+property                                           = prop_dispersion
+scheme_index                                       = 2, 0
+section                                            = up_sect_firste_pistol
+
+[up_secona_pistol]
+description                                        = st_up_barp_a1_descr
+effect_functor                                     = inventory_upgrades.effect_functor_a
+effect_parameter                                   = something_here
+effects                                            = up_gr_seconcd_pistol
+icon                                               = ui_inGame2_pistol_upgrade_BULLET_SPEED2
+known                                              = 1
+name                                               = st_up_barp_a1_name
+precondition_functor                               = inventory_upgrades.precondition_functor_a
+precondition_parameter                             = a & b
+prereq_functor                                     = inventory_upgrades.prereq_functor_a
+prereq_params                                      = 
+prereq_tooltip_functor                             = inventory_upgrades.prereq_tooltip_functor_a
+property                                           = prop_bullet_speed
+scheme_index                                       = 0, 1
+section                                            = up_sect_secona_pistol
+
+[up_seconc_pistol]
+description                                        = st_up_barp_b3_descr
+effect_functor                                     = inventory_upgrades.effect_functor_a
+effect_parameter                                   = something_here
+effects                                            = 
+icon                                               = ui_inGame2_pistol_upgrade_RPM2
+known                                              = 1
+name                                               = st_up_barp_b3_name
+precondition_functor                               = inventory_upgrades.precondition_functor_a
+precondition_parameter                             = a & b
+prereq_functor                                     = inventory_upgrades.prereq_functor_a
+prereq_params                                      = 
+prereq_tooltip_functor                             = inventory_upgrades.prereq_tooltip_functor_a
+property                                           = prop_rpm
+scheme_index                                       = 1, 2
+section                                            = up_sect_seconc_pistol
+
+[up_second_pistol]
+description                                        = st_up_barp_b1_descr
+effect_functor                                     = inventory_upgrades.effect_functor_a
+effect_parameter                                   = something_here
+effects                                            = 
+icon                                               = ui_inGame2_pistol_upgrade_RELIABILITY
+known                                              = 1
+name                                               = st_up_barp_b1_name
+precondition_functor                               = inventory_upgrades.precondition_functor_a
+precondition_parameter                             = a & b
+prereq_functor                                     = inventory_upgrades.prereq_functor_a
+prereq_params                                      = 
+prereq_tooltip_functor                             = inventory_upgrades.prereq_tooltip_functor_a
+property                                           = prop_reliability
+scheme_index                                       = 1, 3
+section                                            = up_sect_second_pistol
+
+[up_thirda_pistol]
+description                                        = st_up_assault_rifle_mlr_WEIGHT_descr
+effect_functor                                     = inventory_upgrades.effect_functor_a
+effect_parameter                                   = something_here
+effects                                            = up_gr_thirdcd_pistol
+icon                                               = ui_inGame2_pistol_upgrade_WEIGHT
+known                                              = 1
+name                                               = st_up_assault_rifle_mlr_WEIGHT_name
+precondition_functor                               = inventory_upgrades.precondition_functor_a
+precondition_parameter                             = a & b
+prereq_functor                                     = inventory_upgrades.prereq_functor_a
+prereq_params                                      = 
+prereq_tooltip_functor                             = inventory_upgrades.prereq_tooltip_functor_a
+property                                           = prop_weight
+scheme_index                                       = 0, 2
+section                                            = up_sect_thirda_pistol
+
+[up_thirdc_pistol]
+description                                        = st_up_stvp_b2_descr
+effect_functor                                     = inventory_upgrades.effect_functor_a
+effect_parameter                                   = something_here
+effects                                            = 
+icon                                               = ui_inGame2_pistol_upgrade_INERTION
+known                                              = 1
+name                                               = st_up_stvp_b2_name
+precondition_functor                               = inventory_upgrades.precondition_functor_a
+precondition_parameter                             = a & b
+prereq_functor                                     = inventory_upgrades.prereq_functor_a
+prereq_params                                      = 
+prereq_tooltip_functor                             = inventory_upgrades.prereq_tooltip_functor_a
+property                                           = prop_inertion
+scheme_index                                       = 1, 4
+section                                            = up_sect_thirdc_pistol
+
+[up_thirdd_pistol]
+description                                        = st_up_stvp_b4_descr
+effect_functor                                     = inventory_upgrades.effect_functor_a
+effect_parameter                                   = something_here
+effects                                            = 
+icon                                               = ui_inGame2_pistol_upgrade_RELIABILITY2
+known                                              = 1
+name                                               = st_up_stvp_b4_name
+precondition_functor                               = inventory_upgrades.precondition_functor_a
+precondition_parameter                             = a & b
+prereq_functor                                     = inventory_upgrades.prereq_functor_a
+prereq_params                                      = 
+prereq_tooltip_functor                             = inventory_upgrades.prereq_tooltip_functor_a
+property                                           = prop_reliability
+scheme_index                                       = 1, 5
+section                                            = up_sect_thirdd_pistol
+
+[up_fourta_pistol]
+description                                        = st_up_usmp_b1_descr
+effect_functor                                     = inventory_upgrades.effect_functor_a
+effect_parameter                                   = something_here
+effects                                            = up_gr_fourtcd_pistol
+icon                                               = ui_inGame2_pistol_upgrade_DISPERSION2
+known                                              = 1
+name                                               = st_up_usmp_b1_name
+precondition_functor                               = inventory_upgrades.precondition_functor_a
+precondition_parameter                             = a & b
+prereq_functor                                     = inventory_upgrades.prereq_functor_a
+prereq_params                                      = 
+prereq_tooltip_functor                             = inventory_upgrades.prereq_tooltip_functor_a
+property                                           = prop_dispersion
+scheme_index                                       = 0, 3
+section                                            = up_sect_fourta_pistol
+
+[up_fourtc_pistol]
+description                                        = st_up_usmp_b3_descr
+effect_functor                                     = inventory_upgrades.effect_functor_a
+effect_parameter                                   = something_here
+effects                                            = 
+icon                                               = ui_inGame2_pistol_upgrade_DISPERSION3
+known                                              = 1
+name                                               = st_up_usmp_b3_name
+precondition_functor                               = inventory_upgrades.precondition_functor_a
+precondition_parameter                             = a & b
+prereq_functor                                     = inventory_upgrades.prereq_functor_a
+prereq_params                                      = 
+prereq_tooltip_functor                             = inventory_upgrades.prereq_tooltip_functor_a
+property                                           = prop_dispersion
+scheme_index                                       = 1, 6
+section                                            = up_sect_fourtc_pistol
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;PART3
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[up_gr_firstab_pistol]
+elements                                           = up_firsta_pistol
+
+[up_gr_firstcd_pistol]
+elements                                           = up_firstc_pistol, up_firstd_pistol
+
+[up_gr_firstef_pistol]
+elements                                           = up_firste_pistol
+
+[up_gr_seconab_pistol]
+elements                                           = up_secona_pistol
+
+[up_gr_seconcd_pistol]
+elements                                           = up_seconc_pistol, up_second_pistol
+
+[up_gr_thirdab_pistol]
+elements                                           = up_thirda_pistol
+
+[up_gr_thirdcd_pistol]
+elements                                           = up_thirdc_pistol, up_thirdd_pistol
+
+[up_gr_fourtab_pistol]
+elements                                           = up_fourta_pistol
+
+[up_gr_fourtcd_pistol]
+elements                                           = up_fourtc_pistol

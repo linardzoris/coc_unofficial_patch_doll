@@ -1,0 +1,158 @@
+[up_sect_firsta_binoc]
+cost		      		= 4000
+value					= +5
+scope_zoom_factor       = 15
+
+[up_sect_firstc_binoc]
+cost					= 1500
+value					= -0.3
+inv_weight  			= -0.3
+
+[up_sect_firste_binoc]
+cost		      		= 20000
+inv_weight  			= +0.7
+scope_alive_detector 	= scope_detector
+
+[up_sect_secona_binoc]
+cost					= 1000
+value					= +1
+inv_weight  			= +0.2
+scope_nightvision       = effector_nightvision_1
+
+[up_sect_seconc_binoc]
+cost		      		= 2000
+value					= +2
+scope_nightvision       = effector_nightvision_2
+
+[up_sect_secone_binoc]
+cost		      		= 2500
+value					= +3
+scope_nightvision       = effector_nightvision_3
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;PART2
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[up_firsta_binoc]
+scheme_index            = 0, 0
+known                   = 1
+effects                 = 
+section                 = up_sect_firsta_binoc
+property                = prop_scope_5x
+precondition_functor    = inventory_upgrades.precondition_functor_a
+precondition_parameter  = true
+effect_functor          = inventory_upgrades.effect_functor_a
+effect_parameter        = something_here
+prereq_functor          = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor  = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params           = 
+name                    = st_binocular_upgrade_zoom_name
+description             = st_binocular_upgrade_zoom_descr
+icon                    = ui_inGame2_upgrade_binocular_ZOOM
+
+[up_firstc_binoc]
+scheme_index            = 0, 1
+known                   = 1
+effects                 = 
+section                 = up_sect_firstc_binoc
+property                = prop_weight
+precondition_functor    = inventory_upgrades.precondition_functor_a
+precondition_parameter  = true
+effect_functor          = inventory_upgrades.effect_functor_a
+effect_parameter        = something_here
+prereq_functor          = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor  = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params           = 
+name                    = st_binocular_upgrade_weight_name
+description             = st_binocular_upgrade_weight_descr
+icon                    = ui_inGame2_binocular_upgrade_WEIGHT
+
+[up_firste_binoc]
+scheme_index            = 0, 2
+known                   = 1
+effects                 = 
+section                 = up_sect_firste_binoc
+property                = prop_autolockscope
+precondition_functor    = inventory_upgrades.precondition_functor_a
+precondition_parameter  = true
+effect_functor          = inventory_upgrades.effect_functor_a
+effect_parameter        = something_here
+prereq_functor          = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor  = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params           = 
+name                    = st_binocular_upgrade_autolock_name
+description             = st_binocular_upgrade_autolock_descr
+icon                    = ui_inGame2_binocular_upgrade_AUTOLOCK
+
+[up_secona_binoc]
+scheme_index            = 0, 3
+known                   = 1
+effects                 = up_gr_seconcd_binoc
+section                 = up_sect_secona_binoc
+property                = prop_nightvision
+precondition_functor    = inventory_upgrades.precondition_functor_a
+precondition_parameter  = true
+effect_functor          = inventory_upgrades.effect_functor_a
+effect_parameter        = something_here
+prereq_functor          = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor  = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params           = 
+name                    = st_binocular_upgrade_nvg_1_name
+description             = st_binocular_upgrade_nvg_1_descr
+icon                    = ui_inGame2_binocular_upgrade_NVG_1
+
+[up_seconc_binoc]
+scheme_index            = 1, 0
+known                   = 1
+effects                 = up_gr_seconef_binoc
+section                 = up_sect_seconc_binoc
+property                = prop_nightvision
+precondition_functor    = inventory_upgrades.precondition_functor_a
+precondition_parameter  = true
+effect_functor          = inventory_upgrades.effect_functor_a
+effect_parameter        = something_here
+prereq_functor          = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor  = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params           = 
+name                    = st_binocular_upgrade_nvg_2_name
+description             = st_binocular_upgrade_nvg_2_descr
+icon                    = ui_inGame2_binocular_upgrade_NVG_2
+
+[up_secone_binoc]
+scheme_index            = 2, 0
+known                   = 1
+effects                 = 
+section                 = up_sect_secone_binoc
+property                = prop_nightvision
+precondition_functor    = inventory_upgrades.precondition_functor_a
+precondition_parameter  = true
+effect_functor          = inventory_upgrades.effect_functor_a
+effect_parameter        = something_here
+prereq_functor          = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor  = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params           = 
+name                    = st_binocular_upgrade_nvg_3_name
+description             = st_binocular_upgrade_nvg_3_descr
+icon                    = ui_inGame2_binocular_upgrade_NVG_3
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;PART3
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[up_gr_firstab_binoc]
+elements                = up_firsta_binoc
+
+[up_gr_firstcd_binoc]
+elements                = up_firstc_binoc
+
+[up_gr_firstef_binoc]
+elements                = up_firste_binoc
+
+[up_gr_seconab_binoc]
+elements                = up_secona_binoc
+
+[up_gr_seconcd_binoc]
+elements                = up_seconc_binoc
+
+[up_gr_seconef_binoc]
+elements                = up_secone_binoc

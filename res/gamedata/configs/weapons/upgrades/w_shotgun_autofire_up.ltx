@@ -1,0 +1,386 @@
+[up_sect_firsta_shotgun_autofire]
+condition_queue_shot_dec                           = -0.0003
+condition_shot_dec                                 = -0.0003
+cost                                               = 5000
+value                                              = +10
+
+[up_sect_firstc_shotgun_autofire]
+hit_power                                          = +0.1
+bullet_speed                                       = +90
+cost                                               = 7000
+fire_dispersion_base                               = -0.02
+value                                              = +20
+
+[up_sect_firstd_shotgun_autofire]
+cam_dispersion                                     = -0.03
+cam_dispersion_inc                                 = -0.03
+cam_step_angle_horz                                = -0.03
+cost                                               = 7000
+value                                              = -10
+zoom_cam_dispersion                                = -0.03
+zoom_cam_dispersion_inc                            = -0.03
+zoom_cam_step_angle_horz                           = -0.03
+
+[up_sect_firste_shotgun_autofire]
+cost                                               = 4000
+fire_dispersion_base                               = -0.07
+fire_dispersion_condition_factor                   = -0.25
+value                                              = +30
+required_materials								   = af_medusa
+required_materials_count						   = 2
+
+[up_sect_secona_shotgun_autofire]
+cost                                               = 2500
+crosshair_inertion                                 = -0.5
+inv_weight                                         = -1
+PDM_disp_accel_factor                              = -0.2
+PDM_disp_vel_factor                                = -0.2
+value                                              = -1
+required_materials								   = af_gravi
+required_materials_count						   = 1
+
+[up_sect_seconc_shotgun_autofire]
+cost                                               = 7000
+crosshair_inertion                                 = -1.5
+PDM_disp_accel_factor                              = -0.5
+PDM_disp_base                                      = -0.1
+PDM_disp_vel_factor                                = -0.5
+value                                              = +15
+
+[up_sect_second_shotgun_autofire]
+condition_queue_shot_dec                           = -0.0005
+condition_shot_dec                                 = -0.0005
+cost                                               = 7000
+value                                              = +15
+
+[up_sect_secone_shotgun_autofire]
+cam_dispersion                                     = -0.07
+cam_dispersion_inc                                 = -0.07
+cam_step_angle_horz                                = -0.07
+cost                                               = 4000
+value                                              = -30
+zoom_cam_dispersion                                = -0.08
+zoom_cam_dispersion_inc                            = -0.08
+zoom_cam_step_angle_horz                           = -0.08
+required_materials								   = af_night_star
+required_materials_count						   = 1
+
+[up_sect_thirda_shotgun_autofire]
+condition_queue_shot_dec                           = -0.0003
+condition_shot_dec                                 = -0.0003
+cost                                               = 5000
+value                                              = +10
+
+[up_sect_thirdc_shotgun_autofire]
+cost                                               = 7000
+fire_dispersion_base                               = -0.04
+fire_dispersion_condition_factor                   = -0.25
+value                                              = +20
+
+[up_sect_thirdd_shotgun_autofire]
+cam_dispersion                                     = -0.04
+cam_dispersion_inc                                 = -0.04
+cam_step_angle_horz                                = -0.04
+cost                                               = 7000
+value                                              = -15
+zoom_cam_dispersion                                = -0.04
+zoom_cam_dispersion_inc                            = -0.04
+zoom_cam_step_angle_horz                           = -0.04
+
+[up_sect_thirde_shotgun_autofire]
+condition_queue_shot_dec                           = -0.001
+condition_shot_dec                                 = -0.001
+cost                                               = 4000
+value                                              = +40
+required_materials								   = af_baloon
+required_materials_count						   = 1
+
+[up_sect_thirdf_shotgun_autofire]
+cost                                               = 3500
+rpm                                                = +50
+value                                              = +35
+required_materials								   = af_medusa, af_fireball
+required_materials_count						   = 1, 1
+
+[up_sect_fourta_shotgun_autofire]
+cost		      		                           = 3000
+fire_modes		  		                           = 1, -1
+rpm               		                           = +50
+condition_queue_shot_dec                           = +0.0002
+condition_shot_dec                                 = +0.0002
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;PART2
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[up_firsta_shotgun_autofire]
+description                                        = st_up_bard_a1_descr
+effect_functor                                     = inventory_upgrades.effect_functor_a
+effect_parameter                                   = on_weapon_upgrade_something_here
+effects                                            = up_gr_firstcd_shotgun_autofire
+icon                                               = ui_inGame2_ar_upgrade_RELIABILITY
+known                                              = 1
+name                                               = st_up_assault_rifle_mlr_RELIABILITY_name
+precondition_functor                               = inventory_upgrades.precondition_functor_a
+precondition_parameter                             = a & b
+prereq_functor                                     = inventory_upgrades.prereq_functor_a
+prereq_params                                      = 
+prereq_tooltip_functor                             = inventory_upgrades.prereq_tooltip_functor_a
+property                                           = prop_reliability
+scheme_index                                       = 0, 0
+section                                            = up_sect_firsta_shotgun_autofire
+
+[up_firstc_shotgun_autofire]
+description                                        = st_up_bard_b5_descr
+effect_functor                                     = inventory_upgrades.effect_functor_a
+effect_parameter                                   = on_weapon_upgrade_something_here
+effects                                            = up_gr_firstef_shotgun_autofire
+icon                                               = ui_inGame2_ar_upgrade_BULLET_SPEED
+known                                              = 1
+name                                               = st_up_assault_rifle_mlr_BULLET_SPEED_name
+precondition_functor                               = inventory_upgrades.precondition_functor_a
+precondition_parameter                             = a & b
+prereq_functor                                     = inventory_upgrades.prereq_functor_a
+prereq_params                                      = 
+prereq_tooltip_functor                             = inventory_upgrades.prereq_tooltip_functor_a
+property                                           = prop_bullet_speed
+scheme_index                                       = 1, 0
+section                                            = up_sect_firstc_shotgun_autofire
+
+[up_firstd_shotgun_autofire]
+description                                        = st_up_bard_b4_descr
+effect_functor                                     = inventory_upgrades.effect_functor_a
+effect_parameter                                   = on_weapon_upgrade_something_here
+effects                                            = up_gr_firstef_shotgun_autofire
+icon                                               = ui_inGame2_ar_upgrade_RECOIL
+known                                              = 1
+name                                               = st_up_assault_rifle_mlr_RECOIL_name
+precondition_functor                               = inventory_upgrades.precondition_functor_a
+precondition_parameter                             = a & b
+prereq_functor                                     = inventory_upgrades.prereq_functor_a
+prereq_params                                      = 
+prereq_tooltip_functor                             = inventory_upgrades.prereq_tooltip_functor_a
+property                                           = prop_recoil
+scheme_index                                       = 1, 1
+section                                            = up_sect_firstd_shotgun_autofire
+
+[up_firste_shotgun_autofire]
+description                                        = st_up_assault_rifle_mlr_DISPERSION_3_descr
+effect_functor                                     = inventory_upgrades.effect_functor_a
+effect_parameter                                   = on_weapon_upgrade_something_here
+effects                                            = 
+icon                                               = ui_inGame2_ar_upgrade_DISPERSION
+known                                              = 1
+name                                               = st_up_assault_rifle_mlr_DISPERSION_name
+precondition_functor                               = inventory_upgrades.precondition_functor_a
+precondition_parameter                             = a & b
+prereq_functor                                     = inventory_upgrades.prereq_functor_a
+prereq_params                                      = 
+prereq_tooltip_functor                             = inventory_upgrades.prereq_tooltip_functor_a
+property                                           = prop_dispersion
+scheme_index                                       = 2, 0
+section                                            = up_sect_firste_shotgun_autofire
+
+[up_secona_shotgun_autofire]
+description                                        = st_up_assault_rifle_mlr_WEIGHT_descr
+effect_functor                                     = inventory_upgrades.effect_functor_a
+effect_parameter                                   = on_weapon_upgrade_something_here
+effects                                            = up_gr_seconcd_shotgun_autofire
+icon                                               = ui_inGame2_ar_upgrade_WEIGHT
+known                                              = 1
+name                                               = st_up_assault_rifle_mlr_WEIGHT_name
+precondition_functor                               = inventory_upgrades.precondition_functor_a
+precondition_parameter                             = a & b
+prereq_functor                                     = inventory_upgrades.prereq_functor_a
+prereq_params                                      = 
+prereq_tooltip_functor                             = inventory_upgrades.prereq_tooltip_functor_a
+property                                           = prop_weight
+scheme_index                                       = 0, 1
+section                                            = up_sect_secona_shotgun_autofire
+
+[up_seconc_shotgun_autofire]
+description                                        = st_up_stvd_b2_descr
+effect_functor                                     = inventory_upgrades.effect_functor_a
+effect_parameter                                   = on_weapon_upgrade_something_here
+effects                                            = up_gr_seconef_shotgun_autofire
+icon                                               = ui_inGame2_ar_upgrade_INERTION
+known                                              = 1
+name                                               = st_up_assault_rifle_mlr_INERTION_name
+precondition_functor                               = inventory_upgrades.precondition_functor_a
+precondition_parameter                             = a & b
+prereq_functor                                     = inventory_upgrades.prereq_functor_a
+prereq_params                                      = 
+prereq_tooltip_functor                             = inventory_upgrades.prereq_tooltip_functor_a
+property                                           = prop_inertion
+scheme_index                                       = 1, 2
+section                                            = up_sect_seconc_shotgun_autofire
+
+[up_second_shotgun_autofire]
+description                                        = st_up_stvd_b5_descr
+effect_functor                                     = inventory_upgrades.effect_functor_a
+effect_parameter                                   = on_weapon_upgrade_something_here
+effects                                            = up_gr_seconef_shotgun_autofire
+icon                                               = ui_inGame2_ar_upgrade_RELIABILITY2
+known                                              = 1
+name                                               = st_up_assault_rifle_mlr_RELIABILITY_name
+precondition_functor                               = inventory_upgrades.precondition_functor_a
+precondition_parameter                             = a & b
+prereq_functor                                     = inventory_upgrades.prereq_functor_a
+prereq_params                                      = 
+prereq_tooltip_functor                             = inventory_upgrades.prereq_tooltip_functor_a
+property                                           = prop_reliability
+scheme_index                                       = 1, 3
+section                                            = up_sect_second_shotgun_autofire
+
+[up_secone_shotgun_autofire]
+description                                        = st_up_assault_rifle_mlr_RECOIL_3_descr
+effect_functor                                     = inventory_upgrades.effect_functor_a
+effect_parameter                                   = on_weapon_upgrade_something_here
+effects                                            = 
+icon                                               = ui_inGame2_ar_upgrade_RECOIL
+known                                              = 1
+name                                               = st_up_assault_rifle_mlr_RECOIL_name
+precondition_functor                               = inventory_upgrades.precondition_functor_a
+precondition_parameter                             = a & b
+prereq_functor                                     = inventory_upgrades.prereq_functor_a
+prereq_params                                      = 
+prereq_tooltip_functor                             = inventory_upgrades.prereq_tooltip_functor_a
+property                                           = prop_recoil
+scheme_index                                       = 2, 1
+section                                            = up_sect_secone_shotgun_autofire
+
+[up_thirda_shotgun_autofire]
+description                                        = st_up_autd_a2_descr
+effect_functor                                     = inventory_upgrades.effect_functor_a
+effect_parameter                                   = on_weapon_upgrade_something_here
+effects                                            = up_gr_thirdcd_shotgun_autofire
+icon                                               = ui_inGame2_ar_upgrade_RELIABILITY3
+known                                              = 1
+name                                               = st_up_assault_rifle_mlr_RELIABILITY_name
+precondition_functor                               = inventory_upgrades.precondition_functor_a
+precondition_parameter                             = a & b
+prereq_functor                                     = inventory_upgrades.prereq_functor_a
+prereq_params                                      = 
+prereq_tooltip_functor                             = inventory_upgrades.prereq_tooltip_functor_a
+property                                           = prop_reliability
+scheme_index                                       = 0, 2
+section                                            = up_sect_thirda_shotgun_autofire
+
+[up_thirdc_shotgun_autofire]
+description                                        = st_up_autd_b2_descr
+effect_functor                                     = inventory_upgrades.effect_functor_a
+effect_parameter                                   = on_weapon_upgrade_something_here
+effects                                            = up_gr_thirdef_shotgun_autofire
+icon                                               = ui_inGame2_ar_upgrade_DISPERSION2
+known                                              = 1
+name                                               = st_up_assault_rifle_mlr_DISPERSION_name
+precondition_functor                               = inventory_upgrades.precondition_functor_a
+precondition_parameter                             = a & b
+prereq_functor                                     = inventory_upgrades.prereq_functor_a
+prereq_params                                      = 
+prereq_tooltip_functor                             = inventory_upgrades.prereq_tooltip_functor_a
+property                                           = prop_dispersion
+scheme_index                                       = 1, 4
+section                                            = up_sect_thirdc_shotgun_autofire
+
+[up_thirdd_shotgun_autofire]
+description                                        = st_up_autd_b1_descr
+effect_functor                                     = inventory_upgrades.effect_functor_a
+effect_parameter                                   = on_weapon_upgrade_something_here
+effects                                            = up_gr_thirdef_shotgun_autofire
+icon                                               = ui_inGame2_ar_upgrade_RECOIL2
+known                                              = 1
+name                                               = st_up_assault_rifle_mlr_RECOIL_name
+precondition_functor                               = inventory_upgrades.precondition_functor_a
+precondition_parameter                             = a & b
+prereq_functor                                     = inventory_upgrades.prereq_functor_a
+prereq_params                                      = 
+prereq_tooltip_functor                             = inventory_upgrades.prereq_tooltip_functor_a
+property                                           = prop_recoil
+scheme_index                                       = 1, 5
+section                                            = up_sect_thirdd_shotgun_autofire
+
+[up_thirde_shotgun_autofire]
+description                                        = st_up_assault_rifle_mlr_RELIABILITY_descr
+effect_functor                                     = inventory_upgrades.effect_functor_a
+effect_parameter                                   = on_weapon_upgrade_something_here
+effects                                            = 
+icon                                               = ui_inGame2_ar_upgrade_RELIABILITY2
+known                                              = 1
+name                                               = st_up_assault_rifle_mlr_RELIABILITY_name
+precondition_functor                               = inventory_upgrades.precondition_functor_a
+precondition_parameter                             = a & b
+prereq_functor                                     = inventory_upgrades.prereq_functor_a
+prereq_params                                      = 
+prereq_tooltip_functor                             = inventory_upgrades.prereq_tooltip_functor_a
+property                                           = prop_reliability
+scheme_index                                       = 2, 2
+section                                            = up_sect_thirde_shotgun_autofire
+
+[up_thirdf_shotgun_autofire]
+description                                        = st_up_assault_rifle_mlr_RPM_3_descr
+effect_functor                                     = inventory_upgrades.effect_functor_a
+effect_parameter                                   = on_weapon_upgrade_something_here
+effects                                            = 
+icon                                               = ui_inGame2_ar_upgrade_RPM
+known                                              = 1
+name                                               = st_up_assault_rifle_mlr_RPM_name
+precondition_functor                               = inventory_upgrades.precondition_functor_a
+precondition_parameter                             = a & b
+prereq_functor                                     = inventory_upgrades.prereq_functor_a
+prereq_params                                      = 
+prereq_tooltip_functor                             = inventory_upgrades.prereq_tooltip_functor_a
+property                                           = prop_rpm
+scheme_index                                       = 2, 3
+section                                            = up_sect_thirdf_shotgun_autofire
+
+[up_fourta_shotgun_autofire]
+scheme_index                                       = 1, 6
+known                                              = 1
+effects                                            =
+section                                            = up_sect_fourta_shotgun_autofire
+property                                           = prop_autofire
+precondition_functor                               = inventory_upgrades.precondition_functor_a
+precondition_parameter                             = a & b
+effect_functor                                     = inventory_upgrades.effect_functor_a
+effect_parameter                                   = something_here
+prereq_functor                                     = inventory_upgrades.prereq_functor_a
+prereq_tooltip_functor                             = inventory_upgrades.prereq_tooltip_functor_a
+prereq_params                                      = 
+name                                               = st_up_autofire_name
+description                                        = st_up_autofire_descr
+icon                                               = ui_inGame2_shotgun_upgrade_AUTOFIRE
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;PART3
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[up_gr_firstab_shotgun_autofire]
+elements                                           = up_firsta_shotgun_autofire
+
+[up_gr_firstcd_shotgun_autofire]
+elements                                           = up_firstc_shotgun_autofire, up_firstd_shotgun_autofire
+
+[up_gr_firstef_shotgun_autofire]
+elements                                           = up_firste_shotgun_autofire
+
+[up_gr_seconab_shotgun_autofire]
+elements                                           = up_secona_shotgun_autofire
+
+[up_gr_seconcd_shotgun_autofire]
+elements                                           = up_seconc_shotgun_autofire, up_second_shotgun_autofire
+
+[up_gr_seconef_shotgun_autofire]
+elements                                           = up_secone_shotgun_autofire
+
+[up_gr_thirdab_shotgun_autofire]
+elements                                           = up_thirda_shotgun_autofire
+
+[up_gr_thirdcd_shotgun_autofire]
+elements                                           = up_thirdc_shotgun_autofire, up_thirdd_shotgun_autofire
+
+[up_gr_thirdef_shotgun_autofire]
+elements                                           = up_thirde_shotgun_autofire, up_thirdf_shotgun_autofire
+
+[up_gr_fourtab_shotgun_autofire]
+elements                                           = up_fourta_shotgun_autofire

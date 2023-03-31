@@ -43,7 +43,7 @@ feel_grenade_time       = 0.5	;время гранаты (сек) после которого актер чувствуе
 ef_creature_type        = 17	; option for evaluation functions
 
 ; attach params
-attachable_items        = device_torch,device_torch_bad,device_torch_mid,device_torch_wid,device_torch_top,device_nvg_1,device_nvg_2,device_nvg_3,attachable_item,hand_radio
+attachable_items        = device_torch,device_torch_bad,device_torch_mid,device_torch_far,device_torch_wid,device_torch_top,device_nvg_1,device_nvg_2,device_nvg_3,attachable_item,hand_radio
 
 ph_box0_center                   = 0.0,  0.9,  0.0
 ph_box0_size                     = 0.35, 0.9,  0.35
@@ -369,113 +369,60 @@ visual         			= dynamics\weapons\wpn_hand\wpn_hand_loner_exo
 
 [actor_hud_loner_novice]:actor_hud
 visual         			= dynamics\weapons\wpn_hand\wpn_hand_loner_novice
-[actor_hud_duty_novice]:actor_hud
-visual         			= dynamics\weapons\wpn_hand\wpn_hand_duty_novice
-[actor_hud_freedom_novice]:actor_hud
-visual         			= dynamics\weapons\wpn_hand\wpn_hand_freedom_novice
 [actor_hud_bandit_novice]:actor_hud
 visual         			= dynamics\weapons\wpn_hand\wpn_hand_bandit_novice
-[actor_hud_white_novice]:actor_hud
-visual         			= dynamics\weapons\wpn_hand\wpn_hand_white_novice
-[actor_hud_merc_novice]:actor_hud
-visual         			= dynamics\weapons\wpn_hand\wpn_hand_merc_novice
-[actor_hud_military_novice]:actor_hud
-visual         			= dynamics\weapons\wpn_hand\wpn_hand_military_novice
+[actor_hud_bandit_trench]:actor_hud
+visual         			= dynamics\weapons\wpn_hand\wpn_hand_bandit_trench
+[actor_hud_bandit_trench_brown]:actor_hud
+visual         			= dynamics\weapons\wpn_hand\wpn_hand_bandit_trench_brown
+
+; Basic
+
+[actor_hud_cs_light]:actor_hud
+visual         			= dynamics\weapons\wpn_hand\wpn_hand_cs2
+[actor_hud_bandit_merc]:actor_hud
+visual         			= dynamics\weapons\wpn_hand\wpn_hand_bandit_merc
+[actor_hud_bandit_merc_ps5]:actor_hud
+visual         			= dynamics\weapons\wpn_hand\wpn_hand_merc_ps5
+[actor_hud_ecologist_guard]:actor_hud
+visual         			= dynamics\weapons\wpn_hand\wpn_hand_ecologist_guard
+[actor_hud_loner_sunrise]:actor_hud
+visual         			= dynamics\weapons\wpn_hand\wpn_hand_loner_sunrise
+[actor_hud_loner_radiation]:actor_hud
+visual         			= dynamics\weapons\wpn_hand\wpn_hand_loner_radiation_suit
+[actor_hud_merc_suit]:actor_hud
+visual         			= dynamics\weapons\wpn_hand\wpn_hand_merc_suit
+[actor_hud_military_berill]:actor_hud
+visual         			= dynamics\weapons\wpn_hand\wpn_hand_military_berill
+[actor_hud_military_bulat]:actor_hud
+visual         			= dynamics\weapons\wpn_hand\wpn_hand_military_bulat
+[actor_hud_military_skat_9]:actor_hud
+visual         			= dynamics\weapons\wpn_hand\wpn_hand_military_skat_9
+[actor_hud_monolith_suit]:actor_hud
+visual         			= dynamics\weapons\wpn_hand\wpn_hand_monolith_suit
+[actor_hud_monolith_radiation]:actor_hud
+visual         			= dynamics\weapons\wpn_hand\wpn_hand_monolith_radiation_suit
 
 ; Scientific
 
-[actor_hud_freedom_seva]:actor_hud
-visual         			= dynamics\weapons\wpn_hand\wpn_hand_freedom_seva
 [actor_hud_loner_seva]:actor_hud
 visual         			= dynamics\weapons\wpn_hand\wpn_hand_loner_seva
 [actor_hud_monolith_seva]:actor_hud
-visual         			= dynamics\weapons\wpn_hand\wpn_hand_monolith_suit;wpn_hand_monolith_seva
-[actor_hud_duty_seva]:actor_hud
-visual         			= dynamics\weapons\wpn_hand\wpn_hand_duty_seva
-
-; Radsuit
-
-[actor_hud_radiation]:actor_hud
-visual         			= dynamics\weapons\wpn_hand\wpn_hand_loner_rad
-[actor_hud_duty_radiation]:actor_hud
-visual         			= dynamics\weapons\wpn_hand\wpn_hand_duty_rad
-[actor_hud_freedom_radiation]:actor_hud
-visual         			= dynamics\weapons\wpn_hand\wpn_hand_freedom_rad
-[actor_hud_merc_radiation]:actor_hud
-visual         			= dynamics\weapons\wpn_hand\wpn_hand_merc_rad
-[actor_hud_monolith_radiation]:actor_hud
-visual         			= dynamics\weapons\wpn_hand\wpn_hand_monolith_rad
-
-; Army
-
-[actor_hud_military_berill]:actor_hud
-visual         			= dynamics\weapons\wpn_hand\wpn_hand_military_berill
-[actor_hud_military_skat9]:actor_hud
-visual         			= dynamics\weapons\wpn_hand\wpn_hand_military_skat9
-
-; Bandit
-
-[actor_hud_bandit_suit]:actor_hud
-visual         			= dynamics\weapons\wpn_hand\wpn_hand_bandit_suit
-[actor_hud_bandit_trench]:actor_hud
-visual         			= dynamics\weapons\wpn_hand\wpn_hand_bandit_trench
-[actor_hud_brown_trench]:actor_hud
-visual         			= dynamics\weapons\wpn_hand\wpn_hand__brown
-
-; CS
-
-[actor_hud_cs1]:actor_hud ; Этот оставляем
-visual         			= dynamics\weapons\wpn_hand\wpn_hand_cs1
-
-[actor_hud_cs2]:actor_hud
-visual         			= dynamics\weapons\wpn_hand\wpn_hand_cs2
-[actor_hud_cs3a]:actor_hud
-visual         			= dynamics\weapons\wpn_hand\wpn_hand_cs3a
-[actor_hud_cs3b]:actor_hud
-visual         			= dynamics\weapons\wpn_hand\wpn_hand_cs3b
-
-; Duty
-
-[actor_hud_duty_ps5m]:actor_hud
-visual         			= dynamics\weapons\wpn_hand\wpn_hand_duty_ps5m
-[actor_hud_duty_psz9d]:actor_hud
-visual         			= dynamics\weapons\wpn_hand\wpn_hand_duty_psz9d
-
-; Ecologist
-
+visual         			= dynamics\weapons\wpn_hand\wpn_hand_monolith_seva
+[actor_hud_merc_seva]:actor_hud
+visual         			= dynamics\weapons\wpn_hand\wpn_hand_merc_seva
 [actor_hud_ecologist_ssp99]:actor_hud
 visual         			= dynamics\weapons\wpn_hand\wpn_hand_ecologist_ssp99
 [actor_hud_ecologist_ssp99m]:actor_hud
 visual         			= dynamics\weapons\wpn_hand\wpn_hand_ecologist_ssp99m
-[actor_hud_ecologist_guard]:actor_hud
-visual         			= dynamics\weapons\wpn_hand\wpn_hand_ecologist_guard
-[actor_hud_ecologist_white]:actor_hud
-visual         			= dynamics\weapons\wpn_hand\wpn_hand_ecologist_white
-[actor_hud_ecologist_blue]:actor_hud
-visual         			= dynamics\weapons\wpn_hand\wpn_hand_ecologist_blue
 
-; Freedom
+; Personal
 
-[actor_hud_freedom_sentinel]:actor_hud
-visual         			= dynamics\weapons\wpn_hand\wpn_hand_freedom_sentinel
-[actor_hud_freedom_guardian]:actor_hud
-visual         			= dynamics\weapons\wpn_hand\wpn_hand_freedom_guardian
-[actor_hud_freedom_wind]:actor_hud
-visual         			= dynamics\weapons\wpn_hand\wpn_hand_freedom_wind
-
-; Loner
-
-[actor_hud_loner_sunrise]:actor_hud
-visual         			= dynamics\weapons\wpn_hand\wpn_hand_loner_sunrise
-
-; Merc
-
-[actor_hud_merc_suit]:actor_hud
-visual         			= dynamics\weapons\wpn_hand\wpn_hand_merc_suit
-[actor_hud_merc_stalker]:actor_hud
-visual         			= dynamics\weapons\wpn_hand\wpn_hand_merc_stalker
-
-; Monolith
-
-[actor_hud_monolith_suit]:actor_hud
-visual         			= dynamics\weapons\wpn_hand\wpn_hand_monolith_suit
+[actor_hud_redline_novice]:actor_hud
+visual         			= dynamics\weapons\wpn_hand\wpn_hand_redline_novice
+[actor_hud_loner_novice_camo]:actor_hud
+visual         			= dynamics\weapons\wpn_hand\wpn_hand_loner_novice_camo
+[actor_hud_loner_sunrise_touristic]:actor_hud
+visual         			= dynamics\weapons\wpn_hand\wpn_hand_loner_sunrise_touristic
+[actor_hud_ghillie]:actor_hud
+visual         			= dynamics\weapons\wpn_hand\wpn_hand_ghillie

@@ -114,12 +114,13 @@ function get_object_data(sobj)
 		["WP_PM"] = this.get_weapon_data,
 		["WP_RG6"] = this.get_weapon_data,
 		["WP_RPG7"] = this.get_weapon_data,
+		["WP_RPG26"] = this.get_weapon_data,		
 		["WP_SVD"] = this.get_weapon_data,
 		["WP_SVU"] = this.get_weapon_data,
 		["WP_VAL"] = this.get_weapon_data,
 		["W_MOUNTD"] = this.get_weapon_data,
 		["W_STMGUN"] = this.get_weapon_data,
-
+		
 		["S_EXPLO"]  = this.get_item_data,
 		["II_EXPLO"]  = this.get_item_data,
 
@@ -268,12 +269,13 @@ function set_object_data(t,sobj)
 		["WP_PM"] = this.set_weapon_data,
 		["WP_RG6"] = this.set_weapon_data,
 		["WP_RPG7"] = this.set_weapon_data,
+		["WP_RPG26"] = this.set_weapon_data,		
 		["WP_SVD"] = this.set_weapon_data,
 		["WP_SVU"] = this.set_weapon_data,
 		["WP_VAL"] = this.set_weapon_data,
 		["W_MOUNTD"] = this.set_weapon_data,
 		["W_STMGUN"] = this.set_weapon_data,
-
+		
 		["S_EXPLO"]  = this.set_item_data,
 		["II_EXPLO"]  = this.set_item_data,
 

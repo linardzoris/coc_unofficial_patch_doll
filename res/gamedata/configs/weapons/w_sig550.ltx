@@ -1,192 +1,308 @@
-[scope_susat_custom_sig]
-scope_name                               = wpn_addon_scope_susat_custom
-scope_x                                  = 78
-scope_y                                  = 0
+[wpn_sig550]:new_weapon_params
+GroupControlSection					= spawn_group
+$spawn								= "weapons\wpn_sig550"
+$npc 								= on
+$prefetch							= 8
+scheduled							= off
+cform								= skeleton
+class								= WP_AK74
 
-[scope_susat_dusk_sig]
-scope_name                               = wpn_addon_scope_susat_dusk
-scope_x                                  = 78
-scope_y                                  = 0
+scopes 								= acog_scope, pn23_scope, barska_scope, eotech_scope, specter_scope
+parent_section  					= wpn_sig550
 
-[scope_susat_night_sig]
-scope_name                               = wpn_addon_scope_susat_night
-scope_x                                  = 78
-scope_y                                  = 0
+ef_main_weapon_type					= 2
+ef_weapon_type						= 8
 
-[scope_susat_sig]
-scope_name                               = wpn_addon_scope_susat
-scope_x                                  = 78
-scope_y                                  = 0
+inv_name 							= st_wpn_sig550
+inv_name_short						= st_wpn_sig550
+description							= st_wpn_sig550_descr
 
-[scope_susat_x1.6_sig]
-scope_name                               = wpn_addon_scope_susat_x1.6
-scope_x                                  = 78
-scope_y                                  = 0
+inv_grid_width						= 5
+inv_grid_height						= 2
+inv_grid_x							= 37
+inv_grid_y							= 10
 
-[wpn_sig550]:default_weapon_params
-$spawn                                   = "weapons\sig550"
-PDM_disp_accel_factor                    = 2.0
-PDM_disp_base                            = 1.0
-PDM_disp_crouch                          = 1.0
-PDM_disp_crouch_no_acc                   = 1.0
-PDM_disp_vel_factor                      = 2.0
-ammo_class                               = ammo_5.56x45_ss190, ammo_5.56x45_ap
-ammo_elapsed                             = 20
-ammo_mag_size                            = 20
-animation_slot                           = 2
-bullet_speed                             = 910
-cam_dispersion                           = 0.55
-cam_dispersion_frac                      = 1.0
-cam_dispersion_inc                       = 0.05
-cam_max_angle                            = 100.0
-cam_max_angle_horz                       = 5.0
-cam_relax_speed                          = 8
-cam_relax_speed_ai                       = 360
-cam_return                               = 0
-cam_step_angle_horz                      = 0.4
-class                                    = WP_AK74
-condition_queue_shot_dec                 = 0.0009
-condition_shot_dec                       = 0.0008
-control_inertion_factor                  = 1.3
-cost                                     = 28000
-crosshair_inertion                       = 7.0
-description                              = st_wpn_sig550_descr
-ef_main_weapon_type                      = 2
-ef_weapon_type                           = 6
-fire_dispersion_base                     = 0.21
-fire_dispersion_condition_factor         = 2
-fire_distance                            = 1000
-fire_modes                               = 1, 3, -1
-fire_point                               = 0.0, 0.137, 0.649
-fire_point2                              = 0.0, 0.097, 0.722
-flame_particles                          = weapons\generic_weapon05
-grenade_class                            = ammo_m209
-grenade_flame_particles                  = weapons\generic_weapon01
-grenade_launcher_name                    = wpn_addon_grenade_launcher_m203
-grenade_launcher_status                  = 2
-grenade_launcher_x                       = 109
-grenade_launcher_y                       = 30
-hit_impulse                              = 40
-hit_power                                = 0.48, 0.48, 0.48, 0.48
-hud                                      = wpn_sig550_hud
-inertion_origin_offset                   = -0.045
-inertion_origin_aim_offset               = -0.025
-inertion_tendto_speed                    = 5.5
-inertion_tendto_aim_speed                = 9
-inv_grid_height                          = 2
-inv_grid_width                           = 5
-inv_grid_x                               = 15
-inv_grid_y                               = 25
-inv_name                                 = st_wpn_sig550
-inv_name_short                           = st_wpn_sig550
-inv_weight                               = 4.1
-light_range                              = 5
-misfire_end_condition                    = 0.1
-misfire_end_prob                         = 0.075
-misfire_start_condition                  = 0.75
-misfire_start_prob                       = 0.005
-orientation                              = 0, 0, 0
-ph_mass                                  = 4
-position                                 = -0.026, -0.097, 0.0
-reload_dof                               = 0.0, 0.5, 5, 2
-rpm                                      = 650
-scope_status                             = 2
-scopes_sect                              = scope_susat_sig, scope_susat_x1.6_sig, scope_susat_custom_sig, scope_susat_dusk_sig, scope_susat_night_sig
-shell_dir                                = 0.0, 0.0, 0.4
-shell_particles                          = weapons\generic_shells
-shell_point                              = -0.020000,0.167000,0.082000
-silencer_light_range                     = 1
-silencer_name                            = wpn_addon_rifle_suppressor
-silencer_smoke_particles                 = weapons\generic_shoot_00
-silencer_status                          = 2
-silencer_x                               = 221
-silencer_y                               = 15
-single_handed                            = 0
-slot                                     = 2
-smoke_particles                          = weapons\generic_shoot_00
-snd_bore                                 = weapons\draw_silent
-snd_bore1                                = weapons\mp5_bore
-snd_draw                                 = weapons\ak74_draw
-snd_empty                                = weapons\gen_empty, 0.5
-snd_holster                              = weapons\generic_holster
-snd_reload                               = weapons\sig550_reload
-snd_reload_grenade                       = weapons\sig550_grenload
-snd_shoot                                = weapons\n_sig550_shot
-snd_shoot_grenade                        = weapons\gen_grenshoot
-snd_silncer_shot                         = weapons\w_ak74_shot1
-snd_switch                               = weapons\groza_switch, 1.0, 0.5
-strap_bone0                              = bip01_spine2
-strap_bone1                              = bip01_spine1
-strap_orientation                        = -15,-9,110
-strap_position                           = -0.26,-0.11,0.25
-time_to_aim                              = 3.0
-upgr_icon_height                         = 81
-upgr_icon_width                          = 296
-upgr_icon_x                              = 598
-upgr_icon_y                              = 476
-upgrade_scheme                           = upgrade_scheme_sig550
-upgrades                                 = up_gr_firstab_sig550, up_gr_seconab_sig550, up_gr_thirdab_sig550, up_gr_fourtab_sig550, up_gr_fifthab_sig550
-visual                                   = dynamics\weapons\wpn_sig550\wpn_sig550.ogf
-weapon_class                             = assault_rifle
-zoom_cam_dispersion                      = 0.39
-zoom_cam_dispersion_inc                  = 0.04
-zoom_cam_step_angle_horz                 = 0.3
-zoom_dof                                 = 0.5, 1.0, 180
-zoom_enabled                             = true
-zoom_rotate_time                         = 0.25
+upgr_icon_height            		= 200
+upgr_icon_width             		= 300
+upgr_icon_x							= 0
+upgr_icon_y 						= 0
 
-[wpn_sig550_hud]:hud_base
-aim_hud_offset_pos                       = -0.106000, 0.024500,-0.074000
-aim_hud_offset_pos_16x9                  = -0.111900, 0.032300,-0.074000
-aim_hud_offset_rot                       = -0.019500, 0.002000,-0.010000
-aim_hud_offset_rot_16x9                  = 0.010000, 0.001800,-0.010000
-anm_bore                                 = sig550_idle_bore
-anm_bore_g                               = sig550_idle_bore_grenade
-anm_bore_w_gl                            = sig550_idle_bore_w_gl
-anm_hide                                 = sig550_holster
-anm_hide_g                               = sig550_holster_grenade
-anm_hide_w_gl                            = sig550_holster_w_gl
-anm_idle                                 = sig550_idle
-anm_idle_aim                             = sig550_idle_aim
-anm_idle_g                               = sig550_idle_grenade
-anm_idle_g_aim                           = sig550_idle_grenade
-anm_idle_moving                          = sig550_idle_moving
-anm_idle_moving_g                        = sig550_idle_moving_grenade
-anm_idle_moving_w_gl                     = sig550_idle_moving_w_gl
-anm_idle_sprint                          = sig550_idle_sprint
-anm_idle_sprint_g                        = sig550_idle_sprint_grenade
-anm_idle_sprint_w_gl                     = sig550_idle_sprint_w_gl
-anm_idle_w_gl                            = sig550_idle_w_gl
-anm_idle_w_gl_aim                        = sig550_idle_w_gl_aim
-anm_reload                               = sig550_reload
-anm_reload_g                             = sig550_reload_grenade
-anm_reload_w_gl                          = sig550_reload_w_gl
-anm_shots                                = sig550_shoot,, 1.5
-anm_shots_g                              = sig550_shoot_grenade
-anm_shots_w_gl                           = sig550_shoot_w_gl,, 2.0
-anm_show                                 = sig550_draw
-anm_show_g                               = sig550_draw_grenade
-anm_show_w_gl                            = sig550_draw_w_gl
-anm_switch                               = sig550_switch_off,, 0.5
-anm_switch_g                             = sig550_switch_on,, 0.5
-fire_bone                                = wpn_body
-fire_bone2                               = wpn_body
-fire_point                               = 0,0.056,0.746
-fire_point2                              = 0.0,-0.028,0.678
-gl_hud_offset_pos                        = 0,0,0
-gl_hud_offset_pos_16x9                   = 0,0,0
-gl_hud_offset_rot                        = 0,0,0
-gl_hud_offset_rot_16x9                   = 0,0,0
-hands_orientation                        = -0.500000,-0.750000,-2.000000
-hands_orientation_16x9                   = -0.500000,1.000000,-2.000000
-hands_position                           = -0.050000,-0.151000,0.092500
-hands_position_16x9                      = -0.044000,-0.156000,0.100000
-item_orientation                         = 0.642900,0.520562,361.843872
-item_position                            = 0.002866,-0.006395,0.000780
-item_visual                              = dynamics\weapons\wpn_sig550\wpn_sig550_hud
-lean_hud_offset_pos                      = 0,0,0
-lean_hud_offset_rot                      = 0,0,0
-shell_bone                               = wpn_body
-shell_dir                                = 0.0, 1.0, 0.0
-shell_point                              = 0.028,0.075,0.156
-zoom_hide_crosshair                      = true
+cost 								= 40000
+weapon_class						= assault_rifle
+inv_weight							= 4.1
+hud									= wpn_sig550_hud
+visual								= dynamics\weapons\wpn_sig550\wpn_sig550_world.ogf
+
+upgrade_scheme              		= 
+upgrades                    		= 
+
+snd_draw                			= weapons\m4a1_ras\m4a1_draw
+snd_reload              			= weapons\sig550\sig550_reload
+snd_reload_empty        			= weapons\sig550\sig550_reload_empty
+snd_holster							= weapons\rifle_holster
+snd_empty               			= weapons\_dryfire\556_dry
+snd_reload_misfire      			= weapons\sig550\sig550_unjam
+snd_shoot_grenade					= weapons\_gl\gp_throw
+snd_switch							= weapons\sig550\sig550_gl_on
+snd_reload_grenade      			= weapons\sig550\sig550_gl_reload
+
+snd_shoot               			= weapons\_gunfire\sig550\close_1
+snd_shoot1              			= weapons\_gunfire\sig550\close_2
+snd_shoot2              			= weapons\_gunfire\sig550\close_3
+snd_shoot3              			= weapons\_gunfire\sig550\close_4
+snd_reflect                			= weapons\_gunfire\sig550\close_distance
+snd_shoot_distant           		= weapons\_gunfire\sig550\medium_distance
+snd_shoot_distant_far       		= nil
+snd_silncer_shot        			= weapons\_sil\556\sd_close_1
+snd_silncer_shot1        			= weapons\_sil\556\sd_close_2
+snd_silncer_shot2        			= weapons\_sil\556\sd_close_3
+snd_silncer_shot3        			= weapons\_sil\556\sd_close_4
+snd_reflect_sil             		= weapons\_sil\556\tail_sd_1
+
+ph_mass								= 3
+
+ammo_class		 					= ammo_5.56x45_ss190, ammo_5.56x45_ap	
+ammo_elapsed						= 30
+ammo_mag_size						= 30
+fire_modes							= 1, 3, -1
+grenade_class						= ammo_m209
+grenade_vel 						= 76
+launch_speed						= 76
+hand_dependence						= 1
+single_handed						= 0
+
+hit_power							= 0.52
+hit_impulse							= 25
+hit_type							= fire_wound
+fire_distance						= 1100
+bullet_speed						= 910
+rpm									= 700
+rpm_empty_click						= 200
+
+use_aim_bullet						= false
+time_to_aim							= 2
+
+misfire_probability                 = 0.005
+misfire_start_condition             = 0.7
+misfire_start_prob                  = 0.007
+misfire_end_condition               = 0.12
+misfire_end_prob                    = 0.11
+
+condition_shot_dec          		= 0.000355
+condition_queue_shot_dec    		= 0.000569
+
+zoom_dof							= 0.5,1,180
+reload_dof							= 0,0.5,5,2
+
+fire_dispersion_base				= 0.21
+fire_dispersion_condition_factor	= 2
+control_inertion_factor				= 1.25f
+crosshair_inertion					= 6
+
+cam_return                          = 0
+cam_relax_speed                     = 9
+cam_dispersion                      = 0.556
+cam_dispersion_frac                 = 1.0
+cam_dispersion_inc                  = 0.0675
+cam_max_angle                       = 23.0
+cam_max_angle_horz                  = 14.0
+cam_step_angle_horz                 = 1.5
+cam_relax_speed_ai              	= 360
+
+zoom_cam_relax_speed                = 9
+zoom_cam_dispersion                 = 0.466
+zoom_cam_dispersion_frac            = 0.7
+zoom_cam_dispersion_inc             = 0.0525
+zoom_cam_max_angle                  = 17.0
+zoom_cam_max_angle_horz             = 9.0
+zoom_cam_step_angle_horz            = 1.3
+zoom_cam_relax_speed_ai				= 360
+
+PDM_disp_accel_factor               = 2.5
+PDM_disp_base                       = 1.04
+PDM_disp_crouch                     = 1.0
+PDM_disp_crouch_no_acc              = 1.0
+PDM_disp_vel_factor                 = 2.5
+
+min_radius							= 30
+max_radius							= 50
+holder_range_modifier				= 1
+holder_fov_modifier					= 1
+slot 			 					= 2
+animation_slot						= 2
+
+position                        	= -0.07, 0.097, -0.094
+orientation                     	= 0, 0, 0
+fire_point                      	= 0.05, -0.06, 0.575
+fire_point2                     	= 0, 0.199, 0.575
+shell_point                         = -0.020000,0.167000,0.082000
+shell_dir                           = 0.0, 0.0, 0.4
+strap_bone0                     	= bip01_spine2
+strap_bone1                     	= bip01_spine1
+strap_position                  	= -0.26, -0.11, 0.25
+strap_orientation               	= -15, -9, 110
+
+shell_particles         			= weapons\556x45
+
+light_disabled						= false
+light_color							= 0.6,0.5,0.3
+light_range							= 5
+light_var_color						= 0.05
+light_var_range						= 0.1
+light_time							= 0.2
+
+scope_status						= 2
+silencer_status						= 2
+grenade_launcher_status	    		= 0
+
+zoom_enabled						= true
+zoom_rotate_time					= 0.2
+scope_zoom_factor					= 1.1
+
+scope_name 							= acog
+scope_x                     		= 62
+scope_y                     		= 0
+
+grenade_launcher_name				= wpn_addon_grenade_launcher_m203
+grenade_launcher_x          		= 109
+grenade_launcher_y          		= 30
+
+silencer_name						= wpn_addon_silencer_5_56
+silencer_x							= 223
+silencer_y							= 20
+
+silencer_light_color				= 0.6,0.5,0.3
+silencer_light_range				= 0.01
+silencer_light_var_color			= 0.05
+silencer_light_var_range			= 0.5
+silencer_light_time					= 0.2
+
+flame_particles						= amik\weapons\nato_shoot_00
+smoke_particles						= ghost_particles\weapons\flame_eft_ak
+grenade_flame_particles				= weapons\generic_weapon01
+silencer_smoke_particles   			= ghost_particles\weapons\generic_smoke_eft_sil
+
+[wpn_sig550_hud]:hud_base_weapon
+hands_position							 = -0.008900,-0.008800,0.081600
+hands_orientation						 = 0.051796,-0.353405,0.000000
+hands_position_16x9						 = -0.008900,-0.008800,0.081600
+hands_orientation_16x9					 = 0.051796,-0.353405,0.000000
+aim_hud_offset_pos						 = -0.044880,0.021731,-0.047963
+aim_hud_offset_rot						 = -0.003490,0.002370,0.000000
+aim_hud_offset_pos_16x9					 = -0.044880,0.021731,-0.047963
+aim_hud_offset_rot_16x9					 = -0.003490,0.002370,0.000000
+item_position                    		 = 0, 0, 0
+item_orientation                 		 = 0, 0, 0
+
+shell_point						 		 = 0, 0, 0
+shell_dir       				 		 = 0, 1, 0
+shell_bone						 		 = gilza
+
+fire_point						 		 = 0, 0, 0
+fire_bone      					 		 = muzzle
+fire_point2						 		 = 0, 0, 0
+fire_bone2						 		 = muzzle_gl
+
+anm_hide                                 = wpn_hand_sig550_out, idle
+anm_idle                                 = wpn_hand_sig550_idle, idle
+anm_idle_aim                             = wpn_hand_sig550_idle_aim, idle
+anm_idle_aim_moving                      = wpn_hand_sig550_walk, idle
+anm_idle_aim_moving_crouch               = wpn_hand_sig550_walk, idle
+anm_idle_moving                          = wpn_hand_sig550_walk, idle
+anm_idle_moving_crouch                   = wpn_hand_sig550_walk, idle
+anm_idle_sprint                          = wpn_hand_sig550_run, idle
+anm_reload                               = wpn_hand_sig550_reload, wpn_sig550_tact_reload
+anm_reload_empty                         = wpn_hand_sig550_reload_empty, wpn_sig550_tact_reload_empty
+anm_switch_mode                          = wpn_hand_sig550_switch_mode, idle
+anm_shots                                = wpn_hand_sig550_shoot, wpn_sig550_tact_shoot
+anm_show                                 = wpn_hand_sig550_in, idle
+anm_reload_misfire                       = wpn_hand_sig550_misfire, wpn_sig550_tact_misfire
+anm_bore                                 = wpn_hand_sig550_boring, idle
+
+anm_hide_empty                           = wpn_hand_sig550_out, wpn_sig550_tact_idle_empty
+anm_idle_empty                           = wpn_hand_sig550_idle, wpn_sig550_tact_idle_empty
+anm_idle_aim_empty                       = wpn_hand_sig550_idle_aim, wpn_sig550_tact_idle_empty
+anm_idle_aim_moving_empty                = wpn_hand_sig550_walk, wpn_sig550_tact_idle_empty
+anm_idle_aim_moving_crouch_empty         = wpn_hand_sig550_walk, wpn_sig550_tact_idle_empty
+anm_idle_moving_empty                    = wpn_hand_sig550_walk, wpn_sig550_tact_idle_empty
+anm_idle_moving_crouch_empty             = wpn_hand_sig550_walk, wpn_sig550_tact_idle_empty
+anm_idle_sprint_empty                    = wpn_hand_sig550_run, wpn_sig550_tact_idle_empty
+anm_switch_mode_empty                    = wpn_hand_sig550_switch_mode, wpn_sig550_tact_idle_empty
+anm_shots_l                              = wpn_hand_sig550_shoot, wpn_sig550_tact_shoot_empty_w_gl
+anm_show_empty                           = wpn_hand_sig550_in, wpn_sig550_tact_idle_empty
+anm_bore_empty                           = wpn_hand_sig550_boring, wpn_sig550_tact_idle_empty
+
+item_visual						 		 = dynamics\weapons\wpn_sig550\wpn_sig550_hud.ogf
+
+;-----------------------------------------------------------------------------
+; ְההמםû
+;-----------------------------------------------------------------------------
+
+[wpn_sig550_barska_scope]:wpn_sig550
+$spawn             		            = "weapons\wpn_sig550_barska_scope"
+hud						            = wpn_sig550_barska_scope_hud
+scope_x                             = 67
+scope_y                             = 0
+
+[wpn_sig550_barska_scope_hud]:wpn_sig550_hud
+aim_hud_offset_pos					= -0.044780,0.009331,-0.047963
+aim_hud_offset_rot					= -0.003490,0.002370,0.000000
+aim_hud_offset_pos_16x9				= -0.044780,0.009331,-0.047963
+aim_hud_offset_rot_16x9				= -0.003490,0.002370,0.000000
+item_visual            	 			= dynamics\weapons\wpn_sig550\wpn_sig550_barska_hud.ogf
+
+[wpn_sig550_eotech_scope]:wpn_sig550
+$spawn             		            = "weapons\wpn_sig550_eotech_scope"
+hud						            = wpn_sig550_eotech_scope_hud
+scope_x                             = 67
+scope_y                             = -1
+
+[wpn_sig550_eotech_scope_hud]:wpn_sig550_hud
+aim_hud_offset_pos					= -0.044380,0.001631,-0.047963
+aim_hud_offset_rot					= -0.003490,0.002370,0.000000
+aim_hud_offset_pos_16x9				= -0.044380,0.001631,-0.047963
+aim_hud_offset_rot_16x9				= -0.003490,0.002370,0.000000
+item_visual            	 			= dynamics\weapons\wpn_sig550\wpn_sig550_eotech_hud.ogf
+
+[wpn_sig550_acog_scope]:wpn_sig550
+$spawn					            = "weapons\wpn_sig550_acog_scope"
+hud						            = wpn_sig550_acog_scope_hud
+scope_x                             = 58
+scope_y                             = 3
+
+[wpn_sig550_acog_scope_hud]:wpn_sig550_hud
+aim_hud_offset_pos					= -0.030580,0.002231,-0.047963
+aim_hud_offset_rot					= -0.003490,0.002370,0.000000
+aim_hud_offset_pos_16x9				= -0.030580,0.002231,-0.047963
+aim_hud_offset_rot_16x9				= -0.003490,0.002370,0.000000
+item_visual            	 		    = dynamics\weapons\wpn_sig550\wpn_sig550_acog_hud.ogf
+
+[wpn_sig550_pn23_scope]:wpn_sig550
+$spawn					            = "weapons\wpn_sig550_pn23_scope"
+hud						            = wpn_sig550_pn23_scope_hud
+scope_x                             = 57
+scope_y                             = 1
+
+[wpn_sig550_pn23_scope_hud]:wpn_sig550_hud
+aim_hud_offset_pos					= -0.038850,-0.009540,-0.080700
+aim_hud_offset_rot					= 0.016300,0.002750,0.000000
+aim_hud_offset_pos_16x9				= -0.038850,-0.009540,-0.080700
+aim_hud_offset_rot_16x9				= 0.016300,0.002750,0.000000
+item_visual            	 		    = dynamics\weapons\wpn_sig550\wpn_sig550_pn23_hud.ogf
+
+[wpn_sig550_specter_scope]:wpn_sig550
+$spawn                          	= "weapons\wpn_sig550_specter_scope"
+hud                             	= wpn_sig550_specter_scope_hud
+scope_x                         	= 61
+scope_y                         	= -1
+
+[wpn_sig550_specter_scope_hud]:wpn_sig550_hud
+aim_hud_offset_pos					= -0.043580,0.007431,-0.098663
+aim_hud_offset_rot					= -0.003490,0.002370,0.000000
+aim_hud_offset_pos_16x9				= -0.043580,0.007431,-0.098663
+aim_hud_offset_rot_16x9				= -0.003490,0.002370,0.000000
+aim_hud_offset_alt_pos				= -0.044180,-0.017969,-0.047963
+aim_hud_offset_alt_rot				= -0.007635,0.002235,0.000000
+aim_hud_offset_alt_pos_16x9			= -0.044180,-0.017969,-0.047963
+aim_hud_offset_alt_rot_16x9			= -0.007635,0.002235,0.000000
+item_visual							= dynamics\weapons\wpn_sig550\wpn_sig550_specter_hud.ogf

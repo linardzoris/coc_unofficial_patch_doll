@@ -267,9 +267,6 @@
 	<string id="st_wpn_ak74">
 		<text>AKM-74/2</text>
 	</string>
-	<string id="st_wpn_ak74n">
-		<text>AKM-74/2N</text>
-	</string>
 	<string id="st_wpn_ak74u">
 		<text>AKM-74/2U</text>
 	</string>
@@ -285,23 +282,11 @@
 	<string id="st_wpn_colt1911">
 		<text>Kora-919</text>
 	</string>
-	<string id="st_wpn_desert_eagle_nimble">
-		<text>Steppe Eagle</text>
-	</string>
-	<string id="st_wpn_desert_eagle_nimble_descr">
-		<text>A hand-made pistol based on the Black Kite design. The components are finely tuned to achieve incredible accuracy for a handgun of this type.</text>
-	</string>
 	<string id="st_wpn_eagle">
 		<text>Black Kite</text>
 	</string>
-	<string id="st_wpn_fn2000">
-		<text>FT-200M</text>
-	</string>
 	<string id="st_wpn_fort">
 		<text>Fora-12</text>
-	</string>
-	<string id="st_wpn_fort_nimble">
-		<text>Auto-12</text>
 	</string>
 	<string id="st_wpn_g36">
 		<text>GP37</text>
@@ -314,15 +299,6 @@
 	</string>
 	<string id="st_wpn_groza_descr">
 		<text>This assault rifle combined with a grenade launcher, which is similar to the AKM series, was specially developed for rapid response units. The main differences are its 9x39 calibre ammunition, bullpup layout, and extensive configuration options. This weapon is highly valued by military stalkers due to its ability to kill enemies wearing body armour behind improvised cover at a distance during urban combat, as well as its excellent stopping power.</text>
-	</string>
-	<string id="st_wpn_groza_specops">
-		<text>Tunder 5.45</text>
-	</string>
-	<string id="st_wpn_groza_nimble">
-		<text>Storm</text>
-	</string>
-	<string id="st_wpn_groza_nimble_descr">
-		<text>An experimental version of an assault rifle and grenade launcher system, a Russian modification of the standard Tunder S14, this weapon was specially designed for units operating in the Zone. Notable for its increased magazine capacity.</text>
 	</string>
 	<string id="st_wpn_hpsa">
 		<text>HPSS-1m</text>
@@ -342,20 +318,8 @@
 	<string id="st_wpn_mp5">
 		<text>Viper 5</text>
 	</string>
-	<string id="st_wpn_mp5_m1">
-		<text>Viper 5 9x18</text>
-	</string>
 	<string id="st_wpn_mp5_descr">
 		<text>This submachine gun has gained popularity around the world thanks to its reliability, ease of use, and accuracy. Over the last few decades, the Viper 5 was in service with special armed forces and police units worldwide. Not surprisingly, having flooded the global black markets, it eventually made its way to the Zone.</text>
-	</string>
-	<string id="st_wpn_ump45">
-		<text>Viper 45</text>
-	</string>
-	<string id="st_wpn_mp5_nimble">
-		<text>Frasier</text>
-	</string>
-	<string id="st_wpn_mp5_nimble_descr">
-		<text>A submachine gun prototype based on the excellent Viper 5 model. Designed as a next generation close quarter combat weapon, it benefits from a higher calibre and accuracy.</text>
 	</string>
 	<string id="st_wpn_pb">
 		<text>PB-1s</text>
@@ -384,12 +348,6 @@
 	<string id="st_wpn_sig220">
 		<text>SIP-t M200</text>
 	</string>
-	<string id="st_wpn_sig220_nimble">
-		<text>Alpine</text>
-	</string>
-	<string id="st_wpn_sig220_nimble_descr">
-		<text>A unique model of the SIP-t M200 handgun. Part of a small limited edition made for an unidentified special forces unit. The model benefits from an increased magazine capacity, a high durability steel barrel and an ultra-durable polymer receiver.</text>
-	</string>
 	<string id="st_wpn_sig550">
 		<text>SGI-5k</text>
 	</string>
@@ -398,12 +356,6 @@
 	</string>
 	<string id="st_wpn_spas12">
 		<text>SPSA-14</text>
-	</string>
-	<string id="st_wpn_spas12_nimble">
-		<text>Carabineer</text>
-	</string>
-	<string id="st_wpn_spas12_nimble_descr">
-		<text>An army shotgun designed specifically for assault units on the basis of the SPSA-14. Capable of semi-automatic fire like its predecessor, but provides better recoil compensation thanks to a balanced shock free system.</text>
 	</string>
 	<string id="st_wpn_svd">
 		<text>SVDm-2</text>
@@ -437,12 +389,6 @@
 	</string>
 	<string id="st_wpn_usp_descr">
 		<text>Impeccable reliability and durability combined with excellent accuracy are the main noteworthy features of this weapon. Its minor drawbacks include its considerable size, relatively high center of gravity, and massive bolt, which make it difficult to conceal, but do not outweigh the weapon's positive features. The weapon is especially popular with veterans of the Zone.</text>
-	</string>
-	<string id="st_wpn_usp_nimble">
-		<text>March</text>
-	</string>
-	<string id="st_wpn_usp_nimble_descr">
-		<text>A compact, large calibre pistol with short bolt movement and lightweight bolt assembly. Used to belong to a mercenary called Wolfhound. Appears to be a modified UDP Compact pistol.</text>
 	</string>
 	<string id="st_wpn_val">
 		<text>SA Avalanche</text>
@@ -495,14 +441,8 @@
 	<string id="st_wpn_eagle_descr">
 		<text>The ultimate hand cannon: bulky, heavy, and highly lethal. Developed as a specialised weapon for hunting medium-sized and large game, as well as for shooting competitions involving firing at steel body targets at distances over 50 metres. Its limited use in the Zone can be attributed to its price, size and weight, which are all double those of other pistols.</text>
 	</string>
-	<string id="st_wpn_fn2000_descr">
-		<text>This futuristic-looking weapon with a bullpup layout is actually a mass produced modular system, comprising a rifle and grenade complex with a computerised fire control system and a 40mm grenade launcher. Despite its bulky appearance, the weapon is highly ergonomic, easy to use, and benefits from good technical characteristics.</text>
-	</string>
 	<string id="st_wpn_fort_descr">
 		<text>A Ukrainian-made pistol predominantly used by law enforcement organisations. Provides higher accuracy, better ergonomics, and a larger magazine capacity than the PMm. These pistols make it into the Zone in large numbers thanks to the sale of defective weapons, which suffer from technical miscalculations in early design models. Despite this, the pistol is in demand among stalkers thanks to its good combat characteristics.</text>
-	</string>
-	<string id="st_wpn_fort_nimble_descr">
-		<text>A customised Fora-12 pistol capable of firing fully automatic. The conversion made the pistol ever so slightly more reliable.</text>
 	</string>
 	<string id="st_wpn_g36_descr">
 		<text>A new addition to the Western-made assault rifle family, which differs significantly from previous models in the series built on an automatic foundation with a semi-open bolt assembly, this weapon is more like American automatic gas-operated assault rifles with a short-stroke gas piston system. These changes ensure that the rifle is a first-rate example of a modern weapon: lightweight, reliable, and ergonomic.</text>

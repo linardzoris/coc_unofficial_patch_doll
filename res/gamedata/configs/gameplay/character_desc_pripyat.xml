@@ -582,7 +582,7 @@
     <supplies>
         [spawn] \n
         device_torch \n
-        pri_a15_wpn_ak74 \n
+        wpn_ak74 \n
         pri_a15_documents \n
 #include "gameplay\supplies\character_items.xml"
 #include "gameplay\supplies\character_food.xml"
@@ -606,7 +606,7 @@
     <supplies>
         [spawn] \n
         device_torch \n
-        pri_a15_wpn_wincheaster1300 \n
+        wincheaster1300 \n
 #include "gameplay\supplies\character_items.xml"
 #include "gameplay\supplies\character_food.xml"
 #include "gameplay\supplies\character_medical.xml"
@@ -631,7 +631,7 @@
     <supplies>
         [spawn] \n
         device_torch \n
-        pri_a15_wpn_ak74u \n
+        wpn_ak74u \n
 #include "gameplay\supplies\character_items.xml"
 #include "gameplay\supplies\character_food.xml"
 #include "gameplay\supplies\character_medical.xml"
@@ -656,7 +656,7 @@
     <supplies>
         [spawn] \n
         device_torch \n
-        wpn_pkm_zulus = 1 \n
+        wpn_pkm = 1 \n
         ammo_pkm_100 = 1 \n
 #include "gameplay\supplies\character_items.xml"
 #include "gameplay\supplies\character_food.xml"
@@ -682,7 +682,7 @@
     <supplies>
         [spawn] \n
         device_torch \n
-        pri_a15_wpn_svu \n
+        wpn_svu \n
 #include "gameplay\supplies\character_items.xml"
 #include "gameplay\supplies\character_food.xml"
 #include "gameplay\supplies\character_medical.xml"

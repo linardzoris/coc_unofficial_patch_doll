@@ -5,44 +5,27 @@
 #include "weapons_ammo.ltx"
 #include "weapons_explosives.ltx"
 #include "weapon_scopes.ltx"
+#include "weapon_sounds.ltx"
 
-#include "upgrades\w_abakan_up.ltx"
-#include "upgrades\w_ak74_up.ltx"
-#include "upgrades\w_ak74u_up.ltx"
-#include "upgrades\w_beretta_up.ltx"
-#include "upgrades\w_binoc_up.ltx"
-#include "upgrades\w_bm16_up.ltx"
-#include "upgrades\w_colt1911_up.ltx"
-#include "upgrades\w_desert_eagle_up.ltx"
-#include "upgrades\w_fn2000_up.ltx"
-#include "upgrades\w_fort_up.ltx"
-#include "upgrades\w_g36_up.ltx"
-#include "upgrades\w_groza_up.ltx"
-#include "upgrades\w_hpsa_up.ltx"
-#include "upgrades\w_l85_up.ltx"
-#include "upgrades\w_lr300_up.ltx"
-#include "upgrades\w_mp5_up.ltx"
-#include "upgrades\w_pb_up.ltx"
-#include "upgrades\w_pkm_up.ltx"
-#include "upgrades\w_pm_up.ltx"
-#include "upgrades\w_protecta_up.ltx"
-#include "upgrades\w_sig220_up.ltx"
-#include "upgrades\w_sig550_up.ltx"
-#include "upgrades\w_spas12_up.ltx"
-#include "upgrades\w_svd_up.ltx"
-#include "upgrades\w_svu_up.ltx"
-#include "upgrades\w_toz34_up.ltx"
-#include "upgrades\w_usp45_up.ltx"
-#include "upgrades\w_val_up.ltx"
-#include "upgrades\w_vintorez_up.ltx"
-#include "upgrades\w_walther_up.ltx"
-#include "upgrades\w_wincheaster1300_up.ltx"
+#include "upgrades\w_machine_gun_up.ltx"
+#include "upgrades\w_shotgun_up.ltx"
+#include "upgrades\w_shotgun_autofire_up.ltx"
+#include "upgrades\w_12twobarrels_shotgun_up.ltx"
+#include "upgrades\w_20twobarrels_shotgun_up.ltx"
+#include "upgrades\w_sniper_rifle_up.ltx"
+#include "upgrades\w_sniper_rifle_autofire_up.ltx"
+#include "upgrades\w_pistol_up.ltx"
+#include "upgrades\w_pistol_autofire_up.ltx"
+#include "upgrades\w_assault_rifle_up.ltx"
+#include "upgrades\w_assault_rifle_autofire_up.ltx"
+#include "upgrades\w_binocular_up.ltx"
+#include "upgrades\w_binocular_old_up.ltx"
 
-
+#include "w_saiga.ltx"
 #include "w_ak74.ltx"
-#include "w_ak74u.ltx"
-#include "w_fn2000.ltx"
+#include "w_aks74u.ltx"
 #include "w_rpg7.ltx"
+#include "w_rpg26.ltx"
 #include "w_knife.ltx"
 #include "w_bolt.ltx"
 #include "w_f1.ltx"
@@ -60,9 +43,9 @@
 #include "w_hpsa.ltx"
 #include "w_pm.ltx"
 #include "w_pb.ltx"
-#include "w_walther.ltx"
+#include "w_walther_p99.ltx"
 #include "w_usp45.ltx"
-#include "w_fort.ltx"
+#include "w_fort17.ltx"
 #include "w_toz34.ltx"
 #include "w_svd.ltx"
 #include "w_svu.ltx"
@@ -78,7 +61,7 @@
 #include "w_colt1911.ltx"
 #include "w_beretta.ltx"
 #include "w_desert_eagle.ltx"
-#include "w_sig220.ltx"
+#include "w_sig226.ltx"
 #include "w_sig550.ltx"
 #include "w_abakan.ltx"
 #include "w_g36.ltx"
@@ -128,200 +111,251 @@ color_1                                            = 38, 247, 128, 255 ; Green (
 color_2                                            = 255, 30, 115, 255 ; Red (NATO)
 color_3                                            = 255, 222, 0, 255 ; Yellow (Helicopters)
 
-;---------------------------
-; Fake Missiles and Grenades
-;---------------------------
+[wpn_fake_og-7b]:ammo_base
+$prefetch                                          = 32
+blast                                              = 4
+blast_impulse                                      = 350
+blast_impulse_factor                               = 1
+blast_r                                            = 10
+cform                                              = skeleton
+class                                              = G_RPG7
+cost                                               = 200
+engine_impulse                                     = 700
+engine_impulse_up                                  = 133.906               ;= 2*9.81*7 - значение этого параметра (который является некой подъемной силой, вопреки названию),
+engine_particles                                   = weapons\rpg_trail_00
+engine_present                                     = true
+engine_work_time                                   = 3000
+explode_duration                                   = 5
+explode_particles                                  = explosions\explosion_04
+force_explode_time                                 = 30000
+frag_ap                                            = 5.76
+frag_hit                                           = 5.30
+frag_hit_impulse                                   = 10
+fragment_speed                                     = 150
+frags                                              = 8
+frags_r                                            = 15.0
+hit_type_blast                                     = explosion
+hit_type_frag                                      = fire_wound
+inv_grid_height                                    = 1
+inv_grid_width                                     = 4
+inv_grid_x                                         = 15
+inv_grid_y                                         = 5
+inv_name                                           = "Og-7b"
+inv_name_short                                     = "Og-7b"
+inv_weight                                         = .2
+inv_weight                                         = 0
+jump_height                                        = 0
+kill_msg_height                                    = 19
+kill_msg_width                                     = 74
+kill_msg_x                                         = 0
+kill_msg_y                                         = 85
+light_color                                        = 1.9,1.4,0.5
+light_range                                        = 24.0
+light_time                                         = 1.28
+lights_enabled                                     = true
+ph_mass                                            = 3
+snd_explode                                        = weapons\rpg7\rpg7_explode
+snd_fly_sound                                      = weapons\rpg7\rocket_fly
+trail_light_color                                  = 0.6,0.5,0.3
+trail_light_range                                  = 15.0
+up_throw_factor                                    = 0.25
+visual                                             = dynamics\weapons\wpn_rpg7\wpn_rpg7_grenade.ogf
+wallmark_section                                   = explosion_marks
+wm_size                                            = 0.5
 
-[wpn_fake_missile]:default_weapon_params
-visual                                   = dynamics\weapons\wpn_ammo\ammo_vog_25.ogf
-class                                    = G_FAKE
-$prefetch                                = 32
+[wpn_fake_ammo_pg_26]:ammo_base
+$prefetch                                          = 32
+blast                                              = 10
+blast_impulse                                      = 350
+blast_impulse_factor                               = 1
+blast_r                                            = 12
+cform                                              = skeleton
+class                                              = G_RPG7
+cost                                               = 200
+engine_impulse                                     = 900
+engine_impulse_up                                  = 133.906              ;= 2*9.81*7 - значение этого параметра (который является некой подъемной силой, вопреки названию),
+engine_particles                                   = weapons\rpg_trail_00
+engine_present                                     = true
+engine_work_time                                   = 3000
+explode_duration                                   = 5
+explode_particles                                  = explosions\explosion_04
+force_explode_time                                 = 30000
+frag_ap                                            = 5.76
+frag_hit                                           = 5.30
+frag_hit_impulse                                   = 10
+fragment_speed                                     = 150
+frags                                              = 8
+frags_r                                            = 20.44
+hit_type_blast                                     = explosion
+hit_type_frag                                      = fire_wound
+inv_grid_height                                    = 1
+inv_grid_width                                     = 2
+inv_grid_x                                         = 8
+inv_grid_y                                         = 40
+inv_name                                           = "PG-26"
+inv_name_short                                     = "PG-26"
+inv_weight                                         = .2
+inv_weight                                         = 0
+jump_height                                        = 0
+kill_msg_height                                    = 19
+kill_msg_width                                     = 74
+kill_msg_x                                         = 0
+kill_msg_y                                         = 85
+light_color                                        = 1.9,1.4,0.5
+light_range                                        = 24.0
+light_time                                         = 1.28
+lights_enabled                                     = true
+ph_mass                                            = 3
+snd_explode                                        = weapons\rpg_26\rpg26_explode
+snd_fly_sound                                      = weapons\rpg_26\rpg26_grenade_engin
+trail_light_color                                  = 0.6,0.5,0.3
+trail_light_range                                  = 15.0
+up_throw_factor                                    = 0.25
+visual                                             = dynamics\weapons\wpn_rpg7\wpn_rpg7_grenade.ogf
+wallmark_section                                   = explosion_marks
+wm_size                                            = 0.4
 
-;свойства которые читаются, но не используются
-inv_name                                 = ammo-vog-25
-inv_name_short                           = ammo-vog-25_s
-inv_weight                               = .2
+[wpn_fake_vog-25]:default_weapon_params
+$prefetch                                          = 32
+blast                                              = 1.3
+blast_impulse                                      = 200
+blast_impulse_factor                               = 1
+blast_r                                            = 3
+cform                                              = skeleton
+class                                              = G_FAKE
+cost                                               = 150
+engine_present                                     = false
+explode_duration                                   = 5
+explode_particles                                  = explosions\explosion_01
+force_explode_time                                 = 10000
+frag_ap                                            = 7.46
+frag_hit                                           = 10.50
+frag_hit_impulse                                   = 20
+fragment_speed                                     = 150
+frags                                              = 150
+frags_r                                            = 7
+hit_type_blast                                     = explosion
+hit_type_frag                                      = fire_wound
+inv_grid_height                                    = 1
+inv_grid_width                                     = 1
+inv_grid_x                                         = 19
+inv_grid_y                                         = 10
+inv_name                                           = ammo-vog-25
+inv_name_short                                     = ammo-vog-25
+inv_weight                                         = 0
+inv_weight                                         = 0.2
+jump_height                                        = 0
+kill_msg_height                                    = 22
+kill_msg_width                                     = 21
+kill_msg_x                                         = 17
+kill_msg_y                                         = 232
+light_color                                        = 1.9, 1.2, 0.5
+light_range                                        = 25.0
+light_time                                         = 0.5
+lights_enabled                                     = false
+ph_mass                                            = 1
+snd_explode                                        = weapons\explo\grenade_vog25_boom
+up_throw_factor                                    = 0.7
+visual                                             = dynamics\weapons\wpn_ammo\ammo_vog_25.ogf
+wallmark_section                                   = explosion_marks
+wm_size                                            = 0.01
 
-inv_grid_width                           = 1
-inv_grid_height                          = 1
-inv_grid_x                               = 19
-inv_grid_y                               = 10
+[wpn_fake_vog-25p]:default_weapon_params
+$prefetch                                          = 32
+blast                                              = 1.3
+blast_impulse                                      = 200
+blast_impulse_factor                               = 1
+blast_r                                            = 3
+cform                                              = skeleton
+class                                              = G_FAKE
+cost                                               = 150
+engine_present                                     = false
+explode_duration                                   = 5
+explode_particles                                  = explosions\explosion_01
+force_explode_time                                 = 10000
+frag_ap                                            = 7.46
+frag_hit                                           = 10.50
+frag_hit_impulse                                   = 20
+fragment_speed                                     = 150
+frags                                              = 250
+frags_r                                            = 15
+hit_type_blast                                     = explosion
+hit_type_frag                                      = fire_wound
+inv_grid_height                                    = 1
+inv_grid_width                                     = 1
+inv_grid_x                                         = 19
+inv_grid_y                                         = 9
+inv_name                                           = ammo-vog-25p
+inv_name_short                                     = ammo-vog-25p
+inv_weight                                         = .2
+inv_weight                                         = 0
+jump_height                                        = 1.2
+kill_msg_height                                    = 22
+kill_msg_width                                     = 21
+kill_msg_x                                         = 38
+kill_msg_y                                         = 233
+light_color                                        = 1.9,1.4,0.5
+light_range                                        = 14.0
+light_time                                         = 0.85
+lights_enabled                                     = true
+ph_mass                                            = 1
+snd_explode                                        = weapons\explo\grenade_vog25p_boom
+trail_light_color                                  = 0.6, 0.5, 0.3
+trail_light_range                                  = 8.0
+up_throw_factor                                    = 0.7
+visual                                             = dynamics\weapons\wpn_ammo\ammo_vog_25p.ogf
+wallmark_section                                   = explosion_marks
+wm_size                                            = 0.01
 
-cost                                     = 150
+[wpn_fake_m209]:default_weapon_params
+$prefetch                                          = 32
+blast                                              = 1.50
+blast_impulse                                      = 240
+blast_impulse_factor                               = 1
+blast_r                                            = 2
+cform                                              = skeleton
+class                                              = G_FAKE
+cost                                               = 150
+engine_present                                     = false
+explode_duration                                   = 5
+explode_particles                                  = explosions\explosion_01
+force_explode_time                                 = 10000
+frag_ap                                            = 5.46
+frag_hit                                           = 5.50
+frag_hit_impulse                                   = 100
+fragment_speed                                     = 100
+frags                                              = 100
+frags_r                                            = 5.82
+hit_type_blast                                     = explosion
+hit_type_frag                                      = fire_wound
+inv_grid_height                                    = 1
+inv_grid_width                                     = 1
+inv_grid_x                                         = 5
+inv_grid_y                                         = 13
+inv_name                                           = ammo-m209
+inv_name_short                                     = "M209"
+inv_weight                                         = .2
+inv_weight                                         = 0
+jump_height                                        = 1
+kill_msg_height                                    = 22
+kill_msg_width                                     = 19
+kill_msg_x                                         = 61
+kill_msg_y                                         = 232
+light_color                                        = 1.9,1.4,0.5
+light_range                                        = 14.0
+light_time                                         = 0.85
+lights_enabled                                     = true
+ph_mass                                            = 1
+snd_explode                                        = weapons\explo\grenade_m406_boom
+trail_light_color                                  = 0.6,0.5,0.3
+trail_light_range                                  = 8.0
+up_throw_factor                                    = 0.7
+visual                                             = dynamics\weapons\wpn_ammo\ammo_m209.ogf
+wallmark_section                                   = explosion_marks
+wm_size                                            = 0.5
 
-blast                                    = 2.5
-blast_r                                  = 5
-blast_impulse                            = 100
-blast_impulse_factor                     = 1
-
-frags                                    = 100
-frags_r                                  = 15
-frag_hit                                 = 0.2
-frag_hit_impulse                         = 25
-
-hit_type_blast                           = explosion
-hit_type_frag                            = fire_wound
-
-up_throw_factor                          = 0.7
-
-;trail				= weapons\rpg_trail_01, weapons\rpg_trail_02
-
-explode_particles                        = explosions\explosion_01
-
-light_color                              = 1.9,1.2,0.5
-light_range                              = 25.0
-light_time                               = 0.5
-
-ph_mass                                  = 1
-;engine_f			= 530
-;engine_u			= 90
-
-jump_height                              = 0
-
-wm_size                                  = 0.05
-
-;трассы от осколков
-fragment_speed                           = 100
-
-explode_duration                         = 3
-
-;звуки
-snd_explode                              = weapons\f1_explode
-;wallmarks
-wallmark_section                         = explosion_marks
-
-; Свойства CustomRocket
-
-engine_present                           = false	                                       ;присутствует ли в ракете двигатель
-lights_enabled                           = false	                                       ;свет вокруг ракеты, во время полета
-force_explode_time                       = 10000
-
-[wpn_fake_missile1]:default_weapon_params
-$prefetch                                = 32
-visual                                   = dynamics\weapons\wpn_ammo\ammo_vog_25p.ogf
-class                                    = G_FAKE
-
-;свойства которые читаются, но не используются
-inv_name                                 = ammo-vog-25p
-inv_name_short                           = ammo-vog-25p_s
-inv_weight                               = .2
-
-inv_grid_width                           = 1
-inv_grid_height                          = 1
-inv_grid_x                               = 19
-inv_grid_y                               = 9
-
-cost                                     = 150
-
-blast                                    = 2
-blast_r                                  = 5
-blast_impulse                            = 100
-blast_impulse_factor                     = 1
-
-frags                                    = 100
-frags_r                                  = 15
-frag_hit                                 = 0.1
-frag_hit_impulse                         = 25
-
-hit_type_blast                           = explosion
-hit_type_frag                            = fire_wound
-
-up_throw_factor                          = 0.7
-
-;trail				= weapons\rpg_trail_01, weapons\rpg_trail_02
-
-explode_particles                        = explosions\explosion_01
-
-light_color                              = 1.9,1.4,0.5
-light_range                              = 15.0
-light_time                               = 0.85
-
-ph_mass                                  = 1
-;engine_f			= 530
-;engine_u			= 90
-
-jump_height                              = 1
-
-;трассы от осколков
-fragment_speed                           = 100
-
-wm_size                                  = 0.05
-;wallmarks
-wallmark_section                         = explosion_marks
-explode_duration                         = 3
-
-;звуки
-snd_explode                              = weapons\f1_explode
-
-; Свойства CustomRocket
-
-engine_present                           = false	                                       ;присутствует ли в ракете двигатель
-lights_enabled                           = false	                                       ;свет вокруг ракеты, во время полета
-trail_light_color                        = 0.6,0.5,0.3
-trail_light_range                        = 8.0
-force_explode_time                       = 10000
-
-[wpn_fake_missile2]:default_weapon_params
-$prefetch                                = 32
-visual                                   = dynamics\weapons\wpn_ammo\ammo_m209.ogf
-class                                    = G_FAKE
-
-;свойства которые читаются, но не используются
-inv_name                                 = ammo-m209
-inv_name_short                           = ammo-m209_s
-inv_weight                               = .2
-
-inv_grid_width                           = 1
-inv_grid_height                          = 1
-inv_grid_x                               = 5
-inv_grid_y                               = 13
-
-cost                                     = 150
-
-blast                                    = 2.5
-blast_r                                  = 5
-blast_impulse                            = 100
-blast_impulse_factor                     = 1
-
-frags                                    = 100
-frags_r                                  = 15
-frag_hit                                 = 0.2
-frag_hit_impulse                         = 25
-
-hit_type_blast                           = explosion
-hit_type_frag                            = fire_wound
-
-up_throw_factor                          = 0.7
-
-;trail				= weapons\rpg_trail_01, weapons\rpg_trail_02
-
-explode_particles                        = explosions\explosion_01
-
-light_color                              = 1.9,1.4,0.5
-light_range                              = 15.0
-light_time                               = 0.85
-
-ph_mass                                  = 1
-;engine_f			= 530
-;engine_u			= 90
-
-jump_height                              = 0
-
-;трассы от осколков
-fragment_speed                           = 100
-;wallmarks
-wallmark_section                         = explosion_marks
-wm_size                                  = 0.05
-
-explode_duration                         = 3
-
-;звуки
-snd_explode                              = weapons\f1_explode
-
-; Свойства CustomRocket
-
-engine_present                           = false	                                       ;присутствует ли в ракете двигатель
-lights_enabled                           = false	                                       ;свет вокруг ракеты, во время полета
-trail_light_color                        = 0.6,0.5,0.3
-trail_light_range                        = 8.0
-force_explode_time                       = 10000
+[wpn_rpg7_missile]:wpn_fake_og-7b
+[wpn_ammo_pg_26_missile]:wpn_fake_ammo_pg_26
+[wpn_fake_missile]:wpn_fake_vog-25
+[wpn_fake_missile1]:wpn_fake_vog-25p
+[wpn_fake_missile2]:wpn_fake_m209

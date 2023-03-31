@@ -16,38 +16,6 @@ lean_hud_offset_rot				= 0,0,0
 
 attach_place_idx				= 0
 
-[hud_base_weapon]
-item_position                                      = 0,0,0
-item_orientation                                   = 0,0,0
-aim_hud_offset_pos                                 = 0,0,0
-aim_hud_offset_pos_16x9                            = 0,0,0
-aim_hud_offset_rot                                 = 0,0,0
-aim_hud_offset_rot_16x9                            = 0,0,0
-gl_hud_offset_pos                                  = 0,0,0
-gl_hud_offset_pos_16x9                             = 0,0,0
-gl_hud_offset_rot                                  = 0,0,0
-gl_hud_offset_rot_16x9                             = 0,0,0
-lean_hud_offset_pos                                = 0,0,0
-lean_hud_offset_rot                                = 0,0,0
-attach_place_idx				                   = 0
-zoom_hide_crosshair				                   = true
-
-;Эффект при стрельбе. Это не для камеры, а для рук с оружием. Немного двигает руки с ним в разные стороны, хорошо заметно, если разрядить магазин в небо не отжимая.
-shooting_hud_effect                				   = true
-shooting_max_LRUD                  				   = 0.005,0.005,0.005,0
-shooting_max_LRUD_aim              				   = 0.0025,0.0025,0,0
-shooting_backward_offset           				   = 0.02,0.015
-shooting_ret_speed                 				   = 7.5
-shooting_ret_aim_speed             				   = 15
-shooting_min_LRUD_power            				   = 0.01
-
-;Смещение худа рук по координатам, когда мы вплотную к стене. Вычислять не через худ аджаст, это просто модификатор текущих координат рук.
-hud_collision_enabled 			 				   = true
-hud_collision_offset_pos		 				   = 0,-0.25,0
-hud_collision_offset_pos_16x9	 				   = 0,-0.25,0
-hud_collision_offset_rot		 				   = -0.8,0,0
-hud_collision_offset_rot_16x9	 				   = -0.8,0,0
-
 [sect_identity_immunities]
 burn_immunity			= 1.0
 strike_immunity			= 1.0
@@ -194,7 +162,6 @@ sprint_allowed				= true
 control_inertion_factor		= 1.0
 zoom_rotate_time			= 0.25
 scope_zoom_factor			= 1.25
-ironsight_zoom_factor		= 1.25		;Really only used for Grenade Launcher Attachments
 holder_fov_modifier			= 1.0
 holder_range_modifier		= 1.0
 installed_upgrades			= 
@@ -273,6 +240,11 @@ anim_prepare                             = vodka_5
 anim_eat                                 = vodka_3
 
 ;;;;;;;;;;;;;;;;;Оружие
+[default_scope]
+scope_name                                         = wpn_addon_scope
+scope_x                                            = 0
+scope_y                                            = 0
+scope_texture                            		   = none
 
 [new_weapon_params]
 scope_texture                                      = none
@@ -305,6 +277,12 @@ hit_probability_gd_veteran                         = 0.80
 
 immunities_sect                                    = sect_identity_immunities
 
+gl_zoom_factor                                     = 1.1
+scope_zoom_factor_alt                              = 1.1
+scope_zoom_factor                              	   = 1.1
+scope_texture_alt                                  = none
+use_alt_aim_hud 								   = false
+
 scope_name				                           = wpn_addon_scope
 scope_x					                           = 0
 scope_y					                           = 0
@@ -333,6 +311,7 @@ grenade_launcher_name                              = wpn_addon_grenade_launcher
 grenade_launcher_status                            = 0
 grenade_launcher_x                                 = 0
 grenade_launcher_y                                 = 0
+grenade_flame_particles        					   = weapons\generic_shoot_00
 
 strafe_enabled                                     = true
 strafe_transition_time                             = 0.4
@@ -353,3 +332,43 @@ silencer_bullet_speed                    		   = 700
 silencer_fire_distance                   		   = 200
 silencer_hit_impulse                     		   = 100
 silencer_hit_power                       		   = 0.42, 0.42, 0.42, 0.42
+
+[hud_base_weapon]
+item_position                                      = 0,0,0
+item_orientation                                   = 0,0,0
+aim_hud_offset_pos                                 = 0,0,0
+aim_hud_offset_pos_16x9                            = 0,0,0
+aim_hud_offset_rot                                 = 0,0,0
+aim_hud_offset_rot_16x9                            = 0,0,0
+aim_hud_offset_alt_pos                             = 0,0,0
+aim_hud_offset_alt_rot                             = 0,0,0
+aim_hud_offset_alt_pos_16x9                        = 0,0,0
+aim_hud_offset_alt_rot_16x9                        = 0,0,0
+gl_hud_offset_pos                                  = 0,0,0
+gl_hud_offset_pos_16x9                             = 0,0,0
+gl_hud_offset_rot                                  = 0,0,0
+gl_hud_offset_rot_16x9                             = 0,0,0
+lean_hud_offset_pos                                = 0,0,0
+lean_hud_offset_rot                                = 0,0,0
+attach_place_idx				                   = 0
+zoom_hide_crosshair				                   = true
+
+;Эффект при стрельбе. Это не для камеры, а для рук с оружием. Немного двигает руки с ним в разные стороны, хорошо заметно, если разрядить магазин в небо не отжимая.
+shooting_hud_effect                				   = true
+shooting_max_LRUD                  				   = 0.005,0.005,0.005,0
+shooting_max_LRUD_aim              				   = 0.0025,0.0025,0,0
+shooting_backward_offset           				   = 0.02,0.015
+shooting_ret_speed                 				   = 7.5
+shooting_ret_aim_speed             				   = 15
+shooting_min_LRUD_power            				   = 0.01
+
+;Смещение худа рук по координатам, когда мы вплотную к стене. Вычислять не через худ аджаст, это просто модификатор текущих координат рук.
+hud_collision_enabled 			 				   = true
+hud_collision_offset_pos		 				   = 0,-0.5,0
+hud_collision_offset_pos_16x9	 				   = 0,-0.5,0
+hud_collision_offset_rot		 				   = -0.8,0,0
+hud_collision_offset_rot_16x9	 				   = -0.8,0,0
+
+empty_click_anm = script\misfire.anm
+empty_click_anm_speed = 2
+empty_click_anm_power = 1
