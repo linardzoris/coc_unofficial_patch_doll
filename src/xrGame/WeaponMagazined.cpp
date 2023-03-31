@@ -839,8 +839,12 @@ void CWeaponMagazined::OnShot()
 
     // Shell Drop
     Fvector vel;
-    PHGetLinearVell(vel);
-    OnShellDrop(get_LastSP(), vel);
+
+    if (!IsMotionMarkShell())
+    {
+        PHGetLinearVell(vel);
+        OnShellDrop(get_LastSP(), vel);
+    }
 
     // Огонь из ствола
     StartFlameParticles();
@@ -1694,11 +1698,11 @@ void CWeaponMagazined::PlayAnimShoot()
 
 	if (!IsDiffShotModes() || IsDiffShotModes() && GetCurrentFireMode() != -1)
     {
-        if (IsZoomed() && m_ammoElapsed.type1 == 1)
+        if (IsZoomed() && m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shot_when_aim_l") || m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shots_aim_l"))
             PlayHUDMotionIfExists({"anm_shot_when_aim_l", "anm_shots_aim_l"}, true, GetState());
-        else if (IsZoomed())
+        else if (IsZoomed() && isHUDAnimationExist("anm_shots_when_aim") || IsZoomed() && isHUDAnimationExist("anm_shots_aim"))
             PlayHUDMotionIfExists({"anm_shots_when_aim", "anm_shots_aim"}, true, GetState());
-        else if (m_ammoElapsed.type1 == 1)
+        else if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shot_l") || m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shots_l"))
             PlayHUDMotionIfExists({"anm_shot_l", "anm_shots_l"}, true, GetState());
         else
             PlayHUDMotionIfExists({"anm_shoot", "anm_shots"}, false, GetState());
@@ -1706,11 +1710,11 @@ void CWeaponMagazined::PlayAnimShoot()
     // Если IsDiffShotModes и авторежим стрельбы (для SPAS-12).
     if (IsDiffShotModes() && GetCurrentFireMode() == -1)
     {
-        if (IsZoomed() && m_ammoElapsed.type1 == 1)
+        if (IsZoomed() && m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shots_auto_when_aim_l") || m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shots_auto_aim_l"))
         PlayHUDMotionIfExists({"anm_shots_auto_when_aim_l", "anm_shots_auto_aim_l"}, true, GetState());
-        else if (IsZoomed())
+        else if (IsZoomed() && isHUDAnimationExist("anm_shots_auto_when_aim") || IsZoomed() && isHUDAnimationExist("anm_shots_auto_aim"))
         PlayHUDMotionIfExists({"anm_shots_auto_when_aim", "anm_shots_auto_aim"}, true, GetState());
-        else if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shot_auto_l"))
+        else if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shot_auto_l") || m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shots_auto_l"))
             PlayHUDMotionIfExists({"anm_shot_auto_l", "anm_shots_auto_l"}, true, GetState());
         else
             PlayHUDMotionIfExists({"anm_shoot_auto", "anm_shots_auto"}, false, GetState());
