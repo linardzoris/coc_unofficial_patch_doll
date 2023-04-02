@@ -112,10 +112,13 @@ local function on_game_load(binder)
 		if start_location and start_location ~= "" then
 			local loc_ini = ini_file("plugins\\player_start_locations.ltx")
 
-			start_pos = {}
-			table.insert(start_pos,loc_ini:r_float_ex(start_location, "lvid"))
-			table.insert(start_pos,loc_ini:r_float_ex(start_location, "gvid"))
-			table.insert(start_pos,vector():set(loc_ini:r_float_ex(start_location,"x"),loc_ini:r_float_ex(start_location,"y"),loc_ini:r_float_ex(start_location,"z")))
+			-- waypoint
+			spawn_path = patrol("spawn_player_"..start_location)
+
+			--start_pos = {}
+			--table.insert(start_pos,loc_ini:r_float_ex(start_location, "lvid"))
+			--table.insert(start_pos,loc_ini:r_float_ex(start_location, "gvid"))
+			--table.insert(start_pos,vector():set(loc_ini:r_float_ex(start_location,"x"),loc_ini:r_float_ex(start_location,"y"),loc_ini:r_float_ex(start_location,"z")))
 		else
 			spawn_path = nil  --patrol("spawn_player_"..faction)
 		end
