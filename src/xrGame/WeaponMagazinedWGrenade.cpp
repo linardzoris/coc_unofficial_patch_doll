@@ -606,6 +606,8 @@ void CWeaponMagazinedWGrenade::PlayAnimShow()
                 PlayHUDMotion("anm_show_jammed_w_gl", FALSE, this, GetState());
             else
                 PlayHUDMotion("anm_show_w_gl", FALSE, this, GetState());
+        else
+            PlayHUDMotion("anm_show_g", FALSE, this, GetState());
     }
     else
         inherited::PlayAnimShow();
@@ -624,6 +626,8 @@ void CWeaponMagazinedWGrenade::PlayAnimHide()
                 PlayHUDMotion("anm_hide_jammed_w_gl", true, this, GetState());
             else
                 PlayHUDMotion("anm_hide_w_gl", TRUE, this, GetState());
+        else
+            PlayHUDMotion("anm_hide_g", TRUE, this, GetState());
     }
     else
         inherited::PlayAnimHide();

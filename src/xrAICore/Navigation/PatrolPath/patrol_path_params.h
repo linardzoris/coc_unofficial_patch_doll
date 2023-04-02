@@ -23,6 +23,7 @@ public:
     EPatrolRouteType m_tPatrolPathStop;
     bool m_bRandom;
     u32 m_previous_index;
+    const Fvector m_dummy;
 
 public:
     CPatrolPathParams(LPCSTR caPatrolPathToGo, EPatrolStartType tPatrolPathStart = ePatrolStartTypeNearest,
