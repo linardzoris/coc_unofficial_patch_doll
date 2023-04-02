@@ -654,4 +654,8 @@
 	<hud_glass12 x="0" y="0" width="1024" height="768" stretch="1">
 		<texture>ui\hud_glass12</texture>
 	</hud_glass12>
+	
+	<nv_tunnel x="0" y="0" stretch="1" complex_mode="1">
+		<texture><!-- controlled from script --></texture>
+	</nv_tunnel>	
 </header>

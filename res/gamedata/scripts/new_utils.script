@@ -1,0 +1,522 @@
+local CLT = { -- ChangeLevelTbl
+	mar_smart_terrain_base		= 'mar_smart_terrain_base',
+	gar_smart_terrain_5_2		= 'gar_smart_terrain_5_2',
+	esc_factory_bandit			= 'esc_factory_smart_terrain_10',
+	tuzla_tonnel_guid_marsh		= 'mar_smart_terrain_doc',
+	marsh_post_guid				= 'mar_smart_terrain_doc_2',
+	marsh_pump_water_guid		= 'mar_smart_terrain_5_8',
+	marsh_old_church_guid		= 'mar_smart_terrain_8_11',
+	marsh_tech_yard_guid		= 'mar_smart_terrain_10_5',	
+	yantar_guid_from_freedom_base = 'yan_smart_terrain_1_6',
+	ds_soviet_store			    = 'cit_killers',
+	zat_trash_station			= 'zat_b40_smart_terrain',
+	mil_to_yant_on_heli			= 'yan_smart_terrain_6_4',
+	jup_guid_bandit_cont		= 'jup_a12',
+	red_forest_guid_mon			= 'red_bridge_bandit_smart_skirmish_mlr',
+	l11_pripyat_guid_mon		= 'pri_monolith',
+	pripyat_guid_mon			= 'pri_b306',
+	jupiter_guid_mon			= 'jup_b208',
+	agroprom_guid_military		= 'agr_smart_terrain_1_6',
+	escape_guid_military		= 'esc_smart_terrain_3_16',
+	agroprom_guid				= 'agr_smart_terrain_4_4',
+	marsh_guid					= 'mar_smart_terrain_11_11',
+	escape_village_guid			= 'esc_smart_terrain_2_12',
+	trucks_cemetery_guid		= 'trc_sim_20',
+	stancia_guid				= 'aes_smart_terran_soldier2',
+	pripyat_2_guid				= 'pri_smart_neutral_stalker1',
+	radar_guid					= 'rad_entrance',
+	zaton_guid					= 'zat_stalker_base_smart',
+	pripyat_guid				= 'pri_a16',
+	l11_pripyat_guid			= 'pri_smart_neutral_stalker1',
+	red_forest_guid				= 'red_smart_terrain_bridge',
+	l05_bar_guid				= 'bar_visitors',
+	yantar_guid					= 'yan_smart_terrain_6_4',
+	military_guid				= 'mil_smart_terrain_7_7',
+	garbage_guid				= 'gar_smart_terrain_3_5',
+	escape_guid					= 'esc_smart_terrain_2_12',
+	jupiter_guid				= 'jup_a6'
+}
+
+function ch_lvl(p) -- ChangeLevel
+    local se_obj = SIMBOARD.smarts_by_names[CLT[p]]
+    local dist = db.actor:position():distance_to(se_obj.position)
+    level.change_game_time(0,math.floor(dist/1000)+math.random(0,2),math.random(1,59))
+    surge_manager.get_surge_manager().time_forwarded = true
+    psi_storm_manager.get_psi_storm_manager().time_forwarded = true
+    level_weathers.get_weather_manager():forced_weather_change()
+    if (alife():level_name(game_graph():vertex(se_obj.m_game_vertex_id):level_id()) == level.name()) then
+        db.actor:set_actor_position(se_obj.position)
+    else
+        ChangeLevel(se_obj.position,se_obj.m_level_vertex_id,se_obj.m_game_vertex_id,vector():set(0,0,0))
+    end
+end
+
+function act_h_s(sect, needed) -- actor_have_section -- Имеет ли актор опред. кол-во секций
+	if not needed then
+		needed = 1
+	end
+	local count = 0
+	local function itr(actor, item) 
+		if item:section() == sect then 
+			count = count + 1 
+		end 
+	end
+	db.actor:iterate_inventory(itr, db.actor)
+	return count >= needed 
+end
+
+function act_d_h_s(sect, needed) -- actor_have_section -- Не имеет ли актор опред. кол-во секций
+	if not needed then
+		needed = 1
+	end
+	local count = 0
+	local function itr(actor, item) 
+		if item:section() == sect then 
+			count = count + 1 
+		end 
+	end
+	db.actor:iterate_inventory(itr, db.actor)
+	return count < needed 
+end
+
+function act_h_m(count) -- actor_have_money  -- Имеет ли актор опред. кол-во денег
+	return db.actor:money() >= count
+end
+
+function save_var(name, value)
+	if not alife_storage_manager.get_state()['mlr'] then
+		alife_storage_manager.get_state()['mlr'] = {}
+	end
+	alife_storage_manager.get_state()['mlr'][name] = value
+end
+
+function load_var(name)
+	if not alife_storage_manager.get_state()['mlr'] then
+		return
+	end
+	return alife_storage_manager.get_state()['mlr'][name]
+end
+
+function give_task(name)
+	task_manager.get_task_manager():give_task(name)
+end
+
+function check_comm(name)
+	return (character_community(db.actor) == name)
+end
+ 
+function rad_damage(amt)
+    local h = hit()
+    h.power = amt
+    h.direction = vector():set(0,0,1)
+    h.bone = "bip01_spine"
+    h.draftsman = db.actor
+    h.impulse = 6000
+    h.type = hit.radiation
+    db.actor:hit(h)
+end
+
+-- Помощь от vader_33
+
+function encyclopedia_anomaly_by_hit (obj, amount, local_direction, who, bone_index)
+	tbl_anoms = {
+			["zone_mine_gravitational_weak"] = "zone_gravitational_tramplin",
+			["zone_mine_gravitational_strong"] = "zone_gravitational_karusel",
+			["zone_mine_gravitational_average"] = "zone_gravitational_voronka",			
+			["zone_gravi_zone"] = "zone_gravitational_voronka",
+			["zone_mine_gravitational_big"] = "zone_gravitational_karusel",
+			
+			["zone_mine_thermal_weak"] = "zone_thermal",
+			["zone_mine_thermal_average"] = "zone_mine_thermal",
+			["zone_mine_thermal_strong"] = "zone_mine_thermal",
+			["zone_mine_thermal"] = "zone_mine_thermal",
+			["zone_zharka_static_strong"] = "zone_thermal",
+			["zone_zharka_static_average"] = "zone_mine_thermal",
+			["zone_zharka_static_weak"] = "zone_mine_thermal",
+			["zone_zharka_static"] = "zone_mine_thermal",	
+			
+			["zone_mine_steam"] = "zone_mine_steam",
+			["zone_mine_steam_weak"] = "zone_mine_steam",
+			["zone_mine_steam_average"] = "zone_mine_steam",
+			["zone_mine_steam_strong"] = "zone_mine_steam",	
+			
+			["fireball_zone"] = "fireball_zone",	
+			
+			["zone_mine_electric"] = "zone_mine_electric",
+			["zone_mine_electric_weak"] = "zone_mine_electric",
+			["zone_mine_electric_average"] = "zone_mine_electric",
+			["zone_mine_electric_strong"] = "zone_mine_electric",
+			["zone_mine_static"] = "zone_mine_electric",
+			["zone_mine_static_weak"] = "zone_mine_electric",
+			["zone_mine_static_average"] = "zone_mine_electric",
+			["zone_mine_static_strong"] = "zone_mine_electric",			
+			["zone_witches_galantine"] = "zone_mine_electric",
+			["zone_witches_galantine_weak"] = "zone_mine_electric",
+			["zone_witches_galantine_average"] = "zone_mine_electric",
+			["zone_witches_galantine_strong"] = "zone_mine_electric",	
+
+			["fireball_electric_zone"] = "fireball_electric_zone",	
+	
+			["zone_mine_chemical"] = "zone_mine_chemical",
+			["zone_mine_chemical_weak"] = "zone_mine_chemical",
+			["zone_mine_chemical_average"] = "zone_mine_chemical",
+			["zone_mine_chemical_strong"] = "zone_mine_chemical",
+			["zone_buzz"] = "zone_mine_chemical",
+			["zone_buzz_weak"] = "zone_mine_chemical",
+			["zone_buzz_average"] = "zone_mine_chemical",
+			["zone_buzz_strong"] = "zone_mine_chemical",		
+			
+			["zone_mine_acidic"] = "zone_mine_acidic",
+			["zone_mine_acidic_weak"] = "zone_mine_acidic",
+			["zone_mine_acidic_average"] = "zone_mine_acidic",
+			["zone_mine_acidic_strong"] = "zone_mine_acidic",	
+			["zone_mine_acidic_big"] = "zone_mine_acidic",		
+
+			["zone_field_acidic"] = "zone_field_acidic",			
+			["zone_field_acidic_weak"] = "zone_field_acidic",	
+			["zone_field_acidic_average"] = "zone_field_acidic",	
+			["zone_field_acidic_strong"] = "zone_field_acidic",	
+			["zone_field_acidic_no_sound"] = "zone_field_acidic",	
+
+			["zone_burning_fuzz"] = "zone_burning_fuzz",
+			["zone_burning_fuzz_weak"] = "zone_burning_fuzz",
+			["zone_burning_fuzz_average"] = "zone_burning_fuzz",
+			["zone_burning_fuzz_strong"] = "zone_burning_fuzz",
+			["zone_burning_fuzz1"] = "zone_burning_fuzz",	
+
+			["zone_liana"] = "zone_liana",
+			["anomaly_liana"] = "zone_liana",
+			["anomaly_liana_2"] = "zone_liana",
+			["anomaly_liana_3"] = "zone_liana",
+			["anomaly_liana_2_invisible"] = "zone_liana",
+			["anomaly_liana_3_invisible"] = "zone_liana",
+			["anomaly_liana_3_invisible_2"] = "zone_liana",
+			["anomaly_liana_invisible"] = "zone_liana",		
+			["anomaly_liana_invisible_1"] = "zone_liana",
+
+			["zone_field_radioactive"] = "zone_field_radioactive",
+			["zone_field_radioactive_weak"] = "zone_field_radioactive",
+			["zone_field_radioactive_average"] = "zone_field_radioactive",
+			["zone_field_radioactive_strong"] = "zone_field_radioactive",
+			["zone_radioactive"] = "zone_field_radioactive",	
+			["zone_radioactive_weak"] = "zone_field_radioactive",
+			["zone_radioactive_average"] = "zone_field_radioactive",
+			["zone_radioactive_strong"] = "zone_field_radioactive",	
+
+			["zone_field_psychic"] = "zone_field_psychic",
+			["zone_field_psychic_weak"] = "zone_field_psychic",
+			["zone_field_psychic_average"] = "zone_field_psychic",
+			["zone_field_psychic_strong"] = "zone_field_psychic"			
+		}
+	local sec = who:section()
+		if tbl_anoms[sec] then
+			dxr_encyclopedia.detect_anomaly_interaction(tbl_anoms[sec])    
+			--printf(tbl_anoms[sec])
+		end
+end
+
+function mlr_achives()
+	local count = 0
+	local items_to_relocate = {}
+
+	local function relocate_and_inc_count(npc, item)
+		if need_items[item:section()] == true  then
+			count = count + 1
+			if (items_to_relocate[item:section()] == nil) then
+				items_to_relocate[item:section()] = 1
+			else
+				items_to_relocate[item:section()] = items_to_relocate[item:section()] + 1
+			end
+		end
+	end
+
+	db.actor:iterate_inventory(relocate_and_inc_count, nil)
+	xr_effects.inc_counter(db.actor, nil, {"jup_b200_tech_materials_brought_counter",tostring(count)})
+	for k,v in pairs (items_to_relocate) do
+		dialogs.relocate_item_section_from_actor(first_speaker, second_speaker, k, v)
+	end
+end	
+
+function take_achiev_main_six_count()
+	local count = 1
+	if (count < 6) then
+		if (has_alife_info("main_six_1_found")) then
+			count = count + 1
+		end
+		if (has_alife_info("main_six_2_found")) then
+			count = count + 1
+		end
+		if (has_alife_info("main_six_3_found")) then
+			count = count + 1
+		end
+		if (has_alife_info("main_six_4_found")) then
+			count = count + 1
+		end
+		if (has_alife_info("main_six_5_found")) then
+			count = count + 1
+		end
+		if (has_alife_info("main_six_6_found")) then
+			count = count + 1
+		end		
+	end
+	return count
+end
+
+function take_achiev_main_six()
+
+	local count = take_achiev_main_six_count()
+
+    if (has_alife_info("mil_dolg_main_ecolog_task_3_random_dlg_about_provodnik_inf_1")) and (has_alife_info("mil_dolg_main_ecolog_task_3_random_dlg_about_provodnik_inf_2")) and not (has_alife_info("mil_dolg_main_ecolog_task_3_random_dlg_about_provodnik_done")) or
+		(has_alife_info("mil_dolg_main_ecolog_task_3_random_dlg_about_provodnik_inf_2")) and (has_alife_info("mil_dolg_main_ecolog_task_3_random_dlg_about_provodnik_inf_3")) and not (has_alife_info("mil_dolg_main_ecolog_task_3_random_dlg_about_provodnik_done")) or 
+		(has_alife_info("mil_dolg_main_ecolog_task_3_random_dlg_about_provodnik_inf_1")) and (has_alife_info("mil_dolg_main_ecolog_task_3_random_dlg_about_provodnik_inf_3")) and not (has_alife_info("mil_dolg_main_ecolog_task_3_random_dlg_about_provodnik_done")) then
+			xr_effects.create_squad(nil,nil,{"bar_stalker_legeng_provodnik_squad","bar_dolg_bunker"})		
+			give_info("mil_dolg_main_ecolog_task_3_random_dlg_about_provodnik_done")	
+			return
+	end	
+	
+	if (db.actor:object("lenin_portret_item") ~= nil) and not (has_alife_info("main_six_1_found")) then	
+		give_info("main_six_1_found")	
+		xr_effects.remove_item(actor, npc, {"lenin_portret_item"})	
+		SetHudMsg(strformat(game.translate_string("take_achiev_main_six_found_item").." " .. game.translate_string(count).." " .. game.translate_string("/ 6")),5)	
+	elseif (db.actor:object("stalin_portret_item") ~= nil) and not (has_alife_info("main_six_2_found")) then		
+		give_info("main_six_2_found")
+		xr_effects.remove_item(actor, npc, {"stalin_portret_item"})			
+		SetHudMsg(strformat(game.translate_string("take_achiev_main_six_found_item").." " .. game.translate_string(count).." " .. game.translate_string("/ 6")),5)	
+	elseif (db.actor:object("xrushev_portret_item") ~= nil) and not (has_alife_info("main_six_3_found")) then		
+		give_info("main_six_3_found")	
+		xr_effects.remove_item(actor, npc, {"xrushev_portret_item"})	
+		SetHudMsg(strformat(game.translate_string("take_achiev_main_six_found_item").." " .. game.translate_string(count).." " .. game.translate_string("/ 6")),5)		
+	elseif (db.actor:object("brezhnev_portret_item") ~= nil) and not (has_alife_info("main_six_4_found")) then		
+		give_info("main_six_4_found")	
+		xr_effects.remove_item(actor, npc, {"brezhnev_portret_item"})		
+		SetHudMsg(strformat(game.translate_string("take_achiev_main_six_found_item").." " .. game.translate_string(count).." " .. game.translate_string("/ 6")),5)	
+	elseif (db.actor:object("andropov_portret_item") ~= nil) and not (has_alife_info("main_six_5_found")) then		
+		give_info("main_six_5_found")	
+		xr_effects.remove_item(actor, npc, {"andropov_portret_item"})	
+		SetHudMsg(strformat(game.translate_string("take_achiev_main_six_found_item").." " .. game.translate_string(count).." " .. game.translate_string("/ 6")),5)	
+	elseif (db.actor:object("gorbachev_portret_item") ~= nil) and not (has_alife_info("main_six_6_found")) then		
+		give_info("main_six_6_found")	
+		xr_effects.remove_item(actor, npc, {"gorbachev_portret_item"})	
+		SetHudMsg(strformat(game.translate_string("take_achiev_main_six_found_item").." " .. game.translate_string(count).." " .. game.translate_string("/ 6")),5)	
+	end	
+end
+
+-- Прицелы-бинокли
+
+function use_scope_to_binocular_context_functor()
+	return game.translate_string("st_scope_to_binocular")
+end
+function use_binocular_to_scope_context_functor()
+	return game.translate_string("st_binocular_to_scope")
+end
+
+function use_binocular_to_scope(item, actor, npc)
+	if (item:section() == 'wpn_scope_pso_binoc') then 
+			give_object_to_actor("pso")
+			xr_effects.remove_item_no_message(actor, npc, {"wpn_scope_pso_binoc"})
+		elseif (item:section() == 'wpn_1p29_scope_binoc') then 
+			give_object_to_actor("1p29_scope")
+			xr_effects.remove_item_no_message(actor, npc, {"wpn_1p29_scope_binoc"})				
+		elseif (item:section() == 'wpn_1p59_scope_binoc') then 
+			give_object_to_actor("1p59_scope")
+			xr_effects.remove_item_no_message(actor, npc, {"wpn_1p59_scope_binoc"})			
+		elseif (item:section() == 'wpn_scope_po4x34_binoc') then 
+			give_object_to_actor("po4x34")
+			xr_effects.remove_item_no_message(actor, npc, {"wpn_scope_po4x34_binoc"})			
+		elseif (item:section() == 'wpn_scope_pu_binoc') then 
+			give_object_to_actor("pu_scope")
+			xr_effects.remove_item_no_message(actor, npc, {"wpn_scope_pu_binoc"})					
+		elseif (item:section() == 'wpn_scope_acog_binoc') then 
+			give_object_to_actor("acog")
+			xr_effects.remove_item_no_message(actor, npc, {"wpn_scope_acog_binoc"})				
+		elseif (item:section() == 'wpn_scope_leupold_m4_binoc') then 
+			give_object_to_actor("leupold_m4")
+			xr_effects.remove_item_no_message(actor, npc, {"wpn_scope_leupold_m4_binoc"})			
+		elseif (item:section() == 'wpn_scope_1pn93_binoc') then 
+			give_object_to_actor("1pn93")
+			xr_effects.remove_item_no_message(actor, npc, {"wpn_scope_1pn93_binoc"})			
+		elseif (item:section() == 'wpn_scope_pn23_binoc') then 
+			give_object_to_actor("pn23")
+			xr_effects.remove_item_no_message(actor, npc, {"wpn_scope_pn23_binoc"})
+   end
+end
+
+function use_scope_to_binocular(item, actor, npc)
+	if (item:section() == 'pso') then 
+			give_object_to_actor("wpn_scope_pso_binoc")
+			xr_effects.remove_item_no_message(actor, npc, {"pso"})
+		elseif (item:section() == '1p29_scope') then 
+			give_object_to_actor("wpn_1p29_scope_binoc")
+			xr_effects.remove_item_no_message(actor, npc, {"1p29_scope"})					
+		elseif (item:section() == '1p59_scope') then 
+			give_object_to_actor("wpn_1p59_scope_binoc")
+			xr_effects.remove_item_no_message(actor, npc, {"1p59_scope"})			
+		elseif (item:section() == 'po4x34') then 
+			give_object_to_actor("wpn_scope_po4x34_binoc")
+			xr_effects.remove_item_no_message(actor, npc, {"po4x34"})			
+		elseif (item:section() == 'pu_scope') then 
+			give_object_to_actor("wpn_scope_pu_binoc")
+			xr_effects.remove_item_no_message(actor, npc, {"pu_scope"})					
+		elseif (item:section() == 'acog') then 
+			give_object_to_actor("wpn_scope_acog_binoc")
+			xr_effects.remove_item_no_message(actor, npc, {"acog"})				
+		elseif (item:section() == 'leupold_m4') then 
+			give_object_to_actor("wpn_scope_leupold_m4_binoc")
+			xr_effects.remove_item_no_message(actor, npc, {"leupold_m4"})			
+		elseif (item:section() == '1pn93') then 
+			give_object_to_actor("wpn_scope_1pn93_binoc")
+			xr_effects.remove_item_no_message(actor, npc, {"1pn93"})			
+		elseif (item:section() == 'pn23') then 
+			give_object_to_actor("wpn_scope_pn23_binoc")
+			xr_effects.remove_item_no_message(actor, npc, {"pn23"})				
+   end
+end
+	
+-- Спаун полтера ползучего после смерти "облака"
+
+function polter_reborn(obj, enemy_id)
+		local polter_pos = obj:position()
+		local polter_id = obj:id()
+		local reborn = alife():create('poltergeist_body',polter_pos,obj:level_vertex_id(),obj:game_vertex_id())
+end
+
+-- Достижение читера
+
+function take_achiev_cheater()
+	if (get_console():get_bool("g_god")) or (get_console():get_bool("g_unlimitedammo")) then
+		if db.actor~=nil then 
+			give_info("then_you_take_achiev_cheater")
+		elseif db.actor==nil then
+			return
+		end	
+	end	
+end
+
+-- Если зомби, не страдаем от радиации и ПСИ
+
+function actor_on_before_hit(h,bone_id,return_flag)
+    if h.type == 4 then
+		if db.actor:character_community() == "actor_zombied" or db.actor:character_community() == "actor_monolith" then
+			return_flag.ret_value = false
+		end
+	end
+    if h.type == 3 and db.actor:character_community() == "actor_zombied"  or db.actor:character_community() == "actor_monolith" then
+        return_flag.ret_value = false
+    end
+end
+
+function actor_use_items(item)
+	if item:section() == 'mlr_strelok_item_01' then
+		transitions.open_transition('val_space_restrictor_to_labx18')	
+	end
+end
+
+-- Текстура для ночного видения
+
+local ini_sys = system_ini()
+local w_multi = 1024/(device().width)
+local h_multi = 768/(device().height)
+local nv_eff = {}
+local nv_state = false
+local nv_hud = { x = 0, y = 0, height = (device().height * h_multi), weight = (device().width * w_multi) }	-- HUD dimensions/position
+local dev_inv = {}     -- [id] = bool   | Table to trace devices in inventory
+local dev_slot = {}     -- [id] = bool   | Table to trace devices in slots
+
+local ppe_effects = { 
+	["nightvision_1"] = { ui = "wpn\\hud_nvg_gen1" },
+	["nightvision_2"] = { ui = "wpn\\hud_nvg_gen2" },
+	["nightvision_3"] = { ui = "wpn\\hud_nvg_gen3" },
+}
+
+function set_nightvision_HUD(bShow)
+	local hud = get_hud()
+	local drk = hud:GetCustomStatic("nv_tunnel")
+	local wnd
+	
+	if (bShow == false) or (db.actor:is_talking()) then
+		if (drk ~= nil) then
+			hud:RemoveCustomStatic("nv_tunnel")
+			drk = nil
+		end
+		return
+	end
+	
+	if (drk == nil) then
+		hud:AddCustomStatic("nv_tunnel",true)
+		drk = hud:GetCustomStatic("nv_tunnel")
+		wnd = drk:wnd()
+		if (wnd ~= nil) then
+			wnd:SetWndPos(vector2():set(nv_hud.x , nv_hud.y))
+			wnd:SetWndSize(vector2():set(nv_hud.weight , nv_hud.height))
+			wnd:SetAutoDelete(true)
+		end
+	end
+	
+	if (drk ~= nil) then
+		wnd = drk:wnd()
+		local torch = db.actor:item_in_slot(10)
+		local torch_sec = torch and torch:section()
+		if torch_sec then
+			nv_eff[torch_sec] = nv_eff[torch_sec] or ini_sys:r_string_ex(torch_sec,"nv_effect")
+			local ppe = ppe_effects[nv_eff[torch_sec]]
+			if ppe then
+				wnd:InitTexture(ppe.ui)
+			end
+		end
+	end
+end
+
+function set_nightvision(section,state)
+	if (not section) then
+		return
+	end
+	
+	nv_eff[section] = nv_eff[section] or ini_sys:r_string_ex(section,"nightvision_texture")
+	
+	if ppe_effects[nv_eff[section]] then	
+		if state and (not nv_state) then
+			nv_state = true
+		elseif (not state) and nv_state then
+			nv_state = false
+		end	
+	end		
+	
+	if ppe_effects[nv_eff[section]] then	
+		set_nightvision_HUD(nv_state)
+	end
+end
+
+local function on_nvg_press(key)
+	local bind = dik_to_bind(key)
+	
+	-- Night-Vision
+	if (bind == key_bindings.kNIGHT_VISION and not (axr_main.weapon_is_zoomed) and not (actor_menu.xr_meet_inv_opened)) then
+		local torch = db.actor:item_in_slot(10)
+		set_nightvision(torch and torch:section(), not nv_state)
+	end
+end
+	
+-- Отрубаем текстуру ПНВ при выбрасывании предмета, перемещении в рюкзак или же замещении аналогичным в слоте	
+	
+local function on_nvg_remove(obj)
+	local sec = obj:section()
+	local torch = db.actor:item_in_slot(10)
+	local torch_sec = torch and torch:section()
+	if not torch_sec then
+		set_nightvision(sec,false)
+		--printf("Torch not in slot")
+	end			
+end	
+
+function on_game_start()
+	RegisterScriptCallback("actor_on_hit_callback",encyclopedia_anomaly_by_hit)	
+	RegisterScriptCallback("on_key_press",take_achiev_cheater)		
+	RegisterScriptCallback("actor_on_item_take",take_achiev_main_six)	
+    RegisterScriptCallback("actor_on_before_hit",actor_on_before_hit)	
+    RegisterScriptCallback("actor_on_item_use",actor_use_items)	
+	
+	RegisterScriptCallback("on_key_press",on_nvg_press)
+	RegisterScriptCallback("actor_on_item_drop",on_nvg_remove)	
+	RegisterScriptCallback("actor_item_to_slot",on_nvg_remove)
+	RegisterScriptCallback("actor_item_to_ruck",on_nvg_remove)
+end

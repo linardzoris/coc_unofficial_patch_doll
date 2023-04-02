@@ -12,6 +12,7 @@ local last_mode = 0
 xr_meet_dialog_closed = false
 xr_meet_trade_closed = false
 xr_meet_upgrade_closed = false
+xr_meet_inv_opened = false
 dead_body_searching = false
 
 function actor_menu_mode(mode)
@@ -47,10 +48,12 @@ function actor_menu_mode(mode)
 end
 
 function inventory_wnd_opened()
+	xr_meet_inv_opened = true
 	--printf("---:>Inventory opened")
 end
 
 function inventory_wnd_closed()
+	xr_meet_inv_opened = false
 	--printf("---:>Inventory closed")
 end
 
