@@ -759,7 +759,7 @@ void CWeaponMagazinedWGrenade::PlayAnimIdle()
                     if (IsMisfire())
                         PlayHUDMotionIfExists({"anm_idle_sprint_jammed_g", "anm_idle_sprint_g", "anm_idle_g"}, true, GetState());
                     else if (m_ammoElapsed.type1 == 0)
-                        PlayHUDMotionIfExists({"anm_idle_sprint_empty_g", "anm_idle_g"}, true, GetState());
+                        PlayHUDMotionIfExists({"anm_idle_sprint_empty_g", "anm_idle_sprint_g", "anm_idle_g"}, true, GetState());
                     else
                         PlayHUDMotionIfExists({"anm_idle_sprint_g", "anm_idle_g"}, true, GetState());
                     break;
@@ -767,7 +767,7 @@ void CWeaponMagazinedWGrenade::PlayAnimIdle()
                     if (IsMisfire())
                         PlayHUDMotionIfExists({"anm_idle_moving_jammed_g", "anm_idle_moving_g", "anm_idle_g"}, true, GetState());
                     else if (m_ammoElapsed.type1 == 0)
-                        PlayHUDMotionIfExists({"anm_idle_moving_empty_g", "anm_idle_g"}, true, GetState());
+                        PlayHUDMotionIfExists({"anm_idle_moving_empty_g", "anm_idle_moving_g", "anm_idle_g"}, true, GetState());
                     else
                         PlayHUDMotionIfExists({"anm_idle_moving_g", "anm_idle_g"}, true, GetState());
                     break;
@@ -813,7 +813,7 @@ void CWeaponMagazinedWGrenade::PlayAnimIdle()
                     if (IsMisfire())
                         PlayHUDMotionIfExists({"anm_idle_sprint_jammed_w_gl", "anm_idle_sprint_w_gl", "anm_idle_w_gl"}, true, GetState());
                     else if (m_ammoElapsed.type1 == 0)
-                        PlayHUDMotionIfExists({"anm_idle_sprint_empty_w_gl", "anm_idle_w_gl"}, true, GetState());
+                        PlayHUDMotionIfExists({"anm_idle_sprint_empty_w_gl", "anm_idle_sprint_w_gl", "anm_idle_w_gl"}, true, GetState());
                     else
                         PlayHUDMotionIfExists({"anm_idle_sprint_w_gl", "anm_idle_w_gl"}, true, GetState());
                     break;
@@ -821,7 +821,7 @@ void CWeaponMagazinedWGrenade::PlayAnimIdle()
                     if (IsMisfire())
                         PlayHUDMotionIfExists({"anm_idle_moving_jammed_w_gl", "anm_idle_moving_w_gl", "anm_idle_w_gl"}, true, GetState());
                     else if (m_ammoElapsed.type1 == 0)
-                        PlayHUDMotionIfExists({"anm_idle_moving_empty_w_gl", "anm_idle_w_gl"}, true, GetState());
+                        PlayHUDMotionIfExists({"anm_idle_moving_empty_w_gl", "anm_idle_moving_w_gl", "anm_idle_w_gl"}, true, GetState());
                     else
                         PlayHUDMotionIfExists({"anm_idle_moving_w_gl", "anm_idle_w_gl"}, true, GetState());
                     break;
