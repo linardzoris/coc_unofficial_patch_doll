@@ -41,7 +41,663 @@ is_ai_obstacle	= false
 ;startup_animation					=
 ;fixed_bones							=
 
+;*** MLR ***************************************************************
+
+[box_1d]:physic_destroyable_object
+$spawn                        = "dynamic_objects\box\box_1d"
+visual                        = dynamics\box\box_1d.ogf
+
+[box_paper_2]:physic_destroyable_object
+$spawn                        = "dynamic_objects\box\box_paper_2"
+visual                        = dynamics\box\box_paper_2.ogf
+
+[stul_wood_02]:physic_destroyable_object
+$spawn                        = "dynamic_objects\stul\stul_wood_02"
+visual                        = dynamics\stul\stul_wood_02.ogf
+
+[bottle_1L]:physic_destroyable_object
+$spawn                        = "dynamic_objects\kitchen_room\bottle_1L"
+visual                        = dynamics\kitchen_room\bottle_1l.ogf
+
+[bottle_1L_green]:physic_destroyable_object
+$spawn                        = "dynamic_objects\kitchen_room\bottle_1L_green"
+visual                        = dynamics\kitchen_room\bottle_1l_green.ogf
+
+[bottle_3L_green]:physic_destroyable_object
+$spawn                        = "dynamic_objects\kitchen_room\bottle_3L_green"
+visual                        = dynamics\kitchen_room\bottle_3l_green.ogf
+
+[teapot_1_green]:physic_destroyable_object
+$spawn                        = "dynamic_objects\kitchen_room\teapot_1_green"
+visual                        = dynamics\kitchen_room\teapot_1_green.ogf
+
+[teapot_1_red]:physic_destroyable_object
+$spawn                        = "dynamic_objects\kitchen_room\teapot_1_red"
+visual                        = dynamics\kitchen_room\teapot_1_red.ogf
+
+[teapot_1_purple]:physic_destroyable_object
+$spawn                        = "dynamic_objects\kitchen_room\teapot_1_purple"
+visual                        = dynamics\kitchen_room\teapot_1_purple.ogf
+
+[vedro_02]:physic_destroyable_object
+$spawn                        = "dynamic_objects\workshop_room\vedro_02"
+visual                        = dynamics\workshop_room\vedro_02.ogf
+
+[watch_camera]:physic_destroyable_object
+$spawn                        = "dynamic_objects\el_tehnika\watch_camera"
+visual                        = dynamics\mlr\watch_camera_move.ogf 
+startup_animation  	      = move
+fixed_bones		      = link
+custom_data 		      = models\objects\ignore_static.ltx
+
+[yan_radar_1_mlr]:physic_destroyable_object
+$spawn                        = "dynamic_objects\el_tehnika\yan_radar_1_mlr"
+visual                        = dynamics\mlr\yan_radar_1_mlr.ogf 
+startup_animation  	      = rotate
+fixed_bones		      = link
+custom_data 		      = models\objects\ignore_static.ltx
+
+[metro_paper_box_01]:physic_destroyable_object
+$spawn                        = "dynamic_objects\metro_content\metro_paper_box_01"
+visual                        = dynamics\metro_content\paper_box_01.ogf
+
+[metro_stul_01]:physic_destroyable_object
+$spawn                        = "dynamic_objects\metro_content\metro_stul_01"
+visual                        = dynamics\metro_content\stul_01.ogf
+
+[metro_stul_02]:physic_destroyable_object
+$spawn                        = "dynamic_objects\metro_content\metro_stul_02"
+visual                        = dynamics\metro_content\stul_02.ogf
+
+[biba_yashik_01]:physic_object
+$spawn                        = "dynamic_objects\metro_content\biba_yashik_01"
+visual                        = dynamics\metro_content\biba_yashik_01.ogf
+
+[biba_yashik_02]:physic_object
+$spawn                        = "dynamic_objects\metro_content\biba_yashik_02"
+visual                        = dynamics\metro_content\biba_yashik_02.ogf
+
+[metro_bidon]:physic_object
+$spawn                        = "dynamic_objects\metro_content\metro_bidon"
+visual                        = dynamics\metro_content\bidon.ogf
+
+[bike_01]:physic_object
+$spawn                        = "dynamic_objects\metro_content\bike_01"
+visual                        = dynamics\metro_content\bike_01.ogf
+
+[black_bread]:physic_object
+$spawn                        = "dynamic_objects\metro_content\black_bread"
+visual                        = dynamics\metro_content\black_bread.ogf
+
+[white_bread]:physic_object
+$spawn                        = "dynamic_objects\metro_content\white_bread"
+visual                        = dynamics\metro_content\white_bread.ogf
+
+[camp_teapot]:physic_object
+$spawn                        = "dynamic_objects\metro_content\camp_teapot"
+visual                        = dynamics\metro_content\camp_teapot.ogf
+fixed_bones					  = link
+custom_data 		      	  = models\objects\ignore_static.ltx
+
+[metro_case_01]:physic_object
+$spawn                        = "dynamic_objects\metro_content\metro_case_01"
+visual                        = dynamics\metro_content\case_01.ogf
+
+[metro_case_02]:physic_object
+$spawn                        = "dynamic_objects\metro_content\metro_case_02"
+visual                        = dynamics\metro_content\case_02.ogf
+
+[metro_case_03]:physic_object
+$spawn                        = "dynamic_objects\metro_content\metro_case_03"
+visual                        = dynamics\metro_content\case_03.ogf
+
+[metro_case_04]:physic_object
+$spawn                        = "dynamic_objects\metro_content\metro_case_04"
+visual                        = dynamics\metro_content\case_04.ogf
+
+[computer_mouse]:physic_object
+$spawn                        = "dynamic_objects\metro_content\computer_mouse"
+visual                        = dynamics\metro_content\computer_mouse.ogf
+
+[metro_cup_01]:physic_object
+$spawn                        = "dynamic_objects\metro_content\metro_cup_01"
+visual                        = dynamics\metro_content\cup_01.ogf
+
+[metro_cup_02]:physic_object
+$spawn                        = "dynamic_objects\metro_content\metro_cup_02"
+visual                        = dynamics\metro_content\cup_02.ogf
+
+[metro_cup_03]:physic_object
+$spawn                        = "dynamic_objects\metro_content\metro_cup_03"
+visual                        = dynamics\metro_content\cup_03.ogf
+
+[metro_cup_04]:physic_object
+$spawn                        = "dynamic_objects\metro_content\metro_cup_04"
+visual                        = dynamics\metro_content\cup_04.ogf
+
+[metro_cup_05]:physic_object
+$spawn                        = "dynamic_objects\metro_content\metro_cup_05"
+visual                        = dynamics\metro_content\cup_05.ogf
+
+[metro_doll_01]:physic_object
+$spawn                        = "dynamic_objects\metro_content\metro_doll_01"
+visual                        = dynamics\metro_content\doll_01.ogf
+
+[metro_doll_02]:physic_object
+$spawn                        = "dynamic_objects\metro_content\metro_doll_02"
+visual                        = dynamics\metro_content\doll_02.ogf
+
+[metro_doll_03]:physic_object
+$spawn                        = "dynamic_objects\metro_content\metro_doll_03"
+visual                        = dynamics\metro_content\doll_03.ogf
+
+[eat_syshka]:physic_object
+$spawn                        = "dynamic_objects\metro_content\eat_syshka"
+visual                        = dynamics\metro_content\eat_syshka.ogf
+
+[metro_fish]:physic_object
+$spawn                        = "dynamic_objects\metro_content\metro_fish"
+visual                        = dynamics\metro_content\fish.ogf
+
+[metro_fork_01]:physic_object
+$spawn                        = "dynamic_objects\metro_content\metro_fork_01"
+visual                        = dynamics\metro_content\fork_01.ogf
+
+[metro_fuel_tank_01]:physic_object
+$spawn                        = "dynamic_objects\metro_content\metro_fuel_tank_01"
+visual                        = dynamics\metro_content\fuel_tank_01.ogf
+
+[metro_fuel_tank_02]:physic_object
+$spawn                        = "dynamic_objects\metro_content\metro_fuel_tank_02"
+visual                        = dynamics\metro_content\fuel_tank_02.ogf
+
+[metro_fuel_tank_03]:physic_object
+$spawn                        = "dynamic_objects\metro_content\metro_fuel_tank_03"
+visual                        = dynamics\metro_content\fuel_tank_03.ogf
+
+[helmet_building_kaska_01]:physic_object
+$spawn                        = "dynamic_objects\metro_content\helmet_building_kaska_01"
+visual                        = dynamics\metro_content\helmet_building_kaska_01.ogf
+
+[helmet_building_kaska_02]:physic_object
+$spawn                        = "dynamic_objects\metro_content\helmet_building_kaska_02"
+visual                        = dynamics\metro_content\helmet_building_kaska_02.ogf
+
+[metro_kitchen_doska]:physic_object
+$spawn                        = "dynamic_objects\metro_content\metro_kitchen_doska"
+visual                        = dynamics\metro_content\kitchen_doska.ogf
+
+[metro_kitchen_skovoroda]:physic_object
+$spawn                        = "dynamic_objects\metro_content\metro_kitchen_skovoroda"
+visual                        = dynamics\metro_content\kitchen_skovoroda.ogf
+
+[metro_knife_01]:physic_object
+$spawn                        = "dynamic_objects\metro_content\metro_knife_01"
+visual                        = dynamics\metro_content\knife_01.ogf
+
+[metro_knife_02]:physic_object
+$spawn                        = "dynamic_objects\metro_content\metro_knife_02"
+visual                        = dynamics\metro_content\knife_02.ogf
+
+[metro_knife_03]:physic_object
+$spawn                        = "dynamic_objects\metro_content\metro_knife_03"
+visual                        = dynamics\metro_content\knife_03.ogf
+
+[metro_knife_04]:physic_object
+$spawn                        = "dynamic_objects\metro_content\metro_knife_04"
+visual                        = dynamics\metro_content\knife_04.ogf
+
+[metro_lopata_01]:physic_object
+$spawn                        = "dynamic_objects\metro_content\metro_lopata_01"
+visual                        = dynamics\metro_content\lopata_01.ogf
+
+[metro_lopata_02]:physic_object
+$spawn                        = "dynamic_objects\metro_content\metro_lopata_02"
+visual                        = dynamics\metro_content\lopata_02.ogf
+
+[metro_molotok]:physic_object
+$spawn                        = "dynamic_objects\metro_content\metro_molotok"
+visual                        = dynamics\metro_content\molotok.ogf
+
+[paper_box_with_books_01]:physic_object
+$spawn                        = "dynamic_objects\metro_content\paper_box_with_books_01"
+visual                        = dynamics\metro_content\paper_box_with_books_01.ogf
+
+[paper_box_with_kitchen_trash_01]:physic_object
+$spawn                        = "dynamic_objects\metro_content\paper_box_with_kitchen_trash_01"
+visual                        = dynamics\metro_content\paper_box_with_kitchen_trash_01.ogf
+
+[metro_phone_speaker]:physic_object
+$spawn                        = "dynamic_objects\metro_content\metro_phone_speaker"
+visual                        = dynamics\metro_content\phone_speaker.ogf
+
+[plastic_barrel_01]:physic_object
+$spawn                        = "dynamic_objects\metro_content\plastic_barrel_01"
+visual                        = dynamics\metro_content\plastic_barrel_01.ogf
+
+[plastic_barrel_02]:physic_object
+$spawn                        = "dynamic_objects\metro_content\plastic_barrel_02"
+visual                        = dynamics\metro_content\plastic_barrel_02.ogf
+
+[plastic_barrel_03]:physic_object
+$spawn                        = "dynamic_objects\metro_content\plastic_barrel_03"
+visual                        = dynamics\metro_content\plastic_barrel_03.ogf
+
+[plastic_barrel_04]:physic_object
+$spawn                        = "dynamic_objects\metro_content\plastic_barrel_04"
+visual                        = dynamics\metro_content\plastic_barrel_04.ogf
+
+[plastic_barrel_05]:physic_object
+$spawn                        = "dynamic_objects\metro_content\plastic_barrel_05"
+visual                        = dynamics\metro_content\plastic_barrel_05.ogf
+
+[metro_pliers_01]:physic_object
+$spawn                        = "dynamic_objects\metro_content\metro_pliers_01"
+visual                        = dynamics\metro_content\pliers_01.ogf
+
+[metro_pliers_02]:physic_object
+$spawn                        = "dynamic_objects\metro_content\metro_pliers_02"
+visual                        = dynamics\metro_content\pliers_02.ogf
+
+[metro_pliers_03]:physic_object
+$spawn                        = "dynamic_objects\metro_content\metro_pliers_03"
+visual                        = dynamics\metro_content\pliers_03.ogf
+
+[metro_saw]:physic_object
+$spawn                        = "dynamic_objects\metro_content\metro_saw"
+visual                        = dynamics\metro_content\saw.ogf
+
+[shashki_part_black]:physic_object
+$spawn                        = "dynamic_objects\metro_content\shashki_part_black"
+visual                        = dynamics\metro_content\shashki_part_black.ogf
+
+[shashki_part_white]:physic_object
+$spawn                        = "dynamic_objects\metro_content\shashki_part_white"
+visual                        = dynamics\metro_content\shashki_part_white.ogf
+
+[metro_shaski_box]:physic_object
+$spawn                        = "dynamic_objects\metro_content\metro_shaski_box"
+visual                        = dynamics\metro_content\shaski_box.ogf
+
+[metro_shvabra]:physic_object
+$spawn                        = "dynamic_objects\metro_content\metro_shvabra"
+visual                        = dynamics\metro_content\shvabra.ogf
+
+[street_child_game_01]:physic_object
+$spawn                        = "dynamic_objects\metro_content\street_child_game_01"
+visual                        = dynamics\metro_content\street_child_game_01.ogf
+fixed_bones					  = link
+custom_data 		      	  = models\objects\ignore_static.ltx
+
+[street_child_game_02]:physic_object
+$spawn                        = "dynamic_objects\metro_content\street_child_game_02"
+visual                        = dynamics\metro_content\street_child_game_02.ogf
+fixed_bones					  = link
+custom_data 		      	  = models\objects\ignore_static.ltx
+
+[metro_teapot]:physic_object
+$spawn                        = "dynamic_objects\metro_content\metro_teapot"
+visual                        = dynamics\metro_content\teapot.ogf
+
+[metro_veslo]:physic_object
+$spawn                        = "dynamic_objects\metro_content\metro_veslo"
+visual                        = dynamics\metro_content\veslo.ogf
+
+[welding_helmet]:physic_object
+$spawn                        = "dynamic_objects\metro_content\welding_helmet"
+visual                        = dynamics\metro_content\welding_helmet.ogf
+
+[metro_wood_axe_01]:physic_object
+$spawn                        = "dynamic_objects\metro_content\metro_wood_axe_01"
+visual                        = dynamics\metro_content\wood_axe_01.ogf
+
+[wood_box_with_books_01]:physic_object
+$spawn                        = "dynamic_objects\metro_content\wood_box_with_books_01"
+visual                        = dynamics\metro_content\wood_box_with_books_01.ogf
+
+[wood_box_with_books_02]:physic_object
+$spawn                        = "dynamic_objects\metro_content\wood_box_with_books_02"
+visual                        = dynamics\metro_content\wood_box_with_books_02.ogf
+
+[metro_shirma]:physic_object
+$spawn                        = "dynamic_objects\metro_content\metro_shirma"
+visual                        = dynamics\metro_content\shirma.ogf
+fixed_bones					  = link
+custom_data 		      	  = models\objects\ignore_static.ltx
+
+[home_plant_1]:physic_object
+$spawn                        = "dynamic_objects\kitchen_room\home_plant_1"
+visual                        = dynamics\kitchen_room\home_plant_1.ogf
+fixed_bones					  = link
+
+[shoe_1]:physic_object
+$spawn                        = "dynamic_objects\rope\shoe_1"
+visual                        = dynamics\rope\shoe_1.ogf
+fixed_bones					  = link
+custom_data 		          = models\objects\ph_oscillate_small.ltx
+
+[dyn_doska_1]:physic_object
+$spawn                        = "dynamic_objects\decor\dyn_doska_1"
+visual                        = dynamics\decor\dyn_doska_1.ogf
+
+[veh_wheel_1]:physic_object
+$spawn                        = "dynamic_objects\decor\veh_wheel_1"
+visual                        = dynamics\decor\veh_wheel_1.ogf
+
+[veh_wheel_2]:physic_object
+$spawn                        = "dynamic_objects\decor\veh_wheel_2"
+visual                        = dynamics\decor\veh_wheel_2.ogf
+
+[projector_01]:physic_object
+$spawn                        = "dynamic_objects\rope\projector_01"
+visual                        = dynamics\rope\projector_01.ogf
+fixed_bones					  = link
+custom_data 		          = models\objects\ph_oscillate.ltx
+
+[projector_02]:physic_object
+$spawn                        = "dynamic_objects\rope\projector_02"
+visual                        = dynamics\rope\projector_02.ogf
+fixed_bones					  = link
+custom_data 		          = models\objects\ph_oscillate.ltx
+
+[crane_platforma_stancia]:physic_object
+$spawn                        = "dynamic_objects\rope\crane_platforma_stancia"
+visual                        = dynamics\rope\crane_platforma_stancia.ogf
+fixed_bones					  = link
+custom_data 		          = models\objects\ph_oscillate.ltx
+
+[krane_01]:physic_object
+$spawn                        = "dynamic_objects\rope\krane_01"
+visual                        = dynamics\rope\krane_01.ogf
+fixed_bones					  = link
+custom_data 		          = models\objects\ph_oscillate.ltx
+
+[krane_03]:physic_object
+$spawn                        = "dynamic_objects\rope\krane_03"
+visual                        = dynamics\rope\krane_03.ogf
+fixed_bones					  = link
+custom_data 		          = models\objects\ph_oscillate.ltx
+
+[krane_04]:physic_object
+$spawn                        = "dynamic_objects\rope\krane_04"
+visual                        = dynamics\rope\krane_04.ogf
+fixed_bones					  = link
+custom_data 		          = models\objects\ph_oscillate.ltx
+
+[krane_05]:physic_object
+$spawn                        = "dynamic_objects\rope\krane_05"
+visual                        = dynamics\rope\krane_05.ogf
+fixed_bones					  = link
+custom_data 		          = models\objects\ph_oscillate.ltx
+
+[krane_flank]:physic_object
+$spawn                        = "dynamic_objects\rope\krane_flank"
+visual                        = dynamics\rope\krane_flank.ogf
+fixed_bones					  = link
+custom_data 		          = models\objects\ph_oscillate.ltx
+
+[krane_flank_2]:physic_object
+$spawn                        = "dynamic_objects\rope\krane_flank_2"
+visual                        = dynamics\rope\krane_flank_2.ogf
+fixed_bones					  = link
+custom_data 		          = models\objects\ph_oscillate.ltx
+
+[katushka_01]:physic_object
+$spawn                        = "dynamic_objects\decor\katushka_01"
+visual                        = dynamics\decor\katushka_01.ogf
+
+[pricep_01]:physic_object
+$spawn                        = "dynamic_objects\decor\pricep_01"
+visual                        = dynamics\decor\pricep_01.ogf
+
+[matress_01]:physic_object
+$spawn                        = "dynamic_objects\decor\matress_01"
+visual                        = dynamics\decor\matress_01.ogf
+
+[bochka_open_1]:physic_object
+$spawn                        = "dynamic_objects\balon\bochka_open_1"
+visual                        = dynamics\balon\bochka_open_1.ogf
+
+[bochka_open_2]:physic_object
+$spawn                        = "dynamic_objects\balon\bochka_open_2"
+visual                        = dynamics\balon\bochka_open_2.ogf
+
+[bochka_open_3]:physic_object
+$spawn                        = "dynamic_objects\balon\bochka_open_3"
+visual                        = dynamics\balon\bochka_open_3.ogf
+
+[bochka_open_4]:physic_object
+$spawn                        = "dynamic_objects\balon\bochka_open_4"
+visual                        = dynamics\balon\bochka_open_4.ogf
+
+[bag_01]:physic_object
+$spawn                        = "dynamic_objects\armory_room\bag_01"
+visual                        = dynamics\armory_room\bag_01.ogf
+
+[bottle_0_5l]:physic_object
+$spawn                        = "dynamic_objects\kitchen_room\bottle_0_5l"
+visual                        = dynamics\kitchen_room\bottle_0_5l.ogf
+
+[poddon_k_lejak]:physic_object
+$spawn                        = "dynamic_objects\poddon\poddon_k_lejak"
+visual                        = dynamics\poddon\poddon_k_lejak.ogf
+
+[poddon_k]:physic_destroyable_object
+$spawn                        = "dynamic_objects\poddon\poddon_k"
+visual                        = dynamics\poddon\poddon_k.ogf
+
+[cabinet_village_140x210_ph]:physic_object
+$spawn                        = "dynamic_objects\shkaf\cabinet_village_140x210_ph"
+visual                        = dynamics\shkaf\cabinet_village_140x210_ph.ogf
+
+[build_shkaf_2]:physic_object
+$spawn                        = "dynamic_objects\shkaf\build_shkaf_2"
+visual                        = dynamics\shkaf\build_shkaf_2.ogf
+
+[skameyka]:physic_destroyable_object
+$spawn                        = "dynamic_objects\stul\skameyka"
+visual                        = dynamics\stul\skameyka.ogf
+
+[divan_01]:physic_object
+$spawn                        = "dynamic_objects\stul\divan_01"
+visual                        = dynamics\stul\divan_01.ogf
+
+[divan_02]:physic_object
+$spawn                        = "dynamic_objects\stul\divan_02"
+visual                        = dynamics\stul\divan_02.ogf
+
+[divan_03]:physic_object
+$spawn                        = "dynamic_objects\stul\divan_03"
+visual                        = dynamics\stul\divan_03.ogf
+
+[freezer_open_door]:physic_object
+$spawn                        = "dynamic_objects\kitchen_room\freezer_open_door"
+visual                        = dynamics\kitchen_room\freezer_open_door.ogf
+startup_animation			  = idle_close
+custom_data 		          = models\objects\ph_button.ltx
+
+[stalker_newbee_rope]:physic_object
+$spawn                        = "dynamic_objects\dead_body\stalker_newbee_rope"
+visual                        = dynamics\dead_body\stalker_newbee_rope.ogf
+fixed_bones					  = link
+custom_data 		          = models\objects\ph_oscillate.ltx
+
+[stalker_newbee_1_rope]:physic_object
+$spawn                        = "dynamic_objects\dead_body\stalker_newbee_1_rope"
+visual                        = dynamics\dead_body\stalker_newbee_1_rope.ogf
+fixed_bones					  = link
+custom_data 		          = models\objects\ph_oscillate.ltx
+
+[stalker_newbee_2_rope]:physic_object
+$spawn                        = "dynamic_objects\dead_body\stalker_newbee_2_rope"
+visual                        = dynamics\dead_body\stalker_newbee_2_rope.ogf
+fixed_bones					  = link
+custom_data 		          = models\objects\ph_oscillate.ltx
+
+[trupik_rope]:physic_object
+$spawn                        = "dynamic_objects\dead_body\trupik_rope"
+visual                        = dynamics\dead_body\trupik_rope.ogf
+fixed_bones					  = link
+custom_data 		          = models\objects\ph_oscillate.ltx
+
+[skeletik_rope]:physic_object
+$spawn                        = "dynamic_objects\dead_body\skeletik_rope"
+visual                        = dynamics\dead_body\skeletik_rope.ogf
+fixed_bones					  = link
+custom_data 		          = models\objects\ph_oscillate.ltx
+
+[soldatik_rope]:physic_object
+$spawn                        = "dynamic_objects\dead_body\soldatik_rope"
+visual                        = dynamics\dead_body\soldatik_rope.ogf
+fixed_bones					  = link
+custom_data 		          = models\objects\ph_oscillate.ltx
+
+[soldatik_rope_without_helm_1]:physic_object
+$spawn                        = "dynamic_objects\dead_body\soldatik_rope_without_helm_1"
+visual                        = dynamics\dead_body\soldatik_rope_without_helm_1.ogf
+fixed_bones					  = link
+custom_data 		          = models\objects\ph_oscillate.ltx
+
+[soldatik_rope_without_helm_2]:physic_object
+$spawn                        = "dynamic_objects\dead_body\soldatik_rope_without_helm_2"
+visual                        = dynamics\dead_body\soldatik_rope_without_helm_2.ogf
+fixed_bones					  = link
+custom_data 		          = models\objects\ph_oscillate.ltx
+
+[crash_doska_1]:physic_destroyable_object
+$spawn                        = "dynamic_objects\military\crash_doska_1"
+visual                        = dynamics\mlr\military\crash_doska_1.ogf
+
+[crash_doska_2]:physic_destroyable_object
+$spawn                        = "dynamic_objects\military\crash_doska_2"
+visual                        = dynamics\mlr\military\crash_doska_2.ogf
+
+[crash_doska_3]:physic_destroyable_object
+$spawn                        = "dynamic_objects\military\crash_doska_3"
+visual                        = dynamics\mlr\military\crash_doska_3.ogf
+
+[fork_broken]:physic_destroyable_object
+$spawn                        = "dynamic_objects\kitchen_room\fork_broken"
+visual                        = dynamics\kitchen_room\fork_broken.ogf
+
+[fork_clean]:physic_destroyable_object
+$spawn                        = "dynamic_objects\kitchen_room\fork_clean"
+visual                        = dynamics\kitchen_room\fork_clean.ogf
+
+[fork_dirt]:physic_destroyable_object
+$spawn                        = "dynamic_objects\kitchen_room\fork_dirt"
+visual                        = dynamics\kitchen_room\fork_dirt.ogf
+
+[fork_dirt_2]:physic_destroyable_object
+$spawn                        = "dynamic_objects\kitchen_room\fork_dirt_2"
+visual                        = dynamics\kitchen_room\fork_dirt_2.ogf
+
+[spoon_broken]:physic_destroyable_object
+$spawn                        = "dynamic_objects\kitchen_room\spoon_broken"
+visual                        = dynamics\kitchen_room\spoon_broken.ogf
+
+[spoon_hole]:physic_destroyable_object
+$spawn                        = "dynamic_objects\kitchen_room\spoon_hole"
+visual                        = dynamics\kitchen_room\spoon_hole.ogf
+
+[spoon_old]:physic_destroyable_object
+$spawn                        = "dynamic_objects\kitchen_room\spoon_old"
+visual                        = dynamics\kitchen_room\spoon_old.ogf
+
+[kitchen_doska]:physic_destroyable_object
+$spawn                        = "dynamic_objects\kitchen_room\kitchen_doska"
+visual                        = dynamics\kitchen_room\kitchen_doska.ogf
+
+[bottle_bar_stakan]:physic_destroyable_object
+$spawn                        = "dynamic_objects\kitchen_room\bottle_bar_stakan"
+visual                        = dynamics\decor\bottle_bar_stakan.ogf
+
+[stol_2]:physic_destroyable_object
+$spawn                        = "dynamic_objects\stol\stol_2"
+visual                        = dynamics\stol\stol_2.ogf
+
+[stol_4]:physic_destroyable_object
+$spawn                        = "dynamic_objects\stol\stol_4"
+visual                        = dynamics\stol\stol_4.ogf
+
+[stol_5]:physic_destroyable_object
+$spawn                        = "dynamic_objects\stol\stol_5"
+visual                        = dynamics\stol\stol_5.ogf
+
+[stol_8]:physic_destroyable_object
+$spawn                        = "dynamic_objects\stol\stol_8"
+visual                        = dynamics\stol\stol_8.ogf
+
+[stol_8_ph]:physic_destroyable_object
+$spawn                        = "dynamic_objects\stol\stol_8_ph"
+visual                        = dynamics\stol\stol_8_ph.ogf
+
+[stol_8_village]:physic_destroyable_object
+$spawn                        = "dynamic_objects\stol\stol_8_village"
+visual                        = dynamics\stol\stol_8_village.ogf
+
+[stol_bar]:physic_destroyable_object
+$spawn                        = "dynamic_objects\stol\stol_bar"
+visual                        = dynamics\stol\stol_bar.ogf
+
+[stol_bar_2]:physic_destroyable_object
+$spawn                        = "dynamic_objects\stol\stol_bar_2"
+visual                        = dynamics\stol\stol_bar_2.ogf
+
+[stol_lab_2]:physic_destroyable_object
+$spawn                        = "dynamic_objects\stol\stol_lab_2"
+visual                        = dynamics\stol\stol_lab_2.ogf
+
+[stol_lab_3]:physic_destroyable_object
+$spawn                        = "dynamic_objects\stol\stol_lab_3"
+visual                        = dynamics\stol\stol_lab_3.ogf
+
+[stol_obedenniy]:physic_destroyable_object
+$spawn                        = "dynamic_objects\stol\stol_obedenniy"
+visual                        = dynamics\stol\stol_obedenniy.ogf
+
+[stol_obedenniy_village]:physic_destroyable_object
+$spawn                        = "dynamic_objects\stol\stol_obedenniy_village"
+visual                        = dynamics\stol\stol_obedenniy_village.ogf
+
+[box_metall_02_heavy_army]:physic_object
+$spawn                        = "dynamic_objects\box\box_metall_02_heavy_army"
+visual                        = dynamics\box\box_metall_02_heavy_army.ogf
+
+[box_metall_03_big]:physic_object
+$spawn                        = "dynamic_objects\box\box_metall_03_big"
+visual                        = dynamics\box\box_metall_03_big.ogf
+
+[pipe_01]:physic_object
+$spawn                        = "dynamic_objects\pipe\pipe_01"
+visual                        = dynamics\pipe\pipe_01.ogf
+
+[pipe_02]:physic_object
+$spawn                        = "dynamic_objects\pipe\pipe_02"
+visual                        = dynamics\pipe\pipe_02.ogf
+
+[pipe_03]:physic_object
+$spawn                        = "dynamic_objects\pipe\pipe_03"
+visual                        = dynamics\pipe\pipe_03.ogf
+
+[pipe_04]:physic_object
+$spawn                        = "dynamic_objects\pipe\pipe_04"
+visual                        = dynamics\pipe\pipe_04.ogf
+
+[pipe_05]:physic_object
+$spawn                        = "dynamic_objects\pipe\pipe_05"
+visual                        = dynamics\pipe\pipe_05.ogf
+
+[pipe_06]:physic_object
+$spawn                        = "dynamic_objects\pipe\pipe_06"
+visual                        = dynamics\pipe\pipe_06.ogf
+
+[children_ball_1]:physic_destroyable_object
+$spawn                        = "dynamic_objects\children_ball_1"
+visual                        = dynamics\mlr\children_ball.ogf
+
 ;*** scene_objects ***************************************************************
+
 [jup_b43_af_fuzz_kolobok]:physic_object
 $spawn                        = "dynamic_objects\scene_objects\jup_b43_af_fuzz_kolobok"
 visual                        = dynamics\artefacts\af_fuzz_kolobok.ogf
@@ -601,7 +1257,7 @@ fixed_bones							= wpn_body
 
 [museum_val]:physic_destroyable_object
 $spawn                        = "dynamic_objects\museum_weapons\museum_val"
-visual                        = dynamics\weapons\wpn_val\wpn_val.ogf
+visual                        = dynamics\weapons\wpn_vintorez\wpn_vintorez.ogf
 fixed_bones							= wpn_body
 
 [museum_vintorez]:physic_destroyable_object

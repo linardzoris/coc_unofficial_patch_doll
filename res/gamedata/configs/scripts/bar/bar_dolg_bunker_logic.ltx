@@ -1,4 +1,4 @@
-[walker@generic]
+[animpoint@generic]
 gather_items_enabled = false
 help_wounded_enabled = false
 corpse_detection_enabled = false
@@ -6,24 +6,144 @@ turn_on_campfire = false
 
 [logic@bar_dolg_leader]
 suitable = {=check_npc_name(bar_dolg_leader)} true
-prior = 200
-active = walker@bar_dolg_leader
+prior = 300
+active = animpoint@bar_dolg_leader
 level_spot = quest_npc
 
-[walker@bar_dolg_leader]:walker@generic
-path_walk = bar_dolg_leader_walk
-path_look = bar_dolg_leader_look
+[animpoint@bar_dolg_leader]:animpoint@generic
+cover_name = bar_dolg_leader_stay_1
+avail_animations = fold_arms
 use_camp = false
 meet = meet@bar_dolg_leader
-combat_ignore_cond = {=is_enemy_actor_or_companion} false, true
-combat_ignore_keep_when_attacked = true
-invulnerable = {!actor_enemy} true, false
-on_actor_in_zone = bar_bunker_online_restrictor | %=play_sound(bar_dolg_leader_idle)%
+combat_ignore_cond = {=is_warfare} false, {=actor_enemy =check_enemy_name(actor)} false, true
+combat_ignore_keep_when_attacked = {=is_warfare} false, true
+invulnerable = {=is_warfare} false, {!actor_enemy} true, false
+on_game_timer = 3600 | animpoint@bar_dolg_leader_2
+
+[animpoint@bar_dolg_leader_2]:animpoint@generic
+cover_name = bar_dolg_leader_stay_2
+avail_animations = choose
+use_camp = false
+meet = meet@bar_dolg_leader
+combat_ignore_cond = {=is_warfare} false, {=actor_enemy =check_enemy_name(actor)} false, true
+combat_ignore_keep_when_attacked = {=is_warfare} false, true
+invulnerable = {=is_warfare} false, {!actor_enemy} true, false
+on_game_timer = 3600 | animpoint@bar_dolg_leader
 
 [meet@bar_dolg_leader]
-close_snd_hello = bar_dolg_leader_hello
 close_anim = ward
 close_distance = 7
 close_victim = actor
 use = {=actor_enemy} false, true
 trade_enable = false
+
+; general guards
+
+[logic@guard_1]
+suitable = {=npc_community(dolg) !surge_started} true
+active = camper@guard_1
+prior = 200
+
+[logic@guard_2]
+suitable = {=npc_community(dolg) !surge_started} true
+active = camper@guard_2
+prior = 200
+
+[logic@guard_3]
+suitable = {=npc_community(dolg) !surge_started} true
+active = patrol@guard_3
+prior = 200
+
+[camper@guard_1]
+path_walk = special_guard_1_walk
+path_look = special_guard_1_look
+meet = meet@guard
+
+[camper@guard_2]
+path_walk = special_guard_2_walk
+path_look = special_guard_2_look
+meet = no_meet
+
+[patrol@guard_3]
+path_walk = special_patrol_1_walk
+path_look = special_patrol_1_look
+meet = no_meet
+
+[meet@guard]
+close_distance = 5
+close_victim = actor
+close_anim = guard
+use = false
+
+; relax
+
+[logic@bar_dolg_bunker_camp_work_1]
+active = animpoint@bar_dolg_bunker_camp_work_1
+suitable = true
+prior = 100
+
+[logic@bar_dolg_bunker_camp_work_2]
+active = animpoint@bar_dolg_bunker_camp_work_2
+suitable = true
+prior = 100
+
+[logic@bar_dolg_bunker_camp_work_3]
+active = animpoint@bar_dolg_bunker_camp_work_3
+suitable = true
+prior = 100
+
+[logic@bar_dolg_bunker_camp_work_4]
+active = animpoint@bar_dolg_bunker_camp_work_4
+suitable = true
+prior = 100
+
+[logic@bar_dolg_bunker_camp_work_5]
+active = animpoint@bar_dolg_bunker_camp_work_5
+suitable = true
+prior = 100
+
+[logic@bar_dolg_bunker_camp_work_6]
+active = animpoint@bar_dolg_bunker_camp_work_6
+suitable = true
+prior = 100
+
+[animpoint@bar_dolg_bunker_camp_work_1]
+use_camp = true
+cover_name = bar_dolg_bunker_animpoint_kamp1
+meet = meet@bar_dolg_bunker_all
+
+[animpoint@bar_dolg_bunker_camp_work_2]
+use_camp = true
+cover_name = bar_dolg_bunker_animpoint_kamp2
+meet = meet@bar_dolg_bunker_all
+
+[animpoint@bar_dolg_bunker_camp_work_3]
+use_camp = true
+cover_name = bar_dolg_bunker_animpoint_kamp3
+meet = meet@bar_dolg_bunker_all
+
+[animpoint@bar_dolg_bunker_camp_work_4]
+use_camp = true
+cover_name = bar_dolg_bunker_animpoint_kamp4
+meet = meet@bar_dolg_bunker_all
+
+[animpoint@bar_dolg_bunker_camp_work_5]
+use_camp = false
+cover_name = bar_dolg_bunker_animpoint_kamp5
+meet = meet@bar_dolg_bunker_all
+
+[animpoint@bar_dolg_bunker_camp_work_6]
+use_camp = false
+cover_name = bar_dolg_bunker_animpoint_kamp6
+avail_animations = animpoint_rest_at_bed
+meet = no_meet
+
+[meet@bar_dolg_bunker_all]
+close_anim 		= nil
+close_victim 	= nil
+far_anim 		= nil
+far_victim 		= nil
+use = true
+trade_enable = true
+close_distance = 0
+far_distance = 0

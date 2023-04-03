@@ -1,24 +1,153 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <string_table>
-	<!-- yan_ecolog_kruglov -->
-	<string id="yan_ecolog_kruglov_start_dialog_1">
-		<text>Greetings, stalker.</text>
+
+<!-- yan_ecolog_army_soldier -->
+
+	<string id="yan_ecolog_army_soldier_meet_0">
+		<text>Hello, you...</text>
+	</string>
+	<string id="yan_ecolog_army_soldier_meet_1">
+		<text>The local caretaker, well, I dig into this old shit and occasionally keep records of it. And you're new here, don't you really know me?</text>
+	</string>
+	<string id="yan_ecolog_army_soldier_meet_2">
+		<text>No.</text>
+	</string>
+	<string id="yan_ecolog_army_soldier_meet_3">
+		<text>In general, listen. The longing is green here and you can hang yourself out of boredom, so the guys and I are slowly leaning on vodka here, only as you already guessed, it is forbidden by the statute. I know it's tight with cartridges here, Sugar doesn't sell them! I can fit it, though sovdepovskie only, zvinyay. And I also have a bronka and new night sights, are you interested? And all this for the usual vodyara! Don't think about it, I'm not that smart, this stuff has been lying in the warehouse for years anyway, not needed by anyone. As we agree, the stash is here at the base, in the garage where the UAZ is broken up, the goods will be right behind it.</text>
+	</string>
+	<string id="yan_ecolog_army_soldier_meet_4">
+		<text>You just open up to me like that. And what if they find out about your machinations with the warehouse?</text>
+	</string>
+	<string id="yan_ecolog_army_soldier_meet_5">
+		<text>Then don't come to the base for at least a month until the next helicopter, do you need it? It's very hard for everyone here and everyone understands this, so if such a rat comes running to the gates of the bunker, they will shoot you and even the professor will not punish you here. As if they were clean, there's honey. drugs and overalls are being traded.</text>
+	</string>	
+	<string id="yan_ecolog_army_soldier_meet_6">
+		<text>Logically, then I won't bother you, only if I don't want to use the exchange services.</text>
 	</string>
 
-	<!-- yan_ecolog_semenov -->
-	<string id="yan_ecolog_semenov_start_dialog_1">
-		<text>Ah, stalker, what do you need?</text>
+	<string id="yan_ecolog_army_soldier_barter_list_0">
+		<text>What can I exchange with you?</text>
 	</string>
-	<string id="yan_ecolog_semenov_start_dialog_yan_ecolog_semenov_task_1">
-		<text>I still have more data to collect. Let's go find some more mutants.</text>
-	</string>
-
-	<!-- yan_ecolog_vasilyev -->
-	<string id="yan_ecolog_vasilyev_start_dialog_1">
-		<text>Greetings, stalker.</text>
+	<string id="yan_ecolog_army_soldier_barter_list_1">
+		<text>Here, look:\n5 bottles = six packs 9x18\n5 bottles = three packs 5.45x39\n10 bottles = six packs 5.45x39\n10 bottles = five packs 12x70\n10 bottles = two packs 7.62x54\n15 bottles + 3 thousands of rubles = five packs for PKP\n20 bottles = outfit «Beryl»\n20 bottles = 10 packs 23x75mm "Shrapnel"\n20 bottles = 5 packs 23x75mm "Barricade"\n25 bottles + 5 thousand rubles = shotgun KS-23\n30 bottles = 2 night scopes - "Little" и "Saracen"</text>
 	</string>
 
-	<!-- yan_stalker_sakharov -->
+	<string id="yan_ecolog_army_soldier_barter_0">
+		<text>I brought vodka.</text>
+	</string>
+	<string id="yan_ecolog_army_soldier_barter_1">
+		<text>Great, choose.</text>
+	</string>
+	<string id="yan_ecolog_army_soldier_barter_2">
+		<text>Six packs 9x18</text>
+	</string>
+	<string id="yan_ecolog_army_soldier_barter_3">
+		<text>Three packs 5.45</text>
+	</string>
+	<string id="yan_ecolog_army_soldier_barter_4">
+		<text>Six packs 5.45</text>
+	</string>
+	<string id="yan_ecolog_army_soldier_barter_5">
+		<text>Give me the shotbucks.</text>
+	</string>
+	<string id="yan_ecolog_army_soldier_barter_6">
+		<text>Two packs 7.62</text>
+	</string>
+	<string id="yan_ecolog_army_soldier_barter_7">
+		<text>Five packs for the PKP.</text>
+	</string>
+	<string id="yan_ecolog_army_soldier_barter_8">
+		<text>«Beryl».</text>
+	</string>
+	<string id="yan_ecolog_army_soldier_barter_9">
+		<text>23x75mm "Shrapnel", bring it.</text>
+	</string>	
+	<string id="yan_ecolog_army_soldier_barter_10">
+		<text>23x75mm "Barricade", bring it.</text>
+	</string>
+	<string id="yan_ecolog_army_soldier_barter_11">
+		<text>Give me your night scopes.</text>
+	</string>
+	
+	<string id="yan_ecolog_army_soldier_barter_done">
+		<text>He beaconed his own, take it for the UAZ in the garage.</text>
+	</string>
+
+	<string id="yan_ecolog_army_soldier_barter_12">
+		<text>I've changed my mind.</text>
+	</string>
+
+<!-- yan_ecolog_army_soldier -->
+
+	<string id="yan_ecolog_army_tech_hello_0">
+		<text>Don't bother me, stalker.</text>
+	</string>
+
+	<string id="army_yan_mec_about_tool_0">
+		<text>Hello, who are you?</text>
+	</string>
+	<string id="army_yan_mec_about_tool_1">
+		<text>Can't you see by me? I am a military man, Sapsan is my call sign. Here I help our guys with equipment. Part-time technician. What's broken, so drag it to me.</text>
+	</string>
+	<string id="army_yan_mec_about_tool_2">
+		<text>And you probably need tools?</text>
+	</string>
+	<string id="army_yan_mec_about_tool_3">
+		<text>No! I was provided with what I needed, the equipment here is not simple for scientists, so it requires high-quality technical intervention... I fixed the old receiver, though it drives some kind of mud. It's been two years since our guys died in warehouses, and he broadcasts their voices.</text>
+	</string>
+	<string id="army_yan_mec_about_tool_4">
+		<text>Well, anomal zone like that... you never know what she can figure out. Anyway, I get it. Good luck to you here.</text>
+	</string>
+
+<!-- yan_ecolog_semenov -->
+	
+	<string id="yan_bun_semenov_hello_0">
+		<text>Yep-Yep? Damn, hello.</text>
+	</string>
+	
+	<string id="yan_bun_semenov_talk_0">
+		<text>Hi, aren't you hot in your outfit?</text>
+	</string>	
+	<string id="yan_bun_semenov_talk_1">
+		<text>Safety precautions, our laboratory specializes in working with psi fields and sometimes you have to conduct experiments with them right in the bunker, if you know what I mean. Plus, the suit has a good built-in cooling system. You just take it and stand in it under an ice shower, and water comes in through numerous holes. Joke, are you interested in anything?</text>
+	</string>	
+	<string id="yan_bun_semenov_talk_2">
+		<text>Well, I want to know what's here and how.</text>
+	</string>	
+	<string id="yan_bun_semenov_talk_3">
+		<text>Well, this is such a peculiar hole, and in the literal sense we are located at the bottom of a once-dried lake. We have a mobile laboratory here, a Peregrine Falcon is sitting next to us and he repairs our equipment if there is a need, but I think he can do yours for an appropriate fee. Over there in front of me, do you hear someone grumbling? This is our professor, he also lectured at my university. There are two hangars outside, in the hangar at number 2 we have something like a dining room, where an ordinary contractor is responsible for the economic part. In the next one we have a warehouse and only the aforementioned double bass has access to it, by the way, they call him Spirit. Well, I'm just Semenov, I help the professor in various experiments, I monitor the equipment, the state of artifacts. Periodically, by the way, different people still look in here. I have some knowledge of pharmaceuticals, so if you get sick, I will help you, and of course not for free. Professor Kruglov was also with us before, until he was transferred to SRI, he had some kind of report on the armed forces there</text>
+	</string>	
+	<string id="yan_bun_semenov_talk_4">
+		<text>Yes, I just came to you for a light, and maybe some kind of job to find.</text>
+	</string>	
+	<string id="yan_bun_semenov_talk_5">
+		<text>We have a lot of work, especially on the territory of the plant, there is always some kind of shit happening.</text>
+	</string>	
+	<string id="yan_bun_semenov_talk_6">
+		<text>I'll ask you sometime.</text>
+	</string>		
+	
+	<string id="yan_bun_semenov_heal_0">
+		<text>I want to check my health.</text>
+	</string>
+	<string id="yan_bun_semenov_heal_1">
+		<text>Medicines are expensive now, so prepare 2000 in advance.</text>
+	</string>
+	<string id="yan_bun_semenov_heal_5">
+		<text>What about social guarantees? Okay, I'll go get the money and run.</text>
+	</string>
+	<string id="yan_bun_semenov_heal_2">
+		<text>I didn't find any problems in your health, come on, scratch.</text>
+	</string>
+	<string id="yan_bun_semenov_heal_3">
+		<text>Here you go, bloodsucker:</text>
+	</string>
+	<string id="yan_bun_semenov_heal_4">
+		<text>Now where I've been here... Yeah, now your health is not in danger.</text>
+	</string>
+
+<!-- yan_stalker_sakharov -->
+	
 	<string id="st_yan_saharov_message_about_storm">
 		<text>Stalker, help us! Our bunker is under attack by zombies! You should be able to survive this weak emission!</text>
 	</string>
@@ -98,7 +227,8 @@
 		<text>Very well. Don't worry; we'll keep the psi-helmet for later.</text>
 	</string>
 
-	<!-- yan_merc_guards -->
+<!-- yan_merc_guards -->
+	
 	<string id="yan_merc_guards_start_2">
 		<text>You're in the wrong place, buddy... and you better leave before we make it the wrong time, too.</text>
 	</string>
@@ -108,4 +238,5 @@
 	<string id="yan_merc_guards_start_4">
 		<text>Get lost, buddy. Do that, and we'll keep it peaceful.</text>
 	</string>
+	
 </string_table>

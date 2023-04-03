@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="windows-1251" ?>
 <string_table>
+	<string id="st_yan_ecolog_army_tech_name">
+		<text>Сапсан</text>
+	</string>
+	<string id="st_yan_ecolog_army_soldier_name">
+		<text>Грач</text>
+	</string>	
+	<string id="st_bar_visitors_guid_name">
+		<text>Навигатор</text>
+	</string>	
+	<string id="st_bar_visitors_informator_name">
+		<text>Осведомитель</text>
+	</string>	
+	
 	<string id="jup_a10_bandit_leader_name">
 		<text>Валет</text>
 	</string>
@@ -402,23 +415,8 @@
 	<string id="yan_semenov_bio">
 		<text>Научный сотрудник мобильной лаборатории. Детальная информация отсутствует.</text>
 	</string>
-	<string id="yan_cherenkov_name">
-		<text>Доктор Черенков</text>
-	</string>
 	<string id="yan_semenov_name">
 		<text>Доцент Семёнов</text>
-	</string>
-	<string id="yan_vasilyev_name">
-		<text>Васильев</text>
-	</string>
-	<string id="yan_vasilyev_bio">
-		<text>Научный сотрудник мобильной лаборатории. Детальная информация отсутствует.</text>
-	</string>
-	<string id="yan_kruglov_bio">
-		<text>Доктор биологических наук. За пределами Зоны занимался патогенными мутациями животных. В Зону отправился для изучения мутаций слепых псов.</text>
-	</string>
-	<string id="yan_kruglov_name">
-		<text>Круглов</text>
 	</string>
   <string id="mar_base_stalker_tech_name">
 	<text>Новиков</text>
@@ -542,9 +540,6 @@
 	</string>
 	<string id="sar2_krot_name">
 		<text>Крот</text>
-	</string>
-	<string id="sar2_kruglov_name">
-		<text>Профессор Круглов</text>
 	</string>
 	<string id="sar2_kuznetsov_name">
 		<text>Майор Кузнецов</text>

@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="windows-1251" ?>
 <string_table>
+	<string id="st_energy_drink_nonstop">
+		<text>Энергетический напиток «Non Stop»</text>
+	</string>
+	<string id="st_energy_drink_nonstop_descr">
+		<text>Отличный энергетический напиток «Non Stop». Содержит кофеин, таурин и мощный витаминный комплекс, снимающие усталость и прибавляющие силы. Не в состоянии сделать даже шаг? Тогда это именно то, что нужно.</text>
+	</string>
 	<string id="st_antirad">
 		<text>Противорадиационный препарат</text>
 	</string>

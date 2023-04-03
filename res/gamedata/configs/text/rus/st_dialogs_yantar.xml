@@ -1,21 +1,153 @@
 <?xml version="1.0" encoding="windows-1251" ?>
 <string_table>
-<!-- yan_ecolog_kruglov   -->
-	<string id="yan_ecolog_kruglov_start_dialog_1">
-		<text>Приветствую, сталкер.</text>
+
+<!-- yan_ecolog_army_soldier -->
+
+	<string id="yan_ecolog_army_soldier_meet_0">
+		<text>Привет, а ты...</text>
 	</string>
+	<string id="yan_ecolog_army_soldier_meet_1">
+		<text>Местный завхоз, ну копошусь в этом старом дерьме и изредка веду его учёт. А ты здесь новый, реально меня не знаешь?</text>
+	</string>
+	<string id="yan_ecolog_army_soldier_meet_2">
+		<text>Нет.</text>
+	</string>
+	<string id="yan_ecolog_army_soldier_meet_3">
+		<text>В общем слушай. Тоска зелёная здесь и со скуки повеситься можно, так что мы с ребятами тут потихоньку на водку налегаем, только как ты уже догадался по уставу это запрещено. Я знаю, что туго здесь с патронами, Сахар-то ими не торгует! Могу подогнать, правда совдеповские только, звиняй. А ещё бронька у меня есть и прицелы новенькие ночные, интересует? И всё это за обычную водяру! Ты не подумай, я не настолько ушлый, этот хлам здесь всё равно на складе годами лежит никому не нужный. Как сговоримся, нычка здесь на базе, в гараже где УАЗ раздолбанный стоит, товар прямо за ним будет.</text>
+	</string>
+	<string id="yan_ecolog_army_soldier_meet_4">
+		<text>Ты вот так просто мне открываешься. А что, если о твоих махинациях со складом узнают?</text>
+	</string>
+	<string id="yan_ecolog_army_soldier_meet_5">
+		<text>Тогда на базу больше минимум месяц до следующего вертолёта не приходи, оно тебе надо? Здесь всем очень тяжело и все это понимают, так что подобную крысу, если она прибежит к воротам бункера будут отстреливать и тут тебя даже профессура не отмажет. Будто они чистенькие, вон мед. препаратами и комбинезонами приторговывают.</text>
+	</string>	
+	<string id="yan_ecolog_army_soldier_meet_6">
+		<text>Логично, значит не буду тебя беспокоить, только если не захочу воспользоваться услугами обмена.</text>
+	</string>
+
+	<string id="yan_ecolog_army_soldier_barter_list_0">
+		<text>Что у тебя можно выменять?</text>
+	</string>
+	<string id="yan_ecolog_army_soldier_barter_list_1">
+		<text>Вот, смотри:\n5 бутылок = 6 пачек 9х18\n5 бутылок = 3 пачки 5.45х39\n10 бутылок = 6 пачек 5.45х39\n10 бутылок = пять пачек 12х70\n10 бутылок = две пачки 7.62х54\n15 пузырей + 3 тыщи рублей = пять коробов для ПКП\n20 бутылок = бронежилет «Берилл»\n20 бутылок = 10 пачек 23х75мм "Шрапнель"\n20 бутылок = 5 пачек 23х75мм "Баррикада"\n25 бутылок + 5 тыщ. рублей = дробовик КС-23\n30 бутылок = 2 ночных прицела - "Малыш" и "Сарацин"</text>
+	</string>
+
+	<string id="yan_ecolog_army_soldier_barter_0">
+		<text>Принёс я водки.</text>
+	</string>
+	<string id="yan_ecolog_army_soldier_barter_1">
+		<text>Отлично, выбирай.</text>
+	</string>
+	<string id="yan_ecolog_army_soldier_barter_2">
+		<text>6 пачек 9х18</text>
+	</string>
+	<string id="yan_ecolog_army_soldier_barter_3">
+		<text>3 пачки 5.45</text>
+	</string>
+	<string id="yan_ecolog_army_soldier_barter_4">
+		<text>6 пачек 5.45</text>
+	</string>
+	<string id="yan_ecolog_army_soldier_barter_5">
+		<text>Дроби мне отсыпь.</text>
+	</string>
+	<string id="yan_ecolog_army_soldier_barter_6">
+		<text>Две пачки 7.62</text>
+	</string>
+	<string id="yan_ecolog_army_soldier_barter_7">
+		<text>5 коробов для ПКП давай.</text>
+	</string>
+	<string id="yan_ecolog_army_soldier_barter_8">
+		<text>«Берилл» давай.</text>
+	</string>
+	<string id="yan_ecolog_army_soldier_barter_9">
+		<text>23х75мм "Шрапнель" неси.</text>
+	</string>	
+	<string id="yan_ecolog_army_soldier_barter_10">
+		<text>23х75мм "Баррикаду" неси.</text>
+	</string>
+	<string id="yan_ecolog_army_soldier_barter_11">
+		<text>Давай свои ночные прицелы.</text>
+	</string>
+	
+	<string id="yan_ecolog_army_soldier_barter_done">
+		<text>Маякнул своим, забирай за УАЗиком в гараже.</text>
+	</string>
+
+	<string id="yan_ecolog_army_soldier_barter_12">
+		<text>Да я как-то передумал уже.</text>
+	</string>
+
+<!-- yan_ecolog_army_tech -->
+
+	<string id="yan_ecolog_army_tech_hello_0">
+		<text>Не мешай мне, сталкер.</text>
+	</string>
+
+	<string id="army_yan_mec_about_tool_0">
+		<text>Здарова, а ты кто?</text>
+	</string>
+	<string id="army_yan_mec_about_tool_1">
+		<text>По мне не видно? Военный я, Сапсан мой позывной. Здесь нашим ребятам помогаю со снаряжением. Техник по совместительству. Сломалось что, так мне тащи.</text>
+	</string>
+	<string id="army_yan_mec_about_tool_2">
+		<text>И инструменты тебе поди нужны?</text>
+	</string>
+	<string id="army_yan_mec_about_tool_3">
+		<text>Да не, накой! Меня чем надо обеспечили, здесь у учёных снаряжение не простое, вот и требует качественного технического вмешательства... приёмник старый вот починил, правда он муть какую-то загоняет. Года два уже как ребятки наши на складах полегли, а он их голоса вещает.</text>
+	</string>
+	<string id="army_yan_mec_about_tool_4">
+		<text>Ну зона она такая... мало ли, что вычудить может. В общем, я понял. Удачи тебе здесь.</text>
+	</string>
+
 <!-- yan_ecolog_semenov   -->
-	<string id="yan_ecolog_semenov_start_dialog_1">
-		<text>Да, Вам что-то нужно?</text>
+
+	<string id="yan_bun_semenov_hello_0">
+		<text>Да-да? Тьфу, привет.</text>
 	</string>
-	<string id="yan_ecolog_semenov_start_dialog_yan_ecolog_semenov_task_1">
-		<text>Всё ещё недостаточно данных. Нужно найти ещё парочку мутантов.</text>
+	
+	<string id="yan_bun_semenov_talk_0">
+		<text>Привет, не жарко тебе в комбезе?</text>
+	</string>	
+	<string id="yan_bun_semenov_talk_1">
+		<text>Техника безопасности, наша лаборатория специализируется на работе с пси-полями и иногда приходится проводить с ними эксперименты прямо в бункере, если ты понимаешь о чём я. Плюс костюм имеет неплохую встроенную систему охлаждения. Просто берёшь и становишься в нём под ледяной душ, а внутрь по многочисленным отверстиям поступает вода. Шутка, тебя что-либо интересует?</text>
+	</string>	
+	<string id="yan_bun_semenov_talk_2">
+		<text>Ну хочется узнать что здесь и как.</text>
+	</string>	
+	<string id="yan_bun_semenov_talk_3">
+		<text>Ну это такая своеобразная дыра, причём в прямом смысле мы находится на дне некогда высохшего озера. У нас здесь мобильная лаборатория, рядом сидит Сапсан и он ремонтирует наше снаряжение, если на то возникнет нужда, но думаю сможет и твоё за соответствующую плату. Вон там напротив меня слышишь как кто-то ворчит? Это наш профессор, он ещё у меня в университете лекции читал. Снаружи два ангара, в ангаре под номером 2 у нас что-то вроде столовой, там рядовой-контрактник за хозяйственную часть отвечает. В соседнем у нас склад и доступ к нему есть только у вышеупомянутого контрабаса, его кстати Духом кличут. Ну а я просто Семёнов, помогаю профессору в различных экспериментах, слежу за аппаратурой, состоянием артефактов. Периодически сюда кстати ещё разные люди заглядывают. У меня есть некоторые познания в фармацевтике, так что если заболеешь, то я тебе помогу и конечно не бесплатно. Ещё с нами раньше был профессор Круглов, пока его не перевели в НИИЧАЗ, он там какий-то доклад о вооружённых бандформированиях зачитывал и вроде бы прояснил некоторые аспекты происхождения псевдособак. Вот так и живём, а ты откуда?</text>
+	</string>	
+	<string id="yan_bun_semenov_talk_4">
+		<text>Да я просто к вам на огонёк зашёл, да и может работёнку какую подыскать.</text>
+	</string>	
+	<string id="yan_bun_semenov_talk_5">
+		<text>Работы у нас валом, особенно на территории завода, там всегда какая-то хуета приключается.</text>
+	</string>	
+	<string id="yan_bun_semenov_talk_6">
+		<text>Как-нибудь поинтересуюсь.</text>
+	</string>		
+	
+	<string id="yan_bun_semenov_heal_0">
+		<text>Хочу проверить своё здоровье.</text>
 	</string>
-<!-- yan_ecolog_vasilyev   -->
-	<string id="yan_ecolog_vasilyev_start_dialog_1">
-		<text>Здравствуй, сталкер.</text>
+	<string id="yan_bun_semenov_heal_1">
+		<text>Лекарства нынче дорогие, так что 2000 приготовь заранее.</text>
 	</string>
+	<string id="yan_bun_semenov_heal_5">
+		<text>А как же социальные гарантии? Ладно, пойду за деньгами сбегаю.</text>
+	</string>
+	<string id="yan_bun_semenov_heal_2">
+		<text>Никаких проблем в твоём здоровье я не обнаружил, чеши давай.</text>
+	</string>
+	<string id="yan_bun_semenov_heal_3">
+		<text>Держи, кровосос:</text>
+	</string>
+	<string id="yan_bun_semenov_heal_4">
+		<text>Сейчас где у меня тут был... ага, теперь твоему здоровью ничего не угрожает.</text>
+	</string>		
+	
 <!-- yan_stalker_sakharov -->
+
 	<string id="st_yan_saharov_message_about_storm">
 		<text>Сталкер, помогите нам! Наш бункер атакуют зомби! Вы ведь в состоянии пережить этот всплеск пси-излучения!</text>
 	</string>
@@ -95,6 +227,7 @@
 		<text>Отлично. Не волнуйтесь, ваш шлем будет ждать вас здесь.</text>
 	</string>
 <!------------------- yan_merc_guards --------------------->
+
 	<string id="yan_merc_guards_start_2">
 		<text>Братан, ты зашёл не в то место! И лучше бы тебе побыстрее свалить, пока мы добрые.</text>
 	</string>
@@ -104,4 +237,5 @@
 	<string id="yan_merc_guards_start_4">
 		<text>Потеряйся, пока я тебе пулю в лоб не всадил!</text>
 	</string>
+	
 </string_table>

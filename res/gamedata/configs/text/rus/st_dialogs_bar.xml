@@ -1,5 +1,128 @@
 <?xml version="1.0" encoding="windows-1251" ?>
 <string_table>
+
+<!-- Проводник -->
+
+	<string id="bar_visitors_guid_meet_0">
+		<text>Привет, чем ты занимаешься?</text>
+	</string>
+	<string id="bar_visitors_guid_meet_1">
+		<text>Проводник я, вожу туда-сюда за скромную плату. Меня Навигатором кличут. В основном, зелень, конечно, услугами пользуется, но и опытные сталкеры не пренебрегают. Уговор такой: ты платишь, я оставляю тебя у назначенного района и возвращаюсь назад. Есть несколько мест, которые достойны твоего внимания: Янтарь, Болота, Свалка, армейские склады, база на Периметре и станция «Янов» в окрестностях «Юпитера».</text>
+	</string>
+
+	<string id="bar_visitors_guid_travel_list_0">
+		<text>Можно ещё разок уточнить твои маршруты?</text>
+	</string>
+	<string id="bar_visitors_guid_travel_list_1">
+		<text>На: \n%c[255,238,153,26]• Янтарь \n%c[255,238,153,26]• Болота \n%c[255,238,153,26]• Армейские склады \n%c[255,238,153,26]• Свалку \n%c[255,238,153,26]• Периметр \n%c[255,238,153,26]• Окрестности Юпитера </text>
+	</string>
+
+	<string id="bar_visitors_guid_travel_0">
+		<text>Хочу воспользоваться твоими услугами.</text>
+	</string>
+	<string id="bar_visitors_guid_travel_1">
+		<text>Отлично, куда?</text>
+	</string>
+	<string id="bar_visitors_guid_travel_2">
+		<text>На Периметр. %c[255,238,153,26][3000 RU]</text>
+	</string>
+	<string id="bar_visitors_guid_travel_3">
+		<text>На Свалку. %c[255,238,153,26][700 RU]</text>
+	</string>
+	<string id="bar_visitors_guid_travel_4">
+		<text>На армейские склады. %c[255,238,153,26][1000 RU]</text>
+	</string>
+	<string id="bar_visitors_guid_travel_5">
+		<text>На Янтарь. %c[255,238,153,26][3500 RU]</text>
+	</string>
+	<string id="bar_visitors_guid_travel_6">
+		<text>В «Юпитер», до станции «Янов». %c[255,238,153,26][6000 RU]</text>
+	</string>
+	<string id="bar_visitors_guid_travel_7">
+		<text>На Болота. %c[255,238,153,26][6000 RU]</text>
+	</string>
+	<string id="bar_visitors_guid_travel_8">
+		<text>Я передумал.</text>
+	</string>
+
+<!-- Информатор -->
+
+	<string id="bar_visitors_informator_meet_0">
+		<text>Ты кто?</text>
+	</string>
+	<string id="bar_visitors_informator_meet_1">
+		<text>Я здешний информатор и могу предложить тебе всяческие услуги. На данный момент это различная информация и карты с путями на ту или иную локацию. Не спрашивай, откуда у меня это берётся.</text>
+	</string>
+
+	<string id="bar_visitors_informator_buy_stashes_0">
+		<text>Хочу купить инфу о тайнике.</text>
+	</string>
+	<string id="bar_visitors_informator_buy_stashes_1">
+		<text>Деньги приготовил, пять тысяч?</text>
+	</string>
+	<string id="bar_visitors_informator_buy_stashes_2">
+		<text>Держи.</text>
+	</string>
+	<string id="bar_visitors_informator_buy_stashes_3">
+		<text>Нет.</text>
+	</string>
+	<string id="bar_visitors_informator_buy_stashes_4">
+		<text>Координаты отметил в КПК. Что в тайнике - неизвестно. Может, вообще ничего.</text>
+	</string>
+
+	<string id="buy_information_from_trader_0">
+		<text>У тебя есть свежая информация?</text>
+	</string>
+
+		<string id="bar_visitors_informator_buy_information_1">
+			<text>Готов поделиться с тобой информацией о Болотном Докторе за семь тысяч.</text>
+		</string>
+		<string id="bar_visitors_informator_buy_information_6">
+			<text>Давай.</text>
+		</string>
+		<string id="bar_visitors_informator_buy_information_11">
+			<text>Старик теперь находится на Болотах, всё ждёт своего друга-Стрелка. Недавно к нему заходил какой-то мужик, которому Доктор и поведал свою историю и что важно - историю самой группы Стрелка! Можешь лично сходить к нему и убедиться.</text>
+		</string>
+
+		<string id="bar_visitors_informator_buy_information_2">
+			<text>Есть информация о странном сталкере, который ищет группу Стрелка за десять тысяч.</text>
+		</string>
+		<string id="bar_visitors_informator_buy_information_7">
+			<text>Давай.</text>
+		</string>
+		<string id="bar_visitors_informator_buy_information_12">
+			<text>Этот самый сталкер, который ходил к Доктору теперь ищет следы группы Стрелка. Он уже исследовал лаборатории в Тёмной долине и на Янтаре и останавливаться на этом явно не собирается. Судя по проверенным источникам, он хочет прорваться в центр Зоны и закончить то, чего так и не смогла вышеупомянутая группа сталкеров по тем или иным причинам.</text>
+		</string>
+
+		<string id="bar_visitors_informator_buy_information_3">
+			<text>У меня имеется информация, проливающая свет на второе отключение Выжигателя за пятнадцать тысяч.</text>
+		</string>
+		<string id="bar_visitors_informator_buy_information_8">
+			<text>Давай.</text>
+		</string>
+		<string id="bar_visitors_informator_buy_information_13">
+			<text>Это всё тот же сталкер и он отключает Выжигатель! Интересно, когда они догадаются хоть как-то навредить пульту управления, а не дрочить переключатель каждый раз? Ходят слухи, что теперь он собирается в Припять и у него от Доктора было какое-то поручение. Не знаю, хочет ли старик таким образом найти своего друга или же за этим скрыто нечто большее.</text>
+		</string>
+
+		<string id="bar_visitors_informator_buy_information_4">
+			<text>Распологаю информацией о похождениях таинственного сталкера на Генераторах за двадцать четыре тысячи.</text>
+		</string>
+		<string id="bar_visitors_informator_buy_information_9">
+			<text>Давай.</text>
+		</string>
+		<string id="bar_visitors_informator_buy_information_14">
+			<text>Слышал ли ты когда-нибудь о Генераторах? До недавнего времени это место считалось лишь мифом, но после второго похода группы Стрелка к центру Зоны все сомнения развеялись. Идут упорные споры о том, что же там находится, но старые спутниковые снимки свидетельствуют о какой-то странноватой инфраструктуре, в честь которой это место и было названо. По видимому оттуда осуществляется управление как группировкой «Монолит», так и всеми важными процессами на территории Зоны. Так вот наш сталкер уже отправился туда и думаю, он настроен серьёзно, вероятно его вмешательство может повлечь серьёзные перемены в Зоне, лидеры некоторых группировок уже выразили своё недовольство относительно этой информации.</text>
+		</string>
+
+	<string id="bar_visitors_informator_buy_information_5">
+		<text>На данный момент нет.</text>
+	</string>
+	<string id="bar_visitors_informator_buy_information_10">
+		<text>Мне это не интересно.</text>
+	</string>
+	
+<!-- Арена -->
+
 <string id="bar_arena_man_job_0">
 		<text>Есть для меня противник?</text>
 	</string>

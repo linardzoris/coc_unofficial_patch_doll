@@ -390,9 +390,6 @@
 	<string id="st_wpn_usp_descr">
 		<text>Impeccable reliability and durability combined with excellent accuracy are the main noteworthy features of this weapon. Its minor drawbacks include its considerable size, relatively high center of gravity, and massive bolt, which make it difficult to conceal, but do not outweigh the weapon's positive features. The weapon is especially popular with veterans of the Zone.</text>
 	</string>
-	<string id="st_wpn_val">
-		<text>SA Avalanche</text>
-	</string>
 	<string id="st_wpn_vintorez">
 		<text>Vintar BC</text>
 	</string>
@@ -476,9 +473,6 @@
 	</string>
 	<string id="st_wpn_svu_descr">
 		<text>A modernised version of the SVDm-2 sniper rifle in a compact bullpup design made on the order of rapid response forces. It allows faster precision fire and is considerably lighter, while its single shot firing accuracy at short and medium range is similar to that of its predecessor. These qualities have earned it the admiration of countless stalkers.</text>
-	</string>
-	<string id="st_wpn_val_descr">
-		<text>A modified version of the silent Vintar BC sniper rifle, this assault rifle was designed as a special forces weapon. The rifle's primary purpose is effective fire against enemies employing modern personal protection equipment without disclosing the shooter's location. Thanks to its integrated silencer and 9x39 calibre round with a heavy subsonic bullet, the weapon's noise and muzzle flash have been reduced to a minimum.</text>
 	</string>
 	<string id="st_wpn_gauss_descr">
 		<text>A super-accurate hi-tech weapon known as item 62, this rifle was developed in secret laboratories located inside the Zone. The weapon operates by accelerating bullets to extremely high speeds using a system of electromagnets, which provides incredible stopping power with virtually no recoil. The weapon is powered by using encapsulated artefact fragments in the batteries.</text>

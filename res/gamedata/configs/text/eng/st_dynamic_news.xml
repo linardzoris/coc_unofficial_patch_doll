@@ -1447,21 +1447,18 @@
 	<string id="st_dyn_labx8_daleko_1">
 		<text>the lab</text>
 	</string>
-	<string id="st_dyn_l06_rostok_daleko_1">
-		<text>the road to Yantar</text>
-	</string>
-	<string id="st_dyn_l06_rostok_daleko_2">
+	<string id="st_dyn_l05_bar_daleko_6">
 		<text>the burning tunnel</text>
 	</string>
-	<string id="st_dyn_l06_rostok_daleko_3">
+	<string id="st_dyn_l05_bar_daleko_7">
 		<text>the construction site</text>
 	</string>
-	<string id="st_dyn_l06_rostok_daleko_4">
+	<string id="st_dyn_l05_bar_daleko_8">
 		<text>the parking lot</text>
 	</string>
-	<string id="st_dyn_l06_rostok_daleko_5">
+	<string id="st_dyn_l05_bar_daleko_9">
 		<text>the road to Rostok</text>
-	</string>
+	</string>		
 	<string id="st_dyn_l03_agroprom_daleko_1">
 		<text>the anomaly on the hill</text>
 	</string>
@@ -1890,21 +1887,21 @@
 	<string id="st_dyn_labx8_blizko_1">
 		<text>in the lab</text>
 	</string>
-	<string id="st_dyn_l06_rostok_blizko_1">
+	<string id="st_dyn_l05_bar_blizko_5">
 		<text>on the road to Yantar</text>
 	</string>
-	<string id="st_dyn_l06_rostok_blizko_2">
+	<string id="st_dyn_l05_bar_blizko_6">
 		<text>in the burning tunnel</text>
 	</string>
-	<string id="st_dyn_l06_rostok_blizko_3">
+	<string id="st_dyn_l05_bar_blizko_7">
 		<text>at the construction site</text>
 	</string>
-	<string id="st_dyn_l06_rostok_blizko_4">
+	<string id="st_dyn_l05_bar_blizko_8">
 		<text>by the parking lot</text>
 	</string>
-	<string id="st_dyn_l06_rostok_blizko_5">
+	<string id="st_dyn_l05_bar_blizko_9">
 		<text>at the exit to Rostok</text>
-	</string>
+	</string>	
 	<string id="st_dyn_l03_agroprom_blizko_1">
 		<text>by the anomalies on the hill</text>
 	</string>

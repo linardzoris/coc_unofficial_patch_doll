@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="windows-1251" ?>
 <game_dialogs>
+
 <!-- yan_stalker_sakharov -->
+
    <dialog id="yan_stalker_sakharov_start">
         <phrase_list>
 		    <phrase id="0">
@@ -175,69 +177,303 @@
             </phrase>
 		</phrase_list>
 	</dialog>
-<!-- yan_ecolog_vasilyev -->
-   <dialog id="yan_ecolog_vasilyev_start_dialog">
-        <phrase_list>
-		    <phrase id="0">
-                <text/>
-				<next>1</next>
-            </phrase>
-		    <phrase id="1">
-                <text/>
-				<next>1111</next>
-            </phrase>
-		    <phrase id="1111">
-                <text>yan_ecolog_vasilyev_start_dialog_1</text>
-            </phrase>
-          </phrase_list>
-    </dialog>
+	
 <!-- yan_ecolog_semenov -->
-   <dialog id="yan_ecolog_semenov_start_dialog">
-        <phrase_list>
-		    <phrase id="0">
-                <text/>
+
+	<dialog id="yan_bun_semenov_hello">
+		<phrase_list>
+			<phrase id="0">
+				<text>yan_bun_semenov_hello_0</text>
+			</phrase>		
+		</phrase_list>
+	</dialog>
+
+	<dialog id="yan_bun_semenov_talk">
+	<dont_has_info>yan_bun_semenov_talk</dont_has_info>
+		<phrase_list>
+			<phrase id="0">
+				<text>yan_bun_semenov_talk_0</text>
+				<next>1</next>				
+			</phrase>
+			<phrase id="1">
+				<text>yan_bun_semenov_talk_1</text>
+				<next>2</next>				
+			</phrase>
+			<phrase id="2">
+				<text>yan_bun_semenov_talk_2</text>
+				<next>3</next>				
+			</phrase>	
+			<phrase id="3">
+				<text>yan_bun_semenov_talk_3</text>
+				<next>4</next>				
+			</phrase>	
+			<phrase id="4">
+				<text>yan_bun_semenov_talk_4</text>
+				<next>5</next>				
+			</phrase>	
+			<phrase id="5">
+				<text>yan_bun_semenov_talk_5</text>
+				<next>6</next>				
+			</phrase>	
+			<phrase id="6">
+				<text>yan_bun_semenov_talk_6</text>	
+            <give_info>yan_bun_semenov_talk</give_info>					
+			</phrase>				
+		</phrase_list>
+	</dialog>
+
+	<dialog id="yan_bun_semenov_heal">
+		<phrase_list>
+			<phrase id="0">
+				<text>yan_bun_semenov_heal_0</text>
 				<next>1</next>
-            </phrase>
-		    <phrase id="1">
-                <text/>
-				<next>1111</next>
-				<next>1112</next>
-				<next>1113</next>
-            </phrase>
-		    <phrase id="1111">
-				<dont_has_info>yan_ecolog_semenov_task_1_started</dont_has_info>
-				<dont_has_info>yan_ecolog_semenov_task_1_completed</dont_has_info>
-                <text>yan_ecolog_semenov_start_dialog_1</text>
-            </phrase>
-			<phrase id="1112">
-				<has_info>yan_ecolog_semenov_task_1_started</has_info>
-				<dont_has_info>yan_ecolog_semenov_task_1_completed</dont_has_info>
-                <text>yan_ecolog_semenov_start_dialog_yan_ecolog_semenov_task_1</text>
-            </phrase>
-			<phrase id="1113">
-				<has_info>yan_ecolog_semenov_task_1_started</has_info>
-				<has_info>yan_ecolog_semenov_task_1_completed</has_info>
-                <text>yan_ecolog_semenov_start_dialog_1</text>
-            </phrase>
-          </phrase_list>
-    </dialog>
-<!-- yan_ecolog_kruglov -->
-   <dialog id="yan_ecolog_kruglov_start_dialog">
-        <phrase_list>
-		    <phrase id="0">
-                <text/>
+				<next>2</next>
+			</phrase>
+			<phrase id="1">
+				<text>yan_bun_semenov_heal_1</text>
+				<precondition>dialogs.actor_needs_bless</precondition>
+				<next>3</next>
+				<next>5</next>
+			</phrase>
+			<phrase id="2">
+				<text>yan_bun_semenov_heal_2</text>
+				<precondition>dialogs.actor_is_damn_healthy</precondition>
+			</phrase>
+			<phrase id="3">
+				<text>yan_bun_semenov_heal_3</text>
+				<precondition>dialogs.have_money_2000</precondition>
+				<action>dialogs.transfer_money_from_actor_2000</action>
+				<action>dialogs.medic_magic_potion</action>
+				<next>4</next>
+			</phrase>
+			<phrase id="5">
+				<text>yan_bun_semenov_heal_5</text>
+			</phrase>
+			<phrase id="4">
+				<text>yan_bun_semenov_heal_4</text>
+			</phrase>
+		</phrase_list>
+	</dialog>
+	
+<!-- yan_ecolog_army_soldier -->	
+	
+	<dialog id="yan_ecolog_army_tech_hello">
+		<phrase_list>
+			<phrase id="0">
+				<text>yan_ecolog_army_tech_hello_0</text>
+			</phrase>		
+		</phrase_list>
+	</dialog>	
+	
+	<dialog id="yan_ecolog_army_about_tool">
+		<dont_has_info>army_yan_talk</dont_has_info>
+		<phrase_list>
+			<phrase id="0">
+				<text>yan_ecolog_army_about_tool_0</text>
 				<next>1</next>
-            </phrase>
-		    <phrase id="1">
-                <text/>
-				<next>1111</next>
-            </phrase>
-		    <phrase id="1111">
-                <text>yan_ecolog_kruglov_start_dialog_1</text>
-            </phrase>
-          </phrase_list>
-    </dialog>
+			</phrase>
+			<phrase id="1">
+				<text>yan_ecolog_army_about_tool_1</text>
+				<next>2</next>
+			</phrase>
+			<phrase id="2">
+				<text>yan_ecolog_army_about_tool_2</text>
+				<next>3</next>
+			</phrase>
+			<phrase id="3">
+				<text>yan_ecolog_army_about_tool_3</text>
+				<next>4</next>
+			</phrase>
+			<phrase id="4">
+				<text>yan_ecolog_army_about_tool_4</text>
+				<give_info>army_yan_talk</give_info>
+			</phrase>
+		</phrase_list>
+	</dialog>	
+	
+<!-- yan_ecolog_army_soldier -->	
+
+	<dialog id="yan_ecolog_army_soldier_meet">
+		<dont_has_info>yan_ecolog_army_soldier_meet</dont_has_info>
+		<phrase_list>
+			<phrase id="0">
+				<text>yan_ecolog_army_soldier_meet_0</text>
+				<next>1</next>
+			</phrase>
+			<phrase id="1">
+				<text>yan_ecolog_army_soldier_meet_1</text>
+				<next>2</next>
+			</phrase>
+			<phrase id="2">
+				<text>yan_ecolog_army_soldier_meet_2</text>
+				<next>3</next>
+			</phrase>
+			<phrase id="3">
+				<text>yan_ecolog_army_soldier_meet_3</text>
+				<next>4</next>
+			</phrase>
+			<phrase id="4">
+				<text>yan_ecolog_army_soldier_meet_4</text>
+				<next>5</next>				
+			</phrase>
+			<phrase id="5">
+				<text>yan_ecolog_army_soldier_meet_5</text>
+				<next>6</next>
+			</phrase>			
+			<phrase id="6">
+				<text>yan_ecolog_army_soldier_meet_6</text>
+				<give_info>yan_ecolog_army_soldier_meet</give_info>
+			</phrase>
+		</phrase_list>
+	</dialog>
+
+	<dialog id="yan_ecolog_army_soldier_barter_list">
+		<has_info>yan_ecolog_army_soldier_meet</has_info>
+		<phrase_list>
+			<phrase id="0">
+				<text>yan_ecolog_army_soldier_barter_list_0</text>
+				<next>1</next>
+			</phrase>
+			<phrase id="1">
+				<text>yan_ecolog_army_soldier_barter_list_1</text>
+			</phrase>
+		</phrase_list>
+	</dialog>
+
+	<dialog id="yan_ecolog_army_soldier_barter">
+		<has_info>yan_ecolog_army_soldier_meet</has_info>
+		<precondition>dialogs_yantar.have_vodka5</precondition>
+		<phrase_list>
+			<phrase id="0">
+				<text>yan_ecolog_army_soldier_barter_0</text>
+				<next>1</next>
+			</phrase>
+			<phrase id="1">
+				<text>yan_ecolog_army_soldier_barter_1</text>
+				<next>2</next>
+				<next>3</next>
+				<next>4</next>
+				<next>5</next>
+				<next>6</next>
+				<next>7</next>
+				<next>8</next>
+				<next>9</next>
+				<next>10</next>
+				<next>11</next>
+				<next>12</next>						
+			</phrase>
+			<phrase id="2">
+				<precondition>dialogs_yantar.have_vodka5</precondition>
+				<text>yan_ecolog_army_soldier_barter_2</text>
+				<action>dialogs_yantar.take_vodka5</action>
+				<next>13</next>
+			</phrase>
+			<phrase id="3">
+				<precondition>dialogs_yantar.have_vodka5</precondition>
+				<text>yan_ecolog_army_soldier_barter_3</text>
+				<action>dialogs_yantar.take_vodka5</action>
+				<next>14</next>
+			</phrase>
+			<phrase id="4">
+				<precondition>dialogs_yantar.have_vodka10</precondition>
+				<text>yan_ecolog_army_soldier_barter_4</text>
+				<action>dialogs_yantar.take_vodka10</action>
+				<next>15</next>
+			</phrase>
+			<phrase id="5">
+				<precondition>dialogs_yantar.have_vodka10</precondition>
+				<text>yan_ecolog_army_soldier_barter_5</text>
+				<action>dialogs_yantar.take_vodka10</action>
+				<next>16</next>
+			</phrase>
+			<phrase id="6">
+				<precondition>dialogs_yantar.have_vodka10</precondition>
+				<text>yan_ecolog_army_soldier_barter_6</text>
+				<action>dialogs_yantar.take_vodka10</action>
+				<next>17</next>
+			</phrase>
+			<phrase id="7">
+				<precondition>dialogs.have_money_3000</precondition>
+				<precondition>dialogs_yantar.have_vodka15</precondition>
+				<text>yan_ecolog_army_soldier_barter_7</text>
+				<action>dialogs_yantar.take_vodka15</action>
+				<action>dialogs.transfer_money_from_actor_3000</action>
+				<next>18</next>
+			</phrase>
+			<phrase id="8">
+				<precondition>dialogs_yantar.have_vodka20</precondition>
+				<text>yan_ecolog_army_soldier_barter_8</text>
+				<action>dialogs_yantar.take_vodka20</action>
+				<next>19</next>
+			</phrase>
+			<phrase id="9">
+				<precondition>dialogs_yantar.have_vodka20</precondition>
+				<text>yan_ecolog_army_soldier_barter_9</text>
+				<action>dialogs_yantar.take_vodka20</action>
+				<next>20</next>
+			</phrase>
+			<phrase id="10">
+				<precondition>dialogs_yantar.have_vodka20</precondition>
+				<text>yan_ecolog_army_soldier_barter_10</text>
+				<action>dialogs_yantar.take_vodka20</action>
+				<next>21</next>
+			</phrase>		
+			<phrase id="11">
+				<precondition>dialogs_yantar.have_vodka30</precondition>
+				<text>yan_ecolog_army_soldier_barter_11</text>
+				<action>dialogs_yantar.take_vodka30</action>
+				<next>22</next>
+			</phrase>	
+			
+			<phrase id="13">
+				<text>yan_ecolog_army_soldier_barter_done</text>
+				<action>dialogs_yantar.spawn_soldier_angar_9_18_6</action>
+			</phrase>
+			<phrase id="14">
+				<text>yan_ecolog_army_soldier_barter_done</text>
+				<action>dialogs_yantar.spawn_soldier_angar_5_45_3</action>
+			</phrase>
+			<phrase id="15">
+				<text>yan_ecolog_army_soldier_barter_done</text>
+				<action>dialogs_yantar.spawn_soldier_angar_5_45_6</action>
+			</phrase>
+			<phrase id="16">
+				<text>yan_ecolog_army_soldier_barter_done</text>
+				<action>dialogs_yantar.spawn_soldier_angar_12_70</action>
+			</phrase>
+			<phrase id="17">
+				<text>yan_ecolog_army_soldier_barter_done</text>
+				<action>dialogs_yantar.spawn_soldier_angar_7_62</action>
+			</phrase>
+			<phrase id="18">
+				<text>yan_ecolog_army_soldier_barter_done</text>
+				<action>dialogs_yantar.spawn_soldier_angar_ammo_pkm_100</action>
+			</phrase>
+			<phrase id="19">
+				<text>yan_ecolog_army_soldier_barter_done</text>
+				<action>dialogs_yantar.spawn_soldier_angar_berill</action>
+			</phrase>
+			<phrase id="20">
+				<text>yan_ecolog_army_soldier_barter_done</text>
+				<action>dialogs_yantar.spawn_soldier_angar_23x75_buck</action>
+			</phrase>
+			<phrase id="21">
+				<text>yan_ecolog_army_soldier_barter_done</text>
+				<action>dialogs_yantar.spawn_soldier_angar_23x75_bullet</action>
+			</phrase>		
+			<phrase id="22">
+				<text>yan_ecolog_army_soldier_barter_done</text>
+				<action>dialogs_yantar.spawn_soldier_angar_scopes</action>
+			</phrase>			
+			
+			<phrase id="12">
+				<text>yan_ecolog_army_soldier_barter_12</text>
+			</phrase>
+		</phrase_list>
+	</dialog>
+	
 <!-- yan_merc_guards -->
+
     <dialog id="yan_merc_guards_start">
         <phrase_list>
             <phrase id="0">
@@ -261,4 +497,5 @@
             </phrase>
         </phrase_list>
     </dialog>
+	
 </game_dialogs>

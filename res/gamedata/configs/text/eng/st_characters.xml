@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <string_table>
+	<string id="st_yan_ecolog_army_tech_name">
+		<text>Sapsan</text>
+	</string>
+	<string id="st_yan_ecolog_army_soldier_name">
+		<text>Grach</text>
+	</string>	
+	<string id="st_bar_visitors_guid_name">
+		<text>Navigator</text>
+	</string>	
+	<string id="st_bar_visitors_informator_name">
+		<text>Informer</text>
+	</string>	
+	
 	<string id="jup_a10_bandit_leader_name">
 		<text>Valet</text>
 	</string>
@@ -402,23 +415,8 @@
 	<string id="yan_semenov_bio">
 		<text>Research assistant at the mobile lab. No details available.</text>
 	</string>
-	<string id="yan_cherenkov_name">
-		<text>Professor Cherenkov</text>
-	</string>
 	<string id="yan_semenov_name">
 		<text>Professor Semenov</text>
-	</string>
-	<string id="yan_vasilyev_name">
-		<text>Professor Vasiliev</text>
-	</string>
-	<string id="yan_vasilyev_bio">
-		<text>Research assistant at the mobile lab. No details available.</text>
-	</string>
-	<string id="yan_kruglov_bio">
-		<text>Ph.D. in biology. Studied pathogenic mutations in animals outside the Zone. Came to the Zone to study blind dog mutations.</text>
-	</string>
-	<string id="yan_kruglov_name">
-		<text>Professor Kruglov</text>
 	</string>
 	<string id="mar_base_stalker_tech_name">
 		<text>Novikov</text>

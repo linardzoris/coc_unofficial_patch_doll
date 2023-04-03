@@ -54,12 +54,6 @@
 	<string id="st_bar_2c_01_grant_anomaly_spot_name">
 		<text>Аномалия «На задворках»</text>
 	</string>
-	<string id="st_ros_2c_01_tunnel_anomaly_spot_name">
-		<text>Аномалия «Искрящийся сумрак»</text>
-	</string>
-	<string id="st_ros_2c_02_crispy_train_anomaly_spot_name">
-		<text>Аномалия «Электричка»</text>
-	</string>
 	<string id="st_ros_2c_03_yc_anomaly_spot_name">
 		<text>Аномалия «Тоннель с жарками»</text>
 	</string>
@@ -218,12 +212,6 @@
   </string>
   <string id="st_mil_smart_terrain_8_3_anomaly_spot_name">
     <text>Аномалия «Пекло»</text>
-  </string>
-  <string id="st_yan_smart_terrain_2_5_anomaly_spot_name">
-    <text>Аномалия «Огни святого Эльма»</text>
-  </string>
-  <string id="st_yan_smart_terrain_zombi_spawn_anomaly_spot_name">
-    <text>Аномалия «Блуждающие огни»</text>
   </string>
   <string id="st_yan_smart_terrain_5_3_anomaly_spot_name">
     <text>Аномалия «Отравленное озеро»</text>

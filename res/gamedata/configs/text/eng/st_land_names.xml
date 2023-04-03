@@ -243,12 +243,6 @@
 	<string id="st_bar_2c_01_grant_anomaly_spot_name">
 		<text>Mantrap anomaly</text>
 	</string>
-	<string id="st_ros_2c_01_tunnel_anomaly_spot_name">
-		<text>Sparkle Deadlock anomaly</text>
-	</string>
-	<string id="st_ros_2c_02_crispy_train_anomaly_spot_name">
-		<text>Crispy Train anomaly</text>
-	</string>
 	<string id="st_ros_2c_03_yc_anomaly_spot_name">
 		<text>Conflagrator anomaly</text>
 	</string>
@@ -407,12 +401,6 @@
 	</string>
 	<string id="st_mil_smart_terrain_8_3_anomaly_spot_name">
 		<text>Lignite Weeds anomaly</text>
-	</string>
-	<string id="st_yan_smart_terrain_2_5_anomaly_spot_name">
-		<text>Tesla anomaly</text>
-	</string>
-	<string id="st_yan_smart_terrain_zombi_spawn_anomaly_spot_name">
-		<text>Edison anomaly</text>
 	</string>
 	<string id="st_yan_smart_terrain_5_3_anomaly_spot_name">
 		<text>Blackwater anomaly</text>

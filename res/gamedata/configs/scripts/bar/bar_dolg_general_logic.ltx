@@ -1,71 +1,56 @@
-[logic@bar_dolg_general_animpoint_kamp1]
-active = animpoint@bar_dolg_general_animpoint_kamp1
-suitable = {=npc_community(dolg) !surge_started} true
-prior = 45
+; Trader
 
-[logic@bar_dolg_general_animpoint_kamp2]
-active = animpoint@bar_dolg_general_animpoint_kamp2
-suitable = {=npc_community(dolg) !surge_started} true
-prior = 45
+[logic@bar_dolg_general_petrenko]
+suitable = {=check_npc_name(bar_dolg_general_petrenko_stalker)} true, {=check_npc_trader} true
+prior = 200
+active = animpoint@stand
+level_spot = trader
+trade = items\trade\trade_duty.ltx
+can_select_weapon = {=is_warfare} true, false
+dont_keep_items = true
 
-[logic@bar_dolg_general_animpoint_kamp3]
-active = animpoint@bar_dolg_general_animpoint_kamp3
-suitable = {=npc_community(dolg) !surge_started} true
-prior = 45
+[animpoint@stand]
+cover_name = bar_dolg_general_petrenko_1
+reach_movement = walk_noweap
+avail_animations = animpoint_stay_ohrana
+use_camp = false
+meet = meet@trader
+combat_ignore_cond = {=is_warfare} false, {=actor_true_enemy =check_enemy_name(actor)} false, true
+combat_ignore_keep_when_attacked = {=is_warfare} false, true
+invulnerable = {=is_warfare} false, {!actor_true_enemy} true, false
+on_info = {=is_rain} animpoint@under_roof
+reach_distance = 1 ; Try to put less, causes problems with teleportation
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
 
-[logic@bar_dolg_general_animpoint_kamp4]
-active = animpoint@bar_dolg_general_animpoint_kamp4
-suitable = {=npc_community(dolg) !surge_started} true
-prior = 45
+[animpoint@under_roof]
+cover_name = bar_dolg_general_petrenko_2
+reach_movement = walk_noweap
+avail_animations = animpoin_stay_wall
+use_camp = false
+meet = meet@trader
+combat_ignore_cond = {=is_warfare} false, {=actor_true_enemy =check_enemy_name(actor)} false, true
+combat_ignore_keep_when_attacked = {=is_warfare} false, true
+invulnerable = {=is_warfare} false, {!actor_true_enemy} true, false
+on_info = {!is_rain} animpoint@stand
+reach_distance = 1
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
 
+[meet@trader]
+close_anim 		= nil
+close_victim 	= nil
+far_anim 		= nil
+far_victim 		= nil
+close_distance  = 0
+far_distance 	= 0
+close_snd_distance = 3
+use = {=actor_enemy} false, true
+trade_enable = false
 
-[animpoint@bar_dolg_general_animpoint_kamp1]
-cover_name = bar_dolg_general_animpoint_kamp1
-use_camp = true
-on_info = {=surge_started} walker@hide_1
-turn_on_campfire = true 
-meet = meet@bar_dolg_general_animpoint
-
-[walker@hide_1]
-path_walk = surge_11_walk
-;path_look =
-on_info = {=surge_complete} animpoint@bar_dolg_general_animpoint_kamp1
-turn_on_campfire = true 
-
-[animpoint@bar_dolg_general_animpoint_kamp2]
-cover_name = bar_dolg_general_animpoint_kamp2
-use_camp = true
-on_info = {=surge_started} walker@hide_2
-turn_on_campfire = true 
-meet = meet@bar_dolg_general_animpoint
-
-[walker@hide_2]
-path_walk = surge_12_walk
-;path_look =
-on_info = {=surge_complete} animpoint@bar_dolg_general_animpoint_kamp2
-
-[animpoint@bar_dolg_general_animpoint_kamp3]
-cover_name = bar_dolg_general_animpoint_kamp3
-use_camp = true
-on_info = {=surge_started} walker@hide_3
-turn_on_campfire = true 
-meet = meet@bar_dolg_general_animpoint
-
-[walker@hide_3]
-path_walk = surge_13_walk
-;path_look =
-on_info = {=surge_complete} animpoint@bar_dolg_general_animpoint_kamp3
-
-[animpoint@bar_dolg_general_animpoint_kamp4]
-cover_name = bar_dolg_general_animpoint_kamp4
-use_camp = true
-on_info = {=surge_started} walker@hide_4
-turn_on_campfire = true 
-
-[walker@hide_4]
-path_walk = surge_14_walk
-;path_look =
-on_info = {=surge_complete} animpoint@bar_dolg_general_animpoint_kamp4
+; Somebody (Walking back and forth across the bridge)
 
 [logic@bar_dolg_general_zoneguard]
 suitable = {=check_npc_name(bar_dolg_general_zoneguard_stalker)} true
@@ -100,35 +85,87 @@ use = {=actor_enemy} false, {=dist_to_actor_le(3)} true, false
 snd_on_use = {!dist_to_actor_le(3)} nil
 meet_on_talking = false
 
-;duty trader
-[logic@bar_dolg_general_petrenko]
-suitable = {=check_npc_name(bar_dolg_general_petrenko_stalker)} true
-prior = 200
-active = animpoint@stand
-level_spot = trader
-trade = misc\trade\trade_dolg_petrenko.ltx
-dont_keep_items = true
+; Camping
 
-[animpoint@stand]
-cover_name = bar_dolg_general_petrenko_smart_cover
-reach_movement = walk_noweap
-avail_animations = jup_b41_novikov_stand
+[logic@bar_dolg_general_animpoint_kamp1]
+active = animpoint@bar_dolg_general_animpoint_kamp1
+suitable = {=npc_community(dolg) !surge_started} true
+prior = 45
+
+[logic@bar_dolg_general_animpoint_kamp2]
+active = animpoint@bar_dolg_general_animpoint_kamp2
+suitable = {=npc_community(dolg) !surge_started} true
+prior = 45
+
+[logic@bar_dolg_general_animpoint_kamp3]
+active = animpoint@bar_dolg_general_animpoint_kamp3
+suitable = {=npc_community(dolg) !surge_started} true
+prior = 45
+
+[logic@bar_dolg_general_animpoint_kamp4]
+active = animpoint@bar_dolg_general_animpoint_kamp4
+suitable = {=npc_community(dolg) !surge_started} true
+prior = 45
+
+
+[animpoint@bar_dolg_general_animpoint_kamp1]
+cover_name = bar_dolg_general_animpoint_kamp1
+use_camp = true
+on_info = {=is_heavy_rain} animpoint@bar_dolg_general_animpoint_kamp1_rain
+turn_on_campfire = true 
+meet = meet@bar_dolg_general_animpoint
+
+[animpoint@bar_dolg_general_animpoint_kamp1_rain]
+cover_name = bar_dolg_general_animpoint_kamp1_rain
+use_camp = true
+on_info = {!is_heavy_rain} animpoint@bar_dolg_general_animpoint_kamp1
+
+[animpoint@bar_dolg_general_animpoint_kamp2]
+cover_name = bar_dolg_general_animpoint_kamp2
+use_camp = true
+on_info = {=is_heavy_rain} animpoint@bar_dolg_general_animpoint_kamp2_rain
+turn_on_campfire = true 
+meet = meet@bar_dolg_general_animpoint
+
+[animpoint@bar_dolg_general_animpoint_kamp2_rain]
+cover_name = bar_dolg_general_animpoint_kamp2_rain
+use_camp = true
+on_info = {!is_heavy_rain} animpoint@bar_dolg_general_animpoint_kamp2
+
+[animpoint@bar_dolg_general_animpoint_kamp3]
+cover_name = bar_dolg_general_animpoint_kamp3
+use_camp = true
+on_info = {=is_heavy_rain} animpoint@bar_dolg_general_animpoint_kamp3_rain
+turn_on_campfire = true 
+meet = meet@bar_dolg_general_animpoint
+
+[animpoint@bar_dolg_general_animpoint_kamp3_rain]
+cover_name = bar_dolg_general_animpoint_kamp3_rain
 use_camp = false
-meet = meet@trader
-combat_ignore_cond = {=is_enemy_actor_or_companion} false, true
-combat_ignore_keep_when_attacked = true
-invulnerable = {!actor_enemy} true, false
-reach_distance = 10
-gather_items_enabled = false
-help_wounded_enabled = false
-corpse_detection_enabled = false
+on_info = {!is_heavy_rain} animpoint@bar_dolg_general_animpoint_kamp3
+meet = meet@random
 
-[meet@trader]
+[animpoint@bar_dolg_general_animpoint_kamp4]
+cover_name = bar_dolg_general_animpoint_kamp4
+use_camp = true
+on_info = {=is_heavy_rain} animpoint@bar_dolg_general_animpoint_kamp4_rain
+turn_on_campfire = true 
+
+[animpoint@bar_dolg_general_animpoint_kamp4_rain]
+cover_name = bar_dolg_general_animpoint_kamp4_rain
+use_camp = false
+on_info = {!is_heavy_rain} animpoint@bar_dolg_general_animpoint_kamp4
+meet = meet@random
+
+[meet@random]
 close_anim 		= nil
 close_victim 	= nil
 far_anim 		= nil
 far_victim 		= nil
 close_distance  = 0
 far_distance 	= 0
-close_snd_distance = 3
-use = {=actor_enemy} false, true
+close_snd_distance = 6
+abuse           = false
+use = false
+allow_break = false
+meet_on_talking = false

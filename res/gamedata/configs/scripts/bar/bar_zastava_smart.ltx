@@ -358,3 +358,76 @@ home_min_radius = 1
 home_max_radius = 30
 aggressive = true
 panic = 0
+
+; Random
+
+[logic@bar_zastava_camp_work_1]
+active = animpoint@bar_zastava_camp_work_1
+suitable = true
+prior = 15
+
+[logic@bar_zastava_camp_work_2]
+active = animpoint@bar_zastava_camp_work_2
+suitable = true
+prior = 15
+
+[logic@bar_zastava_camp_work_3]
+active = animpoint@bar_zastava_camp_work_3
+suitable = true
+prior = 15
+
+[logic@bar_zastava_camp_work_4]
+active = animpoint@bar_zastava_camp_work_4
+suitable = true
+prior = 15
+
+[logic@bar_zastava_camp_work_5]
+active = animpoint@bar_zastava_camp_work_5
+suitable = true
+prior = 15
+
+[logic@bar_zastava_camp_work_6]
+active = animpoint@bar_zastava_camp_work_6
+suitable = {=is_night} true, {=is_day} false
+prior = 100
+
+[logic@bar_zastava_camp_work_7]
+active = animpoint@bar_zastava_camp_work_7
+suitable = {=is_night} true, {=is_day} false
+prior = 100
+
+[animpoint@bar_zastava_camp_work_1]
+use_camp = true
+cover_name = bar_zastava_animpoint_kamp_1
+
+[animpoint@bar_zastava_camp_work_2]
+use_camp = true
+cover_name = bar_zastava_animpoint_kamp_2
+
+[animpoint@bar_zastava_camp_work_3]
+use_camp = true
+cover_name = bar_zastava_animpoint_kamp_3
+
+[animpoint@bar_zastava_camp_work_4]
+use_camp = true
+cover_name = bar_zastava_animpoint_kamp_4
+
+[animpoint@bar_zastava_camp_work_5]
+use_camp = false
+cover_name = bar_zastava_animpoint_kamp_5
+
+[animpoint@bar_zastava_camp_work_6]
+use_camp = false
+cover_name = bar_zastava_animpoint_kamp_6
+avail_animations = animpoint_rest_at_bed
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false
+
+[animpoint@bar_zastava_camp_work_7]
+use_camp = false
+cover_name = bar_zastava_animpoint_kamp_7
+avail_animations = animpoint_rest_at_bed
+gather_items_enabled = false
+help_wounded_enabled = false
+corpse_detection_enabled = false

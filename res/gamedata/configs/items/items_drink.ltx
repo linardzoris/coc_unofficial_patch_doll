@@ -95,6 +95,26 @@ empty_weight                   = 0.05
 
 hide_time_wpn                  = 5
 
+[energy_drink_nonstop]:energy_drink
+$spawn                                   = "food and drugs\energy_drink_nonstop"
+inv_name                                 = st_energy_drink_nonstop
+inv_name_short                           = st_energy_drink_nonstop
+visual                                   = dynamics\devices\dev_drink_stalker_nonstop\dev_drink_stalker_nonstop
+description                              = st_energy_drink_nonstop_descr
+cost                                     = 250
+
+inv_grid_width                           = 1
+inv_grid_height                          = 1
+inv_grid_x                               = 58       
+inv_grid_y                               = 0
+inv_weight                               = 0.5
+
+boost_time                               = 30.0
+boost_radiation_restore                  = 0
+boost_power_restore                      = 0.003    
+eat_thirst                               = 0.4
+snd_on_take								 = other
+
 [water_drink]:energy_drink
 $spawn                         = "food and drugs\water_drink"
 inv_name                       = st_water

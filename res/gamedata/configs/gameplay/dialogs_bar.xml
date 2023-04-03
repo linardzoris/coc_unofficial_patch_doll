@@ -1,6 +1,235 @@
 <?xml version="1.0" encoding="windows-1251" ?>
 <game_dialogs>
+
+<!-- bar_visitors_guid -->
+
+	<dialog id="bar_visitors_guid_meet">
+		<dont_has_info>bar_visitors_guid_meet</dont_has_info>
+		<phrase_list>
+			<phrase id="0">
+				<text>bar_visitors_guid_meet_0</text>
+				<next>1</next>
+			</phrase>
+			<phrase id="1">
+				<text>bar_visitors_guid_meet_1</text>
+				<give_info>bar_visitors_guid_meet</give_info>
+			</phrase>
+		</phrase_list>
+	</dialog>
+
+	<dialog id="bar_visitors_guid_travel_list">
+		<has_info>bar_visitors_guid_meet</has_info>
+		<phrase_list>
+			<phrase id="0">
+				<text>bar_visitors_guid_travel_list_0</text>
+				<next>1</next>
+			</phrase>
+			<phrase id="1">
+				<text>bar_visitors_guid_travel_list_1</text>
+			</phrase>
+		</phrase_list>
+	</dialog>
+
+	<dialog id="bar_visitors_guid_travel">
+		<precondition>dialogs_mlr.have_money_700</precondition>
+		<has_info>bar_visitors_guid_meet</has_info>
+		<phrase_list>
+			<phrase id="0">
+				<text>bar_visitors_guid_travel_0</text>
+				<next>1</next>
+			</phrase>
+			<phrase id="1">
+				<text>bar_visitors_guid_travel_1</text>
+				<next>2</next>
+				<next>3</next>
+				<next>4</next>
+				<next>5</next>
+				<next>6</next>
+				<next>7</next>
+				<next>8</next>
+			</phrase>
+			<phrase id="2">
+				<text>bar_visitors_guid_travel_2</text>
+				<precondition>dialogs.have_money_3000</precondition>
+				<action>dialogs.transfer_money_from_actor_3000</action>
+				<action>dialogs.escape_guid</action>
+			</phrase>
+			<phrase id="3">
+				<text>bar_visitors_guid_travel_3</text>
+				<precondition>dialogs.have_money_700</precondition>
+				<action>dialogs.transfer_money_from_actor_700</action>
+				<action>dialogs.garbage_guid</action>
+			</phrase>
+			<phrase id="4">
+				<text>bar_visitors_guid_travel_4</text>
+				<precondition>dialogs.have_money_1000</precondition>
+				<action>dialogs.transfer_money_from_actor_1000</action>
+				<action>dialogs.military_guid</action>
+			</phrase>
+			<phrase id="5">
+				<text>bar_visitors_guid_travel_5</text>
+				<precondition>dialogs.have_money_3500</precondition>
+				<action>dialogs.transfer_money_from_actor_3500</action>
+				<action>dialogs.yantar_guid</action>
+			</phrase>
+			<phrase id="6">
+				<text>bar_visitors_guid_travel_6</text>
+				<precondition>dialogs.have_money_6000</precondition>
+				<action>dialogs.transfer_money_from_actor_6000</action>
+				<action>dialogs.jupiter_guid</action>
+			</phrase>
+			<phrase id="7">
+				<text>bar_visitors_guid_travel_7</text>
+				<precondition>dialogs.have_money_6000</precondition>
+				<action>dialogs.transfer_money_from_actor_6000</action>
+				<action>dialogs.marsh_guid</action>
+			</phrase>
+			<phrase id="8">
+				<text>bar_visitors_guid_travel_8</text>
+			</phrase>
+		</phrase_list>
+	</dialog>
+
+	<!-- bar_visitors_informator -->
+	
+	<dialog id="bar_visitors_informator_meet">
+		<dont_has_info>bar_visitors_informator_meet</dont_has_info>
+		<phrase_list>
+			<phrase id="0">
+				<text>bar_visitors_informator_meet_0</text>
+				<next>1</next>
+			</phrase>
+			<phrase id="1">
+				<text>bar_visitors_informator_meet_1</text>
+				<give_info>bar_visitors_informator_meet</give_info>
+			</phrase>
+		</phrase_list>
+	</dialog>
+
+	<dialog id="bar_visitors_informator_buy_stashes">
+		<has_info>bar_visitors_informator_meet</has_info>
+		<phrase_list>
+			<phrase id="0">
+				<text>bar_visitors_informator_buy_stashes_0</text>
+				<next>1</next>
+			</phrase>
+			<phrase id="1">
+				<text>bar_visitors_informator_buy_stashes_1</text>
+				<next>2</next>
+				<next>3</next>
+			</phrase>
+			<phrase id="2">
+				<text>bar_visitors_informator_buy_stashes_2</text>
+				<precondition>dialogs.have_money_5000</precondition>
+				<action>dialogs.transfer_money_from_actor_5000</action>
+				<next>4</next>
+			</phrase>
+			<phrase id="3">
+				<text>bar_visitors_informator_buy_stashes_3</text>
+			</phrase>
+			<phrase id="4">
+				<text>bar_visitors_informator_buy_stashes_4</text>
+				<action>dialogs.create_another_stash</action>
+			</phrase>
+		</phrase_list>
+	</dialog>
+
+	<dialog id="bar_visitors_informator_buy_information">
+		<has_info>mar_doctor_found</has_info>
+		<phrase_list>
+			<phrase id="0">
+				<text>bar_visitors_informator_buy_information_0</text>
+				<next>1</next>
+				<next>2</next>
+				<next>3</next>
+				<next>4</next>
+				<next>5</next>
+			</phrase>
+			<phrase id="1">
+				<dont_has_info>bar_visitors_informator_buy_information1</dont_has_info>
+				<dont_has_info>yan_labx16_switcher_primary_off</dont_has_info>
+				<has_info>mar_doctor_found</has_info>
+				<text>bar_visitors_informator_buy_information_1</text>
+				<next>6</next>
+				<next>10</next>
+			</phrase>
+			<phrase id="6">
+				<precondition>dialogs.have_money_7000</precondition>
+				<text>bar_visitors_informator_buy_information_6</text>
+				<action>dialogs.transfer_money_from_actor_7000</action>
+				<next>11</next>
+			</phrase>
+			<phrase id="11">
+				<text>bar_visitors_informator_buy_information_11</text>
+				<give_info>bar_visitors_informator_buy_information1</give_info>
+			</phrase>
+			<phrase id="2">
+				<dont_has_info>bar_visitors_informator_buy_information2</dont_has_info>
+				<dont_has_info>bar_deactivate_radar_done</dont_has_info>
+				<has_info>yan_labx16_switcher_primary_off</has_info>
+				<text>bar_visitors_informator_buy_information_2</text>
+				<give_info>bar_visitors_informator_buy_information2</give_info>
+				<next>7</next>
+				<next>10</next>
+			</phrase>
+			<phrase id="7">
+				<precondition>dialogs.have_money_7000</precondition>
+				<text>bar_visitors_informator_buy_information_7</text>
+				<action>dialogs.transfer_money_from_actor_7000</action>
+				<next>12</next>
+			</phrase>
+			<phrase id="12">
+				<text>bar_visitors_informator_buy_information_12</text>
+				<give_info>bar_visitors_informator_buy_information2</give_info>
+			</phrase>
+			<phrase id="3">
+				<dont_has_info>bar_visitors_informator_buy_information3</dont_has_info>
+				<dont_has_info>warlab_deactivate_generators_done</dont_has_info>
+				<has_info>bar_deactivate_radar_done</has_info>
+				<text>bar_visitors_informator_buy_information_3</text>
+				<give_info>bar_visitors_informator_buy_information3</give_info>
+				<next>8</next>
+				<next>10</next>
+			</phrase>
+			<phrase id="8">
+				<precondition>dialogs.have_money_15000</precondition>
+				<text>bar_visitors_informator_buy_information_8</text>
+				<action>dialogs.transfer_money_from_actor_15000</action>
+				<next>13</next>
+			</phrase>
+			<phrase id="13">
+				<text>bar_visitors_informator_buy_information_13</text>
+				<give_info>bar_visitors_informator_buy_information3</give_info>
+			</phrase>
+			<phrase id="4">
+				<dont_has_info>bar_visitors_informator_buy_information4</dont_has_info>
+				<has_info>warlab_deactivate_generators_done</has_info>
+				<text>bar_visitors_informator_buy_information_4</text>
+				<give_info>bar_visitors_informator_buy_information4</give_info>
+				<next>9</next>
+				<next>10</next>
+			</phrase>
+			<phrase id="9">
+				<precondition>dialogs.have_money_24000</precondition>
+				<text>bar_visitors_informator_buy_information_9</text>
+				<action>dialogs.transfer_money_from_actor_24000</action>
+				<next>14</next>
+			</phrase>
+			<phrase id="14">
+				<text>bar_visitors_informator_buy_information_14</text>
+				<give_info>bar_visitors_informator_buy_information4</give_info>
+			</phrase>
+			<phrase id="5">
+				<text>bar_visitors_informator_buy_information_5</text>
+			</phrase>
+			<phrase id="10">
+				<text>bar_visitors_informator_buy_information_10</text>
+			</phrase>
+		</phrase_list>
+	</dialog>	
+
     <!-- bar_visitors_barman_stalker_trader -->
+	
     <dialog id="bar_visitors_barman_stalker_trader_start_dialog">
         <phrase_list>
             <phrase id="1">
@@ -24,7 +253,9 @@
             </phrase>
         </phrase_list>
     </dialog>
+	
     <!-- bar_visitors_stalker_mechanic -->
+	
     <dialog id="bar_visitors_stalker_mechanic_start">
         <phrase_list>
             <phrase id="0">
@@ -99,8 +330,10 @@
             </phrase>
         </phrase_list>
     </dialog>
+	
     <!-- old arena -->
     <!-- new arena -->
+	
     <dialog id="bar_arena_manager_rules">
         <phrase_list>
             <phrase id="0">

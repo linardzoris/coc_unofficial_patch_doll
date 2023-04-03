@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <string_table>
+	<string id="st_energy_drink_nonstop">
+		<text>Energy drink «Non Stop»</text>
+	</string>
+	<string id="st_energy_drink_nonstop_descr">
+		<text>Excellent energy drink "Non Stop". It contains caffeine, taurine and a powerful vitamin complex that relieves fatigue and adds strength. Unable to take even a step? Then this is exactly what you need.</text>
+	</string>
 	<string id="st_antirad">
 		<text>Anti-radiation drugs</text>
 	</string>

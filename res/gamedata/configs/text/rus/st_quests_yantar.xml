@@ -47,52 +47,5 @@
 	<string id="brain_machine_deactivate_text">
 		<text>Пси-установка своим излучением закрывает проход между Янтарём и Мёртвым Городом. Для её отключения требуются передовые устройства пси-защиты.</text>
 	</string>
-	<!-- FIND LEVEL 1 TOOLKIT FOR KRUGLOV -->
-	<string id="yan_ecolog_kruglov_task_1_name">
-		<text>Найти Круглову %s</text>
-	</string>
-	<string id="yan_ecolog_kruglov_task_1_text">
-		<text>Необходимо принести Круглову %s, чтобы он мог обеспечить базовую модернизацию оружия или бронежилетов.</text>
-	</string>
-	<string id="yan_ecolog_kruglov_task_1_about">
-		<text>Мне нужна помощь. Множество коллег просят меня починить их снаряжение, но я не могу. У меня нет для этого подходящих инструментов. Я бы мог починить практически любое снаряжение, будь у меня нужные инструменты. Можете мне с этим помочь?</text>
-	</string>
-	<string id="yan_ecolog_kruglov_task_1_fetch_about">
-		<text>Мне нужен набор инструментов для грубой работы. В нём должно быть всё, что мне нужно. Если сможете принести - наградой не обижу.</text>
-	</string>
-	<string id="yan_ecolog_kruglov_task_1_fetch_finish">
-		<text>Отлично! Это как раз то, что мне нужно. Я могу приступить к работе прямо сейчас.</text>
-	</string>
-	<!-- FIND LEVEL 2 TOOLKIT FOR KRUGLOV -->
-	<string id="yan_ecolog_kruglov_task_2_name">
-		<text>Найти %s для Круглова</text>
-	</string>
-	<string id="yan_ecolog_kruglov_task_2_text">
-		<text>Необходимо достать %s и отнести их Круглову. Ему нужны более качественные инструменты.</text>
-	</string>
-	<string id="yan_ecolog_kruglov_task_2_about">
-		<text>Есть ещё одно предложение. Тот ремнабор, что Вы мне принесли, конечно, хорош, но он... как бы поточнее выразиться... не совсем полон, да. Сможете найти мне набор получше?</text>
-	</string>
-	<string id="yan_ecolog_kruglov_task_2_fetch_about">
-		<text>Мне нужны %s. Не знаю, где Вы достанете их, но если найдёте - несите прямо ко мне, наградой не обижу.</text>
-	</string>
-	<string id="yan_ecolog_kruglov_task_2_fetch_finish">
-		<text>Вы опять помогли мне! Хорошая работа. Вот деньги.</text>
-	</string>
-	<!-- FIND LEVEL 3 TOOLKIT FOR KRUGLOV -->
-	<string id="yan_ecolog_kruglov_task_3_name">
-		<text>Найти и принести Круглову %s</text>
-	</string>
-	<string id="yan_ecolog_kruglov_task_3_text">
-		<text>Круглов просил найти набор инструментов для калибровки. Он заплатит за инструменты и, кроме того, сможет проводить более сложную модернизацию снаряжения.</text>
-	</string>
-	<string id="yan_ecolog_kruglov_task_3_about">
-		<text>Вы принесли мне отличный ремнабор, но в нём, как выяснилось, всё же недостаёт немногих, но крайне важных приспособлений. Как думаете, сможете найти мне инструменты для калибровки?</text>
-	</string>
-	<string id="yan_ecolog_kruglov_task_3_fetch_about">
-		<text>Мне нужны инструменты для калибровки. Если принесёте - считайте, что скидка на ремонт Вам обеспечена.</text>
-	</string>
-	<string id="yan_ecolog_kruglov_task_3_fetch_finish">
-		<text>Вы вновь выручили меня! Отличная работа, вот, держите деньги.</text>
-	</string>
+
 </string_table>

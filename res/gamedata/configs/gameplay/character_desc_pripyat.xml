@@ -16,7 +16,7 @@
     <visual>actors\stalker_soldier\stalker_soldier_2</visual>
     <supplies>
         [spawn] \n
-        wpn_val = 1, scope \n
+        wpn_vintorez = 1, scope \n
         ammo_9x39_ap = 1 \n
         wpn_pb \n
         ammo_9x18_pmm = 1 \n
@@ -301,7 +301,7 @@
     <visual>actors\stalker_soldier\stalker_soldier_4</visual>
     <supplies>
         [spawn] \n
-        wpn_val \n
+        wpn_vintorez \n
         ammo_9x39_ap = 1 \n
         wpn_fort \n
         ammo_9x18_pmm = 1 \n
@@ -443,7 +443,7 @@
     <visual>actors\stalker_soldier\stalker_soldier_4</visual>
     <supplies>
         [spawn] \n
-        wpn_val \n
+        wpn_vintorez \n
         ammo_9x39_pab9 = 1 \n
         wpn_fort \n
         ammo_9x18_pmm = 1 \n

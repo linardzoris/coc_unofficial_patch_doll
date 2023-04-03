@@ -20,6 +20,8 @@ cam_step_angle_horz 				               = 0.35
 cform                                              = skeleton
 class                                              = WP_AK74
 
+misfire_one_cartridge_remove                       = true
+
 bullet_bones                                       = bullets
 
                                                    ;умножаем 0.05 на необходимое число выстрелов, чтобы получить значение изноcа
@@ -80,7 +82,6 @@ strap_bone1                              		   = bip01_spine1
 strap_position                           		   = -0.18, -0.45, 0.2
 strap_orientation                        		   = -10, -5, 10
 
-misfire_one_cartridge_remove                       = false
 misfire_probability								   = 0.005					
 misfire_start_condition							   = 0.6					
 misfire_end_condition						       = 0.1					
@@ -228,10 +229,45 @@ anm_show                                 = ak_74_gwr_draw, idle
 anm_show_g                               = ak_74_gwr_draw_gl_on, idle_gl_on
 anm_show_w_gl                            = ak_74_gwr_draw_gl_off, idle_gl_off
 anm_switch                               = ak_74_gwr_gl_deactivate, ak_74_gl_deactivate               
-anm_switch_g                             = ak_74_gwr_gl_activate, ak_74_gl_activate
+anm_switch_g                             = ak_74_gwr_gl_activate, ak_74_gl_activate	
 
-anm_reload_misfire                       = ak_74_gwr_misfire, ak_74_revival_no_shell
-anm_reload_misfire_w_gl                  = ak_74_gwr_misfire_gl_off, ak_74_revival_gl_off_no_shell
+anm_bore_jammed                          = ak_74_gwr_idle_aim, idle_jammed_new
+anm_bore_jammed_g                        = ak_74_gwr_idle_aim_gl, idle_jammed_gl_on_new
+anm_hide_jammed                          = ak_74_gwr_hide, idle_jammed_new
+anm_hide_jammed_g                        = ak_74_gwr_hide_gl_on, idle_jammed_gl_on_new
+anm_hide_jammed_w_gl                     = ak_74_gwr_hide_gl_off, idle_jammed_new
+anm_idle_jammed                          = ak_74_gwr_idle, idle_jammed_new
+anm_idle_aim_jammed                      = ak_74_gwr_idle_aim, idle_jammed_new
+anm_idle_aim_moving_jammed               = ak_74_gwr_walk, idle_jammed_new
+anm_idle_aim_moving_crouch_jammed        = ak_74_gwr_walk, idle_jammed_new, 0.8
+anm_idle_jammed_g                        = ak_74_gwr_idle_gl_on, idle_jammed_gl_on_new
+anm_idle_jammed_g_aim                    = ak_74_gwr_idle_aim_gl, idle_jammed_gl_on_new
+anm_idle_moving_jammed                   = ak_74_gwr_walk, idle_jammed_new
+anm_idle_moving_crouch_jammed            = ak_74_gwr_walk, idle_jammed_new, 0.8
+anm_idle_moving_crouch_jammed_g          = ak_74_gwr_walk_gl_on, idle_jammed_gl_on_new, 0.8
+anm_idle_moving_crouch_jammed_aim_g      = ak_74_gwr_walk_gl_on, idle_jammed_gl_on_new, 0.8
+anm_idle_moving_crouch_jammed_w_gl       = ak_74_gwr_walk_gl_off, idle_jammed_new, 0.8
+anm_idle_moving_crouch_jammed_aim_w_gl   = ak_74_gwr_walk_gl_off, idle_jammed_new, 0.8
+anm_idle_moving_jammed_g                 = ak_74_gwr_walk_gl_on, idle_jammed_gl_on_new
+anm_idle_moving_jammed_aim_g             = ak_74_gwr_walk_gl_on, idle_jammed_gl_on_new, 0.75
+anm_idle_moving_jammed_w_gl              = ak_74_gwr_walk_gl_off, idle_jammed_new
+anm_idle_moving_jammed_aim_w_gl          = ak_74_gwr_walk_gl_off, idle_jammed_new, 0.75
+anm_idle_sprint_jammed                   = ak_74_gwr_sprint, idle_jammed_new
+anm_idle_sprint_jammed_g                 = ak_74_gwr_gloff_sprint, idle_jammed_gl_on_new
+anm_idle_sprint_jammed_w_gl              = ak_74_gwr_gloff_sprint, idle_jammed_new
+anm_idle_jammed_w_gl                     = ak_74_gwr_idle_gl_off, idle_jammed_new
+anm_idle_aim_jammed_w_gl                 = ak_74_gwr_idle_aim_gl, idle_jammed_new
+anm_reload_jammed_g                      = ak_74_gwr_gl_reload, ak_74_gl_reload_jammed_new
+anm_shots_jammed_g                       = ak_74_gwr_gl_shoot, ak_74_gl_shoot_new
+anm_shots_aim_jammed_g                   = ak_74_gwr_gl_shoot, ak_74_gl_shoot_new
+anm_show_jammed                          = ak_74_gwr_draw, idle_jammed_new
+anm_show_jammed_g                        = ak_74_gwr_draw_gl_on, idle_jammed_gl_on_new
+anm_show_jammed_w_gl                     = ak_74_gwr_draw_gl_off, idle_jammed_new
+anm_switch_jammed                        = ak_74_gwr_gl_deactivate, ak_74_gl_deactivate_jammed_new          
+anm_switch_jammed_g                      = ak_74_gwr_gl_activate, ak_74_gl_activate_jammed_new	
+
+anm_reload_misfire                       = ak_74_gwr_misfire, ak_74_revival_new2
+anm_reload_misfire_w_gl                  = ak_74_gwr_misfire_gl_off, ak_74_revival_new2
 anm_firemode                          	 = ak_74_gwr_fire_select, idle
 anm_firemode_g                     		 = ak_74_gwr_fire_select_gl_off, idle_gl_off
 

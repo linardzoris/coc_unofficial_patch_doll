@@ -218,6 +218,18 @@
 	</character>
 	
 	<!-- Bar -->
+	<character id="bar_visitors_sad_stalker">
+		<class>bar_visitors_sad_stalker</class>
+	</character>	
+	<character id="bar_visitors_sad_veteran">
+		<class>bar_visitors_sad_veteran</class>
+	</character>		
+	<character id="bar_visitors_informator">
+		<class>bar_visitors_informator</class>
+	</character>	
+	<character id="bar_visitors_guid">
+		<class>bar_visitors_guid</class>
+	</character>		
 	<character id="bar_visitors_barman_stalker_trader">
 		<class>bar_visitors_barman_stalker_trader</class>
 	</character>
@@ -350,15 +362,15 @@
 	<character id="yan_stalker_sakharov">
 		<class>yan_stalker_sakharov</class>
 	</character>
-	<character id="yan_ecolog_kruglov">
-		<class>yan_ecolog_kruglov</class>
-	</character>
 	<character id="yan_ecolog_semenov">
 		<class>yan_ecolog_semenov</class>
 	</character>
-	<character id="yan_ecolog_vasilyev">
-		<class>yan_ecolog_vasilyev</class>
+	<character id="yan_ecolog_army_tech">
+		<class>yan_ecolog_army_tech</class>
 	</character>
+	<character id="yan_ecolog_army_soldier">
+		<class>yan_ecolog_army_soldier</class>
+	</character>	
    <character id="yan_merc_01">
 		<class>yan_merc_01</class>
    </character>

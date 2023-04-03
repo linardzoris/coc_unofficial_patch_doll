@@ -1116,9 +1116,6 @@
 	<string id="st_dyn_news_l05_bar">
 		<text>на Ростке,</text>
 	</string>
-	<string id="st_dyn_news_l06_rostok">
-		<text>на Дикой Территории,</text>
-	</string>
 	<string id="st_dyn_news_l07_military">
 		<text>на Военных Складах,</text>
 	</string>
@@ -1315,6 +1312,21 @@
 	<string id="st_dyn_l05_bar_daleko_4">
 		<text>прохода на Военные Склады</text>
 	</string>
+	<string id="st_dyn_l05_bar_daleko_5">
+		<text>перехода на Янтарь</text>
+	</string>	
+	<string id="st_dyn_l05_bar_daleko_6">
+		<text>тоннеля с «жарками»</text>
+	</string>
+	<string id="st_dyn_l05_bar_daleko_7">
+		<text>недостроенного здания</text>
+	</string>
+	<string id="st_dyn_l05_bar_daleko_8">
+		<text>стоянки между стройматериалами</text>
+	</string>
+	<string id="st_dyn_l05_bar_daleko_9">
+		<text>прохода в Бар</text>
+	</string>		
 	<string id="st_dyn_l07_military_daleko_1">
 		<text>аномалии «Пекло»</text>
 	</string>
@@ -1506,21 +1518,6 @@
 	</string>
 	<string id="st_dyn_labx8_daleko_1">
 		<text>в лаборатории</text>
-	</string>
-	<string id="st_dyn_l06_rostok_daleko_1">
-		<text>перехода на Янтарь</text>
-	</string>
-	<string id="st_dyn_l06_rostok_daleko_2">
-		<text>тоннеля с жарками</text>
-	</string>
-	<string id="st_dyn_l06_rostok_daleko_3">
-		<text>недостроенного здания</text>
-	</string>
-	<string id="st_dyn_l06_rostok_daleko_4">
-		<text>стоянки между стройматериалами</text>
-	</string>
-	<string id="st_dyn_l06_rostok_daleko_5">
-		<text>прохода в Бар</text>
 	</string>
 	<string id="st_dyn_l03_agroprom_daleko_1">
 		<text>аномалии «Птичья карусель»</text>
@@ -1758,6 +1755,21 @@
 	<string id="st_dyn_l05_bar_blizko_4">
 		<text>у прохода на Военные Склады</text>
 	</string>
+	<string id="st_dyn_l05_bar_blizko_5">
+		<text>у перехода на Янтарь</text>
+	</string>	
+	<string id="st_dyn_l05_bar_blizko_6">
+		<text>в тоннеле с «жарками»</text>
+	</string>
+	<string id="st_dyn_l05_bar_blizko_7">
+		<text>в недостроенном здании</text>
+	</string>
+	<string id="st_dyn_l05_bar_blizko_8">
+		<text>у стоянки между стройматериалами</text>
+	</string>
+	<string id="st_dyn_l05_bar_blizko_9">
+		<text>у прохода в Бар</text>
+	</string>		
 	<string id="st_dyn_l07_military_blizko_1">
 		<text>в аномалии «Пекло»</text>
 	</string>
@@ -1949,21 +1961,6 @@
 	</string>
 	<string id="st_dyn_labx8_blizko_1">
 		<text>в лаборатории</text>
-	</string>
-	<string id="st_dyn_l06_rostok_blizko_1">
-		<text>у перехода на Янтарь</text>
-	</string>
-	<string id="st_dyn_l06_rostok_blizko_2">
-		<text>в тоннеле с жарками</text>
-	</string>
-	<string id="st_dyn_l06_rostok_blizko_3">
-		<text>в недостроенном здании</text>
-	</string>
-	<string id="st_dyn_l06_rostok_blizko_4">
-		<text>у стоянки между стройматериалами</text>
-	</string>
-	<string id="st_dyn_l06_rostok_blizko_5">
-		<text>у прохода в Бар</text>
 	</string>
 	<string id="st_dyn_l03_agroprom_blizko_1">
 		<text>в аномалии «Птичья карусель»</text>
