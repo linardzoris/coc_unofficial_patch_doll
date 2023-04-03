@@ -217,7 +217,13 @@ void CEnvironment::RenderLast()
 #endif
     // 2
     eff_Rain->Render();
-    eff_Thunderbolt->Render();
+
+    bool bWinterMode = READ_IF_EXISTS(pSettings, r_bool, "environment", "winter_mode", false);
+
+    if (!bWinterMode)
+    {
+        eff_Thunderbolt->Render();
+    }
 }
 
 void CEnvironment::OnDeviceCreate()

@@ -1708,10 +1708,16 @@ void CWeaponMagazined::PlayAnimShoot()
                 PlayHUDMotion("anm_shot_when_aim_l", true, nullptr, GetState());
             else if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shots_aim_l"))
                 PlayHUDMotion("anm_shots_aim_l", true, nullptr, GetState());
+            else if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shot_l"))
+                PlayHUDMotion("anm_shot_l", true, nullptr, GetState());
+            else if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shots_l"))
+                PlayHUDMotion("anm_shots_l", true, nullptr, GetState());
             else if (isHUDAnimationExist("anm_shots_when_aim"))
                 PlayHUDMotion("anm_shots_when_aim", true, nullptr, GetState());
             else if (IsZoomed() && isHUDAnimationExist("anm_shots_aim"))
                 PlayHUDMotion("anm_shots_aim", true, nullptr, GetState());
+            else if (isHUDAnimationExist("anm_shoot"))
+                PlayHUDMotion("anm_shoot", true, nullptr, GetState());
             else
                 PlayHUDMotion("anm_shots", true, nullptr, GetState());
         // От бедра
@@ -1734,10 +1740,16 @@ void CWeaponMagazined::PlayAnimShoot()
                 PlayHUDMotion("anm_shot_auto_when_aim_l", true, nullptr, GetState());
             else if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shots_auto_aim_l"))
                 PlayHUDMotion("anm_shots_auto_aim_l", true, nullptr, GetState());
+            else if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shot_auto_l"))
+                PlayHUDMotion("anm_shot_auto_l", true, nullptr, GetState());
+            else if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shots_auto_l"))
+                PlayHUDMotion("anm_shots_auto_l", true, nullptr, GetState());
             else if (isHUDAnimationExist("anm_shots_auto_when_aim"))
                 PlayHUDMotion("anm_shots_auto_when_aim", true, nullptr, GetState());
             else if (IsZoomed() && isHUDAnimationExist("anm_shots_auto_aim"))
                 PlayHUDMotion("anm_shots_auto_aim", true, nullptr, GetState());
+            else if (isHUDAnimationExist("anm_shoot"))
+                PlayHUDMotion("anm_shoot", true, nullptr, GetState());
             else
                 PlayHUDMotion("anm_shots", true, nullptr, GetState());
         // От бедра
