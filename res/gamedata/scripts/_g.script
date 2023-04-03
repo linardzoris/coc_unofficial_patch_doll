@@ -950,10 +950,8 @@ function IsRifle(o,c)
 	local rifle = {
 				[clsid.wpn_ak74_s] = true,
 				[clsid.wpn_groza_s] = true,			
-				[clsid.wpn_val_s] = true,
 				[clsid.wpn_ak74] = true,
-				[clsid.wpn_groza] = true,				
-				[clsid.wpn_val] = true
+				[clsid.wpn_groza] = true
 	}
 	return c and rifle[c] or false
 end
@@ -1061,7 +1059,6 @@ function IsWeapon(o,c)
 				[clsid.wpn_rg6_s] 				= true,
 				[clsid.wpn_rpg7_s] 				= true,
 				[clsid.wpn_rpg26_s] 			= true,				
-				[clsid.wpn_val_s] 				= true,
 				[clsid.wpn_walther_s] 			= true,
 				[clsid.wpn_usp45_s] 			= true,
 				[clsid.wpn_groza_s] 			= true,			
@@ -1079,7 +1076,6 @@ function IsWeapon(o,c)
 				[clsid.wpn_rg6] 				= true,
 				[clsid.wpn_rpg7] 				= true,
 				[clsid.wpn_rpg26] 				= true,				
-				[clsid.wpn_val] 				= true,
 				[clsid.wpn_walther] 			= true,
 				[clsid.wpn_usp45] 				= true,
 				[clsid.wpn_groza] 				= true,			

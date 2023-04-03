@@ -94,9 +94,7 @@ local all_points = {
 		{ 89.2, 1.65, 139.18}, --the western checkpoint
 		{ 130.31, 1.8, 47.0}, --the entrance to the bar
 		{ 205.14, 1.61, 96.77}, --the Duty base
-		{ 37.67, -1.41, 301.72} --the road to the Army Warehouses
-		},
-	["l06_rostok"] = {
+		{ 37.67, -1.41, 301.72}, --the road to the Army Warehouses
 		{ -83.34, -14.13, -218.59}, --the road to Yantar
 		{ -158.44, -4.35, -87.61}, --the burning tunnel
 		{ -236.53, 1.65, 53.01}, --the construction site

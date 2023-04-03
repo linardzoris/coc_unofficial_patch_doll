@@ -340,7 +340,6 @@ function jup_a10_proverka_wpn(first_speaker, second_speaker)
 					"wpn_sig550",
 					"wpn_g36",
 					"wpn_groza",
-					"wpn_val",
 					"wpn_vintorez",
 					"wpn_svd",
 					"wpn_svu",

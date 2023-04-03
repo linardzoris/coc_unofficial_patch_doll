@@ -644,7 +644,6 @@ function setup_weapon_fetch_task(actor,npc,p)
 				"wpn_lr300",
 				"wpn_sig550",
 				"wpn_groza",
-				"wpn_val",
 				"wpn_vintorez",
 				"wpn_svu",
 				"wpn_svd",
@@ -3771,7 +3770,7 @@ function zat_b202_spawn_random_loot(actor, npc, p)
 		[2] = {item = {"helm_respirator"}}
 	}
 	si_table[5] = {
-		[1] = {item = {"wpn_val","ammo_9x39_ap","ammo_9x39_ap","ammo_9x39_ap"}},
+		[1] = {item = {"wpn_vintorez","ammo_9x39_ap","ammo_9x39_ap","ammo_9x39_ap"}},
 		[2] = {item = {"wpn_spas12","ammo_12x70_buck","ammo_12x70_buck","ammo_12x70_buck","ammo_12x70_buck"}},
 		[3] = {item = {"wpn_desert_eagle","ammo_11.43x23_fmj","ammo_11.43x23_fmj","ammo_11.43x23_hydro","ammo_11.43x23_hydro"}},
 		[4] = {item = {"wpn_abakan","ammo_5.45x39_ap","ammo_5.45x39_ap"}},

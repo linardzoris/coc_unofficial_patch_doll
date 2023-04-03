@@ -1,0 +1,15 @@
+[collide]
+ignore_static
+
+[logic]
+active = ph_button@on
+
+[ph_button@on]
+anim = door_close
+tooltip = tip_door_open
+on_press = ph_button@off
+
+[ph_button@off]
+anim = door_open
+tooltip = tip_door_close
+on_press = ph_button@on

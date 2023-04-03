@@ -1,0 +1,12 @@
+[logic]
+active = ph_button@on
+
+[ph_button@on]
+;anim = lab_primary_switcher_idle
+tooltip = switch_butt_off
+on_press = ph_button@off %=turn_off(yan_projector_01:yan_projector_02:yan_projector_03:yan_projector_04:yan_projector_05:yan_projector_06:yan_projector_07:yan_projector_08)%
+
+[ph_button@off]
+;anim = lab_primary_switcher_off
+tooltip = switch_butt_on
+on_press = ph_button@on %=turn_on(yan_projector_01:yan_projector_02:yan_projector_03:yan_projector_04:yan_projector_05:yan_projector_06:yan_projector_07:yan_projector_08)%

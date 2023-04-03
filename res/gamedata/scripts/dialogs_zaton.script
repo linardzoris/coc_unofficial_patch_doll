@@ -757,9 +757,8 @@ function is_good_gun(npc, item)
 	local wpn_table = {
 						[1] = "wpn_sig550",
 						[2] = "wpn_g36",
-						[3] = "wpn_val",
-						[4] = "wpn_groza",
-						[5] = "wpn_vintorez",
+						[3] = "wpn_groza",
+						[4] = "wpn_vintorez",
 						}
 
 	for k,v in pairs(wpn_table) do
