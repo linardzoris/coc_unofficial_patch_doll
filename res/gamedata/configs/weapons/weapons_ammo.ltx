@@ -140,10 +140,10 @@ inv_name                                 = ammo-11.43x23-fmj
 inv_name_short                           = ammo-11.43x23-fmj_s
 description                              = ammo-11.43x23-fmj_descr
 
-inv_grid_width                           = 2
+inv_grid_width                           = 1
 inv_grid_height                          = 1
-inv_grid_x                               = 18
-inv_grid_y                               = 7
+inv_grid_x                               = 17
+inv_grid_y                               = 9
 
 box_size                                 = 20
 cost                                     = 500
@@ -162,17 +162,17 @@ inv_name                                 = ammo-11.43x23-hydro
 inv_name_short                           = ammo-11.43x23-hydro_s
 description                              = ammo-11.43x23-hydro_descr
 
-inv_grid_width                           = 2
+inv_grid_width                           = 1
 inv_grid_height                          = 1
-inv_grid_x                               = 0
-inv_grid_y                               = 8
+inv_grid_x                               = 16
+inv_grid_y                               = 9
 
 box_size                                 = 20
 cost                                     = 1000
 inv_weight                               = .4
 
 k_hit                                    = 1.1
-k_ap                                     = 0.25
+k_ap                                     = 0.1
 tracer                                   = on
 tracer_color_ID                          = 2
 wm_size                                  = 0.09
@@ -223,6 +223,50 @@ tracer                                   = on
 tracer_color_ID                          = 1
 wm_size                                  = 0.05
 k_air_resistance                         = 1.1
+
+[ammo_7_62x39_fmj]:ammo_base
+$spawn                                   = "weapons\ammo\ammo_7_62x39_fmj"
+visual                                   = dynamics\weapons\wpn_ammo\ammo_762x39_fmj.ogf
+inv_name                                 = st_ammo_7_62x39_fmj
+inv_name_short                           = st_ammo_7_62x39_fmj_s
+description                              = st_ammo_7_62x39_fmj_descr
+
+inv_grid_width                           = 2
+inv_grid_height                          = 1
+inv_grid_x                               = 0
+inv_grid_y                               = 8
+
+box_size                                 = 30
+cost                                     = 1100
+inv_weight                               = .49
+
+k_ap                                     = 0.75
+tracer                                   = on
+tracer_color_ID                          = 1
+wm_size                                  = 0.0562
+k_air_resistance                         = 0.7
+
+[ammo_7_62x39_ap]:ammo_base
+$spawn                                   = "weapons\ammo\ammo_7_62x39_ap"
+visual                                   = dynamics\weapons\wpn_ammo\ammo_762x39_ap.ogf
+inv_name                                 = st_ammo_7_62x39_ap
+inv_name_short                           = st_ammo_7_62x39_ap_s
+description                              = st_ammo_7_62x39_ap_descr
+
+inv_grid_width                           = 2
+inv_grid_height                          = 1
+inv_grid_x                               = 18
+inv_grid_y                               = 7
+
+box_size                                 = 30
+cost                                     = 2000
+inv_weight                               = .5
+
+k_ap                                     = 0.86
+tracer                                   = on
+tracer_color_ID                          = 1
+wm_size                                  = 0.057
+k_air_resistance                         = 0.6
 
 [ammo_5.56x45_ss190]:ammo_base ; SS109 (M855) green tip
 $spawn                                   = "weapons\ammo\ammo_5.56x45_ss190"

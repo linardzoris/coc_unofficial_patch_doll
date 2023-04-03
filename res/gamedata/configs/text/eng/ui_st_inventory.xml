@@ -225,6 +225,9 @@
 	<string id="ui_inv_satiety">
 		<text>Hunger elimination</text>
 	</string>
+	<string id="ui_inv_thirst">
+		<text>Water elimination</text>
+	</string>		
 	<string id="ui_inv_scope_rifle">
 		<text>Buy optical scope for rifle (S)</text>
 	</string>

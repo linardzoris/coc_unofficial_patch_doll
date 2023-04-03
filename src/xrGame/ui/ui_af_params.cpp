@@ -38,14 +38,14 @@ CUIArtefactParams::CUIArtefactParams()
 
 CUIArtefactParams::~CUIArtefactParams()
 {
-	delete_data	( m_immunity_item );
-	delete_data	( m_restore_item );
-	xr_delete	( m_additional_weight );
-	xr_delete(m_disp_condition);
-	xr_delete(m_fJumpSpeed);
-	xr_delete(m_fWalkAccel);
-	xr_delete(m_fOverweightWalkAccel);
-	xr_delete	( m_Prop_line );
+	delete_data	(m_immunity_item);
+	delete_data	(m_restore_item);
+	xr_delete	(m_additional_weight );
+	xr_delete   (m_disp_condition);
+	xr_delete   (m_fJumpSpeed);
+	xr_delete   (m_fWalkAccel);
+	xr_delete   (m_fOverweightWalkAccel);
+	xr_delete	(m_Prop_line);
 }
 
 constexpr pcstr af_immunity_section_names[] = // ALife::EInfluenceType
@@ -86,12 +86,7 @@ constexpr pcstr af_immunity_caption[] = // ALife::EInfluenceType
 
 LPCSTR af_restore_caption[] = // ALife::EConditionRestoreType
 {
-        "ui_inv_health",
-        "ui_inv_satiety",
-        "ui_inv_power",
-        "ui_inv_bleeding",
-        "ui_inv_radiation",
-        "ui_inv_thirst",
+    "ui_inv_health", "ui_inv_satiety", "ui_inv_power", "ui_inv_bleeding", "ui_inv_radiation", "ui_inv_thirst",
 };
 
 /*

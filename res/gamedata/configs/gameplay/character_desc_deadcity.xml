@@ -17,7 +17,7 @@
     <supplies>
         [spawn] \n
         wpn_mp5 \n
-        wpn_hpsa \n
+        wpn_glock_19 \n
         ammo_9x19_fmj = 1 \n
 #include "gameplay\supplies\character_food.xml"
 #include "gameplay\supplies\character_medical.xml"
@@ -48,7 +48,7 @@
         [spawn] \n
         wpn_mp5 = 1 \n
         ammo_9x19_pbp = 1 \n
-        wpn_hpsa \n
+        wpn_glock_19 \n
 #include "gameplay\supplies\character_food.xml"
 #include "gameplay\supplies\character_medical.xml"
 #include "gameplay\supplies\character_drugs.xml"

@@ -300,12 +300,6 @@
 	<string id="st_wpn_groza_descr">
 		<text>This assault rifle combined with a grenade launcher, which is similar to the AKM series, was specially developed for rapid response units. The main differences are its 9x39 calibre ammunition, bullpup layout, and extensive configuration options. This weapon is highly valued by military stalkers due to its ability to kill enemies wearing body armour behind improvised cover at a distance during urban combat, as well as its excellent stopping power.</text>
 	</string>
-	<string id="st_wpn_hpsa">
-		<text>HPSS-1m</text>
-	</string>
-	<string id="st_wpn_hpsa_descr">
-		<text>A modified model of a pistol from the first half of the 20th century, which is as reliable, powerful, and accurate as the original. Pistols of this series deserve their reputation as one of the best handguns of the 20th century and are in great demand in the Zone.</text>
-	</string>
 	<string id="st_wpn_mine_name">
 		<text>Butterfly mine</text>
 	</string>
@@ -389,12 +383,6 @@
 	</string>
 	<string id="st_wpn_vintorez_descr">
 		<text>A special military sniper rifle purpose-built for silent, flashless sniping during special operations where early detection of the shooter may be critical. The Vintar BC provides high armour-piercing capability and stopping power, as well as being equipped with an integrated sniper and optical scope. Highly rated by many stalkers despite its small magazine.</text>
-	</string>
-	<string id="st_wpn_vintorez_nimble">
-		<text>Tide</text>
-	</string>
-	<string id="st_wpn_vintorez_nimble_descr">
-		<text>A weapon made for military units on the basis of the silent sniper rifle. The rifle has higher stopping power than the Vintar BC, its predecessor, at the expense of its rate of fire, which allows the shooter to eliminate enemy forces one by one without revealing his position.</text>
 	</string>
 	<string id="st_wpn_walther">
 		<text>Walker P9m</text>
