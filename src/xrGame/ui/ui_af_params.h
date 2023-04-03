@@ -34,6 +34,8 @@ protected:
     UIArtefactParamItem* m_fJumpSpeed;
     UIArtefactParamItem* m_fWalkAccel;
     UIArtefactParamItem* m_fOverweightWalkAccel;
+    UIArtefactParamItem* m_fThirstRestoreSpeed;
+    UIArtefactParamItem* m_fIntoxicationRestoreSpeed;
 
     CUIStatic* m_Prop_line;
 

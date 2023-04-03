@@ -33,6 +33,8 @@ CUIArtefactParams::CUIArtefactParams()
 	m_fJumpSpeed = nullptr;
 	m_fWalkAccel = nullptr;
 	m_fOverweightWalkAccel = nullptr;
+    m_fThirstRestoreSpeed = nullptr;
+    m_fIntoxicationRestoreSpeed = nullptr;
 	m_Prop_line = nullptr;
 }
 
@@ -45,6 +47,8 @@ CUIArtefactParams::~CUIArtefactParams()
 	xr_delete   (m_fJumpSpeed);
 	xr_delete   (m_fWalkAccel);
 	xr_delete   (m_fOverweightWalkAccel);
+    xr_delete   (m_fThirstRestoreSpeed);
+    xr_delete   (m_fIntoxicationRestoreSpeed);
 	xr_delete	(m_Prop_line);
 }
 
@@ -69,6 +73,7 @@ constexpr pcstr af_restore_section_names[] = // ALife::EConditionRestoreType
         "bleeding_restore_speed", // eBleedingRestoreSpeed=3
         "radiation_restore_speed", // eRadiationRestoreSpeed=4
         "thirst_restore_speed", // eThirstRestoreSpeed=5
+        "intoxication_restore_speed", // eIntoxicationRestoreSpeed=6
 };
 
 constexpr pcstr af_immunity_caption[] = // ALife::EInfluenceType
@@ -86,7 +91,13 @@ constexpr pcstr af_immunity_caption[] = // ALife::EInfluenceType
 
 LPCSTR af_restore_caption[] = // ALife::EConditionRestoreType
 {
-    "ui_inv_health", "ui_inv_satiety", "ui_inv_power", "ui_inv_bleeding", "ui_inv_radiation", "ui_inv_thirst",
+        "ui_inv_health",
+        "ui_inv_satiety",
+        "ui_inv_power",
+        "ui_inv_bleeding",
+        "ui_inv_radiation",
+        "ui_inv_thirst",
+        "ui_inv_intoxication",
 };
 
 /*
@@ -172,6 +183,24 @@ void CUIArtefactParams::InitFromXml(CUIXml& xml)
         m_fOverweightWalkAccel->SetAutoDelete(false);
         LPCSTR name = StringTable().translate("ui_inv_af_overweight_walk_accel").c_str();
         m_fOverweightWalkAccel->SetCaption(name);
+        xml.SetLocalRoot(base_node);
+    }
+
+    {
+        m_fThirstRestoreSpeed = new UIArtefactParamItem();
+        m_fThirstRestoreSpeed->Init(xml, "thirst_restore_speed");
+        m_fThirstRestoreSpeed->SetAutoDelete(false);
+        LPCSTR name = StringTable().translate("ui_inv_thirst").c_str();
+        m_fThirstRestoreSpeed->SetCaption(name);
+        xml.SetLocalRoot(base_node);
+    }
+
+    {
+        m_fIntoxicationRestoreSpeed = new UIArtefactParamItem();
+        m_fIntoxicationRestoreSpeed->Init(xml, "intoxication_restore_speed");
+        m_fIntoxicationRestoreSpeed->SetAutoDelete(false);
+        LPCSTR name = StringTable().translate("ui_inv_intoxication").c_str();
+        m_fIntoxicationRestoreSpeed->SetCaption(name);
         xml.SetLocalRoot(base_node);
     }
 
@@ -273,6 +302,39 @@ void CUIArtefactParams::SetInfo(const CArtefact* pInvItem)
             h += m_additional_weight->GetWndSize().y;
             AttachChild(m_additional_weight);
         }
+
+    }
+
+    {
+        val = pSettings->r_float(af_section, "thirst_restore_speed");
+        if (!fis_zero(val))
+        {
+            // val *= pInvItem->GetCondition();
+            m_fThirstRestoreSpeed->SetValue(val);
+
+            pos.set(m_fThirstRestoreSpeed->GetWndPos());
+            pos.y = h;
+            m_fThirstRestoreSpeed->SetWndPos(pos);
+
+            h += m_fThirstRestoreSpeed->GetWndSize().y;
+            AttachChild(m_fThirstRestoreSpeed);
+        }
+    }
+
+    {
+        val = pSettings->r_float(af_section, "intoxication_restore_speed");
+        if (!fis_zero(val))
+        {
+            // val *= pInvItem->GetCondition();
+            m_fIntoxicationRestoreSpeed->SetValue(val);
+
+            pos.set(m_fIntoxicationRestoreSpeed->GetWndPos());
+            pos.y = h;
+            m_fIntoxicationRestoreSpeed->SetWndPos(pos);
+
+            h += m_fIntoxicationRestoreSpeed->GetWndSize().y;
+            AttachChild(m_fIntoxicationRestoreSpeed);
+        }
     }
 
     for (u32 i = 0; i < ALife::eRestoreTypeMax; ++i)
@@ -298,7 +360,7 @@ void CUIArtefactParams::SetInfo(const CArtefact* pInvItem)
 void CUIArtefactParams::SetInfo(const CCustomOutfit* pInvItem)
 {
 	DetachAll();
-	AttachChild(m_Prop_line);
+	//AttachChild(m_Prop_line);
 
 	CActor* actor = smart_cast<CActor*>(Level().CurrentViewEntity());
 	if (!actor)
@@ -361,10 +423,91 @@ void CUIArtefactParams::SetInfo(const CCustomOutfit* pInvItem)
 		}
 	}
 
+    {
+        val = pSettings->r_float(af_section, "thirst_restore_speed");
+        if (!fis_zero(val))
+        {
+            // val *= pInvItem->GetCondition();
+            m_fThirstRestoreSpeed->SetValue(val);
+
+            pos.set(m_fThirstRestoreSpeed->GetWndPos());
+            pos.y = h;
+            m_fThirstRestoreSpeed->SetWndPos(pos);
+
+            h += m_fThirstRestoreSpeed->GetWndSize().y;
+            AttachChild(m_fThirstRestoreSpeed);
+        }
+    }
+
+    {
+        val = pSettings->r_float(af_section, "intoxication_restore_speed");
+        if (!fis_zero(val))
+        {
+            // val *= pInvItem->GetCondition();
+            m_fIntoxicationRestoreSpeed->SetValue(val);
+
+            pos.set(m_fIntoxicationRestoreSpeed->GetWndPos());
+            pos.y = h;
+            m_fIntoxicationRestoreSpeed->SetWndPos(pos);
+
+            h += m_fIntoxicationRestoreSpeed->GetWndSize().y;
+            AttachChild(m_fIntoxicationRestoreSpeed);
+        }
+    }
+
 	SetHeight(h);
 }
 
-void CUIArtefactParams::SetInfo(const CHelmet* pInvItem) { DetachAll(); }
+void CUIArtefactParams::SetInfo(const CHelmet* pInvItem) 
+{ 
+    DetachAll(); 
+
+	CActor* actor = smart_cast<CActor*>(Level().CurrentViewEntity());
+    if (!actor)
+    {
+        return;
+    }
+
+    const shared_str& af_section = pInvItem->cNameSect();
+
+    float val = 0.0f;
+    Fvector2 pos;
+    float h = m_Prop_line->GetWndPos().y + m_Prop_line->GetWndSize().y;
+
+    {
+        val = pSettings->r_float(af_section, "thirst_restore_speed");
+        if (!fis_zero(val))
+        {
+            // val *= pInvItem->GetCondition();
+            m_fThirstRestoreSpeed->SetValue(val);
+
+            pos.set(m_fThirstRestoreSpeed->GetWndPos());
+            pos.y = h;
+            m_fThirstRestoreSpeed->SetWndPos(pos);
+
+            h += m_fThirstRestoreSpeed->GetWndSize().y;
+            AttachChild(m_fThirstRestoreSpeed);
+        }
+    }
+
+    {
+        val = pSettings->r_float(af_section, "intoxication_restore_speed");
+        if (!fis_zero(val))
+        {
+            // val *= pInvItem->GetCondition();
+            m_fIntoxicationRestoreSpeed->SetValue(val);
+
+            pos.set(m_fIntoxicationRestoreSpeed->GetWndPos());
+            pos.y = h;
+            m_fIntoxicationRestoreSpeed->SetWndPos(pos);
+
+            h += m_fIntoxicationRestoreSpeed->GetWndSize().y;
+            AttachChild(m_fIntoxicationRestoreSpeed);
+        }
+    }
+
+}
+
 void CUIArtefactParams::SetInfo(const CBackpack* pInvItem)
 {
 	DetachAll();

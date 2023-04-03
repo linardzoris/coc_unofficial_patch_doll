@@ -1737,6 +1737,7 @@ void CActor::UpdateArtefactsOnBeltAndOutfit()
                 conditions().ChangePower(artefact->m_fPowerRestoreSpeed * art_cond * f_update_time);
                 conditions().ChangeSatiety(artefact->m_fSatietyRestoreSpeed * art_cond * f_update_time);
                 conditions().ChangeThirst(artefact->m_fThirstRestoreSpeed * art_cond * f_update_time);
+                conditions().ChangeIntoxication(artefact->m_fIntoxicationRestoreSpeed * art_cond * f_update_time);
 
                 jump_speed_add += (artefact->m_fJumpSpeed * art_cond);
                 walk_accel_add += (artefact->m_fWalkAccel * art_cond);
@@ -1766,6 +1767,7 @@ void CActor::UpdateArtefactsOnBeltAndOutfit()
                 conditions().ChangePower(artefact->m_fPowerRestoreSpeed * art_cond * f_update_time);
                 conditions().ChangeSatiety(artefact->m_fSatietyRestoreSpeed * art_cond * f_update_time);
                 conditions().ChangeThirst(artefact->m_fThirstRestoreSpeed * art_cond * f_update_time);
+                conditions().ChangeIntoxication(artefact->m_fIntoxicationRestoreSpeed * art_cond * f_update_time);
 
                 jump_speed_add += (artefact->m_fJumpSpeed * art_cond);
                 walk_accel_add += (artefact->m_fWalkAccel * art_cond);
@@ -1793,6 +1795,7 @@ void CActor::UpdateArtefactsOnBeltAndOutfit()
         conditions().ChangeSatiety(outfit->m_fSatietyRestoreSpeed * f_update_time);
         conditions().ChangeRadiation(outfit->m_fRadiationRestoreSpeed * f_update_time);
         conditions().ChangeThirst(outfit->m_fThirstRestoreSpeed * f_update_time);
+        conditions().ChangeIntoxication(outfit->m_fIntoxicationRestoreSpeed * f_update_time);
 
         jump_speed_add += (outfit->m_fJumpSpeed);
         walk_accel_add += (outfit->m_fWalkAccel);
@@ -1811,6 +1814,7 @@ void CActor::UpdateArtefactsOnBeltAndOutfit()
         conditions().ChangeSatiety(pHelmet->m_fSatietyRestoreSpeed * f_update_time);
         conditions().ChangeRadiation(pHelmet->m_fRadiationRestoreSpeed * f_update_time);
         conditions().ChangeThirst(pHelmet->m_fThirstRestoreSpeed * f_update_time);
+        conditions().ChangeIntoxication(pHelmet->m_fIntoxicationRestoreSpeed * f_update_time);
 
         //jump_speed_add += (pHelmet->m_fJumpSpeed);
         //walk_accel_add += (pHelmet->m_fWalkAccel);
@@ -2158,7 +2162,22 @@ float CActor::GetRestoreSpeed(ALife::EConditionRestoreType const& type)
 
         const auto outfit = GetOutfit();
         const auto pHelmet = (CHelmet*)inventory().ItemFromSlot(HELMET_SLOT);
-        res += ((outfit ? outfit->m_fSatietyRestoreSpeed : 0.f) + (pHelmet ? pHelmet->m_fSatietyRestoreSpeed : 0.f));
+        res += ((outfit ? outfit->m_fThirstRestoreSpeed : 0.f) + (pHelmet ? pHelmet->m_fThirstRestoreSpeed : 0.f));
+
+        break;
+    }
+    case ALife::eIntoxicationRestoreSpeed:
+    {
+        for (auto& it : inventory().m_belt)
+        {
+            const auto artefact = smart_cast<CArtefact*>(it);
+            if (artefact)
+                res += artefact->m_fIntoxicationRestoreSpeed * artefact->GetCondition();
+        }
+
+        const auto outfit = GetOutfit();
+        const auto pHelmet = (CHelmet*)inventory().ItemFromSlot(HELMET_SLOT);
+        res += ((outfit ? outfit->m_fIntoxicationRestoreSpeed : 0.f) + (pHelmet ? pHelmet->m_fIntoxicationRestoreSpeed : 0.f));
 
         break;
     }

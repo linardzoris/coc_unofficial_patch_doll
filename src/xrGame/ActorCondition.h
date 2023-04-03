@@ -27,6 +27,7 @@ private:
         eCantWalkWeight = (1 << 7),
         eCantWalkWeightReached = (1 << 8),
         eCriticalThirstReached = (1 << 9),
+        eCriticalIntoxicationReached = (1 << 10),
     };
     Flags16 m_condition_flags;
 
@@ -36,6 +37,7 @@ private:
     void UpdateTutorialThresholds();
     void UpdateSatiety();
     void UpdateThirst();
+    void UpdateIntoxication();
     virtual void UpdateRadiation();
 
 public:
@@ -52,6 +54,7 @@ public:
     virtual void ChangeAlcohol(const float value);
     virtual void ChangeSatiety(const float value);
     virtual void ChangeThirst(const float value);
+    virtual void ChangeIntoxication(const float value);
 
     void BoostParameters(const SBooster& B);
     void DisableBoostParameters(const SBooster& B);
@@ -87,6 +90,7 @@ public:
     IC float MaxWalkWeight() const { return m_MaxWalkWeight; }
     float xr_stdcall GetAlcohol() { return m_fAlcohol; }
     float xr_stdcall GetPsy() { return 1.0f - GetPsyHealth(); }
+    float xr_stdcall GetIntoxication() { return m_fIntoxication; }
     float GetSatiety() { return m_fSatiety; }
     float GetThirst() { return m_fThirst; }
     IC float GetSatietyPower() const { return m_fV_SatietyPower * m_fSatiety; };
@@ -113,6 +117,9 @@ public:
     IC float const& V_ThirstPower() { return m_fV_ThirstPower; }
     IC float const& V_ThirstHealth() { return m_fV_ThirstHealth; }
     IC float const& ThirstCritical() { return m_fThirstCritical; }
+    IC float const& V_Intoxication() { return m_fV_Intoxication; }
+    IC float const& V_IntoxicationHealth() { return m_fV_IntoxicationHealth; }
+    IC float const& IntoxicationCritical() { return m_fIntoxicationCritical; }
     float GetZoneMaxPower(ALife::EInfluenceType type) const;
     float GetZoneMaxPower(ALife::EHitType hit_type) const;
 
@@ -141,6 +148,10 @@ protected:
     float m_fV_ThirstPower;
     float m_fV_ThirstHealth;
     float m_fThirstCritical;
+
+	float m_fV_Intoxication;
+    float m_fV_IntoxicationHealth;
+    float m_fIntoxicationCritical;
 
     float m_fPowerLeakSpeed;
 

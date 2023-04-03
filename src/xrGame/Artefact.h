@@ -95,6 +95,7 @@ public:
     float m_fPowerRestoreSpeed;
     float m_fBleedingRestoreSpeed;
     float m_fThirstRestoreSpeed;
+    float m_fIntoxicationRestoreSpeed;
     CHitImmunity m_ArtefactHitImmunities;
 
     bool m_bVolumetricLights;

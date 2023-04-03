@@ -868,6 +868,8 @@ void CWeaponMagazinedWGrenade::PlayAnimShoot()
                 PlayHUDMotion("anm_shots_aim_g", false, this, eFire);
             else if (isHUDAnimationExist("anm_shots_g_aim"))
                 PlayHUDMotion("anm_shots_g_aim", false, this, eFire);
+            else
+                PlayHUDMotion("anm_shots_g", false, this, eFire);
         }
         // От бедра
         else if (!IsZoomed())
@@ -876,7 +878,7 @@ void CWeaponMagazinedWGrenade::PlayAnimShoot()
                 PlayHUDMotion("anm_shots_jammed_g", false, this, eFire);
             else if(m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_shots_empty_g"))
                 PlayHUDMotion("anm_shots_empty_g", false, this, eFire);
-            else if (!IsMisfire() && m_ammoElapsed.type1 > 0)
+            else 
                 PlayHUDMotion("anm_shots_g", false, this, eFire);
         }
     }

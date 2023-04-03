@@ -44,6 +44,7 @@ CEntityCondition::CEntityCondition(CEntityAlive* object) : CEntityConditionSimpl
 
     m_fPower = MAX_POWER;
     m_fRadiation = 0;
+    m_fIntoxication = 0.0f;
     m_fPsyHealth = MAX_PSY_HEALTH;
 
     m_fMinWoundSize = 0.00001f;
@@ -596,6 +597,7 @@ bool CEntityCondition::ApplyInfluence(const SMedicineInfluenceValues& V, const s
     SetMaxPower(GetMaxPower() + V.fMaxPowerUp);
     ChangeAlcohol(V.fAlcohol);
     ChangeThirst(V.fThirst);
+    ChangeIntoxication(V.fIntoxication);
     return true;
 }
 
@@ -606,6 +608,7 @@ void SMedicineInfluenceValues::Load(const shared_str& sect)
     fPower = pSettings->r_float(sect.c_str(), "eat_power");
     fSatiety = pSettings->r_float(sect.c_str(), "eat_satiety");
     fThirst = pSettings->r_float(sect.c_str(), "eat_thirst");
+    fIntoxication = pSettings->r_float(sect.c_str(), "eat_intoxication");
     fRadiation = pSettings->r_float(sect.c_str(), "eat_radiation");
     fWoundsHeal = pSettings->r_float(sect.c_str(), "wounds_heal_perc");
     clamp(fWoundsHeal, 0.f, 1.f);
