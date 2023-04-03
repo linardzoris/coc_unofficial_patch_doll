@@ -719,7 +719,7 @@ void CHudItem::PlayAnimIdleMoving()
     if (IsMisfireNow() && isHUDAnimationExist("anm_idle_moving_jammed"))
         PlayHUDMotion("anm_idle_moving_jammed", true, nullptr, GetState());
     else
-        PlayHUDMotion("anm_idle_moving", false, nullptr, GetState()); 
+        PlayHUDMotion("anm_idle_moving", true, nullptr, GetState());
 }
 
 void CHudItem::PlayAnimIdleMovingCrouch()
@@ -727,7 +727,7 @@ void CHudItem::PlayAnimIdleMovingCrouch()
     if (IsMisfireNow() && isHUDAnimationExist("anm_idle_moving_crouch_jammed"))
         PlayHUDMotion("anm_idle_moving_crouch_jammed", true, nullptr, GetState());
     else if (!IsMisfireNow() && isHUDAnimationExist("anm_idle_moving_crouch"))
-        PlayHUDMotion("anm_idle_moving_crouch", false, nullptr, GetState());
+        PlayHUDMotion("anm_idle_moving_crouch", true, nullptr, GetState());
 }
 
 void CHudItem::PlayAnimIdleSprint() 
@@ -735,7 +735,7 @@ void CHudItem::PlayAnimIdleSprint()
     if (IsMisfireNow() && isHUDAnimationExist("anm_idle_sprint_jammed"))
         PlayHUDMotion("anm_idle_sprint_jammed", true, nullptr, GetState());
     else
-        PlayHUDMotion("anm_idle_sprint", false, nullptr, GetState()); 
+        PlayHUDMotion("anm_idle_sprint", true, nullptr, GetState());
 }
 
 void CHudItem::OnMovementChanged(ACTOR_DEFS::EMoveCommand cmd)
