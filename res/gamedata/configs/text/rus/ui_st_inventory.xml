@@ -246,6 +246,9 @@
 	<string id="ui_inv_thirst">
 		<text>Наполнение</text>
 	</string>	
+	<string id="ui_inv_intoxication">
+		<text>Интоксикация</text>
+	</string>	
 	<string id="ui_inv_scope_rifle">
 		<text>Купить оптический прицел для винтовки (S)</text>
 	</string>

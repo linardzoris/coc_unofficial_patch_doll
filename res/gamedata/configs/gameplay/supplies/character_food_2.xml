@@ -1,10 +1,11 @@
 conserva = 1, prob=0.05 \n
 kolbasa = 1, prob=0.1 \n
 energy_drink = 1, prob=0.1 \n
+item_use_water_bottle = 1, prob=0.05 \n
 
 meat_pseudodog = 1, prob=0.03 \n
 meat_boar = 2, prob=0.03 \n
 meat_flesh = 2, prob=0.03 \n
 meat_bloodsucker = 1, prob=0.03 \n
 meat_chimera = 1, prob=0.01 \n
-water_drink = 1, prob=0.1 \n
+item_use_water_bottle = 1, prob=0.1 \n

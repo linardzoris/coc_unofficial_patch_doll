@@ -1292,6 +1292,9 @@ end
 function on_actor_thirst()
 end
 
+function on_actor_intoxication()
+end
+
 --' іадиация
 function on_actor_radiation()
 

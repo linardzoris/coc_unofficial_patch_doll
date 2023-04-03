@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <string_table>
+	<string id="st_item_water_bottle">
+		<text>Water Bottle «Carpathians»</text>
+	</string>
+	<string id="st_item_water_bottle_descr">
+		<text>The most ordinary drinking water that stalkers often take with them. Quenches thirst well and restores strength a little.</text>
+	</string>
 	<string id="st_energy_drink_nonstop">
 		<text>Energy drink «Non Stop»</text>
 	</string>

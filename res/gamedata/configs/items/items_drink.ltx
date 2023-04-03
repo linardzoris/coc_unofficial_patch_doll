@@ -31,6 +31,7 @@ boost_radiation_restore        = 0.00055
 eat_alcohol                    = 0.1
 eat_satiety                    = 0
 eat_thirst					   = -0.1
+eat_intoxication			   = 0.5
 
 has_anim 					   = true
 hud_section 				   = vodka_hud
@@ -107,8 +108,8 @@ cost                           = 250
 
 inv_grid_width                 = 1
 inv_grid_height                = 1
-inv_grid_x                     = 58       
-inv_grid_y                     = 0
+inv_grid_x                     = 17
+inv_grid_y                     = 3
 inv_weight                     = 0.5
 
 boost_time                     = 30.0
@@ -116,24 +117,25 @@ boost_radiation_restore        = 0
 boost_power_restore            = 0.003    
 eat_thirst                     = 0.45
 
-[water_drink]:energy_drink
+[item_use_water_bottle]:energy_drink
 $spawn                         = "food and drugs\water_drink"
-inv_name                       = st_water
-inv_name_short                 = st_water
-visual                         = dynamics\devices\dev_drink_stalker\drink_water
-description                    = st_water_descr
+inv_name                       = st_item_use_water_bottle
+inv_name_short                 = st_item_use_water_bottle
+visual                         = dynamics\devices\dev_water\item_water_bottle
+description                    = st_item_use_water_bottle_descr
 cost                           = 500
 
 inv_grid_width                 = 1
-inv_grid_height                = 1
-inv_grid_x                     = 19
-inv_grid_y                     = 2
+inv_grid_height                = 2
+inv_grid_x                     = 10
+inv_grid_y                     = 39
 inv_weight                     = 0.6
 
 boost_time                     = 20.0
-boost_radiation_restore        = 0.0002
+boost_radiation_restore        = 0
 boost_power_restore            = 0
-eat_thirst					   = 0.6
+eat_thirst					   = 1.0
+eat_intoxication			   = -1
 
 eat_alcohol                    = -0.05
 
