@@ -1560,7 +1560,7 @@ void CWeapon::HUD_VisualBulletUpdate(bool force, int force_idx)
 
     bool hide = true;
 
-    Msg("Print %d bullets", last_hide_bullet);
+    //Msg("Print %d bullets", last_hide_bullet);
 
     if (last_hide_bullet == bullet_cnt || force)
         hide = false;
