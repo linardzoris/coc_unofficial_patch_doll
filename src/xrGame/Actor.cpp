@@ -2039,6 +2039,7 @@ float CActor::GetRestoreSpeed(ALife::EConditionRestoreType const& type)
     {
         res = conditions().change_v().m_fV_HealthRestore;
         res += conditions().V_SatietyHealth() * (conditions().GetSatiety() > 0.0f ? 1.0f : -1.0f);
+        res += conditions().V_ThirstHealth() * (conditions().GetSatiety() > 0.0f ? 1.0f : -1.0f);
 
         for (auto& it : inventory().m_belt)
         {
@@ -2103,6 +2104,7 @@ float CActor::GetRestoreSpeed(ALife::EConditionRestoreType const& type)
     case ALife::ePowerRestoreSpeed:
     {
         res = conditions().GetSatietyPower();
+        res += conditions().GetThirstPower();
 
         for (auto& it : inventory().m_belt)
         {

@@ -25,7 +25,7 @@
     <indicator_weapon_broken x="967" y="647" width="13" height="16" stretch="1"/>
     <indicator_outfit_broken x="981" y="648" width="13" height="16" stretch="1"/>
     <indicator_helmet_broken x="995" y="649" width="13" height="16" stretch="1"/>
-
+    <indicator_thirst x="1009" y="649" width="13" height="16" stretch="1"/>
 
 
 

@@ -51,11 +51,18 @@
 	<texture id="ui_am_prop_Vibros" x="806" y="547" width="19" height="19" />
 
 	<texture id="ui_am_condition" x="806" y="452" width="19" height="19" />
-	<texture id="ui_am_prop_movement" x="673" y="585" width="19" height="19" />
-	<texture id="ui_am_prop_jump" x="692" y="585" width="19" height="19" />
+	<texture id="ui_am_prop_thirst_restore_speed" x="806" y="471" width="19" height="19" />
+	<texture id="ui_am_prop_jump" x="806" y="490" width="19" height="19"/>	
+	<texture id="ui_am_prop_movement" x="787" y="509" width="19" height="19"/>
+	<texture id="ui_am_prop_power_loss" x="825" y="452" width="19" height="19"/>
+	<texture id="ui_am_prop_det_detect_radius" x="825" y="490" width="19" height="19"/>
+	<texture id="ui_am_prop_artefact_count" x="825" y="471" width="19" height="19"/>	
 	<texture id="ui_am_prop_overweight_movement" x="730" y="585" width="19" height="19" />
 	
     <texture id="ui_save_load_back" x="692" y="0" width="288" height="428" />
+	
+	<texture id="ui_am_prop_satiety_restore_speed_minus" x="863" y="566" width="19" height="19"/>
+	<texture id="ui_am_prop_thirst_restore_speed_minus" x="844" y="585" width="19" height="19"/>		
    </file>
 <!--
     <file name="ui\ui_sky_panorama">

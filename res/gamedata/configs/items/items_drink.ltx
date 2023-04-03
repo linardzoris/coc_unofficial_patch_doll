@@ -30,6 +30,7 @@ boost_time                     = 25.0
 boost_radiation_restore        = 0.00055
 eat_alcohol                    = 0.1
 eat_satiety                    = 0
+eat_thirst					   = -0.1
 
 has_anim 					   = true
 hud_section 				   = vodka_hud
@@ -87,6 +88,7 @@ boost_power_restore            = 0.0025
 
 eat_alcohol                    = -0.15
 eat_satiety                    = 0.0
+eat_thirst					   = 0.4
 
 use_sound                      = interface\inv_softdrink
 use_condition                  = false
@@ -96,24 +98,23 @@ empty_weight                   = 0.05
 hide_time_wpn                  = 5
 
 [energy_drink_nonstop]:energy_drink
-$spawn                                   = "food and drugs\energy_drink_nonstop"
-inv_name                                 = st_energy_drink_nonstop
-inv_name_short                           = st_energy_drink_nonstop
-visual                                   = dynamics\devices\dev_drink_stalker_nonstop\dev_drink_stalker_nonstop
-description                              = st_energy_drink_nonstop_descr
-cost                                     = 250
+$spawn                         = "food and drugs\energy_drink_nonstop"
+inv_name                       = st_energy_drink_nonstop
+inv_name_short                 = st_energy_drink_nonstop
+visual                         = dynamics\devices\dev_drink_stalker_nonstop\dev_drink_stalker_nonstop
+description                    = st_energy_drink_nonstop_descr
+cost                           = 250
 
-inv_grid_width                           = 1
-inv_grid_height                          = 1
-inv_grid_x                               = 58       
-inv_grid_y                               = 0
-inv_weight                               = 0.5
+inv_grid_width                 = 1
+inv_grid_height                = 1
+inv_grid_x                     = 58       
+inv_grid_y                     = 0
+inv_weight                     = 0.5
 
-boost_time                               = 30.0
-boost_radiation_restore                  = 0
-boost_power_restore                      = 0.003    
-eat_thirst                               = 0.4
-snd_on_take								 = other
+boost_time                     = 30.0
+boost_radiation_restore        = 0
+boost_power_restore            = 0.003    
+eat_thirst                     = 0.45
 
 [water_drink]:energy_drink
 $spawn                         = "food and drugs\water_drink"
@@ -132,6 +133,7 @@ inv_weight                     = 0.6
 boost_time                     = 20.0
 boost_radiation_restore        = 0.0002
 boost_power_restore            = 0
+eat_thirst					   = 0.6
 
 eat_alcohol                    = -0.05
 

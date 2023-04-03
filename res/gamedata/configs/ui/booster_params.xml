@@ -34,6 +34,17 @@
 		</value>
 	</boost_satiety>
 
+	<boost_thirst x="0" y="0" width="257" height="20" >
+		<caption x="0" y="0" width="257" height="20" complex_mode="0">
+			<texture>ui_am_prop_thirst_restore_speed</texture>
+			<text color="ui_3" font="letterica16" vert_align="c" x="22" y="0"/>
+		</caption>
+			<texture_minus>ui_am_prop_thirst_restore_speed_minus</texture_minus>				
+		<value x="140" y="0" width="30" height="20" magnitude="10">
+			<text font="letterica16" vert_align="c"/>
+		</value>
+	</boost_thirst>
+
 	<boost_anabiotic x="0" y="0" width="257" height="20" >
 		<caption x="0" y="0" width="257" height="20" complex_mode="0">
 			<texture>ui_am_prop_Vibros</texture>
