@@ -716,7 +716,10 @@ bool CHudItem::NeedBlendAnm()
 
 void CHudItem::PlayAnimIdleMoving() 
 { 
-    PlayHUDMotion("anm_idle_moving", false, nullptr, GetState()); 
+    if (IsMisfireNow() && isHUDAnimationExist("anm_idle_moving_jammed"))
+        PlayHUDMotion("anm_idle_moving_jammed", true, nullptr, GetState());
+    else
+        PlayHUDMotion("anm_idle_moving", false, nullptr, GetState()); 
 }
 
 void CHudItem::PlayAnimIdleMovingCrouch()
@@ -729,7 +732,10 @@ void CHudItem::PlayAnimIdleMovingCrouch()
 
 void CHudItem::PlayAnimIdleSprint() 
 { 
-    PlayHUDMotion("anm_idle_sprint", false, nullptr, GetState()); 
+    if (IsMisfireNow() && isHUDAnimationExist("anm_idle_sprint_jammed"))
+        PlayHUDMotion("anm_idle_sprint_jammed", true, nullptr, GetState());
+    else
+        PlayHUDMotion("anm_idle_sprint", false, nullptr, GetState()); 
 }
 
 void CHudItem::OnMovementChanged(ACTOR_DEFS::EMoveCommand cmd)

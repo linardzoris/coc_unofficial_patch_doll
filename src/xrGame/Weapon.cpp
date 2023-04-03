@@ -1418,7 +1418,7 @@ BOOL CWeapon::CheckForMisfire()
 
     float rnd = ::Random.randF(0.f, 1.f);
     float mp = GetConditionMisfireProbability();
-    if (rnd < mp)
+    if (rnd < mp && m_ammoElapsed.type1 > 0) // Не клиним при нуле в магазине
     {
         FireEnd();
 

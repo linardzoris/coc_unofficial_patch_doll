@@ -448,8 +448,11 @@ void CWeaponMagazined::ReloadMagazine()
 {
     m_BriefInfo_CalcFrame = 0;
 
-    //устранить осечку при перезарядке
-    if (IsMisfire()) bMisfire = false;
+    //устранить осечку при перезарядке при условии того, что это не ПГ
+    if (IsMisfire() && IsGrenadeLauncherAttached() && !m_bGrenadeMode) 
+        bMisfire = false;
+    else if (IsMisfire() && !IsGrenadeLauncherAttached()) 
+        bMisfire = false;
 
     if (!m_bLockType)
     {
@@ -1580,8 +1583,6 @@ void CWeaponMagazined::PlayAnimIdleSprint()
 {
     if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_idle_sprint_empty"))
         PlayHUDMotion("anm_idle_sprint_empty", true, nullptr, GetState());
-    else if (IsMisfire() && isHUDAnimationExist("anm_idle_sprint_jammed"))
-        PlayHUDMotion("anm_idle_sprint_jammed", true, nullptr, GetState());
     else
         inherited::PlayAnimIdleSprint();
 }
@@ -1590,8 +1591,6 @@ void CWeaponMagazined::PlayAnimIdleMoving()
 {
     if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_idle_moving_empty"))
         PlayHUDMotion("anm_idle_moving_empty", true, nullptr, GetState());
-    else if (IsMisfire() && isHUDAnimationExist("anm_idle_moving_jammed"))
-        PlayHUDMotion("anm_idle_moving_jammed", true, nullptr, GetState());
     else
         inherited::PlayAnimIdleMoving();
 }
@@ -1610,17 +1609,22 @@ void CWeaponMagazined::PlayAnimReload()
     VERIFY(state == eReload);
 
     if (bMisfire)
+    {
         if (isHUDAnimationExist("anm_reload_misfire"))
             PlayHUDMotion("anm_reload_misfire", true, this, state);
+        else if (isHUDAnimationExist("anm_reload_unjam"))
+            PlayHUDMotion("anm_reload_unjam", true, this, state);
+        else if (isHUDAnimationExist("anm_unjam"))
+            PlayHUDMotion("anm_unjam", true, this, state);
+        else if (isHUDAnimationExist("anm_reload_jammed"))
+            PlayHUDMotion("anm_reload_jammed", true, this, state);
         else
             PlayHUDMotion("anm_reload", true, this, state);
+    }
     else
     {
-        if (m_ammoElapsed.type1 == 0)
-            if (isHUDAnimationExist("anm_reload_empty"))
-                PlayHUDMotion("anm_reload_empty", true, this, state);
-            else
-                PlayHUDMotion("anm_reload", true, this, state);
+        if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_reload_empty"))
+            PlayHUDMotion("anm_reload_empty", true, this, state);
         else
             PlayHUDMotion("anm_reload", true, this, state);
     }
@@ -1659,12 +1663,11 @@ void CWeaponMagazined::PlayAnimAim()
 void CWeaponMagazined::PlayAnimIdle()
 {
     if (GetState() != eIdle) return;
-
     if (TryPlayAnimIdle()) return;
 
 	if (IsZoomed())
         PlayAnimAim();
-    else if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_idle_empty"))
+    else if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_idle_empty") && !TryPlayAnimIdle())
         PlayHUDMotion("anm_idle_empty", true, nullptr, GetState());
     else if (IsMisfire() && isHUDAnimationExist("anm_idle_jammed") && !TryPlayAnimIdle())
         PlayHUDMotion("anm_idle_jammed", true, nullptr, GetState());
@@ -1696,28 +1699,59 @@ void CWeaponMagazined::PlayAnimShoot()
 {
     VERIFY(GetState() == eFire);
 
+    // Если IsDiffShotModes = false или true, но в одиночном режиме.
 	if (!IsDiffShotModes() || IsDiffShotModes() && GetCurrentFireMode() != -1)
     {
-        if (IsZoomed() && m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shot_when_aim_l") || m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shots_aim_l"))
-            PlayHUDMotionIfExists({"anm_shot_when_aim_l", "anm_shots_aim_l"}, true, GetState());
-        else if (IsZoomed() && isHUDAnimationExist("anm_shots_when_aim") || IsZoomed() && isHUDAnimationExist("anm_shots_aim"))
-            PlayHUDMotionIfExists({"anm_shots_when_aim", "anm_shots_aim"}, true, GetState());
-        else if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shot_l") || m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shots_l"))
-            PlayHUDMotionIfExists({"anm_shot_l", "anm_shots_l"}, true, GetState());
-        else
-            PlayHUDMotionIfExists({"anm_shoot", "anm_shots"}, false, GetState());
+        // В зуме
+        if (IsZoomed())
+            if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shot_when_aim_l"))
+                PlayHUDMotion("anm_shot_when_aim_l", true, nullptr, GetState());
+            else if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shots_aim_l"))
+                PlayHUDMotion("anm_shots_aim_l", true, nullptr, GetState());
+            else if (isHUDAnimationExist("anm_shots_when_aim"))
+                PlayHUDMotion("anm_shots_when_aim", true, nullptr, GetState());
+            else if (IsZoomed() && isHUDAnimationExist("anm_shots_aim"))
+                PlayHUDMotion("anm_shots_aim", true, nullptr, GetState());
+            else
+                PlayHUDMotion("anm_shots", true, nullptr, GetState());
+        // От бедра
+        else if (!IsZoomed())
+            if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shot_l"))
+                PlayHUDMotion("anm_shot_l", true, nullptr, GetState());
+            else if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shots_l"))
+                PlayHUDMotion("anm_shots_l", true, nullptr, GetState());
+            else if (isHUDAnimationExist("anm_shoot"))
+                PlayHUDMotion("anm_shoot", true, nullptr, GetState());
+            else
+                PlayHUDMotion("anm_shots", true, nullptr, GetState());
     }
     // Если IsDiffShotModes и авторежим стрельбы (для SPAS-12).
     if (IsDiffShotModes() && GetCurrentFireMode() == -1)
     {
-        if (IsZoomed() && m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shots_auto_when_aim_l") || m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shots_auto_aim_l"))
-        PlayHUDMotionIfExists({"anm_shots_auto_when_aim_l", "anm_shots_auto_aim_l"}, true, GetState());
-        else if (IsZoomed() && isHUDAnimationExist("anm_shots_auto_when_aim") || IsZoomed() && isHUDAnimationExist("anm_shots_auto_aim"))
-        PlayHUDMotionIfExists({"anm_shots_auto_when_aim", "anm_shots_auto_aim"}, true, GetState());
-        else if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shot_auto_l") || m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shots_auto_l"))
-            PlayHUDMotionIfExists({"anm_shot_auto_l", "anm_shots_auto_l"}, true, GetState());
-        else
-            PlayHUDMotionIfExists({"anm_shoot_auto", "anm_shots_auto"}, false, GetState());
+        // В зуме
+        if (IsZoomed())
+            if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shot_auto_when_aim_l"))
+                PlayHUDMotion("anm_shot_auto_when_aim_l", true, nullptr, GetState());
+            else if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shots_auto_aim_l"))
+                PlayHUDMotion("anm_shots_auto_aim_l", true, nullptr, GetState());
+            else if (isHUDAnimationExist("anm_shots_auto_when_aim"))
+                PlayHUDMotion("anm_shots_auto_when_aim", true, nullptr, GetState());
+            else if (IsZoomed() && isHUDAnimationExist("anm_shots_auto_aim"))
+                PlayHUDMotion("anm_shots_auto_aim", true, nullptr, GetState());
+            else
+                PlayHUDMotion("anm_shots", true, nullptr, GetState());
+        // От бедра
+        else if (!IsZoomed())
+            if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shot_auto_l"))
+                PlayHUDMotion("anm_shot_auto_l", true, nullptr, GetState());
+            else if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shots_auto_l"))
+                PlayHUDMotion("anm_shots_auto_l", true, nullptr, GetState());
+            else if (isHUDAnimationExist("anm_shoot_auto"))
+                PlayHUDMotion("anm_shoot_auto", true, nullptr, GetState());
+            else if (isHUDAnimationExist("anm_shots_auto"))
+                PlayHUDMotion("anm_shots_auto", true, nullptr, GetState());
+            else
+                PlayHUDMotion("anm_shots", true, nullptr, GetState());
     }
 }
 
