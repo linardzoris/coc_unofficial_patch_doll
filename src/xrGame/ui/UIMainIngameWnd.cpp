@@ -134,6 +134,7 @@ void CUIMainIngameWnd::Init()
     m_ind_bleeding = UIHelper::CreateStatic(uiXml, "indicator_bleeding", this);
     m_ind_radiation = UIHelper::CreateStatic(uiXml, "indicator_radiation", this);
     m_ind_starvation = UIHelper::CreateStatic(uiXml, "indicator_starvation", this);
+    m_ind_thirst = UIHelper::CreateStatic(uiXml, "indicator_thirst", this);
     m_ind_weapon_broken = UIHelper::CreateStatic(uiXml, "indicator_weapon_broken", this);
     m_ind_helmet_broken = UIHelper::CreateStatic(uiXml, "indicator_helmet_broken", this);
     m_ind_outfit_broken = UIHelper::CreateStatic(uiXml, "indicator_outfit_broken", this);
@@ -644,8 +645,7 @@ void CUIMainIngameWnd::UpdateMainIndicators()
     // Satiety icon
     float satiety = pActor->conditions().GetSatiety();
     float satiety_critical = pActor->conditions().SatietyCritical();
-    float satiety_koef =
-        (satiety - satiety_critical) / (satiety >= satiety_critical ? 1 - satiety_critical : satiety_critical);
+    float satiety_koef = (satiety - satiety_critical) / (satiety >= satiety_critical ? 1 - satiety_critical : satiety_critical);
     if (satiety_koef > 0.5)
         m_ind_starvation->Show(false);
     else
@@ -658,6 +658,24 @@ void CUIMainIngameWnd::UpdateMainIndicators()
         else
             m_ind_starvation->InitTexture("ui_inGame2_circle_hunger_red");
     }
+
+	// Thirst icon
+    float thirst = pActor->conditions().GetThirst();
+    float thirst_critical = pActor->conditions().ThirstCritical();
+    float thirst_koef = (thirst - thirst_critical) / (thirst >= thirst_critical ? 1 - thirst_critical : thirst_critical);
+    if (thirst_koef > 0.5)
+        m_ind_thirst->Show(false);
+    else
+    {
+        m_ind_thirst->Show(true);
+        if (thirst_koef > 0.0f)
+            m_ind_thirst->InitTexture("ui_inGame2_circle_thirst_green");
+        else if (thirst_koef > -0.5f)
+            m_ind_thirst->InitTexture("ui_inGame2_circle_thirst_yellow");
+        else
+            m_ind_thirst->InitTexture("ui_inGame2_circle_thirst_red");
+    }
+
     // Armor broken icon
     CCustomOutfit* outfit = smart_cast<CCustomOutfit*>(pActor->inventory().ItemFromSlot(OUTFIT_SLOT));
     m_ind_outfit_broken->Show(false);

@@ -1736,6 +1736,8 @@ void CActor::UpdateArtefactsOnBeltAndOutfit()
                 conditions().ChangeHealth(artefact->m_fHealthRestoreSpeed * art_cond * f_update_time);
                 conditions().ChangePower(artefact->m_fPowerRestoreSpeed * art_cond * f_update_time);
                 conditions().ChangeSatiety(artefact->m_fSatietyRestoreSpeed * art_cond * f_update_time);
+                conditions().ChangeThirst(artefact->m_fThirstRestoreSpeed * art_cond * f_update_time);
+
                 jump_speed_add += (artefact->m_fJumpSpeed * art_cond);
                 walk_accel_add += (artefact->m_fWalkAccel * art_cond);
 
@@ -1763,6 +1765,8 @@ void CActor::UpdateArtefactsOnBeltAndOutfit()
                 conditions().ChangeHealth(artefact->m_fHealthRestoreSpeed * art_cond * f_update_time);
                 conditions().ChangePower(artefact->m_fPowerRestoreSpeed * art_cond * f_update_time);
                 conditions().ChangeSatiety(artefact->m_fSatietyRestoreSpeed * art_cond * f_update_time);
+                conditions().ChangeThirst(artefact->m_fThirstRestoreSpeed * art_cond * f_update_time);
+
                 jump_speed_add += (artefact->m_fJumpSpeed * art_cond);
                 walk_accel_add += (artefact->m_fWalkAccel * art_cond);
 
@@ -1788,6 +1792,8 @@ void CActor::UpdateArtefactsOnBeltAndOutfit()
         conditions().ChangePower(outfit->m_fPowerRestoreSpeed * f_update_time);
         conditions().ChangeSatiety(outfit->m_fSatietyRestoreSpeed * f_update_time);
         conditions().ChangeRadiation(outfit->m_fRadiationRestoreSpeed * f_update_time);
+        conditions().ChangeThirst(outfit->m_fThirstRestoreSpeed * f_update_time);
+
         jump_speed_add += (outfit->m_fJumpSpeed);
         walk_accel_add += (outfit->m_fWalkAccel);
 
@@ -1804,6 +1810,8 @@ void CActor::UpdateArtefactsOnBeltAndOutfit()
         conditions().ChangePower(pHelmet->m_fPowerRestoreSpeed * f_update_time);
         conditions().ChangeSatiety(pHelmet->m_fSatietyRestoreSpeed * f_update_time);
         conditions().ChangeRadiation(pHelmet->m_fRadiationRestoreSpeed * f_update_time);
+        conditions().ChangeThirst(pHelmet->m_fThirstRestoreSpeed * f_update_time);
+
         //jump_speed_add += (pHelmet->m_fJumpSpeed);
         //walk_accel_add += (pHelmet->m_fWalkAccel);
     }
@@ -2132,6 +2140,23 @@ float CActor::GetRestoreSpeed(ALife::EConditionRestoreType const& type)
         const auto pHelmet = (CHelmet*)inventory().ItemFromSlot(HELMET_SLOT);
         const auto pBackpack = (CBackpack*)inventory().ItemFromSlot(BACKPACK_SLOT);
         res += ((outfit ? outfit->m_fBleedingRestoreSpeed : 0.f) + (pHelmet ? pHelmet->m_fBleedingRestoreSpeed : 0.f) + (pBackpack ? pBackpack->m_fBleedingRestoreSpeed : 0.f));
+
+        break;
+    }
+    case ALife::eThirstRestoreSpeed:
+    {
+        res = conditions().V_Thirst();
+
+        for (auto& it : inventory().m_belt)
+        {
+            const auto artefact = smart_cast<CArtefact*>(it);
+            if (artefact)
+                res += artefact->m_fThirstRestoreSpeed * artefact->GetCondition();
+        }
+
+        const auto outfit = GetOutfit();
+        const auto pHelmet = (CHelmet*)inventory().ItemFromSlot(HELMET_SLOT);
+        res += ((outfit ? outfit->m_fSatietyRestoreSpeed : 0.f) + (pHelmet ? pHelmet->m_fSatietyRestoreSpeed : 0.f));
 
         break;
     }

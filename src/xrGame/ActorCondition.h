@@ -26,6 +26,7 @@ private:
         ePhyHealthMinReached = (1 << 6),
         eCantWalkWeight = (1 << 7),
         eCantWalkWeightReached = (1 << 8),
+        eCriticalThirstReached = (1 << 9),
     };
     Flags16 m_condition_flags;
 
@@ -34,6 +35,7 @@ private:
     CActorDeathEffector* m_death_effector;
     void UpdateTutorialThresholds();
     void UpdateSatiety();
+    void UpdateThirst();
     virtual void UpdateRadiation();
 
 public:
@@ -49,6 +51,7 @@ public:
 
     virtual void ChangeAlcohol(const float value);
     virtual void ChangeSatiety(const float value);
+    virtual void ChangeThirst(const float value);
 
     void BoostParameters(const SBooster& B);
     void DisableBoostParameters(const SBooster& B);
@@ -85,7 +88,9 @@ public:
     float xr_stdcall GetAlcohol() { return m_fAlcohol; }
     float xr_stdcall GetPsy() { return 1.0f - GetPsyHealth(); }
     float GetSatiety() { return m_fSatiety; }
+    float GetThirst() { return m_fThirst; }
     IC float GetSatietyPower() const { return m_fV_SatietyPower * m_fSatiety; };
+    IC float GetThirstPower() const { return m_fV_ThirstPower * m_fThirst; };
     void AffectDamage_InjuriousMaterialAndMonstersInfluence();
     float GetInjuriousMaterialDamage();
 
@@ -100,11 +105,14 @@ public:
     }
     virtual void save(NET_Packet& output_packet);
     virtual void load(IReader& input_packet);
-    //	IC		float const&	Satiety					()	{ return m_fSatiety; }
     IC float const& V_Satiety() { return m_fV_Satiety; }
     IC float const& V_SatietyPower() { return m_fV_SatietyPower; }
     IC float const& V_SatietyHealth() { return m_fV_SatietyHealth; }
     IC float const& SatietyCritical() { return m_fSatietyCritical; }
+    IC float const& V_Thirst() { return m_fV_Thirst; }
+    IC float const& V_ThirstPower() { return m_fV_ThirstPower; }
+    IC float const& V_ThirstHealth() { return m_fV_ThirstHealth; }
+    IC float const& ThirstCritical() { return m_fThirstCritical; }
     float GetZoneMaxPower(ALife::EInfluenceType type) const;
     float GetZoneMaxPower(ALife::EHitType hit_type) const;
 
@@ -127,6 +135,13 @@ protected:
     float m_fV_SatietyHealth;
     float m_fSatietyCritical;
     //--
+
+    float m_fThirst;
+    float m_fV_Thirst;
+    float m_fV_ThirstPower;
+    float m_fV_ThirstHealth;
+    float m_fThirstCritical;
+
     float m_fPowerLeakSpeed;
 
     float m_fJumpPower;

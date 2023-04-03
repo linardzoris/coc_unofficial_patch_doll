@@ -40,12 +40,14 @@ public:
     float GetHealthPower() const { return m_fHealthRestoreSpeed; }
     float GetRadiationPower() const { return m_fRadiationRestoreSpeed; }
     float GetSatietyPower() const { return m_fSatietyRestoreSpeed; }
+    float GetThirstPower() const { return m_fThirstRestoreSpeed; }
     float GetPowerPower() const { return m_fPowerRestoreSpeed; }
     float GetBleedingPower() const { return m_fBleedingRestoreSpeed; }
 
     void SetHealthPower(const float value) { m_fHealthRestoreSpeed = value; }
     void SetRadiationPower(const float value) { m_fRadiationRestoreSpeed = value; }
     void SetSatietyPower(const float value) { m_fSatietyRestoreSpeed = value; }
+    void SetThirstPower(const float value) { m_fThirstRestoreSpeed = value; }
     void SetPowerPower(const float value) { m_fPowerRestoreSpeed = value; }
     void SetBleedingPower(const float value) { m_fBleedingRestoreSpeed = value; }
 
@@ -92,6 +94,7 @@ public:
     float m_fSatietyRestoreSpeed;
     float m_fPowerRestoreSpeed;
     float m_fBleedingRestoreSpeed;
+    float m_fThirstRestoreSpeed;
     CHitImmunity m_ArtefactHitImmunities;
 
     bool m_bVolumetricLights;

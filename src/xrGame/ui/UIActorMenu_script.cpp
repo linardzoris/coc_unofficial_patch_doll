@@ -358,6 +358,7 @@ SCRIPT_EXPORT(CUIActorMenu, (CUIDialogWnd),
 			.def_readonly("m_ind_bleeding", &CUIMainIngameWnd::m_ind_bleeding)
 			.def_readonly("m_ind_radiation", &CUIMainIngameWnd::m_ind_radiation)
 			.def_readonly("m_ind_starvation", &CUIMainIngameWnd::m_ind_starvation)
+            .def_readonly("m_ind_thirst", &CUIMainIngameWnd::m_ind_thirst)
 			.def_readonly("m_ind_weapon_broken", &CUIMainIngameWnd::m_ind_weapon_broken)
 			.def_readonly("m_ind_helmet_broken", &CUIMainIngameWnd::m_ind_helmet_broken)
 			.def_readonly("m_ind_outfit_broken", &CUIMainIngameWnd::m_ind_outfit_broken)
