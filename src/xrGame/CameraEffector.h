@@ -19,6 +19,8 @@
 #define effNightvisionScope (eStartEffectorID + 11)
 #define effUseItem (eStartEffectorID + 12)
 #define effIntoxication (eStartEffectorID + 13)
+#define effSatiety (eStartEffectorID + 14)
+#define effThirst (eStartEffectorID + 15)
 
 #define effPoltergeistTeleDetectStartEffect 2048
 // warning: ~50 constants after effPoltergeistTeleDetectStartEffect are reserved for poltergeists

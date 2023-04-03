@@ -29,6 +29,9 @@
 #define MAX_THIRST 1.0f
 #define START_THIRST 0.5f
 
+bool bSatietyEffectorEnabled = READ_IF_EXISTS(pSettings, r_bool, "gameplay", "satiety_effector", false);
+bool bThirstEffectorEnabled = READ_IF_EXISTS(pSettings, r_bool, "gameplay", "thirst_effector", false);
+
 BOOL GodMode()
 {
     if (GameID() == eGameIDSingle)
@@ -423,13 +426,27 @@ float CActorCondition::GetZoneDanger() const
     return sum;
 }
 
-void CActorCondition::UpdateRadiation() { inherited::UpdateRadiation(); }
+void CActorCondition::UpdateRadiation() 
+{ 
+    inherited::UpdateRadiation(); 
+}
+
 void CActorCondition::UpdateSatiety()
 {
-    if (!IsGameTypeSingle())
+    CEffectorCam* ce = Actor()->Cameras().GetCamEffector((ECamEffectorType)effSatiety);
+
+    if (bSatietyEffectorEnabled)
     {
-        m_fDeltaPower += m_fV_SatietyPower * m_fDeltaTime;
-        return;
+        if ((m_fSatiety >= m_fSatietyCritical))
+        {
+            if (!ce)
+                AddEffector(m_object, effSatiety, "effector_satiety", GET_KOEFF_FUNC(this, &CActorCondition::GetSatiety));
+        }
+        else
+        {
+            if (ce)
+                RemoveEffector(m_object, effSatiety);
+        }
     }
 
     if (m_fSatiety > 0)
@@ -448,11 +465,21 @@ void CActorCondition::UpdateSatiety()
 
 void CActorCondition::UpdateThirst()
 {
-	if (!IsGameTypeSingle())
-	{
-		m_fDeltaPower += m_fV_ThirstPower * m_fDeltaTime;
-		return;
-	}
+    CEffectorCam* ce = Actor()->Cameras().GetCamEffector((ECamEffectorType)effThirst);
+
+    if (bThirstEffectorEnabled)
+    {
+        if ((m_fThirst >= m_fThirstCritical))
+        {
+            if (!ce)
+                AddEffector(m_object, effThirst, "effector_thirst", GET_KOEFF_FUNC(this, &CActorCondition::GetThirst));
+        }
+        else
+        {
+            if (ce)
+                RemoveEffector(m_object, effThirst);
+        }
+    }
 
 	if (m_fThirst > 0)
 	{
@@ -472,6 +499,7 @@ void CActorCondition::UpdateThirst()
 void CActorCondition::UpdateIntoxication()
 {
 	CEffectorCam* ce = Actor()->Cameras().GetCamEffector((ECamEffectorType)effIntoxication);
+
 	if ((m_fIntoxication>=m_fIntoxicationCritical))
 	{
 		if (!ce) 
