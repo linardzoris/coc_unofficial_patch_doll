@@ -115,17 +115,6 @@ function opt_menu_on_init(menu)
 		end	
 	end}
 	
-	-- Sleep Deprived
-	menu.gameplay_options["sleep_deprived"]			= {default=false, 	debug_only=false, 	typ="check", on_accept=function(handler,optMgr,ctrl)
-		if (level.present() and sleep_dep) then
-			if (ctrl:GetCheck()) then
-				sleep_dep.activate_feature()
-			else 
-				sleep_dep.deactivate_feature()
-			end
-		end
-	end}
-	
 	-- Art Degrade
 	menu.gameplay_options["art_degrade"]			= {default=true, 	debug_only=false, 	typ="check", on_accept=function(handler,optMgr,ctrl)
 		if (level.present() and artefact_degradation) then
