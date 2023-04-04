@@ -504,6 +504,9 @@
 	<string id="st_sleep_awake_wired">
 		<text>You are high on caffeine and unable to rest</text>
 	</string>
+	<string id="st_sleep_not_sleepeness">
+		<text>You do not need to rest</text>
+	</string>	
 	<string id="st_sleep_bleeding">
 		<text>You are bleeding; seek medical attention</text>
 	</string>
