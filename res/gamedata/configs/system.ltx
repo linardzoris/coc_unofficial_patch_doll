@@ -28,12 +28,15 @@
 #include "smart_cover.ltx"
 
 [gameplay]
-less_bolts = true 						;Заканчивающиеся болты
-hide_weapon_when_inventory_open = true  ;Убираем оружие если лезем в инвентарь
-af_radiation_backpack = true 			;Фонит/выводит радиацию в рюкзаке
-autoreload_enabled = false 				;Разрешена ли автоперезарядка оружия
-satiety_effector = false                ;Постэффект для критического голода
-thirst_effector = false                 ;Постэффект для критической жажды
+less_bolts 							= true 			;Заканчивающиеся болты
+hide_weapon_when_inventory_open 	= true  		;Убираем оружие если лезем в инвентарь
+af_radiation_backpack 				= true 			;Фонит/выводит радиацию в рюкзаке
+autoreload_enabled 					= false 		;Разрешена ли автоперезарядка оружия
+satiety_effector 					= false         ;Постэффект для критического голода
+thirst_effector 					= false         ;Постэффект для критической жажды
+satiety_mind_loss 					= false         ;Теряет сознание от голода
+thirst_mind_loss 					= false         ;Теряет сознание от жажды
+alcohol_mind_loss                   = true          ;Теряет сознание от перепитого
 
 [environment]
 winter_mode = false ;Зимний режим (влияет на дождь и партиклы)
@@ -638,6 +641,7 @@ weapon_jammed                            = 0.9
 psy_health                               = 0.5
 thirst									 = 0.5
 intoxication							 = 0.1
+sleepeness								 = 0.5
 
 [squad_manager]
 schedule_min                             = 1

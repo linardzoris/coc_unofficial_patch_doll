@@ -21,6 +21,7 @@ CUIBoosterInfo::CUIBoosterInfo()
     m_booster_satiety = NULL;
     m_booster_thirst = NULL;
     m_booster_intoxication = NULL;
+    m_booster_sleepeness = NULL;
     m_booster_anabiotic = NULL;
     m_booster_time = NULL;
 }
@@ -31,6 +32,7 @@ CUIBoosterInfo::~CUIBoosterInfo()
     xr_delete(m_booster_satiety);
     xr_delete(m_booster_thirst);
     xr_delete(m_booster_intoxication);
+    xr_delete(m_booster_sleepeness);
     xr_delete(m_booster_anabiotic);
     xr_delete(m_booster_time);
     xr_delete(m_Prop_line);
@@ -89,6 +91,14 @@ void CUIBoosterInfo::InitFromXml(CUIXml& xml)
     m_booster_intoxication->SetAutoDelete(false);
     name = StringTable().translate("ui_inv_intoxication").c_str();
     m_booster_intoxication->SetCaption(name);
+    xml.SetLocalRoot(base_node);
+
+	// M.F.S. Team Sleepeness
+    m_booster_sleepeness = new UIBoosterInfoItem();
+    m_booster_sleepeness->Init(xml, "boost_sleepeness");
+    m_booster_sleepeness->SetAutoDelete(false);
+    name = StringTable().translate("ui_inv_sleepeness").c_str();
+    m_booster_sleepeness->SetCaption(name);
     xml.SetLocalRoot(base_node);
 
     m_booster_anabiotic = new UIBoosterInfoItem();
@@ -204,6 +214,22 @@ void CUIBoosterInfo::SetInfo(shared_str const& section)
 
             h += m_booster_intoxication->GetWndSize().y;
             AttachChild(m_booster_intoxication);
+        }
+    }
+
+	// M.F.S. Team Sleepeness
+    if (pSettings->line_exist(section.c_str(), "eat_sleepeness"))
+    {
+        val = pSettings->r_float(section, "eat_sleepeness");
+        if (!fis_zero(val))
+        {
+            m_booster_sleepeness->SetValue(val);
+            pos.set(m_booster_sleepeness->GetWndPos());
+            pos.y = h;
+            m_booster_sleepeness->SetWndPos(pos);
+
+            h += m_booster_sleepeness->GetWndSize().y;
+            AttachChild(m_booster_sleepeness);
         }
     }
 

@@ -71,6 +71,7 @@ struct SMedicineInfluenceValues
     float fSatiety;
     float fThirst;
     float fIntoxication;
+    float fSleepeness;
     float fRadiation;
     float fWoundsHeal;
     float fMaxPowerUp;
@@ -123,6 +124,7 @@ public:
     IC float GetSatiety() const { return 1.0f; }
     IC float GetThirst() const { return 1.0f; }
     IC float GetIntoxication() const { return m_fIntoxication; }
+    IC float GetSleepeness() const { return m_fSleepeness; }
     IC float GetEntityMorale() const { return m_fEntityMorale; }
     IC float GetHealthLost() const { return m_fHealthLost; }
     virtual bool IsLimping() const;
@@ -130,6 +132,7 @@ public:
     virtual void ChangeSatiety(const float value){};
     virtual void ChangeThirst(const float value){};
     virtual void ChangeIntoxication(const float value){};
+    virtual void ChangeSleepeness(const float value){};
     void ChangeHealth(const float value);
     void ChangePower(const float value);
     void ChangeRadiation(const float value);
@@ -199,6 +202,7 @@ protected:
 	float m_fEntityMorale;			//мораль
 	float m_fBleedSpeedK;
     float m_fIntoxication;
+    float m_fSleepeness;
 
     //максимальные величины
     //	float m_fSatietyMax;

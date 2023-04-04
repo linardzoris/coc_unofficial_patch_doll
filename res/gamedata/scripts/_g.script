@@ -1295,6 +1295,9 @@ end
 function on_actor_intoxication()
 end
 
+function on_actor_sleepeness()
+end
+
 --' іадиация
 function on_actor_radiation()
 

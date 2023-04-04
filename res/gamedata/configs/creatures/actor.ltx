@@ -176,19 +176,27 @@ explosion_immunity      = 1
 fire_wound_immunity     = 1
 
 [actor_condition]
-satiety_v				= 0.0000162 ;скорость уменьшения сытости со временем
 radiation_v				= 0.00001	;скорость уменьшения радиации
+radiation_health_v		= 0.002     ;уменьшение здоровья при воздействии радиации
+
+satiety_v				= 0.0000162 ;скорость уменьшения сытости со временем
 satiety_power_v			= 0.005		;увеличение силы при уменьшении сытости
 satiety_health_v		= 0.00001   ;увеличение здоровья при уменьшении сытости
 satiety_critical		= 0.2       ;критическое значения сытости (в процентах от 0..1) когда здоровье начианает уменьшаться
+
 thirst_v				= 0.0000214 ;скорость увеличения жажды со временем
 thirst_critical			= 0.3       ;критическое значения жажды (в процентах от 0..1) когда здоровье начианает уменьшаться
 thirst_power_v			= 0.005		;увеличение силы при уменьшении жажды
 thirst_health_v			= 0.0001    ;увеличение здоровья при уменьшении жажды
+
 intoxication_v			= 0.005	 	;Уменьшение отравления со временем
 intoxication_health_v	= 0.005		;При наступлении intoxication_critical отнимает здоровье
 intoxication_critical	= 0.75		;Критический уровень отравления
-radiation_health_v		= 0.002     ;уменьшение здоровья при воздействии радиации
+
+sleepeness_v			= 0.00002	;Накопление сонливости
+sleepeness_power_v		= 0.005     ;Влияние сонливости на усталость
+sleepeness_critical		= 0.2       ;Критическое значние сонливости
+
 morale_v				= 0.0001	;скорость восстановления морали
 psy_health_v			= 0.001		;скорость восстановления psy-здоровья
 alcohol_v				= -0.0003
@@ -203,6 +211,8 @@ min_wound_size 			= 0.0064	;минимальный размер раны, после которого она считаетс
 bleed_speed_k			= 1.0		; TotalWounds * bleed_speed_k
 
 ;--when actor in sleep
+thirst_v_sleep           = 0.00002
+sleepeness_v_sleep	     = -0.0001
 satiety_v_sleep          = 0.00001
 radiation_v_sleep        = 0.00001
 satiety_power_v_sleep    = 0.0001

@@ -21,6 +21,7 @@
 #define effIntoxication (eStartEffectorID + 13)
 #define effSatiety (eStartEffectorID + 14)
 #define effThirst (eStartEffectorID + 15)
+#define effSleepeness (eStartEffectorID + 16)
 
 #define effPoltergeistTeleDetectStartEffect 2048
 // warning: ~50 constants after effPoltergeistTeleDetectStartEffect are reserved for poltergeists
