@@ -28,13 +28,10 @@ break_sound                    = material\bottle\collide\bottle_break_1
 
 boost_time                     = 25.0
 boost_radiation_restore        = 0.00055
-eat_alcohol                    = 0.1
+eat_alcohol                    = 0.3
 eat_satiety                    = 0
 eat_thirst					   = -0.1
 eat_intoxication			   = 0.5
-
-has_anim 					   = true
-hud_section 				   = vodka_hud
 
 use_sound                      = interface\inv_vodka
 
@@ -43,17 +40,6 @@ max_uses                       = 3
 remove_after_use               = true
 empty_weight                   = 0.3
 allow_repair                   = false
-
-[vodka_hud]
-item_visual = dynamics\anim_eat\vodka\wpn_vodka_cossacks_hud
-hands_position = 0,0,0
-hands_position_16x9 = 0,0,0
-hands_orientation = 0,0,0
-hands_orientation_16x9 = 0,0,0
-anm_use = vodka_hands_eat_invtrans, vodka_wpn_eat
-snd_using = interface\item_usage\vodka_use
-single_handed_anim = 2
-
 
 [vodka_script]:vodka
 $spawn                         = "food and drugs\vodka_script"
