@@ -158,6 +158,7 @@ public:
 
     BOOL AutoSpawnAmmo() const { return m_bAutoSpawnAmmo; };
     bool IsTriStateReload() const { return m_bTriStateReload; }
+    bool IsOpenWeaponEmptyCartridge() const { return m_bOpenWeaponEmptyCartridge; }
     bool IsDiffShotModes() const { return m_bDiffShotModes; }
     EWeaponSubStates GetReloadState() const { return (EWeaponSubStates)m_sub_state; }
     bool IsMisfireOneCartRemove() const { return m_bMisfireOneCartRemove; }
@@ -166,6 +167,7 @@ public:
 protected:
     bool m_bMisfireOneCartRemove;
     bool m_bTriStateReload;
+    bool m_bOpenWeaponEmptyCartridge;
     bool m_bDiffShotModes;
     bool m_bMotionMarkShell;
 

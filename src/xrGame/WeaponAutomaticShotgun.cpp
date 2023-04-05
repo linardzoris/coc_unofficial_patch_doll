@@ -24,6 +24,8 @@ void CWeaponAutomaticShotgun::Load(LPCSTR section)
     {
         m_bTriStateReload = !!pSettings->r_bool(section, "tri_state_reload");
     };
+    m_bOpenWeaponEmptyCartridge = READ_IF_EXISTS(pSettings, r_bool, section, "open_weapon_empty_cartridge", false);
+
     if (m_bTriStateReload)
     {
         m_sounds.LoadSound(section, "snd_open_weapon", "sndOpen", false, m_eSoundOpen);
@@ -40,8 +42,7 @@ bool CWeaponAutomaticShotgun::Action(u16 cmd, u32 flags)
     if (inherited::Action(cmd, flags))
         return true;
 
-    if (m_bTriStateReload && GetState() == eReload && cmd == kWPN_FIRE && flags & CMD_START &&
-        m_sub_state == eSubstateReloadInProcess) //остановить перезагрузку
+    if (m_bTriStateReload && GetState() == eReload && cmd == kWPN_FIRE && flags & CMD_START && m_sub_state == eSubstateReloadInProcess) //остановить перезагрузку
     {
         AddCartridge(1);
         m_sub_state = eSubstateReloadEnd;
@@ -62,6 +63,9 @@ void CWeaponAutomaticShotgun::OnAnimationEnd(u32 state)
     {
     case eSubstateReloadBegin:
     {
+        if (m_bOpenWeaponEmptyCartridge)
+            AddCartridge(1);
+
         m_sub_state = eSubstateReloadInProcess;
         SwitchState(eReload);
     }
@@ -176,8 +180,9 @@ void CWeaponAutomaticShotgun::switch2_StartReload()
 
 void CWeaponAutomaticShotgun::switch2_AddCartgidge()
 {
-    if (isHUDAnimationExist("anm_add_cartridge_empty") && m_sounds.FindSoundItem("sndAddCartridgeEmpty", false) &&
-        m_ammoElapsed.type1 == 0)
+    if (!m_bOpenWeaponEmptyCartridge && isHUDAnimationExist("anm_add_cartridge_empty") && m_sounds.FindSoundItem("sndAddCartridgeEmpty", false) && m_ammoElapsed.type1 == 0)
+        PlaySound("sndAddCartridgeEmpty", get_LastFP());
+    else if (!m_bOpenWeaponEmptyCartridge && isHUDAnimationExist("anm_add_cartridge_empty") && m_sounds.FindSoundItem("sndAddCartridgeEmpty", false) && m_ammoElapsed.type1 == 1)
         PlaySound("sndAddCartridgeEmpty", get_LastFP());
     else
         PlaySound("sndAddCartridge", get_LastFP());
@@ -224,7 +229,9 @@ void CWeaponAutomaticShotgun::PlayAnimAddOneCartridgeWeapon()
 {
     VERIFY(GetState() == eReload);
 
-	if (isHUDAnimationExist("anm_add_cartridge_empty") && m_ammoElapsed.type1 == 0)
+	if (!m_bOpenWeaponEmptyCartridge && isHUDAnimationExist("anm_add_cartridge_empty") && m_ammoElapsed.type1 == 0)
+        PlayHUDMotion("anm_add_cartridge_empty", FALSE, this, GetState());
+    else if (m_bOpenWeaponEmptyCartridge && isHUDAnimationExist("anm_add_cartridge_empty") && m_ammoElapsed.type1 == 1)
         PlayHUDMotion("anm_add_cartridge_empty", FALSE, this, GetState());
     else
         PlayHUDMotion("anm_add_cartridge", FALSE, this, GetState());
