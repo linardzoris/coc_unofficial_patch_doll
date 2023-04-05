@@ -66,7 +66,6 @@ public:
     IC void BoostHpRestore(const float value);
     IC void BoostPowerRestore(const float value);
     IC void BoostRadiationRestore(const float value);
-    IC void BoostSleepenessRestore(const float value);
     IC void BoostBleedingRestore(const float value);
     IC void BoostBurnImmunity(const float value);
     IC void BoostShockImmunity(const float value);

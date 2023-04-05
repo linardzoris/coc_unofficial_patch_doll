@@ -826,7 +826,7 @@ void CActorCondition::BoostParameters(const SBooster& B)
         case eBoostHpRestore: BoostHpRestore(B.fBoostValue); break;
         case eBoostPowerRestore: BoostPowerRestore(B.fBoostValue); break;
         case eBoostRadiationRestore: BoostRadiationRestore(B.fBoostValue); break;
-        case eBoostSleepenessRestore: BoostSleepenessRestore(B.fBoostValue); break;
+        case eBoostSleepenessRestore: BoostRadiationRestore(B.fBoostValue); break;
         case eBoostBleedingRestore: BoostBleedingRestore(B.fBoostValue); break;
         case eBoostMaxWeight: BoostMaxWeight(B.fBoostValue); break;
         case eBoostBurnImmunity: BoostBurnImmunity(B.fBoostValue); break;
@@ -855,7 +855,7 @@ void CActorCondition::DisableBoostParameters(const SBooster& B)
     case eBoostHpRestore: BoostHpRestore(-B.fBoostValue); break;
     case eBoostPowerRestore: BoostPowerRestore(-B.fBoostValue); break;
     case eBoostRadiationRestore: BoostRadiationRestore(-B.fBoostValue); break;
-    case eBoostSleepenessRestore: BoostSleepenessRestore(-B.fBoostValue); break;
+    case eBoostSleepenessRestore: BoostRadiationRestore(-B.fBoostValue); break;
     case eBoostBleedingRestore: BoostBleedingRestore(-B.fBoostValue); break;
     case eBoostMaxWeight: BoostMaxWeight(-B.fBoostValue); break;
     case eBoostBurnImmunity: BoostBurnImmunity(-B.fBoostValue); break;
@@ -876,7 +876,6 @@ void CActorCondition::DisableBoostParameters(const SBooster& B)
 void CActorCondition::BoostHpRestore(const float value) { m_change_v.m_fV_HealthRestore += value; }
 void CActorCondition::BoostPowerRestore(const float value) { m_fV_SatietyPower += value; }
 void CActorCondition::BoostRadiationRestore(const float value) { m_change_v.m_fV_Radiation += value; }
-void CActorCondition::BoostSleepenessRestore(const float value) { m_fSleepeness -= value; }
 void CActorCondition::BoostBleedingRestore(const float value) { m_change_v.m_fV_WoundIncarnation += value; }
 void CActorCondition::BoostMaxWeight(const float value)
 {

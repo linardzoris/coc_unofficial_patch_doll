@@ -629,7 +629,7 @@ void SBooster::Load(const shared_str& sect, EBoostParams type)
     case eBoostHpRestore: fBoostValue = pSettings->r_float(sect.c_str(), "boost_health_restore"); break;
     case eBoostPowerRestore: fBoostValue = pSettings->r_float(sect.c_str(), "boost_power_restore"); break;
     case eBoostRadiationRestore: fBoostValue = pSettings->r_float(sect.c_str(), "boost_radiation_restore"); break;
-    case eBoostSleepenessRestore: fBoostValue = pSettings->r_float(sect.c_str(), "boost_sleepeness_restore"); break;
+    case eBoostSleepenessRestore: fBoostValue = pSettings->r_float(sect.c_str(), "boost_slepeness_restore"); break;
     case eBoostBleedingRestore: fBoostValue = pSettings->r_float(sect.c_str(), "boost_bleeding_restore"); break;
     case eBoostMaxWeight: fBoostValue = pSettings->r_float(sect.c_str(), "boost_max_weight"); break;
     case eBoostBurnImmunity: fBoostValue = pSettings->r_float(sect.c_str(), "boost_burn_immunity"); break;
