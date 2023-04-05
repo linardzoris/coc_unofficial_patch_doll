@@ -39,6 +39,7 @@ IC static void CEntityCondition_Export(lua_State* luaState)
                 value("eBoostHpRestore", int(EBoostParams::eBoostHpRestore)),
                 value("eBoostPowerRestore", int(EBoostParams::eBoostPowerRestore)),
                 value("eBoostRadiationRestore", int(EBoostParams::eBoostRadiationRestore)),
+                value("eBoostSleepenessRestore", int(EBoostParams::eBoostSleepenessRestore)),
                 value("eBoostBleedingRestore", int(EBoostParams::eBoostBleedingRestore)),
                 value("eBoostMaxWeight", int(EBoostParams::eBoostMaxWeight)),
                 value("eBoostRadiationProtection", int(EBoostParams::eBoostRadiationProtection)),

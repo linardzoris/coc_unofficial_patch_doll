@@ -51,6 +51,7 @@ public:
     CUIStatic* m_ind_boost_health;
     CUIStatic* m_ind_boost_power;
     CUIStatic* m_ind_boost_rad;
+    CUIStatic* m_ind_boost_sleepeness;
 
     void ShowZoneMap(bool status);
     void DrawZoneMap();
