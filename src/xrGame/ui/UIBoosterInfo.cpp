@@ -150,7 +150,7 @@ void CUIBoosterInfo::SetInfo(shared_str const& section)
             case eBoostBleedingRestore:
             case eBoostMaxWeight: max_val = 1.0f; break;
             case eBoostRadiationRestore: max_val = -1.0f; break;
-            case eBoostSleepenessRestore:
+            case eBoostSleepenessRestore: max_val = -1.0f; break;
             case eBoostBurnImmunity: max_val = actor->conditions().GetZoneMaxPower(ALife::infl_fire); break;
             case eBoostShockImmunity: max_val = actor->conditions().GetZoneMaxPower(ALife::infl_electra); break;
             case eBoostRadiationImmunity:
