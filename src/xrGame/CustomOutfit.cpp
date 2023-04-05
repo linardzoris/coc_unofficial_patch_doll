@@ -272,7 +272,7 @@ void CCustomOutfit::ApplySkinModel(CActor* pActor, bool bDress, bool bHUDOnly)
                 pActor->ChangeVisual(NewVisual);
             }
         }
-        else if (!bHUDOnly && m_ActorVisual.size())
+        else if (!psActorFlags.test(AF_FIRST_PERSON_BODY) && !bHUDOnly && m_ActorVisual.size())
         {
             shared_str NewVisual = m_ActorVisual;
             pActor->ChangeVisual(NewVisual);
@@ -307,7 +307,7 @@ void CCustomOutfit::ApplySkinModel(CActor* pActor, bool bDress, bool bHUDOnly)
                 }
             }
         }
-        else if (!bHUDOnly && m_ActorVisual.size())
+        else if (!psActorFlags.test(AF_FIRST_PERSON_BODY) && !bHUDOnly && m_ActorVisual.size())
         {
             shared_str DefVisual = pActor->GetDefaultVisualOutfit();
             if (DefVisual.size())

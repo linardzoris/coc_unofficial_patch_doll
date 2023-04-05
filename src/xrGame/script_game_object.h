@@ -268,8 +268,6 @@ public:
     void SetActorPosition(Fvector pos);
     void SetActorPosition(Fvector pos, bool bskip_collision_correct /*= false*/);
     void SetActorDirection(float dir);
-    // Ноги из LA
-    void SetActorLegsVisible(bool val);
     void SetNpcPosition(Fvector pos);
     void DisableHitMarks(bool disable);
     bool DisableHitMarks() const;

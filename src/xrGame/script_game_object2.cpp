@@ -437,22 +437,6 @@ Fvector CScriptGameObject::GetMovementSpeed() const
     return actor->GetMovementSpeed();
 }
 
-// Ноги из LA
-void CScriptGameObject::SetActorLegsVisible(bool val)
-{
-	CActor* actor = smart_cast<CActor*>(&object());
-    if (psActorFlags.test(AF_FIRST_PERSON_BODY))
-    {
-	    if(actor)
-        {
-		    actor->setVisible(val);
-		    actor->SetDrawLegs(val);
-	    }
-        else
-            GEnv.ScriptEngine->script_log(LuaMessageType::Error, "ScriptGameObject : attempt to call SetActorLegsVisible method for non-actor object");
-    }
-}
-
 CHolderCustom* CScriptGameObject::get_current_holder()
 {
     CActor* actor = smart_cast<CActor*>(&object());
