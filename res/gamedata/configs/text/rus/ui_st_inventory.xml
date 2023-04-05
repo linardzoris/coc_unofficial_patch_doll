@@ -251,7 +251,10 @@
 	</string>	
 	<string id="ui_inv_sleepeness">
 		<text>Сонливость</text>
-	</string>		
+	</string>
+	<string id="ui_inv_boost_dec_sleepeness">
+		<text>Бодрость</text>
+	</string>			
 	<string id="ui_inv_scope_rifle">
 		<text>Купить оптический прицел для винтовки (S)</text>
 	</string>

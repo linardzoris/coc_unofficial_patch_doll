@@ -233,7 +233,10 @@
 	</string>		
 	<string id="ui_inv_sleepeness">
 		<text>Sleepiness</text>
-	</string>		
+	</string>	
+	<string id="ui_inv_boost_dec_sleepeness">
+		<text>Cheerfulness</text>
+	</string>			
 	<string id="ui_inv_scope_rifle">
 		<text>Buy optical scope for rifle (S)</text>
 	</string>
