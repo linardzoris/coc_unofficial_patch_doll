@@ -283,6 +283,7 @@ UIBoosterInfoItem::UIBoosterInfoItem()
     m_magnitude = 1.0f;
     m_show_sign = false;
     m_sign_inverse = false;
+    m_accuracy = 0;
 
     m_unit_str._set("");
     m_texture_minus._set("");
@@ -300,6 +301,7 @@ void UIBoosterInfoItem::Init(CUIXml& xml, LPCSTR section)
     m_magnitude = xml.ReadAttribFlt("value", 0, "magnitude", 1.0f);
     m_show_sign = (xml.ReadAttribInt("value", 0, "show_sign", 1) == 1);
     m_sign_inverse = (xml.ReadAttribInt("value", 0, "sign_inverse", 0) == 1);
+    m_accuracy = xml.ReadAttribInt("value", 0, "accuracy", 0);
 
     LPCSTR unit_str = xml.ReadAttrib("value", 0, "unit_str", "");
     m_unit_str._set(StringTable().translate(unit_str));
@@ -320,10 +322,25 @@ void UIBoosterInfoItem::SetValue(float value)
 {
     value *= m_magnitude;
     string32 buf;
+
     if (m_show_sign)
-        xr_sprintf(buf, "%+.0f", value);
-    else
-        xr_sprintf(buf, "%.0f", value);
+	    if (m_accuracy == 0)
+            xr_sprintf(buf, "%+.0f", value);
+        else if (m_accuracy == 1)
+            xr_sprintf(buf, "%+.1f", value);
+        else if (m_accuracy == 2)
+            xr_sprintf(buf, "%+.2f", value);
+        else if (m_accuracy >= 3)
+            xr_sprintf(buf, "%+.3f", value);
+    else 
+	    if (m_accuracy == 0)
+            xr_sprintf(buf, "%.0f", value);
+        else if (m_accuracy == 1)
+            xr_sprintf(buf, "%.1f", value);
+        else if (m_accuracy == 2)
+            xr_sprintf(buf, "%.2f", value);
+        else if (m_accuracy >= 3)
+            xr_sprintf(buf, "%.3f", value);
 
     LPSTR str;
     if (m_unit_str.size())

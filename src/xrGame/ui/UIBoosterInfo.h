@@ -46,6 +46,7 @@ private:
     float m_magnitude;
     bool m_show_sign;
     bool m_sign_inverse;
+    int m_accuracy;
     shared_str m_unit_str;
     shared_str m_texture_minus;
     shared_str m_texture_plus;
