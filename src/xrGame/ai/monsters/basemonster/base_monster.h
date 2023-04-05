@@ -530,6 +530,7 @@ public:
     float get_psy_influence();
     float get_radiation_influence();
     float get_fire_influence();
+    float get_chemical_influence();
     void play_detector_sound();
 
 private:
@@ -537,6 +538,8 @@ private:
     monster_aura m_radiation_aura;
     monster_aura m_fire_aura;
     monster_aura m_base_aura;
+    monster_aura m_chemical_aura;
+
 
 protected:
     //-------------------------------------------------------------------

@@ -55,7 +55,7 @@
 #pragma warning(push)
 
 CBaseMonster::CBaseMonster()
-    : m_psy_aura(this, "psy"), m_fire_aura(this, "fire"), m_radiation_aura(this, "radiation"), m_base_aura(this, "base")
+    : m_psy_aura(this, "psy"), m_fire_aura(this, "fire"), m_radiation_aura(this, "radiation"), m_base_aura(this, "base"), m_chemical_aura(this, "chemical")
 {
     m_pPhysics_support = new CCharacterPhysicsSupport(CCharacterPhysicsSupport::etBitting, this);
 
@@ -367,6 +367,7 @@ void CBaseMonster::shedule_Update(u32 dt)
     m_fire_aura.update_schedule();
     m_base_aura.update_schedule();
     m_radiation_aura.update_schedule();
+    m_chemical_aura.update_schedule();
 
     control().update_schedule();
 
@@ -394,6 +395,7 @@ void CBaseMonster::Die(IGameObject* who)
     m_radiation_aura.on_monster_death();
     m_fire_aura.on_monster_death();
     m_base_aura.on_monster_death();
+    m_chemical_aura.on_monster_death();
 
     if (m_anti_aim)
     {
@@ -955,11 +957,14 @@ float CBaseMonster::get_attack_on_move_prepare_time()
 float CBaseMonster::get_psy_influence() { return m_psy_aura.calculate(); }
 float CBaseMonster::get_radiation_influence() { return m_radiation_aura.calculate(); }
 float CBaseMonster::get_fire_influence() { return m_fire_aura.calculate(); }
+float CBaseMonster::get_chemical_influence() { return m_chemical_aura.calculate(); }
+
 void CBaseMonster::play_detector_sound()
 {
     m_psy_aura.play_detector_sound();
     m_radiation_aura.play_detector_sound();
     m_fire_aura.play_detector_sound();
+    m_chemical_aura.play_detector_sound();
 }
 
 bool CBaseMonster::is_jumping() { return m_com_manager.is_jumping(); }

@@ -124,6 +124,7 @@ void CBaseMonster::Load(LPCSTR section)
     m_radiation_aura.load_from_ini(pSettings, section, true);
     m_fire_aura.load_from_ini(pSettings, section);
     m_base_aura.load_from_ini(pSettings, section);
+    m_chemical_aura.load_from_ini(pSettings, section);
 
     //------------------------------------
     // Protections
