@@ -28,10 +28,11 @@ void CWeaponShotgun::Load(LPCSTR section)
     if (m_bTriStateReload)
     {
         m_sounds.LoadSound(section, "snd_open_weapon", "sndOpen", false, m_eSoundOpen);
-
+        m_sounds.LoadSound(section, "snd_open_weapon_empty", "sndOpenEmpty", false, m_eSoundOpen);
         m_sounds.LoadSound(section, "snd_add_cartridge", "sndAddCartridge", false, m_eSoundAddCartridge);
-
+        m_sounds.LoadSound(section, "snd_add_cartridge_empty", "sndAddCartridgeEmpty", false, m_eSoundAddCartridge);
         m_sounds.LoadSound(section, "snd_close_weapon", "sndClose", false, m_eSoundClose);
+        m_sounds.LoadSound(section, "snd_close_weapon_empty", "sndCloseEmpty", false, m_eSoundClose);
     };
 }
 
@@ -177,22 +178,35 @@ void CWeaponShotgun::OnStateSwitch(u32 S, u32 oldState)
 
 void CWeaponShotgun::switch2_StartReload()
 {
-    PlaySound("sndOpen", get_LastFP());
+	if (isHUDAnimationExist("anm_open_empty") && m_sounds.FindSoundItem("sndOpenEmpty", false) && m_ammoElapsed.type1 == 0)
+        PlaySound("sndOpenEmpty", get_LastFP());
+    else
+        PlaySound("sndOpen", get_LastFP());
+
     PlayAnimOpenWeapon();
     SetPending(TRUE);
 }
 
 void CWeaponShotgun::switch2_AddCartgidge()
 {
-    PlaySound("sndAddCartridge", get_LastFP());
+	if (isHUDAnimationExist("anm_add_cartridge_empty") && m_sounds.FindSoundItem("sndAddCartridgeEmpty", false) &&
+        m_ammoElapsed.type1 == 0)
+        PlaySound("sndAddCartridgeEmpty", get_LastFP());
+    else
+        PlaySound("sndAddCartridge", get_LastFP());
+
     PlayAnimAddOneCartridgeWeapon();
     SetPending(TRUE);
 }
 
 void CWeaponShotgun::switch2_EndReload()
 {
+	if (isHUDAnimationExist("anm_close_empty") && m_sounds.FindSoundItem("sndCloseEmpty", false) && m_ammoElapsed.type1 == 0)
+        PlaySound("sndCloseEmpty", get_LastFP());
+    else 
+        PlaySound("sndClose", get_LastFP());
+
     SetPending(FALSE);
-    PlaySound("sndClose", get_LastFP());
     PlayAnimCloseWeapon();
 }
 
@@ -212,18 +226,29 @@ void CWeaponShotgun::switch2_UnMisfire()
 void CWeaponShotgun::PlayAnimOpenWeapon()
 {
     VERIFY(GetState() == eReload);
-    PlayHUDMotion("anm_open", FALSE, this, GetState());
+
+	if (isHUDAnimationExist("anm_open_empty") && m_ammoElapsed.type1 == 0)
+        PlayHUDMotion("anm_open_empty", FALSE, this, GetState());
+    else
+        PlayHUDMotion("anm_open", FALSE, this, GetState());
 }
 void CWeaponShotgun::PlayAnimAddOneCartridgeWeapon()
 {
     VERIFY(GetState() == eReload);
-    PlayHUDMotion("anm_add_cartridge", FALSE, this, GetState());
+
+	if (isHUDAnimationExist("anm_add_cartridge_empty") && m_ammoElapsed.type1 == 0)
+        PlayHUDMotion("anm_add_cartridge_empty", FALSE, this, GetState());
+    else
+        PlayHUDMotion("anm_add_cartridge", FALSE, this, GetState());
 }
 void CWeaponShotgun::PlayAnimCloseWeapon()
 {
     VERIFY(GetState() == eReload);
 
-    PlayHUDMotion("anm_close", FALSE, this, GetState());
+	if (isHUDAnimationExist("anm_close_empty") && m_ammoElapsed.type1 == 0)
+        PlayHUDMotion("anm_close_empty", FALSE, this, GetState());
+    else
+        PlayHUDMotion("anm_close", FALSE, this, GetState());
 }
 
 void CWeaponShotgun::PlayAnimUnMisfire()
