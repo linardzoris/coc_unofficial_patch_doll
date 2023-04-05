@@ -90,6 +90,12 @@ void CCustomOutfit::Load(LPCSTR section)
     else
         m_ActorVisual = NULL;
 
+    // Ноги из LA
+    if (pSettings->line_exist(section, "actor_visual_legs")) 
+        m_ActorVisual_legs = pSettings->r_string(section, "actor_visual_legs");
+    else
+        m_ActorVisual_legs = NULL;
+
     m_ef_equipment_type = pSettings->r_u32(section, "ef_equipment_type");
     m_fPowerLoss = READ_IF_EXISTS(pSettings, r_float, section, "power_loss", 1.0f);
     clamp(m_fPowerLoss, EPS, 1.0f);
@@ -225,6 +231,7 @@ float CCustomOutfit::HitThroughArmor(float hit_power, s16 element, float ap, boo
 }
 
 BOOL CCustomOutfit::BonePassBullet(int boneID) { return m_boneProtection->getBonePassBullet(s16(boneID)); }
+
 void CCustomOutfit::OnMoveToSlot(const SInvItemPlace& prev)
 {
     if (m_pInventory)
@@ -251,7 +258,21 @@ void CCustomOutfit::ApplySkinModel(CActor* pActor, bool bDress, bool bHUDOnly)
 
     if (bDress)
     {
-        if (!bHUDOnly && m_ActorVisual.size())
+        // Ноги из LA
+        if (pActor->IsFirstEye() && psActorFlags.test(AF_FIRST_PERSON_BODY))
+        {
+            if (m_ActorVisual_legs.size())
+            {
+                shared_str NewVisual = m_ActorVisual_legs;
+                pActor->ChangeVisual(NewVisual);
+            }
+            else
+            {
+                shared_str NewVisual = pActor->GetDefaultVisualOutfit_legs();
+                pActor->ChangeVisual(NewVisual);
+            }
+        }
+        else if (!bHUDOnly && m_ActorVisual.size())
         {
             shared_str NewVisual = m_ActorVisual;
             pActor->ChangeVisual(NewVisual);
@@ -269,7 +290,24 @@ void CCustomOutfit::ApplySkinModel(CActor* pActor, bool bDress, bool bHUDOnly)
     }
     else
     {
-        if (!bHUDOnly && m_ActorVisual.size())
+        // Ноги из LA
+        if (pActor->IsFirstEye() && psActorFlags.test(AF_FIRST_PERSON_BODY))
+        {
+            shared_str DefVisual = pActor->GetDefaultVisualOutfit_legs();
+            if (DefVisual.size())
+            {
+                pActor->ChangeVisual(DefVisual);
+            }
+            else
+            {
+            shared_str DefVisual = pActor->GetDefaultVisualOutfit();
+                if (DefVisual.size())
+                {
+                    pActor->ChangeVisual(DefVisual);
+                }
+            }
+        }
+        else if (!bHUDOnly && m_ActorVisual.size())
         {
             shared_str DefVisual = pActor->GetDefaultVisualOutfit();
             if (DefVisual.size())

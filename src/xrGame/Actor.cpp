@@ -403,7 +403,20 @@ void CActor::Load(LPCSTR section)
     m_fDispCrouchNoAccelFactor = pSettings->r_float(section, "disp_crouch_no_acc_factor");
 
     LPCSTR default_outfit = READ_IF_EXISTS(pSettings, r_string, section, "default_outfit", 0);
-    SetDefaultVisualOutfit(default_outfit);
+    //SetDefaultVisualOutfit(default_outfit);
+
+    // Ноги из LA
+        LPCSTR default_outfit_legs = pSettings->r_string(section, "default_outfit_legs");
+    if (psActorFlags.test(AF_FIRST_PERSON_BODY))
+    {
+        SetDefaultVisualOutfit_legs(default_outfit_legs);
+        m_bDrawLegs = true;
+    }
+    else
+    {
+        SetDefaultVisualOutfit_legs(default_outfit);
+        m_bDrawLegs = false;
+    }
 
     invincibility_fire_shield_1st = READ_IF_EXISTS(pSettings, r_string, section, "Invincibility_Shield_1st", 0);
     invincibility_fire_shield_3rd = READ_IF_EXISTS(pSettings, r_string, section, "Invincibility_Shield_3rd", 0);
@@ -1287,10 +1300,16 @@ void CActor::shedule_Update(u32 DT)
     }
 
 	//если в режиме HUD, то сама модель актера не рисуется
-	if (!character_physics_support()->IsRemoved())
+    if (!character_physics_support()->IsRemoved())
 	{
 		CHelicopter* heli = smart_cast<CHelicopter*>(m_holder);
-		setVisible(!HUDview() && !heli);
+        //setVisible(!HUDview() && !heli);
+
+        // Ноги из LA
+        if (m_bDrawLegs && psActorFlags.test(AF_FIRST_PERSON_BODY))
+            setVisible(TRUE);
+        else
+		    setVisible(!HUDview() && !heli);
 	}
 
     //что актер видит перед собой

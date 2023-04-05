@@ -62,8 +62,12 @@ void CHUDManager::Render_First()
     CActor* A = smart_cast<CActor*>(O);
     if (!A)
         return;
-    if (A && !A->HUDview())
-        return;
+    // Ноги из LA
+    if (!psActorFlags.test(AF_FIRST_PERSON_BODY))
+    {
+        if (A && !A->HUDview())
+            return;
+    }
 
     // only shadow
     GEnv.Render->set_Invisible(TRUE);
