@@ -828,6 +828,7 @@ void CActorCondition::BoostParameters(const SBooster& B)
         case eBoostRadiationRestore: BoostRadiationRestore(B.fBoostValue); break;
         case eBoostBleedingRestore: BoostBleedingRestore(B.fBoostValue); break;
         case eBoostMaxWeight: BoostMaxWeight(B.fBoostValue); break;
+        case eBoostDecSleepeness: BoostDecSleepeness(B.fBoostValue); break;
         case eBoostBurnImmunity: BoostBurnImmunity(B.fBoostValue); break;
         case eBoostShockImmunity: BoostShockImmunity(B.fBoostValue); break;
         case eBoostRadiationImmunity: BoostRadiationImmunity(B.fBoostValue); break;
@@ -856,6 +857,7 @@ void CActorCondition::DisableBoostParameters(const SBooster& B)
     case eBoostRadiationRestore: BoostRadiationRestore(-B.fBoostValue); break;
     case eBoostBleedingRestore: BoostBleedingRestore(-B.fBoostValue); break;
     case eBoostMaxWeight: BoostMaxWeight(-B.fBoostValue); break;
+    case eBoostDecSleepeness: BoostDecSleepeness(-B.fBoostValue); break;
     case eBoostBurnImmunity: BoostBurnImmunity(-B.fBoostValue); break;
     case eBoostShockImmunity: BoostShockImmunity(-B.fBoostValue); break;
     case eBoostRadiationImmunity: BoostRadiationImmunity(-B.fBoostValue); break;
@@ -880,6 +882,7 @@ void CActorCondition::BoostMaxWeight(const float value)
     m_object->inventory().SetMaxWeight(object().inventory().GetMaxWeight() + value);
     m_MaxWalkWeight += value;
 }
+void CActorCondition::BoostDecSleepeness(const float value) { m_fSleepeness -= value; }
 void CActorCondition::BoostBurnImmunity(const float value) { m_fBoostBurnImmunity += value; }
 void CActorCondition::BoostShockImmunity(const float value) { m_fBoostShockImmunity += value; }
 void CActorCondition::BoostRadiationImmunity(const float value) { m_fBoostRadiationImmunity += value; }

@@ -41,6 +41,7 @@ IC static void CEntityCondition_Export(lua_State* luaState)
                 value("eBoostRadiationRestore", int(EBoostParams::eBoostRadiationRestore)),
                 value("eBoostBleedingRestore", int(EBoostParams::eBoostBleedingRestore)),
                 value("eBoostMaxWeight", int(EBoostParams::eBoostMaxWeight)),
+                value("eBoostDecSleepeness", int(EBoostParams::eBoostDecSleepeness)),
                 value("eBoostRadiationProtection", int(EBoostParams::eBoostRadiationProtection)),
                 value("eBoostTelepaticProtection", int(EBoostParams::eBoostTelepaticProtection)),
                 value("eBoostChemicalBurnProtection", int(EBoostParams::eBoostChemicalBurnProtection)),
@@ -130,6 +131,7 @@ IC static void CActorCondition_Export(lua_State* luaState)
 			.def("GetSatiety", &CActorCondition::GetSatiety)
             .def("GetThirst", &CActorCondition::GetThirst)
             .def("BoostMaxWeight", &CActorCondition::BoostMaxWeight)
+            .def("BoostDecSleepeness", &CActorCondition::BoostDecSleepeness)
             .def("BoostHpRestore", &CActorCondition::BoostHpRestore)
             .def("BoostPowerRestore", &CActorCondition::BoostPowerRestore)
             .def("BoostRadiationRestore", &CActorCondition::BoostRadiationRestore)

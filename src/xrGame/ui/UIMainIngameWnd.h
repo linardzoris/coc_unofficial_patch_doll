@@ -48,6 +48,7 @@ public:
     CUIStatic* m_ind_boost_chem;
     CUIStatic* m_ind_boost_wound;
     CUIStatic* m_ind_boost_weight;
+    CUIStatic* m_ind_boost_dec_sleepeness;
     CUIStatic* m_ind_boost_health;
     CUIStatic* m_ind_boost_power;
     CUIStatic* m_ind_boost_rad;

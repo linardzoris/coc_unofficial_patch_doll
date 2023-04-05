@@ -147,6 +147,7 @@ void CUIMainIngameWnd::Init()
     m_ind_boost_chem = UIHelper::CreateStatic(uiXml, "indicator_booster_chem", this);
     m_ind_boost_wound = UIHelper::CreateStatic(uiXml, "indicator_booster_wound", this);
     m_ind_boost_weight = UIHelper::CreateStatic(uiXml, "indicator_booster_weight", this);
+    m_ind_boost_dec_sleepeness = UIHelper::CreateStatic(uiXml, "indicator_booster_dec_sleepeness", this);
     m_ind_boost_health = UIHelper::CreateStatic(uiXml, "indicator_booster_health", this);
     m_ind_boost_power = UIHelper::CreateStatic(uiXml, "indicator_booster_power", this);
     m_ind_boost_rad = UIHelper::CreateStatic(uiXml, "indicator_booster_rad", this);
@@ -155,6 +156,7 @@ void CUIMainIngameWnd::Init()
     m_ind_boost_chem->Show(false);
     m_ind_boost_wound->Show(false);
     m_ind_boost_weight->Show(false);
+    m_ind_boost_dec_sleepeness->Show(false);
     m_ind_boost_health->Show(false);
     m_ind_boost_power->Show(false);
     m_ind_boost_rad->Show(false);
@@ -945,6 +947,12 @@ void CUIMainIngameWnd::DrawMainIndicatorsForInventory()
         m_ind_boost_weight->Draw();
     }
 
+    if (m_ind_boost_dec_sleepeness->IsShown())
+    {
+        m_ind_boost_dec_sleepeness->Update();
+        m_ind_boost_dec_sleepeness->Draw();
+    }
+
     if (m_ind_boost_health->IsShown())
     {
         m_ind_boost_health->Update();
@@ -973,6 +981,7 @@ void CUIMainIngameWnd::UpdateBoosterIndicators(const xr_map<EBoostParams, SBoost
     m_ind_boost_chem->Show(false);
     m_ind_boost_wound->Show(false);
     m_ind_boost_weight->Show(false);
+    m_ind_boost_dec_sleepeness->Show(false);
     m_ind_boost_health->Show(false);
     m_ind_boost_power->Show(false);
     m_ind_boost_rad->Show(false);
@@ -1031,6 +1040,15 @@ void CUIMainIngameWnd::UpdateBoosterIndicators(const xr_map<EBoostParams, SBoost
                 m_ind_boost_weight->SetColorAnimation(str_flag, flags);
             else
                 m_ind_boost_weight->ResetColorAnimation();
+        }
+        break;
+        case eBoostDecSleepeness: 
+        {
+            m_ind_boost_dec_sleepeness->Show(true);
+            if (b->second.fBoostTime <= 3.0f)
+                m_ind_boost_dec_sleepeness->SetColorAnimation(str_flag, flags);
+            else
+                m_ind_boost_dec_sleepeness->ResetColorAnimation();
         }
         break;
         case eBoostRadiationImmunity:

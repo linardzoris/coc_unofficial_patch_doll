@@ -38,10 +38,23 @@ CUIBoosterInfo::~CUIBoosterInfo()
     xr_delete(m_Prop_line);
 }
 
-LPCSTR boost_influence_caption[] = {"ui_inv_health", "ui_inv_power", "ui_inv_radiation", "ui_inv_bleeding",
-    "ui_inv_outfit_additional_weight", "ui_inv_outfit_radiation_protection", "ui_inv_outfit_telepatic_protection",
-    "ui_inv_outfit_chemical_burn_protection", "ui_inv_outfit_burn_immunity", "ui_inv_outfit_shock_immunity",
-    "ui_inv_outfit_radiation_immunity", "ui_inv_outfit_telepatic_immunity", "ui_inv_outfit_chemical_burn_immunity"};
+LPCSTR boost_influence_caption[] = 
+{
+    "ui_inv_health", 
+    "ui_inv_power", 
+    "ui_inv_radiation", 
+    "ui_inv_bleeding",
+    "ui_inv_outfit_additional_weight", 
+    "ui_inv_boost_dec_sleepeness", 
+    "ui_inv_outfit_radiation_protection", 
+    "ui_inv_outfit_telepatic_protection",
+    "ui_inv_outfit_chemical_burn_protection", 
+    "ui_inv_outfit_burn_immunity", 
+    "ui_inv_outfit_shock_immunity",
+    "ui_inv_outfit_radiation_immunity", 
+    "ui_inv_outfit_telepatic_immunity", 
+    "ui_inv_outfit_chemical_burn_immunity"
+};
 
 void CUIBoosterInfo::InitFromXml(CUIXml& xml)
 {
@@ -149,6 +162,7 @@ void CUIBoosterInfo::SetInfo(shared_str const& section)
             case eBoostPowerRestore:
             case eBoostBleedingRestore:
             case eBoostMaxWeight: max_val = 1.0f; break;
+            case eBoostDecSleepeness: max_val = 1.0f; break;
             case eBoostRadiationRestore: max_val = -1.0f; break;
             case eBoostBurnImmunity: max_val = actor->conditions().GetZoneMaxPower(ALife::infl_fire); break;
             case eBoostShockImmunity: max_val = actor->conditions().GetZoneMaxPower(ALife::infl_electra); break;
