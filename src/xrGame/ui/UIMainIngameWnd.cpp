@@ -149,7 +149,6 @@ void CUIMainIngameWnd::Init()
     m_ind_boost_weight = UIHelper::CreateStatic(uiXml, "indicator_booster_weight", this);
     m_ind_boost_health = UIHelper::CreateStatic(uiXml, "indicator_booster_health", this);
     m_ind_boost_power = UIHelper::CreateStatic(uiXml, "indicator_booster_power", this);
-    m_ind_boost_sleepeness = UIHelper::CreateStatic(uiXml, "indicator_booster_sleepeness", this);
     m_ind_boost_rad = UIHelper::CreateStatic(uiXml, "indicator_booster_rad", this);
     m_ind_boost_psy->Show(false);
     m_ind_boost_radia->Show(false);
@@ -158,7 +157,6 @@ void CUIMainIngameWnd::Init()
     m_ind_boost_weight->Show(false);
     m_ind_boost_health->Show(false);
     m_ind_boost_power->Show(false);
-    m_ind_boost_sleepeness->Show(false);
     m_ind_boost_rad->Show(false);
 
     // Загружаем иконки
@@ -959,12 +957,6 @@ void CUIMainIngameWnd::DrawMainIndicatorsForInventory()
         m_ind_boost_power->Draw();
     }
 
-    if (m_ind_boost_sleepeness->IsShown())
-    {
-        m_ind_boost_sleepeness->Update();
-        m_ind_boost_sleepeness->Draw();
-    }
-
     if (m_ind_boost_rad->IsShown())
     {
         m_ind_boost_rad->Update();
@@ -984,7 +976,6 @@ void CUIMainIngameWnd::UpdateBoosterIndicators(const xr_map<EBoostParams, SBoost
     m_ind_boost_health->Show(false);
     m_ind_boost_power->Show(false);
     m_ind_boost_rad->Show(false);
-    m_ind_boost_sleepeness->Show(false);
 
     LPCSTR str_flag = "ui_slow_blinking_alpha";
     u8 flags = 0;
@@ -1022,13 +1013,6 @@ void CUIMainIngameWnd::UpdateBoosterIndicators(const xr_map<EBoostParams, SBoost
                 m_ind_boost_rad->SetColorAnimation(str_flag, flags);
             else
                 m_ind_boost_rad->ResetColorAnimation();
-        }
-        case eBoostSleepenessRestore: {
-            m_ind_boost_sleepeness->Show(true);
-            if (b->second.fBoostTime <= 3.0f)
-                m_ind_boost_sleepeness->SetColorAnimation(str_flag, flags);
-            else
-                m_ind_boost_sleepeness->ResetColorAnimation();
         }
         break;
         case eBoostBleedingRestore:

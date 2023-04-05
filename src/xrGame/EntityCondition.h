@@ -15,7 +15,6 @@ enum EBoostParams
     eBoostHpRestore = 0,
     eBoostPowerRestore,
     eBoostRadiationRestore,
-    eBoostSleepenessRestore,
     eBoostBleedingRestore,
     eBoostMaxWeight,
     eBoostRadiationProtection,
@@ -39,8 +38,7 @@ static const pcstr ef_boosters_section_names[] =
 {
     "boost_health_restore",
     "boost_power_restore",
-    "boost_radiation_restore", 
-    "boost_slepeness_restore",
+    "boost_radiation_restore",
     "boost_bleeding_restore",
     "boost_max_weight",
     "boost_radiation_protection",

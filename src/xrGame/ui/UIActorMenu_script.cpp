@@ -370,7 +370,6 @@ SCRIPT_EXPORT(CUIActorMenu, (CUIDialogWnd),
 			.def_readonly("m_ind_boost_weight", &CUIMainIngameWnd::m_ind_boost_weight)
 			.def_readonly("m_ind_boost_health", &CUIMainIngameWnd::m_ind_boost_health)
 			.def_readonly("m_ind_boost_power", &CUIMainIngameWnd::m_ind_boost_power)
-            .def_readonly("m_ind_boost_sleepeness", &CUIMainIngameWnd::m_ind_boost_sleepeness)
 			.def_readonly("m_ind_boost_rad", &CUIMainIngameWnd::m_ind_boost_rad),
  		class_< CUIZoneMap >("CUIZoneMap")
 			.def(constructor<>())
