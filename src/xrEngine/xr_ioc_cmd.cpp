@@ -638,9 +638,9 @@ ENGINE_API float psHUD_FOV = psHUD_FOV_def;
 ENGINE_API float VIEWPORT_NEAR = 0.05f; //--#SM+#-- (Old: 0.2f)
 
 ENGINE_API float hud_adj_delta_pos = 0.0005f;
-ENGINE_API float hud_adj_delta_rot = 0.05f;
+ENGINE_API float hud_adj_delta_rot = 0.005f;
 ENGINE_API float adj_delta_pos     = 0.0005f;
-ENGINE_API float adj_delta_rot     = 0.05f;
+ENGINE_API float adj_delta_rot     = 0.005f;
 
 // extern int psSkeletonUpdate;
 extern int rsDVB_Size;
@@ -788,10 +788,10 @@ void CCC_Register()
     CMD1(CCC_DumpOpenFiles, "dump_open_files");
 #endif
 
-    CMD4(CCC_Float, "hud_adjust_delta_pos", &hud_adj_delta_pos, -10.f, 10.f);
-    CMD4(CCC_Float, "hud_adjust_delta_rot", &hud_adj_delta_rot, -10.f, 10.f);
-    CMD4(CCC_Float, "adjust_delta_pos",     &adj_delta_pos, -10.f, 10.f);
-    CMD4(CCC_Float, "adjust_delta_rot",     &adj_delta_rot, -10.f, 10.f);
+    CMD4(CCC_Float, "hud_adjust_delta_pos", &hud_adj_delta_pos, -5.f, 5.f);
+    CMD4(CCC_Float, "hud_adjust_delta_rot", &hud_adj_delta_rot, -5.f, 5.f);
+    CMD4(CCC_Float, "adjust_delta_pos",     &adj_delta_pos, -5.f, 5.f);
+    CMD4(CCC_Float, "adjust_delta_rot",     &adj_delta_rot, -5.f, 5.f);
 
     CMD1(CCC_ExclusiveMode, "input_exclusive_mode");
     CMD1(CCC_HideConsole, "hide");

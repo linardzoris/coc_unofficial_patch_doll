@@ -300,7 +300,7 @@ void player_hud::tune(Ivector _values)
             hud_adj_delta_pos += (values.z > 0) ? 0.001f : -0.001f;
 
         if (hud_adj_mode == 9 && (values.z))
-            hud_adj_delta_rot += (values.z > 0) ? 0.1f : -0.1f;
+            hud_adj_delta_rot += (values.z > 0) ? 0.01f : -0.01f;
     }
     else
     {
