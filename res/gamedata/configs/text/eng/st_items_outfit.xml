@@ -53,6 +53,13 @@
 		<text>This early model of the Duty bodysuit is based on the Spetsnaz PSZ-9 body armour and modified for used in the Zone. The suit is capable of stopping a rifle bullet, however this level of protection comes at the cost of its weight, bulkiness and virtually non-existent anomaly protection. The suit cannot be modified with an artefact container, but may be upgraded with a combat support system.</text>
 	</string>
 
+	<string id="duty_radiation_outfit_name">
+		<text>Duty radiation suit</text>
+	</string>
+	<string id="duty_radiation_outfit_description">
+		<text>A suit of armour specifically made to withstand radiation hazards. It is composed of three elements: a reinforced jumpsuit, a heavy armoured vest, and a tactical helmet. The vest consists of several thick layers of Kevlar and can be reinforced with composite or titanium plates for increased protection. Comes with two built-in artefact containers.</text>
+	</string>
+
 	<!-- Ecologists -->
 	<string id="ecolog_outfit_orn_name">
 		<text>SSP-99 protection suit</text>
@@ -117,13 +124,6 @@
 	</string>
 	<string id="merc_scientific_outfit_description">
 		<text>A suit used by mercenaries who often work in or near anomalous areas. It includes a protection system with a closed cycle, built-in suppression action anomalous fields. It provides good protection from bullet and shrapnel hit, but not enough for large-scale hostilities. Fully upgradeable and boasting two built-in artefact containers.</text>
-	</string>
-
-	<string id="merc_radiation_outfit_name">
-		<text>Mercenary radiation suit</text>
-	</string>
-	<string id="merc_radiation_outfit_description">
-		<text>A suit of armour specifically made to withstand radiation hazards. It is composed of three elements: a reinforced jumpsuit, a heavy armoured vest, and a tactical helmet. The vest consists of several thick layers of Kevlar and can be reinforced with composite or titanium plates for increased protection. Comes with two built-in artefact containers.</text>
 	</string>
 
 	<!-- Military -->

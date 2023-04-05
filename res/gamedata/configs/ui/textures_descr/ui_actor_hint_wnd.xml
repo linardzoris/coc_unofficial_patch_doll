@@ -79,7 +79,8 @@
 	    <texture id="ui_inGame2_shield_health" x="369" y="681" width="29" height="36" />
 	    <texture id="ui_inGame2_shield_stamina" x="401" y="681" width="29" height="36" />
 	    <texture id="ui_inGame2_shield_radiation_cleanup" x="433" y="681" width="29" height="36" />
-
+	    <texture id="ui_inGame2_shield_sleepeness_cleanup" x="465" y="681" width="29" height="36" />
+		
 	    <texture id="storyline_task_spot_below" x="502" y="155" width="19" height="16" />
 	    <texture id="storyline_task_spot_above" x="502" y="141" width="19" height="16" />
 	    <texture id="secondary_task_spot_below" x="502" y="127" width="19" height="16" />

@@ -477,12 +477,62 @@ inv_grid_y                               = 8
 
 box_size                                 = 10
 cost                                     = 500
-inv_weight                               = .45
+inv_weight                               = .5
 
 k_hit                                    = 2
 k_ap                                     = 0.15
 tracer                                   = off
 wm_size                                  = 0.1
+explosive                                = off
+k_air_resistance                         = 1.25
+k_bullet_speed                           = 1.15
+
+[ammo_20x70_buck]:ammo_base
+$spawn                                   = "weapons\ammo\ammo_20x70_buck"
+visual                                   = dynamics\weapons\wpn_ammo\ammo_20x70_buck.ogf
+inv_name                                 = st_ammo_20x70_buck
+inv_name_short                           = st_ammo_20x70_buck_s
+description                              = st_ammo_20x70_buck_descr
+
+inv_grid_width                           = 2
+inv_grid_height                          = 1
+inv_grid_x                               = 18
+inv_grid_y                               = 10
+
+box_size                                 = 10
+cost                                     = 900
+inv_weight                               = .7
+
+k_dist                                   = 0.75
+k_disp                                   = 9
+k_hit                                    = 0.6
+k_impulse                                = 0.5
+k_ap                                     = 0.04
+buck_shot                                = 9
+tracer                                   = off
+wm_size                                  = 0.045
+k_air_resistance                         = 1.5
+
+[ammo_20x76_zhekan]:ammo_base
+$spawn                                   = "weapons\ammo\ammo_20x76_zhekan"
+visual                                   = dynamics\weapons\wpn_ammo\ammo_20x76_zhekan.ogf
+inv_name                                 = st_ammo_20x76_zhekan
+inv_name_short                           = st_ammo_20x76_zhekan_s
+description                              = st_ammo_20x76_zhekan_descr
+
+inv_grid_width                           = 2
+inv_grid_height                          = 1
+inv_grid_x                               = 18
+inv_grid_y                               = 11
+
+box_size                                 = 10
+cost                                     = 1500
+inv_weight                               = .75
+
+k_hit                                    = 3
+k_ap                                     = 0.3
+tracer                                   = off
+wm_size                                  = 0.15
 explosive                                = off
 k_air_resistance                         = 1.25
 k_bullet_speed                           = 1.15
