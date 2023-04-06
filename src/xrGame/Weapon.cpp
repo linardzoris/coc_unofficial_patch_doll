@@ -378,17 +378,6 @@ void CWeapon::Load(LPCSTR section)
         cam_recoil.RelaxSpeed = EPS_L;
     }
 
-    cam_recoil.RelaxSpeed_AI = cam_recoil.RelaxSpeed;
-    if (pSettings->line_exist(section, "cam_relax_speed_ai"))
-    {
-        temp_f = pSettings->r_float(section, "cam_relax_speed_ai");
-        cam_recoil.RelaxSpeed_AI = _abs(deg2rad(temp_f));
-        VERIFY(!fis_zero(cam_recoil.RelaxSpeed_AI));
-        if (fis_zero(cam_recoil.RelaxSpeed_AI))
-        {
-            cam_recoil.RelaxSpeed_AI = EPS_L;
-        }
-    }
     temp_f = pSettings->r_float(section, "cam_max_angle");
     cam_recoil.MaxAngleVert = _abs(deg2rad(temp_f));
     //VERIFY(!fis_zero(cam_recoil.MaxAngleVert));
@@ -413,7 +402,6 @@ void CWeapon::Load(LPCSTR section)
     //подбрасывание камеры во время отдачи в режиме zoom
     // zoom_cam_recoil.Clone( cam_recoil ); ==== нельзя !!!!!!!!!!
     zoom_cam_recoil.RelaxSpeed = cam_recoil.RelaxSpeed;
-    zoom_cam_recoil.RelaxSpeed_AI = cam_recoil.RelaxSpeed_AI;
     zoom_cam_recoil.DispersionFrac = cam_recoil.DispersionFrac;
     zoom_cam_recoil.MaxAngleVert = cam_recoil.MaxAngleVert;
     zoom_cam_recoil.MaxAngleHorz = cam_recoil.MaxAngleHorz;
@@ -431,15 +419,7 @@ void CWeapon::Load(LPCSTR section)
             zoom_cam_recoil.RelaxSpeed = EPS_L;
         }
     }
-    if (pSettings->line_exist(section, "zoom_cam_relax_speed_ai"))
-    {
-        zoom_cam_recoil.RelaxSpeed_AI = _abs(deg2rad(pSettings->r_float(section, "zoom_cam_relax_speed_ai")));
-        VERIFY(!fis_zero(zoom_cam_recoil.RelaxSpeed_AI));
-        if (fis_zero(zoom_cam_recoil.RelaxSpeed_AI))
-        {
-            zoom_cam_recoil.RelaxSpeed_AI = EPS_L;
-        }
-    }
+
     if (pSettings->line_exist(section, "zoom_cam_max_angle"))
     {
         zoom_cam_recoil.MaxAngleVert = _abs(deg2rad(pSettings->r_float(section, "zoom_cam_max_angle")));

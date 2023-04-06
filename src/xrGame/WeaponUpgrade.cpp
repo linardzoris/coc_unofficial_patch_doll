@@ -77,7 +77,6 @@ bool CWeapon::install_upgrade_disp(LPCSTR section, bool test)
     result |= process_if_exists_deg2rad(section, "fire_dispersion_base", fireDispersionBase, test);
 
     result |= process_if_exists_deg2rad(section, "cam_relax_speed", cam_recoil.RelaxSpeed, test);
-    result |= process_if_exists_deg2rad(section, "cam_relax_speed_ai", cam_recoil.RelaxSpeed_AI, test);
     result |= process_if_exists_deg2rad(section, "cam_dispersion", cam_recoil.Dispersion, test);
     result |= process_if_exists_deg2rad(section, "cam_dispersion_inc", cam_recoil.DispersionInc, test);
 
@@ -88,12 +87,10 @@ bool CWeapon::install_upgrade_disp(LPCSTR section, bool test)
     result |= process_if_exists_deg2rad(section, "cam_step_angle_horz", cam_recoil.StepAngleHorz, test);
 
     VERIFY(!fis_zero(cam_recoil.RelaxSpeed));
-    VERIFY(!fis_zero(cam_recoil.RelaxSpeed_AI));
     VERIFY(!fis_zero(cam_recoil.MaxAngleVert));
     VERIFY(!fis_zero(cam_recoil.MaxAngleHorz));
 
     result |= process_if_exists_deg2rad(section, "zoom_cam_relax_speed", zoom_cam_recoil.RelaxSpeed, test); // zoom_ ...
-    result |= process_if_exists_deg2rad(section, "zoom_cam_relax_speed_ai", zoom_cam_recoil.RelaxSpeed_AI, test);
     result |= process_if_exists_deg2rad(section, "zoom_cam_dispersion", zoom_cam_recoil.Dispersion, test);
     result |= process_if_exists_deg2rad(section, "zoom_cam_dispersion_inc", zoom_cam_recoil.DispersionInc, test);
 
@@ -105,7 +102,6 @@ bool CWeapon::install_upgrade_disp(LPCSTR section, bool test)
     result |= process_if_exists_deg2rad(section, "zoom_cam_step_angle_horz", zoom_cam_recoil.StepAngleHorz, test);
 
     VERIFY(!fis_zero(zoom_cam_recoil.RelaxSpeed));
-    VERIFY(!fis_zero(zoom_cam_recoil.RelaxSpeed_AI));
     VERIFY(!fis_zero(zoom_cam_recoil.MaxAngleVert));
     VERIFY(!fis_zero(zoom_cam_recoil.MaxAngleHorz));
 
