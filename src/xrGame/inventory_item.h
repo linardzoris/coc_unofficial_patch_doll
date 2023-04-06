@@ -169,7 +169,6 @@ public:
     Irect GetInvGridRect() const;
     Irect GetUpgrIconRect() const;
     const shared_str& GetIconName() const { return m_icon_name; };
-    Frect GetKillMsgRect() const;
     //---------------------------------------------------------------------
     IC float GetCondition() const { return m_fCondition; }
     virtual float GetConditionToShow() const { return GetCondition(); }

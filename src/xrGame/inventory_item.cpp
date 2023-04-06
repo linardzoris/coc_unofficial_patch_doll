@@ -1339,18 +1339,6 @@ bool CInventoryItem::CanTrade() const
     return (res && m_flags.test(FCanTrade) && !IsQuestItem());
 }
 
-Frect CInventoryItem::GetKillMsgRect() const
-{
-    float x, y, w, h;
-
-    x = READ_IF_EXISTS(pSettings, r_float, m_object->cNameSect(), "kill_msg_x", 0.0f);
-    y = READ_IF_EXISTS(pSettings, r_float, m_object->cNameSect(), "kill_msg_y", 0.0f);
-    w = READ_IF_EXISTS(pSettings, r_float, m_object->cNameSect(), "kill_msg_width", 0.0f);
-    h = READ_IF_EXISTS(pSettings, r_float, m_object->cNameSect(), "kill_msg_height", 0.0f);
-
-    return Frect().set(x, y, w, h);
-}
-
 Irect CInventoryItem::GetInvGridRect() const
 {
     u32 x, y, w, h;
