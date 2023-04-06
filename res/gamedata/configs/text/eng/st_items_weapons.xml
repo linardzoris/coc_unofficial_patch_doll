@@ -309,9 +309,6 @@
 	<string id="st_wpn_mp5_descr">
 		<text>This submachine gun has gained popularity around the world thanks to its reliability, ease of use, and accuracy. Over the last few decades, the Viper 5 was in service with special armed forces and police units worldwide. Not surprisingly, having flooded the global black markets, it eventually made its way to the Zone.</text>
 	</string>
-	<string id="st_wpn_pb">
-		<text>PB-1s</text>
-	</string>
 	<string id="st_wpn_pm">
 		<text>PMm</text>
 	</string>
@@ -393,12 +390,6 @@
 	<string id="st_wpn_wincheaster1300_descr">
 		<text>A Western smoothbore shotgun that is extremely popular around the world thanks to its amazing reliability and faster reloading speed. Particularly valued for its functionality by the Zone's hunters. All of its parts are coated with an anti-corrosion compound.</text>
 	</string>
-	<string id="st_wpn_wincheaster1300_trapper">
-		<text>Predator</text>
-	</string>
-	<string id="st_wpn_wincheaster1300_trapper_descr">
-		<text>A tailor-made pump-action shotgun which used to belong to Trapper. The hunter's only requirement in respect of his weapon was that it needed to kill predators in one shot. This philosophy was based on the belief that no matter how many people an animal had killed, it was still just an animal, and thus should not suffer.</text>
-	</string>
 	<string id="ammo-gauss_cardan">
 		<text>Homemade batteries</text>
 	</string>
@@ -428,9 +419,6 @@
 	</string>
 	<string id="st_wpn_mine_descr">
 		<text>The PFM-1 is an anti-personnel mine with an infamous reputation for being the cause of large amounts of civilian casualties. Often referred to as a 'butterfly' mine due to its unusual shape.</text>
-	</string>
-	<string id="st_wpn_pb_descr">
-		<text>This pistol was developed in the second half of the 20th century on the basis of the PMm for use by special forces and scouting units. The front of the pistol's barrel is covered with an integrated silencer, while the bolt mechanism is short, which prevents a back-moving spring from being located inside it, and it is therefore situated in the weapon's handle. Morally obsolete, the weapon is still effective in the right hands.</text>
 	</string>
 	<string id="st_wpn_pm_descr">
 		<text>This Soviet legacy is the most common pistol in the Zone and is one of the best compact self-defence handguns available. It is small, highly reliable, easy to use and maintain in working order. It also suffers from several drawbacks, including its short range, low firing accuracy, and poor stopping power, while also losing out to modern pistols in its class in terms of weight and magazine size.</text>

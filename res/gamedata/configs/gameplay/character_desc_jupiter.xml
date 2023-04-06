@@ -826,7 +826,7 @@
         [spawn] \n
         wpn_ak74 \n
         ammo_5.45x39_fmj = 1 \n
-        wpn_pb \n
+        wpn_pm \n
         ammo_9x18_fmj = 1 \n
 #include "gameplay\supplies\character_food.xml"
 #include "gameplay\supplies\character_drugs.xml"
@@ -853,7 +853,7 @@
         [spawn] \n
         wpn_ak74 \n
         ammo_5.45x39_fmj = 1 \n
-        wpn_pb \n
+        wpn_pm \n
         ammo_9x18_fmj = 1 \n
 #include "gameplay\supplies\character_items.xml"
 #include "gameplay\supplies\character_food.xml"
@@ -881,7 +881,7 @@
         [spawn] \n
         wpn_ak74 \n
         ammo_5.45x39_fmj = 1 \n
-        wpn_pb \n
+        wpn_pm \n
         ammo_9x18_fmj = 1 \n
 #include "gameplay\supplies\character_items.xml"
 #include "gameplay\supplies\character_food.xml"
@@ -1314,7 +1314,7 @@
     <visual>actors\stalker_unique\stalker_neutral_zveroboy</visual>
     <supplies>
         [spawn] \n
-        wpn_wincheaster1300_trapper \n
+        wpn_wincheaster1300 \n
         ammo_12x70_buck = 1 \n
         wpn_colt1911 \n
         ammo_11.43x23_fmj = 1 \n

@@ -104,7 +104,7 @@
     <snd_config>characters_voice\human\stalker_4\</snd_config>
     <supplies>
         [spawn] \n
-        wpn_pb \n
+        wpn_pm \n
         ammo_9x18_fmj = 1 \n
     </supplies>
     <start_dialog>hello_dialog</start_dialog>
@@ -185,7 +185,7 @@
     <snd_config>characters_voice\human\stalker_4\</snd_config>
     <supplies>
         [spawn] \n
-        wpn_pb \n
+        wpn_pm \n
         ammo_9x18_fmj = 1 \n
     </supplies>
     <start_dialog>hello_dialog</start_dialog>
