@@ -112,7 +112,7 @@ snd_empty               						   = weapons\_dryfire\545_dry
 snd_reload										   = weapons\ak_gwr\ak_gwr_reload
 snd_reload_empty								   = weapons\ak_gwr\ak_gwr_reload_full
 snd_reload_misfire								   = weapons\ak_gwr\ak_gwr_unjam
-snd_firemode_swith                                 = weapons\ak_firemode_swith
+snd_changefiremode                                 = weapons\ak_firemode_swith
 
 snd_shoot               						   = weapons\_gunfire\saiga\close_1
 snd_shoot1              						   = weapons\_gunfire\saiga\close_2
@@ -183,6 +183,9 @@ anm_reload_empty                         = ak_74_gwr_reload_empty, saiga_reload_
 anm_shots                                = ak_74_gwr_shoot, ak_74_shoot_no_shell
 anm_show                                 = ak_74_gwr_draw, idle            
 
+anm_reload_misfire                       = ak_74_gwr_misfire, saiga_revival
+anm_changefiremode                       = ak_74_gwr_fire_select, idle
+
 anm_bore_jammed                          = ak_74_gwr_idle_aim, idle_jammed_saiga
 anm_hide_jammed                          = ak_74_gwr_hide, idle_jammed_saiga
 anm_idle_jammed                          = ak_74_gwr_idle, idle_jammed_saiga
@@ -193,9 +196,7 @@ anm_idle_moving_jammed                   = ak_74_gwr_walk, idle_jammed_saiga
 anm_idle_moving_crouch_jammed            = ak_74_gwr_walk, idle_jammed_saiga, 0.8
 anm_idle_sprint_jammed                   = ak_74_gwr_sprint, idle_jammed_saiga
 anm_show_jammed                          = ak_74_gwr_draw, idle_jammed_saiga     
-
-anm_reload_misfire                       = ak_74_gwr_misfire, saiga_revival
-anm_firemode                          	 = ak_74_gwr_fire_select, idle
+anm_changefiremode_jammed                = ak_74_gwr_fire_select, idle_jammed_saiga
 
 shell_bone                               = wpn_body
 shell_point                              = 0, -0.05, -0.05
@@ -332,7 +333,7 @@ snd_empty               						   = weapons\_dryfire\545_dry
 snd_reload										   = weapons\ak_gwr\ak_gwr_reload
 snd_reload_empty								   = weapons\ak_gwr\ak_gwr_reload_full
 snd_reload_misfire								   = weapons\ak_gwr\ak_gwr_unjam
-snd_firemode_swith                                 = weapons\ak_firemode_swith
+snd_changefiremode                                 = weapons\ak_firemode_swith
 
 zoom_cam_dispersion                                = 5.0
 zoom_cam_dispersion_frac                           = 0.7
