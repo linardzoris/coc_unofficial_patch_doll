@@ -386,11 +386,6 @@ function actor_on_info_callback(binder,obj,info_id)
 	--printf("info_id = %s",info_id)
 end
 
-function actor_on_sleep_callback(binder,obj,info_id)
-	SendScriptCallback("actor_on_sleep_callback",obj,info_id)
-	--printf("info_id = %s",info_id)
-end
-
 function actor_item_to_belt(binder,obj)
 	SendScriptCallback("actor_item_to_belt",obj)
 end 
