@@ -69,6 +69,7 @@ enum ECallbackType
     eItemToRuck,
     // Actor
     eActorBeforeDeath,
+    eOnFootStep,
     //-AVO
 
     // vehicle
