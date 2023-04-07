@@ -472,7 +472,7 @@ void CActorCondition::UpdateSatiety()
 
     if (bSatietyEffectorEnabled)
     {
-        if ((m_fSatiety >= m_fSatietyCritical))
+        if ((m_fSatiety <= m_fSatietyCritical))
         {
             if (!ce)
                 AddEffector(m_object, effSatiety, "effector_satiety", GET_KOEFF_FUNC(this, &CActorCondition::GetSatiety));
@@ -514,7 +514,7 @@ void CActorCondition::UpdateThirst()
 
     if (bThirstEffectorEnabled)
     {
-        if ((m_fThirst >= m_fThirstCritical))
+        if ((m_fThirst <= m_fThirstCritical))
         {
             if (!ce)
                 AddEffector(m_object, effThirst, "effector_thirst", GET_KOEFF_FUNC(this, &CActorCondition::GetThirst));
@@ -600,7 +600,7 @@ void CActorCondition::UpdateSleepeness()
 
     CEffectorCam* ce = Actor()->Cameras().GetCamEffector((ECamEffectorType)effSleepeness);
 
-    if (m_fSleepeness <= m_fSleepenessCritical)
+    if (m_fSleepeness >= m_fSleepenessCritical)
     {
         if (!ce)
             AddEffector(m_object, effSleepeness, "effector_sleepeness", GET_KOEFF_FUNC(this, &CActorCondition::GetSleepeness));
