@@ -26,7 +26,7 @@ void CWeaponPistol::PlayAnimShow()
     inherited::PlayAnimShow();
 }
 
-bool CWeaponMagazined::TryPlayAnimBore()
+bool CWeaponPistol::TryPlayAnimBore()
 {
     if (IsMisfire() && isHUDAnimationExist("anm_bore_jammed"))
     {

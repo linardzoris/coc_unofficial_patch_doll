@@ -39,7 +39,7 @@ void CWeaponRevolver::PlayAnimShow()
         inherited::PlayAnimShow();
 }
 
-bool CWeaponMagazined::TryPlayAnimBore()
+bool CWeaponRevolver::TryPlayAnimBore()
 {
     if (IsMisfire() && isHUDAnimationExist("anm_bore_jammed"))
     {
