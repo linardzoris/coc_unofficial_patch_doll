@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="windows-1251" ?>
 <string_table>
+	<string id="ui_inv_health">
+		<text>Здоровье</text>
+	</string>
+	<string id="ui_inv_power">
+		<text>Выносливость</text>
+	</string>
+	<string id="ui_inv_radiation">
+		<text>Заражение</text>
+	</string>
+	<string id="ui_inv_alcohol">
+		<text>Алкоголь</text>
+	</string>	
+	<string id="st_rad_value">
+		<text>мЗв</text>
+	</string>
+	<string id="st_alc">
+		<text>°</text>
+	</string>
 	<string id="not_enough_money_actor">
 		<text>Недостаточно денег</text>
 	</string>

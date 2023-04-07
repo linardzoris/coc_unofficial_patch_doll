@@ -43,6 +43,12 @@
    	<texture id="ui_am_prop_electro" x="749" y="547" width="19" height="19" />
    	<texture id="ui_am_prop_artefact" x="768" y="547" width="19" height="19" />
 	<texture id="ui_am_prop_satiety_restore_speed" x="768" y="566" width="19" height="19" />
+	
+	<texture id="ui_am_prop_boost_health" x="768" y="604" width="19" height="19" />
+	<texture id="ui_am_prop_boost_power" x="768" y="623" width="19" height="19" />
+	<texture id="ui_am_prop_boost_radiation" x="749" y="566" width="19" height="19" />
+	<texture id="ui_am_prop_boost_alcohol" x="768" y="585" width="19" height="19" />	
+
 	<texture id="ui_am_prop_intoxication_restore_speed" x="863" y="547" width="19" height="19" />
 	<texture id="ui_am_prop_sleepeness_restore_speed" x="882" y="547" width="19" height="19" />		
    	<texture id="ui_am_prop_weightoutfit" x="787" y="566" width="19" height="19" />
@@ -67,6 +73,11 @@
 	<texture id="ui_am_boost_wound_immunity" x="806" y="661" width="19" height="19" />		
 	
 	<!-- Отрицательные -->
+	<texture id="ui_am_prop_boost_health_minus" x="920" y="528" width="19" height="19"/>
+	<texture id="ui_am_prop_boost_power_minus" x="863" y="604" width="19" height="19"/>
+	<texture id="ui_am_prop_boost_radiation_minus" x="844" y="566" width="19" height="19"/>
+	<texture id="ui_am_prop_boost_alcohol_minus" x="844" y="604" width="19" height="19"/>	
+	
 	<texture id="ui_am_prop_satiety_restore_speed_minus" x="863" y="566" width="19" height="19"/>
 	<texture id="ui_am_prop_thirst_restore_speed_minus" x="844" y="585" width="19" height="19"/>
 	<texture id="ui_am_prop_sleepeness_restore_speed_minus" x="806" y="528" width="19" height="19" />	
