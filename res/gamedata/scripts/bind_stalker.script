@@ -147,6 +147,7 @@ function actor_binder:reinit()
 	
 	local t = {
 				-- vanilla
+				["actor_sleep"] 			= bind_stalker_ext.actor_on_sleep_callback,				
 				["inventory_info"] 			= bind_stalker_ext.actor_on_info_callback,
 				["on_item_take"] 			= bind_stalker_ext.actor_on_item_take,
 				["on_item_drop"] 			= bind_stalker_ext.actor_on_item_drop,

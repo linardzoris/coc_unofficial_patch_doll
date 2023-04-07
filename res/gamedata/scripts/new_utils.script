@@ -1,5 +1,10 @@
 -- ЧИТАЕТСЯ ИЗ ДВИЖКА
 
+function remember_volume_status()
+	_G.mus_vol = get_console():get_float("snd_volume_music")
+	_G.amb_vol = get_console():get_float("snd_volume_eff")
+end
+
 function put_the_actor_to_sleep()
 	local hours = tonumber(5)
 	local minutes = tonumber(0)
@@ -8,10 +13,52 @@ function put_the_actor_to_sleep()
 	level_weathers.get_weather_manager():forced_weather_change()
 	surge_manager.get_surge_manager().time_forwarded = true
 
+	db.actor:give_info_portion("actor_is_sleeping")
+
 	xr_effects.disable_ui_only(db.actor, nil)
 	db.actor.sleepeness = -0.5
-	level.add_cam_effector("camera_effects\\surge_02.anm", 10, false, "bind_stalker_ext.anabiotic_callback")
+	level.add_cam_effector("camera_effects\\surge_02.anm", 10, false, "new_utils.mind_loss_callback")
 	level.add_pp_effector("surge_fade.ppe", 11, false)
+	
+	get_console():execute("snd_volume_music 0")
+	get_console():execute("snd_volume_eff 0")	
+end
+
+function mind_loss_callback()
+	level.add_cam_effector("camera_effects\\surge_01.anm", 10, false, "new_utils.mind_loss_callback2")
+	local rnd = math.random(35,45)
+	local m = surge_manager.get_surge_manager()
+	if(m.started) then
+		local tf = level.get_time_factor()
+		local diff_sec = math.ceil(game.get_game_time():diffSec(m.inited_time)/tf)
+		if(rnd>(m.surge_time-diff_sec)*tf/60) then
+			m.time_forwarded = true
+			m.ui_disabled = true
+			m:end_surge()
+		end
+	end
+	m = psi_storm_manager.get_psi_storm_manager()
+	if(m and m.started) then
+		local tf = level.get_time_factor()
+		local diff_sec = math.ceil(game.get_game_time():diffSec(m.inited_time)/tf)
+			if(rnd>(m.psi_storm_duration-diff_sec)*tf/60) then
+			m.time_forwarded = true
+			--m.ui_disabled = true
+			m:finish()
+		end
+	end
+	level.change_game_time(0,0,rnd)
+	level_weathers.get_weather_manager():forced_weather_change()
+	--printf("anabiotic_callback: time forwarded on [%d]", rnd)
+end
+
+function mind_loss_callback2()
+	xr_effects.enable_ui(db.actor, nil)
+    get_console():execute("snd_volume_music "..tostring(_G.mus_vol))
+	get_console():execute("snd_volume_eff "..tostring(_G.amb_vol))
+	_G.amb_vol = 0
+	_G.mus_vol = 0
+	disable_info("actor_is_sleeping")
 end
 
 function generate_phantoms()
@@ -523,6 +570,7 @@ local function on_nvg_remove(obj)
 end	
 
 function on_game_start()
+	RegisterScriptCallback("actor_on_info_callback",remember_volume_status)	
 	RegisterScriptCallback("actor_on_hit_callback",encyclopedia_anomaly_by_hit)	
 	RegisterScriptCallback("on_key_press",take_achiev_cheater)		
 	RegisterScriptCallback("actor_on_item_take",take_achiev_main_six)	
@@ -530,7 +578,7 @@ function on_game_start()
     RegisterScriptCallback("actor_on_item_use",actor_use_items)	
 	
 	RegisterScriptCallback("on_key_press",on_nvg_press)
-	RegisterScriptCallback("actor_on_item_drop",on_nvg_remove)	
+	RegisterScriptCallback("actor_on_item_drop",on_nvg_remove)		
 	RegisterScriptCallback("actor_item_to_slot",on_nvg_remove)
 	RegisterScriptCallback("actor_item_to_ruck",on_nvg_remove)
 end

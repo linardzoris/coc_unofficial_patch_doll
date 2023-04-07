@@ -136,6 +136,7 @@ local intercepts = {
 	actor_on_torch_enabled		= {},	-- TODO: Export from engine instead
 	actor_on_torch_disabled		= {},	-- TODO: Export from engine instead
 	actor_on_info_callback		= {},
+	actor_on_sleep_callback		= {},	
 	actor_on_hit_callback		= {},
 	actor_on_attach_vehicle		= {},
 	actor_on_detach_vehicle		= {},
