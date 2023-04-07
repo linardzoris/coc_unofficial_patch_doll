@@ -182,7 +182,7 @@ protected:
     //виртуальные функции для проигрывания анимации HUD
     virtual void PlayAnimShow();
     virtual void PlayAnimHide();
-    virtual void PlayAnimBore();
+    virtual bool TryPlayAnimBore();
     virtual void PlayAnimIdleSprint();
     virtual void PlayAnimIdleMoving();
     virtual void PlayAnimIdleMovingCrouch();

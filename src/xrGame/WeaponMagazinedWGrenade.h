@@ -72,7 +72,7 @@ public:
     virtual void PlayAnimIdle();
     virtual void PlayAnimShoot();
     virtual void PlayAnimModeSwitch();
-    virtual void PlayAnimBore();
+	virtual bool TryPlayAnimBore();
 
 private:
     virtual bool install_upgrade_impl(LPCSTR section, bool test);

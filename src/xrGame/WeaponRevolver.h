@@ -26,7 +26,7 @@ public:
     void PlayAnimHide() override;
     void PlayAnimReload() override;
     void PlayAnimShoot() override;
-    void PlayAnimBore() override;
+    virtual bool TryPlayAnimBore() override;
     void PlayAnimAim() override;
     //virtual void PlayReloadSound();
     void UpdateSounds() override;

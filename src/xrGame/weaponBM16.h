@@ -19,5 +19,5 @@ protected:
     virtual void PlayAnimIdleSprint();
     virtual void PlayAnimShow();
     virtual void PlayAnimHide();
-    virtual void PlayAnimBore();
+    virtual bool TryPlayAnimBore();
 };

@@ -1569,14 +1569,20 @@ void CWeaponMagazined::PlayAnimHide()
         PlayHUDMotion("anm_hide", true, this, GetState());
 }
 
-void CWeaponMagazined::PlayAnimBore()
+bool CWeaponMagazined::TryPlayAnimBore()
 {
-    if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_bore_empty"))
-        PlayHUDMotion("anm_bore_empty", true, this, GetState());
-    else if (IsMisfire() && isHUDAnimationExist("anm_bore_jammed"))
+    if (IsMisfire() && isHUDAnimationExist("anm_bore_jammed"))
+    {
         PlayHUDMotion("anm_bore_jammed", true, nullptr, GetState());
-    else
-        inherited::PlayAnimBore();
+        return true;
+    }
+    if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_bore_empty"))
+    {
+        PlayHUDMotion("anm_bore_empty", TRUE, this, GetState());
+        return true;
+    }
+
+    return inherited::TryPlayAnimBore();
 }
 
 void CWeaponMagazined::PlayAnimIdleSprint()
