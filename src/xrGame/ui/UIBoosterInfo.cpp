@@ -20,6 +20,10 @@ CUIBoosterInfo::CUIBoosterInfo()
     }
     m_booster_satiety = NULL;
     m_booster_thirst = NULL;
+    m_booster_health = NULL;
+    m_booster_power = NULL;
+    m_booster_radiation = NULL;
+    m_booster_alcohol = NULL;
     m_booster_intoxication = NULL;
     m_booster_sleepeness = NULL;
     m_booster_anabiotic = NULL;
@@ -31,6 +35,10 @@ CUIBoosterInfo::~CUIBoosterInfo()
     delete_data(m_booster_items);
     xr_delete(m_booster_satiety);
     xr_delete(m_booster_thirst);
+    xr_delete(m_booster_health);
+    xr_delete(m_booster_power);
+    xr_delete(m_booster_radiation);
+    xr_delete(m_booster_alcohol);
     xr_delete(m_booster_intoxication);
     xr_delete(m_booster_sleepeness);
     xr_delete(m_booster_anabiotic);
@@ -96,6 +104,34 @@ void CUIBoosterInfo::InitFromXml(CUIXml& xml)
     m_booster_thirst->SetAutoDelete(false);
     name = StringTable().translate("ui_inv_thirst").c_str();
     m_booster_thirst->SetCaption(name);
+    xml.SetLocalRoot(base_node);
+
+    m_booster_health = new UIBoosterInfoItem();
+    m_booster_health->Init(xml, "boost_health");
+    m_booster_health->SetAutoDelete(false);
+    name = StringTable().translate("ui_inv_health").c_str();
+    m_booster_health->SetCaption(name);
+    xml.SetLocalRoot(base_node);
+
+    m_booster_power = new UIBoosterInfoItem();
+    m_booster_power->Init(xml, "boost_power");
+    m_booster_power->SetAutoDelete(false);
+    name = StringTable().translate("ui_inv_power").c_str();
+    m_booster_power->SetCaption(name);
+    xml.SetLocalRoot(base_node);
+
+    m_booster_radiation = new UIBoosterInfoItem();
+    m_booster_radiation->Init(xml, "boost_radiation");
+    m_booster_radiation->SetAutoDelete(false);
+    name = StringTable().translate("ui_inv_radiation").c_str();
+    m_booster_radiation->SetCaption(name);
+    xml.SetLocalRoot(base_node);
+
+    m_booster_alcohol = new UIBoosterInfoItem();
+    m_booster_alcohol->Init(xml, "boost_alcohol");
+    m_booster_alcohol->SetAutoDelete(false);
+    name = StringTable().translate("ui_inv_alcohol").c_str();
+    m_booster_alcohol->SetCaption(name);
     xml.SetLocalRoot(base_node);
 
 	// M.F.S. Team Intoxication
@@ -212,6 +248,66 @@ void CUIBoosterInfo::SetInfo(shared_str const& section)
 
             h += m_booster_thirst->GetWndSize().y;
             AttachChild(m_booster_thirst);
+        }
+    }
+
+    if (pSettings->line_exist(section.c_str(), "eat_health"))
+    {
+        val = pSettings->r_float(section, "eat_health");
+        if (!fis_zero(val))
+        {
+            m_booster_health->SetValue(val);
+            pos.set(m_booster_health->GetWndPos());
+            pos.y = h;
+            m_booster_health->SetWndPos(pos);
+
+            h += m_booster_health->GetWndSize().y;
+            AttachChild(m_booster_health);
+        }
+    }
+
+    if (pSettings->line_exist(section.c_str(), "eat_power"))
+    {
+        val = pSettings->r_float(section, "eat_power");
+        if (!fis_zero(val))
+        {
+            m_booster_power->SetValue(val);
+            pos.set(m_booster_power->GetWndPos());
+            pos.y = h;
+            m_booster_power->SetWndPos(pos);
+
+            h += m_booster_power->GetWndSize().y;
+            AttachChild(m_booster_power);
+        }
+    }
+
+    if (pSettings->line_exist(section.c_str(), "eat_radiation"))
+    {
+        val = pSettings->r_float(section, "eat_radiation");
+        if (!fis_zero(val))
+        {
+            m_booster_radiation->SetValue(val);
+            pos.set(m_booster_radiation->GetWndPos());
+            pos.y = h;
+            m_booster_radiation->SetWndPos(pos);
+
+            h += m_booster_radiation->GetWndSize().y;
+            AttachChild(m_booster_radiation);
+        }
+    }
+
+    if (pSettings->line_exist(section.c_str(), "eat_alcohol"))
+    {
+        val = pSettings->r_float(section, "eat_alcohol");
+        if (!fis_zero(val))
+        {
+            m_booster_alcohol->SetValue(val);
+            pos.set(m_booster_alcohol->GetWndPos());
+            pos.y = h;
+            m_booster_alcohol->SetWndPos(pos);
+
+            h += m_booster_alcohol->GetWndSize().y;
+            AttachChild(m_booster_alcohol);
         }
     }
 

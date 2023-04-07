@@ -19,6 +19,10 @@ protected:
     UIBoosterInfoItem* m_booster_items[eBoostExplImmunity];
     UIBoosterInfoItem* m_booster_satiety;
     UIBoosterInfoItem* m_booster_thirst;
+    UIBoosterInfoItem* m_booster_health;
+    UIBoosterInfoItem* m_booster_power;
+    UIBoosterInfoItem* m_booster_radiation;
+    UIBoosterInfoItem* m_booster_alcohol;
     UIBoosterInfoItem* m_booster_intoxication;
     UIBoosterInfoItem* m_booster_sleepeness;
     UIBoosterInfoItem* m_booster_anabiotic;
