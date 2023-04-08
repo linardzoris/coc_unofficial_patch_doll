@@ -39,9 +39,10 @@ protected:
     HitImmunity::HitTypeSVec m_HitTypeProtection;
 
     shared_str m_ActorVisual;
+    SBoneProtections* m_boneProtection;
+
     // Ноги из LA
     shared_str m_ActorVisual_legs;
-    SBoneProtections* m_boneProtection;
 
 protected:
     u32 m_ef_equipment_type;

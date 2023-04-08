@@ -91,7 +91,7 @@ void CCustomOutfit::Load(LPCSTR section)
         m_ActorVisual = NULL;
 
     // Ноги из LA
-    if (pSettings->line_exist(section, "actor_visual_legs")) 
+    if (pSettings->line_exist(section, "actor_visual_legs"))
         m_ActorVisual_legs = pSettings->r_string(section, "actor_visual_legs");
     else
         m_ActorVisual_legs = NULL;
@@ -231,7 +231,6 @@ float CCustomOutfit::HitThroughArmor(float hit_power, s16 element, float ap, boo
 }
 
 BOOL CCustomOutfit::BonePassBullet(int boneID) { return m_boneProtection->getBonePassBullet(s16(boneID)); }
-
 void CCustomOutfit::OnMoveToSlot(const SInvItemPlace& prev)
 {
     if (m_pInventory)
@@ -272,7 +271,7 @@ void CCustomOutfit::ApplySkinModel(CActor* pActor, bool bDress, bool bHUDOnly)
                 pActor->ChangeVisual(NewVisual);
             }
         }
-        else if (!psActorFlags.test(AF_FIRST_PERSON_BODY) && !bHUDOnly && m_ActorVisual.size())
+        else if (!bHUDOnly && m_ActorVisual.size())
         {
             shared_str NewVisual = m_ActorVisual;
             pActor->ChangeVisual(NewVisual);
@@ -300,14 +299,14 @@ void CCustomOutfit::ApplySkinModel(CActor* pActor, bool bDress, bool bHUDOnly)
             }
             else
             {
-            shared_str DefVisual = pActor->GetDefaultVisualOutfit();
+                shared_str DefVisual = pActor->GetDefaultVisualOutfit();
                 if (DefVisual.size())
                 {
                     pActor->ChangeVisual(DefVisual);
                 }
             }
         }
-        else if (!psActorFlags.test(AF_FIRST_PERSON_BODY) && !bHUDOnly && m_ActorVisual.size())
+        else if (!bHUDOnly && m_ActorVisual.size())
         {
             shared_str DefVisual = pActor->GetDefaultVisualOutfit();
             if (DefVisual.size())

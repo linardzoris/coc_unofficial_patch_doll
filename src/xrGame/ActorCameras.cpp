@@ -102,8 +102,8 @@ void CActor::cam_UnsetLadder()
     // Ноги из LA
     if (psActorFlags.test(AF_FIRST_PERSON_BODY))
     {
-    setVisible(TRUE);
-    m_bDrawLegs = true;
+        setVisible(TRUE);
+        m_bDrawLegs = true;
     }
 
     CCameraBase* C = cameras[eacFirstEye];

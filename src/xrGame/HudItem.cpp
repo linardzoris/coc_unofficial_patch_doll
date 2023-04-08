@@ -179,16 +179,13 @@ void CHudItem::OnStateSwitch(u32 S, u32 oldState)
     case eBore:
         SetPending(FALSE);
 
-		if (TryPlayAnimBore())
+        PlayAnimBore();
+        if (HudItemData())
         {
-            if (HudItemData())
-            {
-                Fvector P = HudItemData()->m_item_transform.c;
+            Fvector P = HudItemData()->m_item_transform.c;
+            if (m_sounds.FindSoundItem("sndBore", false))
                 m_sounds.PlaySound("sndBore", P, object().H_Root(), !!GetHUDmode(), false, m_started_rnd_anim_idx);
-            }
         }
-        else
-            SwitchState(eIdle);
 
         break;
     }
@@ -211,15 +208,12 @@ void CHudItem::OnAnimationEnd(u32 state)
     }
 }
 
-bool CHudItem::TryPlayAnimBore()
-{
+void CHudItem::PlayAnimBore() 
+{ 
     if (isHUDAnimationExist("anm_bore"))
-    {
-        PlayHUDMotion("anm_bore", TRUE, this, GetState());
-        return true;
-    }
-
-    return false;
+        PlayHUDMotion("anm_bore", TRUE, this, GetState()); 
+    else
+        PlayHUDMotion("anm_idle", TRUE, this, GetState());
 }
 
 bool CHudItem::ActivateItem()

@@ -164,6 +164,12 @@ public:
     bool IsMisfireOneCartRemove() const { return m_bMisfireOneCartRemove; }
     bool IsMotionMarkShell() const { return m_bMotionMarkShell; }
 
+    void GetZoomData(const float scope_factor, float& delta, float& min_zoom_factor)
+    {
+        min_zoom_factor = 2.0f;
+        delta = 1.0f;
+    }
+
 protected:
     bool m_bMisfireOneCartRemove;
     bool m_bTriStateReload;

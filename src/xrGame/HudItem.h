@@ -117,7 +117,7 @@ public:
     virtual void OnMotionMark(u32 state, const motion_marks&){};
 
     virtual void PlayAnimIdle();
-    virtual bool TryPlayAnimBore();
+    virtual void PlayAnimBore();
     bool TryPlayAnimIdle();
     virtual bool MovingAnimAllowedNow() { return true; }
     virtual bool NeedBlendAnm();

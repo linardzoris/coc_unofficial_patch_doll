@@ -1762,6 +1762,7 @@ void CCC_RegisterCommands()
 	CMD3(CCC_Mask, "g_3d_pda", &psActorFlags, AF_3D_PDA);
     psActorFlags.set(AF_SIMPLE_PDA, TRUE);
     CMD3(CCC_Mask, "g_simple_pda", &psActorFlags, AF_SIMPLE_PDA);
+    // Ноги из LA
     psActorFlags.set(AF_FIRST_PERSON_BODY, TRUE);
     CMD3(CCC_Mask, "g_first_person_body", &psActorFlags, AF_FIRST_PERSON_BODY);
 

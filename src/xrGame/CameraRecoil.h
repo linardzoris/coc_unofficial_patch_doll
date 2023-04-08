@@ -12,6 +12,7 @@
 struct CameraRecoil
 {
     float RelaxSpeed;
+    float RelaxSpeed_AI;
     float Dispersion;
     float DispersionInc;
     float DispersionFrac;
@@ -22,7 +23,7 @@ struct CameraRecoil
     bool StopReturn;
 
     CameraRecoil()
-        : MaxAngleVert(EPS), RelaxSpeed(EPS_L), Dispersion(EPS), DispersionInc(0.0f),
+        : MaxAngleVert(EPS), RelaxSpeed(EPS_L), RelaxSpeed_AI(EPS_L), Dispersion(EPS), DispersionInc(0.0f),
           DispersionFrac(1.0f), MaxAngleHorz(EPS), StepAngleHorz(0.0f), ReturnMode(false), StopReturn(false){};
 
     CameraRecoil(const CameraRecoil& clone) { Clone(clone); }
@@ -30,6 +31,7 @@ struct CameraRecoil
     {
         // *this = clone;
         RelaxSpeed = clone.RelaxSpeed;
+        RelaxSpeed_AI = clone.RelaxSpeed_AI;
         Dispersion = clone.Dispersion;
         DispersionInc = clone.DispersionInc;
         DispersionFrac = clone.DispersionFrac;
@@ -41,6 +43,7 @@ struct CameraRecoil
         StopReturn = clone.StopReturn;
 
         VERIFY(!fis_zero(RelaxSpeed));
+        VERIFY(!fis_zero(RelaxSpeed_AI));
         VERIFY(!fis_zero(MaxAngleVert));
         VERIFY(!fis_zero(MaxAngleHorz));
     }

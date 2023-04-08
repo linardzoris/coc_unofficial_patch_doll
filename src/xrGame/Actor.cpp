@@ -403,10 +403,10 @@ void CActor::Load(LPCSTR section)
     m_fDispCrouchNoAccelFactor = pSettings->r_float(section, "disp_crouch_no_acc_factor");
 
     LPCSTR default_outfit = READ_IF_EXISTS(pSettings, r_string, section, "default_outfit", 0);
-    //SetDefaultVisualOutfit(default_outfit);
+    // SetDefaultVisualOutfit(default_outfit);
 
     // Ноги из LA
-        LPCSTR default_outfit_legs = pSettings->r_string(section, "default_outfit_legs");
+    LPCSTR default_outfit_legs = pSettings->r_string(section, "default_outfit_legs");
     if (psActorFlags.test(AF_FIRST_PERSON_BODY))
     {
         SetDefaultVisualOutfit_legs(default_outfit_legs);
@@ -1303,13 +1303,13 @@ void CActor::shedule_Update(u32 DT)
     if (!character_physics_support()->IsRemoved())
 	{
 		CHelicopter* heli = smart_cast<CHelicopter*>(m_holder);
-        //setVisible(!HUDview() && !heli);
+        // setVisible(!HUDview() && !heli);
 
         // Ноги из LA
         if (m_bDrawLegs && psActorFlags.test(AF_FIRST_PERSON_BODY))
             setVisible(TRUE);
         else
-		    setVisible(!HUDview() && !heli);
+            setVisible(!HUDview() && !heli);
 	}
 
     //что актер видит перед собой

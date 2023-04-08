@@ -26,20 +26,9 @@ void CWeaponPistol::PlayAnimShow()
     inherited::PlayAnimShow();
 }
 
-bool CWeaponPistol::TryPlayAnimBore()
+void CWeaponPistol::PlayAnimBore()
 {
-    if (IsMisfire() && isHUDAnimationExist("anm_bore_jammed"))
-    {
-        PlayHUDMotion("anm_bore_jammed", true, nullptr, GetState());
-        return true;
-    }
-    if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_bore_empty"))
-    {
-        PlayHUDMotion("anm_bore_empty", TRUE, this, GetState());
-        return true;
-    }
-
-    return inherited::TryPlayAnimBore();
+    inherited::PlayAnimBore();
 }
 
 void CWeaponPistol::PlayAnimIdleSprint()

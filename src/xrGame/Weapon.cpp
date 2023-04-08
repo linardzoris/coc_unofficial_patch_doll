@@ -378,6 +378,18 @@ void CWeapon::Load(LPCSTR section)
         cam_recoil.RelaxSpeed = EPS_L;
     }
 
+    cam_recoil.RelaxSpeed_AI = cam_recoil.RelaxSpeed;
+    if (pSettings->line_exist(section, "cam_relax_speed_ai"))
+    {
+        temp_f = pSettings->r_float(section, "cam_relax_speed_ai");
+        cam_recoil.RelaxSpeed_AI = _abs(deg2rad(temp_f));
+        VERIFY(!fis_zero(cam_recoil.RelaxSpeed_AI));
+        if (fis_zero(cam_recoil.RelaxSpeed_AI))
+        {
+            cam_recoil.RelaxSpeed_AI = EPS_L;
+        }
+    }
+
     temp_f = pSettings->r_float(section, "cam_max_angle");
     cam_recoil.MaxAngleVert = _abs(deg2rad(temp_f));
     //VERIFY(!fis_zero(cam_recoil.MaxAngleVert));
@@ -402,6 +414,7 @@ void CWeapon::Load(LPCSTR section)
     //подбрасывание камеры во время отдачи в режиме zoom
     // zoom_cam_recoil.Clone( cam_recoil ); ==== нельзя !!!!!!!!!!
     zoom_cam_recoil.RelaxSpeed = cam_recoil.RelaxSpeed;
+    zoom_cam_recoil.RelaxSpeed_AI = cam_recoil.RelaxSpeed_AI;
     zoom_cam_recoil.DispersionFrac = cam_recoil.DispersionFrac;
     zoom_cam_recoil.MaxAngleVert = cam_recoil.MaxAngleVert;
     zoom_cam_recoil.MaxAngleHorz = cam_recoil.MaxAngleHorz;
@@ -417,6 +430,16 @@ void CWeapon::Load(LPCSTR section)
         if (fis_zero(zoom_cam_recoil.RelaxSpeed))
         {
             zoom_cam_recoil.RelaxSpeed = EPS_L;
+        }
+    }
+
+    if (pSettings->line_exist(section, "zoom_cam_relax_speed_ai"))
+    {
+        zoom_cam_recoil.RelaxSpeed_AI = _abs(deg2rad(pSettings->r_float(section, "zoom_cam_relax_speed_ai")));
+        VERIFY(!fis_zero(zoom_cam_recoil.RelaxSpeed_AI));
+        if (fis_zero(zoom_cam_recoil.RelaxSpeed_AI))
+        {
+            zoom_cam_recoil.RelaxSpeed_AI = EPS_L;
         }
     }
 
@@ -586,10 +609,6 @@ void CWeapon::Load(LPCSTR section)
         m_zoom_params.m_sUseZoomPostprocess = READ_IF_EXISTS(pSettings, r_string, section, "scope_nightvision", 0);
         m_zoom_params.m_sUseBinocularVision = READ_IF_EXISTS(pSettings, r_string, section, "scope_alive_detector", 0);
     }
-    else
-        m_zoom_params.m_sUseZoomPostprocess = 0;
-        m_zoom_params.m_sUseBinocularVision = 0;
-        m_zoom_params.m_bUseDynamicZoom = false;
 
 	// Added by Axel, to enable optional condition use on any item
 	m_flags.set( FUsingCondition, READ_IF_EXISTS( pSettings, r_bool, section, "use_condition", true ));
@@ -2606,8 +2625,6 @@ void CWeapon::render_hud_mode() { RenderLight(); }
 bool CWeapon::MovingAnimAllowedNow() { return !IsZoomed(); }
 bool CWeapon::IsHudModeNow() { return (HudItemData() != nullptr); }
 
-void GetZoomData(const float scope_factor, float& delta, float& min_zoom_factor);
-
 void CWeapon::ZoomInc()
 {
     if (!IsScopeAttached())
@@ -2619,7 +2636,7 @@ void CWeapon::ZoomInc()
     GetZoomData(m_zoom_params.m_fScopeZoomFactor, delta, min_zoom_factor);
 
 	float f = GetZoomFactor() - delta;
-    clamp(f, m_zoom_params.m_fScopeZoomFactor, min_zoom_factor);
+    clamp(f, min_zoom_factor, m_zoom_params.m_fScopeZoomFactor);
     SetZoomFactor(f);
 }
 
@@ -2634,7 +2651,7 @@ void CWeapon::ZoomDec()
     GetZoomData(m_zoom_params.m_fScopeZoomFactor, delta, min_zoom_factor);
 
 	float f = GetZoomFactor() + delta;
-    clamp(f, m_zoom_params.m_fScopeZoomFactor, min_zoom_factor);
+    clamp(f, min_zoom_factor, m_zoom_params.m_fScopeZoomFactor);
     SetZoomFactor(f);
 }
 u32 CWeapon::Cost() const
@@ -2846,10 +2863,6 @@ void CWeapon::LoadCurrentScopeParams(LPCSTR section)
         m_zoom_params.m_bUseDynamicZoom = READ_IF_EXISTS(pSettings, r_bool, section, "scope_dynamic_zoom", FALSE);
         m_zoom_params.m_sUseBinocularVision = READ_IF_EXISTS(pSettings, r_string, section, "scope_alive_detector", 0);
     }
-    else
-	    m_zoom_params.m_sUseZoomPostprocess = 0;
-        m_zoom_params.m_sUseBinocularVision = 0;
-        m_zoom_params.m_bUseDynamicZoom = false;
 
     if (m_UIScope)
     {

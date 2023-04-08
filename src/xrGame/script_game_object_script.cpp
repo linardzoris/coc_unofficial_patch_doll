@@ -100,7 +100,7 @@ SCRIPT_EXPORT(CScriptGameObject, (), {
                 value("item_to_ruck", int(GameObject::eItemToRuck)),
                 // Actor
                 value("actor_before_death", int(GameObject::eActorBeforeDeath)),
-                value("on_foot_step", int(GameObject::eOnFootStep)),
+				value("on_foot_step", int(GameObject::eOnFootStep)),
                 //-AVO
 
                 // vehicle

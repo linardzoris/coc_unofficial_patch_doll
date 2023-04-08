@@ -87,7 +87,7 @@ void CObjectHandler::OnItemTake(CInventoryItem* inventory_item)
     {
         CameraRecoil cam_recoil_copy;
         cam_recoil_copy.Clone(weapon->cam_recoil);
-        cam_recoil_copy.RelaxSpeed;
+        cam_recoil_copy.RelaxSpeed = cam_recoil_copy.RelaxSpeed_AI;
         planner().object().weapon_shot_effector().Initialize(cam_recoil_copy);
     }
 }

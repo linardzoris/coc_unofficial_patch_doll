@@ -45,33 +45,13 @@ void CWeaponBM16::PlayAnimHide()
     }
 }
 
-bool CWeaponBM16::TryPlayAnimBore()
+void CWeaponBM16::PlayAnimBore()
 {
     switch (m_magazine.size())
     {
-    case 0:
-        if (isHUDAnimationExist("anm_bore_0"))
-        {
-            PlayHUDMotion("anm_bore_0", TRUE, this, GetState());
-            return true;
-        }
-        break;
-    case 1:
-        if (isHUDAnimationExist("anm_bore_1"))
-        {
-            PlayHUDMotion("anm_bore_1", TRUE, this, GetState());
-            return true;
-        }
-        break;
-    case 2:
-        if (isHUDAnimationExist("anm_bore_2"))
-        {
-            PlayHUDMotion("anm_bore_2", TRUE, this, GetState());
-            return true;
-        }
-        break;
-
-        return false;
+    case 0: PlayHUDMotion("anm_bore_0", TRUE, this, GetState()); break;
+    case 1: PlayHUDMotion("anm_bore_1", TRUE, this, GetState()); break;
+    case 2: PlayHUDMotion("anm_bore_2", TRUE, this, GetState()); break;
     }
 }
 

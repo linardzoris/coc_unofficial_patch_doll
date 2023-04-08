@@ -28,7 +28,7 @@ public:
     virtual void PlayAnimHide();
     virtual void PlayAnimReload();
     virtual void PlayAnimShoot();
-    virtual bool TryPlayAnimBore();
+    virtual void PlayAnimBore();
     virtual void PlayAnimAim();
 
     virtual void UpdateSounds();

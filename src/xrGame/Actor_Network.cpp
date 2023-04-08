@@ -663,6 +663,7 @@ BOOL CActor::net_Spawn(CSE_Abstract* DC)
         }
     */
     SetDefaultVisualOutfit(cNameVisual());
+
     // Ноги из LA
     if (psActorFlags.test(AF_FIRST_PERSON_BODY))
     {
