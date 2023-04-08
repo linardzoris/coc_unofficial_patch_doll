@@ -109,14 +109,14 @@ void CUIBoosterInfo::InitFromXml(CUIXml& xml)
     m_booster_health = new UIBoosterInfoItem();
     m_booster_health->Init(xml, "boost_health");
     m_booster_health->SetAutoDelete(false);
-    name = StringTable().translate("ui_inv_health").c_str();
+    name = StringTable().translate("ui_inv_health_boost").c_str();
     m_booster_health->SetCaption(name);
     xml.SetLocalRoot(base_node);
 
     m_booster_power = new UIBoosterInfoItem();
     m_booster_power->Init(xml, "boost_power");
     m_booster_power->SetAutoDelete(false);
-    name = StringTable().translate("ui_inv_power").c_str();
+    name = StringTable().translate("ui_inv_power_boost").c_str();
     m_booster_power->SetCaption(name);
     xml.SetLocalRoot(base_node);
 
