@@ -14,7 +14,7 @@ void CWeaponRPG7::Load(LPCSTR section)
     inherited::Load(section);
     CRocketLauncher::Load(section);
 
-    m_zoom_params.m_fScopeZoomFactor = pSettings->r_float(section, "max_zoom_factor");
+    m_zoom_params.m_fScopeZoomFactor = pSettings->r_float(section, "scope_zoom_factor");
 
     m_sRocketSection = pSettings->r_string(section, "rocket_class");
 }
