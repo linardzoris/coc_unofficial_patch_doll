@@ -1022,7 +1022,14 @@ void CWeapon::OnH_B_Chield()
 }
 
 extern u32 hud_adj_mode;
-bool CWeapon::AllowBore() { return true; }
+bool CWeapon::AllowBore() 
+{ 
+    if (isHUDAnimationExist("anm_bore") || isHUDAnimationExist("anm_bore_0") && isHUDAnimationExist("anm_bore_1") && isHUDAnimationExist("anm_bore_2"))
+        return true; 
+    else
+        return false;
+}
+
 void CWeapon::UpdateCL()
 {
     inherited::UpdateCL();
