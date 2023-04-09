@@ -610,12 +610,6 @@ public:
     virtual shared_str GetDefaultVisualOutfit() const { return m_DefaultVisualOutfit; };
     virtual void SetDefaultVisualOutfit(shared_str DefaultOutfit) { m_DefaultVisualOutfit = DefaultOutfit; };
 
-    // Ноги из LA
-    virtual shared_str GetDefaultVisualOutfit_legs() const { return m_DefaultVisualOutfit_legs; };
-    virtual void SetDefaultVisualOutfit_legs(shared_str DefaultOutfit) { m_DefaultVisualOutfit_legs = DefaultOutfit; };
-    virtual void SetDrawLegs(bool DrawLegs) { m_bDrawLegs = DrawLegs; };
-    virtual bool IsFirstEye() const { return (m_bFirstEye); }
-
     virtual void UpdateAnimation() { g_SetAnimation(mstate_real); };
     virtual void ChangeVisual(shared_str NewVisual);
     virtual void OnChangeVisual();
@@ -640,11 +634,6 @@ protected:
     CStatGraph* pStatGraph;
 
     shared_str m_DefaultVisualOutfit;
-
-    // Ноги из LA
-    shared_str m_DefaultVisualOutfit_legs;
-    bool m_bDrawLegs;
-    bool m_bFirstEye;
 
     LPCSTR invincibility_fire_shield_3rd;
     LPCSTR invincibility_fire_shield_1st;

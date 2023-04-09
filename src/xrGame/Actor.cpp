@@ -403,20 +403,7 @@ void CActor::Load(LPCSTR section)
     m_fDispCrouchNoAccelFactor = pSettings->r_float(section, "disp_crouch_no_acc_factor");
 
     LPCSTR default_outfit = READ_IF_EXISTS(pSettings, r_string, section, "default_outfit", 0);
-    // SetDefaultVisualOutfit(default_outfit);
-
-    // Ноги из LA
-    LPCSTR default_outfit_legs = pSettings->r_string(section, "default_outfit_legs");
-    if (psActorFlags.test(AF_FIRST_PERSON_BODY))
-    {
-        SetDefaultVisualOutfit_legs(default_outfit_legs);
-        m_bDrawLegs = true;
-    }
-    else
-    {
-        SetDefaultVisualOutfit_legs(default_outfit);
-        m_bDrawLegs = false;
-    }
+    SetDefaultVisualOutfit(default_outfit);
 
     invincibility_fire_shield_1st = READ_IF_EXISTS(pSettings, r_string, section, "Invincibility_Shield_1st", 0);
     invincibility_fire_shield_3rd = READ_IF_EXISTS(pSettings, r_string, section, "Invincibility_Shield_3rd", 0);
@@ -1303,13 +1290,7 @@ void CActor::shedule_Update(u32 DT)
     if (!character_physics_support()->IsRemoved())
 	{
 		CHelicopter* heli = smart_cast<CHelicopter*>(m_holder);
-        // setVisible(!HUDview() && !heli);
-
-        // Ноги из LA
-        if (m_bDrawLegs && psActorFlags.test(AF_FIRST_PERSON_BODY))
-            setVisible(TRUE);
-        else
-            setVisible(!HUDview() && !heli);
+        setVisible(!HUDview() && !heli);
 	}
 
     //что актер видит перед собой
@@ -1408,15 +1389,8 @@ void CActor::renderable_Render()
 		return;
 
 
-    if ((cam_active == eacFirstEye && // first eye cam
-            GEnv.Render->get_generation() == GEnv.Render->GENERATION_R2 && // R2
-            GEnv.Render->active_phase() == 1) // shadow map rendering on R2	
-        ||
-        !(IsFocused() && cam_active == eacFirstEye &&
-            (!m_holder || (m_holder && m_holder->allowWeapon() && m_holder->HUDView())))
-    )
+    if ((cam_active == eacFirstEye && GEnv.Render->get_generation() == GEnv.Render->GENERATION_R2 && GEnv.Render->active_phase() == 1) || !(IsFocused() && cam_active == eacFirstEye && (!m_holder || (m_holder && m_holder->allowWeapon() && m_holder->HUDView()))))
         CInventoryOwner::renderable_Render();
-
 
     //if (1 /*!HUDview()*/)
     //{

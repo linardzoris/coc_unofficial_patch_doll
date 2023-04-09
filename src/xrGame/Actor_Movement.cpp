@@ -512,8 +512,7 @@ void CActor::g_cl_Orientate(u32 mstate_rl, float dt)
         r_torso.yaw = cam_Active()->GetWorldYaw();
         r_torso.pitch = cam_Active()->GetWorldPitch();
     }
-    // Ноги из LA
-    else if (eacFreeLook == cam_active || psActorFlags.test(!AF_FIRST_PERSON_BODY))
+    else
     {
         r_torso.yaw = cam_FirstEye()->GetWorldYaw();
         r_torso.pitch = cam_FirstEye()->GetWorldPitch();

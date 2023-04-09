@@ -23,7 +23,6 @@
 #include "xrPhysics/actorcameracollision.h"
 #include "IKLimbsController.h"
 #include "GamePersistent.h"
-#include "CustomOutfit.h"
 
 ENGINE_API extern float psHUD_FOV; //--#SM+#--
 ENGINE_API extern float psHUD_FOV_def; //--#SM+#--
@@ -38,13 +37,6 @@ void CActor::cam_Set(EActorCameras style)
 float CActor::f_Ladder_cam_limit = 1.f;
 void CActor::cam_SetLadder()
 {
-    // Ноги из LA
-    if (psActorFlags.test(AF_FIRST_PERSON_BODY))
-    {
-        setVisible(FALSE);
-        m_bDrawLegs = false;
-    }
-
     CCameraBase* C = cameras[eacFirstEye];
     g_LadderOrient();
     float yaw = (-XFORM().k.getH());
@@ -99,13 +91,6 @@ void CActor::camUpdateLadder(float dt)
 
 void CActor::cam_UnsetLadder()
 {
-    // Ноги из LA
-    if (psActorFlags.test(AF_FIRST_PERSON_BODY))
-    {
-        setVisible(TRUE);
-        m_bDrawLegs = true;
-    }
-
     CCameraBase* C = cameras[eacFirstEye];
     C->lim_yaw[0] = 0;
     C->lim_yaw[1] = 0;
