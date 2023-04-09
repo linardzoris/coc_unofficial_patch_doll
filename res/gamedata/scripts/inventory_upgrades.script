@@ -535,7 +535,7 @@ local function how_much_repair( item_name, item_condition )
 	local multi = alife_storage_manager.get_state().economy_repair or 1
 	local class = ltx:r_string_ex(item_name, "class")
 	local factor = 1.33
-	if (class == "E_HLMET" or class == "EQU_STLK" or class == "E_STLK") then 
+	if (class == "E_HLMET" or class == "EQU_STLK" or class == "E_STLK" or class == "E_BAKPK") then 
 		factor = 1.0
 	end
 
@@ -543,7 +543,7 @@ local function how_much_repair( item_name, item_condition )
 end
 
 function can_repair_item( item_name, item_condition, mechanic ) --( string, float, string )
-	if (item_name=="pri_a17_gauss_rifle") then
+	if (item_name=="wpn_gauss") then
 		return false
 	end
 	
@@ -563,7 +563,7 @@ function can_repair_item( item_name, item_condition, mechanic ) --( string, floa
 end
 
 function question_repair_item( item_name, item_condition, can, mechanic ) --( string, float, bool, string )
-	if(item_name=="pri_a17_gauss_rifle") then
+	if(item_name=="wpn_gauss") then
 		return game.translate_string("st_gauss_cannot_be_repaired")
 	end
 	

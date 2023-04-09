@@ -216,7 +216,7 @@ function create_random_stash(no_spot,hint,bonus_items, map_spot)
 	
 	local function is_outfit(section)
 		local v = ini:r_string_ex(section,"class","")
-		return v == "EQU_STLK" or v == "E_STLK" or v == "EQU_HLMET" or v == "E_HLMET"
+		return v == "EQU_STLK" or v == "E_STLK" or v == "EQ_HLMET" or v == "E_HLMET"
 	end
 	
 	local function is_weapon(section)
@@ -231,7 +231,7 @@ function create_random_stash(no_spot,hint,bonus_items, map_spot)
 	
 	local function is_backpack(section)
 		local v = ini:r_string_ex(section,"class","")
-		return v == "EQ_BAKPK"
+		return v == "EQ_BAKPK" or v == "E_BAKPK"
 	end
 	
 	local function is_toolkit(section)

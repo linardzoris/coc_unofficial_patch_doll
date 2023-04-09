@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="windows-1251" ?>
 <string_table>
-	<string id="ui_inv_health">
+	<string id="ui_inv_health_boost">
 		<text>Здоровье</text>
 	</string>
-	<string id="ui_inv_power">
+	<string id="ui_inv_power_boost">
 		<text>Выносливость</text>
-	</string>
-	<string id="ui_inv_radiation">
-		<text>Заражение</text>
 	</string>
 	<string id="ui_inv_alcohol">
 		<text>Алкоголь</text>
@@ -373,7 +370,7 @@
 		<text>Разборка</text>
 	</string>
 	<string id="ui_st_create_stash">
-		<text>Создать тайник</text>
+		<text>заложить тайник</text>
 	</string>
 	<string id="st_money">
 		<text>%d RU</text>

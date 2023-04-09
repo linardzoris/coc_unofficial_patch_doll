@@ -293,7 +293,7 @@
 	<string id="kb_grp_auto">
 		<text>Транспорт</text>
 	</string>	
-	<string id="kb_turn_engine">
+	<string id="kb_turn_auto_engine">
 		<text>Завести двигатель</text>
 	</string>
 	<string id="kb_switch_horn">

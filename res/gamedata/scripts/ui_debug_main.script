@@ -87,6 +87,7 @@ function get_spawn_table(name)
 
 		["ON_OFF_S"] = "Squads",
 
+		["E_BAKPK"] = "Outfits",
 		["EQ_BAKPK"] = "Outfits",
 		["EQ_PATCH"] = "Items (Misc.)",
 		["II_ATTCH"] = "Items (Misc.)",
@@ -114,7 +115,7 @@ function get_spawn_table(name)
 		["E_STLK"]   = "Outfits",
 		["E_HLMET"]  = "Outfits",
 		["EQU_STLK"]   = "Outfits",
-		["EQU_HLMET"]  = "Outfits",
+		["EQ_HLMET"]  = "Outfits",
 		
 		["II_BANDG"] = "Items (Consumable)",
 		["II_MEDKI"] = "Items (Consumable)",
