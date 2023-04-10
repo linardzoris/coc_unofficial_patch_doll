@@ -1,33 +1,37 @@
 <w>
-	<main_frame x="10" y="300" width="256" height="170" delay="500"/>
-	<background_frame x="0" y="0" width="256" height="170">
+	<main_frame x="160" y="300" width="486" height="170" delay="810"/>
+	<background_frame x="0" y="0" width="486" height="170">
 		<texture>ui_inGame2_hint_wnd_main_window</texture>
 	</background_frame>
 
-	<static_name x="16" y="20" width="224" height="20" stretch="1" complex_desc="0">
+	<static_name x="16" y="20" width="454" height="20" stretch="1" complex_desc="0">
 		<text font="letterica18" complex_mode="0" align="c" vert_align="c"/>
 	</static_name>
 
-	<static_weight x="16" y="40" width="224" height="20">
+	<static_weight x="16" y="40" width="454" height="20">
 		<text align="l" font="letterica18" r="210" g="210" b="210"/>
 	</static_weight>
 
-	<static_cost x="168" y="40" width="56" height="16">
+	<static_condition x="420" y="40" width="454" height="20">
+		<text align="l" font="letterica18" r="210" g="210" b="210"/>
+	</static_condition>
+
+	<static_cost x="248" y="40" width="206" height="20">
 		<text font="letterica18" align="r" r="210" g="210" b="210"/>
 	</static_cost>
 
-	<static_no_trade x="16" y="60" width="224" height="20">
+	<static_no_trade x="16" y="60" width="444" height="20">
 		<text align="l" font="letterica16" complex_mode="1"/>
 	</static_no_trade>
 
-	<static_expiration x="16" y="5" width="200" height="20">
+	<static_expiration x="16" y="5" width="420" height="20">
 		<text align="l" font="letterica16"/>
 	</static_expiration>
 	
-	<descr_list x="16" y="60" width="212" height="130" always_show_scroll="0" fit_to_height="1">
+	<descr_list x="16" y="60" width="442" height="130" always_show_scroll="0" fit_to_height="1">
 		<font font="letterica16" r="170" g="170" b="170"/>
 	</descr_list>
-	<description_line x="16" y="50" width="208" height="9" stretch="1">
+	<description_line x="16" y="50" width="408" height="0" stretch="1">
 		<texture>ui_inGame2_hint_wnd_Information</texture>
 	</description_line>
 <!--
@@ -162,6 +166,10 @@
 		</cap_ammo_used_type>
 	    <static_ammo_type1 x="12" y="117" width="80" height="40" />
 	    <static_ammo_type2 x="84" y="117" width="80" height="40" />
+		<static_ammo_type3 x="156" y="117" width="80" height="40" />
+		<static_ammo_type4 x="228" y="117" width="80" height="40" />
+		<static_ammo_type5 x="300" y="117" width="80" height="40" />
+		<static_ammo_type6 x="372" y="117" width="80" height="40" />		
 	</wpn_params>
 
 #include "ui\af_params_16.xml"
@@ -201,16 +209,16 @@
 		</properties>
 	</upgrade_info>
 
-	<cell_item_text x="1" y="1" width="23" height="16" stretch="1">
+	<cell_item_text x="-1" y="-1" width="17" height="11" stretch="1">
 		<texture a="200">ui_item_count_back</texture>
-		<text x="0" y="0" width="29" height="16" font="letterica16" color="ui_2" align="c" vert_align="c"/>
+		<text x="0" y="0" width="17" height="11" font="arial_14" color="ui_2" align="c" vert_align="c"/>
 	</cell_item_text>
 
-	<cell_item_mark x="1" y="1" width="12" height="15" stretch="1">
+	<cell_item_mark x="-1" y="-1" width="9" height="11" stretch="1">
 		<texture a="130">ui_icons_newPDA_perssign_h</texture>
 	</cell_item_mark>
 
-	<cell_item_upgrade x="1" y="1" width="13" height="16" stretch="1">
+	<cell_item_upgrade x="0" y="0" width="10" height="12" stretch="1">
 		<texture a="180">ui_upgrade_arrow2</texture>
 	</cell_item_upgrade>
 

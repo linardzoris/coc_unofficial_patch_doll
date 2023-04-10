@@ -30,6 +30,8 @@ private:
     _desc_info m_desc_info;
     CInventoryItem* m_pInvItem;
 
+	void CheckConditionInfo(CInventoryItem& pInvItem);
+
 public:
     CUIItemInfo();
     virtual ~CUIItemInfo();
@@ -53,11 +55,13 @@ public:
     CUIFrameWindow* UIBackground;
     CUITextWnd* UIName;
     CUITextWnd* UIWeight;
+    CUITextWnd* UICondition;
     CUITextWnd* UICost;
     CUITextWnd* UITradeTip;
     //	CUIStatic*			UIDesc_line;
     CUIScrollView* UIDesc;
     bool m_complex_desc;
+    bool m_check_condition_info;
 
     //	CUIConditionParams*		UIConditionWnd;
     CUIWpnParams* UIWpnParams;

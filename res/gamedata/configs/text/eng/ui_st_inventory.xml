@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <string_table>
-	<string id="ui_inv_health">
+	<string id="ui_inv_health_boost">
 		<text>Health</text>
 	</string>
-	<string id="ui_inv_power">
+	<string id="ui_inv_power_boost">
 		<text>Endurance</text>
-	</string>
-	<string id="ui_inv_radiation">
-		<text>Infection</text>
 	</string>
 	<string id="ui_inv_alcohol">
 		<text>Alcohol</text>

@@ -25,6 +25,13 @@
 #include "eatable_item.h"
 #include "UICellItem.h"
 #include "xrGame/game_type.h"
+#include "../torch.h"
+#include "../SimpleDetector.h"
+#include "../AdvancedDetector.h"
+#include "../EliteDetector.h"
+#include "../PDA.h"
+#include "../CustomDetector.h"
+#include "../Flashlight.h"
 
 extern const LPCSTR g_inventory_upgrade_xml;
 
@@ -38,6 +45,7 @@ CUIItemInfo::CUIItemInfo()
     UICost = NULL;
     UITradeTip = NULL;
     UIWeight = NULL;
+    UICondition = NULL;
     UIItemImage = NULL;
     UIDesc = NULL;
     //	UIConditionWnd				= NULL;
@@ -51,6 +59,7 @@ CUIItemInfo::CUIItemInfo()
     m_pInvItem = NULL;
     m_b_FitToHeight = false;
     m_complex_desc = false;
+    m_check_condition_info = false;
 }
 
 CUIItemInfo::~CUIItemInfo()
@@ -106,7 +115,13 @@ void CUIItemInfo::InitItemInfo(LPCSTR xml_name)
         UIWeight->SetAutoDelete(true);
         xml_init.InitTextWnd(uiXml, "static_weight", 0, UIWeight);
     }
-
+    if (uiXml.NavigateToNode("static_condition", 0))
+    {
+        UICondition = new CUITextWnd();
+        AttachChild(UICondition);
+        UICondition->SetAutoDelete(true);
+        xml_init.InitTextWnd(uiXml, "static_condition", 0, UICondition);
+    }
     if (uiXml.NavigateToNode("static_cost", 0))
     {
         UICost = new CUITextWnd();
@@ -235,6 +250,38 @@ void CUIItemInfo::InitItem(CUICellItem* pCellItem, CInventoryItem* pCompareItem,
             UIWeight->SetWndPos(pos);
         }
     }
+
+	if (UICondition && m_check_condition_info && item_price == u32(-1))
+		{
+			LPCSTR  percent = StringTable().translate("st_percent").c_str();
+			LPCSTR  shots = StringTable().translate("st_shots").c_str();
+			// Домножаем на сто т.к. здоровье итема равно 1.0
+			float   condition = pInvItem->GetCondition() * 100;
+			float   condition_weapon = pInvItem->GetCondition();
+
+			/*
+			if (CWeapon* weapon = dynamic_cast<CWeapon*>(pInvItem))
+			{
+				xr_sprintf(str, "%3.f %s", condition_weapon, shots);
+				UICondition->SetText(str);
+			}
+			else
+			*/
+			//{
+				xr_sprintf(str, "%3.f %s", condition, percent);
+				UICondition->SetText(str);
+			//}
+
+			pos.x = UICondition->GetWndPos().x;
+			if (m_complex_desc)
+			{
+				UICondition->SetWndPos(pos);
+			}
+			UICondition->Show(true);
+		}
+	else
+		UICondition->Show(false);
+
     // Регулировка денежного эквивалента через конфиг
     LPCSTR money_str = StringTable().translate("st_money").c_str();
 
@@ -277,6 +324,9 @@ void CUIItemInfo::InitItem(CUICellItem* pCellItem, CInventoryItem* pCompareItem,
         if (UIWeight)
             pos.y = UIWeight->GetWndPos().y + UIWeight->GetHeight() + 4.0f;
 
+		if (UICondition)
+            pos.y = UICondition->GetWndPos().y + UICondition->GetHeight() + 4.0f;
+
         if (UITradeTip && trade_tip != NULL)
             pos.y = UITradeTip->GetWndPos().y + UITradeTip->GetHeight() + 4.0f;
 
@@ -294,7 +344,8 @@ void CUIItemInfo::InitItem(CUICellItem* pCellItem, CInventoryItem* pCompareItem,
             pItem->AdjustHeightToText();
             UIDesc->AddWindow(pItem, true);
         }
-        TryAddConditionInfo(*pInvItem, pCompareItem);
+        CheckConditionInfo(*pInvItem);
+        //TryAddConditionInfo(*pInvItem, pCompareItem);
         TryAddWpnInfo(*pInvItem, pCompareItem);
         TryAddArtefactInfo(*pInvItem);
         TryAddOutfitInfo(*pInvItem, pCompareItem);
@@ -440,4 +491,25 @@ void CUIItemInfo::Draw()
 {
     if (m_pInvItem)
         inherited::Draw();
+}
+
+// Проверяет, у каких итемов можно показывать процент износа
+void CUIItemInfo::CheckConditionInfo(CInventoryItem& pInvItem)
+{
+	CWeapon*		weapon = smart_cast<CWeapon*>(&pInvItem);
+	CCustomOutfit*	outfit = smart_cast<CCustomOutfit*>(&pInvItem);
+	CHelmet*		helmet = smart_cast<CHelmet*>(&pInvItem);
+	CBackpack*		backpack = smart_cast<CBackpack*>(&pInvItem);
+	CTorch*	        torch = smart_cast<CTorch*>(&pInvItem);
+	CPda*	        pda = smart_cast<CPda*>(&pInvItem);
+	CSimpleDetector* simple_detector = smart_cast<CSimpleDetector*>(&pInvItem);
+	CAdvancedDetector* advanced_detector = smart_cast<CAdvancedDetector*>(&pInvItem);
+	CEliteDetector*	elite_detector = smart_cast<CEliteDetector*>(&pInvItem);
+	CScientificDetector* sci_detector = smart_cast<CScientificDetector*>(&pInvItem);
+    CFlashlight* flashlight = smart_cast<CFlashlight*>(&pInvItem);
+
+	if (weapon || outfit || helmet || torch || pda || simple_detector || advanced_detector || elite_detector || sci_detector || backpack || flashlight)
+		m_check_condition_info = true;
+	else
+		m_check_condition_info = false;
 }
