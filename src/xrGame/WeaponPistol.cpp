@@ -5,7 +5,6 @@
 
 CWeaponPistol::CWeaponPistol()
 {
-    m_eSoundClose = ESoundTypes(SOUND_TYPE_WEAPON_RECHARGING);
     SetPending(FALSE);
 }
 
@@ -14,8 +13,6 @@ void CWeaponPistol::net_Destroy() { inherited::net_Destroy(); }
 void CWeaponPistol::Load(LPCSTR section)
 {
     inherited::Load(section);
-
-    m_sounds.LoadSound(section, "snd_close", "sndClose", false, m_eSoundClose);
 }
 
 void CWeaponPistol::OnH_B_Chield() { inherited::OnH_B_Chield(); }

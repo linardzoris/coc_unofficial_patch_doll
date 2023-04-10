@@ -211,7 +211,7 @@ const ui_shader& InventoryUtilities::GetOutfitUpgradeIconsShader()
     if (!g_OutfitUpgradeIconsShader)
     {
         g_OutfitUpgradeIconsShader = new ui_shader();
-        (*g_OutfitUpgradeIconsShader)->create("hud\\default", "ui\\ui_actor_armor");
+        (*g_OutfitUpgradeIconsShader)->create("hud\\default", "ui\\ingame_upgrades\\ui_actor_upgrades_icons");
     }
 
     return *g_OutfitUpgradeIconsShader;
@@ -222,7 +222,7 @@ const ui_shader& InventoryUtilities::GetWeaponUpgradeIconsShader()
     if (!g_WeaponUpgradeIconsShader)
     {
         g_WeaponUpgradeIconsShader = new ui_shader();
-        (*g_WeaponUpgradeIconsShader)->create("hud\\default", "ui\\ui_actor_weapons");
+        (*g_WeaponUpgradeIconsShader)->create("hud\\default", "ui\\ingame_upgrades\\ui_actor_upgrades_icons");
     }
 
     return *g_WeaponUpgradeIconsShader;

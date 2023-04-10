@@ -423,6 +423,7 @@ void hud_draw_adjust_mode()
         F->OutNext("delta values dP=%f dR=%f", hud_adj_delta_pos, hud_adj_delta_rot);
         F->OutNext("[Z]-x axis [X]-y axis [C]-z axis");
         F->OutNext("[SHIFT] + [ENTER] for save params into file");
+        F->OutNext("[LCONTROL] + [NUMPAD_] for weapons[0] or devices[1]");
     }
 }
 
