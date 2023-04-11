@@ -267,6 +267,9 @@
 	<string id="kb_custom8">
 		<text>Скрыть миникарту</text>
 	</string>
+	<string id="kb_custom9">
+		<text>Надеть/снять глушитель</text>
+	</string>
 	
 	<string id="kb_pda_tab1">
 		<text>Карта</text>

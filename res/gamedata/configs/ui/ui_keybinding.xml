@@ -49,7 +49,7 @@
 		<command id="kb_drop"						  	exe="drop"/>		
 	</group>
 	<group name="kb_grp_auto">
-		<command id="kb_turn_engine"					exe="turn_engine"/>
+		<command id="kb_turn_auto_engine"				exe="turn_engine"/>
 		<command id="kb_car_moving_break"				exe="jump"/>
 		<command id="kb_car_transmission_up"			exe="car_transmission_up"/>
 		<command id="kb_car_transmission_down"			exe="car_transmission_down"/>	
@@ -82,6 +82,7 @@
 		<command id="kb_custom6"                        exe="custom6"/> <!-- Cycle HUD -->
 		<command id="kb_custom7"                        exe="custom7"/> <!-- Backpack Quick Release -->
 		<command id="kb_custom8"                        exe="custom8"/> <!-- Hide Minimap -->
+		<command id="kb_custom9"                        exe="custom9"/> <!-- Toggle Suppressor -->
 <!--		<command id="kb_custom9"                        exe="custom9"/>
 		<command id="kb_custom10"                       exe="custom10"/>
 		<command id="kb_custom12"                       exe="custom10"/>

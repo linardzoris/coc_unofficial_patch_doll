@@ -269,7 +269,10 @@
 	<string id="kb_custom8">
 		<text>Hide mimimap</text>
 	</string>
-
+	<string id="kb_custom9">
+		<text>Toggle suppressor</text>
+	</string>
+	
 	<string id="kb_kick">
 		<text>Kick</text>
 	</string>
@@ -296,7 +299,7 @@
 	<string id="kb_grp_auto">
 		<text>Transport</text>
 	</string>	
-	<string id="kb_turn_engine">
+	<string id="kb_turn_auto_engine">
 		<text>Start the engine</text>
 	</string>
 	<string id="kb_switch_horn">
