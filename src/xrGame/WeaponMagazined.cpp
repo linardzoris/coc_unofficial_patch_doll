@@ -49,6 +49,7 @@ CWeaponMagazined::CWeaponMagazined(ESoundTypes eSoundType) : CWeapon()
 
 	m_bNeedBulletInGun = false;
     bHasBulletsToHide = false;
+    m_bHasDistantShotSound = false;
 
 	m_bAutoreloadEnabled = READ_IF_EXISTS(pSettings, r_bool, "gameplay", "autoreload_enabled", false);
 }
@@ -86,14 +87,21 @@ void CWeaponMagazined::Load(LPCSTR section)
     //Alundaio: LAYERED_SND_SHOOT
 #ifdef LAYERED_SND_SHOOT
     m_layered_sounds.LoadSound(section, "snd_shoot", "sndShot", true, m_eSoundShot);
-    //if (WeaponSoundExist(section, "snd_shoot_actor"))
-    //    m_layered_sounds.LoadSound(section, "snd_shoot_actor", "sndShotActor", false, m_eSoundShot);
 #else
     m_sounds.LoadSound(section, "snd_shoot", "sndShot", true, m_eSoundShot);  //Alundaio: Set exclusive to true
-    //if (WeaponSoundExist(section, "snd_shoot_actor"))
-    //    m_sounds.LoadSound(section, "snd_shoot_actor", "sndShot", false, m_eSoundShot);
 #endif
     //-Alundaio
+
+	if (pSettings->line_exist(section, "snd_shoot_distant")) // distant sound
+    {
+        m_sounds.LoadSound(section, "snd_shoot_distant", "sndShotDist", false, m_eSoundShot);
+        m_bHasDistantShotSound = true;
+    }
+    if (pSettings->line_exist(section, "snd_shoot_distant_far")) // distant sound
+    {
+        m_sounds.LoadSound(section, "snd_shoot_distant_far", "sndShotDistFar", false, m_eSoundShot);
+        m_bHasDistantShotSound = true;
+    }
 
     m_sounds.LoadSound(section, "snd_empty", "sndEmptyClick", false, m_eSoundEmptyClick);
     m_sounds.LoadSound(section, "snd_reload", "sndReload", true, m_eSoundReload);
@@ -780,39 +788,26 @@ void CWeaponMagazined::state_Misfire(float dt)
 
 void CWeaponMagazined::state_MagEmpty(float dt) {}
 void CWeaponMagazined::SetDefaults() { CWeapon::SetDefaults(); }
+
+bool bDistantSounds = READ_IF_EXISTS(pSettings, r_bool, "gameplay", "weapon_distant_sounds", false);
+u32 m_uDistSoundDistance = READ_IF_EXISTS(pSettings, r_u32, "gameplay", "weapon_distant_sound_distance", 125);
+u32 m_uDistSoundDistanceFar = READ_IF_EXISTS(pSettings, r_u32, "gameplay", "weapon_distant_sound_distance_far", 200);
+
 void CWeaponMagazined::OnShot()
 {
-    // SoundWeaponMagazined.cpp
     //Alundaio: LAYERED_SND_SHOOT
 #ifdef LAYERED_SND_SHOOT
-    //Alundaio: Actor sounds
-    if (ParentIsActor())
-    {
-        /*
-        if (strcmp(m_sSndShotCurrent.c_str(), "sndShot") == 0 && pSettings->line_exist(m_section_id, "snd_shoot_actor") && m_layered_sounds.FindSoundItem("sndShotActor", false))
-            m_layered_sounds.PlaySound("sndShotActor", get_LastFP(), H_Root(), !!GetHUDmode(), false, (u8)-1);
-        else if (strcmp(m_sSndShotCurrent.c_str(), "sndSilencerShot") == 0 && pSettings->line_exist(m_section_id, "snd_silncer_shot_actor")
-            && m_layered_sounds.FindSoundItem("sndSilencerShotActor", false))
-            m_layered_sounds.PlaySound("sndSilencerShotActor", get_LastFP(), H_Root(), !!GetHUDmode(), false, (u8)-1);
-        else
-        */
-            m_layered_sounds.PlaySound(m_sSndShotCurrent.c_str(), get_LastFP(), H_Root(), !!GetHUDmode(), false, (u8)-1);
-    }
+    if (m_bHasDistantShotSound && !IsSilencerAttached() && bDistantSounds && Position().distance_to(Device.vCameraPosition) > m_uDistSoundDistance && Position().distance_to(Device.vCameraPosition) < m_uDistSoundDistanceFar)
+        PlaySound("sndShotDist", get_LastFP());
+    else if (m_bHasDistantShotSound && !IsSilencerAttached() && bDistantSounds && Position().distance_to(Device.vCameraPosition) > m_uDistSoundDistanceFar)
+        PlaySound("sndShotDistFar", get_LastFP());
     else
         m_layered_sounds.PlaySound(m_sSndShotCurrent.c_str(), get_LastFP(), H_Root(), !!GetHUDmode(), false, (u8)-1);
 #else
-    //Alundaio: Actor sounds
-    if (ParentIsActor())
-    {
-        /*
-        if (strcmp(m_sSndShotCurrent.c_str(), "sndShot") == 0 && pSettings->line_exist(m_section_id, "snd_shoot_actor")&& m_sounds.FindSoundItem("sndShotActor", false))
-            PlaySound("sndShotActor", get_LastFP(), (u8)(m_iShotNum - 1));
-        else if (strcmp(m_sSndShotCurrent.c_str(), "sndSilencerShot") == 0 && pSettings->line_exist(m_section_id, "snd_silncer_shot_actor") && m_sounds.FindSoundItem("sndSilencerShotActor", false))
-            PlaySound("sndSilencerShotActor", get_LastFP(), (u8)(m_iShotNum - 1));
-		else
-        */
-        PlaySound(m_sSndShotCurrent.c_str(), get_LastFP(), (u8)-1);
-    }
+    if (m_bHasDistantShotSound && bDistantSounds && Position().distance_to(Device.vCameraPosition) > m_uDistSoundDistance && Position().distance_to(Device.vCameraPosition) < m_uDistSoundDistanceFar)
+        PlaySound("sndShotDist", get_LastFP());
+    else if (m_bHasDistantShotSound && bDistantSounds && Position().distance_to(Device.vCameraPosition) > m_uDistSoundDistanceFar)
+        PlaySound("sndShotDistFar", get_LastFP());
     else
         PlaySound(m_sSndShotCurrent.c_str(), get_LastFP(), (u8)-1); //Alundaio: Play sound at index (ie. snd_shoot, snd_shoot1, snd_shoot2, snd_shoot3)
 #endif
@@ -2065,6 +2060,22 @@ bool CWeaponMagazined::install_upgrade_impl(LPCSTR section, bool test)
     if (result2 && !test)
     {
         m_sounds.LoadSound(section, "snd_reload", "sndReload", true, m_eSoundReload);
+    }
+    result |= result2;
+
+	result2 = process_if_exists_set(section, "snd_shoot_distant", &CInifile::r_string, str, test);
+    if (result2 && !test)
+    {
+        m_sounds.LoadSound(section, "snd_shoot_distant", "sndShotDist", false, m_eSoundShot);
+        m_bHasDistantShotSound = true;
+    }
+    result |= result2;
+
+	result2 = process_if_exists_set(section, "snd_shoot_distant_far", &CInifile::r_string, str, test);
+    if (result2 && !test)
+    {
+        m_sounds.LoadSound(section, "snd_shoot_distant_far", "sndShotDistFar", false, m_eSoundShot);
+        m_bHasDistantShotSound = true;
     }
     result |= result2;
 

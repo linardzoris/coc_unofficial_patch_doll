@@ -62,7 +62,11 @@ public:
     virtual bool Useful() const;
 
 protected:
-    bool IsSoundPlaying() { return !!sndExplode._feedback(); }
+    bool IsSoundPlaying()
+    {
+        return sndExplode._feedback() != nullptr || (m_bHasDistantSound && sndDistantExplode._feedback() != nullptr) ||
+            (m_bHasDistantSound && sndDistantExplodeFar._feedback() != nullptr);
+    }
     bool IsExploded() { return !!m_explosion_flags.test(flExploded); }
 public:
     bool IsExploding() { return !!m_explosion_flags.test(flExploding); }
@@ -143,7 +147,11 @@ protected:
 
     //звуки
     ref_sound sndExplode;
+    ref_sound sndDistantExplode;
+    ref_sound sndDistantExplodeFar;
     ESoundTypes m_eSoundExplode;
+
+    bool m_bHasDistantSound;
 
     //размер отметки на стенах
     float fWallmarkSize;

@@ -156,6 +156,7 @@ protected:
 
     bool m_bLockType;     //переменная блокирует использование только разных типов патронов
     bool m_bAutoreloadEnabled; // Автоперезарядка
+    bool m_bHasDistantShotSound; // Звуки, которые заменяют обычные звуки стрельбы на расстоянии
 
 public:
     virtual void OnZoomIn();

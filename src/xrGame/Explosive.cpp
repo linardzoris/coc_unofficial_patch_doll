@@ -69,6 +69,7 @@ CExplosive::CExplosive(void)
     m_fExplodeHideDurationMax = 0;
     m_bDynamicParticles = FALSE;
     m_pExpParticle = NULL;
+    m_bHasDistantSound = false;
 }
 
 void CExplosive::LightCreate()
@@ -83,6 +84,10 @@ CExplosive::~CExplosive(void)
 #ifndef LAYERED_SND_SHOOT
     sndExplode.destroy();
 #endif
+
+	if (m_bHasDistantSound)
+        sndDistantExplode.destroy();
+        sndDistantExplodeFar.destroy();
 }
 void CExplosive::Load(LPCSTR section) { Load(pSettings, section); }
 void CExplosive::Load(CInifile const* ini, LPCSTR section)
@@ -144,6 +149,21 @@ void CExplosive::Load(CInifile const* ini, LPCSTR section)
     m_bDynamicParticles = FALSE;
     if (ini->line_exist(section, "dynamic_explosion_particles"))
         m_bDynamicParticles = ini->r_bool(section, "dynamic_explosion_particles");
+
+	if (ini->line_exist(section, "snd_distant_explode"))
+    {
+        pcstr snd_name = ini->r_string(section, "snd_distant_explode");
+        sndDistantExplode.create(snd_name, st_Effect, m_eSoundExplode);
+
+        m_bHasDistantSound = true;
+    }
+    if (ini->line_exist(section, "snd_distant_explode_far"))
+    {
+        pcstr snd_name = ini->r_string(section, "snd_distant_explode_far");
+        sndDistantExplodeFar.create(snd_name, st_Effect, m_eSoundExplode);
+
+        m_bHasDistantSound = true;
+    }
 }
 
 void CExplosive::net_Destroy()
@@ -350,6 +370,17 @@ void CExplosive::Explode()
 #else
     GEnv.Sound->play_at_pos(sndExplode, 0, pos, false);
 #endif
+
+    bool bDistantSounds = READ_IF_EXISTS(pSettings, r_bool, "gameplay", "weapon_distant_sounds", false);
+    u32 m_uDistSoundDistance = READ_IF_EXISTS(pSettings, r_u32, "gameplay", "weapon_distant_sound_distance", 125);
+    u32 m_uDistSoundDistanceFar = READ_IF_EXISTS(pSettings, r_u32, "gameplay", "weapon_distant_sound_distance_far", 200);
+
+	if (m_bHasDistantSound && bDistantSounds && pos.distance_to(Device.vCameraPosition) > m_uDistSoundDistance && pos.distance_to(Device.vCameraPosition) < m_uDistSoundDistanceFar)
+        GEnv.Sound->play_at_pos(sndDistantExplode, 0, pos, false);
+	else if (m_bHasDistantSound && bDistantSounds && pos.distance_to(Device.vCameraPosition) > m_uDistSoundDistanceFar)
+        GEnv.Sound->play_at_pos(sndDistantExplodeFar, 0, pos, false);
+    else
+        GEnv.Sound->play_at_pos(sndExplode, 0, pos, false);
 
     //показываем эффекты
 
