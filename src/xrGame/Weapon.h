@@ -216,15 +216,22 @@ public:
     const shared_str GetGrenadeLauncherName() const { return pSettings->r_string(m_launchers[m_cur_addon.launcher], "grenade_launcher_name"); }
     const shared_str GetScopeName() const;
     const shared_str GetSilencerName() const { return pSettings->r_string(m_silencers[m_cur_addon.silencer], "silencer_name"); }
-    const shared_str GetGrenadeLauncherBoneName() const { return READ_IF_EXISTS(pSettings, r_string, GetGrenadeLauncherName(), "addon_bone", "wpn_launcher"); }
-    const shared_str GetScopeBoneName() const { return READ_IF_EXISTS(pSettings, r_string, GetScopeName(), "addon_bone", "wpn_scope"); }
-    const shared_str GetSilencerBoneName() const { return READ_IF_EXISTS(pSettings, r_string, GetSilencerName(), "addon_bone", "wpn_silencer"); }
-    bool SetBoneVisible(IKinematics* m_model, const shared_str& bone_name, BOOL bVisibility, BOOL bSilent);
 
     IC void ForceUpdateAmmo() { m_BriefInfo_CalcFrame = 0; }
     u8 GetAddonsState() const { return m_flagsAddOnState; };
     void SetAddonsState(u8 st) { m_flagsAddOnState = st; } // dont use!!! for buy menu only!!!
+
+	RStringVec m_defShownBones;
+    RStringVec m_defHiddenBones;
+
 protected:
+    shared_str m_sWpn_scope_bone;
+    shared_str m_sWpn_silencer_bone;
+    shared_str m_sWpn_launcher_bone;
+
+    xr_vector<shared_str> m_all_scope_bones;
+    shared_str m_cur_scope_bone;
+
     //состояние подключенных аддонов
     u8 m_flagsAddOnState;
 

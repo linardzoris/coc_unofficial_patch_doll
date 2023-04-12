@@ -1392,6 +1392,7 @@ bool CWeaponMagazined::DetachScope(const char* item_section_name, bool b_spawn_i
         if (!xr_strcmp(iter_scope_name, item_section_name))
         {
             m_cur_addon.scope = 0;
+            m_cur_scope_bone = NULL;
             detached = true;
         }
     }
@@ -1486,6 +1487,12 @@ void CWeaponMagazined::InitAddons()
         if (m_eScopeStatus == ALife::eAddonAttachable)
         {
             LoadCurrentScopeParams(GetScopeName().c_str());
+
+			if (pSettings->line_exist(m_scopes[m_cur_addon.scope], "bones"))
+            {
+                pcstr ScopeBone = pSettings->r_string(m_scopes[m_cur_addon.scope], "bones");
+                m_cur_scope_bone = ScopeBone;
+            }
         }
     }
     else
