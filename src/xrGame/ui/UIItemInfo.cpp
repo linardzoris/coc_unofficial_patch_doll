@@ -423,7 +423,7 @@ void CUIItemInfo::TryAddArtefactInfo(CInventoryItem& pInvItem)
         UIArtefactParams->SetInfo(outfit);
         UIDesc->AddWindow(UIArtefactParams, false);
     }
-    else if (arte)
+    else if (arte && UIArtefactParams->CheckDescrInfoPortions(pInvItem.object().cNameSect()))
     {
         UIArtefactParams->SetInfo(arte);
         UIDesc->AddWindow(UIArtefactParams, false);
