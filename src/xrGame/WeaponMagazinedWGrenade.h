@@ -30,6 +30,9 @@ public:
     virtual void save(NET_Packet& output_packet);
     virtual void load(IReader& input_packet);
 
+    virtual bool bInZoomRightNow() const { return (m_zoom_params.m_fZoomRotationFactor > 0.05) && !m_bGrenadeMode; }
+    virtual bool bMarkCanShow() { return IsZoomed() && !m_bGrenadeMode; }
+
     virtual bool Attach(PIItem pIItem, bool b_send_event);
     virtual bool Detach(pcstr item_section_name, bool b_spawn_item);
     virtual bool CanAttach(PIItem pIItem);

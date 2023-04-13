@@ -1762,6 +1762,8 @@ void CCC_RegisterCommands()
 	CMD3(CCC_Mask, "g_3d_pda", &psActorFlags, AF_3D_PDA);
     psActorFlags.set(AF_SIMPLE_PDA, TRUE);
     CMD3(CCC_Mask, "g_simple_pda", &psActorFlags, AF_SIMPLE_PDA);
+    psActorFlags.set(AF_3DSCOPE_ENABLE, FALSE);
+    CMD3(CCC_Mask, "g_3d_scopes", &psActorFlags, AF_3DSCOPE_ENABLE);
 
     CMD1(CCC_GameDifficulty, "g_game_difficulty");
     CMD1(CCC_GameLanguage, "g_language");

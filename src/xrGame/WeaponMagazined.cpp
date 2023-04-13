@@ -1348,6 +1348,10 @@ bool CWeaponMagazined::Attach(PIItem pIItem, bool b_send_event)
 
     if (result)
     {
+        if (pScope && bUseAltScope)
+        {
+            bNVsecondVPstatus = !!pSettings->line_exist(pIItem->object().cNameSect(), "scope_nightvision");
+        }
 
         SyncronizeWeaponToServer();
         if (b_send_event && OnServer())
@@ -1495,6 +1499,14 @@ void CWeaponMagazined::InitAddons()
         if (m_UIScope)
         {
             xr_delete(m_UIScope);
+        }
+
+	    if (bIsSecondVPZoomPresent())
+            m_zoom_params.m_fSecondVPFovFactor = 0.0f;
+
+		if (IsZoomEnabled())
+        {
+            m_zoom_params.m_bUseDynamicZoom = READ_IF_EXISTS(pSettings, r_bool, cNameSect(), "scope_dynamic_zoom", FALSE);
         }
     }
 

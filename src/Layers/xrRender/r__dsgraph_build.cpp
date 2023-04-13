@@ -1330,11 +1330,15 @@ void D3DXRenderBase::End()
     RCache.OnFrameEnd();
     DoAsyncScreenshot();
 #if defined(USE_DX10) || defined(USE_DX11) || defined(USE_OGL)
-    bool bUseVSync = psDeviceFlags.is(rsFullscreen) && psDeviceFlags.test(rsVSync); //xxx: weird tearing glitches when VSync turned on for windowed mode in DX10\11
-    HW.m_pSwapChain->Present(bUseVSync ? 1 : 0, 0);
+    if (!Device.m_SecondViewport.IsSVPFrame() && !Device.m_SecondViewport.isCamReady) //--#SM+#-- +SecondVP+
+    {
+        bool bUseVSync = psDeviceFlags.is(rsFullscreen) && psDeviceFlags.test(rsVSync); //xxx: weird tearing glitches when VSync turned on for windowed mode in DX10\11
+        HW.m_pSwapChain->Present(bUseVSync ? 1 : 0, 0);
+    }
 #else
     CHK_DX(HW.pDevice->EndScene());
-    HW.pDevice->Present(nullptr, nullptr, nullptr, nullptr);
+    if (!Device.m_SecondViewport.IsSVPFrame() && !Device.m_SecondViewport.isCamReady)
+        HW.pDevice->Present(nullptr, nullptr, nullptr, nullptr);
 #endif
 }
 

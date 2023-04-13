@@ -95,6 +95,8 @@ public:
     // Mortan/SWM 3 scope system
 	bool bUseAltScope;
     bool bScopeIsHasTexture;
+    bool bNVsecondVPavaible;
+    bool bNVsecondVPstatus;
     bool bAltScopeIsHasTexture; // Альт. прицеливание
     bool bLoadAltScopesParams(LPCSTR section);
     bool bReloadSectionScope(LPCSTR section);
@@ -105,6 +107,20 @@ public:
     shared_str GetNameWithAttachment();
 
     virtual void OnBulletHit(); // При попадании во что-то
+
+	virtual bool bInZoomRightNow() const { return m_zoom_params.m_fZoomRotationFactor > 0.05; }
+    IC bool bIsSecondVPZoomPresent() const { return GetSecondVPZoomFactor() > 0.000f; }
+    bool bChangeNVSecondVPStatus();
+
+	virtual void UpdateSecondVP();
+    void Load3DScopeParams(LPCSTR section);
+    void ZoomDynamicMod3d(bool bIncrement, bool bForceLimit);
+    virtual bool bMarkCanShow() { return IsZoomed(); }
+	virtual float GetControlInertionFactor() const;
+    IC float GetSecondVPZoomFactor() const { return m_zoom_params.m_fSecondVPFovFactor; }
+    float GetSecondVPFov() const;
+
+	float m_fScopeInertionFactor;
 
 public:
     virtual bool can_kill() const;
@@ -166,8 +182,17 @@ public:
 
     void GetZoomData(const float scope_factor, float& delta, float& min_zoom_factor)
     {
-        min_zoom_factor = 2.0f;
-        delta = 1.0f;
+        // Для 3д прицелов
+        float def_fov = bIsSecondVPZoomPresent() ? 75.0f : g_fov; // float(g_fov);
+        float delta_factor_total = def_fov - scope_factor;
+        VERIFY(delta_factor_total > 0);
+
+        float min_zoom_factor_3d = def_fov - delta_factor_total * 0.3f;
+        float delta_3d = (delta_factor_total * (1 - 0.3f)) / 3.0f;
+
+        // Для 2д прицелов стандартные числовые выражения, для 3д - непонятная формула выше
+        min_zoom_factor = bIsSecondVPZoomPresent() ? min_zoom_factor_3d : 2.0f;
+        delta = bIsSecondVPZoomPresent() ? delta_3d : 1.0f;
     }
 
 protected:
@@ -274,6 +299,7 @@ protected:
         bool  m_altAimPos; // Альт. прицеливание
 
         float m_fZoomRotationFactor;
+        float m_fSecondVPFovFactor;
 
         Fvector m_ZoomDof;
         Fvector4 m_ReloadDof;
