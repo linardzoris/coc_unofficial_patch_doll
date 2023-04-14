@@ -1805,7 +1805,7 @@ void CWeapon::OnZoomIn()
     else if (bIsSecondVPZoomPresent() && IsScopeAttached()) // Если 3д
     {
         if (m_fSecondRTZoomFactor == -1 && bIsSecondVPZoomPresent())
-            ZoomDynamicMod3d(true, true);
+            ZoomDynamicModSecondVP(true, true);
 
         if (!m_zoom_params.m_bUseDynamicZoom)
             SetZoomFactor(CurrentZoomFactor());
@@ -1902,7 +1902,7 @@ void CWeapon::ZoomInc()
         SetZoomFactor(f);
     }
     else if (bIsSecondVPZoomPresent())
-        ZoomDynamicMod3d(true, false); 
+        ZoomDynamicModSecondVP(true, false);
 }
 
 void CWeapon::ZoomDec() 
@@ -1922,7 +1922,7 @@ void CWeapon::ZoomDec()
         SetZoomFactor(f);
     }
     else if (bIsSecondVPZoomPresent())
-        ZoomDynamicMod3d(false, false); 
+        ZoomDynamicModSecondVP(false, false);
 }
 
 void CWeapon::SwitchState(u32 S)
@@ -2155,7 +2155,7 @@ float _lerp(const float& _val_a, const float& _val_b, const float& _factor)
     return (_val_a * (1.0 - _factor)) + (_val_b * _factor);
 }
 
-void CWeapon::UpdateHudAdditonal(Fmatrix& trans)
+void CWeapon::UpdateHudAdditional(Fmatrix& trans)
 {
     CActor* pActor = smart_cast<CActor*>(H_Parent());
     if (!pActor)
@@ -3165,7 +3165,7 @@ void CWeapon::UpdateSecondVP() // Включение 2го вьюпорта
     Device.m_SecondViewport.SetSVPActive(bCond_1 && bCond_2 && bCond_3 && bCond_4);
 }
 
-void CWeapon::ZoomDynamicMod3d(bool bIncrement, bool bForceLimit) // Настройки зума
+void CWeapon::ZoomDynamicModSecondVP(bool bIncrement, bool bForceLimit) // Настройки зума
 {
     if (!IsScopeAttached())
         return;

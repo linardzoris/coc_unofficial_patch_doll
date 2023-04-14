@@ -242,7 +242,7 @@ void __inertion(float& _val_cur, const float& _val_trgt, const float& _friction)
     _val_cur = _val_cur * _friction + _val_trgt * friction_i;
 }
 
-void CHudItem::UpdateHudAdditonal(Fmatrix& hud_trans) 
+void CHudItem::UpdateHudAdditional(Fmatrix& hud_trans)
 {
     attachable_hud_item* hi = HudItemData();
     R_ASSERT(hi);

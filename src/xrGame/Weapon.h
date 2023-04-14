@@ -114,7 +114,7 @@ public:
 
 	virtual void UpdateSecondVP();
     void Load3DScopeParams(LPCSTR section);
-    void ZoomDynamicMod3d(bool bIncrement, bool bForceLimit);
+    void ZoomDynamicModSecondVP(bool bIncrement, bool bForceLimit);
     virtual bool bMarkCanShow() { return IsZoomed(); }
 	virtual float GetControlInertionFactor() const;
     float GetSecondVPZoomFactor() const;
@@ -381,7 +381,7 @@ protected:
     virtual void UpdateFireDependencies_internal();
     virtual void UpdatePosition(const Fmatrix& transform); //.
     virtual void UpdateXForm();
-    virtual void UpdateHudAdditonal(Fmatrix&);
+    virtual void UpdateHudAdditional(Fmatrix&);
     IC void UpdateFireDependencies()
     {
         if (dwFP_Frame == Device.dwFrame)
