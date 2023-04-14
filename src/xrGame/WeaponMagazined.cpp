@@ -1501,9 +1501,13 @@ void CWeaponMagazined::InitAddons()
             xr_delete(m_UIScope);
         }
 
+        // 3д прицелы
 	    if (bIsSecondVPZoomPresent())
             m_zoom_params.m_fSecondVPFovFactor = 0.0f;
 
+		m_fSecondRTZoomFactor = -1.0f;
+
+        // Убираем дин. зум при убирании прицела
 		if (IsZoomEnabled())
         {
             m_zoom_params.m_bUseDynamicZoom = READ_IF_EXISTS(pSettings, r_bool, cNameSect(), "scope_dynamic_zoom", FALSE);

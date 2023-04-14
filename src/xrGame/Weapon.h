@@ -117,7 +117,7 @@ public:
     void ZoomDynamicMod3d(bool bIncrement, bool bForceLimit);
     virtual bool bMarkCanShow() { return IsZoomed(); }
 	virtual float GetControlInertionFactor() const;
-    IC float GetSecondVPZoomFactor() const { return m_zoom_params.m_fSecondVPFovFactor; }
+    float GetSecondVPZoomFactor() const;
     float GetSecondVPFov() const;
 
 	float m_fScopeInertionFactor;
@@ -183,7 +183,7 @@ public:
     void GetZoomData(const float scope_factor, float& delta, float& min_zoom_factor)
     {
         // Для 3д прицелов
-        float def_fov = bIsSecondVPZoomPresent() ? 75.0f : g_fov; // float(g_fov);
+        float def_fov = bIsSecondVPZoomPresent() ? 67.5f : g_fov; // float(g_fov);
         float delta_factor_total = def_fov - scope_factor;
         VERIFY(delta_factor_total > 0);
 
@@ -300,6 +300,7 @@ protected:
 
         float m_fZoomRotationFactor;
         float m_fSecondVPFovFactor;
+        float m_f3dZoomFactor;
 
         Fvector m_ZoomDof;
         Fvector4 m_ReloadDof;
@@ -315,6 +316,7 @@ protected:
 
 	float m_fFactor;
     float m_fRTZoomFactor; // run-time zoom factor
+    float m_fSecondRTZoomFactor; //текущий зум для 3д прицела
     CUIWindow* m_UIScope;
 
 public:
