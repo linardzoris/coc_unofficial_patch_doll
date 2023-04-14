@@ -1217,8 +1217,17 @@ bool CWeapon::Action(u16 cmd, u32 flags)
 
     switch (cmd)
     {
-    case kWPN_NV_CHANGE: {
-        return bChangeNVSecondVPStatus();
+    // ПНВ для 3д прицела
+	case kNIGHT_VISION: 
+    {
+        if (bIsSecondVPZoomPresent() && (flags & CMD_START) && IsZoomEnabled() && IsZoomed() && IsScopeAttached())
+        {
+            if (cmd == kNIGHT_VISION)
+                bChangeNVSecondVPStatus();
+            return true;
+        }
+        else
+            return false;
     }
 
     case kWPN_FIRE:
