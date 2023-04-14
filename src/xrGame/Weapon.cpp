@@ -533,8 +533,27 @@ void CWeapon::Load(LPCSTR section)
 
 	// Альт. прицеливание
     m_altAimPos = READ_IF_EXISTS(pSettings, r_bool, section, "use_alt_aim_hud", false);
+
     // Можно ли установить глушитель и ПГ одновременно?
     bGrenadeLauncherNSilencer = READ_IF_EXISTS(pSettings, r_bool, section, "GrenadeLauncherNSilencer", false);
+
+    Load3DScopeParams(section);
+
+    if (bScopeIsHasTexture || bIsSecondVPZoomPresent())
+    {
+        if (bIsSecondVPZoomPresent())
+            bNVsecondVPavaible = !!pSettings->line_exist(section, "scope_nightvision");
+        else
+            m_zoom_params.m_sUseZoomPostprocess = READ_IF_EXISTS(pSettings, r_string, section, "scope_nightvision", 0);
+
+        m_zoom_params.m_bUseDynamicZoom = READ_IF_EXISTS(pSettings, r_bool, section, "scope_dynamic_zoom", FALSE);
+        m_zoom_params.m_sUseBinocularVision = READ_IF_EXISTS(pSettings, r_string, section, "scope_alive_detector", 0);
+    }
+    else
+    {
+        bNVsecondVPavaible = false;
+        bNVsecondVPstatus = false;
+    }
 
  	bUseAltScope = !!bLoadAltScopesParams(section);
 
@@ -612,13 +631,6 @@ void CWeapon::Load(LPCSTR section)
     {
         strconcat(sizeof(temp), temp, "hit_probability_", get_token_name(difficulty_type_token, i));
         m_hit_probability[i] = READ_IF_EXISTS(pSettings, r_float, section, temp, 1.f);
-    }
-
-    if (bScopeIsHasTexture)
-    {
-        m_zoom_params.m_bUseDynamicZoom = READ_IF_EXISTS(pSettings, r_bool, section, "scope_dynamic_zoom", false);
-        m_zoom_params.m_sUseZoomPostprocess = READ_IF_EXISTS(pSettings, r_string, section, "scope_nightvision", 0);
-        m_zoom_params.m_sUseBinocularVision = READ_IF_EXISTS(pSettings, r_string, section, "scope_alive_detector", 0);
     }
 
 	// Added by Axel, to enable optional condition use on any item
