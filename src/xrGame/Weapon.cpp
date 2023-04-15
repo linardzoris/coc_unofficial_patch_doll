@@ -255,9 +255,13 @@ void CWeapon::UpdateUIScope()
     }
     else // Main Sight
     {
-        if (ALife::eAddonPermanent != m_eScopeStatus && 0 != (m_flagsAddOnState & CSE_ALifeItemWeapon::eWeaponAddonScope) && m_scopes.size())
+        if (!bIsSecondVPZoomPresent() && ALife::eAddonPermanent != m_eScopeStatus && 0 != (m_flagsAddOnState & CSE_ALifeItemWeapon::eWeaponAddonScope) && m_scopes.size())
         {
             m_zoom_params.m_fScopeZoomFactor = pSettings->r_float(GetScopeName(), "scope_zoom_factor");
+        }
+        else if (bIsSecondVPZoomPresent() && IsScopeAttached())
+        {
+            m_zoom_params.m_f3dZoomFactor = pSettings->r_float(GetScopeName(), "3d_zoom_factor");
         }
         else
         {
