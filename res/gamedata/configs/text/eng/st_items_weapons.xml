@@ -255,10 +255,10 @@
 	<string id="st_grenade_rgd5_descr">
 		<text>A cheap fragmentation grenade with relatively small radius. Often used by stalkers to 'smoke out' mutants due to its low cost.</text>
 	</string>
-	<string id="st_grenade_smoke">
-		<text>Smoke grenade</text>
+	<string id="st_grenade_rgdm">
+		<text>RGD-M</text>
 	</string>
-	<string id="st_grenade_smoke_descr">
+	<string id="st_grenade_rgdm_descr">
 		<text>A hand smoke grenade. Used to put up smoke screens. Once the grenade is thrown it takes 10 seconds for the smoke screen to expand.</text>
 	</string>
 	<string id="st_wpn_abakan">

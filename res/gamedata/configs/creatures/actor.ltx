@@ -13,7 +13,6 @@ money                   = 0;
 rank                    = 3;
 script_binding          = bind_stalker.actor_init
 visual                  = actors\stalker_unique\stalker_hero_degtyarev.ogf
-default_outfit_legs     = actors\legs\hero_outfit.ogf
 destroyed_vis_name      = dynamics\Dead_Body\skelet_crash
 player_hud_section      = actor_hud
 
@@ -81,10 +80,10 @@ heavy_breath_snd          = actor\breath_1                ;звук тяжелого дыхания
 heavy_blood_snd           = affects\heartbeat; heart\8
 heavy_danger_snd          = affects\heartbeat
 
-snd_night_vision_on       = weapons\nv_start
-snd_night_vision_off      = weapons\nv_off
-snd_night_vision_idle     = weapons\nv_loop
-snd_night_vision_broken   = weapons\nv_off
+snd_night_vision_on       = weapons\inv_nv_start
+snd_night_vision_off      = weapons\inv_nv_off
+snd_night_vision_idle     = weapons\inv_nv_loop
+snd_night_vision_broken   = weapons\inv_nv_off
 
 material                  = creatures\actor
 camera_height_factor      = 0.92
@@ -185,7 +184,7 @@ satiety_power_v			= 0.005		;увеличение силы при уменьшении сытости
 satiety_health_v		= 0.00001   ;увеличение здоровья при уменьшении сытости
 satiety_critical		= 0.2       ;критическое значения сытости (в процентах от 0..1) когда здоровье начианает уменьшаться
 
-thirst_v				= 0.0000214 ;скорость увеличения жажды со временем
+thirst_v				= 0.0000214 ;скорость уменьшение сатурации со временем
 thirst_critical			= 0.3       ;критическое значения жажды (в процентах от 0..1) когда здоровье начианает уменьшаться
 thirst_power_v			= 0.005		;увеличение силы при уменьшении жажды
 thirst_health_v			= 0.0001    ;увеличение здоровья при уменьшении жажды
@@ -196,7 +195,7 @@ intoxication_critical	= 0.75		;Критический уровень отравления
 
 sleepeness_v			= 0.00002	;Накопление сонливости
 sleepeness_power_v		= 0.005     ;Влияние сонливости на усталость
-sleepeness_critical		= 0.2       ;Критическое значние сонливости
+sleepeness_critical		= 0.7       ;Критическое значние сонливости
 
 morale_v				= 0.0001	;скорость восстановления морали
 psy_health_v			= 0.001		;скорость восстановления psy-здоровья

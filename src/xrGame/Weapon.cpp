@@ -1339,7 +1339,6 @@ bool CWeapon::Action(u16 cmd, u32 flags)
 
 float CWeapon::GetControlInertionFactor() const
 {
-    // Надо посмотреть как сделано в аномали
     float fInertionFactor = inherited::GetControlInertionFactor();
 
     if (IsScopeAttached() && IsZoomed())

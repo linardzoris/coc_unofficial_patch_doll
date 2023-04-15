@@ -144,6 +144,7 @@ class						= S_FOOD
 immunities_sect				= sect_zero_immunities
 
 [default_weapon_params]:identity_immunities
+cform                       = skeleton
 use_aim_bullet				= false
 use_first_bullet			= false
 k_hit_critical				= 0
@@ -171,6 +172,11 @@ holder_range_modifier		= 1.0
 installed_upgrades			= 
 launch_speed				= 0
 
+upgr_icon_height            = 200
+upgr_icon_width             = 300
+upgr_icon_x					= 0
+upgr_icon_y 				= 0
+
 $npc						= on
 $prefetch					= 8
 GroupControlSection			= spawn_group
@@ -190,9 +196,12 @@ silencer_light_var_range	= 0.5
 min_radius = 1
 max_radius = 500
 
-scope_name				    = wpn_addon_scope
+scope_name				    = pso_scope
 scope_x					    = 0
 scope_y					    = 0
+
+cam_relax_speed_ai          = 80
+zoom_cam_relax_speed_ai     = 60
 
 ; Удалять ли один патрон при расклине
 misfire_one_cartridge_remove                       = false
@@ -245,12 +254,13 @@ anim_eat                                 = vodka_3
 
 ;;;;;;;;;;;;;;;;;Оружие
 [default_scope]
-scope_name                                         = wpn_addon_scope
+scope_name                                         = pso_scope
 scope_x                                            = 0
 scope_y                                            = 0
 scope_texture                            		   = none
 
 [new_weapon_params]
+cform                                              = skeleton
 scope_texture                                      = none
 snd_on_take								 		   = weapon
 ammo_current                                       = 180
@@ -283,7 +293,10 @@ scope_zoom_factor                              	   = 1.1
 scope_texture_alt                                  = none
 use_alt_aim_hud 								   = false
 
-scope_name				                           = wpn_addon_scope
+cam_relax_speed_ai          					   = 80
+zoom_cam_relax_speed_ai    						   = 60
+
+scope_name				                           = pso_scope
 scope_x					                           = 0
 scope_y					                           = 0
 control_inertion_factor                            = 1.0
@@ -372,3 +385,124 @@ hud_collision_offset_rot_16x9	 				   = -0.8,0,0
 empty_click_anm = script\misfire.anm
 empty_click_anm_speed = 2
 empty_click_anm_power = 1
+
+[default_knife_params]:identity_immunities
+GroupControlSection								   = spawn_group
+discovery_dependency 							   =
+$npc			 								   = off
+$prefetch 										   = 8
+highlight_equipped          					   = true
+hand_dependence             					   = 1
+ef_main_weapon_type         					   = 0
+ef_weapon_type              					   = 1
+crosshair_inertion          					   = 0.01
+quest_item										   = false
+can_trade										   = true
+ammo_class                  					   = ammo_knife
+ammo_elapsed                					   = 0
+ammo_current               					       = 0
+startup_ammo                					   = 0
+ammo_limit                  					   = 0
+ammo_mag_size              						   = 1
+animation_slot              					   = 5
+use_aim_bullet									   = false
+use_first_bullet								   = false
+scheduled                   					   = off
+k_hit_critical									   = 0
+frag_hit_critical								   = 0
+hit_power										   = 0.50, 0.50, 0.50, 0.50
+hit_power_critical								   = 1.00, 1.00, 1.00, 1.00
+silencer_hit_power								   = 0.45, 0.45, 0.45, 0.45
+hit_type										   = wound
+hit_type_2										   = wound
+hit_impulse										   = 10					
+silencer_hit_impulse	 						   = 9
+slot 											   = -1
+kill_msg_height             					   = 16
+kill_msg_width              					   = 53
+kill_msg_x                  					   = 197
+kill_msg_y                  					   = 177
+description										   = no_description
+default_to_ruck             					   = false
+sprint_allowed              					   = true
+control_inertion_factor     					   = 1.0
+zoom_rotate_time            					   = 0.25
+ph_mass			 								   = 4
+weapon_class                					   = 
+bullet_speed		 							   = 5000
+rpm                     						   = 1000
+rpm_empty_click 	 							   = 1000
+zoom_dof										   = 0.5, 1.0, 180
+reload_dof										   = 0.0, 0.5, 5, 1.7
+min_radius 										   = 0 
+max_radius 										   = 500
+holder_range_modifier							   = 1.0
+holder_fov_modifier								   = 1.0
+upgr_icon_height            					   = 200
+upgr_icon_width             					   = 300
+upgr_icon_x										   = 0
+upgr_icon_y 									   = 0
+fire_dispersion_condition_factor 				   = 0
+misfire_probability        		 				   = 0
+misfire_start_condition			 				   = 0
+misfire_end_condition			 				   = 0
+misfire_start_prob 				 				   = 0
+misfire_end_prob 							  	   = 0
+condition_shot_dec      						   = 0
+condition_queue_shot_dec		 				   = 0
+use_condition                    				   = true
+upgrade_scheme                   				   = 
+upgrades                         				   = 
+installed_upgrades               				   = 
+show_ammo                        				   = false
+silencer_status                  				   = 0
+grenade_launcher_status          				   = 0
+scope_status                     				   = 0
+single_handed                    				   = 1
+light_disabled                   				   = true
+cform                            				   = skeleton
+zoom_enabled                     				   = false
+
+cam_dispersion                   				   = 0
+cam_dispersion_frac              				   = 0
+cam_dispersion_inc               				   = 0
+cam_max_angle                    				   = 0
+cam_max_angle_horz               				   = 0
+cam_relax_speed                  				   = 8
+cam_step_angle_horz              				   = 0
+
+hit_probability_gd_novice 						   = 0.8
+hit_probability_gd_stalker 						   = 0.9
+hit_probability_gd_veteran 						   = 1.00
+hit_probability_gd_master 						   = 1.00
+
+fire_point										   = 0, 0, 0
+fire_point2									       = 0, 0, 0
+shell_point		 								   = 0, 0, 0
+shell_dir		 								   = 0, 0, 0
+shell_particles	 								   = 
+flame_particles		   							   =
+smoke_particles		   							   =
+
+snd_reload										   = nil
+snd_close										   = nil
+snd_empty										   = nil
+
+[hud_base_knife]
+item_position                                      = 0,0,0
+item_orientation                                   = 0,0,0
+aim_hud_offset_pos                                 = 0,0,0
+aim_hud_offset_pos_16x9                            = 0,0,0
+aim_hud_offset_rot                                 = 0,0,0
+aim_hud_offset_rot_16x9                            = 0,0,0
+lean_hud_offset_pos                                = 0,0,0
+lean_hud_offset_rot                                = 0,0,0
+gl_hud_offset_pos                                  = 0,0,0
+gl_hud_offset_pos_16x9                             = 0,0,0
+gl_hud_offset_rot                                  = 0,0,0
+gl_hud_offset_rot_16x9                             = 0,0,0
+attach_place_idx                                   = 0
+fire_bone                                          = knife
+shell_bone                                         = wpn_body
+shell_point                                        = 0,0,0
+zoom_hide_crosshair                                = true

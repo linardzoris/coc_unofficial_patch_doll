@@ -3934,8 +3934,8 @@ function damage_actor_items_on_start(actor, npc)
 end
 
 function damage_pri_a17_gauss()
-	local obj = get_story_object("pri_a17_gauss_rifle")
-	--local obj = npc:object("pri_a17_gauss_rifle")
+	local obj = get_story_object("wpn_gauss")
+	--local obj = npc:object("wpn_gauss")
 	if obj ~= nil then
 		obj:set_condition(0.0)
 	end
@@ -4292,7 +4292,7 @@ function create_cutscene_actor_with_weapon(actor, npc, p)
 
 	local actor_weapon = alife_object(active_item:id())
 	local section_name = actor_weapon:section_name()
-	if section_name == "pri_a17_gauss_rifle" then
+	if section_name == "wpn_gauss" then
 		section_name = "wpn_gauss"
 	end
 

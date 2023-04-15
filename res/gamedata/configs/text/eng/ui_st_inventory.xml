@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <string_table>
+	<string id="st_percent">
+		<text>%</text>
+	</string>
+	<string id="st_shots">
+		<text>s.</text>
+	</string>	
 	<string id="ui_inv_health_boost">
 		<text>Health</text>
 	</string>

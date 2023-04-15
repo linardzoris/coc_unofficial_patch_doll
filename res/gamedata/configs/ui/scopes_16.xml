@@ -1,12 +1,12 @@
 <w>
     <wpn_crosshair_gauss x="0" y="0" width="2048" height="1536">
-    <auto_static x="128" y="0" width="768" height="768" stretch="1">
+    <auto_static x="0" y="0" width="1024" height="768" stretch="1">
       <texture>wpn\2d_crosshair\wpn_crosshair_gauss</texture>
     </auto_static>
     </wpn_crosshair_gauss>
   
   <wpn_crosshair_pso x="0" y="0" width="2048" height="1536">
-    <auto_static x="128" y="0" width="768" height="768" stretch="1">
+    <auto_static x="0" y="0" width="1024" height="768" stretch="1">
       <texture>wpn\2d_crosshair\wpn_crosshair_pso</texture>
     </auto_static>
   </wpn_crosshair_pso>

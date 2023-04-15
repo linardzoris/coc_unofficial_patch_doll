@@ -83,7 +83,7 @@ function actor_on_item_take_from_box(box,obj)
 end
 
 function query_create_stash(obj)
-	if (obj:clsid() == clsid.equ_backpack) then 
+	if (obj:clsid() == clsid.equ_backpack and not string.match(tostring(obj:section()),"exo")) then 
 		return game.translate_string("ui_st_create_stash")
 	end
 end 

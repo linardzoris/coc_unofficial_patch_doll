@@ -59,7 +59,7 @@
 			<texture>ui_am_prop_intoxication_restore_speed</texture>
 			<text color="ui_3" font="letterica16" vert_align="c" x="22" y="0"/>
 		</caption>
-		<value x="140" y="0" width="30" height="20" magnitude="10">
+		<value x="140" y="0" width="30" height="20" magnitude="10" sign_inverse="1">
 			<text font="letterica16" vert_align="c"/>
 		</value>
 	</intoxication_restore_speed>

@@ -9,7 +9,7 @@ ammo_mag_size                                      = 100
 ;Правки Мортана. Последовательно скрывает указанные кости при стрельбе.
 ;Проблема пока в том, что скрывается одна = скрываются остальные. Кости боеприпасов надо отсоединить друг от друга.
 ;Ещё нужна моушин марка, чтобы делать видимыми патроны в опр. момент перезарядки.
-bullet_bones                                       = bullet_1,bullet_2,bullet_3,bullet_4,bullet_5,bullet_6,bullet_7,bullet_8,bullet_9,bullet_10,bullet_11,bullet_12
+bullet_bones                                       = bullet_4,bullet_5,bullet_6,bullet_7,bullet_8,bullet_9,bullet_10,bullet_11,bullet_12
   
 position                    					   = -0.016, -0.005, -0.020
 orientation                 					   = 0, 0, 0
@@ -32,7 +32,6 @@ cam_max_angle_horz                                 = 35.0
 cam_relax_speed                                    = 15
 cam_return                                         = 0
 cam_step_angle_horz                                = 0.25
-cform                                              = skeleton
 class                                              = WP_AK74
 
 condition_shot_dec                                 = 0.0005
@@ -106,7 +105,6 @@ single_handed                                      = 0
 slot                                               = 2
 
 snd_bore                                           = weapons\pkm\pkm_boring
-snd_close                                          = weapons\generic_close
 snd_draw                                           = weapons\pkm\pkm_draw
 snd_empty               						   = weapons\_dryfire\lmg_dry
 snd_holster                                        = weapons\pkm\pkm_holster
@@ -126,10 +124,6 @@ snd_shoot_distant_far       					   = weapons\_gunfire\pkm\medium_distance
 
 sprint_allowed                                     = true
 time_to_aim                                        = 5.0
-upgr_icon_height                                   = 200
-upgr_icon_width                                    = 300
-upgr_icon_x										   = 0
-upgr_icon_y 									   = 0
 upgrade_scheme                                     = upgrade_scheme_machine_gun
 upgrades                                           = up_gr_firstab_machine_gun, up_gr_seconab_machine_gun, up_gr_thirdab_machine_gun, up_gr_fourtab_machine_gun, up_gr_fifthab_machine_gun
 use_aim_bullet                                     = false
@@ -290,10 +284,10 @@ snd_reload_empty                = weapons\pkm\pkp_reload_empty_scope
 hud                             = wpn_pkp_pso_scope_hud
 
 [wpn_pkp_pso_scope_hud]:wpn_pkp_hud
-aim_hud_offset_pos				= 0.036000,-0.004120,0.045004
-aim_hud_offset_rot				= 0.001760,0.000325,0.009321
-aim_hud_offset_pos_16x9			= 0.036000,-0.004120,0.045004
-aim_hud_offset_rot_16x9			= 0.001760,0.000325,0.009321
+aim_hud_offset_pos				= 0.033000,-0.008120,0.013004
+aim_hud_offset_rot				= -0.000015,-0.000600,0.009321
+aim_hud_offset_pos_16x9			= 0.033000,-0.008120,0.013004
+aim_hud_offset_rot_16x9			= -0.000015,-0.000600,0.009321
 
 anm_reload                      = wpn_hand_pkp_siber_reload_scope,           wpn_pkp_siber_reload_scope
 anm_reload_empty                = wpn_hand_pkp_siber_reload_empty_scope,     wpn_pkp_siber_reload_empty_scope
@@ -309,10 +303,10 @@ snd_reload_empty                = weapons\pkm\pkp_reload_empty_scope
 hud                             = wpn_pkp_1p29_scope_hud
 
 [wpn_pkp_1p29_scope_hud]:wpn_pkp_hud
-aim_hud_offset_pos				= 0.022500,-0.031120,0.045004
-aim_hud_offset_rot			    = 0.001760,0.000325,0.009321
-aim_hud_offset_pos_16x9			= 0.022500,-0.031120,0.045004
-aim_hud_offset_rot_16x9			= 0.001760,0.000325,0.009321
+aim_hud_offset_pos				= 0.018500,-0.031620,-0.008996
+aim_hud_offset_rot			    = 0.002210,0.010650,0.009321
+aim_hud_offset_pos_16x9			= 0.018500,-0.031620,-0.008996
+aim_hud_offset_rot_16x9			= 0.002210,0.010650,0.009321
 
 anm_reload                      = wpn_hand_pkp_siber_reload_1pn79,           wpn_pkp_siber_reload_scope
 anm_reload_empty                = wpn_hand_pkp_siber_reload_empty_1pn79,     wpn_pkp_siber_reload_empty_scope

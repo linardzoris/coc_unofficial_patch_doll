@@ -7,7 +7,7 @@
 [pripyat]
 pri_b301 = test_info12 | pri_b301_actor_walk | pri_b301_actor_look
 pri_b302 = nil | pri_b302_start_walk | pri_b302_start_look | detector_elite
-pri_a20 = pri_a17_actor_bring_gauss_rifle | pri_a15_actor_start_walk | pri_a16_military_colonel_kovalski_walk | pri_a17_gauss_rifle, wpn_ak74, wpn_fort, grenade_f1, grenade_f1, medkit, medkit, medkit, bandage, bandage, bandage
+pri_a20 = pri_a17_actor_bring_gauss_rifle | pri_a15_actor_start_walk | pri_a16_military_colonel_kovalski_walk | wpn_gauss, wpn_ak74, wpn_fort, grenade_f1, grenade_f1, medkit, medkit, medkit, bandage, bandage, bandage
 pri_a17 = pri_a17_task_start | pri_a15_actor_start_walk|pri_a15_actor_start_look | wpn_ak74, wpn_fort, grenade_f1, grenade_f1, medkit, medkit, medkit, bandage, bandage, bandage
 pri_a18 = pri_a18_start | pri_a18_actor_walk | pri_a18_actor_look | wpn_ak74, wpn_fort, grenade_f1, grenade_f1, medkit, medkit, medkit, bandage, bandage, bandage
 pri_a21 = pri_a21_start | pri_a21_actor_walk | pri_a21_actor_look | wpn_ak74, wpn_fort, grenade_f1, grenade_f1, medkit, medkit, medkit, bandage, bandage, bandage
@@ -126,7 +126,7 @@ zat_b40_scene = nil | zat_b30_actor_base_walk | zat_b30_actor_base_look
 zat_b44_scene_anomaly = zat_b44_start | zat_b44_actor_walk | zat_b44_actor_look | detector_elite 
 zat_b44_scene = nil | zat_scene_actor_walk | zat_scene_actor_look | detector_elite 
 zat_b3_scene(teleport&vodka) 		= nil | zat_scene_actor_walk | zat_scene_actor_look | vodka, vodka, vodka, vodka, vodka, vodka, vodka, vodka, vodka, vodka, vodka, vodka, vodka, vodka, vodka, vodka, vodka, vodka, vodka, vodka
-zat_b3_scene(give_gauss) 	= zat_b3_start_gauss_search | zat_scene_actor_walk | zat_scene_actor_look | pri_a17_gauss_rifle
+zat_b3_scene(give_gauss) 	= zat_b3_start_gauss_search | zat_scene_actor_walk | zat_scene_actor_look | wpn_gauss
 zat_b3_scene(give_docs) 	= nil | zat_scene_actor_walk | zat_scene_actor_look | zat_a23_gauss_rifle_docs
 zat_b3_scene(give_tools) 	= nil | zat_scene_actor_walk | zat_scene_actor_look | toolkit_1, toolkit_2, toolkit_3
 zat_b39 = zat_b39_start | zat_b39_actor_walk | zat_b39_actor_look | wpn_ak74, wpn_fort, grenade_f1, grenade_f1, medkit, medkit, medkit, bandage, bandage, bandage, detector_elite

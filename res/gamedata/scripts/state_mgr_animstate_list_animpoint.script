@@ -154,7 +154,8 @@ function add_animation_list()
 	------------------------------------------------------------------------------
 	--   База с оружием
 	------------------------------------------------------------------------------
-		animpoint_stay_wall_weapon	= {	prop	= { maxidle = 5,
+		animpoint_stay_wall_weapon	= 
+		{	prop	= { maxidle = 5,
 									sumidle = 3,
 									rnd = 80,
 									moving = true },
@@ -166,9 +167,11 @@ function add_animation_list()
 									[1]	= "animpoint_stay_wall_weapon_idle_1" },
 						rnd		= {	[0]	= {	"animpoint_stay_wall_weapon_idle_rnd_1", "animpoint_stay_wall_weapon_idle_rnd_2", "animpoint_stay_wall_weapon_idle_rnd_3", "animpoint_stay_wall_weapon_idle_rnd_4"},
 									[1]	= {	"animpoint_stay_wall_weapon_idle_rnd_1", "animpoint_stay_wall_weapon_idle_rnd_2", "animpoint_stay_wall_weapon_idle_rnd_3", "animpoint_stay_wall_weapon_idle_rnd_4"}
-									}},
+									}
+		},
 
-		animpoint_stay_table_weapon	= {	prop	= { maxidle = 5,
+		animpoint_stay_table_weapon	= 
+		{	prop	= { maxidle = 5,
 									sumidle = 3,
 									rnd = 80,
 									moving = true },
@@ -180,9 +183,11 @@ function add_animation_list()
 									[1]	= "animpoint_stay_table_weapon_idle_1" },
 						rnd		= {	[0]	= {	"animpoint_stay_table_weapon_idle_rnd_1", "animpoint_stay_table_weapon_idle_rnd_2", "animpoint_stay_table_weapon_idle_rnd_3", "animpoint_stay_table_weapon_idle_rnd_4", "animpoint_stay_table_weapon_idle_rnd_5", "animpoint_stay_table_weapon_idle_rnd_6"},
 									[1]	= {	"animpoint_stay_table_weapon_idle_rnd_1", "animpoint_stay_table_weapon_idle_rnd_2", "animpoint_stay_table_weapon_idle_rnd_3", "animpoint_stay_table_weapon_idle_rnd_4", "animpoint_stay_table_weapon_idle_rnd_5", "animpoint_stay_table_weapon_idle_rnd_6"}
-											}},
+											}
+		},
 
-		animpoint_sit_high_weapon	= {	prop	= { maxidle = 5,
+		animpoint_sit_high_weapon	= 
+		{	prop	= { maxidle = 5,
 									sumidle = 3,
 									rnd = 80,
 									moving = true },
@@ -194,9 +199,11 @@ function add_animation_list()
 									[1]	= "animpoint_sit_high_weapon_idle_1" },
 						rnd		= {	[0]	= {	"animpoint_sit_high_weapon_idle_rnd_1", "animpoint_sit_high_weapon_idle_rnd_2", "animpoint_sit_high_weapon_idle_rnd_3", "animpoint_sit_high_weapon_idle_rnd_4", "animpoint_sit_high_weapon_idle_rnd_5", "animpoint_sit_high_weapon_idle_rnd_6" },
 									[1]	= {	"animpoint_sit_high_weapon_idle_rnd_1", "animpoint_sit_high_weapon_idle_rnd_2", "animpoint_sit_high_weapon_idle_rnd_3", "animpoint_sit_high_weapon_idle_rnd_4", "animpoint_sit_high_weapon_idle_rnd_5", "animpoint_sit_high_weapon_idle_rnd_6" }
-									}},
+									}
+		},
 
-		animpoint_sit_normal_weapon	= {	prop	= { maxidle = 5,
+		animpoint_sit_normal_weapon	= 
+		{	prop	= { maxidle = 5,
 									sumidle = 3,
 									rnd = 80,
 									moving = true },
@@ -208,9 +215,11 @@ function add_animation_list()
 									[1]	= "animpoint_sit_normal_weapon_idle_1" },
 						rnd		= {	[0]	= {	"animpoint_sit_normal_weapon_idle_rnd_1", "animpoint_sit_normal_weapon_idle_rnd_2", "animpoint_sit_normal_weapon_idle_rnd_3", "animpoint_sit_normal_weapon_idle_rnd_4", "animpoint_sit_normal_weapon_idle_rnd_5", "animpoint_sit_normal_weapon_idle_rnd_6" },
 									[1]	= {	"animpoint_sit_normal_weapon_idle_rnd_1", "animpoint_sit_normal_weapon_idle_rnd_2", "animpoint_sit_normal_weapon_idle_rnd_3", "animpoint_sit_normal_weapon_idle_rnd_4", "animpoint_sit_normal_weapon_idle_rnd_5", "animpoint_sit_normal_weapon_idle_rnd_6" }
-									}},
+									}
+		},
 
-		animpoint_sit_low_weapon = {	prop	= { maxidle = 5,
+		animpoint_sit_low_weapon =
+		{	prop	= { maxidle = 5,
 									sumidle = 3,
 									rnd = 80,
 									moving = true },
@@ -222,9 +231,11 @@ function add_animation_list()
 									[1]	= "animpoint_sit_low_weapon_idle_1" },
 						rnd		= {	[0]	= {	"animpoint_sit_low_weapon_idle_rnd_1", "animpoint_sit_low_weapon_idle_rnd_2", "animpoint_sit_low_weapon_idle_rnd_3", "animpoint_sit_low_weapon_idle_rnd_4", "animpoint_sit_low_weapon_idle_rnd_5", "animpoint_sit_low_weapon_idle_rnd_6" },
 									[1]	= {	"animpoint_sit_low_weapon_idle_rnd_1", "animpoint_sit_low_weapon_idle_rnd_2", "animpoint_sit_low_weapon_idle_rnd_3", "animpoint_sit_low_weapon_idle_rnd_4", "animpoint_sit_low_weapon_idle_rnd_5", "animpoint_sit_low_weapon_idle_rnd_6" }
-											}},
+											}
+		},
 
-		zat_b3_tech_idle = { 	prop	= { 	maxidle = 1,
+		zat_b3_tech_idle = 
+		{ 	prop	= { 	maxidle = 1,
 										sumidle = 1,
 										rnd 	= 100,
 										moving 	= true },
@@ -232,9 +243,11 @@ function add_animation_list()
 						out		= nil,
 						idle	= {	[0]	= "zat_b3_tech_idle",
 									[1]	= "zat_b3_tech_idle" },
-						rnd		= nil},
+						rnd		= nil
+		},
 
- 		zat_b22_medic_turn_idle = { 	prop	= { 	maxidle = 1,
+ 		zat_b22_medic_turn_idle =
+		{ 	prop	= { 	maxidle = 1,
 										sumidle = 1,
 										rnd 	= 100,
 										moving 	= true },
@@ -242,9 +255,11 @@ function add_animation_list()
 						out		= nil,
 						idle	= {	[0]	= "zat_b22_medic_turn_idle",
 									[1]	= "zat_b22_medic_turn_idle" },
-						rnd		= nil},
+						rnd		= nil
+		},
 
-		jup_b15_zulus_sit_idle_short = { 	prop	= { 	maxidle = 1,
+		jup_b15_zulus_sit_idle_short = 
+		{ 	prop	= { 	maxidle = 1,
 													sumidle = 1,
 													rnd 	= 100,
 													moving 	= true },
@@ -252,9 +267,11 @@ function add_animation_list()
 									out		= nil,
 									idle	= {	[0]	= "jup_b15_zulus_sit_idle_short",
 												[1]	= "jup_b15_zulus_sit_idle_short" },
-									rnd		= nil},
+									rnd		= nil
+		},
 
- 		pri_a21_sentry_madness_idle = { 	prop	= { 	maxidle = 1,
+ 		pri_a21_sentry_madness_idle = 
+		{ 	prop	= { 	maxidle = 1,
 													sumidle = 1,
 													rnd 	= 100,
 													moving 	= true },
@@ -262,25 +279,103 @@ function add_animation_list()
 									out		= nil,
 									idle	= {	[0]	= "pri_a21_sentry_madness_idle",
 												[1]	= "pri_a21_sentry_madness_idle" },
-									rnd		= nil},
+									rnd		= nil
+		},
 
-		pri_a20_colonel_radio = { 	prop	= { maxidle = 1,
+		pri_a20_colonel_radio = 
+		{ 	prop	= { maxidle = 1,
  												sumidle = 1,
 												rnd 	= 100,
 												moving 	= true },
 									into	= {	[0]	=	{"pri_a20_colonel_radio_in", {f=xr_effects.pri_a20_radio_start}}},
 									out		= {	[0]	=	{"pri_a20_colonel_radio_out"}},
 									idle	= {	[0]	=	"pri_a20_colonel_radio_idle"},
-									rnd		= nil},
+									rnd		= nil
+		},
 
-		pri_a22_colonel_lean_on_table = {	prop	= { maxidle = 1,
+		pri_a22_colonel_lean_on_table = 
+		{	prop	= { maxidle = 1,
 												sumidle = 1,
 												rnd 	= 100,
 												moving 	= true },
 									into	= {	[0]	= {"pri_a22_colonel_lean_on_tabl_in", {f=xr_effects.pri_a22_kovalski_speak}}},
 									out		= {	[0] = {"pri_a22_colonel_lean_on_tabl_out"}},
 									idle	= {	[0]	= "pri_a22_colonel_lean_on_tabl_idle"},
-									rnd		= nil},
+									rnd		= nil
+		},
+
+		animpoint_stay_smirno	= 
+		{	prop	= { maxidle = 5,
+												sumidle = 3,
+												rnd = 80,
+												moving = true },												
+									into	= {	[0]	= { "chest_0_idle_0" },
+												[1]	= { "chest_0_idle_0" }},
+									out		= {	[0]	= { "chest_0_idle_3" },
+												[1]	= { "chest_0_idle_3" }},
+									idle	= {	[0]	=  "chest_0_idle_1", 
+												[1]	=  "chest_0_idle_1" },
+									rnd		= nil
+		},	
+									
+									
+		animpoint_rest_at_bed	= 
+		{	prop	= { maxidle = 1,
+												sumidle = 2,
+												rnd = 100,
+												moving = true },												
+									into	= {[0] = {"idle_0_to_sit_0","sit_to_sleep_0"}},
+									out		= {[0] = {"sleep_to_sit_0", "sit_0_to_idle_0"}},
+									idle	= {[0]	= "cut_scene_0_actor_1"},
+									rnd		= nil
+		},		
+
+		animpoint_drunk_behindwall	=
+		{	prop	= { maxidle = 3,
+												sumidle = 3,
+												rnd = 100,
+												moving = true },												
+									into	= {[0] = {"drink_idle_5_0"}},
+									out		= nil,
+									idle	= {[0]	= "drink_idle_5_0"},
+									rnd		= nil
+		},	
+
+		animpoint_sit_normal_sleep	= 
+		{	prop	= { maxidle = 5,
+												sumidle = 10,
+												rnd = 80,
+												moving = true },												
+									into	= {[0] = {"lead_0_sleep_in_0"}},
+									out		= {[0] = {"lead_0_sleep_out_0"}},
+									idle	= {[0]	= "lead_0_sleep_idle_0"},
+									rnd		= nil
+		},	
+
+		animpoint_break_lock_loop	=
+		{	prop	= { maxidle = 3,
+												sumidle = 3,
+												rnd = 100,
+												moving = true },	
+									into	= {	[0]	= { "break_lock_in"}},
+									out		= {	[0]	= { "break_loop_out_no_move"}},
+									idle	= {	[0]	=  "break_loop_idle_1"},
+									rnd		= nil
+		},											
+									
+		animpoint_otzhiman	= 
+		{	prop	= { maxidle = 5,
+												sumidle = 3,
+												rnd = 80,
+												moving = true },												
+									into	= {	[0]	= { "otzhim_in" },
+												[1]	= { "otzhim_in" }},
+									out		= {	[0]	= { "otzhim_out" },
+												[1]	= { "otzhim_out" }},
+									idle	= {	[0]	=  "otzhim", 
+												[1]	=  "otzhim" },
+									rnd		= nil
+	   },	
 
 	}
 

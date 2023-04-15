@@ -569,6 +569,19 @@ local function on_nvg_remove(obj)
 	end			
 end	
 
+local function nvg_charge(obj)
+
+	local torch = db.actor:item_in_slot(10)
+	
+	if (db.actor) then
+		local sec = obj:section()
+		local torch_sec = torch and torch:section()
+		if (torch_sec and torch:condition() <= 0) then
+			set_nightvision(sec,false)
+		end	
+	end
+end	
+
 function on_game_start()
 	RegisterScriptCallback("actor_on_info_callback",remember_volume_status)	
 	RegisterScriptCallback("actor_on_hit_callback",encyclopedia_anomaly_by_hit)	
@@ -581,4 +594,5 @@ function on_game_start()
 	RegisterScriptCallback("actor_on_item_drop",on_nvg_remove)		
 	RegisterScriptCallback("actor_item_to_slot",on_nvg_remove)
 	RegisterScriptCallback("actor_item_to_ruck",on_nvg_remove)
+	--RegisterScriptCallback("actor_on_update",nvg_charge)
 end

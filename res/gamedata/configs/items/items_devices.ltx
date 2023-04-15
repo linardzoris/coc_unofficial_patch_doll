@@ -333,7 +333,7 @@ inv_grid_height							 = 1
 inv_grid_x								 = 18
 inv_grid_y								 = 14
 
-power_decay_rate 						 = 0.000297 ;скорость израсходования заряда
+power_decay_rate 						 = 0.040297 ;скорость израсходования заряда
 passive_decay_rate 						 = 0.000137 ;пассивная скорость израсходования (в инвентаре)
 
 visual                                   = dynamics\devices\dev_torch_light\dev_torch_light.ogf
@@ -469,17 +469,17 @@ torch_inertion_speed_min                 = 0.5
 torch_inertion_speed_max                 = 7.5
 light_section                            = flashlight_definition
 light_trace_bone                         = light_bone_1
-snd_turn_on                              = torch\snd_switch_on, 0.3, 0.3
-snd_turn_off                             = torch\snd_switch_off, 0.3, 0.3
+snd_turn_on                              = device\pda\pda_btn_press, 1, 1, 0.1
+snd_turn_off                             = device\pda\pda_btn_press, 1
 
 attach_angle_offset                      = 3.062, 0.008, -1.532
 attach_position_offset                   = 0.134, -0.007, 0.09
 
 [device_flashlight_hud]:detector_base_hud
-hands_position							 = 0.033,-0.1895,0.039
-hands_orientation						 = 2,2,0
-hands_position_16x9						 = 0.033,-0.1895,0.039
-hands_orientation_16x9					 = 2,2,0
+hands_position							 = 0.061000,-0.169000,-0.124500
+hands_orientation						 = 2.000000,2.000000,0.000000
+hands_position_16x9						 = 0.061000,-0.169000,-0.124500
+hands_orientation_16x9					 = 2.000000,2.000000,0.000000
 
 aim_hud_offset_pos						 = 0,0,0
 aim_hud_offset_rot						 = 0,0,0
@@ -487,27 +487,27 @@ aim_hud_offset_rot						 = 0,0,0
 item_position 							 = -0.053, 0.027, 0.015
 item_orientation 						 = -8, -11.5,50
 item_visual                              = dynamics\devices\dev_tactical_torch\dev_tactical_torch_hud
-fire_point                               = 0,0,0
+fire_point                               = -0.013000,0.006000,-0.484996
 fire_direction							 = 0,0,1			;Note: engine default is 0,0,1
 fire_bone                                = light_bone_2
 fire_point2                              = 0,0,0
 fire_bone2                               = light_bone_2
-anm_show                                 = tactical_torch_draw, tactical_torch_draw
-anm_show_16x9                            = tactical_torch_draw, tactical_torch_draw
-anm_show_fast                            = tactical_torch_draw, tactical_torch_draw
-anm_show_fast_16x9                       = tactical_torch_draw, tactical_torch_draw
-anm_hide                                 = tactical_torch_holster, tactical_torch_holster
-anm_hide_16x9                            = tactical_torch_holster, tactical_torch_holster
-anm_hide_fast                            = tactical_torch_holster, tactical_torch_holster
-anm_hide_fast_16x9                       = tactical_torch_holster, tactical_torch_holster
+anm_show                                 = tactical_torch_draw, tactical_torch_draw, 1.5
+anm_show_16x9                            = tactical_torch_draw, tactical_torch_draw, 1.5
+anm_show_fast                            = tactical_torch_draw, tactical_torch_draw, 1.5
+anm_show_fast_16x9                       = tactical_torch_draw, tactical_torch_draw, 1.5
+anm_hide                                 = tactical_torch_holster, tactical_torch_holster, 1.5
+anm_hide_16x9                            = tactical_torch_holster, tactical_torch_holster, 1.5
+anm_hide_fast                            = tactical_torch_holster, tactical_torch_holster, 1.5
+anm_hide_fast_16x9                       = tactical_torch_holster, tactical_torch_holster, 1.5
 anm_idle                                 = tactical_torch_idle, tactical_torch_idle
 anm_idle_16x9                            = tactical_torch_idle, tactical_torch_idle
 anm_idle_moving                          = tactical_torch_moving, tactical_torch_moving
 anm_idle_moving_16x9                     = tactical_torch_moving, tactical_torch_moving
 anm_idle_sprint                          = tactical_torch_sprint, tactical_torch_sprint
 anm_idle_sprint_16x9                     = tactical_torch_sprint, tactical_torch_sprint
-anm_toggle							 	 = tactical_torch_switch, tactical_torch_switch, 1.25
-anm_toggle_16x9						 	 = tactical_torch_switch, tactical_torch_switch, 1.25
+anm_toggle							 	 = tactical_torch_switch, tactical_torch_switch, 2
+anm_toggle_16x9						 	 = tactical_torch_switch, tactical_torch_switch, 2
 anm_zoom							 	 = tactical_torch_zoom, tactical_torch_zoom
 anm_zoom_16x9							 = tactical_torch_zoom, tactical_torch_zoom
 

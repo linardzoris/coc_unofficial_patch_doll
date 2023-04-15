@@ -2,9 +2,9 @@
 $npc                                               = on
 $prefetch                                          = 8
 $spawn                                             = "weapons\saiga"
-ammo_class                                         = ammo_12x70_buck, ammo_12x76_zhekan
-ammo_elapsed                                       = 8
-ammo_mag_size                                      = 8
+ammo_class                                         = ammo_20x70_buck, ammo_20x76_zhekan
+ammo_elapsed                                       = 5
+ammo_mag_size                                      = 5
 animation_slot                                     = 2
 bullet_speed                                       = 400
 cam_dispersion                                     = 5.0
@@ -15,7 +15,6 @@ cam_max_angle_horz                                 = 10.0
 cam_relax_speed                                    = 20
 cam_return                                         = 0
 cam_step_angle_horz                                = 5.0
-cform                                              = skeleton
 class                                              = WP_AK74
 
 bullet_bones                                       = ammo
@@ -37,7 +36,7 @@ grenade_class                                      = ammo_vog-25
 grenade_launcher_status                            = 0
 GroupControlSection                                = spawn_group
 hand_dependence                                    = 1
-hit_power                                          = 0.6
+hit_power                                          = 0.75
 hit_type                                           = fire_wound
 holder_fov_modifier                                = 1.0
 holder_range_modifier                              = 1.0
@@ -90,7 +89,7 @@ scheduled                                          = off
 scope_status                                       = 2
 scope_zoom_factor                                  = 1.1
 scopes                                             = pso_scope, 1p29_scope, 1pn93_scope, kobra_scope, okp_scope
-shell_particles                                    = weapons\12ga
+shell_particles                                    = ;weapons\12ga
 
 silencer_light_color                               = 0.6, 0.5, 0.3
 silencer_light_range                               = 0.01
@@ -107,7 +106,6 @@ slot                                               = 2
 snd_draw										   = weapons\ak_gwr\ak_gwr_draw
 snd_holster				                           = weapons\ak_gwr\ak_gwr_hide
 snd_bore                                           = nil
-snd_close                                          = weapons\generic_close
 snd_empty               						   = weapons\_dryfire\545_dry
 snd_reload										   = weapons\ak_gwr\ak_gwr_reload
 snd_reload_empty								   = weapons\ak_gwr\ak_gwr_reload_full
@@ -124,11 +122,6 @@ snd_silncer_shot        						   = weapons\_sil\saiga\sd_close_1
 snd_silncer_shot1        						   = weapons\_sil\saiga\sd_close_2
 snd_silncer_shot2        						   = weapons\_sil\saiga\sd_close_3
 snd_silncer_shot3        						   = weapons\_sil\saiga\sd_close_4
-
-upgr_icon_height                                   = 200
-upgr_icon_width                                    = 300
-upgr_icon_x										   = 0
-upgr_icon_y 									   = 0
 
 upgrade_scheme              					   = upgrade_scheme_shotgun_autofire
 upgrades                    					   = up_gr_firstab_shotgun_autofire, up_gr_seconab_shotgun_autofire, up_gr_thirdab_shotgun_autofire, up_gr_fourtab_shotgun_autofire
@@ -180,7 +173,8 @@ anm_idle_moving_crouch                   = ak_74_gwr_walk, idle, 0.8
 anm_idle_sprint                          = ak_74_gwr_sprint, idle
 anm_reload                               = ak_74_gwr_reload, ak_74_reload_fixed
 anm_reload_empty                         = ak_74_gwr_reload_empty, saiga_reload_full
-anm_shots                                = ak_74_gwr_shoot, ak_74_shoot_no_shell
+anm_shots                                = ak_74_gwr_shoot, ak_74_shoot
+anm_shots_aim                            = ak_74_gwr_shoot, ak_74_shoot
 anm_show                                 = ak_74_gwr_draw, idle            
 
 anm_reload_misfire                       = ak_74_gwr_misfire, saiga_revival
@@ -215,13 +209,13 @@ item_visual                				 = dynamics\weapons\wpn_saiga\wpn_saiga_hud.ogf
 $spawn                          = "weapons\wpn_saiga_pso_scope"
 scope_x                         = 37
 scope_y                         = 6
-hud                             = wpn_saiga_pso_hud
+hud                             = wpn_saiga_pso_scope_hud
 
 [wpn_saiga_pso_scope_hud]:wpn_saiga_hud
-aim_hud_offset_pos				= -0.046538,0.042776,0.012065
-aim_hud_offset_rot				= 0.068765,0.039224,-0.006000
-aim_hud_offset_pos_16x9			= -0.046538,0.042776,0.012065
-aim_hud_offset_rot_16x9			= 0.068765,0.039224,-0.006000
+aim_hud_offset_pos				= -0.046538,0.037276,-0.037935
+aim_hud_offset_rot				= 0.064516,0.034449,-0.006000
+aim_hud_offset_pos_16x9			= -0.046538,0.037276,-0.037935
+aim_hud_offset_rot_16x9			= 0.064516,0.034449,-0.006000
 
 [wpn_saiga_1p29_scope]:wpn_saiga
 $spawn                          = "weapons\wpn_saiga_1p29_scope"
@@ -230,10 +224,10 @@ scope_y                         = 6
 hud                             = wpn_saiga_1p29_scope_hud
 
 [wpn_saiga_1p29_scope_hud]:wpn_saiga_hud
-aim_hud_offset_pos				= -0.057738,0.025176,-0.042335
-aim_hud_offset_rot				= 0.068765,0.039224,-0.006000
-aim_hud_offset_pos_16x9			= -0.057738,0.025176,-0.042335
-aim_hud_offset_rot_16x9			= 0.068765,0.039224,-0.006000
+aim_hud_offset_pos				= -0.060738,0.023176,-0.032335
+aim_hud_offset_rot				= 0.070040,0.042924,-0.006000
+aim_hud_offset_pos_16x9			= -0.060738,0.023176,-0.032335
+aim_hud_offset_rot_16x9			= 0.070040,0.042924,-0.006000
 item_visual                     = dynamics\weapons\wpn_saiga\wpn_saiga_1p29_hud.ogf
 
 [wpn_saiga_kobra_scope]:wpn_saiga
@@ -266,13 +260,13 @@ item_visual                     = dynamics\weapons\wpn_saiga\wpn_saiga_okp_hud.o
 $spawn                          = "weapons\wpn_saiga_1pn93_scope"
 scope_x                         = 62
 scope_y                         = 6
-hud                             = wpn_saiga_1pn93_hud
+hud                             = wpn_saiga_1pn93_scope_hud
 
 [wpn_saiga_1pn93_scope_hud]:wpn_saiga_hud
-aim_hud_offset_pos				= -0.051338,0.028376,-0.042335
-aim_hud_offset_rot				= 0.068765,0.039224,-0.006000
-aim_hud_offset_pos_16x9			= -0.051338,0.028376,-0.042335
-aim_hud_offset_rot_16x9			= 0.068765,0.039224,-0.006000
+aim_hud_offset_pos				= -0.046838,0.033876,-0.067335
+aim_hud_offset_rot				= 0.068840,0.036999,-0.006000
+aim_hud_offset_pos_16x9			= -0.046838,0.033876,-0.067335
+aim_hud_offset_rot_16x9			= 0.068840,0.036999,-0.006000
 item_visual                     = dynamics\weapons\wpn_saiga\wpn_saiga_1pn93_hud.ogf
 
 ;-----------------------------------------------------------------------------
@@ -318,7 +312,6 @@ misfire_start_condition                            = 0.6
 misfire_start_prob                                 = 0.003
 
 parent_section                                     = wpn_saiga12c
-shell_particles                                    = weapons\12ga
 
 silencer_name                                      = wpn_addon_silencer_12_70
 silencer_status                                    = 2
@@ -328,7 +321,6 @@ silencer_y                                         = 13
 snd_draw										   = weapons\ak_gwr\ak_gwr_draw
 snd_holster				                           = weapons\ak_gwr\ak_gwr_hide
 snd_bore                                           = nil
-snd_close                                          = weapons\generic_close
 snd_empty               						   = weapons\_dryfire\545_dry
 snd_reload										   = weapons\ak_gwr\ak_gwr_reload
 snd_reload_empty								   = weapons\ak_gwr\ak_gwr_reload_full
@@ -373,10 +365,10 @@ scope_y                         = -2
 hud                             = wpn_saiga12c_pso_scope_hud
 
 [wpn_saiga12c_pso_scope_hud]:wpn_saiga12c_hud
-aim_hud_offset_pos				= -0.046538,0.042776,0.012065
-aim_hud_offset_rot				= 0.068765,0.039224,-0.006000
-aim_hud_offset_pos_16x9			= -0.046538,0.042776,0.012065
-aim_hud_offset_rot_16x9			= 0.068765,0.039224,-0.006000
+aim_hud_offset_pos				= -0.045538,0.034776,-0.040935
+aim_hud_offset_rot				= 0.068140,0.040074,-0.006000
+aim_hud_offset_pos_16x9			= -0.045538,0.034776,-0.040935
+aim_hud_offset_rot_16x9			= 0.068140,0.040074,-0.006000
 
 [wpn_saiga12c_1p29_scope]:wpn_saiga12c
 $spawn                          = "weapons\wpn_saiga12c_1p29_scope"
@@ -385,10 +377,10 @@ scope_y                         = -2
 hud                             = wpn_saiga12c_1p29_scope_hud
 
 [wpn_saiga12c_1p29_scope_hud]:wpn_saiga12c_hud
-aim_hud_offset_pos				= -0.057738,0.025176,-0.042335
-aim_hud_offset_rot				= 0.068765,0.039224,-0.006000
-aim_hud_offset_pos_16x9			= -0.057738,0.025176,-0.042335
-aim_hud_offset_rot_16x9			= 0.068765,0.039224,-0.006000
+aim_hud_offset_pos				= -0.058738,0.020176,-0.035335
+aim_hud_offset_rot				= 0.066665,0.041974,-0.006000
+aim_hud_offset_pos_16x9			= -0.058738,0.020176,-0.035335
+aim_hud_offset_rot_16x9			= 0.066665,0.041974,-0.006000
 item_visual                     = dynamics\weapons\wpn_saiga\wpn_saiga12c_1p29_hud.ogf
 
 [wpn_saiga12c_kobra_scope]:wpn_saiga
@@ -424,8 +416,8 @@ scope_y                         = -2
 hud                             = wpn_saiga12c_1pn93_scope_hud
 
 [wpn_saiga12c_1pn93_scope_hud]:wpn_saiga_hud
-aim_hud_offset_pos				= -0.051338,0.028376,-0.042335
-aim_hud_offset_rot				= 0.068765,0.039224,-0.006000
-aim_hud_offset_pos_16x9			= -0.051338,0.028376,-0.042335
-aim_hud_offset_rot_16x9			= 0.068765,0.039224,-0.006000
+aim_hud_offset_pos				= -0.045338,0.030876,-0.064335
+aim_hud_offset_rot				= 0.064616,0.037699,-0.006000
+aim_hud_offset_pos_16x9			= -0.045338,0.030876,-0.064335
+aim_hud_offset_rot_16x9			= 0.064616,0.037699,-0.006000
 item_visual                     = dynamics\weapons\wpn_saiga\wpn_saiga12c_1pn93_hud.ogf

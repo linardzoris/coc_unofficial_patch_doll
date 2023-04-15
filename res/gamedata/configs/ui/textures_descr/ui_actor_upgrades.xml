@@ -145,7 +145,7 @@ AUTO_CAPTURE - автозахват (обведённый человек)
 	<texture id="ui_inGame2_binocular_upgrade_NVG_3" x="180" y="132" width="90" height="44" />		
 	</file>
 		
-	<file name="ui\ui_actor_armor">
-	<texture id="ui_inGame2_upgrade_weapon_RPG" x="29" y="811" width="290" height="124" />
+	<file name="ui\ingame_upgrades\ui_actor_upgrades_icons">
+	<texture id="ui_inGame2_upgrade_weapon_RPG" x="0" y="0" width="300" height="200" />
     </file>
 </w>

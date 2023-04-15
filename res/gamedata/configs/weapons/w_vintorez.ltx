@@ -18,7 +18,6 @@ cam_max_angle						               = 12.0
 cam_max_angle_horz 					               = 7.0				
 cam_step_angle_horz 				               = 0.25	
 
-cform                                              = skeleton
 class                                              = WP_AK74
 
 condition_shot_dec                                 = 0.00111
@@ -89,7 +88,7 @@ reload_dof                                         = 0.0, 0.5, 5, 2
 rpm                                                = 800
 rpm_empty_click                                    = 200
 scheduled                                          = off Simulator
-scope_name                                         = wpn_addon_scope
+scope_name                                         = pso_scope
 scope_status                                       = 2
 scope_x                                            = 55
 scope_y                                            = 0
@@ -99,7 +98,7 @@ scope_dynamic_zoom                                 = off
 scopes                                             = pso_scope, 1p29_scope, 1pn93_scope, kobra_scope, okp_scope
 use_alt_aim_hud 								   = true
 
-shell_particles                                    = weapons\9x39
+shell_particles                                    = ;weapons\9x39
 
 silencer_light_color                               = 0.6, 0.5, 0.3
 silencer_light_range                               = 0.01
@@ -139,10 +138,6 @@ strap_bone1                                        = bip01_spine1
 strap_orientation                                  = -15, -9, 110
 strap_position                                     = -0.26, -0.11, 0.25
 time_to_aim                                        = 1.0
-upgr_icon_height                                   = 200
-upgr_icon_width                                    = 300
-upgr_icon_x										   = 0
-upgr_icon_y 									   = 0
 
 upgrade_scheme                                     = upgrade_scheme_assault_rifle
 upgrades                                           = up_gr_firstab_assault_rifle, up_gr_seconab_assault_rifle, up_gr_thirdab_assault_rifle, up_gr_fourtab_assault_rifle, up_gr_fifthab_assault_rifle
@@ -194,7 +189,7 @@ anm_idle_moving_crouch                   = vss_gwr_walk, idle
 anm_idle_sprint                          = vss_gwr_sprint, idle
 anm_reload                               = vss_gwr_reload, vss_reload
 anm_reload_empty                         = vss_gwr_reload_empty, vss_reload_full
-anm_shots                                = vss_gwr_shoot, vss_shoot_no_shell
+anm_shots                                = vss_gwr_shoot, vss_shoot
 anm_show                                 = vss_gwr_draw, idle
 anm_changefiremode                       = vss_gwr_fire_select, idle
 anm_reload_misfire                       = vss_gwr_misfire, vss_revival
@@ -231,10 +226,10 @@ scope_y                         = 6
 hud                             = wpn_vintorez_pso_scope_hud
 
 [wpn_vintorez_pso_scope_hud]:wpn_vintorez_hud
-aim_hud_offset_pos				= -0.058500,0.015200,-0.005826
-aim_hud_offset_rot				= 0.050650,0.025665,-0.004100
-aim_hud_offset_pos_16x9			= -0.058500,0.015200,-0.005826
-aim_hud_offset_rot_16x9			= 0.050650,0.025665,-0.004100
+aim_hud_offset_pos				= -0.056500,0.008200,-0.096826
+aim_hud_offset_rot				= 0.047200,0.025315,-0.004100
+aim_hud_offset_pos_16x9			= -0.056500,0.008200,-0.096826
+aim_hud_offset_rot_16x9			= 0.047200,0.025315,-0.004100
 
 [wpn_vintorez_kobra_scope]:wpn_vintorez
 $spawn                          = "weapons\wpn_vintorez_kobra_scope"
@@ -256,10 +251,10 @@ scope_y                         = 8
 hud                             = wpn_vintorez_1p29_scope_hud
 
 [wpn_vintorez_1p29_scope_hud]:wpn_vintorez_hud
-aim_hud_offset_pos				= -0.064000,-0.004300,-0.049826
-aim_hud_offset_rot				= 0.050650,0.025665,-0.004100
-aim_hud_offset_pos_16x9			= -0.064000,-0.004300,-0.049826
-aim_hud_offset_rot_16x9			= 0.050650,0.025665,-0.004100
+aim_hud_offset_pos				= -0.069000,-0.003300,-0.110826
+aim_hud_offset_rot				= 0.051125,0.024640,-0.004100
+aim_hud_offset_pos_16x9			= -0.069000,-0.003300,-0.110826
+aim_hud_offset_rot_16x9			= 0.051125,0.024640,-0.004100
 item_visual                     = dynamics\weapons\wpn_vintorez\wpn_vintorez_1p29_hud.ogf
 
 [wpn_vintorez_okp_scope]:wpn_vintorez
@@ -269,9 +264,9 @@ scope_y                         = 6
 hud                             = wpn_vintorez_okp_scope_hud
 
 [wpn_vintorez_okp_scope_hud]:wpn_vintorez_hud
-aim_hud_offset_pos				= -0.065500,0.005200,-0.086826
+aim_hud_offset_pos				= -0.063500,0.008200,-0.086826
 aim_hud_offset_rot				= 0.050650,0.025665,-0.004100
-aim_hud_offset_pos_16x9			= -0.065500,0.005200,-0.086826
+aim_hud_offset_pos_16x9			= -0.063500,0.008200,-0.086826
 aim_hud_offset_rot_16x9			= 0.050650,0.025665,-0.004100
 item_visual                     = dynamics\weapons\wpn_vintorez\wpn_vintorez_okp_hud.ogf
 
@@ -282,8 +277,8 @@ scope_y                         = 8
 hud                             = wpn_vintorez_1pn93_scope_hud
 
 [wpn_vintorez_1pn93_scope_hud]:wpn_vintorez_hud
-aim_hud_offset_pos				= -0.048000,-0.000300,-0.057826
-aim_hud_offset_rot				= 0.050650,0.025665,-0.004100
-aim_hud_offset_pos_16x9			= -0.048000,-0.000300,-0.057826
-aim_hud_offset_rot_16x9			= 0.050650,0.025665,-0.004100
+aim_hud_offset_pos				= -0.056500,0.007200,-0.133826
+aim_hud_offset_rot				= 0.050375,0.026940,-0.004100
+aim_hud_offset_pos_16x9			= -0.056500,0.007200,-0.133826
+aim_hud_offset_rot_16x9			= 0.050375,0.026940,-0.004100
 item_visual                     = dynamics\weapons\wpn_vintorez\wpn_vintorez_1pn93_hud.ogf
