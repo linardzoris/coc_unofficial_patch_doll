@@ -3,6 +3,9 @@
 void CRenderTarget::PhaseRainDrops()
 {
 
+	if (Device.m_SecondViewport.IsSVPFrame()) //В прицеле не рендерим
+        return;
+
 	static float rain_drops_factor = 0.f;
 	static u32 steps_finished = 0;
 
