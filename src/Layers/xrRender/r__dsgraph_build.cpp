@@ -614,7 +614,7 @@ void D3DXRenderBase::r_dsgraph_insert_static(dxRender_Visual* pVisual)
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 void CRender::add_leafs_Dynamic(dxRender_Visual* pVisual, bool ignore)
 {
-    if (nullptr == pVisual)
+    if (!pVisual)
         return;
 
 	if (!ignore && !IsValuableToRender(pVisual, false, phase == 1, *val_pTransform))

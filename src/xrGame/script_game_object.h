@@ -820,7 +820,8 @@ public:
     void unlock_door_for_npc();
     bool is_door_blocked_by_npc() const;
     bool is_weapon_going_to_be_strapped(CScriptGameObject const* object) const;
-    
+    bool addon_IsActorHideout() const;
+
 #ifdef GAME_OBJECT_EXTENDED_EXPORTS
     u32 get_dest_level_vertex_id();
     u32 get_dest_game_vertex_id();

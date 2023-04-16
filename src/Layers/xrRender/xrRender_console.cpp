@@ -150,6 +150,9 @@ int opt_static = 2;
 int opt_dynamic = 2;
 Flags32 psDeviceFlags2 = {0};
 
+// SFZ Lens Flares
+int ps_r2_lfx = 1;
+
 // Вращение древ
 
 float ps_r__Tree_w_rot = 10.0f;
@@ -209,11 +212,14 @@ BOOL ps_clear_models_on_unload = 0; // Alundaio
 BOOL ps_use_precompiled_shaders = 0; // Alundaio
 BOOL ps_grass_shadow = 0; // Alundaio
 
+float ps_r2_gloss_factor = 10.0f;
+float ps_r2_gloss_min = 0.0f;
+
 float ps_r2_df_parallax_h = 0.02f;
 float ps_r2_df_parallax_range = 75.f;
-float ps_r2_tonemap_middlegray = 1.f; // r2-only
+float ps_r2_tonemap_middlegray = 0.5f; // r2-only
 float ps_r2_tonemap_adaptation = 1.f; // r2-only
-float ps_r2_tonemap_low_lum = 0.0001f; // r2-only
+float ps_r2_tonemap_low_lum = 0.1f; // r2-only
 float ps_r2_tonemap_amount = 0.7f; // r2-only
 float ps_r2_ls_bloom_kernel_g = 3.f; // r2-only
 float ps_r2_ls_bloom_kernel_b = .7f; // r2-only
@@ -223,7 +229,7 @@ float ps_r2_ls_dsm_kernel = .7f; // r2-only
 float ps_r2_ls_psm_kernel = .7f; // r2-only
 float ps_r2_ls_ssm_kernel = .7f; // r2-only
 float ps_r2_ls_bloom_threshold = .00001f; // r2-only
-float ps_r2_mblur = .0f; // .5f
+float ps_r2_mblur = .1f; // .5f
 int ps_r2_GI_depth = 1; // 1..5
 int ps_r2_GI_photons = 16; // 8..64
 float ps_r2_GI_clip = EPS_L; // EPS
@@ -292,9 +298,6 @@ xr_token ext_quality_token[] = {
 
 Flags32 ps_actor_shadow_flags = {0};
 
-//- Mad Max
-float ps_r2_gloss_factor = 4.0f;
-//- Mad Max
 #ifndef _EDITOR
 #include "xrEngine/XR_IOConsole.h"
 #include "xrEngine/xr_ioc_cmd.h"
@@ -781,6 +784,8 @@ void xrRender_initconsole()
     psDeviceFlags2.set(rsOptShadowGeom, TRUE);
     CMD3(CCC_Mask, "r__optimize_shadow_geom", &psDeviceFlags2, rsOptShadowGeom);
 
+	CMD4(CCC_Integer, "r2_lfx", &ps_r2_lfx, 0, 1); // SFZ Lens Flares
+
     CMD3(CCC_Preset, "_preset", &ps_Preset, qpreset_token);
 
     CMD4(CCC_Integer, "rs_skeleton_update", &psSkeletonUpdate, 2, 128);
@@ -883,10 +888,6 @@ void xrRender_initconsole()
     CMD3(CCC_Mask, "r2_allow_r1_lights", &ps_r2_ls_flags, R2FLAG_R1LIGHTS);
 
     CMD3(CCC_Mask, "r__actor_shadow", &ps_actor_shadow_flags, RFLAG_ACTOR_SHADOW); // Swartz
-
-    //- Mad Max
-    CMD4(CCC_Float, "r2_gloss_factor", &ps_r2_gloss_factor, .0f, 10.f);
-    //- Mad Max
 
 #ifdef DEBUG
     CMD3(CCC_Mask, "r2_use_nvdbt", &ps_r2_ls_flags, R2FLAG_USE_NVDBT);
@@ -1004,6 +1005,9 @@ void xrRender_initconsole()
     // Шейдер стекла и прочие эффекты
 	CMD3(CCC_Mask, "r2_hud_mask", &ps_r2_hud_mask_flags, R_FLAG_HUD_MASK);
     CMD3(CCC_Mask, "r2_hud_dyn_effects", &ps_r2_hud_mask_flags, R_FLAG_HUD_DYN_EFFECTS);
+
+	CMD4(CCC_Float, "r2_gloss_factor", &ps_r2_gloss_factor, .0f, 50.f);
+    CMD4(CCC_Float, "r2_gloss_min", &ps_r2_gloss_min, .001f, 1.0f);
 
     // CMD3(CCC_Mask, "r3_msaa", &ps_r2_ls_flags, R3FLAG_MSAA);
     CMD3(CCC_Token, "r3_msaa", &ps_r3_msaa, qmsaa_token);
