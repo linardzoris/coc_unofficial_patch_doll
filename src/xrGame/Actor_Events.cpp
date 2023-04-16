@@ -257,16 +257,17 @@ void CActor::OnEvent(NET_Packet& P, u16 type)
         case GEG_PLAYER_ITEM2RUCK:
             inventory().Ruck(iitem);
             break; // 2
-        case GEG_PLAYER_ITEM_EAT: 
-        {
-            if (pItemToEat->m_bHasAnimation)
+        case GEG_PLAYER_ITEM_EAT:
+            if (pItemToEat)
             {
-                if (!Actor()->m_bEatAnimActive)
-                    inventory().ChooseItmAnimOrNot(iitem);
+                if (pItemToEat->m_bHasAnimation)
+                {
+                    if (!Actor()->m_bEatAnimActive)
+                        inventory().ChooseItmAnimOrNot(iitem);
+                }
+                else
+                    inventory().Eat(iitem);
             }
-            else
-                inventory().Eat(iitem);
-        }
             break; // 2
         } // switch
     }

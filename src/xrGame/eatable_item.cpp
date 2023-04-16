@@ -139,6 +139,11 @@ void CEatableItem::OnH_B_Independent(bool just_before_destroy)
     inherited::OnH_B_Independent(just_before_destroy);
 }
 
+void CEatableItem::UpdateInRuck(void) 
+{ 
+    UpdateUseAnim(); 
+}
+
 void CEatableItem::HideWeapon()
 {
     CEffectorCam* effector = Actor()->Cameras().GetCamEffector((ECamEffectorType)effUseItem);
@@ -188,11 +193,6 @@ void CEatableItem::StartAnimation()
     }
 }
 
-void CEatableItem::UpdateInRuck(void) 
-{ 
-    UpdateUseAnim(); 
-}
-
 void CEatableItem::UpdateUseAnim()
 {
     if (!m_bHasAnimation)
@@ -200,9 +200,10 @@ void CEatableItem::UpdateUseAnim()
 
     CCustomDetector* pDet = smart_cast<CCustomDetector*>(Actor()->inventory().ItemFromSlot(DETECTOR_SLOT));
     CEffectorCam* effector = Actor()->Cameras().GetCamEffector((ECamEffectorType)effUseItem);
+
     bool IsActorAlive = g_pGamePersistent->GetActorAliveStatus();
 
-    if (m_bItmStartAnim && Actor()->inventory().GetActiveSlot() == NO_ACTIVE_SLOT && pDet->IsHidden())
+    if (m_bItmStartAnim && Actor()->inventory().GetActiveSlot() == NO_ACTIVE_SLOT) // Тут вылетает, проверка не подходит
         StartAnimation();
 
     if (m_bActivated)

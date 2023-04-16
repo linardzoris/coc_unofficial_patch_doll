@@ -1859,12 +1859,9 @@ void CActor::UpdateArtefactsOnBeltAndOutfit()
 
 void CActor::UpdateInventoryItems()
 {
-    TIItemContainer::iterator it = inventory().m_ruck.begin();
-    TIItemContainer::iterator ite = inventory().m_ruck.end();
-
-    for (; it != ite; ++it)
+    for (auto& it : inventory().m_ruck)
     {
-        CEatableItem* current_eatable = smart_cast<CEatableItem*>(*it);
+        const auto current_eatable = smart_cast<CEatableItem*>(it);
         if (current_eatable)
         {
             current_eatable->UpdateInRuck();

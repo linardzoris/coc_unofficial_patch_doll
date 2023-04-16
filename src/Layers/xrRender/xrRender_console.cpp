@@ -150,9 +150,6 @@ int opt_static = 2;
 int opt_dynamic = 2;
 Flags32 psDeviceFlags2 = {0};
 
-// SFZ Lens Flares
-int ps_r2_lfx = 1;
-
 // Вращение древ
 
 float ps_r__Tree_w_rot = 10.0f;
@@ -783,8 +780,6 @@ void xrRender_initconsole()
     CMD4(CCC_Integer, "r__optimize_dynamic_geom", &opt_dynamic, 0, 4);
     psDeviceFlags2.set(rsOptShadowGeom, TRUE);
     CMD3(CCC_Mask, "r__optimize_shadow_geom", &psDeviceFlags2, rsOptShadowGeom);
-
-	CMD4(CCC_Integer, "r2_lfx", &ps_r2_lfx, 0, 1); // SFZ Lens Flares
 
     CMD3(CCC_Preset, "_preset", &ps_Preset, qpreset_token);
 

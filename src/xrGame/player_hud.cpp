@@ -81,16 +81,16 @@ void player_hud_motion_container::load(IKinematicsAnimated* model, const shared_
             {
                 pm->m_base_name = anm;
                 pm->m_additional_name = anm;
-                pm->m_anim_speed = 1.f;
+                pm->m_anim_speed = 1.f; // Задать скорость
             }
             else
             {
-                R_ASSERT2(_GetItemCount(anm.c_str()) <= 3, anm.c_str());
+                R_ASSERT2(_GetItemCount(anm.c_str()) <= 3, anm.c_str()); // Задать скорость, было (== 2)
                 string512 str_item;
                 _GetItem(anm.c_str(), 0, str_item);
                 pm->m_base_name = str_item;
 
-                _GetItem(anm.c_str(), 1, str_item);
+                _GetItem(anm.c_str(), 1, str_item); // Под этой строкой, напротив которой комментарий было pm->m_additional_name = str_item; всего, что ниже - не было до скобки.
                 pm->m_additional_name = (strlen(str_item) > 0) ? pm->m_additional_name = str_item : pm->m_base_name;
 
                 _GetItem(anm.c_str(), 2, str_item);
@@ -406,11 +406,8 @@ u32 attachable_hud_item::anim_play(const shared_str& anm_name_b, BOOL bMixIn, co
     xr_sprintf(anim_name_r, "%s%s", anm_name_b.c_str(), ((m_attach_place_idx == 1) && is_16x9) ? "_16x9" : "");
 
     player_hud_motion* anm = m_hand_motions.find_motion(anim_name_r);
-    R_ASSERT2(
-        anm, make_string("model [%s] has no motion alias defined [%s]", m_sect_name.c_str(), anim_name_r).c_str());
-    R_ASSERT2(anm->m_animations.size(), make_string("model [%s] has no motion defined in motion_alias [%s]",
-                                            pSettings->r_string(m_sect_name, "item_visual"), anim_name_r)
-                                            .c_str());
+    R_ASSERT2(anm, make_string("model [%s] has no motion alias defined [%s]", m_sect_name.c_str(), anim_name_r).c_str());
+    R_ASSERT2(anm->m_animations.size(), make_string("model [%s] has no motion defined in motion_alias [%s]", pSettings->r_string(m_sect_name, "item_visual"), anim_name_r).c_str());
 
     float speed = anm->m_anim_speed;
 
