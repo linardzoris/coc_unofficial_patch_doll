@@ -33,12 +33,16 @@
 #include "hudmanager.h"
 #include "Weapon.h"
 #include "holder_custom.h"
+#include "xrScriptEngine/script_engine.hpp"
 
 extern u32 hud_adj_mode;
 extern u32 hud_adj_item_idx;
 
 void CActor::IR_OnKeyboardPress(int cmd)
 {
+    if (m_blocked_actions.find((EGameActions)cmd) != m_blocked_actions.end())
+        return; // Real Wolf. 14.10.2014
+
     if (hud_adj_mode && pInput->iGetAsyncKeyState(DIK_LSHIFT))
     {
         if (pInput->iGetAsyncKeyState(DIK_RETURN) || pInput->iGetAsyncKeyState(DIK_BACKSPACE) ||
@@ -274,6 +278,9 @@ void CActor::IR_OnMouseWheel(int direction)
 
 void CActor::IR_OnKeyboardRelease(int cmd)
 {
+    if (m_blocked_actions.find((EGameActions)cmd) != m_blocked_actions.end())
+        return; // Real Wolf. 14.10.2014
+
     if (hud_adj_mode && pInput->iGetAsyncKeyState(DIK_LSHIFT))
         return;
 
@@ -309,6 +316,9 @@ void CActor::IR_OnKeyboardRelease(int cmd)
 
 void CActor::IR_OnKeyboardHold(int cmd)
 {
+    if (m_blocked_actions.find((EGameActions)cmd) != m_blocked_actions.end())
+        return; // Real Wolf. 14.10.2014
+
     if (hud_adj_mode && pInput->iGetAsyncKeyState(DIK_LSHIFT) && g_player_hud)
     {
         u8 idx = g_player_hud->attached_item(hud_adj_item_idx)->m_parent_hud_item->GetCurrentHudOffsetIdx();

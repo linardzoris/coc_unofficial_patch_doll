@@ -14,6 +14,7 @@
 #include "xrEngine/StatGraph.h"
 #include "PhraseDialogManager.h"
 #include "xrUICore/ui_defs.h"
+#include "xr_level_controller.h"
 
 #include "step_manager.h"
 
@@ -748,6 +749,8 @@ public:
 private:
     ALife::_OBJECT_ID m_holder_id;
 
+    xr_map<EGameActions, bool> m_blocked_actions;
+
 public:
     virtual bool register_schedule() const { return false; }
     virtual bool is_ai_obstacle() const;
@@ -783,6 +786,11 @@ public:
 
     bool m_bTorchNightVision;
     bool m_bEatAnimActive;
+
+	// Real Wolf. Start. 14.10.2014
+    void block_action(EGameActions cmd);
+    void unblock_action(EGameActions cmd);
+    // Real Wolf. End. 14.10.2014
 
 protected:
     bool m_bNightVisionOn;

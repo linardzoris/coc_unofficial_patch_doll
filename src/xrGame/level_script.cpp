@@ -137,7 +137,31 @@ void set_time_factor(const float time_factor)
 	GamePersistent().Environment().SetGameTime( Level().GetEnvironmentGameDayTimeSec(), Level().game->GetEnvironmentGameTimeFactor() );
 }
 
-float get_time_factor() { return (Level().GetGameTimeFactor()); }
+void block_player_action(EGameActions dik)
+{
+	Actor()->block_action(dik);
+}
+
+void unblock_player_action(EGameActions dik)
+{
+	Actor()->unblock_action(dik);
+}
+
+float get_time_factor() 
+{ 
+    return (Level().GetGameTimeFactor()); 
+}
+
+void set_global_time_factor(float tf)
+{
+    if (!OnServer())
+        return;
+
+    Device.time_factor(tf);
+}
+
+float get_global_time_factor() { return (Device.time_factor()); }
+
 void set_game_difficulty(ESingleGameDifficulty dif)
 {
     g_SingleGameDifficulty = dif;
@@ -646,6 +670,23 @@ CScriptGameObject* g_get_target_obj()
     return nullptr;
 }
 
+void send_event_key_press(int dik)
+{
+	Level().IR_OnKeyboardPress(dik);
+}
+void send_event_key_release(int dik)
+{
+	Level().IR_OnKeyboardRelease(dik);
+}
+void send_event_key_hold(int dik)
+{
+	Level().IR_OnKeyboardHold(dik);
+}
+void send_event_mouse_wheel(int vol)
+{
+	Level().IR_OnMouseWheel(vol);
+}
+
 float g_get_target_dist()
 {
     collide::rq_result& RQ = HUD().GetCurrentRayQuery();
@@ -819,6 +860,15 @@ IC static void CLevel_Export(lua_State* luaState)
         def("debug_actor", tpfGetActor),
         def("check_object", check_object),
 #endif
+
+		def("send_event_key_press",				&send_event_key_press),
+		def("send_event_key_release",			&send_event_key_release),
+		def("send_event_key_hold",				&send_event_key_hold),
+		def("send_event_mouse_wheel",			&send_event_mouse_wheel),
+		def("set_global_time_factor",			&set_global_time_factor),
+		def("get_global_time_factor",			&get_global_time_factor),
+		def("block_player_action",				&block_player_action),
+		def("unblock_player_action",			&unblock_player_action),
 
         def("get_weather", get_weather),
         def("set_weather", set_weather),
