@@ -171,11 +171,12 @@ public:
     //текущее состояние аддонов
     enum EWeaponAddonState : u8
     {
-        eWeaponAddonScope = 0x01,
-        eWeaponAddonGrenadeLauncher = 0x02,
-        eWeaponAddonSilencer = 0x04,
-        eWeaponAddonLaserOn = 0x05,
-        eWeaponAddonFlashlightOn = 0x06
+        eWeaponAddonScope = 1 << 0,
+        eWeaponAddonGrenadeLauncher = 1 << 1,
+        eWeaponAddonSilencer = 1 << 2,
+
+        eWeaponAddonLaserOn = 1 << 3,
+        eWeaponAddonFlashlightOn = 1 << 4,
     };
 
     EWeaponAddonStatus m_scope_status;
