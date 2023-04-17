@@ -32,6 +32,7 @@
 #include "clsid_game.h"
 #include "hudmanager.h"
 #include "Weapon.h"
+#include "WeaponMagazined.h"
 #include "holder_custom.h"
 #include "xrScriptEngine/script_engine.hpp"
 
@@ -249,6 +250,18 @@ void CActor::IR_OnKeyboardPress(int cmd)
                 CurrentGameUI()->GetActorMenu().m_pQuickSlot->ReloadReferences(this);
             }
         }
+    }
+    break;
+    case kLASER_ON: 
+    {
+        if (auto wpn = smart_cast<CWeapon*>(inventory().ActiveItem()))
+            wpn->SwitchLaser(!wpn->IsLaserOn());
+    }
+    break;
+    case kFLASHLIGHT: 
+    {
+        if (auto wpn = smart_cast<CWeapon*>(inventory().ActiveItem()))
+            wpn->SwitchFlashlight(!wpn->IsFlashlightOn());
     }
     break;
 #ifdef COC_KICK
