@@ -169,13 +169,11 @@ public:
     typedef ALife::EWeaponAddonStatus EWeaponAddonStatus;
 
     //текущее состояние аддонов
-    enum EWeaponAddonState : u8
+    enum EWeaponAddonState
     {
         eWeaponAddonScope = 0x01,
         eWeaponAddonGrenadeLauncher = 0x02,
-        eWeaponAddonSilencer = 0x04,
-        eWeaponAddonLaserOn = 0x05,
-        eWeaponAddonFlashlightOn = 0x06
+        eWeaponAddonSilencer = 0x04
     };
 
     EWeaponAddonStatus m_scope_status;

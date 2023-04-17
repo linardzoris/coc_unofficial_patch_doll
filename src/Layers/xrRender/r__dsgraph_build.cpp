@@ -33,12 +33,6 @@ ICF float CalcSSA(float& distSQ, Fvector& C, float R)
     distSQ = Device.vCameraPosition.distance_to_sqr(C) + EPS;
     return R / distSQ;
 }
-ICF float CalcHudSSA(float& distSQ, Fvector& C, dxRender_Visual* V)
-{
-    float R = V->vis.sphere.R + 0;
-    distSQ = Fvector().set(0.f, 0.f, 0.f).distance_to_sqr(C) + EPS;
-    return R / distSQ;
-}
 
 // Static geometry optimization
 #define O_S_L1_S_LOW 10.f // geometry 3d volume size
@@ -146,11 +140,8 @@ IC float GetDistFromCamera(const Fvector& from_position)
     return adjusted_distane;
 }
 
-IC bool IsValuableToRender(dxRender_Visual* pVisual, bool isStatic, bool sm, Fmatrix& transform_matrix, bool ignore_optimize = false)
+IC bool IsValuableToRender(dxRender_Visual* pVisual, bool isStatic, bool sm, Fmatrix& transform_matrix)
 {
-    if (ignore_optimize)
-        return true;
-
     if ((isStatic && opt_static >= 1) || (!isStatic && opt_dynamic >= 1))
     {
         float sphere_volume = pVisual->getVisData().sphere.volume();
@@ -325,13 +316,7 @@ void D3DXRenderBase::r_dsgraph_insert_dynamic(dxRender_Visual* pVisual, Fvector&
 #endif
 
     float distSQ;
-    float SSA;
-
-    if (!RI.val_bHUD)
-        SSA = CalcSSA(distSQ, Center, pVisual);
-    else
-        SSA = CalcHudSSA(distSQ, Center, pVisual);
-
+    float SSA = CalcSSA(distSQ, Center, pVisual);
     if (SSA <= r_ssaDISCARD)
         return;
 
@@ -632,7 +617,7 @@ void CRender::add_leafs_Dynamic(dxRender_Visual* pVisual, bool ignore)
     if (!pVisual)
         return;
 
-	if (!IsValuableToRender(pVisual, false, phase == 1, *val_pTransform, ignore))
+	if (!ignore && !IsValuableToRender(pVisual, false, phase == 1, *val_pTransform))
         return;
 
     // Visual is 100% visible - simply add it

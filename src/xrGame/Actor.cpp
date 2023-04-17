@@ -1061,11 +1061,8 @@ void CActor::UpdateCL()
     Fmatrix trans;
     Cameras().hud_camera_Matrix(trans);
 
-	if (IsFocused())
-    {
-        trans.c.sub(Device.vCameraPosition);
+    if (IsFocused())
         g_player_hud->update(trans);
-    }
 
     m_bPickupMode = false;
     m_bInfoDraw = false;

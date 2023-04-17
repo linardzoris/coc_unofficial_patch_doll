@@ -7,7 +7,6 @@
 #include "static_cast_checked.hpp"
 #include "actoreffector.h"
 #include "xrEngine/IGame_Persistent.h"
-#include "Weapon.h"
 
 player_hud* g_player_hud = NULL;
 Fvector _ancor_pos;
@@ -212,16 +211,9 @@ void attachable_hud_item::setup_firedeps(firedeps& fd)
         Fmatrix& fire_mat = m_model->LL_GetTransform(m_measures.m_fire_bone);
         fire_mat.transform_tiny(fd.vLastFP, m_measures.m_fire_point_offset);
         m_item_transform.transform_tiny(fd.vLastFP);
-        fd.vLastFP.add(Device.vCameraPosition);
 
-        fd.vLastFD.set(0.f, 0.f, 1.f);
+		fd.vLastFD.set(m_measures.m_fire_direction);
         m_item_transform.transform_dir(fd.vLastFD);
-
-		auto Wpn = smart_cast<CWeapon*>(m_parent_hud_item);
-
-        if (Wpn) // && m_measures.useCopFirePoint)
-            Wpn->CorrectDirFromWorldToHud(fd.vLastFD);
-
         VERIFY(_valid(fd.vLastFD));
         VERIFY(_valid(fd.vLastFD));
 
@@ -237,7 +229,6 @@ void attachable_hud_item::setup_firedeps(firedeps& fd)
         Fmatrix& fire_mat = m_model->LL_GetTransform(m_measures.m_fire_bone2);
         fire_mat.transform_tiny(fd.vLastFP2, m_measures.m_fire_point2_offset);
         m_item_transform.transform_tiny(fd.vLastFP2);
-        fd.vLastFP2.add(Device.vCameraPosition);
         VERIFY(_valid(fd.vLastFP2));
         VERIFY(_valid(fd.vLastFP2));
     }
@@ -247,7 +238,6 @@ void attachable_hud_item::setup_firedeps(firedeps& fd)
         Fmatrix& fire_mat = m_model->LL_GetTransform(m_measures.m_shell_bone);
         fire_mat.transform_tiny(fd.vLastSP, m_measures.m_shell_point_offset);
         m_item_transform.transform_tiny(fd.vLastSP);
-        fd.vLastSP.add(Device.vCameraPosition);
         VERIFY(_valid(fd.vLastSP));
         VERIFY(_valid(fd.vLastSP));
     }
@@ -257,7 +247,7 @@ bool attachable_hud_item::need_renderable() { return m_parent_hud_item->need_ren
 void attachable_hud_item::render()
 {
     GEnv.Render->set_Transform(&m_item_transform);
-    GEnv.Render->add_Visual(m_model->dcast_RenderVisual(), true);
+    GEnv.Render->add_Visual(m_model->dcast_RenderVisual());
     debug_draw_firedeps();
     m_parent_hud_item->render_hud_mode();
 }
@@ -756,9 +746,9 @@ void player_hud::render_hud()
         return;
 
     GEnv.Render->set_Transform(&m_transform);
-    GEnv.Render->add_Visual(m_model->dcast_RenderVisual(), true);
+    GEnv.Render->add_Visual(m_model->dcast_RenderVisual());
     GEnv.Render->set_Transform(&m_transform_2);
-    GEnv.Render->add_Visual(m_model_2->dcast_RenderVisual(), true);
+    GEnv.Render->add_Visual(m_model_2->dcast_RenderVisual());
 
     if (m_attached_items[0])
         m_attached_items[0]->render();
@@ -769,7 +759,7 @@ void player_hud::render_hud()
 	if (script_anim_item_model)
     {
         GEnv.Render->set_Transform(&m_item_pos);
-        GEnv.Render->add_Visual(script_anim_item_model->dcast_RenderVisual(), true);
+        GEnv.Render->add_Visual(script_anim_item_model->dcast_RenderVisual());
     }
 }
 

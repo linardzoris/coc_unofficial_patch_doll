@@ -335,7 +335,6 @@ class hud_transform_helper
 {
     Fmatrix Pold;
     Fmatrix FTold;
-    Fmatrix Vold;
 
 public:
     hud_transform_helper()
@@ -345,8 +344,6 @@ public:
         // Change projection
         Pold  = Device.mProject;
         FTold = Device.mFullTransform;
-        Vold = Device.mView;
-        Device.mView.build_camera_dir(Fvector().set(0.f, 0.f, 0.f), Device.vCameraDirection, Device.vCameraTop);
 
         // XXX: Xottab_DUTY: custom FOV. Implement it someday
         // It should be something like this:
@@ -368,10 +365,7 @@ public:
              /*VIEWPORT_NEAR*/0.02f, g_pGamePersistent->Environment().CurrentEnv->far_plane);
 
         Device.mFullTransform.mul(Device.mProject, Device.mView);
-        RCache.set_xform_view(Device.mView);
         RCache.set_xform_project(Device.mProject);
-        Device.mView = Vold;
-        RCache.set_xform_view(Device.mView);
 
         RImplementation.rmNear();
     }
@@ -384,8 +378,6 @@ public:
         Device.mProject = Pold;
         Device.mFullTransform = FTold;
         RCache.set_xform_project(Device.mProject);
-        Device.mView = Vold;
-        RCache.set_xform_view(Device.mView);
     }
 };
 

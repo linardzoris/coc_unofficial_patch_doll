@@ -21,7 +21,6 @@
 #include "inventory_item.h"
 #include "inventory.h"
 #include "PDA.h"
-#include "Weapon.h"
 
 #include "ai/monsters/poltergeist/poltergeist.h"
 
@@ -222,9 +221,6 @@ void CHUDTarget::Render()
         F->OutNext("%4.1f", PP.RQ.range);
 #endif
     }
-
-	if (auto Wpn = smart_cast<CWeapon*>(Actor->inventory().ActiveItem()); Wpn && Wpn->IsLaserOn())
-        return;
 
 	if (smart_cast<CPda*>(Actor->inventory().ActiveItem()))
         return;
