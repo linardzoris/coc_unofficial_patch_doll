@@ -528,14 +528,18 @@ void CUIActorMenu::highlight_item_slot(CUICellItem* cell_item)
         return;
     }
 
+	CGameObject* pObj = smart_cast<CGameObject*>(item);
+    shared_str section_name = pObj->cNameSect();
+    bool CanSwitchToBelt = READ_IF_EXISTS(pSettings, r_bool, section_name, "belt", false); // Lex Addon, подсветка итемов, которые могут встать в пояс
+
     CArtefact* artefact = smart_cast<CArtefact*>(item);
-    if (artefact)
+    if (artefact || CanSwitchToBelt)
     {
         if (cell_item->OwnerList() && GetListType(cell_item->OwnerList()) == iActorBelt)
             return;
 
         Ivector2 cap = m_pInventoryBeltList->CellsCapacity();
-        for (u8 i = 0; i < cap.x; i++)
+        for (u8 i = 0; i < cap.x*cap.y; i++)
             m_ArtefactSlotsHighlight[i]->Show(true);
         return;
     }

@@ -81,6 +81,26 @@ bool CUIActorMenu::OnItemDrop(CUICellItem* itm)
     EDDListType t_new = GetListType(new_owner);
     EDDListType t_old = GetListType(old_owner);
 
+    // Lex_Addon
+    m_iArtefactsCount = READ_IF_EXISTS(pSettings, r_u32, "gameplay", "max_belt", 5); // «адать из конфига количество слотов
+    PIItem iitem = (PIItem)itm->m_pData;
+
+    int first_row = m_iArtefactsCount / 2 + 1;
+    int last_row = m_iArtefactsCount + 1;
+
+	if (t_new == 3 && iitem->Belt())
+    {
+        // ѕровер€ем на попадание в недоступные слоты
+        // ≈сли попали в недоступный слот, то прерываем перетаскивание
+        Ivector2 belt_cell_pos = new_owner->PickCell(GetUICursor().GetCursorPosition());
+        if (belt_cell_pos.x == -1 && belt_cell_pos.y == -1)
+            return true;
+        if (belt_cell_pos.y == 0 && (belt_cell_pos.x + 1) > (m_pActorInvOwner->inventory().BeltWidth()))
+            return true;
+        if (belt_cell_pos.y == 1 && (belt_cell_pos.x + first_row) > (m_pActorInvOwner->inventory().BeltWidth()))
+            return true;
+    }
+
     if (!AllowItemDrops(t_old, t_new))
     {
         Msg("incorrect action [%d]->[%d]", t_old, t_new);

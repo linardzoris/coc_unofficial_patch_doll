@@ -210,6 +210,14 @@ public:
     float GetPsyFactor() const;
     void SetPsyFactor(float val);
 
+	// Lex_Addon
+    void detach_scope() const;
+    LPCSTR get_scope_name() const;
+    void detach_grenade_launcher() const;
+    LPCSTR get_grenade_launcher_name() const;
+    void detach_silencer() const;
+    LPCSTR get_silencer_name() const;
+
     // CEntity
     _DECLARE_FUNCTION10(DeathTime, u32);
     _DECLARE_FUNCTION10(MaxHealth, float);

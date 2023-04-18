@@ -749,6 +749,7 @@ bool CUIActorMenu::ToBelt(CUICellItem* itm, bool b_use_cursor_pos)
 {
     PIItem iitem = (PIItem)itm->m_pData;
     bool b_own_item = (iitem->parent_id() == m_pActorInvOwner->object_id());
+    m_iArtefactsCount = READ_IF_EXISTS(pSettings, r_u32, "gameplay", "max_belt", 5); // Задать из конфига количество слотов
 
     if (m_pActorInvOwner->inventory().CanPutInBelt(iitem))
     {
@@ -788,14 +789,19 @@ bool CUIActorMenu::ToBelt(CUICellItem* itm, bool b_use_cursor_pos)
         else
             return false;
 
+        int first_row = m_iArtefactsCount / 2 + 1;
+        int last_row = m_iArtefactsCount + 1;
+
         Ivector2 belt_cell_pos = belt_list->PickCell(GetUICursor().GetCursorPosition());
         if (belt_cell_pos.x == -1 && belt_cell_pos.y == -1)
             return false;
-
-        //		PIItem	_iitem						= m_pActorInvOwner->inventory().ItemFromSlot(slot_id);
+        // Lex_Addon
+        if (belt_cell_pos.y == 0 && (belt_cell_pos.x + 1) > (m_pActorInvOwner->inventory().BeltWidth()))
+            return false;
+        if (belt_cell_pos.y == 1 && (belt_cell_pos.x + first_row) > (m_pActorInvOwner->inventory().BeltWidth()))
+            return false;
 
         CUICellItem* slot_cell = belt_list->GetCellAt(belt_cell_pos).m_item;
-        //		VERIFY								(slot_cell && ((PIItem)slot_cell->m_pData)==_iitem);
 
         bool result = ToBag(slot_cell, false);
         VERIFY(result);
@@ -1482,7 +1488,8 @@ void CUIActorMenu::ProcessPropertiesBoxClicked(CUIWindow* w, void* d)
 
 void CUIActorMenu::UpdateOutfit()
 {
-    m_iArtefactsCount = READ_IF_EXISTS(pSettings, r_u32, "gameplay", "max_belt", 5);
+    m_iArtefactsCount = READ_IF_EXISTS(pSettings, r_u32, "gameplay", "max_belt", 5); // Задать из конфига количество слотов
+    m_bTwoRowsBelt = READ_IF_EXISTS(pSettings, r_bool, "gameplay", "belt_two_rows", false); // Разрешить два столбика с ячейками из конфига
 
     for (u8 i = 0; i < m_iArtefactsCount; ++i)
     {
@@ -1506,8 +1513,16 @@ void CUIActorMenu::UpdateOutfit()
     }
 
     Ivector2 afc;
-    afc.x = af_count; // 1;
-    afc.y = 1; // af_count;
+    if (m_bTwoRowsBelt)
+    {
+        afc.x = af_count / 2; // 1;
+        afc.y = 2; // af_count;
+    }
+    else 
+    {
+        afc.x = af_count;
+        afc.y = 1;
+    }
 
     m_pInventoryBeltList->SetCellsCapacity(afc);
 

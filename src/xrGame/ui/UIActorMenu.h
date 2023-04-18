@@ -369,4 +369,5 @@ public:
     void DonateCurrentItem(CUICellItem* cell_item); //Alundaio: Donate item via context menu while in trade menu
 
     int m_iArtefactsCount;
+    bool m_bTwoRowsBelt;
 }; // class CUIActorMenu

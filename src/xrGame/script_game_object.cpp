@@ -503,6 +503,84 @@ void CScriptGameObject::SetCondition(float val)
     inventory_item->ChangeCondition(val);
 }
 
+// Отсоединить прицел
+void CScriptGameObject::detach_scope() const
+{
+    CInventoryItem* inventory_item = smart_cast<CInventoryItem*>(&object());
+    if (inventory_item)
+    {
+        CWeapon* weapon = smart_cast<CWeapon*>(inventory_item);
+        if (weapon)
+            if (weapon->ScopeAttachable() && weapon->IsScopeAttached())
+                weapon->Detach(weapon->GetScopeName().c_str(), true);
+    }
+}
+// Получить название установленного прицела
+LPCSTR CScriptGameObject::get_scope_name() const
+{
+    CInventoryItem* inventory_item = smart_cast<CInventoryItem*>(&object());
+    if (inventory_item)
+    {
+        CWeapon* weapon = smart_cast<CWeapon*>(inventory_item);
+        if (weapon)
+            if (weapon->ScopeAttachable() && weapon->IsScopeAttached())
+                return weapon->GetScopeName().c_str();
+    }
+    return "none";
+}
+
+// Lex_Addon
+void CScriptGameObject::detach_grenade_launcher() const
+{
+    CInventoryItem* inventory_item = smart_cast<CInventoryItem*>(&object());
+    if (inventory_item)
+    {
+        CWeapon* weapon = smart_cast<CWeapon*>(inventory_item);
+        if (weapon)
+            if (weapon->GrenadeLauncherAttachable() && weapon->IsGrenadeLauncherAttached())
+                weapon->Detach(weapon->GetGrenadeLauncherName().c_str(), true);
+    }
+}
+
+LPCSTR CScriptGameObject::get_grenade_launcher_name() const
+{
+    CInventoryItem* inventory_item = smart_cast<CInventoryItem*>(&object());
+    if (inventory_item)
+    {
+        CWeapon* weapon = smart_cast<CWeapon*>(inventory_item);
+        if (weapon)
+            if (weapon->GrenadeLauncherAttachable() && weapon->IsGrenadeLauncherAttached())
+                return weapon->GetGrenadeLauncherName().c_str();
+    }
+    return "none";
+}
+
+
+void CScriptGameObject::detach_silencer() const
+{
+    CInventoryItem* inventory_item = smart_cast<CInventoryItem*>(&object());
+    if (inventory_item)
+    {
+        CWeapon* weapon = smart_cast<CWeapon*>(inventory_item);
+        if (weapon)
+            if (weapon->SilencerAttachable() && weapon->IsSilencerAttached())
+                weapon->Detach(weapon->GetSilencerName().c_str(), true);
+    }
+}
+
+LPCSTR CScriptGameObject::get_silencer_name() const
+{
+    CInventoryItem* inventory_item = smart_cast<CInventoryItem*>(&object());
+    if (inventory_item)
+    {
+        CWeapon* weapon = smart_cast<CWeapon*>(inventory_item);
+        if (weapon)
+            if (weapon->SilencerAttachable() && weapon->IsSilencerAttached())
+                return weapon->GetSilencerName().c_str();
+    }
+    return "none";
+}
+
 float CScriptGameObject::GetPsyFactor() const
 {
     CPda* pda = smart_cast<CPda*>(&object());

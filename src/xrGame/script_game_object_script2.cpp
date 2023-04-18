@@ -86,6 +86,14 @@ class_<CScriptGameObject>& script_register_game_object1(class_<CScriptGameObject
         .def("cost", &CScriptGameObject::Cost)
         .def("condition", &CScriptGameObject::GetCondition)
         .def("set_condition", &CScriptGameObject::SetCondition)
+        // Lex_Addon
+        .def("detach_scope", &CScriptGameObject::detach_scope)
+        .def("get_scope_name", &CScriptGameObject::get_scope_name)
+        .def("detach_grenade_launcher", &CScriptGameObject::detach_grenade_launcher)
+        .def("get_grenade_launcher_name", &CScriptGameObject::get_grenade_launcher_name)
+        .def("detach_silencer", &CScriptGameObject::detach_silencer)
+        .def("get_silencer_name", &CScriptGameObject::get_silencer_name)
+
         .def("death_time", &CScriptGameObject::DeathTime)
         //		.def("armor",						&CScriptGameObject::Armor)
         .def("max_health", &CScriptGameObject::MaxHealth)
