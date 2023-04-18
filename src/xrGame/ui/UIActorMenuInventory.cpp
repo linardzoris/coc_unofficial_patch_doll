@@ -1482,13 +1482,15 @@ void CUIActorMenu::ProcessPropertiesBoxClicked(CUIWindow* w, void* d)
 
 void CUIActorMenu::UpdateOutfit()
 {
-    for (u8 i = 0; i < e_af_count; ++i)
+    m_iArtefactsCount = READ_IF_EXISTS(pSettings, r_u32, "gameplay", "max_belt", 5);
+
+    for (u8 i = 0; i < m_iArtefactsCount; ++i)
     {
         m_belt_list_over[i]->SetVisible(true);
     }
 
     u32 af_count = m_pActorInvOwner->inventory().BeltWidth();
-    VERIFY(0 <= af_count && af_count <= 5);
+    VERIFY(0 <= af_count && af_count <= m_iArtefactsCount);
 
     VERIFY(m_pInventoryBeltList);
     CCustomOutfit* outfit = m_pActorInvOwner->GetOutfit();

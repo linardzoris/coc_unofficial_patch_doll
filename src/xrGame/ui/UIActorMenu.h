@@ -110,11 +110,7 @@ protected:
     CUIDragDropListEx* m_pDeadBodyBagList;
     CUIDragDropListEx* m_pTrashList;
 
-    enum
-    {
-        e_af_count = AF_MAX_BELT_SLOTS
-    };
-    CUIStatic* m_belt_list_over[e_af_count];
+    xr_vector<CUIStatic*> m_belt_list_over;
     CUIStatic* m_HelmetOver;
 
     u8 m_slot_count;
@@ -123,7 +119,7 @@ protected:
     CUIDragDropListEx* m_pInvList[LAST_SLOT + 1];
 
     CUIStatic* m_QuickSlotsHighlight[4];
-    CUIStatic* m_ArtefactSlotsHighlight[e_af_count];
+    xr_vector<CUIStatic*> m_ArtefactSlotsHighlight;
 
     CUIInventoryUpgradeWnd* m_pUpgradeWnd;
 
@@ -371,4 +367,6 @@ public:
 
     void RefreshCurrentItemCell();
     void DonateCurrentItem(CUICellItem* cell_item); //Alundaio: Donate item via context menu while in trade menu
+
+    int m_iArtefactsCount;
 }; // class CUIActorMenu

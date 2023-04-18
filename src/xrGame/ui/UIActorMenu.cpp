@@ -461,6 +461,8 @@ void CUIActorMenu::UpdateItemsPlace()
 
 void CUIActorMenu::clear_highlight_lists()
 {
+    m_iArtefactsCount = READ_IF_EXISTS(pSettings, r_u32, "gameplay", "max_belt", 5);
+
     for (u8 i = 1; i <= m_slot_count; ++i)
     {
         if (m_pInvSlotHighlight[i])
@@ -469,7 +471,7 @@ void CUIActorMenu::clear_highlight_lists()
 
     for (u8 i = 0; i < 4; i++)
         m_QuickSlotsHighlight[i]->Show(false);
-    for (u8 i = 0; i < e_af_count; i++)
+    for (u8 i = 0; i < m_iArtefactsCount; i++)
         m_ArtefactSlotsHighlight[i]->Show(false);
 
     m_pInventoryBagList->clear_select_armament();

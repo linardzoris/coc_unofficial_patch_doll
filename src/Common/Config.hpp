@@ -50,9 +50,6 @@
 #   define R2_SHADERS_BACKWARDS_COMPATIBILITY
 #endif
 
-// Внутреннее
-#   define AF_MAX_BELT_SLOTS 5
-
 #define COC_DEBUG
 
 #ifdef COC_DEBUG
