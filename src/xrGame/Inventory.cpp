@@ -137,30 +137,19 @@ void CInventory::Take(CGameObject* pObj, bool bNotActivate, bool strict_placemen
         result = Belt(pIItem, strict_placement);
         if (!result)
             pIItem->m_ItemCurrPlace.type = eItemPlaceUndefined;
-#ifdef DEBUG
-        if (!result)
             Msg("cant put in belt item %s", *pIItem->object().cName());
-#endif
-
         break;
     case eItemPlaceRuck:
         result = Ruck(pIItem, strict_placement);
         if (!result)
             pIItem->m_ItemCurrPlace.type = eItemPlaceUndefined;
-#ifdef DEBUG
-        if (!result)
             Msg("cant put in ruck item %s", *pIItem->object().cName());
-#endif
-
         break;
     case eItemPlaceSlot:
         result = Slot(pIItem->m_ItemCurrPlace.slot_id, pIItem, bNotActivate, strict_placement);
         if (!result)
             pIItem->m_ItemCurrPlace.type = eItemPlaceUndefined;
-#ifdef DEBUG
-        if (!result)
             Msg("cant slot in slot item %s", *pIItem->object().cName());
-#endif
         break;
     }
 
