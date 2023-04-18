@@ -503,7 +503,7 @@ void CScriptGameObject::SetCondition(float val)
     inventory_item->ChangeCondition(val);
 }
 
-// Отсоединить прицел
+// Lex_Addon
 void CScriptGameObject::detach_scope() const
 {
     CInventoryItem* inventory_item = smart_cast<CInventoryItem*>(&object());
@@ -515,7 +515,7 @@ void CScriptGameObject::detach_scope() const
                 weapon->Detach(weapon->GetScopeName().c_str(), true);
     }
 }
-// Получить название установленного прицела
+
 LPCSTR CScriptGameObject::get_scope_name() const
 {
     CInventoryItem* inventory_item = smart_cast<CInventoryItem*>(&object());
@@ -529,7 +529,6 @@ LPCSTR CScriptGameObject::get_scope_name() const
     return "none";
 }
 
-// Lex_Addon
 void CScriptGameObject::detach_grenade_launcher() const
 {
     CInventoryItem* inventory_item = smart_cast<CInventoryItem*>(&object());
