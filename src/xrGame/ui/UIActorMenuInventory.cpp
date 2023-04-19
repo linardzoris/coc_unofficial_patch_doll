@@ -33,6 +33,7 @@
 #include "PDA.h"
 #include "actor_defs.h"
 #include "ActorBackpack.h"
+#include "ActorUnvest.h"
 #include "../WeaponRPG26.h"
 
 void move_item_from_to(u16 from_id, u16 to_id, u16 what_id);
@@ -531,6 +532,18 @@ bool CUIActorMenu::ToSlot(CUICellItem* itm, bool force_place, u16 slot_id)
         if (pOutfit && !pOutfit->bIsHelmetAvaliable)
             return false;
     }
+    if (slot_id == BACKPACK_SLOT)
+    {
+        CCustomOutfit* pOutfit = m_pActorInvOwner->GetOutfit();
+        if (pOutfit && !pOutfit->bIsBackpackAvaliable)
+            return false;
+    }
+    if (slot_id == UNVEST_SLOT)
+    {
+        CCustomOutfit* pOutfit = m_pActorInvOwner->GetOutfit();
+        if (pOutfit && !pOutfit->bIsUnvestAvaliable)
+            return false;
+    }
 
     if (m_pActorInvOwner->inventory().CanPutInSlot(iitem, slot_id))
     {
@@ -548,6 +561,24 @@ bool CUIActorMenu::ToSlot(CUICellItem* itm, bool force_place, u16 slot_id)
                 {
                     CUICellItem* helmet_cell = helmet_list->GetItemIdx(0);
                     ToBag(helmet_cell, false);
+                }
+            }
+            if (pOutfit && !pOutfit->bIsBackpackAvaliable)
+            {
+                CUIDragDropListEx* backpack_list = GetSlotList(BACKPACK_SLOT);
+                if (backpack_list && backpack_list->ItemsCount() == 1)
+                {
+                    CUICellItem* backpack_cell = backpack_list->GetItemIdx(0);
+                    ToBag(backpack_cell, false);
+                }
+            }
+            if (pOutfit && !pOutfit->bIsUnvestAvaliable)
+            {
+                CUIDragDropListEx* unvest_list = GetSlotList(UNVEST_SLOT);
+                if (unvest_list && unvest_list->ItemsCount() == 1)
+                {
+                    CUICellItem* unvest_cell = unvest_list->GetItemIdx(0);
+                    ToBag(unvest_cell, false);
                 }
             }
         }

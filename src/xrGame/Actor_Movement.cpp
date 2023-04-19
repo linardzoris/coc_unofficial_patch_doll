@@ -18,7 +18,7 @@
 #include "player_hud.h"
 #include "CustomOutfit.h"
 #include "ActorBackpack.h"
-
+#include "ActorUnvest.h"
 
 #ifdef DEBUG
 #include "phdebug.h"
@@ -242,6 +242,10 @@ void CActor::g_cl_CheckControls(u32 mstate_wf, Fvector& vControlAccel, float& Ju
             CBackpack* backpack = smart_cast<CBackpack*>(inventory().ItemFromSlot(BACKPACK_SLOT));
             if (backpack)
                 jumpSpd *= backpack->m_fJumpSpeed;
+
+            CUnvest* unvest = smart_cast<CUnvest*>(inventory().ItemFromSlot(UNVEST_SLOT));
+            if (unvest)
+                jumpSpd *= unvest->m_fJumpSpeed;
 
             Jump = jumpSpd;
             m_fJumpTime = s_fJumpTime;
@@ -687,6 +691,10 @@ float CActor::get_additional_weight() const
     if (pBackpack)
         res += pBackpack->m_additional_weight;
 
+    CUnvest* pUnvest = smart_cast<CUnvest*>(inventory().ItemFromSlot(UNVEST_SLOT));
+    if (pUnvest)
+        res += pUnvest->m_additional_weight;
+
     for (auto& it : inventory().m_belt)
     {
         CArtefact* artefact = smart_cast<CArtefact*>(it);
@@ -708,6 +716,10 @@ float CActor::get_additional_weight2() const
 	CBackpack* pBackpack = smart_cast<CBackpack*>(inventory().ItemFromSlot(BACKPACK_SLOT));
 	if (pBackpack)
 		res += pBackpack->m_additional_weight2;
+
+    CUnvest* pUnvest = smart_cast<CUnvest*>(inventory().ItemFromSlot(UNVEST_SLOT));
+    if (pUnvest)
+        res += pUnvest->m_additional_weight2;
 
 	for (TIItemContainer::const_iterator it = inventory().m_belt.begin();
 		inventory().m_belt.end() != it; ++it)

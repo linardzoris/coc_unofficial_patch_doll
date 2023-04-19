@@ -3,6 +3,7 @@
 #include "ActorHelmet.h"
 #include "xrScriptEngine/ScriptExporter.hpp"
 #include "ActorBackpack.h"
+#include "ActorUnvest.h"
 
 using namespace luabind;
 
@@ -16,6 +17,9 @@ SCRIPT_EXPORT(CCustomOutfit, (CGameObject), {
             .def(constructor<>()),
 
         class_<CBackpack, CGameObject>("CBackpack")
+            .def(constructor<>()),
+
+        class_<CUnvest, CGameObject>("CUnvest")
             .def(constructor<>())
     ];
 });

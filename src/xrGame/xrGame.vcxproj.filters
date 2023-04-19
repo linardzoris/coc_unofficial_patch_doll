@@ -5692,6 +5692,9 @@
     <ClInclude Include="ActorBackpack.h">
       <Filter>Core\Client\Objects\items &amp; weapons\Outfit</Filter>
     </ClInclude>
+    <ClInclude Include="ActorUnvest.h">
+      <Filter>Core\Client\Objects\items &amp; weapons\Outfit</Filter>
+    </ClInclude>	
     <ClInclude Include="DynamicHudGlass.h">
       <Filter>Core\Client\Objects\items &amp; weapons\Outfit</Filter>
     </ClInclude>	
@@ -8395,6 +8398,9 @@
     <ClCompile Include="ActorBackpack.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Outfit</Filter>
     </ClCompile>
+    <ClCompile Include="ActorUnvest.cpp">
+      <Filter>Core\Client\Objects\items &amp; weapons\Outfit</Filter>
+    </ClCompile>	
     <ClCompile Include="DynamicHudGlass.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Outfit</Filter>
     </ClCompile>	

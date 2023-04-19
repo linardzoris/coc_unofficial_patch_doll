@@ -1,12 +1,14 @@
 #include "stdafx.h"
-#include "ActorBackpack.h"
+#include "ActorUnvest.h"
 #include "Actor.h"
 #include "Inventory.h"
 #include "BoneProtections.h"
 #include "Include/xrRender/Kinematics.h"
 #include "player_hud.h"
 
-CBackpack::CBackpack()
+int m_iArtefactsCountUnvest = READ_IF_EXISTS(pSettings, r_u32, "gameplay", "max_belt", 5);
+
+CUnvest::CUnvest()
 {
     m_flags.set(FUsingCondition, TRUE);
 
@@ -16,14 +18,15 @@ CBackpack::CBackpack()
 
     m_boneProtection = new SBoneProtections();
     m_BonesProtectionSect = NULL;
+    m_artefact_count = 0;
 }
 
-CBackpack::~CBackpack()
+CUnvest::~CUnvest()
 {
 	xr_delete(m_boneProtection);
 }
 
-BOOL CBackpack::net_Spawn(CSE_Abstract* DC)
+BOOL CUnvest::net_Spawn(CSE_Abstract* DC)
 {
     if (IsGameTypeSingle())
         ReloadBonesProtection();
@@ -32,30 +35,30 @@ BOOL CBackpack::net_Spawn(CSE_Abstract* DC)
     return (res);
 }
 
-void CBackpack::net_Export(NET_Packet& P)
+void CUnvest::net_Export(NET_Packet& P)
 {
     inherited::net_Export(P);
-    // Может вызывать проблемы
+
     P.w_float_q8(GetCondition(), 0.0f, 1.0f);
 }
 
-void CBackpack::net_Import(NET_Packet& P)
+void CUnvest::net_Import(NET_Packet& P)
 {
     inherited::net_Import(P);
-    // Может вызывать проблемы
+
     float _cond;
     P.r_float_q8(_cond, 0.0f, 1.0f);
     SetCondition(_cond);
 }
 
-void CBackpack::OnH_A_Chield()
+void CUnvest::OnH_A_Chield()
 {
     inherited::OnH_A_Chield();
     if (!IsGameTypeSingle())
         ReloadBonesProtection();
 }
 
-void CBackpack::Load(LPCSTR section)
+void CUnvest::Load(LPCSTR section)
 {
     inherited::Load(section);
 
@@ -88,12 +91,14 @@ void CBackpack::Load(LPCSTR section)
     m_fWalkAccel = READ_IF_EXISTS(pSettings, r_float, section, "walk_accel", 1.f);
     m_fOverweightWalkK = READ_IF_EXISTS(pSettings, r_float, section, "overweight_walk_accel", 1.f);
 
+    m_artefact_count = READ_IF_EXISTS(pSettings, r_u32, section, "artefact_count", 0);
+    clamp(m_artefact_count, (u32)0, (u32)m_iArtefactsCountUnvest);
+
     m_flags.set(FUsingCondition, READ_IF_EXISTS(pSettings, r_bool, section, "use_condition", TRUE));
 	m_bShowStats = READ_IF_EXISTS(pSettings, r_bool, section, "show_protect_stats", FALSE); // Показывать outfit_info?
-    bIsExoskeleton = READ_IF_EXISTS(pSettings, r_bool, section, "is_exoskeleton", false); // Это экзоскелет?
 }
 
-void CBackpack::ReloadBonesProtection()
+void CUnvest::ReloadBonesProtection()
 {
     IGameObject* parent = H_Parent();
     if (IsGameTypeSingle())
@@ -104,33 +109,33 @@ void CBackpack::ReloadBonesProtection()
         m_boneProtection->reload(m_BonesProtectionSect, smart_cast<IKinematics*>(parent->Visual()));
 }
 
-void CBackpack::Hit(float hit_power, ALife::EHitType hit_type)
+void CUnvest::Hit(float hit_power, ALife::EHitType hit_type)
 {
     hit_power *= GetHitImmunity(hit_type);
     ChangeCondition(-hit_power);
 }
 
-float CBackpack::GetDefHitTypeProtection(ALife::EHitType hit_type)
+float CUnvest::GetDefHitTypeProtection(ALife::EHitType hit_type)
 {
     return m_HitTypeProtection[hit_type] * GetCondition();
 }
 
-float CBackpack::GetHitTypeProtection(ALife::EHitType hit_type, s16 element)
+float CUnvest::GetHitTypeProtection(ALife::EHitType hit_type, s16 element)
 {
     float fBase = m_HitTypeProtection[hit_type] * GetCondition();
     float bone = m_boneProtection->getBoneProtection(element);
     return fBase * bone;
 }
 
-float CBackpack::GetBoneArmor(s16 element) 
+float CUnvest::GetBoneArmor(s16 element) 
 { 
     return m_boneProtection->getBoneArmor(element); 
 }
 
-float CBackpack::HitThroughArmor(float hit_power, s16 element, float ap, bool& add_wound, ALife::EHitType hit_type)
+float CUnvest::HitThroughArmor(float hit_power, s16 element, float ap, bool& add_wound, ALife::EHitType hit_type)
 {
     if (Core.ParamFlags.test(Core.dbgbullet))
-        Msg("CBackpack::HitThroughArmor hit_type=%d | unmodified hit_power=%f", (u32)hit_type, hit_power);
+        Msg("CUnvest::HitThroughArmor hit_type=%d | unmodified hit_power=%f", (u32)hit_type, hit_power);
 
     float NewHitPower = hit_power;
     if (hit_type == ALife::eHitTypeFireWound)
@@ -162,7 +167,7 @@ float CBackpack::HitThroughArmor(float hit_power, s16 element, float ap, bool& a
             NewHitPower *= d_hit_power;
 
             if (Core.ParamFlags.test(Core.dbgbullet))
-                Msg("CBackpack::HitThroughArmor AP(%f) > bone_armor(%f) [HitFracActor=%f] modified hit_power=%f",
+                Msg("CUnvest::HitThroughArmor AP(%f) > bone_armor(%f) [HitFracActor=%f] modified hit_power=%f",
                     ap, BoneArmor, m_boneProtection->m_fHitFracActor, NewHitPower);
         }
         else
@@ -171,7 +176,7 @@ float CBackpack::HitThroughArmor(float hit_power, s16 element, float ap, bool& a
             NewHitPower *= m_boneProtection->m_fHitFracActor;
             // add_wound = false; //раны нет
             if (Core.ParamFlags.test(Core.dbgbullet))
-                Msg("CBackpack::HitThroughArmor AP(%f) <= bone_armor(%f) [HitFracActor=%f] modified hit_power=%f",
+                Msg("CUnvest::HitThroughArmor AP(%f) <= bone_armor(%f) [HitFracActor=%f] modified hit_power=%f",
                     ap, BoneArmor, m_boneProtection->m_fHitFracActor, NewHitPower);
         }
     }
@@ -190,7 +195,7 @@ float CBackpack::HitThroughArmor(float hit_power, s16 element, float ap, bool& a
             NewHitPower = 0.f;
 
         if (Core.ParamFlags.test(Core.dbgbullet))
-            Msg("CBackpack::HitThroughArmor hit_type=%d | After HitTypeProtection(%f) hit_power=%f", (u32)hit_type,
+            Msg("CUnvest::HitThroughArmor hit_type=%d | After HitTypeProtection(%f) hit_power=%f", (u32)hit_type,
                 protect * one, NewHitPower);
     }
 
@@ -198,65 +203,27 @@ float CBackpack::HitThroughArmor(float hit_power, s16 element, float ap, bool& a
     Hit(hit_power, hit_type);
 
     if (Core.ParamFlags.test(Core.dbgbullet))
-        Msg("CBackpack::HitThroughArmor hit_type=%d | After Immunities hit_power=%f", (u32)hit_type, NewHitPower);
+        Msg("CUnvest::HitThroughArmor hit_type=%d | After Immunities hit_power=%f", (u32)hit_type, NewHitPower);
 
     return NewHitPower;
 }
 
-BOOL CBackpack::BonePassBullet(int boneID) 
+BOOL CUnvest::BonePassBullet(int boneID) 
 { 
     return m_boneProtection->getBonePassBullet(s16(boneID)); 
 }
 
-void CBackpack::OnMoveToSlot(const SInvItemPlace& previous_place)
+void CUnvest::OnMoveToSlot(const SInvItemPlace& previous_place)
 {
     inherited::OnMoveToSlot(previous_place);
-
-	// Меняем худ рук, если в слоте рюкзака есть экза
-    // Обновляем инфу о руках
-    CCustomOutfit* outfit = smart_cast<CCustomOutfit*>(Actor()->inventory().ItemFromSlot(OUTFIT_SLOT));
-    if (bIsExoskeleton)
-    {
-        if (m_pInventory)
-        {
-            CActor* pActor = smart_cast<CActor*>(H_Parent());
-            if (pActor && outfit)
-            {
-                outfit->ApplySkinModel(pActor, true, false);
-            }
-            else
-            {
-                g_player_hud->load_default_exo();
-            }
-        }
-    }
 }
 
-void CBackpack::OnMoveToRuck(const SInvItemPlace& previous_place)
+void CUnvest::OnMoveToRuck(const SInvItemPlace& previous_place)
 {
     inherited::OnMoveToRuck(previous_place);
-
-	// Меняем худ рук, если в слоте рюкзака есть экза
-    // Обновляем инфу о руках
-    CCustomOutfit* outfit = smart_cast<CCustomOutfit*>(Actor()->inventory().ItemFromSlot(OUTFIT_SLOT));
-    if (bIsExoskeleton)
-    {
-        if (m_pInventory)
-        {
-            CActor* pActor = smart_cast<CActor*>(H_Parent());
-            if (pActor && outfit)
-            {
-                outfit->ApplySkinModel(pActor, true, false);
-            }
-            else
-            {
-                g_player_hud->load_default();
-            }
-        }
-    }
 }
 
-bool CBackpack::install_upgrade_impl(LPCSTR section, bool test)
+bool CUnvest::install_upgrade_impl(LPCSTR section, bool test)
 {
     bool result = inherited::install_upgrade_impl(section, test);
 
@@ -270,13 +237,16 @@ bool CBackpack::install_upgrade_impl(LPCSTR section, bool test)
     result |= process_if_exists(section, "power_loss", &CInifile::r_float, m_fPowerLoss, test);
     clamp(m_fPowerLoss, 0.0f, 1.0f);
 
+    result |= process_if_exists(section, "artefact_count", &CInifile::r_u32, m_artefact_count, test);
+    clamp(m_artefact_count, (u32)0, (u32)m_iArtefactsCountUnvest);
+
     result |= process_if_exists(section, "additional_inventory_weight", &CInifile::r_float, m_additional_weight, test);
     result |= process_if_exists(section, "additional_inventory_weight2", &CInifile::r_float, m_additional_weight2, test);
 
     return result;
 }
 
-void CBackpack::AddBonesProtection(LPCSTR bones_section)
+void CUnvest::AddBonesProtection(LPCSTR bones_section)
 {
     IGameObject* parent = H_Parent();
     if (IsGameTypeSingle())

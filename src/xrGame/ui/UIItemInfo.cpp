@@ -22,6 +22,7 @@
 #include "ActorHelmet.h"
 #include "Artefact.h"
 #include "ActorBackpack.h"
+#include "ActorUnvest.h"
 #include "eatable_item.h"
 #include "UICellItem.h"
 #include "xrGame/game_type.h"
@@ -417,7 +418,9 @@ void CUIItemInfo::TryAddArtefactInfo(CInventoryItem& pInvItem)
  	CCustomOutfit* outfit = smart_cast<CCustomOutfit*>(&pInvItem);
 	CHelmet* helmet = smart_cast<CHelmet*>(&pInvItem);
 	CBackpack* backpack = smart_cast<CBackpack*>(&pInvItem);
+    CUnvest* unvest = smart_cast<CUnvest*>(&pInvItem);
 	CArtefact* arte = smart_cast<CArtefact*>(&pInvItem);
+
 	if (outfit)
     {
         UIArtefactParams->SetInfo(outfit);
@@ -438,6 +441,11 @@ void CUIItemInfo::TryAddArtefactInfo(CInventoryItem& pInvItem)
         UIArtefactParams->SetInfo(backpack);
         UIDesc->AddWindow(UIArtefactParams, false);
     }
+    else if (unvest)
+    {
+        UIArtefactParams->SetInfo(unvest);
+        UIDesc->AddWindow(UIArtefactParams, false);
+    }
 }
 
 void CUIItemInfo::TryAddOutfitInfo(CInventoryItem& pInvItem, CInventoryItem* pCompareItem)
@@ -447,6 +455,7 @@ void CUIItemInfo::TryAddOutfitInfo(CInventoryItem& pInvItem, CInventoryItem* pCo
     CCustomOutfit* outfit = smart_cast<CCustomOutfit*>(&pInvItem);
     CHelmet* helmet = smart_cast<CHelmet*>(&pInvItem);
     CBackpack* backpack = smart_cast<CBackpack*>(&pInvItem);
+    CUnvest* unvest = smart_cast<CUnvest*>(&pInvItem);
 
     if (outfit)
     {
@@ -464,6 +473,12 @@ void CUIItemInfo::TryAddOutfitInfo(CInventoryItem& pInvItem, CInventoryItem* pCo
     {
         CBackpack* comp_backpack = smart_cast<CBackpack*>(pCompareItem);
         UIOutfitInfo->UpdateInfo(backpack, comp_backpack);
+        UIDesc->AddWindow(UIOutfitInfo, false);
+    }
+    else if (unvest && unvest->m_bShowStats)
+    {
+        CUnvest* comp_unvest = smart_cast<CUnvest*>(pCompareItem);
+        UIOutfitInfo->UpdateInfo(unvest, comp_unvest);
         UIDesc->AddWindow(UIOutfitInfo, false);
     }
 }
@@ -496,19 +511,20 @@ void CUIItemInfo::Draw()
 // Проверяет, у каких итемов можно показывать процент износа
 void CUIItemInfo::CheckConditionInfo(CInventoryItem& pInvItem)
 {
-	CWeapon*		weapon = smart_cast<CWeapon*>(&pInvItem);
-	CCustomOutfit*	outfit = smart_cast<CCustomOutfit*>(&pInvItem);
-	CHelmet*		helmet = smart_cast<CHelmet*>(&pInvItem);
-	CBackpack*		backpack = smart_cast<CBackpack*>(&pInvItem);
-	CTorch*	        torch = smart_cast<CTorch*>(&pInvItem);
-	CPda*	        pda = smart_cast<CPda*>(&pInvItem);
-	CSimpleDetector* simple_detector = smart_cast<CSimpleDetector*>(&pInvItem);
-	CAdvancedDetector* advanced_detector = smart_cast<CAdvancedDetector*>(&pInvItem);
-	CEliteDetector*	elite_detector = smart_cast<CEliteDetector*>(&pInvItem);
-	CScientificDetector* sci_detector = smart_cast<CScientificDetector*>(&pInvItem);
-    CFlashlight* flashlight = smart_cast<CFlashlight*>(&pInvItem);
+	CWeapon* weapon                         = smart_cast<CWeapon*>(&pInvItem);
+	CCustomOutfit* outfit                   = smart_cast<CCustomOutfit*>(&pInvItem);
+	CHelmet* helmet                         = smart_cast<CHelmet*>(&pInvItem);
+	CBackpack* backpack                     = smart_cast<CBackpack*>(&pInvItem);
+    CUnvest* unvest                         = smart_cast<CUnvest*>(&pInvItem);
+	CTorch* torch                           = smart_cast<CTorch*>(&pInvItem);
+	CPda* pda                               = smart_cast<CPda*>(&pInvItem);
+	CSimpleDetector* simple_detector        = smart_cast<CSimpleDetector*>(&pInvItem);
+	CAdvancedDetector* advanced_detector    = smart_cast<CAdvancedDetector*>(&pInvItem);
+	CEliteDetector*	elite_detector          = smart_cast<CEliteDetector*>(&pInvItem);
+	CScientificDetector* sci_detector       = smart_cast<CScientificDetector*>(&pInvItem);
+    CFlashlight* flashlight                 = smart_cast<CFlashlight*>(&pInvItem);
 
-	if (weapon || outfit || helmet || torch || pda || simple_detector || advanced_detector || elite_detector || sci_detector || backpack || flashlight)
+	if (weapon || outfit || helmet || torch || pda || simple_detector || advanced_detector || elite_detector || sci_detector || backpack || flashlight || unvest)
 		m_check_condition_info = true;
 	else
 		m_check_condition_info = false;

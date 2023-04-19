@@ -35,6 +35,7 @@
 #include "ActorHelmet.h"
 #include "script_game_object.h" //Alundaio
 #include "ActorBackpack.h"
+#include "ActorUnvest.h"
 
 const LPCSTR g_inventory_upgrade_xml = "inventory_upgrade.xml";
 
@@ -104,7 +105,7 @@ void CUIInventoryUpgradeWnd::InitInventory(CInventoryItem* item, bool can_upgrad
         if (smart_cast<CWeaponRPG7*>(item) || smart_cast<CWeaponRPG26*>(item))
             m_item->SetShader(InventoryUtilities::GetOutfitUpgradeIconsShader());
     }
-    else if (smart_cast<CCustomOutfit*>(item) || smart_cast<CHelmet*>(item) || smart_cast<CBackpack*>(item))
+    else if (smart_cast<CCustomOutfit*>(item) || smart_cast<CHelmet*>(item) || smart_cast<CBackpack*>(item) || smart_cast<CUnvest*>(item))
     {
         is_shader = true;
         m_item->SetShader(InventoryUtilities::GetOutfitUpgradeIconsShader());

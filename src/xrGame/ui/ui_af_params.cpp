@@ -13,7 +13,7 @@
 #include "CustomOutfit.h"
 #include "ActorHelmet.h"
 #include "ActorBackpack.h"
-
+#include "ActorUnvest.h"
 
 u32 const red_clr = color_argb(255, 210, 50, 50);
 u32 const green_clr = color_argb(255, 170, 170, 170);
@@ -629,6 +629,76 @@ void CUIArtefactParams::SetInfo(const CBackpack* pInvItem)
 
 	SetHeight(h);
 }
+
+void CUIArtefactParams::SetInfo(const CUnvest* pInvItem)
+{
+    DetachAll();
+    AttachChild(m_Prop_line);
+
+    CActor* actor = smart_cast<CActor*>(Level().CurrentViewEntity());
+    if (!actor)
+    {
+        return;
+    }
+
+    const shared_str& af_section = pInvItem->cNameSect();
+
+    float val = 0.0f, max_val = 1.0f;
+    Fvector2 pos;
+    float h = m_Prop_line->GetWndPos().y + m_Prop_line->GetWndSize().y;
+
+    {
+        float val = pInvItem->m_fJumpSpeed;
+        if (val != 1.f)
+        {
+            m_fJumpSpeed->SetValue(val);
+            pos.set(m_fJumpSpeed->GetWndPos());
+            pos.y = h;
+            m_fJumpSpeed->SetWndPos(pos);
+            h += m_fJumpSpeed->GetWndSize().y;
+            AttachChild(m_fJumpSpeed);
+        }
+        val = pInvItem->m_fWalkAccel;
+        if (val != 1.f)
+        {
+            m_fWalkAccel->SetValue(val - 1.f);
+            pos.set(m_fWalkAccel->GetWndPos());
+            pos.y = h;
+            m_fWalkAccel->SetWndPos(pos);
+            h += m_fWalkAccel->GetWndSize().y;
+            AttachChild(m_fWalkAccel);
+        }
+        val = pInvItem->m_fOverweightWalkK;
+        if (val != 1.f)
+        {
+            m_fOverweightWalkAccel->SetValue(val - 1.f);
+            pos.set(m_fOverweightWalkAccel->GetWndPos());
+            pos.y = h;
+            m_fOverweightWalkAccel->SetWndPos(pos);
+            h += m_fOverweightWalkAccel->GetWndSize().y;
+            AttachChild(m_fOverweightWalkAccel);
+        }
+    }
+
+    {
+        val = pSettings->r_float(af_section, "additional_inventory_weight");
+        if (!fis_zero(val))
+        {
+            // val *= pInvItem->GetCondition();
+            m_additional_weight->SetValue(val);
+
+            pos.set(m_additional_weight->GetWndPos());
+            pos.y = h;
+            m_additional_weight->SetWndPos(pos);
+
+            h += m_additional_weight->GetWndSize().y;
+            AttachChild(m_additional_weight);
+        }
+    }
+
+    SetHeight(h);
+}
+
 /// ----------------------------------------------------------------
 
 UIArtefactParamItem::UIArtefactParamItem()

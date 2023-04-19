@@ -19,6 +19,7 @@
 #include "PDA.h"
 #include "WeaponMagazinedWGrenade.h"
 #include "../ActorBackpack.h"
+#include "../ActorUnvest.h"
 
 CUIHudStatesWnd::CUIHudStatesWnd()
     : m_b_force_update(true), m_timer_1sec(0), m_last_health(0.0f), m_radia_self(0.0f), m_radia_hit(0.0f)
@@ -572,10 +573,12 @@ void CUIHudStatesWnd::UpdateIndicatorType(CActor* actor, ALife::EInfluenceType t
     CCustomOutfit* outfit = actor->GetOutfit();
     CHelmet* helmet = smart_cast<CHelmet*>(actor->inventory().ItemFromSlot(HELMET_SLOT));
     CBackpack* backpack = smart_cast<CBackpack*>(actor->inventory().ItemFromSlot(BACKPACK_SLOT));
+    CUnvest* unvest = smart_cast<CUnvest*>(actor->inventory().ItemFromSlot(UNVEST_SLOT));
 
     float protect = (outfit) ? outfit->GetDefHitTypeProtection(hit_type) : 0.0f;
     protect += (helmet) ? helmet->GetDefHitTypeProtection(hit_type) : 0.0f;
     protect += (backpack) ? backpack->GetDefHitTypeProtection(hit_type) : 0.0f;
+    protect += (unvest) ? unvest->GetDefHitTypeProtection(hit_type) : 0.0f;
     protect += actor->GetProtection_ArtefactsOnBelt(hit_type);
 
     CEntityCondition::BOOSTER_MAP& cur_booster_influences = actor->conditions().GetCurBoosterInfluences();
@@ -720,10 +723,12 @@ void CUIHudStatesWnd::FakeUpdateIndicatorType(u8 t, float power)
     CCustomOutfit* outfit = actor->GetOutfit();
     CHelmet* helmet = smart_cast<CHelmet*>(actor->inventory().ItemFromSlot(HELMET_SLOT));
     CBackpack* backpack = smart_cast<CBackpack*>(actor->inventory().ItemFromSlot(BACKPACK_SLOT));
+    CUnvest* unvest = smart_cast<CUnvest*>(actor->inventory().ItemFromSlot(UNVEST_SLOT));
 
     float protect = (outfit) ? outfit->GetDefHitTypeProtection(hit_type) : 0.0f;
     protect += (helmet) ? helmet->GetDefHitTypeProtection(hit_type) : 0.0f;
     protect += (backpack) ? backpack->GetDefHitTypeProtection(hit_type) : 0.0f;
+    protect += (unvest) ? unvest->GetDefHitTypeProtection(hit_type) : 0.0f;
     protect += actor->GetProtection_ArtefactsOnBelt(hit_type);
 
     CEntityCondition::BOOSTER_MAP& cur_booster_influences = actor->conditions().GetCurBoosterInfluences();

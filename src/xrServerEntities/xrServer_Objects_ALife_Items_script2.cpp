@@ -38,6 +38,9 @@ SCRIPT_EXPORT(CSE_ALifeItemHelmet, (CSE_ALifeItem),
 SCRIPT_EXPORT(CSE_ALifeItemBackpack, (CSE_ALifeItem),
     { module(luaState)[luabind_class_item1(CSE_ALifeItemBackpack, "cse_alife_item_backpack", CSE_ALifeItem)]; });
 
+SCRIPT_EXPORT(CSE_ALifeItemUnvest, (CSE_ALifeItem),
+    { module(luaState)[luabind_class_item1(CSE_ALifeItemUnvest, "cse_alife_item_unvest", CSE_ALifeItem)]; });
+
 SCRIPT_EXPORT(CSE_ALifeItemWeaponMagazined, (CSE_ALifeItemWeapon), {
     module(luaState)[luabind_class_item1(
         CSE_ALifeItemWeaponMagazined, "cse_alife_item_weapon_magazined", CSE_ALifeItemWeapon)];

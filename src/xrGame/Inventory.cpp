@@ -1162,6 +1162,18 @@ bool CInventory::CanPutInSlot(PIItem pIItem, u16 slot_id) const
         if (pOutfit && !pOutfit->bIsHelmetAvaliable)
             return false;
     }
+    if (slot_id == BACKPACK_SLOT)
+    {
+        CCustomOutfit* pOutfit = m_pOwner->GetOutfit();
+        if (pOutfit && !pOutfit->bIsBackpackAvaliable)
+            return false;
+    }
+    if (slot_id == UNVEST_SLOT)
+    {
+        CCustomOutfit* pOutfit = m_pOwner->GetOutfit();
+        if (pOutfit && !pOutfit->bIsUnvestAvaliable)
+            return false;
+    }
 
 	if (slot_id == KNIFE_SLOT)
     {

@@ -1048,3 +1048,29 @@ void CSE_ALifeItemBackpack::FillProps(LPCSTR pref, PropItemVec& items) { inherit
 #endif // #ifndef XRGAME_EXPORTS
 
 BOOL CSE_ALifeItemBackpack::Net_Relevant() { return (true); }
+
+////////////////////////////////////////////////////////////////////////////
+// CSE_ALifeItemUnvest
+////////////////////////////////////////////////////////////////////////////
+
+CSE_ALifeItemUnvest::CSE_ALifeItemUnvest(LPCSTR caSection) : CSE_ALifeItem(caSection) {}
+CSE_ALifeItemUnvest::~CSE_ALifeItemUnvest() {}
+void CSE_ALifeItemUnvest::STATE_Read(NET_Packet& tNetPacket, u16 size) { inherited::STATE_Read(tNetPacket, size); }
+void CSE_ALifeItemUnvest::STATE_Write(NET_Packet& tNetPacket) { inherited::STATE_Write(tNetPacket); }
+void CSE_ALifeItemUnvest::UPDATE_Read(NET_Packet& tNetPacket)
+{
+    inherited::UPDATE_Read(tNetPacket);
+    tNetPacket.r_float_q8(m_fCondition, 0.0f, 1.0f);
+}
+
+void CSE_ALifeItemUnvest::UPDATE_Write(NET_Packet& tNetPacket)
+{
+    inherited::UPDATE_Write(tNetPacket);
+    tNetPacket.w_float_q8(m_fCondition, 0.0f, 1.0f);
+}
+
+#ifndef XRGAME_EXPORTS
+void CSE_ALifeItemUnvest::FillProps(LPCSTR pref, PropItemVec& items) { inherited::FillProps(pref, items); }
+#endif // #ifndef XRGAME_EXPORTS
+
+BOOL CSE_ALifeItemUnvest::Net_Relevant() { return (true); }

@@ -6,6 +6,7 @@
 class CCustomOutfit;
 class CHelmet;
 class CBackpack;
+class CUnvest;
 class CUIStatic;
 class CUIDoubleProgressBar;
 class CUIXml;
@@ -39,6 +40,7 @@ public:
     void UpdateInfo(CCustomOutfit* cur_outfit, CCustomOutfit* slot_outfit = NULL);
     void UpdateInfo(CHelmet* cur_helmet, CHelmet* slot_helmet = NULL);
     void UpdateInfo(CBackpack* cur_backpack, CBackpack* slot_backpack = NULL);
+    void UpdateInfo(CUnvest* cur_unvest, CUnvest* slot_unvest = NULL);
 
 protected:
     enum

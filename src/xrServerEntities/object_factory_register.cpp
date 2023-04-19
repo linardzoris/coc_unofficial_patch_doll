@@ -113,6 +113,7 @@
 #include "CustomOutfit.h"
 #include "ActorHelmet.h"
 #include "ActorBackpack.h"
+#include "ActorUnvest.h"
 
 #include "f1.h"
 #include "rgd5.h"
@@ -298,6 +299,7 @@ void CObjectFactory::register_classes()
     ADD(CCustomOutfit, CSE_ALifeItemCustomOutfit, CLSID_EQUIPMENT_STALKER, "equ_stalker");
     ADD(CHelmet, CSE_ALifeItemHelmet, CLSID_EQUIPMENT_HELMET, "helmet");
     ADD(CBackpack, CSE_ALifeItemBackpack, CLSID_EQUIPMENT_BACKPACK, "equ_backpack");
+    ADD(CUnvest, CSE_ALifeItemBackpack, CLSID_EQUIPMENT_UNVEST, "equ_unvest");
 
     // Grenades
     ADD(CF1, CSE_ALifeItemGrenade, CLSID_GRENADE_F1, "wpn_grenade_f1");
@@ -376,6 +378,7 @@ void CObjectFactory::register_classes()
     ADD(CCustomOutfit, CSE_ALifeItemCustomOutfit, TEXT2CLSID("E_STLK"), "equ_stalker_s");
     ADD(CHelmet, CSE_ALifeItemHelmet, TEXT2CLSID("E_HLMET"), "equ_helmet_s");
     ADD(CBackpack, CSE_ALifeItemBackpack, TEXT2CLSID("E_BAKPK"), "equ_backpack_s");
+    ADD(CUnvest, CSE_ALifeItemUnvest, TEXT2CLSID("E_UNVEST"), "equ_unvest_s");
     ADD(CScope, CSE_ALifeItem, TEXT2CLSID("WP_SCOPE"), "wpn_scope_s");
     ADD(CWeaponAK74, CSE_ALifeItemWeaponMagazinedWGL, TEXT2CLSID("WP_AK74"), "wpn_ak74_s");
     ADD(CWeaponLR300, CSE_ALifeItemWeaponMagazined, TEXT2CLSID("WP_LR300"), "wpn_lr300_s");

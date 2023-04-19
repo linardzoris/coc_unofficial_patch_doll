@@ -13,8 +13,9 @@
 #include "ActorHelmet.h"
 #include "DynamicHudGlass.h"
 #include "ActorBackpack.h"
+#include "ActorUnvest.h"
 
-extern int m_iArtefactsCount = READ_IF_EXISTS(pSettings, r_u32, "gameplay", "max_belt", 5);
+int m_iArtefactsCountOutfit = READ_IF_EXISTS(pSettings, r_u32, "gameplay", "max_belt", 5);
 
 CCustomOutfit::CCustomOutfit()
 {
@@ -113,10 +114,12 @@ void CCustomOutfit::Load(LPCSTR section)
     m_fOverweightWalkK = READ_IF_EXISTS(pSettings, r_float, section, "overweight_walk_accel", 1.f);
 
     m_artefact_count = READ_IF_EXISTS(pSettings, r_u32, section, "artefact_count", 0);
-    clamp(m_artefact_count, (u32)0, (u32)m_iArtefactsCount);
+    clamp(m_artefact_count, (u32)0, (u32)m_iArtefactsCountOutfit);
 
     m_BonesProtectionSect = READ_IF_EXISTS(pSettings, r_string, section, "bones_koeff_protection", "");
     bIsHelmetAvaliable = !!READ_IF_EXISTS(pSettings, r_bool, section, "helmet_avaliable", true);
+    bIsBackpackAvaliable = !!READ_IF_EXISTS(pSettings, r_bool, section, "backpack_avaliable", true);
+    bIsUnvestAvaliable = !!READ_IF_EXISTS(pSettings, r_bool, section, "unvest_avaliable", true);
 
     // Added by Axel, to enable optional condition use on any item
     m_flags.set(FUsingCondition, READ_IF_EXISTS(pSettings, r_bool, section, "use_condition", true));
@@ -243,6 +246,14 @@ void CCustomOutfit::OnMoveToSlot(const SInvItemPlace& prev)
             PIItem pHelmet = pActor->inventory().ItemFromSlot(HELMET_SLOT);
             if (pHelmet && !bIsHelmetAvaliable)
                 pActor->inventory().Ruck(pHelmet, false);
+
+			PIItem pBackpack = pActor->inventory().ItemFromSlot(BACKPACK_SLOT);
+            if (pBackpack && !bIsBackpackAvaliable)
+                pActor->inventory().Ruck(pBackpack, false);
+
+            PIItem pUnvest = pActor->inventory().ItemFromSlot(UNVEST_SLOT);
+            if (pUnvest && !bIsUnvestAvaliable)
+                pActor->inventory().Ruck(pUnvest, false);
         }
     }
 }
@@ -347,12 +358,10 @@ bool CCustomOutfit::install_upgrade_impl(LPCSTR section, bool test)
         AddBonesProtection(str);
 
     result |= result2;
-    result |=
-        process_if_exists(section, "hit_fraction_actor", &CInifile::r_float, m_boneProtection->m_fHitFracActor, test);
+    result |= process_if_exists(section, "hit_fraction_actor", &CInifile::r_float, m_boneProtection->m_fHitFracActor, test);
 
     result |= process_if_exists(section, "additional_inventory_weight", &CInifile::r_float, m_additional_weight, test);
-    result |=
-        process_if_exists(section, "additional_inventory_weight2", &CInifile::r_float, m_additional_weight2, test);
+    result |= process_if_exists(section, "additional_inventory_weight2", &CInifile::r_float, m_additional_weight2, test);
 
     result |= process_if_exists(section, "health_restore_speed", &CInifile::r_float, m_fHealthRestoreSpeed, test);
     result |= process_if_exists(section, "radiation_restore_speed", &CInifile::r_float, m_fRadiationRestoreSpeed, test);
@@ -367,7 +376,7 @@ bool CCustomOutfit::install_upgrade_impl(LPCSTR section, bool test)
     clamp(m_fPowerLoss, 0.0f, 1.0f);
 
     result |= process_if_exists(section, "artefact_count", &CInifile::r_u32, m_artefact_count, test);
-    clamp(m_artefact_count, (u32)0, (u32)m_iArtefactsCount);
+    clamp(m_artefact_count, (u32)0, (u32)m_iArtefactsCountOutfit);
 
     result |= process_if_exists(section, "jump_speed", &CInifile::r_float, m_fJumpSpeed, test);
     result |= process_if_exists(section, "walk_accel", &CInifile::r_float, m_fWalkAccel, test);

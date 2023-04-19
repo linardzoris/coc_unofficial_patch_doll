@@ -196,6 +196,7 @@
     <ClInclude Include="Actor.h" />
     <ClInclude Include="ActorAnimation.h" />
     <ClInclude Include="ActorBackpack.h" />
+    <ClInclude Include="ActorUnvest.h" />	
     <ClInclude Include="ActorCondition.h" />
     <ClInclude Include="ActorEffector.h" />
     <ClInclude Include="ActorHelmet.h" />
@@ -1502,6 +1503,7 @@
     </ClCompile>
     <ClCompile Include="ActorAnimation.cpp" />
     <ClCompile Include="ActorBackpack.cpp" />
+    <ClCompile Include="ActorUnvest.cpp" />	
     <ClCompile Include="ActorCameras.cpp" />
     <ClCompile Include="ActorCondition.cpp">
       <PrecompiledHeaderFile>pch_script.h</PrecompiledHeaderFile>

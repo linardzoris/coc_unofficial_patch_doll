@@ -22,6 +22,7 @@ enum
 	HELMET_SLOT,
 	BACKPACK_SLOT,
 	PATCH_SLOT,
+    UNVEST_SLOT,
     //Alundaio: More slots for custom uses
 	CUSTOM_SLOT_1,
 	CUSTOM_SLOT_2,

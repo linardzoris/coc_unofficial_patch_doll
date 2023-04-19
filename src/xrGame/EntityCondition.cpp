@@ -12,6 +12,7 @@
 #include "Common/object_broker.h"
 #include "ActorHelmet.h"
 #include "ActorBackpack.h"
+#include "ActorUnvest.h"
 
 #define MAX_HEALTH 1.0f
 #define MIN_HEALTH -0.01f
@@ -308,8 +309,9 @@ float CEntityCondition::HitOutfitEffect(
     CCustomOutfit* pOutfit = (CCustomOutfit*)pInvOwner->inventory().ItemFromSlot(OUTFIT_SLOT);
     CHelmet* pHelmet = (CHelmet*)pInvOwner->inventory().ItemFromSlot(HELMET_SLOT);
     CBackpack* pBackpack = (CBackpack*)pInvOwner->inventory().ItemFromSlot(BACKPACK_SLOT);
+    CUnvest* pUnvest = (CUnvest*)pInvOwner->inventory().ItemFromSlot(UNVEST_SLOT);
 
-    if (!pOutfit && !pHelmet && !pBackpack)
+    if (!pOutfit && !pHelmet && !pBackpack && !pUnvest)
         return hit_power;
 
     float new_hit_power = hit_power;
@@ -322,6 +324,9 @@ float CEntityCondition::HitOutfitEffect(
 
     if (pBackpack)
         new_hit_power = pBackpack->HitThroughArmor(new_hit_power, element, ap, add_wound, hit_type);
+
+    if (pUnvest)
+        new_hit_power = pUnvest->HitThroughArmor(new_hit_power, element, ap, add_wound, hit_type);
 
     if (bDebug)
         Msg("new_hit_power = %.3f  hit_type = %s  ap = %.3f", new_hit_power, ALife::g_cafHitType2String(hit_type), ap);
@@ -338,8 +343,9 @@ float CEntityCondition::HitPowerEffect(float power_loss)
     CCustomOutfit* pOutfit = pInvOwner->GetOutfit();
     CHelmet* pHelmet = (CHelmet*)pInvOwner->inventory().ItemFromSlot(HELMET_SLOT);
     CBackpack* pBackpack = (CBackpack*)pInvOwner->inventory().ItemFromSlot(BACKPACK_SLOT);
+    CUnvest* pUnvest = (CUnvest*)pInvOwner->inventory().ItemFromSlot(UNVEST_SLOT);
 
-    return power_loss * (0.5f + (pOutfit ? pOutfit->m_fPowerLoss : EPS) + (pHelmet ? pHelmet->m_fPowerLoss : EPS) + (pBackpack ? pBackpack->m_fPowerLoss : EPS));
+    return power_loss * (0.5f + (pOutfit ? pOutfit->m_fPowerLoss : EPS) + (pHelmet ? pHelmet->m_fPowerLoss : EPS) + (pBackpack ? pBackpack->m_fPowerLoss : EPS) + (pUnvest ? pUnvest->m_fPowerLoss : EPS));
 }
 
 CWound* CEntityCondition::AddWound(float hit_power, ALife::EHitType hit_type, u16 element)

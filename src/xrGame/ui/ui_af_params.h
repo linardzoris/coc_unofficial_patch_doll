@@ -10,6 +10,7 @@ class UIArtefactParamItem;
 class CCustomOutfit;
 class CHelmet;
 class CBackpack;
+class CUnvest;
 class CArtefact;
 
 class CUIArtefactParams : public CUIWindow
@@ -23,6 +24,7 @@ public:
     void SetInfo(const CCustomOutfit* pInvItem);
     void SetInfo(const CHelmet* pInvItem);
     void SetInfo(const CBackpack* pInvItem);
+    void SetInfo(const CUnvest* pInvItem);
     void SetInfo(const CArtefact* pInvItem);
 
 protected:

@@ -40,6 +40,7 @@ static void CInventoryOwner_Export(lua_State* luaState)
 				luabind::value("HELMET_SLOT", HELMET_SLOT),
 				luabind::value("BACKPACK_SLOT", BACKPACK_SLOT),
 				luabind::value("PATCH_SLOT", PATCH_SLOT),
+				luabind::value("UNVEST_SLOT", UNVEST_SLOT),
 #ifdef MORE_INVENTORY_SLOTS
 				luabind::value("CUSTOM_SLOT_1", CUSTOM_SLOT_1),
 				luabind::value("CUSTOM_SLOT_2", CUSTOM_SLOT_2),
