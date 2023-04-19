@@ -36,6 +36,7 @@ CUIArtefactParams::CUIArtefactParams()
     m_fThirstRestoreSpeed = nullptr;
     m_fIntoxicationRestoreSpeed = nullptr;
     m_fSleepenessRestoreSpeed = nullptr;
+    m_artefact_count = nullptr;
 	m_Prop_line = nullptr;
 }
 
@@ -51,6 +52,7 @@ CUIArtefactParams::~CUIArtefactParams()
     xr_delete   (m_fThirstRestoreSpeed);
     xr_delete   (m_fIntoxicationRestoreSpeed);
     xr_delete   (m_fSleepenessRestoreSpeed);
+    xr_delete   (m_artefact_count);
 	xr_delete	(m_Prop_line);
 }
 
@@ -214,6 +216,14 @@ void CUIArtefactParams::InitFromXml(CUIXml& xml)
         m_fSleepenessRestoreSpeed->SetAutoDelete(false);
         LPCSTR name = StringTable().translate("ui_inv_sleepeness").c_str();
         m_fSleepenessRestoreSpeed->SetCaption(name);
+        xml.SetLocalRoot(base_node);
+    }
+    {
+        m_artefact_count = new UIArtefactParamItem();
+        m_artefact_count->Init(xml, "artefact_count");
+        m_artefact_count->SetAutoDelete(false);
+        LPCSTR name = StringTable().translate("ui_inv_af_artefact_count").c_str();
+        m_artefact_count->SetCaption(name);
         xml.SetLocalRoot(base_node);
     }
 
@@ -495,6 +505,19 @@ void CUIArtefactParams::SetInfo(const CCustomOutfit* pInvItem)
             h += m_fSleepenessRestoreSpeed->GetWndSize().y;
             AttachChild(m_fSleepenessRestoreSpeed);
         }
+
+        val = pSettings->r_float(af_section, "artefact_count");
+        if (!fis_zero(val))
+        {
+            m_artefact_count->SetValue(val);
+
+            pos.set(m_artefact_count->GetWndPos());
+            pos.y = h;
+            m_artefact_count->SetWndPos(pos);
+
+            h += m_artefact_count->GetWndSize().y;
+            AttachChild(m_artefact_count);
+        }
     }
 
 	SetHeight(h);
@@ -693,6 +716,19 @@ void CUIArtefactParams::SetInfo(const CUnvest* pInvItem)
 
             h += m_additional_weight->GetWndSize().y;
             AttachChild(m_additional_weight);
+        }
+
+        val = pSettings->r_float(af_section, "artefact_count");
+        if (!fis_zero(val))
+        {
+            m_artefact_count->SetValue(val);
+
+            pos.set(m_artefact_count->GetWndPos());
+            pos.y = h;
+            m_artefact_count->SetWndPos(pos);
+
+            h += m_artefact_count->GetWndSize().y;
+            AttachChild(m_artefact_count);
         }
     }
 

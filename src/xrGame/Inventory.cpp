@@ -22,6 +22,7 @@
 #include "static_cast_checked.hpp"
 #include "player_hud.h"
 #include "Grenade.h"
+#include "ActorUnVest.h"
 
 using namespace InventoryUtilities;
 
@@ -1270,15 +1271,32 @@ bool CInventory::CanTakeItem(CInventoryItem* inventory_item) const
     return true;
 }
 
+int m_iArtefactsCount = READ_IF_EXISTS(pSettings, r_u32, "gameplay", "max_belt", 5);
+
 u32 CInventory::BeltWidth() const
 {
     CActor* pActor = smart_cast<CActor*>(m_pOwner);
     if (pActor)
     {
         CCustomOutfit* outfit = pActor->GetOutfit();
-        if (outfit)
+        CUnvest* unvest = pActor->GetUnvest();
+
+        if (outfit && !unvest)
         {
             return outfit->get_artefact_count();
+        }
+        if (unvest && !outfit)
+        {
+            return unvest->get_artefact_count();
+        }
+        if (unvest && outfit && outfit->get_artefact_count() + unvest->get_artefact_count() <= m_iArtefactsCount)
+        {
+            return outfit->get_artefact_count() + unvest->get_artefact_count();
+        }
+        // Если так случилось что у брони и разгрузки больше максимального количества слотов, возвращать именно его, а не число его превыщающее
+        if (unvest && outfit && outfit->get_artefact_count() + unvest->get_artefact_count() > m_iArtefactsCount)
+        {
+            return m_iArtefactsCount;
         }
     }
     return 0; // m_iMaxBelt;

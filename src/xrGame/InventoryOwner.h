@@ -27,6 +27,7 @@ class CTradeParameters;
 class CPurchaseList;
 class CWeapon;
 class CCustomOutfit;
+class CUnvest;
 
 class CInventoryOwner : public CAttachmentOwner
 {
@@ -152,6 +153,7 @@ public:
     virtual float MaxCarryWeight() const;
 
     CCustomOutfit* GetOutfit() const;
+    CUnvest* GetUnvest() const;
 
     bool CanPlayShHdRldSounds() const { return m_play_show_hide_reload_sounds; };
     void SetPlayShHdRldSounds(bool play) { m_play_show_hide_reload_sounds = play; };

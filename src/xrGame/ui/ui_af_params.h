@@ -34,6 +34,7 @@ protected:
     UIArtefactParamItem* m_additional_weight;
     UIArtefactParamItem* m_disp_condition; //Alundaio: Show AF Condition
 
+	UIArtefactParamItem* m_artefact_count;
     UIArtefactParamItem* m_fJumpSpeed;
     UIArtefactParamItem* m_fWalkAccel;
     UIArtefactParamItem* m_fOverweightWalkAccel;
