@@ -491,8 +491,11 @@ void CUIActorMenu::clear_highlight_lists()
     }
     m_highlight_clear = true;
 }
+
 void CUIActorMenu::highlight_item_slot(CUICellItem* cell_item)
 {
+    m_bEqualWeaponSlots = READ_IF_EXISTS(pSettings, r_bool, "gameplay", "equal_weapon_slots", true);
+
     PIItem item = (PIItem)cell_item->m_pData;
     if (!item)
         return;
@@ -501,14 +504,32 @@ void CUIActorMenu::highlight_item_slot(CUICellItem* cell_item)
         return;
 
     u16 slot_id = item->BaseSlot();
-    if (slot_id == INV_SLOT_2 || slot_id == INV_SLOT_3)
+    if (m_bEqualWeaponSlots)
     {
-        if (m_pInvSlotHighlight[INV_SLOT_2])
-            m_pInvSlotHighlight[INV_SLOT_2]->Show(true);
+        if (slot_id == INV_SLOT_2 || slot_id == INV_SLOT_3)
+        {
+            if (m_pInvSlotHighlight[INV_SLOT_2])
+                m_pInvSlotHighlight[INV_SLOT_2]->Show(true);
 
-        if (m_pInvSlotHighlight[INV_SLOT_3])
-            m_pInvSlotHighlight[INV_SLOT_3]->Show(true);
-        return;
+            if (m_pInvSlotHighlight[INV_SLOT_3])
+                m_pInvSlotHighlight[INV_SLOT_3]->Show(true);
+            return;
+        }
+    }
+    else
+    {
+        if (slot_id == INV_SLOT_2)
+        {
+            if (m_pInvSlotHighlight[INV_SLOT_2])
+                m_pInvSlotHighlight[INV_SLOT_2]->Show(true);
+            return;
+        }
+        if (slot_id == INV_SLOT_3)
+        {
+            if (m_pInvSlotHighlight[INV_SLOT_3])
+                m_pInvSlotHighlight[INV_SLOT_3]->Show(true);
+            return;
+        }
     }
 
     if (m_pInvSlotHighlight[slot_id])
@@ -827,6 +848,8 @@ void CUIActorMenu::ResetMode()
 
 bool CUIActorMenu::CanSetItemToList(PIItem item, CUIDragDropListEx* l, u16& ret_slot)
 {
+    m_bEqualWeaponSlots = READ_IF_EXISTS(pSettings, r_bool, "gameplay", "equal_weapon_slots", true);
+
     u16 baseItemSlot = item->BaseSlot();
     if (GetSlotList(baseItemSlot) == l)
     {
@@ -834,21 +857,24 @@ bool CUIActorMenu::CanSetItemToList(PIItem item, CUIDragDropListEx* l, u16& ret_
         return true;
     }
 
-    if (baseItemSlot == INV_SLOT_2)
+    if (m_bEqualWeaponSlots)
     {
-        if (l == m_pInvList[INV_SLOT_3])
+        if (baseItemSlot == INV_SLOT_2)
         {
-            ret_slot = INV_SLOT_3;
-            return true;
+            if (l == m_pInvList[INV_SLOT_3])
+            {
+                ret_slot = INV_SLOT_3;
+                return true;
+            }
         }
-    }
 
-    if (baseItemSlot == INV_SLOT_3)
-    {
-        if (l == m_pInvList[INV_SLOT_2])
+        if (baseItemSlot == INV_SLOT_3)
         {
-            ret_slot = INV_SLOT_2;
-            return true;
+        if (l == m_pInvList[INV_SLOT_2])
+            {
+                ret_slot = INV_SLOT_2;
+                return true;
+            }
         }
     }
 

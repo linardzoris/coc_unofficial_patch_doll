@@ -27,6 +27,7 @@
 #include "player_hud.h"
 #include "../xrPhysics/ElevatorState.h"
 #include "CustomDetector.h"
+#include "Flashlight.h"
 
 extern bool g_block_all_except_movement;
 
@@ -148,11 +149,14 @@ void CEatableItem::HideWeapon()
 {
     CEffectorCam* effector = Actor()->Cameras().GetCamEffector((ECamEffectorType)effUseItem);
     CCustomDetector* pDet = smart_cast<CCustomDetector*>(Actor()->inventory().ItemFromSlot(DETECTOR_SLOT));
+    CFlashlight* pFlight = smart_cast<CFlashlight*>(Actor()->inventory().ItemFromSlot(DETECTOR_SLOT));
 
     Actor()->SetWeaponHideState(INV_STATE_BLOCK_ALL, true);
 
 	if (pDet)
         pDet->HideDetector(true);
+    if (pFlight)
+        pFlight->HideDevice(true);
 
     m_bItmStartAnim = true;
 
@@ -199,12 +203,14 @@ void CEatableItem::UpdateUseAnim()
         return;
 
     CCustomDetector* pDet = smart_cast<CCustomDetector*>(Actor()->inventory().ItemFromSlot(DETECTOR_SLOT));
+    CFlashlight* pFlight = smart_cast<CFlashlight*>(Actor()->inventory().ItemFromSlot(DETECTOR_SLOT));
     CEffectorCam* effector = Actor()->Cameras().GetCamEffector((ECamEffectorType)effUseItem);
 
     bool IsActorAlive = g_pGamePersistent->GetActorAliveStatus();
 
-    if (m_bItmStartAnim && Actor()->inventory().GetActiveSlot() == NO_ACTIVE_SLOT) // Тут вылетает, проверка не подходит
-        StartAnimation();
+    if (m_bItmStartAnim && Actor()->inventory().GetActiveSlot() == NO_ACTIVE_SLOT) // Тут вылетало
+        if (pDet && pDet->IsHidden() || pFlight && pFlight->IsHidden())
+            StartAnimation();
 
     if (m_bActivated)
     {

@@ -370,4 +370,5 @@ public:
 
     int m_iArtefactsCount;
     bool m_bTwoRowsBelt;
+    bool m_bEqualWeaponSlots;
 }; // class CUIActorMenu

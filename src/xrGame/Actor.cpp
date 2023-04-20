@@ -1874,13 +1874,11 @@ void CActor::UpdateArtefactsOnBeltAndOutfit()
 
 void CActor::UpdateInventoryItems()
 {
-    for (auto& it : inventory().m_ruck)
+    for (auto& it : inventory().m_all)
     {
         const auto current_eatable = smart_cast<CEatableItem*>(it);
         if (current_eatable)
-        {
             current_eatable->UpdateInRuck();
-        }
     }
 }
 

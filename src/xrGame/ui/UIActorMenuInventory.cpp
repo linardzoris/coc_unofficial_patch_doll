@@ -522,6 +522,8 @@ bool CUIActorMenu::ToSlotScript(CScriptGameObject* GO, const bool force_place, u
 
 bool CUIActorMenu::ToSlot(CUICellItem* itm, bool force_place, u16 slot_id)
 {
+    m_bEqualWeaponSlots = READ_IF_EXISTS(pSettings, r_bool, "gameplay", "equal_weapon_slots", true);
+
     CUIDragDropListEx* old_owner = itm->OwnerList();
     PIItem iitem = (PIItem)itm->m_pData;
 
@@ -619,22 +621,25 @@ bool CUIActorMenu::ToSlot(CUICellItem* itm, bool force_place, u16 slot_id)
             return false;
 
 #ifdef COC_SLOTS
-        if (slot_id == INV_SLOT_2)
+        if (m_bEqualWeaponSlots)
         {
-            if (m_pActorInvOwner->inventory().CanPutInSlot(iitem, INV_SLOT_3) && !iitem->BaseSlot() == KNIFE_SLOT)
-                return ToSlot(itm, force_place, INV_SLOT_3);
-            if (m_pActorInvOwner->inventory().CanPutInSlot(iitem, KNIFE_SLOT))
-                return ToSlot(itm, force_place, KNIFE_SLOT);
-        }
-        else if (slot_id == INV_SLOT_3)
-        {
-            if (m_pActorInvOwner->inventory().CanPutInSlot(iitem, INV_SLOT_2))
-                return ToSlot(itm, force_place, INV_SLOT_2);
-        }
-        else if (slot_id == KNIFE_SLOT)
-        {
-            if (m_pActorInvOwner->inventory().CanPutInSlot(iitem, INV_SLOT_2))
-                return ToSlot(itm, force_place, INV_SLOT_2);
+            if (slot_id == INV_SLOT_2)
+            {
+                if (m_pActorInvOwner->inventory().CanPutInSlot(iitem, INV_SLOT_3) && !iitem->BaseSlot() == KNIFE_SLOT)
+                    return ToSlot(itm, force_place, INV_SLOT_3);
+                if (m_pActorInvOwner->inventory().CanPutInSlot(iitem, KNIFE_SLOT))
+                    return ToSlot(itm, force_place, KNIFE_SLOT);
+            }
+            else if (slot_id == INV_SLOT_3)
+            {
+                if (m_pActorInvOwner->inventory().CanPutInSlot(iitem, INV_SLOT_2))
+                    return ToSlot(itm, force_place, INV_SLOT_2);
+            }
+            else if (slot_id == KNIFE_SLOT)
+            {
+                if (m_pActorInvOwner->inventory().CanPutInSlot(iitem, INV_SLOT_2))
+                    return ToSlot(itm, force_place, INV_SLOT_2);
+            }
         }
 
         CUIDragDropListEx* slot_list;
@@ -643,12 +648,14 @@ bool CUIActorMenu::ToSlot(CUICellItem* itm, bool force_place, u16 slot_id)
         else
             slot_list = GetSlotList(slot_id);
 #else
-        if (slot_id == INV_SLOT_2 && m_pActorInvOwner->inventory().CanPutInSlot(iitem, INV_SLOT_3))
-            return ToSlot(itm, force_place, INV_SLOT_3);
+        if (m_bEqualWeaponSlots)
+        {
+            if (slot_id == INV_SLOT_2 && m_pActorInvOwner->inventory().CanPutInSlot(iitem, INV_SLOT_3))
+                return ToSlot(itm, force_place, INV_SLOT_3);
 
-        if (slot_id == INV_SLOT_3 && m_pActorInvOwner->inventory().CanPutInSlot(iitem, INV_SLOT_2))
-            return ToSlot(itm, force_place, INV_SLOT_2);
-
+            if (slot_id == INV_SLOT_3 && m_pActorInvOwner->inventory().CanPutInSlot(iitem, INV_SLOT_2))
+                return ToSlot(itm, force_place, INV_SLOT_2);
+        }
         CUIDragDropListEx* slot_list = GetSlotList(slot_id);
 #endif
         if (!slot_list)
