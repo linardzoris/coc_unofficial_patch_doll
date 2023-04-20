@@ -2134,7 +2134,7 @@ float CActor::GetRestoreSpeed(ALife::EConditionRestoreType const& type)
             if (artefact)
                 res += artefact->m_fPowerRestoreSpeed * artefact->GetCondition();
         }
-        auto outfit = GetOutfit();
+        const auto outfit = GetOutfit();
         const auto pHelmet = (CHelmet*)inventory().ItemFromSlot(HELMET_SLOT);
         const auto pBackpack = (CBackpack*)inventory().ItemFromSlot(BACKPACK_SLOT);
         const auto pUnvest = (CUnvest*)inventory().ItemFromSlot(UNVEST_SLOT);

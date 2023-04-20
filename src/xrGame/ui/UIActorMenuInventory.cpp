@@ -604,7 +604,7 @@ bool CUIActorMenu::ToSlot(CUICellItem* itm, bool force_place, u16 slot_id)
         SendEvent_ActivateSlot(slot_id, m_pActorInvOwner->object_id());
 
         // ColorizeItem						( itm, false );
-        if (slot_id == OUTFIT_SLOT)
+        if (slot_id == OUTFIT_SLOT || slot_id == UNVEST_SLOT)
         {
             MoveArtefactsToBag();
         }
@@ -1304,8 +1304,10 @@ void CUIActorMenu::PropertiesBoxForRepair(PIItem item, bool& b_show)
     CCustomOutfit* pOutfit = smart_cast<CCustomOutfit*>(item);
     CWeapon* pWeapon = smart_cast<CWeapon*>(item);
     CHelmet* pHelmet = smart_cast<CHelmet*>(item);
+    CBackpack* pBackpack = smart_cast<CBackpack*>(item);
+    CUnvest* pUnvest = smart_cast<CUnvest*>(item);
 
-    if ((pOutfit || pWeapon || pHelmet) && item->GetCondition() < 0.99f)
+    if ((pOutfit || pWeapon || pHelmet || pBackpack || pUnvest) && item->GetCondition() < 0.99f)
     {
         m_UIPropertiesBox->AddItem("ui_inv_repair", NULL, INVENTORY_REPAIR);
         b_show = true;
@@ -1532,12 +1534,14 @@ void CUIActorMenu::UpdateOutfit()
 
     VERIFY(m_pInventoryBeltList);
     CCustomOutfit* outfit = m_pActorInvOwner->GetOutfit();
+    CUnvest* unvest = m_pActorInvOwner->GetUnvest();
+
     if (outfit && !outfit->bIsHelmetAvaliable)
         m_HelmetOver->Show(true);
     else
         m_HelmetOver->Show(false);
 
-    if (!outfit)
+    if (!outfit && !unvest)
     {
         MoveArtefactsToBag();
         return;
