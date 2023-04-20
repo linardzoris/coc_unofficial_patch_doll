@@ -273,6 +273,9 @@
 	<string id="ui_inv_sleepeness">
 		<text>Сонливость</text>
 	</string>
+	<string id="ui_inv_af_artefact_count">
+		<text>Карманы</text>
+	</string>	
 	<string id="ui_inv_boost_dec_sleepeness">
 		<text>Бодрость</text>
 	</string>			
@@ -383,5 +386,8 @@
 	</string>
 	<string id="st_money_infinitive">
 		<text>--- RU</text>
-	</string>		
+	</string>	
+	<string id="ui_st_create_stash">
+		<text>заложить тайник</text>
+	</string>	
 </string_table>

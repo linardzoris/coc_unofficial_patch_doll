@@ -42,6 +42,7 @@ weapon_distant_sound_distance 		= 125			;Расстояние до камеры в метрах, с которо
 weapon_distant_sound_distance_far 	= 200			;Расстояние до камеры в метрах, с которого подменить звук
 max_belt                            = 5             ;Количество слотов
 belt_two_rows                       = false         ;Делятся ли слоты на два столбца. Делятся они равно, например если max_belt = 10, то в y0 будет 5 слотов, в y1 тоже 5, то есть равное количество в двух ярусах.
+equal_weapon_slots                  = false         ;При true в слот пистолета и основного оружия можно ставить и то, и другое как и в слот ножа и пистолета
 
 [environment]
 winter_mode = false ;Зимний режим (влияет на дождь и партиклы)
@@ -180,8 +181,11 @@ slot_active_13                           = false
 slot_persistent_14                       = false	                                       ;faction patch
 slot_active_14                           = false
 
-slot_persistent_15                       = true	                                       ;script animation
-slot_active_15                           = true
+slot_persistent_15                       = false	                                       ;unvest
+slot_active_15                           = false
+
+slot_persistent_16                       = true	                                       ;script animation
+slot_active_16                           = true
 
 [lights_hanging_lamp]
 GroupControlSection                      = spawn_group

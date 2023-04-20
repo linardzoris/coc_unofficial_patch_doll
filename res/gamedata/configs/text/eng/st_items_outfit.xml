@@ -29,13 +29,6 @@
 		<text>A regular trench coat that hides a stalker bodysuit underneath it. Said bodysuit comes with reinforced body armour made by bandit craftsmen providing good protection against anomalies. The suit cannot be modified with an artefact container, but may be upgraded with a combat support system instead.</text>
 	</string>
 
-	<!-- Clear Sky -->
-	<string id="csky_light_outfit_name">
-		<text>CS-1a body armour</text>
-	</string>
-	<string id="csky_light_outfit_description">
-		<text>The most basic body armour worn by the Clear Sky faction providing good protection from anomalous exposure, its design is reminiscent of the popular Sunrise suit. Includes a container capable of holding one artefact.</text>
-	</string>
 
 	<!-- Duty -->
 
@@ -314,5 +307,52 @@
 	</string>
 	<string id="st_equ_exoskeleton_desc">
 		<text>A sample from the X-17 laboratory, on which an unknown symbolism is applied. It weighs quite a lot, but when you put it on, it doesn't matter. Allows you to easily carry a very large weight and not get tired. In addition, it has a positive effect on other characteristics of the body.</text>
-	</string>		
+	</string>	
+
+<!--			Unloading				-->
+
+	<string id="st_equ_unvest_belt_name">
+		<text>Unloading belt</text>
+	</string>
+	<string id="st_equ_unvest_belt_desc">
+		<text>An ordinary stalker unloading belt that allows you to place cartridges, artifacts and other useful items.</text>
+	</string>	
+	
+	<string id="st_equ_unvest_small_name">
+		<text>Hunting unloading</text>
+	</string>
+	<string id="st_equ_unvest_small_desc">
+		<text>It is bought on the mainland and has a demand from hunters there, it is not suitable for long raids and serious shootings, it has an average capacity.</text>
+	</string>	
+	
+	<string id="st_equ_unvest_merc_name">
+		<text>Unloading vest "Patrol"</text>
+	</string>
+	<string id="st_equ_unvest_merc_desc">
+		<text>The main unloading vest of mercenaries. It has several roomy pockets.</text>
+	</string>	
+	
+	<string id="st_equ_unvest_military_name">
+		<text>Unloading vest "Grass"</text>
+	</string>
+	<string id="st_equ_unvest_military_desc">
+		<text>A standard army unloading vest with a large number of roomy pockets on the chest.</text>
+	</string>	
+
+	<string id="st_equ_unvest_vestern_name">
+		<text>Unloading vest "WarBelt"</text>
+	</string>
+	<string id="st_equ_unvest_merc_desc">
+		<text>Unloading vest, which is produced somewhere in English-speaking countries. Quite comfortable, the capacity of the pockets is approximately comparable to the army.</text>
+	</string>	
+	
+<!--		-- Unique --		-->
+	
+	<string id="csky_light_outfit_name">
+		<text>Armored suit CS-1a</text>
+	</string>
+	<string id="csky_light_outfit_description">
+		<text>This armored suit was developed for conducting research expeditions in areas with abnormal activity, therefore it is equipped with a container for artifacts. The use of special impregnation of materials has increased the resistance to abnormal influences.</text>
+	</string>	
+	
 </string_table>

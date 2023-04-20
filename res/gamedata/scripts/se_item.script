@@ -131,6 +131,22 @@ function se_backpack:can_switch_online()
 	return cse_alife_item_backpack.can_switch_online(self)
 end
 
+class "se_unvest" (cse_alife_item_unvest)
+
+function se_unvest:__init (section) super (section)
+end
+function se_unvest:on_register()
+	cse_alife_item_unvest.on_register( self )
+	SendScriptCallback("server_entity_on_register",self,"se_unvest")
+end
+function se_unvest:on_unregister()
+	SendScriptCallback("server_entity_on_unregister",self,"se_unvest")
+	cse_alife_item_unvest.on_unregister( self )
+end
+function se_unvest:can_switch_online()
+	return cse_alife_item_unvest.can_switch_online(self)
+end
+
 -------------------------------------------------------------------------------------
 class "se_weapon_magazined" (cse_alife_item_weapon_magazined)
 function se_weapon_magazined:__init (section) super (section)

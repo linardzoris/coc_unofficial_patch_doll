@@ -89,6 +89,8 @@ function get_spawn_table(name)
 
 		["E_BAKPK"] = "Outfits",
 		["EQ_BAKPK"] = "Outfits",
+		["E_UNVEST"] = "Outfits",
+		["EQ_UNVEST"] = "Outfits",		
 		["EQ_PATCH"] = "Items (Misc.)",
 		["II_ATTCH"] = "Items (Misc.)",
 		["II_BTTCH"] = "Items (Misc.)",

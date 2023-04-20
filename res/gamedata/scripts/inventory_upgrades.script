@@ -535,7 +535,7 @@ local function how_much_repair( item_name, item_condition )
 	local multi = alife_storage_manager.get_state().economy_repair or 1
 	local class = ltx:r_string_ex(item_name, "class")
 	local factor = 1.33
-	if (class == "E_HLMET" or class == "EQU_STLK" or class == "E_STLK" or class == "E_BAKPK") then 
+	if (class == "E_HLMET" or class == "EQU_STLK" or class == "E_STLK" or class == "E_BAKPK" or class == "E_UNVEST") then 
 		factor = 1.0
 	end
 

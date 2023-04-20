@@ -266,6 +266,21 @@
                 <texture>ui_inGame2_artefakt_highlighter</texture>
             </slot_highlight>
         </slot>
+		<slot><!--15 Unvest --> <!-- slot_dragdrop 41 slot_highlight 79 -->
+			<slot_dragdrop x="480" y="198" width="65" height="82" cell_width="33" cell_height="41" rows_num="2" cols_num="2"
+			custom_placement="0" a="0" virtual_cells="1" vc_vert_align="c" vc_horiz_align="c"/>
+			<slot_highlight x="472" y="216" width="78" height="85" stretch="1">
+				<texture>ui_inGame2_helmet_highlighter</texture>
+			</slot_highlight>
+<!-- 		<slot_progress x="485" y="308" width="48" height="6" horz="1" min="0" max="1" pos="0">
+				<progress stretch="1">
+					<texture r="142" g="149" b="149">ui_inGame2_inventory_status_bar</texture>
+				</progress>
+				<min_color r="196" g="18" b="18"/>
+				<middle_color r="255" g="255" b="118"/>
+				<max_color r="107" g="207" b="119"/>
+			</slot_progress> -->
+		</slot> 	
 	</inventory_slot_wnd>
 	<!--NEW DYNAMIC SLOTS END-->
 
@@ -354,7 +369,7 @@
 		unlimited="1" group_similar="1" always_show_scroll="1" condition_progress_bar="1"/>
 
 	<dragdrop_belt x="390" y="510" width="240" height="41"
-		cell_width="33" cell_height="41" rows_num="1" cols_num="5"
+		cell_width="33" cell_height="41" rows_num="1" cols_num="8"
 		cell_sp_x="19" cell_sp_y="0" a="0"/>
 
 	<dragdrop_actor_trade x="662" y="114" width="346" height="164"

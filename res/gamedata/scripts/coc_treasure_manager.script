@@ -233,6 +233,11 @@ function create_random_stash(no_spot,hint,bonus_items, map_spot)
 		local v = ini:r_string_ex(section,"class","")
 		return v == "EQ_BAKPK" or v == "E_BAKPK"
 	end
+
+	local function is_unvest(section)
+		local v = ini:r_string_ex(section,"class","")
+		return v == "EQ_UNVEST" or v == "E_UNVEST"
+	end
 	
 	local function is_toolkit(section)
 		return section == "itm_repairkit_tier_1" or section == "itm_repairkit_tier_2" or section == "itm_repairkit_tier_3"
@@ -318,6 +323,7 @@ function create_random_stash(no_spot,hint,bonus_items, map_spot)
 			local bWeapon = not bArtefact and is_weapon(section)
 			local bOutfit = not bWeapon and is_outfit(section)
 			local bBackpack = not bWeapon and not bOutfit and is_backpack(section)
+			local bUnvest = not bWeapon and not bOutfit and not bBackpack and is_unvest(section)
 			if (bWeapon or bOutfit or bBackpack or bArtefact) then
 				if not (allow_item) then
 					skip = true
@@ -326,13 +332,19 @@ function create_random_stash(no_spot,hint,bonus_items, map_spot)
 			
 			if not (skip) then
 				if (bBackpack) then 
-					if (section == "equ_tourist_pack") then 
-						try_spawn_item(section,1,1,0.03,80)
-					elseif (section == "equ_military_pack") then
+					local v = ini:r_string_ex(section,"class","")				
+					if (v == "E_BAKPK" or v == "EQ_BAKPK") then 
 						try_spawn_item(section,1,1,0.05,80)
 					else
 						try_spawn_item(section,1,1,0.10,50)
 					end
+				elseif (bUnvest) then 
+					local v = ini:r_string_ex(section,"class","")				
+					if (v == "E_UNVEST" or v == "EQ_UNVEST") then 
+						try_spawn_item(section,1,1,0.05,80)
+					else
+						try_spawn_item(section,1,1,0.10,50)
+					end						
 				elseif (bDetector) then
 					local v = ini:r_string_ex(section,"class","")
 					if (v == "DET_SCIE") then
@@ -466,7 +478,7 @@ function create_random_stash(no_spot,hint,bonus_items, map_spot)
 				end
 			end
 			
-			if (has_spawned) and (bWeapon or bOutfit or bBackpack or bArtefact) then
+			if (has_spawned) and (bWeapon or bOutfit or bBackpack or bArtefact or bUnvest) then
 				if (allow_item) then 
 					allow_item = false 
 				end
