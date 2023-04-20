@@ -33,13 +33,28 @@ eat_satiety                    = 0
 eat_thirst					   = -0.1
 eat_intoxication			   = 0.5
 
-use_sound                      = interface\inv_vodka
+has_anim 					   = true
+hud_section                    = vodka_hud_anim
 
+use_sound                      = interface\inv_vodka
 use_condition                  = true
 max_uses                       = 3
 remove_after_use               = true
 empty_weight                   = 0.3
 allow_repair                   = false
+
+[vodka_hud_anim]:hud_base
+hands_position				   = 0.0,-0.02,0.14
+hands_orientation			   = 0.0,0.0,0.0
+hands_position_16x9			   = 0.0,-0.02,0.14
+hands_orientation_16x9		   = 0.0,0.0,0.0
+item_position                  = 0,0,0
+item_orientation               = 0,0,0
+anm_use          			   = dev_vodka_gwr_hand_animation, vodka
+snd_using                      = interface\inv_vodka
+single_handed_anim             = 2 ;0 - правая, 1 - левая, 2 - обе
+item_visual                    = dynamics\devices\first_person_animated\dev_vodka\vodka_hud
+attach_place_idx               = 1
 
 [vodka_script]:vodka
 $spawn                         = "food and drugs\vodka_script"

@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="windows-1251" ?>
 <string_table>
+	<string id="kb_laser_on">
+		<text>Лазерная указка</text>
+	</string>
+	<string id="kb_flashlight_on">
+		<text>Оружейный фонарик</text>
+	</string>
 	<string id="kb_active_jobs">
 		<text>КПК</text>
 	</string>

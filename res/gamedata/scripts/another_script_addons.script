@@ -53,7 +53,7 @@ function silencer_toggle()
 					success = true
 				end
 			else
-				weapon:weapon_addon_detach(sil_info.section, true)
+				weapon:detach_silencer()
 				newSound = SIL_DETACH_SOUND
 				success = true
 			end

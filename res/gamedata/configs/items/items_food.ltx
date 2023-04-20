@@ -85,6 +85,9 @@ eat_satiety                    = 0.3
 eat_thirst					   = -0.02
 eat_alcohol                    = -0.02
 
+has_anim 					   = true
+hud_section                    = conserva_hud_anim
+
 attach_angle_offset            = 0.440521, 1.378287, -0.644026
 attach_position_offset         = 0.104196, -0.010821, 0.076969
 attach_bone_name               = bip01_r_hand
@@ -93,6 +96,19 @@ auto_attach                    = false
 use_sound                      = interface\inv_food
 
 hide_time_wpn                  = 5
+
+[conserva_hud_anim]:hud_base
+hands_position 				   = 0.0, -0.143296, 0.284578
+hands_orientation		       = 0.0, 16.4738, 0.0
+hands_position_16x9			   = 0.003000,-0.165296,0.185578
+hands_orientation_16x9		   = 0.000000,16.473801,0.000000
+item_position                  = 0,0,0
+item_orientation               = 0,0,0
+anm_use          			   = dev_conserva_hand_animation, tushka_draw
+snd_using                      = interface\inv_food
+single_handed_anim             = 2 ;0 - правая, 1 - левая, 2 - обе
+item_visual                    = dynamics\devices\first_person_animated\dev_vodka\vodka_hud
+attach_place_idx               = 1
 
 
 ; ZONE-PRODUCED FOOD
