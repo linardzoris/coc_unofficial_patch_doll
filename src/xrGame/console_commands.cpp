@@ -105,7 +105,6 @@ ENGINE_API extern float g_console_sensitive;
 //Alundaio
 extern BOOL g_ai_die_in_anomaly;
 extern BOOL g_invert_zoom;
-int g_inv_highlight_equipped = 0;
 //-Alundaio
 
 //-----------------------------------------------------------
@@ -1957,7 +1956,6 @@ void CCC_RegisterCommands()
     CMD3(CCC_Mask, "g_autopickup", &psActorFlags, AF_AUTOPICKUP);
     CMD3(CCC_Mask, "g_dynamic_music", &psActorFlags, AF_DYNAMIC_MUSIC);
     CMD3(CCC_Mask, "g_important_save", &psActorFlags, AF_IMPORTANT_SAVE);
-    CMD4(CCC_Integer, "g_inv_highlight_equipped", &g_inv_highlight_equipped, 0, 1);
 
 #ifdef DEBUG
     CMD3(CCC_Mask, "dbg_draw_actor_alive", &dbg_net_Draw_Flags, dbg_draw_actor_alive);
