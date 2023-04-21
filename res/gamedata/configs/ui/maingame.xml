@@ -213,6 +213,12 @@
 	        </progress>
 	    </progress_bar_stamina>
 
+		<progress_bar_intoxication x="884" y="671" width="120" height="16" horz="1" min="0" max="100" pos="0">
+			<progress>
+				<texture>ui_inGame2_Patroni_HUD_green_bar</texture>
+			</progress>
+		</progress_bar_intoxication>
+
 		<static_wpn_icon x="971" y="735" width="30" height="30" align="c" alignment="c"/>
 
 		<!-- For ammo text -->

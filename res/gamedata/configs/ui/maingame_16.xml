@@ -223,12 +223,18 @@
 			</progress>
 		</progress_bar_health>
 
-	    	<progress_bar_stamina x="913" y="680" width="94" height="6" horz="1" min="0" max="100" pos="0">
+	    <progress_bar_stamina x="913" y="680" width="94" height="6" horz="1" min="0" max="100" pos="0">
 	        <progress>
 		<!-- light_anim="ui_blinking_1" la_cyclic="0" la_texture="1" la_text="0" la_alpha="1" stretch="0"-->
 		        <texture>ui_inGame2_Patroni_HUD_blue_bar</texture>
 	        </progress>
 	    </progress_bar_stamina>
+
+		<progress_bar_intoxication x="913" y="670" width="94" height="16" horz="1" min="0" max="100" pos="0">
+			<progress>
+				<texture>ui_inGame2_Patroni_HUD_green_bar</texture>
+			</progress>
+		</progress_bar_intoxication>
 
 		<static_wpn_icon x="982" y="732" width="10" height="10" align="c" alignment="c"/>
 
