@@ -21,7 +21,7 @@
 #include "../ActorBackpack.h"
 #include "../ActorUnvest.h"
 
-CUIHudStatesWnd::CUIHudStatesWnd() : m_b_force_update(true), m_timer_1sec(0), m_last_health(0.0f), m_radia_self(0.0f), m_radia_hit(0.0f),  m_last_intoxication(0.0f)
+CUIHudStatesWnd::CUIHudStatesWnd() : m_b_force_update(true), m_timer_1sec(0), m_last_health(0.0f), m_radia_self(0.0f), m_radia_hit(0.0f), m_last_intoxication(0.0f)
 {
     for (int i = 0; i < ALife::infl_max_count; ++i)
     {
@@ -39,6 +39,9 @@ CUIHudStatesWnd::CUIHudStatesWnd() : m_b_force_update(true), m_timer_1sec(0), m_
 
     m_health_blink = pSettings->r_float("actor_condition", "hud_health_blink");
     clamp(m_health_blink, 0.0f, 1.0f);
+
+    m_radiation_blink = pSettings->r_float("actor_condition", "hud_radiation_blink");
+    clamp(m_radiation_blink, 0.0f, 1.0f);
 
     m_fake_indicators_update = false;
     //-	Load_section();
@@ -91,6 +94,7 @@ void CUIHudStatesWnd::InitFromXml(CUIXml& xml, LPCSTR path)
     m_ui_health_bar = UIHelper::CreateProgressBar(xml, "progress_bar_health", this);
     m_ui_stamina_bar = UIHelper::CreateProgressBar(xml, "progress_bar_stamina", this);
     m_ui_intoxication_bar = UIHelper::CreateProgressBar(xml, "progress_bar_intoxication", this);
+    m_ui_radiation_bar = UIHelper::CreateProgressBar(xml, "progress_bar_radiation", this);
     //	m_back_v          = UIHelper::CreateStatic( xml, "back_v", this );
     //	m_static_armor    = UIHelper::CreateStatic( xml, "static_armor", this );
 
@@ -251,6 +255,14 @@ void CUIHudStatesWnd::UpdateHealth(CActor* actor)
     {
         m_last_intoxication = cur_intoxication;
         m_ui_intoxication_bar->m_UIProgressItem.ResetColorAnimation();
+    }
+
+    float cur_radiation = actor->conditions().GetRadiation();
+    m_ui_radiation_bar->SetProgressPos(iCeil(cur_radiation * 100.0f * 35.f) / 35.f);
+    if (_abs(cur_radiation - m_radia_self) < m_radiation_blink)
+    {
+        m_radia_self = cur_radiation;
+        m_ui_radiation_bar->m_UIProgressItem.ResetColorAnimation();
     }
 
     /*

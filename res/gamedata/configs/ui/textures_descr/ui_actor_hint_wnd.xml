@@ -34,6 +34,7 @@
         <texture id="ui_inGame2_Patroni_HUD_red_bar" x="782" y="144" width="94" height="16" />
         <texture id="ui_inGame2_Patroni_HUD_blue_bar" x="782" y="167" width="94" height="10" />
         <texture id="ui_inGame2_Patroni_HUD_green_bar" x="782" y="179" width="94" height="16" />
+	    <texture id="ui_inGame2_Patroni_HUD_radiation_bar" x="782" y="192" width="94" height="16" />	
 		
 		<texture id="ui_inGame2_Patroni_HUD_active_items_icon_b" 	x="503" y="92" width="3" height="23" />
 		<texture id="ui_inGame2_Patroni_HUD_active_items_icon_back" x="506" y="92" width="3" height="23" />
