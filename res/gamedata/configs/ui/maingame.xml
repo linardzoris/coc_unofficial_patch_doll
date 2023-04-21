@@ -14,6 +14,7 @@
 		<texture>ui_hud_icon_weapon</texture>
 	</weapon_jammed_static>
 
+	<indicator_psy_health 	 x="980" y="230" width="26" height="35" stretch="1"/>
     <indicator_starvation 	 x="980" y="270" width="26" height="35" stretch="1"/>
     <indicator_thirst 		 x="980" y="310" width="26" height="35" stretch="1"/>	
 	<indicator_sleepeness 	 x="980" y="350" width="26" height="35" stretch="1"/>
@@ -24,7 +25,7 @@
     <indicator_weapon_broken x="980" y="550" width="26" height="35" stretch="1"/>
     <indicator_outfit_broken x="980" y="590" width="26" height="35" stretch="1"/>
     <indicator_helmet_broken x="980" y="630" width="26" height="35" stretch="1"/>
-
+	
     <indicator_booster_psy x="355" y="728" width="18" height="27">
 		<texture>ui_inGame2_shield_Psy</texture>
 	</indicator_booster_psy>

@@ -97,6 +97,12 @@
 	
     <file name="ui\hud_icons\needs_icons">
 	
+		<!-- Needs: psy health -->
+	    <texture id="ui_inGame2_circle_psy_health_green" 			x="141" y="0" width="33" height="35" />
+	    <texture id="ui_inGame2_circle_psy_health_yellow" 			x="141" y="38" width="33" height="35" />
+	    <texture id="ui_inGame2_circle_psy_health_orange" 			x="141" y="76" width="33" height="35" />
+	    <texture id="ui_inGame2_circle_psy_health_red" 				x="141" y="114" width="33" height="35" />		
+	
 		<!-- Needs: sleep -->
 	    <texture id="ui_inGame2_circle_sleepeness_green" 			x="106" y="0" width="33" height="35" />
 	    <texture id="ui_inGame2_circle_sleepeness_yellow" 			x="106" y="38" width="33" height="35" />
@@ -155,7 +161,7 @@
 	    <texture id="ui_inGame2_circle_radiation_green" 			x="826" y="983" width="33" height="35" />
 	    <texture id="ui_inGame2_circle_radiation_yellow" 			x="291" y="886" width="33" height="35" />
 	    <texture id="ui_inGame2_circle_radiation_orange" 			x="291" y="927" width="33" height="35" />
-	    <texture id="ui_inGame2_circle_radiation_red" 				x="291" y="969" width="33" height="35" />
+	    <texture id="ui_inGame2_circle_radiation_red" 				x="291" y="969" width="33" height="35" />	
 		
 	</file>	
 </w>

@@ -50,7 +50,8 @@
 	<texture id="ui_am_prop_boost_alcohol" x="768" y="585" width="19" height="19" />	
 
 	<texture id="ui_am_prop_intoxication_restore_speed" x="806" y="509" width="19" height="19" />
-	<texture id="ui_am_prop_sleepeness_restore_speed" x="882" y="547" width="19" height="19" />		
+	<texture id="ui_am_prop_sleepeness_restore_speed" x="882" y="547" width="19" height="19" />	
+	<texture id="ui_am_prop_psy_health_restore_speed" x="768" y="642" width="19" height="19" />		
    	<texture id="ui_am_prop_weightoutfit" x="787" y="566" width="19" height="19" />
 	<texture id="ui_am_prop_damage" x="806" y="566" width="19" height="19" />
 	<texture id="ui_am_prop_time_period" x="825" y="433" width="19" height="19" />
@@ -82,6 +83,7 @@
 	<texture id="ui_am_prop_satiety_restore_speed_minus" x="863" y="566" width="19" height="19"/>
 	<texture id="ui_am_prop_thirst_restore_speed_minus" x="844" y="585" width="19" height="19"/>
 	<texture id="ui_am_prop_sleepeness_restore_speed_minus" x="806" y="528" width="19" height="19" />	
+	<texture id="ui_am_prop_psy_health_restore_speed_minus" x="863" y="623" width="19" height="19" />		
 	<texture id="ui_am_prop_intoxication_restore_speed_minus" x="863" y="547" width="19" height="19" />	
 	
     <texture id="ui_save_load_back" x="692" y="0" width="288" height="428" />

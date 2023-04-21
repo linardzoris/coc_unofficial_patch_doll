@@ -390,4 +390,7 @@
 	<string id="ui_st_create_stash">
 		<text>заложить тайник</text>
 	</string>	
+	<string id="ui_inv_psy_health_restore">
+		<text>ѕсихика</text>
+	</string>		
 </string_table>
