@@ -391,7 +391,7 @@ CWound* CEntityCondition::ConditionHit(SHit* pHDS)
         if (hit_power < 0.f)
             hit_power = 0.f;
         hit_power *= GetHitImmunity(pHDS->hit_type) - m_fBoostTelepaticImmunity;
-        ChangePsyHealth(-hit_power);
+        ChangePsyHealth(-hit_power * 2);
         m_fHealthLost = hit_power * m_fHealthHitPart;
         m_fDeltaHealth -= CanBeHarmed() ? m_fHealthLost : 0;
         m_fDeltaPower -= hit_power * m_fPowerHitPart;
@@ -496,7 +496,24 @@ void CEntityCondition::UpdateHealth()
 }
 
 void CEntityCondition::UpdatePower() {}
-void CEntityCondition::UpdatePsyHealth() { m_fDeltaPsyHealth += m_change_v.m_fV_PsyHealth * m_fDeltaTime; }
+
+void CEntityCondition::UpdatePsyHealth() 
+{ 
+    if (m_fPsyHealth < m_fPsyHealthMax)
+    {
+        m_fDeltaPsyHealth += m_change_v.m_fV_PsyHealth * m_fDeltaTime; 
+    }
+
+    if (m_fPsyHealth < 0.3f)
+    {
+        //m_fDeltaHealth -= CanBeHarmed() ? m_change_v.m_fV_PsyHealth * m_fPsyHealth * m_fDeltaTime : 0.0f;
+
+        luabind::functor<void> funct;
+        if (GEnv.ScriptEngine->functor("new_utils.generate_phantoms", funct))
+            funct();
+    }
+}
+
 void CEntityCondition::UpdateRadiation()
 {
     if (m_fRadiation > 0)

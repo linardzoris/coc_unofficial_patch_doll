@@ -34,6 +34,7 @@ public:
 
     CUIStatic* m_ind_bleeding;
     CUIStatic* m_ind_radiation;
+    CUIStatic* m_ind_psy_health;
     CUIStatic* m_ind_starvation;
     CUIStatic* m_ind_thirst;
     CUIStatic* m_ind_intoxication;

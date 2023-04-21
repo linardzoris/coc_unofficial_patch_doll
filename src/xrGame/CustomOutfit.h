@@ -51,6 +51,7 @@ public:
     float m_additional_weight2;
 
     float m_fHealthRestoreSpeed;
+    float m_fPsyHealthRestoreSpeed;
     float m_fRadiationRestoreSpeed;
     float m_fSatietyRestoreSpeed;
     float m_fPowerRestoreSpeed;

@@ -90,6 +90,7 @@ public:
     float AdditionalInventoryWeight() const { return m_additional_weight; }
     bool m_bCanSpawnZone;
     float m_fHealthRestoreSpeed;
+    float m_fPsyHealthRestoreSpeed;
     float m_fRadiationRestoreSpeed;
     float m_fSatietyRestoreSpeed;
     float m_fPowerRestoreSpeed;

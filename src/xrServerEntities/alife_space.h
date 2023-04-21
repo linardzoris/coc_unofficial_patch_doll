@@ -127,6 +127,7 @@ enum EConditionRestoreType
     eBleedingRestoreSpeed,
     eRadiationRestoreSpeed,
     eRestoreTypeMax,
+    ePsyHealthRestoreSpeed,
 };
 
 enum ETakeType

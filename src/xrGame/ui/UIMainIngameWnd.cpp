@@ -133,6 +133,7 @@ void CUIMainIngameWnd::Init()
 
     m_ind_bleeding = UIHelper::CreateStatic(uiXml, "indicator_bleeding", this);
     m_ind_radiation = UIHelper::CreateStatic(uiXml, "indicator_radiation", this);
+    m_ind_psy_health = UIHelper::CreateStatic(uiXml, "indicator_psy_health", this);
     m_ind_starvation = UIHelper::CreateStatic(uiXml, "indicator_starvation", this);
     m_ind_thirst = UIHelper::CreateStatic(uiXml, "indicator_thirst", this);
     m_ind_intoxication = UIHelper::CreateStatic(uiXml, "indicator_intoxication", this);
@@ -643,6 +644,28 @@ void CUIMainIngameWnd::UpdateMainIndicators()
         {
             m_ind_radiation->InitTexture("ui_inGame2_circle_radiation_red");
             m_ind_radiation->SetColorAnimation("ui_fast_blinking_alpha", flags);
+        }
+    }
+    // Psy Health icon
+    float psy_health = pActor->conditions().GetPsyHealth();
+    if (psy_health > 0.5)
+    {
+        m_ind_psy_health->Show(false);
+    }
+    else
+    {
+        m_ind_psy_health->Show(true);
+        if (psy_health <= 0.5f && psy_health >= 0.35f)
+        {
+            m_ind_psy_health->InitTexture("ui_inGame2_circle_psy_health_green");
+        }
+        else if (psy_health <= 0.35f && psy_health >= 0.15f)
+        {
+            m_ind_psy_health->InitTexture("ui_inGame2_circle_psy_health_yellow");
+        }
+        else if (psy_health <= 0.15f)
+        {
+            m_ind_psy_health->InitTexture("ui_inGame2_circle_psy_health_red");
         }
     }
 

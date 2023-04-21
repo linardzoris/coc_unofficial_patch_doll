@@ -238,8 +238,7 @@ void CActorCondition::UpdateCondition()
         float k_max_power = 1.0f;
         if (true)
         {
-            k_max_power =
-                1.0f + std::min(cur_weight, base_weight) / base_weight + std::max(0.0f, (cur_weight - base_weight) / 10.0f);
+            k_max_power = 1.0f + std::min(cur_weight, base_weight) / base_weight + std::max(0.0f, (cur_weight - base_weight) / 10.0f);
         }
         else
         {
@@ -251,9 +250,9 @@ void CActorCondition::UpdateCondition()
     if (IsGameTypeSingle())
     {
 	CEffectorPP* ppe = object().Cameras().GetPPEffector((EEffectorPPType)effPsyHealth);
-	if (!fsimilar(GetPsyHealth(), 1.0f, 0.05f))
+	if (!fsimilar(GetPsyHealth(), 1.0f, 0.5f))
 	{
-		if (!ppe)
+        if (!ppe)
 		{
 			AddEffector(m_object, effPsyHealth, "effector_psy_health", GET_KOEFF_FUNC(this, &CActorCondition::GetPsy));
 		}

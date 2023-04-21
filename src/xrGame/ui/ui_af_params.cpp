@@ -35,6 +35,7 @@ CUIArtefactParams::CUIArtefactParams()
 	m_fOverweightWalkAccel = nullptr;
     m_fThirstRestoreSpeed = nullptr;
     m_fIntoxicationRestoreSpeed = nullptr;
+    m_fPsyHealthRestoreSpeed = nullptr;
     m_fSleepenessRestoreSpeed = nullptr;
     m_artefact_count = nullptr;
 	m_Prop_line = nullptr;
@@ -51,6 +52,7 @@ CUIArtefactParams::~CUIArtefactParams()
 	xr_delete   (m_fOverweightWalkAccel);
     xr_delete   (m_fThirstRestoreSpeed);
     xr_delete   (m_fIntoxicationRestoreSpeed);
+    xr_delete   (m_fPsyHealthRestoreSpeed);
     xr_delete   (m_fSleepenessRestoreSpeed);
     xr_delete   (m_artefact_count);
 	xr_delete	(m_Prop_line);
@@ -79,6 +81,7 @@ constexpr pcstr af_restore_section_names[] = // ALife::EConditionRestoreType
         "thirst_restore_speed", // eThirstRestoreSpeed=5
         "intoxication_restore_speed", // eIntoxicationRestoreSpeed=6
         "sleepeness_restore_speed", // eSleepenessRestoreSpeed=7
+        "psy_health_restore_speed", // eHealthRestoreSpeed=8
 };
 
 constexpr pcstr af_immunity_caption[] = // ALife::EInfluenceType
@@ -218,6 +221,16 @@ void CUIArtefactParams::InitFromXml(CUIXml& xml)
         m_fSleepenessRestoreSpeed->SetCaption(name);
         xml.SetLocalRoot(base_node);
     }
+
+    {
+        m_fPsyHealthRestoreSpeed = new UIArtefactParamItem();
+        m_fPsyHealthRestoreSpeed->Init(xml, "psy_health_restore_speed");
+        m_fPsyHealthRestoreSpeed->SetAutoDelete(false);
+        LPCSTR name = StringTable().translate("ui_inv_psy_health_restore").c_str();
+        m_fPsyHealthRestoreSpeed->SetCaption(name);
+        xml.SetLocalRoot(base_node);
+    }
+
     {
         m_artefact_count = new UIArtefactParamItem();
         m_artefact_count->Init(xml, "artefact_count");
@@ -378,6 +391,19 @@ void CUIArtefactParams::SetInfo(const CArtefact* pInvItem)
             h += m_fSleepenessRestoreSpeed->GetWndSize().y;
             AttachChild(m_fSleepenessRestoreSpeed);
         }
+
+        val = pSettings->r_float(af_section, "psy_health_restore_speed");
+        if (!fis_zero(val))
+        {
+            m_fPsyHealthRestoreSpeed->SetValue(val);
+
+            pos.set(m_fPsyHealthRestoreSpeed->GetWndPos());
+            pos.y = h;
+            m_fPsyHealthRestoreSpeed->SetWndPos(pos);
+
+            h += m_fPsyHealthRestoreSpeed->GetWndSize().y;
+            AttachChild(m_fPsyHealthRestoreSpeed);
+        }
     }
 
     for (u32 i = 0; i < ALife::eRestoreTypeMax; ++i)
@@ -506,6 +532,19 @@ void CUIArtefactParams::SetInfo(const CCustomOutfit* pInvItem)
             AttachChild(m_fSleepenessRestoreSpeed);
         }
 
+        val = pSettings->r_float(af_section, "psy_health_restore_speed");
+        if (!fis_zero(val))
+        {
+            m_fPsyHealthRestoreSpeed->SetValue(val);
+
+            pos.set(m_fPsyHealthRestoreSpeed->GetWndPos());
+            pos.y = h;
+            m_fPsyHealthRestoreSpeed->SetWndPos(pos);
+
+            h += m_fPsyHealthRestoreSpeed->GetWndSize().y;
+            AttachChild(m_fPsyHealthRestoreSpeed);
+        }
+
         val = pSettings->r_float(af_section, "artefact_count");
         if (!fis_zero(val))
         {
@@ -579,6 +618,19 @@ void CUIArtefactParams::SetInfo(const CHelmet* pInvItem)
 
             h += m_fSleepenessRestoreSpeed->GetWndSize().y;
             AttachChild(m_fSleepenessRestoreSpeed);
+        }
+
+        val = pSettings->r_float(af_section, "psy_health_restore_speed");
+        if (!fis_zero(val))
+        {
+            m_fPsyHealthRestoreSpeed->SetValue(val);
+
+            pos.set(m_fPsyHealthRestoreSpeed->GetWndPos());
+            pos.y = h;
+            m_fPsyHealthRestoreSpeed->SetWndPos(pos);
+
+            h += m_fPsyHealthRestoreSpeed->GetWndSize().y;
+            AttachChild(m_fPsyHealthRestoreSpeed);
         }
     }
 
