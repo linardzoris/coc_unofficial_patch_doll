@@ -21,8 +21,7 @@
 #include "../ActorBackpack.h"
 #include "../ActorUnvest.h"
 
-CUIHudStatesWnd::CUIHudStatesWnd()
-    : m_b_force_update(true), m_timer_1sec(0), m_last_health(0.0f), m_radia_self(0.0f), m_radia_hit(0.0f)
+CUIHudStatesWnd::CUIHudStatesWnd() : m_b_force_update(true), m_timer_1sec(0), m_last_health(0.0f), m_radia_self(0.0f), m_radia_hit(0.0f),  m_last_intoxication(0.0f)
 {
     for (int i = 0; i < ALife::infl_max_count; ++i)
     {
@@ -91,6 +90,7 @@ void CUIHudStatesWnd::InitFromXml(CUIXml& xml, LPCSTR path)
     m_back = UIHelper::CreateStatic(xml, "back", this);
     m_ui_health_bar = UIHelper::CreateProgressBar(xml, "progress_bar_health", this);
     m_ui_stamina_bar = UIHelper::CreateProgressBar(xml, "progress_bar_stamina", this);
+    m_ui_intoxication_bar = UIHelper::CreateProgressBar(xml, "progress_bar_intoxication", this);
     //	m_back_v          = UIHelper::CreateStatic( xml, "back_v", this );
     //	m_static_armor    = UIHelper::CreateStatic( xml, "static_armor", this );
 
@@ -243,6 +243,14 @@ void CUIHudStatesWnd::UpdateHealth(CActor* actor)
     if (!actor->conditions().IsCantSprint())
     {
         m_ui_stamina_bar->m_UIProgressItem.ResetColorAnimation();
+    }
+
+    float cur_intoxication = actor->conditions().GetIntoxication();
+    m_ui_intoxication_bar->SetProgressPos(iCeil(cur_intoxication * 100.0f * 35.f) / 35.f);
+    if (_abs(cur_intoxication - m_last_intoxication) < m_health_blink)
+    {
+        m_last_intoxication = cur_intoxication;
+        m_ui_intoxication_bar->m_UIProgressItem.ResetColorAnimation();
     }
 
     /*

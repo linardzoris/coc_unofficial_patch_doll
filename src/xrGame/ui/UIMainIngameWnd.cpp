@@ -648,22 +648,22 @@ void CUIMainIngameWnd::UpdateMainIndicators()
     }
     // Psy Health icon
     float psy_health = pActor->conditions().GetPsyHealth();
-    if (psy_health > 0.5)
+    if (psy_health > 0.7)
     {
         m_ind_psy_health->Show(false);
     }
     else
     {
         m_ind_psy_health->Show(true);
-        if (psy_health <= 0.5f && psy_health >= 0.35f)
+        if (psy_health <= 0.7f && psy_health >= 0.5f)
         {
             m_ind_psy_health->InitTexture("ui_inGame2_circle_psy_health_green");
         }
-        else if (psy_health <= 0.35f && psy_health >= 0.15f)
+        else if (psy_health <= 0.5f && psy_health >= 0.3f)
         {
             m_ind_psy_health->InitTexture("ui_inGame2_circle_psy_health_yellow");
         }
-        else if (psy_health <= 0.15f)
+        else if (psy_health <= 0.3f)
         {
             m_ind_psy_health->InitTexture("ui_inGame2_circle_psy_health_red");
         }
