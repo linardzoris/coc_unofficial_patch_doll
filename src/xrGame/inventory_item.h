@@ -100,7 +100,6 @@ public:
     void ReloadNames();
 
     LPCSTR NameItem(); // remove <virtual> by sea
-    LPCSTR NameShort();
     shared_str ItemDescription() { return m_Description; }
     virtual bool GetBriefInfo(II_BriefInfo& info)
     {
@@ -156,7 +155,6 @@ public:
     CInventory* m_pInventory;
     shared_str m_section_id;
     shared_str m_name;
-    shared_str m_nameShort;
     shared_str m_nameComplex;
     bool m_highlight_equipped;
 

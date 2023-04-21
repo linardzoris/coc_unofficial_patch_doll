@@ -175,6 +175,5 @@ SCRIPT_EXPORT(CCartridge, (), {
                 value("cfRicochet", int(CCartridge::cfRicochet)),
                 value("cfCanBeUnlimited", int(CCartridge::cfCanBeUnlimited)),
                 value("cfExplosive", int(CCartridge::cfExplosive)),
-                value("cfMagneticBeam", int(CCartridge::cfMagneticBeam))]
-            .def("GetInventoryName", &CCartridge::GetInventoryName)];
+                value("cfMagneticBeam", int(CCartridge::cfMagneticBeam))]];
 });

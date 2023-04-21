@@ -387,7 +387,7 @@ void CWeaponKnife::LoadFireParams(LPCSTR section)
 bool CWeaponKnife::GetBriefInfo(II_BriefInfo& info)
 {
     info.clear();
-    info.name._set(m_nameShort);
+    info.name._set(m_name);
     info.icon._set(cNameSect());
     return true;
 }

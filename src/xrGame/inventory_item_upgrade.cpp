@@ -200,11 +200,6 @@ bool CInventoryItem::install_upgrade_impl(LPCSTR section, bool test)
 		m_name = str;
 	result |= result2;
 
-	result2 = process_if_exists_set(section, "inv_name_short", &CInifile::r_string, str, test);
-	if (result2 && !test)
-		m_nameShort = str;
-	result |= result2;
-
 	result2 = process_if_exists_set(section, "description", &CInifile::r_string, str, test);
     if (result2 && !test)
         m_Description = str;

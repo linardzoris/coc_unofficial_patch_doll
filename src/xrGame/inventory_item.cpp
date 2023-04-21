@@ -51,7 +51,7 @@ CInventoryItem::CInventoryItem()
     m_flags.set(FUsingCondition, FALSE);
     m_fCondition = 1.0f;
 
-    m_name = m_nameShort = NULL;
+    m_name = NULL;
 
     m_ItemCurrPlace.value = 0;
     m_ItemCurrPlace.type = eItemPlaceUndefined;
@@ -95,7 +95,6 @@ void CInventoryItem::Load(LPCSTR section)
 
     m_section_id._set(section);
     m_name = StringTable().translate(pSettings->r_string(section, "inv_name"));
-    m_nameShort = StringTable().translate(pSettings->r_string(section, "inv_name_short"));
 
     m_weight = pSettings->r_float(section, "inv_weight");
     R_ASSERT(m_weight >= 0.f);
@@ -133,7 +132,6 @@ void CInventoryItem::Load(LPCSTR section)
 void CInventoryItem::ReloadNames()
 {
     m_name = StringTable().translate(pSettings->r_string(m_object->cNameSect(), "inv_name"));
-    m_nameShort = StringTable().translate(pSettings->r_string(m_object->cNameSect(), "inv_name_short"));
     m_Description = StringTable().translate(pSettings->r_string(m_object->cNameSect(), "description"));
 }
 
@@ -155,7 +153,6 @@ void CInventoryItem::Hit(SHit* pHDS)
 }
 
 LPCSTR CInventoryItem::NameItem() { return m_name.c_str(); }
-LPCSTR CInventoryItem::NameShort() { return m_nameShort.c_str(); }
 /*
 LPCSTR CInventoryItem::NameComplex()
 {
