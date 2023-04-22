@@ -1082,8 +1082,7 @@ bool CInventory::Eat(PIItem pIItem)
         CurrentGameUI()->GetActorMenu().SetCurrentItem(nullptr);
     }
 
-    if (pItemToEat->GetMaxUses() < 255 &&
-        pItemToEat->CanConsumeCharge()) // If uses 255, then skip the decrement for infinite usages
+    if (pItemToEat->GetMaxUses() < 255) // If uses 255, then skip the decrement for infinite usages
     {
         u8 remaining = pItemToEat->GetRemainingUses();
         if (remaining > 0)

@@ -33,15 +33,14 @@ extern bool g_block_all_except_movement;
 
 CEatableItem::CEatableItem() : m_fWeightFull(0), m_fWeightEmpty(0)
 {
-    m_physic_item = 0;
     m_iMaxUses = 1;
-    m_bRemoveAfterUse = true;
-    m_bConsumeChargeOnUse = true;
-
-	m_bHasAnimation = false;
-	use_cam_effector = nullptr;
-	m_fEffectorIntensity = 1.0f;
+    use_cam_effector = nullptr;
     anim_sect = nullptr;
+    m_bHasAnimation = false;
+    m_bRemoveAfterUse = true;
+    m_physic_item = 0;
+
+	m_fEffectorIntensity = 1.0f;
     m_iAnimHandsCnt = 1;
     m_iAnimLength = 0;
     m_bActivated = false;
@@ -49,6 +48,7 @@ CEatableItem::CEatableItem() : m_fWeightFull(0), m_fWeightEmpty(0)
 }
 
 CEatableItem::~CEatableItem() {}
+
 IFactoryObject* CEatableItem::_construct()
 {
     m_physic_item = smart_cast<CPhysicItem*>(this);
@@ -64,7 +64,6 @@ void CEatableItem::Load(LPCSTR section)
         m_iMaxUses = 1;
 
     m_bRemoveAfterUse = READ_IF_EXISTS(pSettings, r_bool, section, "remove_after_use", true);
-    m_bConsumeChargeOnUse = READ_IF_EXISTS(pSettings, r_bool, section, "consume_charge_on_use", true);
     m_fWeightFull = m_weight;
     m_fWeightEmpty = READ_IF_EXISTS(pSettings, r_float, section, "empty_weight", 0.0f);
 
