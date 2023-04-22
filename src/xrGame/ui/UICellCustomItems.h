@@ -18,7 +18,7 @@ public:
     CUIInventoryCellItem(CInventoryItem* itm);
     virtual bool EqualTo(CUICellItem* itm);
     virtual void UpdateItemText();
-    CUIDragItem* CreateDragItem();
+    virtual CUIDragItem* CreateDragItem(bool bRotate = false); //--#SM+#--
     virtual bool IsHelper();
     virtual void SetIsHelper(bool is_helper);
     bool IsHelperOrHasHelperChild();
@@ -48,7 +48,7 @@ public:
 
     u32 CalculateAmmoCount();
     virtual bool EqualTo(CUICellItem* itm);
-    virtual CUIDragItem* CreateDragItem();
+    virtual CUIDragItem* CreateDragItem(bool bRotate = false); //--#SM+#--
     CWeaponAmmo* object() { return (CWeaponAmmo*)m_pData; }
 };
 
@@ -86,7 +86,7 @@ public:
 
     CWeapon* object() { return (CWeapon*)m_pData; }
     virtual void OnAfterChild(CUIDragDropListEx* parent_list);
-    virtual CUIDragItem* CreateDragItem();
+    virtual CUIDragItem* CreateDragItem(bool bRotate = false); //--#SM+#--
     virtual bool EqualTo(CUICellItem* itm);
     CUIStatic* get_addon_static(u32 idx) { return m_addons[idx]; }
 };
