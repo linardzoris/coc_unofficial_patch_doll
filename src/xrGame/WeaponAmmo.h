@@ -46,6 +46,10 @@ public:
 
     u16 bullet_material_idx;
     Flags8 m_flags;
+
+    shared_str m_InvShortName;
+
+    LPCSTR GetInventoryName() { return m_InvShortName.c_str(); };
 };
 
 class CWeaponAmmo : public CInventoryItemObject

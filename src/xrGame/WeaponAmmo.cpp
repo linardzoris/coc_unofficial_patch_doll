@@ -17,6 +17,7 @@ CCartridge::CCartridge()
 {
     m_flags.assign(cfTracer | cfRicochet);
     m_ammoSect = NULL;
+    m_InvShortName = NULL;
     param_s.Init();
     bullet_material_idx = u16(-1);
     m_4to1_tracer = false;
@@ -73,6 +74,8 @@ void CCartridge::Load(LPCSTR section, u8 LocalAmmoType, float ap_mod)
     bullet_material_idx = GMLib.GetMaterialIdx(WEAPON_MATERIAL_NAME);
     VERIFY(u16(-1) != bullet_material_idx);
     VERIFY(param_s.fWallmarkSize > 0);
+
+    m_InvShortName = StringTable().translate(pSettings->r_string(section, "inv_name"));
 }
 
 float CCartridge::Weight() const
@@ -189,6 +192,7 @@ bool CWeaponAmmo::Get(CCartridge& cartridge)
     cartridge.m_flags.set(CCartridge::cfTracer, m_tracer);
     cartridge.m_4to1_tracer = m_4to1_tracer;
     cartridge.bullet_material_idx = GMLib.GetMaterialIdx(WEAPON_MATERIAL_NAME);
+    cartridge.m_InvShortName = NameShort();
     --m_boxCurr;
     if (m_pInventory)
         m_pInventory->InvalidateState();

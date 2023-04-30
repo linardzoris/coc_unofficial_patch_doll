@@ -858,6 +858,7 @@ void CWeapon::net_Export(NET_Packet& P)
     P.w_u8((u8)GetState());
     P.w_u8((u8)IsZoomed());
     P.w_u8((u8)m_cur_addon.scope);
+
     if (g_actor && this->parent_id() == g_actor->ID())
         SyncronizeWeaponToServer();
 }

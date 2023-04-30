@@ -13,6 +13,8 @@ CSoundRender_CoreA::CSoundRender_CoreA() : CSoundRender_Core()
     pContext = nullptr;
     eaxSet = nullptr;
     eaxGet = nullptr;
+
+    Listener.position.set(0, 0, 0);
 }
 
 CSoundRender_CoreA::~CSoundRender_CoreA() {}

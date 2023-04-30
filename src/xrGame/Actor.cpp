@@ -1723,6 +1723,7 @@ void CActor::UpdateArtefactsOnBeltAndOutfit()
 	float jump_speed_add = 0.00;
     float walk_accel_add = 0.00;
 
+    // Артефакт
     if (bAFRadiationFromBackpack)
     {
         for (auto& it : inventory().m_all)
@@ -1732,17 +1733,6 @@ void CActor::UpdateArtefactsOnBeltAndOutfit()
             if (artefact)
             {
                 float art_cond = artefact->GetCondition();
-                conditions().ChangeBleeding(artefact->m_fBleedingRestoreSpeed * art_cond * f_update_time);
-                conditions().ChangeHealth(artefact->m_fHealthRestoreSpeed * art_cond * f_update_time);
-                conditions().ChangePsyHealth(artefact->m_fPsyHealthRestoreSpeed * art_cond * f_update_time);
-                conditions().ChangePower(artefact->m_fPowerRestoreSpeed * art_cond * f_update_time);
-                conditions().ChangeSatiety(artefact->m_fSatietyRestoreSpeed * art_cond * f_update_time);
-                conditions().ChangeThirst(artefact->m_fThirstRestoreSpeed * art_cond * f_update_time);
-                conditions().ChangeIntoxication(artefact->m_fIntoxicationRestoreSpeed * art_cond * f_update_time);
-                conditions().ChangeSleepeness(artefact->m_fSleepenessRestoreSpeed * art_cond * f_update_time);
-
-                jump_speed_add += (artefact->m_fJumpSpeed * art_cond);
-                walk_accel_add += (artefact->m_fWalkAccel * art_cond);
 
                 if (artefact->m_fRadiationRestoreSpeed * art_cond > 0.0f)
                 {
@@ -1755,31 +1745,31 @@ void CActor::UpdateArtefactsOnBeltAndOutfit()
             }
         }
     }
-    else
+
+    for (auto& it : inventory().m_belt)
     {
-        for (auto& it : inventory().m_belt)
+        const auto artefact = smart_cast<CArtefact*>(it);
+
+        if (artefact)
         {
-            const auto artefact = smart_cast<CArtefact*>(it);
+            float art_cond = artefact->GetCondition();
+            conditions().ChangeBleeding(artefact->m_fBleedingRestoreSpeed * art_cond * f_update_time);
+            conditions().ChangeHealth(artefact->m_fHealthRestoreSpeed * art_cond * f_update_time);
+            conditions().ChangePsyHealth(artefact->m_fPsyHealthRestoreSpeed * art_cond * f_update_time);
+            conditions().ChangePower(artefact->m_fPowerRestoreSpeed * art_cond * f_update_time);
+            conditions().ChangeSatiety(artefact->m_fSatietyRestoreSpeed * art_cond * f_update_time);
+            conditions().ChangeThirst(artefact->m_fThirstRestoreSpeed * art_cond * f_update_time);
+            conditions().ChangeIntoxication(artefact->m_fIntoxicationRestoreSpeed * art_cond * f_update_time);
+            conditions().ChangeSleepeness(artefact->m_fSleepenessRestoreSpeed * art_cond * f_update_time);
 
-            if (artefact)
+            jump_speed_add += (artefact->m_fJumpSpeed * art_cond);
+            walk_accel_add += (artefact->m_fWalkAccel * art_cond);
+
+            if (!bAFRadiationFromBackpack)
             {
-                float art_cond = artefact->GetCondition();
-                conditions().ChangeBleeding(artefact->m_fBleedingRestoreSpeed * art_cond * f_update_time);
-                conditions().ChangeHealth(artefact->m_fHealthRestoreSpeed * art_cond * f_update_time);
-                conditions().ChangePsyHealth(artefact->m_fPsyHealthRestoreSpeed * art_cond * f_update_time);
-                conditions().ChangePower(artefact->m_fPowerRestoreSpeed * art_cond * f_update_time);
-                conditions().ChangeSatiety(artefact->m_fSatietyRestoreSpeed * art_cond * f_update_time);
-                conditions().ChangeThirst(artefact->m_fThirstRestoreSpeed * art_cond * f_update_time);
-                conditions().ChangeIntoxication(artefact->m_fIntoxicationRestoreSpeed * art_cond * f_update_time);
-                conditions().ChangeSleepeness(artefact->m_fSleepenessRestoreSpeed * art_cond * f_update_time);
-
-                jump_speed_add += (artefact->m_fJumpSpeed * art_cond);
-                walk_accel_add += (artefact->m_fWalkAccel * art_cond);
-
                 if (artefact->m_fRadiationRestoreSpeed * art_cond > 0.0f)
                 {
-                    float val =
-                        artefact->m_fRadiationRestoreSpeed * art_cond - conditions().GetBoostRadiationImmunity();
+                    float val = artefact->m_fRadiationRestoreSpeed * art_cond - conditions().GetBoostRadiationImmunity();
                     clamp(val, 0.0f, val);
                     conditions().ChangeRadiation(val * f_update_time);
                 }
@@ -1789,6 +1779,7 @@ void CActor::UpdateArtefactsOnBeltAndOutfit()
         }
     }
 
+    // Броня
     const auto outfit = GetOutfit();
 
     if (outfit)
@@ -1810,6 +1801,7 @@ void CActor::UpdateArtefactsOnBeltAndOutfit()
             m_fBaseWalkAccel *= outfit->m_fOverweightWalkK;
     }
 
+    // Шлем
     const auto pHelmet = smart_cast<CHelmet*>(inventory().ItemFromSlot(HELMET_SLOT));
 
     if (pHelmet)
@@ -1828,6 +1820,7 @@ void CActor::UpdateArtefactsOnBeltAndOutfit()
         //walk_accel_add += (pHelmet->m_fWalkAccel);
     }
 
+    // Рюкзак
 	const auto pBackpack = smart_cast<CBackpack*>(inventory().ItemFromSlot(BACKPACK_SLOT));
 
     if (pBackpack)
@@ -1844,6 +1837,7 @@ void CActor::UpdateArtefactsOnBeltAndOutfit()
             m_fBaseWalkAccel *= pBackpack->m_fOverweightWalkK;
     }
 
+    // Разгрузка
 	const auto pUnvest = smart_cast<CUnvest*>(inventory().ItemFromSlot(UNVEST_SLOT));
 
     if (pUnvest)
@@ -1878,7 +1872,7 @@ void CActor::UpdateArtefactsOnBeltAndOutfit()
 
 void CActor::UpdateInventoryItems()
 {
-    for (auto& it : inventory().m_all)
+    for (auto& it : inventory().m_ruck)
     {
         const auto current_eatable = smart_cast<CEatableItem*>(it);
         if (current_eatable)

@@ -50,7 +50,9 @@ void CWeaponKnife::Load(LPCSTR section)
     inherited::Load(section);
 
     fWallmarkSize = pSettings->r_float(section, "wm_size");
-    m_sounds.LoadSound(section, "snd_shoot", "sndShot", false, SOUND_TYPE_WEAPON_SHOOTING);
+    m_sounds.LoadSound(section, "snd_shoot", "sndShot", false);
+    m_sounds.LoadSound(section, "snd_draw", "sndShow", false);
+    m_sounds.LoadSound(section, "snd_holster", "sndHide", false);
 
     m_Hit1SpashDir = pSettings->r_fvector3(section, "splash1_direction");
     m_Hit2SpashDir = pSettings->r_fvector3(section, "splash2_direction");
@@ -282,6 +284,7 @@ void CWeaponKnife::switch2_Hiding()
 {
     FireEnd();
     VERIFY(GetState() == eHiding);
+    PlaySound("sndHide", get_LastFP());
     PlayHUDMotion("anm_hide", TRUE, this, GetState());
 }
 
@@ -294,6 +297,7 @@ void CWeaponKnife::switch2_Hidden()
 void CWeaponKnife::switch2_Showing()
 {
     VERIFY(GetState() == eShowing);
+    PlaySound("sndShow", get_LastFP());
     PlayHUDMotion("anm_show", FALSE, this, GetState());
 }
 
@@ -387,7 +391,7 @@ void CWeaponKnife::LoadFireParams(LPCSTR section)
 bool CWeaponKnife::GetBriefInfo(II_BriefInfo& info)
 {
     info.clear();
-    info.name._set(m_name);
+    info.name._set(m_nameShort);
     info.icon._set(cNameSect());
     return true;
 }

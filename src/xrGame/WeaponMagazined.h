@@ -171,7 +171,8 @@ public:
         //AVO: fixed crash due to original GSC assumption that CWeaponMagazined will always have firemodes specified in configs.
         if (HasFireModes())
             return m_aFireModes[m_iCurFireMode];
-        return 1;
+        else
+            return 1;
     }
 
     virtual void save(NET_Packet& output_packet);

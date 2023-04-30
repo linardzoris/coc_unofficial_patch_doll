@@ -180,7 +180,7 @@ void CWeaponMagazined::Load(LPCSTR section)
         {
             string16 sItem;
             _GetItem(FireModesList.c_str(), i, sItem);
-            m_aFireModes.push_back((s8)atoi(sItem));
+            m_aFireModes.push_back	((s8)atoi(sItem));
         }
 
         m_iCurFireMode = ModesCount - 1;
@@ -415,7 +415,7 @@ int CWeaponMagazined::CheckAmmoBeforeReload(u8& v_ammoType)
     if (m_set_next_ammoType_on_reload != undefined_ammo_type)
         v_ammoType = m_set_next_ammoType_on_reload;
 
-    Msg("Ammo type in next reload : %d", m_set_next_ammoType_on_reload);
+    //Msg("Ammo type in next reload : %d", m_set_next_ammoType_on_reload);
 
     if (m_ammoTypes.size() <= v_ammoType)
     {
@@ -447,7 +447,7 @@ int CWeaponMagazined::CheckAmmoBeforeReload(u8& v_ammoType)
         }
     }
 
-    Msg("Ammo type %d", v_ammoType);
+    //Msg("Ammo type %d", v_ammoType);
 
     return GetAmmoCount(v_ammoType);
 }
@@ -714,13 +714,8 @@ void CWeaponMagazined::state_Fire(float dt)
 
             //Alundaio: Use fModeShotTime instead of fOneShotTime if current fire mode is 2-shot burst
             //Alundaio: Cycle down RPM after two shots; used for Abakan/AN-94
-            if (GetCurrentFireMode() == 2 || (cycleDown == true && m_iShotNum < 1))
+            if (GetCurrentFireMode() == 2 || (cycleDown == true && m_iShotNum < 1) || IsDiffShotModes() && GetCurrentFireMode() == -1)
                 fShotTimeCounter = modeShotTime;
-            // Позволяет применять иной rpm для оружия с IsDiffShotModes и в авторежиме огня, применимо для SPAS-12.
-            else if (IsDiffShotModes() && GetCurrentFireMode() == -1)
-            {
-                fShotTimeCounter = modeShotTime;
-            }
             else
                 fShotTimeCounter = fOneShotTime;
             //Alundaio: END
@@ -954,24 +949,24 @@ void CWeaponMagazined::switch2_ChangeFireMode()
 
 void CWeaponMagazined::PlayAnimFireMode()
 {
-    if (!IsMisfire() && IsGrenadeLauncherAttached() && m_ammoElapsed.type1 > 0)
+    if (isHUDAnimationExist("anm_changefiremode_w_gl") && !IsMisfire() && IsGrenadeLauncherAttached() && m_ammoElapsed.type1 > 0)
         PlayHUDMotion("anm_changefiremode_w_gl", true, this, GetState());
-    if (!IsMisfire() && IsGrenadeLauncherAttached() && m_ammoElapsed.type1 == 0)
+    if (isHUDAnimationExist("anm_changefiremode_empty_w_gl") && !IsMisfire() && IsGrenadeLauncherAttached() && m_ammoElapsed.type1 == 0)
         PlayHUDMotion("anm_changefiremode_empty_w_gl", true, this, GetState());
 
-    if (!IsMisfire() && !IsGrenadeLauncherAttached() && m_ammoElapsed.type1 > 0)
+    if (isHUDAnimationExist("anm_changefiremode") && !IsMisfire() && !IsGrenadeLauncherAttached() && m_ammoElapsed.type1 > 0)
         PlayHUDMotion("anm_changefiremode", true, this, GetState());
-    if (!IsMisfire() && !IsGrenadeLauncherAttached() && m_ammoElapsed.type1 == 0)
+    if (isHUDAnimationExist("anm_changefiremode_empty") && !IsMisfire() && !IsGrenadeLauncherAttached() && m_ammoElapsed.type1 == 0)
         PlayHUDMotion("anm_changefiremode_empty", true, this, GetState());
 
-    if (!IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 > 0)
+    if (isHUDAnimationExist("anm_changefiremode_jammed") && !IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 > 0)
         PlayHUDMotion("anm_changefiremode_jammed", true, this, GetState());
-    if (!IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 == 0)
+    if (isHUDAnimationExist("anm_changefiremode_empty_jammed") && !IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 == 0)
         PlayHUDMotion("anm_changefiremode_empty_jammed", true, this, GetState());
 
-    if (IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 > 0)
+    if (isHUDAnimationExist("anm_changefiremode_jammed_w_gl") && IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 > 0)
         PlayHUDMotion("anm_changefiremode_jammed_w_gl", true, this, GetState());
-    if (IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 == 0)
+    if (isHUDAnimationExist("anm_changefiremode_empty_jammed_w_gl") && IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 == 0)
         PlayHUDMotion("anm_changefiremode_empty_jammed_w_gl", true, this, GetState());
 }
 
@@ -1348,11 +1343,6 @@ bool CWeaponMagazined::Attach(PIItem pIItem, bool b_send_event)
 
     if (result)
     {
-        if (pScope && bUseAltScope)
-        {
-            bNVsecondVPstatus = !!pSettings->line_exist(pIItem->object().cNameSect(), "scope_nightvision");
-        }
-
         SyncronizeWeaponToServer();
         if (b_send_event && OnServer())
         {
@@ -1360,6 +1350,11 @@ bool CWeaponMagazined::Attach(PIItem pIItem, bool b_send_event)
             //.			pIItem->Drop					();
             pIItem->object().DestroyObject();
         };
+
+        if (pScope && bUseAltScope)
+        {
+            bNVsecondVPstatus = !!pSettings->line_exist(pIItem->object().cNameSect(), "scope_nightvision");
+        }
 
 		UpdateAltScope();
         UpdateAddonsVisibility();
@@ -1723,31 +1718,31 @@ void CWeaponMagazined::PlayAnimShoot()
         // В зуме
         if (IsZoomed())
             if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shot_when_aim_l"))
-                PlayHUDMotion("anm_shot_when_aim_l", true, nullptr, GetState());
+                PlayHUDMotion("anm_shot_when_aim_l", false, nullptr, GetState());
             else if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shots_aim_l"))
-                PlayHUDMotion("anm_shots_aim_l", true, nullptr, GetState());
+                PlayHUDMotion("anm_shots_aim_l", false, nullptr, GetState());
             else if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shot_l"))
-                PlayHUDMotion("anm_shot_l", true, nullptr, GetState());
+                PlayHUDMotion("anm_shot_l", false, nullptr, GetState());
             else if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shots_l"))
-                PlayHUDMotion("anm_shots_l", true, nullptr, GetState());
+                PlayHUDMotion("anm_shots_l", false, nullptr, GetState());
             else if (isHUDAnimationExist("anm_shots_when_aim"))
-                PlayHUDMotion("anm_shots_when_aim", true, nullptr, GetState());
+                PlayHUDMotion("anm_shots_when_aim", false, nullptr, GetState());
             else if (IsZoomed() && isHUDAnimationExist("anm_shots_aim"))
-                PlayHUDMotion("anm_shots_aim", true, nullptr, GetState());
+                PlayHUDMotion("anm_shots_aim", false, nullptr, GetState());
             else if (isHUDAnimationExist("anm_shoot"))
-                PlayHUDMotion("anm_shoot", true, nullptr, GetState());
+                PlayHUDMotion("anm_shoot", false, nullptr, GetState());
             else
-                PlayHUDMotion("anm_shots", true, nullptr, GetState());
+                PlayHUDMotion("anm_shots", false, nullptr, GetState());
         // От бедра
         else if (!IsZoomed())
             if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shot_l"))
-                PlayHUDMotion("anm_shot_l", true, nullptr, GetState());
+                PlayHUDMotion("anm_shot_l", false, nullptr, GetState());
             else if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shots_l"))
-                PlayHUDMotion("anm_shots_l", true, nullptr, GetState());
+                PlayHUDMotion("anm_shots_l", false, nullptr, GetState());
             else if (isHUDAnimationExist("anm_shoot"))
-                PlayHUDMotion("anm_shoot", true, nullptr, GetState());
+                PlayHUDMotion("anm_shoot", false, nullptr, GetState());
             else
-                PlayHUDMotion("anm_shots", true, nullptr, GetState());
+                PlayHUDMotion("anm_shots", false, nullptr, GetState());
     }
     // Если IsDiffShotModes и авторежим стрельбы (для SPAS-12).
     if (IsDiffShotModes() && GetCurrentFireMode() == -1)
@@ -1755,33 +1750,33 @@ void CWeaponMagazined::PlayAnimShoot()
         // В зуме
         if (IsZoomed())
             if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shot_auto_when_aim_l"))
-                PlayHUDMotion("anm_shot_auto_when_aim_l", true, nullptr, GetState());
+                PlayHUDMotion("anm_shot_auto_when_aim_l", false, nullptr, GetState());
             else if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shots_auto_aim_l"))
-                PlayHUDMotion("anm_shots_auto_aim_l", true, nullptr, GetState());
+                PlayHUDMotion("anm_shots_auto_aim_l", false, nullptr, GetState());
             else if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shot_auto_l"))
-                PlayHUDMotion("anm_shot_auto_l", true, nullptr, GetState());
+                PlayHUDMotion("anm_shot_auto_l", false, nullptr, GetState());
             else if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shots_auto_l"))
-                PlayHUDMotion("anm_shots_auto_l", true, nullptr, GetState());
+                PlayHUDMotion("anm_shots_auto_l", false, nullptr, GetState());
             else if (isHUDAnimationExist("anm_shots_auto_when_aim"))
-                PlayHUDMotion("anm_shots_auto_when_aim", true, nullptr, GetState());
+                PlayHUDMotion("anm_shots_auto_when_aim", false, nullptr, GetState());
             else if (IsZoomed() && isHUDAnimationExist("anm_shots_auto_aim"))
-                PlayHUDMotion("anm_shots_auto_aim", true, nullptr, GetState());
+                PlayHUDMotion("anm_shots_auto_aim", false, nullptr, GetState());
             else if (isHUDAnimationExist("anm_shoot"))
-                PlayHUDMotion("anm_shoot", true, nullptr, GetState());
+                PlayHUDMotion("anm_shoot", false, nullptr, GetState());
             else
-                PlayHUDMotion("anm_shots", true, nullptr, GetState());
+                PlayHUDMotion("anm_shots", false, nullptr, GetState());
         // От бедра
         else if (!IsZoomed())
             if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shot_auto_l"))
-                PlayHUDMotion("anm_shot_auto_l", true, nullptr, GetState());
+                PlayHUDMotion("anm_shot_auto_l", false, nullptr, GetState());
             else if (m_ammoElapsed.type1 == 1 && isHUDAnimationExist("anm_shots_auto_l"))
-                PlayHUDMotion("anm_shots_auto_l", true, nullptr, GetState());
+                PlayHUDMotion("anm_shots_auto_l", false, nullptr, GetState());
             else if (isHUDAnimationExist("anm_shoot_auto"))
-                PlayHUDMotion("anm_shoot_auto", true, nullptr, GetState());
+                PlayHUDMotion("anm_shoot_auto", false, nullptr, GetState());
             else if (isHUDAnimationExist("anm_shots_auto"))
-                PlayHUDMotion("anm_shots_auto", true, nullptr, GetState());
+                PlayHUDMotion("anm_shots_auto", false, nullptr, GetState());
             else
-                PlayHUDMotion("anm_shots", true, nullptr, GetState());
+                PlayHUDMotion("anm_shots", false, nullptr, GetState());
     }
 }
 
@@ -1856,10 +1851,10 @@ void CWeaponMagazined::OnNextFireMode()
 {
     if (!m_bHasDifferentFireModes) return;
 
-	if (isHUDAnimationExist("anm_changefiremode") || isHUDAnimationExist("anm_changefiremode_w_gl"))
-        SwitchState(eFiremodeNext);
+    SwitchState(eFiremodeNext);
 
     if (GetState() != eIdle) return;
+
     m_iCurFireMode = (m_iCurFireMode + 1 + m_aFireModes.size()) % m_aFireModes.size();
     SetQueueSize(GetCurrentFireMode());
 };
@@ -1868,10 +1863,10 @@ void CWeaponMagazined::OnPrevFireMode()
 {
     if (!m_bHasDifferentFireModes) return;
 
-	if (isHUDAnimationExist("anm_changefiremode") || isHUDAnimationExist("anm_changefiremode_w_gl"))
-        SwitchState(eFiremodePrev);
+    SwitchState(eFiremodePrev);
 
     if (GetState() != eIdle) return;
+
     m_iCurFireMode = (m_iCurFireMode - 1 + m_aFireModes.size()) % m_aFireModes.size();
     SetQueueSize(GetCurrentFireMode());
 };
@@ -1881,13 +1876,19 @@ void CWeaponMagazined::OnH_A_Chield()
     if (m_bHasDifferentFireModes)
     {
         CActor* actor = smart_cast<CActor*>(H_Parent());
-        if (!actor) SetQueueSize(-1);
-        else SetQueueSize(GetCurrentFireMode());
+        if (!actor) 
+            SetQueueSize(-1);
+        else 
+            SetQueueSize(GetCurrentFireMode());
     };
     inherited::OnH_A_Chield();
 };
 
-void CWeaponMagazined::SetQueueSize(int size) { m_iQueueSize = size; };
+void CWeaponMagazined::SetQueueSize(int size) 
+{ 
+    m_iQueueSize = size; 
+};
+
 float CWeaponMagazined::GetWeaponDeterioration()
 {
     // modified by Peacemaker [17.10.08]
@@ -1908,7 +1909,8 @@ void CWeaponMagazined::save(NET_Packet& output_packet)
 void CWeaponMagazined::load(IReader& input_packet)
 {
     inherited::load(input_packet);
-    load_data(m_iQueueSize, input_packet); SetQueueSize(m_iQueueSize);
+    load_data(m_iQueueSize, input_packet); 
+    SetQueueSize(m_iQueueSize);
     load_data(m_iShotNum, input_packet);
     load_data(m_iCurFireMode, input_packet);
 }
@@ -2202,13 +2204,13 @@ void CWeaponMagazined::OnMotionMark(u32 state, const motion_marks& M)
 
         if (ammo_type == m_ammoType.type1)
         {
-            Msg("Ammo elapsed: %d", m_ammoElapsed.type1);
+            //Msg("Ammo elapsed: %d", m_ammoElapsed.type1);
             ae += m_ammoElapsed.type1;
         }
 
         last_hide_bullet = ae >= bullet_cnt ? bullet_cnt : bullet_cnt - ae - 1;
 
-        Msg("Next reload: count %d with type %d", ae, ammo_type);
+        //Msg("Next reload: count %d with type %d", ae, ammo_type);
 
         HUD_VisualBulletUpdate();
     }

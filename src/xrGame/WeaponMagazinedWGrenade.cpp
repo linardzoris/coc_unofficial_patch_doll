@@ -523,7 +523,9 @@ bool CWeaponMagazinedWGrenade::Attach(PIItem pIItem, bool b_send_event)
                 UpdateAddonsVisibility();
                 if (GetState() == eIdle)
                     PlayAnimIdle();
+
                 SyncronizeWeaponToServer();
+
                 return true;
             }
         }
@@ -557,6 +559,7 @@ bool CWeaponMagazinedWGrenade::Detach(pcstr item_section_name, bool b_spawn_item
             PlayAnimIdle();
 
 		SyncronizeWeaponToServer();
+
         return CInventoryItemObject::Detach(item_section_name, b_spawn_item);
     }
     else

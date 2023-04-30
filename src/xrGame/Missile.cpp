@@ -744,6 +744,6 @@ void CMissile::ExitContactCallback(
 bool CMissile::GetBriefInfo(II_BriefInfo& info)
 {
     info.clear();
-    info.name._set(m_name);
+    info.name._set(m_nameShort);
     return true;
 }

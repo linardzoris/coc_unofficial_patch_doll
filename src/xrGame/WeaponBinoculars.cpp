@@ -133,7 +133,7 @@ void CWeaponBinoculars::load(IReader& input_packet)
 bool CWeaponBinoculars::GetBriefInfo(II_BriefInfo& info)
 {
     info.clear();
-    info.name._set(m_name);
+    info.name._set(m_nameShort);
     info.icon._set(cNameSect());
     return true;
 }
