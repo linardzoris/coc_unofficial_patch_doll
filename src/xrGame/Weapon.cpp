@@ -930,9 +930,9 @@ void CWeapon::save(NET_Packet& output_packet)
     save_data(m_flagsAddOnState, output_packet);
     save_data(m_ammoType.data, output_packet);
     save_data(m_zoom_params.m_bIsZoomModeNow, output_packet);
-    save_data((bool)0, output_packet);
     save_data(bNVsecondVPstatus, output_packet);
     save_data(m_fSecondRTZoomFactor, output_packet);
+    save_data((bool)0, output_packet);
 }
 
 void CWeapon::load(IReader& input_packet)
@@ -946,7 +946,7 @@ void CWeapon::load(IReader& input_packet)
     load_data(m_ammoType.data, input_packet);
     load_data(m_zoom_params.m_bIsZoomModeNow, input_packet);
     load_data(bNVsecondVPstatus, input_packet);
-    load_data(m_zoom_params.m_bIsZoomModeNow, input_packet);
+    load_data(m_fSecondRTZoomFactor, input_packet);
 
     if (m_zoom_params.m_bIsZoomModeNow)
         OnZoomIn();
