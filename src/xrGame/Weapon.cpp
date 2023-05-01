@@ -932,7 +932,7 @@ void CWeapon::save(NET_Packet& output_packet)
     save_data(m_zoom_params.m_bIsZoomModeNow, output_packet);
     save_data(bNVsecondVPstatus, output_packet);
     save_data(m_fSecondRTZoomFactor, output_packet);
-    save_data((bool)0, output_packet);
+    save_data((bool)0, output_packet); // End
 }
 
 void CWeapon::load(IReader& input_packet)
