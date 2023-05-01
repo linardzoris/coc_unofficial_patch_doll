@@ -766,9 +766,6 @@ void CWeaponMagazined::state_Fire(float dt)
     {
         fShotTimeCounter -= dt;
     }
-
-	if (m_fFactor > 0)
-        StopShooting();
 }
 
 void CWeaponMagazined::state_Misfire(float dt)
