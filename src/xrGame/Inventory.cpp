@@ -560,7 +560,10 @@ void CInventory::Activate(u16 slot, bool bForce)
 
 PIItem CInventory::ItemFromSlot(u16 slot) const
 {
-    VERIFY(NO_ACTIVE_SLOT != slot);
+    if (slot == NO_ACTIVE_SLOT)
+        return nullptr;
+
+    //VERIFY(NO_ACTIVE_SLOT != slot);
     return m_slots[slot].m_pIItem;
 }
 
