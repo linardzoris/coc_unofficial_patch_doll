@@ -132,10 +132,12 @@ Fvector& attachable_hud_item::hands_attach_pos()
 {
 	return m_measures.m_hands_attach[0];
 }
+
 Fvector& attachable_hud_item::hands_attach_rot() 
 { 
     return m_measures.m_hands_attach[1]; 
 }
+
 Fvector& attachable_hud_item::hands_offset_pos()
 {
     u8 idx = m_parent_hud_item->GetCurrentHudOffsetIdx();
@@ -243,7 +245,11 @@ void attachable_hud_item::setup_firedeps(firedeps& fd)
     }
 }
 
-bool attachable_hud_item::need_renderable() { return m_parent_hud_item->need_renderable(); }
+bool attachable_hud_item::need_renderable() 
+{ 
+    return m_parent_hud_item->need_renderable(); 
+}
+
 void attachable_hud_item::render()
 {
     GEnv.Render->set_Transform(&m_item_transform);
@@ -252,8 +258,15 @@ void attachable_hud_item::render()
     m_parent_hud_item->render_hud_mode();
 }
 
-bool attachable_hud_item::render_item_ui_query() { return m_parent_hud_item->render_item_3d_ui_query(); }
-void attachable_hud_item::render_item_ui() { m_parent_hud_item->render_item_3d_ui(); }
+bool attachable_hud_item::render_item_ui_query() 
+{ 
+    return m_parent_hud_item->render_item_3d_ui_query(); 
+}
+
+void attachable_hud_item::render_item_ui() 
+{ 
+    m_parent_hud_item->render_item_3d_ui(); 
+}
 
 void hud_item_measures::load(const shared_str& sect_name, IKinematics* K)
 {
@@ -330,12 +343,9 @@ void hud_item_measures::load(const shared_str& sect_name, IKinematics* K)
     }
 
 
-    R_ASSERT2(pSettings->line_exist(sect_name, "fire_point") == pSettings->line_exist(sect_name, "fire_bone"),
-        sect_name.c_str());
-    R_ASSERT2(pSettings->line_exist(sect_name, "fire_point2") == pSettings->line_exist(sect_name, "fire_bone2"),
-        sect_name.c_str());
-    R_ASSERT2(pSettings->line_exist(sect_name, "shell_point") == pSettings->line_exist(sect_name, "shell_bone"),
-        sect_name.c_str());
+    R_ASSERT2(pSettings->line_exist(sect_name, "fire_point") == pSettings->line_exist(sect_name, "fire_bone"), sect_name.c_str());
+    R_ASSERT2(pSettings->line_exist(sect_name, "fire_point2") == pSettings->line_exist(sect_name, "fire_bone2"), sect_name.c_str());
+    R_ASSERT2(pSettings->line_exist(sect_name, "shell_point") == pSettings->line_exist(sect_name, "shell_bone"), sect_name.c_str());
 
     m_prop_flags.set(e_16x9_mode_now, is_16x9);
 
@@ -736,8 +746,8 @@ void player_hud::render_item_ui()
 
 void player_hud::render_hud()
 {
-    if (!m_attached_items[0] && !m_attached_items[1])
-        return;
+    //if (!m_attached_items[0] && !m_attached_items[1])
+        //return;
 
 	bool b_r0 = ((m_attached_items[0] && m_attached_items[0]->need_renderable()) || script_anim_part == 0 || script_anim_part == 2);
 	bool b_r1 = ((m_attached_items[1] && m_attached_items[1]->need_renderable()) || script_anim_part == 1 || script_anim_part == 2);
@@ -795,8 +805,7 @@ u32 player_hud::motion_length(const shared_str& anim_name, const shared_str& hud
     player_hud_motion* pm = pi->m_hand_motions.find_motion(anim_name);
     if (!pm)
         return 100; // ms TEMPORARY
-    R_ASSERT2(pm,
-        make_string("hudItem model [%s] has no motion with alias [%s]", hud_name.c_str(), anim_name.c_str()).c_str());
+    R_ASSERT2(pm, make_string("hudItem model [%s] has no motion with alias [%s]", hud_name.c_str(), anim_name.c_str()).c_str());
     return motion_length(pm->m_animations[0].mid, md, speed);
 }
 
@@ -940,10 +949,8 @@ void player_hud::update(const Fmatrix& cam_trans)
     }
 
     bool need_blend[2];
-    need_blend[0] = ((script_anim_part == 0 || script_anim_part == 2) ||
-        (m_attached_items[0] && m_attached_items[0]->m_parent_hud_item->NeedBlendAnm()));
-    need_blend[1] = ((script_anim_part == 1 || script_anim_part == 2) ||
-        (m_attached_items[1] && m_attached_items[1]->m_parent_hud_item->NeedBlendAnm()));
+    need_blend[0] = ((script_anim_part == 0 || script_anim_part == 2) || (m_attached_items[0] && m_attached_items[0]->m_parent_hud_item->NeedBlendAnm()));
+    need_blend[1] = ((script_anim_part == 1 || script_anim_part == 2) || (m_attached_items[1] && m_attached_items[1]->m_parent_hud_item->NeedBlendAnm()));
 
     for (movement_layer* anm : m_movement_layers)
     {
@@ -1062,8 +1069,7 @@ u32 player_hud::script_anim_play(u8 hand, LPCSTR section, LPCSTR anm_name, bool 
 
     if (pSettings->line_exist(section, "item_visual"))
     {
-        script_anim_item_model =
-            GEnv.Render->model_Create(pSettings->r_string(section, "item_visual"))->dcast_PKinematicsAnimated();
+        script_anim_item_model = GEnv.Render->model_Create(pSettings->r_string(section, "item_visual"))->dcast_PKinematicsAnimated();
         item_pos[0] = READ_IF_EXISTS(pSettings, r_fvector3, section, "item_position", def);
         item_pos[1] = READ_IF_EXISTS(pSettings, r_fvector3, section, "item_orientation", def);
         script_anim_item_attached = READ_IF_EXISTS(pSettings, r_bool, section, "item_attached", true);
@@ -1189,9 +1195,7 @@ void player_hud::updateMovementLayerState()
         anm->Stop(false);
     }
 
-    bool need_blend = (script_anim_part != u8(-1) ||
-        (m_attached_items[0] && m_attached_items[0]->m_parent_hud_item->NeedBlendAnm()) ||
-        (m_attached_items[1] && m_attached_items[1]->m_parent_hud_item->NeedBlendAnm()));
+    bool need_blend = (script_anim_part != u8(-1) || (m_attached_items[0] && m_attached_items[0]->m_parent_hud_item->NeedBlendAnm()) || (m_attached_items[1] && m_attached_items[1]->m_parent_hud_item->NeedBlendAnm()));
 
     if (pActor->AnyMove() && need_blend)
     {
@@ -1580,6 +1584,7 @@ void player_hud::detach_item(CHudItem* item)
 {
     if (nullptr == item->HudItemData())
         return;
+
     u16 item_idx = item->HudItemData()->m_attach_place_idx;
 
     if (m_attached_items[item_idx] == item->HudItemData())
