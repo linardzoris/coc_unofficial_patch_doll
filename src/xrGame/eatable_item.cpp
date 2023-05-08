@@ -208,8 +208,8 @@ void CEatableItem::UpdateUseAnim()
     bool IsActorAlive = g_pGamePersistent->GetActorAliveStatus();
 
     if (m_bItmStartAnim && Actor()->inventory().GetActiveSlot() == NO_ACTIVE_SLOT) // Тут вылетало
-        //if (pDet && pDet->IsHidden() || pFlight && pFlight->IsHidden())
-        StartAnimation();
+        if (!pDet && !pFlight || pDet && pDet->IsHidden() || pFlight && pFlight->IsHidden())
+            StartAnimation();
 
     if (m_bActivated)
     {
