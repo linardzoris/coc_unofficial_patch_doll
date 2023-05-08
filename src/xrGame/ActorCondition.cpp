@@ -1052,9 +1052,11 @@ bool CActorCondition::ApplyInfluence(const SMedicineInfluenceValues& V, const sh
     if (m_curr_medicine_influence.InProcess())
         return false;
 
+    bool m_bHasAnimation = READ_IF_EXISTS(pSettings, r_bool, sect, "has_anim", false);
+
     if (m_object->Local() && m_object == Level().CurrentViewEntity())
     {
-        if (pSettings->line_exist(sect, "use_sound"))
+        if (pSettings->line_exist(sect, "use_sound") && !m_bHasAnimation)
         {
             if (m_use_sound._feedback())
                 m_use_sound.stop();
@@ -1074,11 +1076,13 @@ bool CActorCondition::ApplyInfluence(const SMedicineInfluenceValues& V, const sh
 }
 bool CActorCondition::ApplyBooster(const SBooster& B, const shared_str& sect)
 {
+    bool m_bHasAnimation = READ_IF_EXISTS(pSettings, r_bool, sect, "has_anim", false);
+
     if (B.fBoostValue > 0.0f)
     {
         if (m_object->Local() && m_object == Level().CurrentViewEntity())
         {
-            if (pSettings->line_exist(sect, "use_sound"))
+            if (pSettings->line_exist(sect, "use_sound") && !m_bHasAnimation)
             {
                 if (m_use_sound._feedback())
                     m_use_sound.stop();

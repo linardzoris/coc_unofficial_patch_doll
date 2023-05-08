@@ -198,7 +198,7 @@ void CEatableItem::StartAnimation()
 
 void CEatableItem::UpdateUseAnim()
 {
-    if (!m_bHasAnimation)
+    if (!psActorFlags.test(AF_ITEM_ANIMATIONS_ENABLE) || !m_bHasAnimation)
         return;
 
     CCustomDetector* pDet = smart_cast<CCustomDetector*>(Actor()->inventory().ItemFromSlot(DETECTOR_SLOT));
@@ -208,8 +208,8 @@ void CEatableItem::UpdateUseAnim()
     bool IsActorAlive = g_pGamePersistent->GetActorAliveStatus();
 
     if (m_bItmStartAnim && Actor()->inventory().GetActiveSlot() == NO_ACTIVE_SLOT) // Тут вылетало
-        if (pDet && pDet->IsHidden() || pFlight && pFlight->IsHidden())
-            StartAnimation();
+        //if (pDet && pDet->IsHidden() || pFlight && pFlight->IsHidden())
+        StartAnimation();
 
     if (m_bActivated)
     {

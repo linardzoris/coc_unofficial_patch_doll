@@ -1763,6 +1763,8 @@ void CCC_RegisterCommands()
     CMD3(CCC_Mask, "g_simple_pda", &psActorFlags, AF_SIMPLE_PDA);
     psActorFlags.set(AF_3DSCOPE_ENABLE, FALSE);
     CMD3(CCC_Mask, "g_3d_scopes", &psActorFlags, AF_3DSCOPE_ENABLE);
+    psActorFlags.set(AF_ITEM_ANIMATIONS_ENABLE, FALSE);
+    CMD3(CCC_Mask, "g_item_animations", &psActorFlags, AF_ITEM_ANIMATIONS_ENABLE);
 
     CMD1(CCC_GameDifficulty, "g_game_difficulty");
     CMD1(CCC_GameLanguage, "g_language");

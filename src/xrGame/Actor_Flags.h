@@ -19,6 +19,7 @@ enum
     AF_SIMPLE_PDA = (1 << 15),
     AF_3D_PDA = (1 << 16),
     AF_3DSCOPE_ENABLE = (1 << 17),
+    AF_ITEM_ANIMATIONS_ENABLE = (1 << 18),
 };
 
 extern Flags32 psActorFlags;

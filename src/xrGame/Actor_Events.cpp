@@ -260,7 +260,7 @@ void CActor::OnEvent(NET_Packet& P, u16 type)
         case GEG_PLAYER_ITEM_EAT:
             if (pItemToEat)
             {
-                if (pItemToEat->m_bHasAnimation)
+                if (psActorFlags.test(AF_ITEM_ANIMATIONS_ENABLE) && pItemToEat->m_bHasAnimation)
                 {
                     if (!Actor()->m_bEatAnimActive)
                         inventory().ChooseItmAnimOrNot(iitem);

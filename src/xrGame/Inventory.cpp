@@ -1030,7 +1030,7 @@ void CInventory::ChooseItmAnimOrNot(PIItem pIItem)
     bool HasAnim = pItemToEat->m_bHasAnimation;
     bool AnimSect = pItemToEat->anim_sect != nullptr;
 
-    if (HasAnim && AnimSect)
+    if (psActorFlags.test(AF_ITEM_ANIMATIONS_ENABLE) && HasAnim && AnimSect)
         pItemToEat->HideWeapon();
     else
         Eat(pItemToEat);

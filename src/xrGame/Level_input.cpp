@@ -130,8 +130,7 @@ void CLevel::IR_OnKeyboardPress(int key)
 
 	if (g_block_all_except_movement)
     {
-        if (!(_curr < kCAM_1 || _curr == kWPN_FIRE || _curr == kPAUSE || _curr == kDROP || _curr == kSCREENSHOT ||
-                _curr == kQUIT || _curr == kCONSOLE))
+        if (!(_curr < kCAM_1 || _curr == kWPN_FIRE || _curr == kPAUSE || _curr == kDROP || _curr == kSCREENSHOT || _curr == kQUIT || _curr == kCONSOLE))
             return;
     }
 
