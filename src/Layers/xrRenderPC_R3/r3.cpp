@@ -311,6 +311,7 @@ void CRender::create()
     o.ssao_half_data = ps_r2_ls_flags_ext.test(R2FLAGEXT_SSAO_HALF_DATA) && o.ssao_opt_data && (ps_r_ssao != 0);
     o.ssao_hdao = ps_r2_ls_flags_ext.test(R2FLAGEXT_SSAO_HDAO) && (ps_r_ssao != 0);
     o.ssao_hbao = !o.ssao_hdao && ps_r2_ls_flags_ext.test(R2FLAGEXT_SSAO_HBAO) && (ps_r_ssao != 0);
+    o.ssao_ssdo = !o.ssao_hdao && !o.ssao_hbao && ps_r2_ls_flags_ext.test(R2FLAGEXT_SSAO_SSDO) && (ps_r_ssao != 0);
 
     bool bWinterMode = READ_IF_EXISTS(pSettings, r_bool, "environment", "winter_mode", false);
 	o.dx10_winter_mode = !bWinterMode;
@@ -1060,6 +1061,14 @@ HRESULT CRender::shader_compile(LPCSTR name, IReader* fs, LPCSTR pFunctionName, 
     ++len;
     sh_name[len] = '0' + char(o.ssao_hbao ? o.hbao_vectorized : 0);
     ++len;
+
+	if (o.ssao_ssdo)
+    {
+        defines[def_it].Name = "USE_SSDO";
+        defines[def_it].Definition = "1";
+
+        def_it++;
+    }
 
 	if (o.dx10_winter_mode)
     {

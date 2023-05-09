@@ -405,12 +405,21 @@
 	<string id="ui_mm_ssao">
 		<text>по умолчанию</text>
 	</string>
-	<string id="ui_mm_hdao">
+	<string id="disabled_ao">
+		<text>выключено</text>
+	</string>		
+	<string id="default_ao">
+		<text>по умолчанию</text>
+	</string>	
+	<string id="hdao">
 		<text>HDAO</text>
 	</string>
-	<string id="ui_mm_hbao">
+	<string id="hbao">
 		<text>HBAO</text>
 	</string>
+	<string id="ssdo">
+		<text>SSDO</text>
+	</string>	
 	<string id="ui_st_disable_hud">
 		<text>Вкл. интерфейс</text>
 	</string>
@@ -669,8 +678,11 @@
 		<text>Точка</text>
 	</string>		
 	
+	<string id="ui_mm_show_item_animations">
+		<text>Анимации исп. предметов</text>
+	</string>		
 	<string id="ui_mm_show_first_name">
-		<text>NPC имеют имена</text>
+		<text>Показать имена NPC</text>
 	</string>		
 	
 	<string id="ui_mm_mode_wpn_aim_toggle">

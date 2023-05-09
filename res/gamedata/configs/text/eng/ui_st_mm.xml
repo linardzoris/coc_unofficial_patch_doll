@@ -408,12 +408,21 @@
 	<string id="ui_mm_ssao">
 		<text>Default</text>
 	</string>
-	<string id="ui_mm_hdao">
+	<string id="disabled_ao">
+		<text>off</text>
+	</string>		
+	<string id="default_ao">
+		<text>default</text>
+	</string>	
+	<string id="hdao">
 		<text>HDAO</text>
 	</string>
-	<string id="ui_mm_hbao">
+	<string id="hbao">
 		<text>HBAO</text>
 	</string>
+	<string id="ssdo">
+		<text>SSDO</text>
+	</string>	
 	<string id="ui_st_disable_hud">
 		<text>Show interface</text>
 	</string>
@@ -674,7 +683,10 @@
 	<string id="point_crosshair">
 		<text>Point</text>
 	</string>		
-	
+
+	<string id="ui_mm_show_item_animations">
+		<text>Show item animations</text>
+	</string>		
 	<string id="ui_mm_show_first_name">
 		<text>NPC has first names</text>
 	</string>	
