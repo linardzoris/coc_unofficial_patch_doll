@@ -63,6 +63,9 @@
 	<string id="gun_jammed">
 		<text>Оружие заклинило. Нужно перезарядить.</text>
 	</string>
+	<string id="gun_broken">
+		<text>Оружие сломано и требует ремонта.</text>
+	</string>	
 	<string id="inventory_box_use">
 		<text>Обыскать ящик ($$ACTION_USE$$)</text>
 	</string>

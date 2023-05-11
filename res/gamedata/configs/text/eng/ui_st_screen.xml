@@ -51,6 +51,9 @@
 	<string id="gun_jammed">
 		<text>Your weapon has jammed. Reload it.</text>
 	</string>
+	<string id="gun_jammed">
+		<text>Your weapon has broken. Need repair it.</text>
+	</string>	
 	<string id="inventory_box_use">
 		<text>Search box ($$ACTION_USE$$)</text>
 	</string>

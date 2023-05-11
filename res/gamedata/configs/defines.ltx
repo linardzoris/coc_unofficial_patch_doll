@@ -85,7 +85,6 @@ class						= II_FOOD			; Change to S_FOOD to use se_item.eatable_item script bin
 visual						= dynamics\devices\dev_aptechka\dev_aptechka_low.ogf
 description					= default
 inv_name					= default
-inv_name_short				= default
 inv_weight					= 0.01
 
 inv_grid_width				= 1
@@ -275,6 +274,8 @@ upgr_icon_x									       = 0
 upgr_icon_y 									   = 0
 gl_zoom_factor                  				   = 1.1
 
+snd_on_take                                        = weapon
+
 ; ”дал€ть ли один патрон при расклине
 misfire_one_cartridge_remove                       = false
 ; ћен€ет анимации и скорострельность дл€ авторежима, используетс€ rpm_mode_2
@@ -345,6 +346,18 @@ silencer_bullet_speed                    		   = 700
 silencer_fire_distance                   		   = 200
 silencer_hit_impulse                     		   = 100
 silencer_hit_power                       		   = 0.42, 0.42, 0.42, 0.42
+
+snd_weapon_jam                                     = characters_voice\player\gun_jam_1
+snd_weapon_jam1                                    = nil
+snd_weapon_jam2                                    = characters_voice\player\gun_jam_2
+snd_weapon_jam3                                    = nil
+snd_weapon_jam4                                    = characters_voice\player\gun_jam_3
+snd_weapon_jam5                                    = nil
+snd_weapon_jam6                                    = characters_voice\player\gun_jam_4
+snd_weapon_jam7                                    = nil
+snd_weapon_jam8                                    = characters_voice\player\gun_jam_5
+snd_weapon_jam9                                    = nil
+snd_weapon_jam10                                   = characters_voice\player\gun_jam_6
 
 [hud_base_weapon]
 item_position                                      = 0,0,0
@@ -484,9 +497,7 @@ shell_particles	 								   =
 flame_particles		   							   =
 smoke_particles		   							   =
 
-snd_reload										   = nil
-snd_close										   = nil
-snd_empty										   = nil
+snd_on_take						                   = knife
 
 [hud_base_knife]
 item_position                                      = 0,0,0

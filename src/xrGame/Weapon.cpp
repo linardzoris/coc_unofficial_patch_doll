@@ -505,6 +505,9 @@ void CWeapon::Load(LPCSTR section)
     conditionDecreasePerQueueShot = READ_IF_EXISTS(pSettings, r_float, section, "condition_queue_shot_dec", conditionDecreasePerShot);
     conditionDecreasePerShotOnHit = READ_IF_EXISTS(pSettings, r_float, section, "condition_shot_dec_on_hit", 0.f);
 
+    // При достижении этого порога оружие ломается
+    fConditionToBroke = READ_IF_EXISTS(pSettings, r_float, section, "condition_to_broke", 0.f);
+
     vLoadedFirePoint = pSettings->r_fvector3(section, "fire_point");
 
     if (pSettings->line_exist(section, "fire_point2"))
@@ -1215,6 +1218,7 @@ void CWeapon::SetDefaults()
 
     m_flags.set(FUsingCondition, TRUE);
     bMisfire = false;
+    bWeaponBroken = false;
     m_flagsAddOnState = 0;
     m_zoom_params.m_bIsZoomModeNow = false;
 }
@@ -1249,9 +1253,8 @@ bool CWeapon::Action(u16 cmd, u32 flags)
 
     case kWPN_FIRE:
     {
-        //если оружие чем-то занято, то ничего не делать
         {
-            if (IsPending())
+            if (IsPending()) // если оружие чем-то занято, то ничего не делать
                 return false;
 
             if (flags & CMD_START)
@@ -1570,8 +1573,41 @@ BOOL CWeapon::CheckForMisfire()
     }
 }
 
-BOOL CWeapon::IsMisfire() const { return bMisfire; }
-void CWeapon::Reload() { OnZoomOut(); }
+BOOL CWeapon::CheckForBroken()
+{
+    if (OnClient())
+        return FALSE;
+
+    if (this->GetCondition() <= fConditionToBroke)
+    {
+        FireEnd();
+
+        bWeaponBroken = true;
+        SwitchState(eBroken);
+
+        return TRUE;
+    }
+    else
+    {
+        return FALSE;
+    }
+}
+
+BOOL CWeapon::IsMisfire() const 
+{ 
+    return bMisfire; 
+}
+
+BOOL CWeapon::IsBroken() const 
+{ 
+    return bWeaponBroken; 
+}
+
+void CWeapon::Reload() 
+{ 
+    OnZoomOut(); 
+}
+
 bool CWeapon::IsGrenadeLauncherAttached() const
 {
     return (ALife::eAddonAttachable == m_eGrenadeLauncherStatus &&
@@ -2165,8 +2201,7 @@ bool CWeapon::ready_to_kill() const
 	if (io->inventory().ActiveItem() == NULL || io->inventory().ActiveItem()->object().ID() != ID())
 		return false; 
 	//-Alundaio
-    return (
-        !IsMisfire() && ((GetState() == eIdle) || (GetState() == eFire) || (GetState() == eFire2)) && GetAmmoElapsed());
+    return (!IsMisfire() && ((GetState() == eIdle) || (GetState() == eFire) || (GetState() == eFire2)) && GetAmmoElapsed());
 }
 
 void _inertion(float& _val_cur, const float& _val_trgt, const float& _friction)
@@ -3051,6 +3086,16 @@ void CWeapon::LoadCurrentScopeParams(LPCSTR section)
     if (pSettings->line_exist(section, "scope_texture_alt") && m_zoomtype == 1) // Альт. прицеливание
     {
         bAltScopeIsHasTexture = true;
+    }
+
+    // По просьбе для "наборов кастомизации", пока так
+    if (pSettings->line_exist(section, "silencer_status"))
+    {
+        m_eSilencerStatus = (ALife::EWeaponAddonStatus)pSettings->r_s32(section, "silencer_status");
+    }
+    if (pSettings->line_exist(section, "grenade_launcher_status"))
+    {
+        m_eGrenadeLauncherStatus = (ALife::EWeaponAddonStatus)pSettings->r_s32(section, "grenade_launcher_status");
     }
 
     m_zoom_params.m_fScopeZoomFactor = pSettings->r_float(section, "scope_zoom_factor");

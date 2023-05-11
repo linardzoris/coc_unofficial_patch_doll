@@ -106,6 +106,8 @@ void CWeaponMagazined::Load(LPCSTR section)
     m_sounds.LoadSound(section, "snd_empty", "sndEmptyClick", false, m_eSoundEmptyClick);
     m_sounds.LoadSound(section, "snd_reload", "sndReload", true, m_eSoundReload);
 
+	if (WeaponSoundExist(section, "snd_weapon_jam"))
+        m_sounds.LoadSound(section, "snd_weapon_jam", "sndWpnJam", false, m_eSoundEmptyClick);
 	if (WeaponSoundExist(section, "snd_changefiremode"))
         m_sounds.LoadSound(section, "snd_changefiremode", "sndFireModes", false, m_eSoundEmptyClick);
     if (WeaponSoundExist(section, "snd_pump_gun"))
@@ -208,7 +210,7 @@ bool CWeaponMagazined::UseScopeTexture()
 
 void CWeaponMagazined::FireStart()
 {
-    if (!IsMisfire())
+    if (!IsMisfire() && !IsBroken())
     {
         if (IsValid())
         {
@@ -221,6 +223,7 @@ void CWeaponMagazined::FireStart()
                 if (GetState() == eUnMisfire) return;
                 if (GetState() == eFiremodePrev) return;
                 if (GetState() == eFiremodeNext) return;
+                if (GetState() == eBroken) return;
 
                 inherited::FireStart();
 				
@@ -239,18 +242,29 @@ void CWeaponMagazined::FireStart()
                 OnMagazineEmpty();
         }
     }
-    else
-    { // misfire
-        //Alundaio
-#ifdef EXTENDED_WEAPON_CALLBACKS
+    else if (IsMisfire())
+    {
+#ifdef EXTENDED_WEAPON_CALLBACKS //Alundaio
         IGameObject	*object = smart_cast<IGameObject*>(H_Parent());
         if (object)
             object->callback(GameObject::eOnWeaponJammed)(object->lua_game_object(), this->lua_game_object());
 #endif
-        //-Alundaio
 
-        if (smart_cast<CActor*>(this->H_Parent()) && (Level().CurrentViewEntity() == H_Parent()))
+        if (smart_cast<CActor*>(this->H_Parent()) && (Level().CurrentViewEntity() == H_Parent()) &&
+            !m_sounds.FindSoundItem("sndWpnJam", false))
             CurrentGameUI()->AddCustomStatic("gun_jammed", true);
+        else if (m_sounds.FindSoundItem("sndWpnJam", false))
+            PlaySound("sndWpnJam", get_LastFP());
+
+        OnEmptyClick();
+    }
+    else if (IsBroken())
+    {
+        if (smart_cast<CActor*>(this->H_Parent()) && (Level().CurrentViewEntity() == H_Parent()) &&
+            !m_sounds.FindSoundItem("sndWpnJam", false))
+            CurrentGameUI()->AddCustomStatic("gun_broken", true);
+        if (m_sounds.FindSoundItem("sndWpnJam", false))
+            PlaySound("sndWpnJam", get_LastFP());
 
         OnEmptyClick();
     }
@@ -553,10 +567,8 @@ void CWeaponMagazined::OnStateSwitch(u32 S, u32 oldState)
     {
     case eIdle: switch2_Idle(); break;
     case eFire: switch2_Fire(); break;
-    case eMisfire:
-        if (smart_cast<CActor*>(this->H_Parent()) && (Level().CurrentViewEntity() == H_Parent()))
-            CurrentGameUI()->AddCustomStatic("gun_jammed", true);
-        break;
+    case eMisfire: break;
+    case eBroken: break;
     case eUnMisfire:
         if (owner)
             m_sounds_enabled = owner->CanPlayShHdRldSounds();
@@ -602,6 +614,12 @@ void CWeaponMagazined::UpdateCL()
     inherited::UpdateCL();
     float dt = Device.fTimeDelta;
 
+    // Управляет поломкой оружия
+    if (this->GetCondition() <= fConditionToBroke)
+        bWeaponBroken = true;
+    else 
+        bWeaponBroken = false;
+
     //когда происходит апдейт состояния оружия
     //ничего другого не делать
     if (GetNextState() == GetState())
@@ -621,6 +639,7 @@ void CWeaponMagazined::UpdateCL()
         }
         break;
         case eMisfire: state_Misfire(dt); break;
+        case eBroken: state_Broken(dt); break;
         case eMagEmpty: state_MagEmpty(dt); break;
         case eHidden: break;
         }
@@ -703,7 +722,7 @@ void CWeaponMagazined::state_Fire(float dt)
         while (!m_magazine.empty() && fShotTimeCounter < 0 && (IsWorking() || m_bFireSingleShot) && (m_iQueueSize < 0 || m_iShotNum < m_iQueueSize))
         {
 #ifndef COC_EDITION
-            if (CheckForMisfire())
+            if (CheckForMisfire() || CheckForBroken())
             {
                 StopShooting();
                 return;
@@ -730,7 +749,7 @@ void CWeaponMagazined::state_Fire(float dt)
                 FireTrace(m_vStartPos, m_vStartDir);
 
 #ifdef COC_EDITION
-            if (CheckForMisfire())
+            if (CheckForMisfire() || CheckForBroken())
             {
                 StopShooting();
                 return;
@@ -774,6 +793,16 @@ void CWeaponMagazined::state_Misfire(float dt)
     SwitchState(eIdle);
 
     bMisfire = true;
+
+    UpdateSounds();
+}
+
+void CWeaponMagazined::state_Broken(float dt)
+{
+    OnEmptyClick();
+    SwitchState(eIdle);
+
+    bWeaponBroken = true;
 
     UpdateSounds();
 }
@@ -1554,6 +1583,7 @@ void CWeaponMagazined::LoadSilencerKoeffs()
 
 void CWeaponMagazined::ApplySilencerKoeffs() { cur_silencer_koef = m_silencer_koef; }
 void CWeaponMagazined::ResetSilencerKoeffs() { cur_silencer_koef.Reset(); }
+
 void CWeaponMagazined::PlayAnimShow()
 {
     VERIFY(GetState() == eShowing);

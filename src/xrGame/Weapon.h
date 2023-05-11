@@ -78,6 +78,8 @@ public:
     virtual void SendHiddenItem(); // same as OnHiddenItem but for client... (sends message to a server)...
 
 // Новое
+    float fConditionToBroke; // При достижении этого порога оружие ломается
+
 	float m_fLR_ShootingFactor; // Фактор горизонтального сдвига худа при стрельбе [-1; +1] // SWM 3
     float m_fUD_ShootingFactor; // Фактор вертикального сдвига худа при стрельбе [-1; +1]
     float m_fBACKW_ShootingFactor; // Фактор сдвига худа в сторону лица при стрельбе [0; +1]
@@ -109,7 +111,7 @@ public:
     virtual void OnBulletHit(); // При попадании во что-то
 
 	virtual bool bInZoomRightNow() const { return m_zoom_params.m_fZoomRotationFactor > 0.05; }
-    IC bool bIsSecondVPZoomPresent() const { return GetSecondVPZoomFactor() > 0.000f; }
+    IC bool bIsSecondVPZoomPresent() const { return psActorFlags.test(AF_3DSCOPE_ENABLE) && GetSecondVPZoomFactor() > 0.000f; }
     bool bChangeNVSecondVPStatus();
 
 	virtual void UpdateSecondVP();
@@ -152,6 +154,7 @@ public:
         eUnMisfire,
         eFiremodePrev,
         eFiremodeNext,
+        eBroken,
     };
     enum EWeaponSubStates
     {
@@ -170,7 +173,9 @@ public:
     BOOL IsUpdating();
 
     BOOL IsMisfire() const;
+    BOOL IsBroken() const;
     BOOL CheckForMisfire();
+    BOOL CheckForBroken();
 
     BOOL AutoSpawnAmmo() const { return m_bAutoSpawnAmmo; };
     bool IsTriStateReload() const { return m_bTriStateReload; }
@@ -204,6 +209,8 @@ protected:
 
     // a misfire happens, you'll need to rearm weapon
     bool bMisfire;
+    // Only repair
+    bool bWeaponBroken;
 
     BOOL m_bAutoSpawnAmmo;
     virtual bool AllowBore();

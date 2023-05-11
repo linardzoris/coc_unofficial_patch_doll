@@ -43,6 +43,7 @@
 #include "UIHudStatesWnd.h"
 #include "UIActorMenu.h"
 #include "xrUICore/ProgressBar/UIProgressShape.h"
+#include "WeaponKnife.h"
 
 void test_draw();
 void test_key(int dik);
@@ -792,6 +793,7 @@ void CUIMainIngameWnd::UpdateMainIndicators()
         if (weapon)
         {
             float condition = weapon->GetCondition();
+            float broken = weapon->GetCondition() <= weapon->fConditionToBroke;
             float start_misf_cond = weapon->GetMisfireStartCondition();
             float end_misf_cond = weapon->GetMisfireEndCondition();
             if (condition < start_misf_cond)
@@ -801,17 +803,17 @@ void CUIMainIngameWnd::UpdateMainIndicators()
                     m_ind_weapon_broken->InitTexture("ui_inGame2_circle_Gunbroken_green");
                 else if (condition > end_misf_cond)
                     m_ind_weapon_broken->InitTexture("ui_inGame2_circle_Gunbroken_yellow");
-                else
+                else if (broken)
                     m_ind_weapon_broken->InitTexture("ui_inGame2_circle_Gunbroken_red");
             }
         }
     }
     if (slot == KNIFE_SLOT)
     {
-        CWeapon* weapon = smart_cast<CWeapon*>(pActor->inventory().ItemFromSlot(slot));
-        if (weapon)
+        CWeaponKnife* knife = smart_cast<CWeaponKnife*>(pActor->inventory().ItemFromSlot(slot));
+        if (knife)
         {
-            float condition = weapon->GetCondition();
+            float condition = knife->GetCondition();
             m_ind_weapon_broken->Show(true);
             if (condition <= 0.75f && condition >= 0.5f)
                 m_ind_weapon_broken->InitTexture("ui_inGame2_circle_Gunbroken_green");

@@ -157,9 +157,7 @@ void CWeaponMagazinedWGrenade::OnMotionMark(u32 state, const motion_marks& M)
 
 bool CWeaponMagazinedWGrenade::SwitchMode()
 {
-    bool bUsefulStateToSwitch =
-        ((eIdle == GetState()) || (eHidden == GetState()) || (eMisfire == GetState()) || (eMagEmpty == GetState())) &&
-        (!IsPending());
+    bool bUsefulStateToSwitch = ((eIdle == GetState()) || (eHidden == GetState()) || (eMisfire == GetState()) || (eBroken == GetState()) || (eMagEmpty == GetState())) && (!IsPending());
 
     if (!bUsefulStateToSwitch)
         return false;
