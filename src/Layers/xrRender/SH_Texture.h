@@ -14,13 +14,13 @@ public:
     enum	MaxTextures
     {
         //	Actually these values are 128
-        mtMaxPixelShaderTextures = 16,
-        mtMaxVertexShaderTextures = 4,
-        mtMaxGeometryShaderTextures = 16,
+        mtMaxPixelShaderTextures = 32,
+        mtMaxVertexShaderTextures = 8,
+        mtMaxGeometryShaderTextures = 32,
 #	ifdef USE_DX11
-        mtMaxHullShaderTextures = 16,
-        mtMaxDomainShaderTextures = 16,
-        mtMaxComputeShaderTextures = 16,
+        mtMaxHullShaderTextures = 32,
+        mtMaxDomainShaderTextures = 32,
+        mtMaxComputeShaderTextures = 32,
 #	endif
         mtMaxCombinedShaderTextures =
         mtMaxPixelShaderTextures
@@ -35,8 +35,8 @@ public:
 #else	//	USE_DX10
     enum MaxTextures
     {
-        mtMaxPixelShaderTextures = 16,
-        mtMaxVertexShaderTextures = 4,
+        mtMaxPixelShaderTextures = 32,
+        mtMaxVertexShaderTextures = 8,
         mtMaxCombinedShaderTextures =
         mtMaxPixelShaderTextures
         + mtMaxVertexShaderTextures

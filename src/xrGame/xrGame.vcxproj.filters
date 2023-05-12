@@ -5689,6 +5689,9 @@
     <ClInclude Include="ui\UIPdaSpot.h">
       <Filter>UI\Common\PDA\PDA Spot</Filter>
     </ClInclude>
+    <ClInclude Include="XrayGameConstants.h">
+      <Filter>Core</Filter>
+    </ClInclude>		
     <ClInclude Include="ActorBackpack.h">
       <Filter>Core\Client\Objects\items &amp; weapons\Outfit</Filter>
     </ClInclude>
@@ -8395,6 +8398,9 @@
     <ClCompile Include="ui\UIPdaSpot.cpp">
       <Filter>UI\Common\PDA\PDA Spot</Filter>
     </ClCompile>
+	<ClCompile Include="XrayGameConstants.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>	
     <ClCompile Include="ActorBackpack.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Outfit</Filter>
     </ClCompile>

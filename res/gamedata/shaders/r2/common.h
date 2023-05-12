@@ -47,17 +47,25 @@
 #  define xmaterial half(L_material.w)
 #endif
 //////////////////////////////////////////////////////////////////////////////////////////
-uniform half4 				 rain_params; // .x - rain density, .y - wetness accumulator, .zw = 0
-uniform half4 				 u_weather; // .xyz - sky color, .w - rain line param
+
+uniform float3x4			 m_inv_V;
+uniform float4x4			 m_view2world;
+uniform float4 				 sky_color; 						// .xyz - sky color, .w - sky rotation
+//uniform float4 			 lowland_fog_params;			    // x - low fog height, y - low fog density, z - base height, w - null
+uniform float4				 screen_res;
+uniform	float4 				 m_hud_params;
+uniform	float4				 m_blender_mode;	
+uniform float4 				 rain_params; 						// .x - rain density, .y - wetness accumulator, .zw = 0
+uniform half4 				 u_weather; 						// .xyz - sky color, .w - rain line param
 uniform half4                hemi_cube_pos_faces;
 uniform half4                hemi_cube_neg_faces;
-uniform half4                L_material;                            // 0,0,0,mid
-uniform half4                Ldynamic_color;                      // dynamic light color (rgb1)        - spot/point
-uniform half4                Ldynamic_pos;                       // dynamic light pos+1/range(w) - spot/point
-uniform half4                Ldynamic_dir;                        // dynamic light direction         - sun
+uniform half4                L_material;                        // 0,0,0,mid
+uniform half4                Ldynamic_color;                    // dynamic light color (rgb1)        - spot/point
+uniform half4                Ldynamic_pos;                      // dynamic light pos+1/range(w) - spot/point
+uniform half4                Ldynamic_dir;                      // dynamic light direction         - sun
 
-uniform half4                J_direct        [6];
-uniform half4                J_spot                [6];
+uniform half4                J_direct[6];
+uniform half4                J_spot[6];
 
 half          calc_fogging               (half4 w_pos)      { return dot(w_pos,fog_plane);         }
 half2         calc_detail                (half3 w_pos)      {
@@ -213,6 +221,11 @@ uniform sampler2D       s_dn_g;                	//
 uniform sampler2D       s_dn_b;                	//
 uniform sampler2D       s_dn_a;                	//
 
+uniform sampler2D 		s_dp_r;                	//
+uniform sampler2D 		s_dp_g;                	//
+uniform sampler2D 		s_dp_b;                	//
+uniform sampler2D 		s_dp_a;                	//
+
 //////////////////////////////////////////////////////////////////////////////////////////
 // Lighting/shadowing phase                     //
 uniform sampler2D       s_depth;                //
@@ -314,6 +327,11 @@ float rand(float n)
 float noise(float2 tc)
 {
     return frac(sin(dot(tc, float2(12.0, 78.0) + (timers.x) )) * 43758.0)*0.25f; 
+}
+
+inline bool isSecondVPActive()
+{
+	return (m_blender_mode.z == 1.f);
 }
 
 #define FXPS technique _render{pass _code{PixelShader=compile ps_3_0 main();}}

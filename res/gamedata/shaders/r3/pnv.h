@@ -19,7 +19,7 @@
 #define SCANLINES_INTENSITY 0.175
 #define VIGNETTE_RADIUS 1.0
 
-uniform float4	screen_res;	
+#include "common.h"
 
 float4 calc_night_vision_effect(float2 tc0, float4 color, float3 NV_COLOR)
 {

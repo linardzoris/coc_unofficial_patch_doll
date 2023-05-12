@@ -76,7 +76,7 @@ const xr_token qmsaa_token[] = {
     {nullptr, 0}
 };
 
-u32 ps_r3_msaa_atest = 0; // = 0;
+u32 ps_r3_msaa_atest = 2; // = 0;
 const xr_token qmsaa__atest_token[] = {
     {"st_opt_off", 0},
     {"st_opt_atest_msaa_dx10_0", 1},
@@ -201,7 +201,7 @@ Flags32 ps_r2_ls_flags = {R2FLAG_SUN
     | R2FLAG_EXP_DONT_TEST_UNSHADOWED | R2FLAG_USE_NVSTENCIL | R2FLAG_EXP_SPLIT_SCENE | R2FLAG_EXP_MT_CALC |
     R3FLAG_DYN_WET_SURF | R3FLAG_VOLUMETRIC_SMOKE
     //| R3FLAG_MSAA
-    //| R3FLAG_MSAA_OPT
+    | R3FLAG_MSAA_OPT
     | R3FLAG_GBUFFER_OPT | R2FLAG_DETAIL_BUMP | R2FLAG_DOF | R2FLAG_SOFT_PARTICLES | R2FLAG_SOFT_WATER |
     R2FLAG_STEEP_PARALLAX | R2FLAG_SUN_FOCUS | R2FLAG_SUN_TSM | R2FLAG_TONEMAP | R2FLAG_VOLUMETRIC_LIGHTS}; // r2-only
 
@@ -757,6 +757,67 @@ public:
     }
 };
 
+class CCC_Vector4 : public IConsole_Command
+{
+protected:
+    Fvector4* value;
+    Fvector4 min, max;
+
+public:
+    CCC_Vector4(LPCSTR N, Fvector4* V, const Fvector4 _min, const Fvector4 _max) : IConsole_Command(N), value(V)
+    {
+        min.set(_min);
+        max.set(_max);
+    };
+    const Fvector4 GetValue() const { return *value; };
+    Fvector4* GetValuePtr() const { return value; };
+
+    virtual void Execute(LPCSTR args)
+    {
+        Fvector4 v;
+        if (4 != sscanf(args, "%f,%f,%f,%f", &v.x, &v.y, &v.z, &v.w))
+        {
+            if (4 != sscanf(args, "(%f,%f,%f,%f)", &v.x, &v.y, &v.z, &v.w))
+            {
+                InvalidSyntax();
+                return;
+            }
+        }
+
+        if (v.x < min.x || v.y < min.y || v.z < min.z || v.w < min.w)
+        {
+            InvalidSyntax();
+            return;
+        }
+        if (v.x > max.x || v.y > max.y || v.z > max.z || v.w > max.w)
+        {
+            InvalidSyntax();
+            return;
+        }
+        value->set(v);
+    }
+
+    virtual void Status(TStatus& S)
+    {
+        xr_sprintf(S, sizeof(S), "(%f, %f, %f, %f)", value->x, value->y, value->z, value->w);
+    }
+
+    virtual void Info(TInfo& I)
+    {
+        xr_sprintf(I, sizeof(I), "vector4 in range [%e,%e,%e,%e]-[%e,%e,%e,%e]", min.x, min.y, min.z, min.w, max.x,
+            max.y, max.z, max.w);
+    }
+
+    virtual void fill_tips(vecTips& tips, u32 mode)
+    {
+        TStatus str;
+        xr_sprintf(str, sizeof(str), "(%e, %e, %e, %e) (current) [(%e,%e,%e,%e)-(%e,%e,%e,%e)]", value->x, value->y,
+            value->z, value->w, min.x, min.y, min.z, min.w, max.x, max.y, max.z, max.w);
+        tips.push_back(str);
+        IConsole_Command::fill_tips(tips, mode);
+    }
+};
+
 class CCC_DumpResources : public IConsole_Command
 {
 public:
@@ -834,7 +895,7 @@ void xrRender_initconsole()
     //CMD4(CCC_Float, "r__geometry_lod_pow", &ps_r__LOD_Power, 0, 2);
 
     CMD4(CCC_Float, "r__detail_density", &ps_current_detail_density, 0.3f, 1.0f); //AVO: extended from 0.2f to 0.04f and replaced variable
-    CMD4(CCC_Float, "r__detail_scale", &ps_current_detail_scale, 0.2f, 3.0f);
+    CMD4(CCC_Float, "r__detail_scale", &ps_current_detail_scale, 0.2f, 1.6f);
 
 #ifdef DEBUG
     CMD4(CCC_Float, "r__detail_l_ambient", &ps_r__Detail_l_ambient, .5f, .95f);
@@ -1028,9 +1089,8 @@ void xrRender_initconsole()
     // CMD3(CCC_Mask, "r3_msaa_hybrid", &ps_r2_ls_flags, R3FLAG_MSAA_HYBRID);
     // CMD3(CCC_Mask, "r3_msaa_opt", &ps_r2_ls_flags, R3FLAG_MSAA_OPT);
     CMD3(CCC_Mask, "r3_gbuffer_opt", &ps_r2_ls_flags, R3FLAG_GBUFFER_OPT);
-    CMD3(CCC_Mask, "r3_use_dx10_1", &ps_r2_ls_flags, (u32)R3FLAG_USE_DX10_1);
-    // CMD3(CCC_Mask, "r3_msaa_alphatest", &ps_r2_ls_flags, (u32)R3FLAG_MSAA_ALPHATEST);
-    CMD3(CCC_Token, "r3_msaa_alphatest", &ps_r3_msaa_atest, qmsaa__atest_token);
+    //CMD3(CCC_Mask, "r3_use_dx10_1", &ps_r2_ls_flags, (u32)R3FLAG_USE_DX10_1);
+    //CMD3(CCC_Token, "r3_msaa_alphatest", &ps_r3_msaa_atest, qmsaa__atest_token);
     CMD3(CCC_Token, "r3_minmax_sm", &ps_r3_minmax_sm, qminmax_sm_token);
 
 #ifdef DETAIL_RADIUS

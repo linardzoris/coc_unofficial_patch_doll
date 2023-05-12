@@ -1,5 +1,4 @@
 #include "common.h"
-uniform float4	screen_res;	
 
 struct	v
 {
