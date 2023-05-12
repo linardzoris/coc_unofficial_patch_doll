@@ -168,6 +168,10 @@ public:
     float m_fSunShaftsIntensity;
     float m_fWaterIntensity;
 
+	Fvector3 dof_value;
+    float dof_kernel;
+    float dof_sky;
+
     float m_fTreeAmplitudeIntensity;
 
 

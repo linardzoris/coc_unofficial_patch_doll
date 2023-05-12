@@ -46,6 +46,7 @@ equal_weapon_slots                  = false         ;При true в слот пистолета и
 
 [environment]
 winter_mode = false ;Зимний режим (влияет на дождь и партиклы)
+weather_dof = false ;Глубина резкости в погоде из Lost Alpha. В конфиге погоды dof = <FVector3> dof_kernel = <float> dof_sky = <float>
 
 [rain_params] ;Параметры для дождя
 min_rain_drop_speed 	= 20.0
@@ -268,7 +269,6 @@ cform                                    = skeleton
 visual                                   = dynamics\equipments\item_document_1.ogf
 
 inv_name                                 = Document
-inv_name_short                           = Document
 inv_weight                               = 1	                                       ;0.2
 
 inv_grid_width                           = 1
@@ -506,7 +506,6 @@ cform                                    = skeleton
 class                                    = II_ATTCH
 cost                                     = 100
 inv_name                                 = "Attachable item"
-inv_name_short                           = "Attachable item"
 inv_weight                               = .5
 inv_grid_width                           = 2
 inv_grid_height                          = 1
@@ -524,7 +523,6 @@ cform                                    = skeleton
 class                                    = II_BTTCH
 cost                                     = 100
 inv_name                                 = "Attachable item"
-inv_name_short                           = "Attachable item"
 inv_weight                               = .5
 inv_grid_width                           = 2
 inv_grid_height                          = 1
@@ -543,7 +541,6 @@ class                                    = II_ATTCH
 visual                                   = dynamics\devices\dev_fmradio\dev_fmradio.ogf
 cost                                     = 0
 inv_name                                 = "hand_radio"
-inv_name_short                           = "hand_radio"
 inv_weight                               = .5
 inv_grid_width                           = 2
 inv_grid_height                          = 1
@@ -564,7 +561,6 @@ class                                    = II_ATTCH
 visual                                   = dynamics\devices\dev_fmradio\dev_fmradio.ogf
 cost                                     = 0
 inv_name                                 = "hand_radio"
-inv_name_short                           = "hand_radio"
 inv_weight                               = .5
 inv_grid_width                           = 2
 inv_grid_height                          = 1
@@ -578,7 +574,6 @@ auto_attach                              = false
 [anim_knife]:hand_radio
 visual                                   = dynamics\weapons\wpn_knife\wpn_knife.ogf
 inv_name                                 = st_knife
-inv_name_short                           = st_knife
 inv_grid_width                           = 2
 inv_grid_height                          = 1
 inv_grid_x                               = 18
@@ -590,7 +585,6 @@ attach_bone_name                         = bip01_r_hand
 [anim_binoc]:hand_radio
 visual                                   = dynamics\devices\dev_binoculars\dev_binoculars.ogf
 inv_name                                 = st_binocular_name
-inv_name_short                           = st_binocular_name
 inv_grid_width                           = 2
 inv_grid_height                          = 1
 inv_grid_x                               = 14
@@ -668,7 +662,6 @@ class                                    = NW_ATTCH
 visual                                   = dynamics\devices\dev_fmradio\dev_fmradio.ogf
 cost                                     = 0
 inv_name                                 = "custom_script_object"
-inv_name_short                           = "custom_script_object"
 inv_weight                               = .5
 inv_grid_width                           = 2
 inv_grid_height                          = 1

@@ -365,10 +365,24 @@ void CRenderTarget::phase_combine()
         pv++;
         RCache.Vertex.Unlock(4, g_aa_AA->vb_stride);
 
+        bool bDofWeather = READ_IF_EXISTS(pSettings, r_bool, "environment", "weather_dof", false);
+
+		// : get value from weather or from console
+        float kernel_size = ps_r2_dof_kernel_size;
+        float dof_sky = ps_r2_dof_sky;
+        Fvector3 dof_value = ps_r2_dof;
+        if (bDofWeather)
+        {
+            kernel_size = g_pGamePersistent->Environment().CurrentEnv->dof_kernel;
+            dof_sky = g_pGamePersistent->Environment().CurrentEnv->dof_sky;
+            dof_value = g_pGamePersistent->Environment().CurrentEnv->dof_value;
+        }
+        g_pGamePersistent->SetBaseDof(dof_value);
+
         //  Set up variable
         Fvector2 vDofKernel;
         vDofKernel.set(0.5f / Device.dwWidth, 0.5f / Device.dwHeight);
-        vDofKernel.mul(ps_r2_dof_kernel_size);
+        vDofKernel.mul(kernel_size);
 
         // Draw COLOR
         RCache.set_Element(s_combine->E[bDistort ? 2 : 1]); // look at blender_combine.cpp
@@ -378,9 +392,8 @@ void CRenderTarget::phase_combine()
         RCache.set_c("r_color_drag", ps_rcol, ps_gcol, ps_bcol, ps_saturation);
         Fvector3 dof;
         g_pGamePersistent->GetCurrentDof(dof);
-        RCache.set_c("dof_params", dof.x, dof.y, dof.z, ps_r2_dof_sky);
-        //.     RCache.set_c                ("dof_params",  ps_r2_dof.x, ps_r2_dof.y, ps_r2_dof.z, ps_r2_dof_sky);
-        RCache.set_c("dof_kernel", vDofKernel.x, vDofKernel.y, ps_r2_dof_kernel_size, 0);
+        RCache.set_c("dof_params", dof.x, dof.y, dof.z, dof_sky);
+        RCache.set_c("dof_kernel", vDofKernel.x, vDofKernel.y, kernel_size, 0);
 
         RCache.set_Geometry(g_aa_AA);
         RCache.Render(D3DPT_TRIANGLELIST, Offset, 0, 4, 0, 2);

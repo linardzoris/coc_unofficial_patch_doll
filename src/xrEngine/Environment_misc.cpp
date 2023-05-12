@@ -232,6 +232,10 @@ CEnvDescriptor::CEnvDescriptor(shared_str const& identifier) : m_identifier(iden
 
     m_fTreeAmplitudeIntensity = 0.01f;
 
+	dof_value.set(-1.25f, 1.4f, 10000.f);
+    dof_kernel = 5.0f;
+    dof_sky = 30.0f;
+
     lens_flare_id = "";
     tb_id = "";
 
@@ -312,6 +316,10 @@ void CEnvDescriptor::load(CEnvironment& environment, CInifile& config)
 
     if (config.line_exist(m_identifier.c_str(), "tree_amplitude_intensity"))
         m_fTreeAmplitudeIntensity = config.r_float(m_identifier.c_str(), "tree_amplitude_intensity");
+
+	dof_value = config.line_exist(m_identifier.c_str(), "dof") ? config.r_fvector3(m_identifier.c_str(), "dof") : Fvector3().set(-1.25f, 1.4f, 10000.f);
+	dof_kernel = config.line_exist(m_identifier.c_str(), "dof_kernel") ? config.r_float(m_identifier.c_str(), "dof_kernel") : 7.0f;
+	dof_sky = config.line_exist(m_identifier.c_str(), "dof_sky") ? config.r_float(m_identifier.c_str(), "dof_sky") : 30.0f;
 
 	// swing desc
     // normal
@@ -510,6 +518,10 @@ void CEnvDescriptorMixer::lerp(
 
 	m_cSwingDesc[0].lerp(A.m_cSwingDesc[0], B.m_cSwingDesc[0], f);
     m_cSwingDesc[1].lerp(A.m_cSwingDesc[1], B.m_cSwingDesc[1], f);
+
+	dof_value.lerp(A.dof_value, B.dof_value, f);
+    dof_kernel = fi * A.dof_kernel + f * B.dof_kernel;
+    dof_sky = fi * A.dof_sky + f * B.dof_sky;
 
     if (Mdf.use_flags.test(eHemiColor))
     {
