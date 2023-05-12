@@ -31,6 +31,7 @@
 
 float4	volume_range;	//	x - near plane, y - far plane
 float4	sun_shafts_intensity;
+uniform	float4	screen_res;
 
 #ifdef MSAA_OPTIMIZATION
 //#ifdef GBUFFER_OPTIMIZATION
@@ -195,6 +196,20 @@ float4 	main (float2 tc : TEXCOORD0, float2 tcJ : TEXCOORD1 ) : SV_Target
 		current -= delta;
 		//Integral *= IntegralMul;
 	}
+
+//	if (OrigDepth<0.0001)
+//		res = max_density;
+//	else
+//		res *= density;
+
+	float fSturation = -Ldynamic_dir.z;
+
+	//	Normalize dot product to
+	fSturation	= 0.5*fSturation+0.5;
+	//	Map saturation to 0.2..1
+	fSturation	= 0.80*fSturation+0.20;
+
+	res		*= fSturation;
 
 	return res*Ldynamic_color;
 #endif	//	SUN_SHAFTS_QUALITY

@@ -272,7 +272,6 @@ void CBlender_BmmD::Compile(CBlender_Compile& C)
 
         C.r_dx10Texture("s_mask", mask);
         C.r_dx10Texture("s_lmap", C.L_textures[1]);
-        C.r_dx10Texture("s_pmask", "shaders\\puddles");
 
         C.r_dx10Texture("s_dt_r", oR_Name);
         C.r_dx10Texture("s_dt_g", oG_Name);
@@ -288,11 +287,6 @@ void CBlender_BmmD::Compile(CBlender_Compile& C)
         C.r_dx10Texture("s_dp_g", strconcat(sizeof(mask), mask, oG_Name, "_bump#"));
         C.r_dx10Texture("s_dp_b", strconcat(sizeof(mask), mask, oB_Name, "_bump#"));
         C.r_dx10Texture("s_dp_a", strconcat(sizeof(mask), mask, oA_Name, "_bump#"));
-
-		C.r_dx10Texture("s_puddles_normal", "shaders\\water_normal");
-        C.r_dx10Texture("s_puddles_perlin", "shaders\\puddles_perlin");
-        C.r_dx10Texture("s_puddles_mask", strconcat(sizeof(mask), mask, C.L_textures[0].c_str(), "_puddles_mask"));
-        C.r_dx10Texture("s_rainsplash", "shaders\\water_sbumpvolume");
 
         C.r_dx10Sampler("smp_base");
         C.r_dx10Sampler("smp_linear");

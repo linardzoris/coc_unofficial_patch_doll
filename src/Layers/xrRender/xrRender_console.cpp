@@ -3,18 +3,6 @@
 
 #include "xrRender_console.h"
 #include "xrCore/xr_token.h"
-#include	"../../xrEngine/x_ray.h"
-
-// SSR quality option
-u32			dt_ssr_samp = 16;
-xr_token							qdt_ssr_samp_token[] = {
-	{ "dtssr_off",					0												},
-	{ "dtssr_lowest",				1												},
-	{ "dtssr_low",					2												},
-	{ "dtssr_medium",				3												},
-	{ "dtssr_high",					4												},
-	{ 0,							0												}
-};
 
 u32 r2_aa_mode = 1;
 xr_token r2_aa_mode_token[] = {   
@@ -88,7 +76,7 @@ const xr_token qmsaa_token[] = {
     {nullptr, 0}
 };
 
-u32 ps_r3_msaa_atest = 2; // = 0;
+u32 ps_r3_msaa_atest = 0; // = 0;
 const xr_token qmsaa__atest_token[] = {
     {"st_opt_off", 0},
     {"st_opt_atest_msaa_dx10_0", 1},
@@ -213,7 +201,7 @@ Flags32 ps_r2_ls_flags = {R2FLAG_SUN
     | R2FLAG_EXP_DONT_TEST_UNSHADOWED | R2FLAG_USE_NVSTENCIL | R2FLAG_EXP_SPLIT_SCENE | R2FLAG_EXP_MT_CALC |
     R3FLAG_DYN_WET_SURF | R3FLAG_VOLUMETRIC_SMOKE
     //| R3FLAG_MSAA
-    | R3FLAG_MSAA_OPT
+    //| R3FLAG_MSAA_OPT
     | R3FLAG_GBUFFER_OPT | R2FLAG_DETAIL_BUMP | R2FLAG_DOF | R2FLAG_SOFT_PARTICLES | R2FLAG_SOFT_WATER |
     R2FLAG_STEEP_PARALLAX | R2FLAG_SUN_FOCUS | R2FLAG_SUN_TSM | R2FLAG_TONEMAP | R2FLAG_VOLUMETRIC_LIGHTS}; // r2-only
 
@@ -309,10 +297,6 @@ xr_token ext_quality_token[] = {
 //-AVO
 
 Flags32 ps_actor_shadow_flags = {0};
-
-// Screen Space Shaders Stuff
-//Fvector4 ps_ssfx_wpn_dof_1 = { .0f, .0f, .0f, .0f };
-//extern float ps_ssfx_wpn_dof_2 = 1.0f;
 
 #ifndef _EDITOR
 #include "xrEngine/XR_IOConsole.h"
@@ -850,7 +834,7 @@ void xrRender_initconsole()
     //CMD4(CCC_Float, "r__geometry_lod_pow", &ps_r__LOD_Power, 0, 2);
 
     CMD4(CCC_Float, "r__detail_density", &ps_current_detail_density, 0.3f, 1.0f); //AVO: extended from 0.2f to 0.04f and replaced variable
-    CMD4(CCC_Float, "r__detail_scale", &ps_current_detail_scale, 0.2f, 1.6f);
+    CMD4(CCC_Float, "r__detail_scale", &ps_current_detail_scale, 0.2f, 3.0f);
 
 #ifdef DEBUG
     CMD4(CCC_Float, "r__detail_l_ambient", &ps_r__Detail_l_ambient, .5f, .95f);
@@ -1010,14 +994,8 @@ void xrRender_initconsole()
     CMD3(CCC_Mask, "r2_detail_bump", &ps_r2_ls_flags, R2FLAG_DETAIL_BUMP);
     CMD3(CCC_Mask, "r2_use_bump", &ps_r2_use_bump_flags, R2FLAG_USE_BUMP); // Need restart
 
-	// DWM: DT SSR quality option
-    CMD3(CCC_Token, "r4_ssr_samples", &dt_ssr_samp, qdt_ssr_samp_token);
-
     CMD3(CCC_Token, "r2_sun_quality", &ps_r_sun_quality, qsun_quality_token);
     CMD3(CCC_Token, "r2_aa_mode", &r2_aa_mode, r2_aa_mode_token);
-
-	Fvector4 tw2_min = {-100.f, -100.f, -100.f, -100.f};
-    Fvector4 tw2_max = {100.f, 100.f, 100.f, 100.f};
 
     // Igor: need restart
     CMD3(CCC_Mask, "r2_soft_water", &ps_r2_ls_flags, R2FLAG_SOFT_WATER);
@@ -1038,10 +1016,6 @@ void xrRender_initconsole()
     CMD4(CCC_Float, "r2_rain_drops_intensity", &ps_r2_rain_drops_intensity, 0.f, 1.f);
     CMD4(CCC_Float, "r2_rain_drops_speed", &ps_r2_rain_drops_speed, 0.8f, 5.f);
 
-	// Screen Space Shaders
-    CMD4(CCC_Vector4, "ssfx_wpn_dof_1", &ps_ssfx_wpn_dof_1, tw2_min, tw2_max);
-    CMD4(CCC_Float, "ssfx_wpn_dof_2", &ps_ssfx_wpn_dof_2, 0.0f, 1.0f);
-
     // Шейдер стекла и прочие эффекты
 	CMD3(CCC_Mask, "r2_hud_mask", &ps_r2_hud_mask_flags, R_FLAG_HUD_MASK);
     CMD3(CCC_Mask, "r2_hud_dyn_effects", &ps_r2_hud_mask_flags, R_FLAG_HUD_DYN_EFFECTS);
@@ -1054,9 +1028,9 @@ void xrRender_initconsole()
     // CMD3(CCC_Mask, "r3_msaa_hybrid", &ps_r2_ls_flags, R3FLAG_MSAA_HYBRID);
     // CMD3(CCC_Mask, "r3_msaa_opt", &ps_r2_ls_flags, R3FLAG_MSAA_OPT);
     CMD3(CCC_Mask, "r3_gbuffer_opt", &ps_r2_ls_flags, R3FLAG_GBUFFER_OPT);
-    //CMD3(CCC_Mask, "r3_use_dx10_1", &ps_r2_ls_flags, (u32)R3FLAG_USE_DX10_1);
-    //CMD3(CCC_Mask, "r3_msaa_alphatest", &ps_r2_ls_flags, (u32)R3FLAG_MSAA_ALPHATEST);
-    //CMD3(CCC_Token, "r3_msaa_alphatest", &ps_r3_msaa_atest, qmsaa__atest_token);
+    CMD3(CCC_Mask, "r3_use_dx10_1", &ps_r2_ls_flags, (u32)R3FLAG_USE_DX10_1);
+    // CMD3(CCC_Mask, "r3_msaa_alphatest", &ps_r2_ls_flags, (u32)R3FLAG_MSAA_ALPHATEST);
+    CMD3(CCC_Token, "r3_msaa_alphatest", &ps_r3_msaa_atest, qmsaa__atest_token);
     CMD3(CCC_Token, "r3_minmax_sm", &ps_r3_minmax_sm, qminmax_sm_token);
 
 #ifdef DETAIL_RADIUS

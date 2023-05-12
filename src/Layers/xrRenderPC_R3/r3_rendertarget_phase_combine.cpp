@@ -280,12 +280,6 @@ void CRenderTarget::phase_combine()
         }
     }
 
-   // Copy previous rt
-    if (!RImplementation.o.dx10_msaa)
-        HW.pContext->CopyResource(rt_Generic_temp->pTexture->surface_get(), rt_Generic_0->pTexture->surface_get());
-    else
-        HW.pContext->CopyResource(rt_Generic_temp->pTexture->surface_get(), rt_Generic_0_r->pTexture->surface_get());
-
     // Forward rendering
     {
         PIX_EVENT(Forward_rendering);
@@ -386,9 +380,6 @@ void CRenderTarget::phase_combine()
         if (ps_r2_hud_mask_flags.test(R_FLAG_HUD_MASK) && HudGlassEnabled && IsActorAlive)
             phase_hud_mask();
     }
-
-	if (ps_r2_ls_flags.test(R2FLAG_DOF))
-        phase_dof();
 
     /*
        if( RImplementation.o.dx10_msaa )

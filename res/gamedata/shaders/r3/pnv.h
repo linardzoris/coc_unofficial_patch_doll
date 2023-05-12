@@ -1,4 +1,3 @@
-#include "common.h"
 //////////////////////////////////////////////////////////////////////////////////////////
 //NV Shader by LVutner (basing on yaz NV)
 //Last edit: 5:12 (22.05.19)
@@ -19,6 +18,8 @@
 #define NOISE_INTENSITY 0.15
 #define SCANLINES_INTENSITY 0.175
 #define VIGNETTE_RADIUS 1.0
+
+uniform float4	screen_res;	
 
 float4 calc_night_vision_effect(float2 tc0, float4 color, float3 NV_COLOR)
 {

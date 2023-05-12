@@ -36,10 +36,6 @@
 #include "UIMainIngameWnd.h"
 #include "Trade.h"
 #include "PDA.h"
-#include "../xrEngine/x_ray.h"
-#include "XrayGameConstants.h"
-
-bool SSFX_UI_DoF_active = false;
 
 void CUIActorMenu::SetActor(CInventoryOwner* io)
 {
@@ -151,13 +147,6 @@ void CUIActorMenu::SetMenuMode(EMenuMode mode)
         UpdateActor();
     }
     UpdateButtonsLayout();
-
-	if (GameConstants::GetSSS_DoF() && m_currMenuMode >= 1)
-    {
-        ps_ssfx_wpn_dof_1 = GameConstants::GetSSFX_FocusDoF();
-        ps_ssfx_wpn_dof_2 = GameConstants::GetSSFX_FocusDoF().z;
-        SSFX_UI_DoF_active = true;
-    }
 }
 
 void CUIActorMenu::PlaySnd(eActorMenuSndAction a)
@@ -855,13 +844,6 @@ void CUIActorMenu::ResetMode()
     m_pMouseCapturer = NULL;
     m_UIPropertiesBox->Hide();
     SetCurrentItem(NULL);
-
-	if (SSFX_UI_DoF_active)
-    {
-        ps_ssfx_wpn_dof_1 = GameConstants::GetSSFX_DefaultDoF();
-        ps_ssfx_wpn_dof_2 = GameConstants::GetSSFX_DefaultDoF().z;
-        SSFX_UI_DoF_active = false;
-    }
 }
 
 bool CUIActorMenu::CanSetItemToList(PIItem item, CUIDragDropListEx* l, u16& ret_slot)

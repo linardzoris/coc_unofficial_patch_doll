@@ -53,7 +53,6 @@ public:
     IBlender* b_hud_blood;
     IBlender* b_hud_power;
     IBlender* b_hud_bleeding;
-    IBlender* b_dof;
 
 #ifdef DEBUG
     struct dbg_line_t
@@ -82,13 +81,10 @@ public:
     ref_rt rt_Generic_0; // 32bit		(r,g,b,a)				// post-process, intermidiate results, etc.
     ref_rt rt_Generic_1; // 32bit		(r,g,b,a)				// post-process, intermidiate results, etc.
 
-    resptr_core<CRT, resptrcode_crt> rt_Generic_temp;
-
     //  Second viewport
     ref_rt rt_secondVP; // 32bit		(r,g,b,a) --//#SM+#-- +SecondVP+
     // 3d PDA
     ref_rt rt_ui_pda;
-    ref_rt rt_dof;
 
     //	Igor: for volumetric lights
     ref_rt rt_Generic_2; // 32bit		(r,g,b,a)				// post-process, intermidiate results, etc.
@@ -150,7 +146,6 @@ private:
     ref_shader s_hud_blood;
     ref_shader s_hud_power;
     ref_shader s_hud_bleeding;
-    ref_shader s_dof;
 
     //	generate min/max
     ref_shader s_create_minmax_sm;
@@ -295,7 +290,6 @@ public:
     void phase_hud_blood();
     void phase_hud_power();
     void phase_hud_bleeding();
-    void phase_dof();
 
     //	Generates min/max sm
     void create_minmax_SM();

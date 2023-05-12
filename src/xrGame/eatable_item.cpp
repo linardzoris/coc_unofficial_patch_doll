@@ -28,8 +28,6 @@
 #include "../xrPhysics/ElevatorState.h"
 #include "CustomDetector.h"
 #include "Flashlight.h"
-#include "../xrEngine/x_ray.h"
-#include "XrayGameConstants.h"
 
 extern bool g_block_all_except_movement;
 
@@ -182,10 +180,6 @@ void CEatableItem::StartAnimation()
     {
         g_player_hud->script_anim_play(m_iAnimHandsCnt, anim_sect, "anm_use", false, 1.0f);
         m_iAnimLength = Device.dwTimeGlobal + g_player_hud->motion_length_script(anim_sect, "anm_use", 1.0f);
-
-        if (GameConstants::GetSSS_DoF())
-            ps_ssfx_wpn_dof_1 = GameConstants::GetSSFX_FocusDoF();
-            ps_ssfx_wpn_dof_2 = GameConstants::GetSSFX_FocusDoF().z;
     }
 
     if (!effector && use_cam_effector != nullptr)

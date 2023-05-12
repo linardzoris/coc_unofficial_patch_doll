@@ -12,7 +12,6 @@
 
 #include "xrEngine/IGame_Persistent.h"
 #include "xrEngine/Environment.h"
-#include "../../xrEngine/x_ray.h"
 
 // matrices
 #define BIND_DECLARE(xf)\
@@ -182,32 +181,6 @@ class cl_fog_color : public R_constant_setup
 static cl_fog_color binder_fog_color;
 #endif
 
-// Lowland fog params
-class cl_lowland_fog_params : public R_constant_setup
-{
-    virtual void setup(R_constant* C)
-    {
-        CEnvDescriptor& desc = *g_pGamePersistent->Environment().CurrentEnv;
-        float low_fog_height = desc.lowland_fog_height;
-        float low_fog_density = desc.lowland_fog_density;
-        float low_fog_base_height = 0.0;
-        RCache.set_c(C, low_fog_height, low_fog_density, low_fog_base_height, 0);
-    }
-};
-static cl_lowland_fog_params binder_lowland_fog_params;
-
-class cl_m_v2w : public R_constant_setup
-{
-    virtual void setup(R_constant* C)
-    {
-        Fmatrix m_v2w;
-        m_v2w.invert(Device.mView);
-        RCache.set_c(C, m_v2w);
-    }
-};
-
-static cl_m_v2w binder_m_v2w;
-
 // DWM: set weather params
 
 class cl_rain_params : public R_constant_setup 
@@ -225,18 +198,6 @@ class cl_rain_params : public R_constant_setup
     }
 };
 static cl_rain_params binder_rain_params;
-
-class cl_sky_color : public R_constant_setup
-{
-    virtual void setup(R_constant* C)
-    {
-        Fvector4 result;
-        CEnvDescriptor& desc = *g_pGamePersistent->Environment().CurrentEnv;
-        result.set(desc.sky_color.x, desc.sky_color.y, desc.sky_color.z, desc.sky_rotation);
-        RCache.set_c(C, result);
-    }
-};
-static cl_sky_color binder_sky_color;
 
 // times
 class cl_times : public R_constant_setup
@@ -424,39 +385,10 @@ static class cl_pda_params : public R_constant_setup
 
 } binder_pda_params;
 
-
-static class cl_inv_v : public R_constant_setup
-{
-    u32 marker;
-    Fmatrix result;
-
-    virtual void setup(R_constant* C)
-    {
-        result.invert(Device.mView);
-
-        RCache.set_c(C, result);
-    }
-} binder_inv_v;
-
-static class ssfx_wpn_dof_1 : public R_constant_setup
-{
-    virtual void setup(R_constant* C)
-    {
-        RCache.set_c(C, ps_ssfx_wpn_dof_1.x, ps_ssfx_wpn_dof_1.y, ps_ssfx_wpn_dof_1.z, ps_ssfx_wpn_dof_1.w);
-    }
-} ssfx_wpn_dof_1;
-
-static class ssfx_wpn_dof_2 : public R_constant_setup
-{
-    virtual void setup(R_constant* C) { RCache.set_c(C, ps_ssfx_wpn_dof_2, 0, 0, 0); }
-} ssfx_wpn_dof_2;
-
 // Standart constant-binding
 void CBlender_Compile::SetMapping()
 {
 
-    r_Constant("m_view2world", &binder_m_v2w);
-    r_Constant("sky_color", &binder_sky_color);
     r_Constant("rain_params", &binder_rain_params);
 
     // misc
@@ -477,7 +409,6 @@ void CBlender_Compile::SetMapping()
     r_Constant("m_WV", &binder_wv);
     r_Constant("m_VP", &binder_vp);
     r_Constant("m_WVP", &binder_wvp);
-    r_Constant("m_inv_V", &binder_inv_v);
 
     r_Constant("m_xform_v", &tree_binder_m_xform_v);
     r_Constant("m_xform", &tree_binder_m_xform);
@@ -502,7 +433,6 @@ void CBlender_Compile::SetMapping()
     r_Constant("fog_plane", &binder_fog_plane);
     r_Constant("fog_params", &binder_fog_params);
     r_Constant("fog_color", &binder_fog_color);
-    r_Constant("lowland_fog_params", &binder_lowland_fog_params);
 #endif
     // time
     r_Constant("timers", &binder_times);
@@ -523,10 +453,6 @@ void CBlender_Compile::SetMapping()
 #endif
     r_Constant("screen_res", &binder_screen_res);
     r_Constant("pda_params", &binder_pda_params);
-
-	// SSS DoF
-    r_Constant("ssfx_wpn_dof_1", &ssfx_wpn_dof_1);
-    r_Constant("ssfx_wpn_dof_2", &ssfx_wpn_dof_2);
 
     // detail
     // if (bDetail  && detail_scaler)
