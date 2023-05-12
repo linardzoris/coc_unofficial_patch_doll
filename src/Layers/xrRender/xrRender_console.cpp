@@ -5,6 +5,17 @@
 #include "xrCore/xr_token.h"
 #include	"../../xrEngine/x_ray.h"
 
+// SSR quality option
+u32			dt_ssr_samp = 16;
+xr_token							qdt_ssr_samp_token[] = {
+	{ "dtssr_off",					0												},
+	{ "dtssr_lowest",				1												},
+	{ "dtssr_low",					2												},
+	{ "dtssr_medium",				3												},
+	{ "dtssr_high",					4												},
+	{ 0,							0												}
+};
+
 u32 r2_aa_mode = 1;
 xr_token r2_aa_mode_token[] = {   
     {"opt_noaa", 1}, 
@@ -298,6 +309,10 @@ xr_token ext_quality_token[] = {
 //-AVO
 
 Flags32 ps_actor_shadow_flags = {0};
+
+// Screen Space Shaders Stuff
+//Fvector4 ps_ssfx_wpn_dof_1 = { .0f, .0f, .0f, .0f };
+//extern float ps_ssfx_wpn_dof_2 = 1.0f;
 
 #ifndef _EDITOR
 #include "xrEngine/XR_IOConsole.h"
@@ -995,8 +1010,14 @@ void xrRender_initconsole()
     CMD3(CCC_Mask, "r2_detail_bump", &ps_r2_ls_flags, R2FLAG_DETAIL_BUMP);
     CMD3(CCC_Mask, "r2_use_bump", &ps_r2_use_bump_flags, R2FLAG_USE_BUMP); // Need restart
 
+	// DWM: DT SSR quality option
+    CMD3(CCC_Token, "r4_ssr_samples", &dt_ssr_samp, qdt_ssr_samp_token);
+
     CMD3(CCC_Token, "r2_sun_quality", &ps_r_sun_quality, qsun_quality_token);
     CMD3(CCC_Token, "r2_aa_mode", &r2_aa_mode, r2_aa_mode_token);
+
+	Fvector4 tw2_min = {-100.f, -100.f, -100.f, -100.f};
+    Fvector4 tw2_max = {100.f, 100.f, 100.f, 100.f};
 
     // Igor: need restart
     CMD3(CCC_Mask, "r2_soft_water", &ps_r2_ls_flags, R2FLAG_SOFT_WATER);
@@ -1016,9 +1037,6 @@ void xrRender_initconsole()
     CMD3(CCC_Mask, "r2_raindrops", &ps_r2_rain_drops_flags, R2FLAG_RAIN_DROPS);
     CMD4(CCC_Float, "r2_rain_drops_intensity", &ps_r2_rain_drops_intensity, 0.f, 1.f);
     CMD4(CCC_Float, "r2_rain_drops_speed", &ps_r2_rain_drops_speed, 0.8f, 5.f);
-
-	Fvector4 tw2_min = {-100.f, -100.f, -100.f, -100.f};
-    Fvector4 tw2_max = {100.f, 100.f, 100.f, 100.f};
 
 	// Screen Space Shaders
     CMD4(CCC_Vector4, "ssfx_wpn_dof_1", &ps_ssfx_wpn_dof_1, tw2_min, tw2_max);

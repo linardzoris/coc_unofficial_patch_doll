@@ -1,7 +1,11 @@
 #include "common.h"
 #include "lmodel.h"
 
+#ifdef  USE_SUNMASK
+#include "shadow.h"
+#else	
 float3x4 m_sunmask;	// ortho-projection
+#endif
 
 #ifndef ISAMPLE
 #define ISAMPLE 0

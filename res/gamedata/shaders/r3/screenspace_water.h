@@ -8,7 +8,6 @@
 
 #include "screenspace_common.h"
 #include "settings_screenspace_WATER.h"
-#include "settings_screenspace_SSR.h"
 
 static const int2 q_steps[5] =
 {
