@@ -9,10 +9,6 @@ extern ECORE_API BOOL ps_use_precompiled_shaders;
 extern ECORE_API BOOL ps_grass_shadow;
 //-Alundaio
 
-// SSR quality option
-extern ECORE_API u32 dt_ssr_samp;
-extern ECORE_API xr_token qdt_ssr_samp_token[];
-
 extern ECORE_API u32 ps_r_sun_shafts; //=	0;
 extern ECORE_API const xr_token qsun_shafts_token[];
 

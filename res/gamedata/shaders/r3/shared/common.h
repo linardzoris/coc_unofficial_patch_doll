@@ -6,6 +6,9 @@
 #ifndef SHARED_COMMON_H
 #define SHARED_COMMON_H
 
+#define USE_SUNMASK                		//- shader defined
+#define SKY_DEPTH	float(10000.f)
+
 //	Used by VS
 cbuffer	dynamic_transforms
 {

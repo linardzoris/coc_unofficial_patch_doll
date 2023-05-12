@@ -23,9 +23,10 @@ struct 	v2p
 */
 
 //////////////////////////////////////////////////////////////////////////////////////////
+#define	EPSDEPTH	0.001
+
 #ifndef USE_MSAA
 Texture2D 			s_distort;
-#define	EPSDEPTH	0.001
 #else
 TEXTURE2DMS(float4, MSAA_SAMPLES) s_distort;
 #define	EPSDEPTH	0.001
@@ -65,9 +66,9 @@ c2_out main( v2p_aa_AA I )
 #else
 	gbuffer_data gbd	= gbuffer_load_data(I.Tex0, iSample );
 #endif
+  	float 	depth 	= gbd.P.z;	
 	
 #ifdef 	USE_DISTORT
-  	float 	depth 	= gbd.P.z;
 #ifndef USE_MSAA
 	float4 	distort	= s_distort.Sample(smp_nofilter, I.Tex0);
 #else // USE_MSAA
@@ -88,7 +89,6 @@ c2_out main( v2p_aa_AA I )
 #else // USE_DISTORT
 	float2	center 	= I.Tex0;
 #endif
-   	//float3 	img 	= tex2D		(s_image, center);
 
 	float3	img	= dof(center);
 	float4 	bloom	= s_bloom.Sample( smp_rtlinear, center);
