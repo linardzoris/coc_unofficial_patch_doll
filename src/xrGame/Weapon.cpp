@@ -28,6 +28,8 @@
 #include "CameraLook.h"
 #include "ActorNightVision.h"
 #include "HUDManager.h"
+#include "../xrEngine/x_ray.h"
+#include "XrayGameConstants.h"
 
 #define WEAPON_REMOVE_TIME 60000
 #define ROTATION_TIME 0.25f
@@ -2851,16 +2853,37 @@ void CWeapon::OnStateSwitch(u32 S, u32 oldState)
     inherited::OnStateSwitch(S, oldState);
     m_BriefInfo_CalcFrame = 0;
 
-    if (S == eReload)
+    if (GameConstants::GetSSS_DoF())
     {
-        CActor* current_actor = smart_cast<CActor*>(H_Parent());
-        if (current_actor && H_Parent() == Level().CurrentEntity())
+        if (H_Parent() == Level().CurrentEntity())
+        {
+            CActor* current_actor = smart_cast<CActor*>(H_Parent());
+
+            if ((GetState() == eReload || GetState() == eUnMisfire || GetState() == eBore) && current_actor)
+            {
+                ps_ssfx_wpn_dof_1 = GameConstants::GetSSFX_FocusDoF();
+                ps_ssfx_wpn_dof_2 = GameConstants::GetSSFX_FocusDoF().z;
+            }
+            else
+            {
+                ps_ssfx_wpn_dof_1 = GameConstants::GetSSFX_DefaultDoF();
+                ps_ssfx_wpn_dof_2 = GameConstants::GetSSFX_DefaultDoF().z;
+            }
+        }
+    }
+    else
+    {
+        if (S == eReload)
+        {
+            CActor* current_actor = smart_cast<CActor*>(H_Parent());
+            if (current_actor && H_Parent() == Level().CurrentEntity())
             if (m_ammoElapsed.type1 == 0)
                 if (!fsimilar(m_zoom_params.m_ReloadEmptyDof.w, -1.0f))
                     current_actor->Cameras().AddCamEffector(new CEffectorDOF(m_zoom_params.m_ReloadEmptyDof));
-            else
-                if (!fsimilar(m_zoom_params.m_ReloadDof.w, -1.0f))
-                    current_actor->Cameras().AddCamEffector(new CEffectorDOF(m_zoom_params.m_ReloadDof));
+                else
+                    if (!fsimilar(m_zoom_params.m_ReloadDof.w, -1.0f))
+                        current_actor->Cameras().AddCamEffector(new CEffectorDOF(m_zoom_params.m_ReloadDof));
+        }
     }
 }
 

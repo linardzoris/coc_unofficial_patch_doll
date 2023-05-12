@@ -213,6 +213,11 @@ uniform sampler2D       s_dn_g;                	//
 uniform sampler2D       s_dn_b;                	//
 uniform sampler2D       s_dn_a;                	//
 
+uniform sampler2D 		s_dp_r;                	//
+uniform sampler2D 		s_dp_g;                	//
+uniform sampler2D 		s_dp_b;                	//
+uniform sampler2D 		s_dp_a;                	//
+
 //////////////////////////////////////////////////////////////////////////////////////////
 // Lighting/shadowing phase                     //
 uniform sampler2D       s_depth;                //

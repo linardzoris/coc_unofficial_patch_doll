@@ -30,7 +30,10 @@ ENGINE_API int ps_rs_loading_stages = 0;
 #define NO_MULTI_INSTANCES
 #endif // #ifdef MASTER_GOLD
 
-//////////////////////////////////////////////////////////////////////////
+ENGINE_API Fvector4 ps_ssfx_wpn_dof_1 = {.0f, .0f, .0f, .0f};
+ENGINE_API float ps_ssfx_wpn_dof_2 = 1.0f;
+
+    //////////////////////////////////////////////////////////////////////////
 struct _SoundProcessor : public pureFrame
 {
     virtual void OnFrame()

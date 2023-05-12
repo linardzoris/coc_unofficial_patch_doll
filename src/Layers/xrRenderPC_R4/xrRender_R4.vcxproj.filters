@@ -336,6 +336,9 @@
     <ClInclude Include="blender_hud_bleeding.h">
       <Filter>Shading templates</Filter>
     </ClInclude>	
+	    <ClInclude Include="blender_dof.h">
+      <Filter>Shading templates</Filter>
+    </ClInclude>
     <ClInclude Include="..\xrRender\Blender_detail_still.h">
       <Filter>Shading templates\R1</Filter>
     </ClInclude>
@@ -1290,6 +1293,12 @@
       <Filter>Shading templates</Filter>
     </ClCompile>
     <ClCompile Include="blender_hud_bleeding.cpp">
+      <Filter>Shading templates</Filter>
+    </ClCompile>	
+    <ClCompile Include="..\xrRender\rendertarget_phase_dof.cpp">
+      <Filter>Core_Target</Filter>
+    </ClCompile>
+    <ClCompile Include="blender_dof.cpp">
       <Filter>Shading templates</Filter>
     </ClCompile>	
     <ClCompile Include="..\xrRenderDX10\MSAA\dx10MSAABlender.cpp">

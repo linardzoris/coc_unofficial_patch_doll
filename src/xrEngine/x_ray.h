@@ -73,4 +73,7 @@ public:
 
 extern ENGINE_API CApplication* pApp;
 
+ENGINE_API extern Fvector4 ps_ssfx_wpn_dof_1;
+ENGINE_API extern float ps_ssfx_wpn_dof_2;
+
 #endif //__XR_BASE_H__

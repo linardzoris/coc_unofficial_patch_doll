@@ -1,5 +1,7 @@
 #include "common.h"
 uniform float4 screen_res;
+uniform	half4  m_hud_params;
+
 float resize(float input, float factor, float offset)
 {
 	return (input - 0.5f + offset) / factor + 0.5f - offset;

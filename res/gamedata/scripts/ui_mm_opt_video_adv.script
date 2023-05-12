@@ -212,12 +212,6 @@ function opt_video_adv:InitControls(x, y, xml, handler)
 	table.insert(handler.m_preconditions, {func=mode_ge_3, control=_st})
 
 	_st = xml:InitStatic("video_adv:templ_item", nil)
-	xml:InitStatic("video_adv:cap_r3_msaa_alphatest", _st)
-	ctl = xml:InitComboBox("video_adv:combo_r3_msaa_alphatest", _st)
-	handler.combo_r3_msaa_alphatest = ctl
-	table.insert(handler.m_preconditions, {func=mode_ge_3, control=_st})
-
-	_st = xml:InitStatic("video_adv:templ_item", nil)
 	xml:InitStatic("video_adv:cap_r4_tessellation", _st)
 	ctl = xml:InitCheck("video_adv:check_r4_tessellation", _st)
 	table.insert(handler.m_preconditions, {func=mode_4, control=_st})

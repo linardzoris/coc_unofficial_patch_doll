@@ -280,6 +280,7 @@
     <ClInclude Include="blender_deffer_flat.h" />
     <ClInclude Include="blender_deffer_model.h" />
     <ClInclude Include="blender_fxaa.h" />	
+	<ClInclude Include="blender_dof.h" />
     <ClInclude Include="blender_hud_bleeding.h" />
     <ClInclude Include="blender_hud_blood.h" />
     <ClInclude Include="blender_hud_stamina.h" />		
@@ -406,6 +407,7 @@
     <ClCompile Include="..\xrRender\ParticleGroup.cpp" />
     <ClCompile Include="..\xrRender\PSLibrary.cpp" />
 	<ClCompile Include="..\xrRender\rendertarget_phase_dlaa.cpp" />
+	<ClCompile Include="..\xrRender\rendertarget_phase_dof.cpp" />
     <ClCompile Include="..\xrRender\ResourceManager.cpp" />
     <ClCompile Include="..\xrRender\rendertarget_raindrops.cpp" />	
     <ClCompile Include="..\xrRender\rendertarget_phase_hud_effects.cpp" />	
@@ -452,6 +454,7 @@
     <ClCompile Include="blender_deffer_flat.cpp" />
     <ClCompile Include="blender_deffer_model.cpp" />
     <ClCompile Include="blender_fxaa.cpp" />	
+	<ClCompile Include="blender_dof.cpp" />
     <ClCompile Include="blender_hud_bleeding.cpp" />
     <ClCompile Include="blender_hud_blood.cpp" />
     <ClCompile Include="blender_hud_stamina.cpp" />	

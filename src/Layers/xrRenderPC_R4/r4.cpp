@@ -315,6 +315,9 @@ void CRender::create()
     bool bWinterMode = READ_IF_EXISTS(pSettings, r_bool, "environment", "winter_mode", false);
 	o.dx10_winter_mode = !bWinterMode;
 
+    bool bLowlandFogWeather = READ_IF_EXISTS(pSettings, r_bool, "environment", "lowland_fog_from_weather", false);
+    o.dx10_lowland_fog_mode = bLowlandFogWeather;
+
     //	TODO: fix hbao shader to allow to perform per-subsample effect!
     o.hbao_vectorized = false;
     if (o.ssao_hbao)
@@ -327,9 +330,6 @@ void CRender::create()
     if (o.ssao_hdao)
         o.ssao_opt_data = false;
 
-    o.dx10_sm4_1 = ps_r2_ls_flags.test((u32)R3FLAG_USE_DX10_1);
-    o.dx10_sm4_1 = o.dx10_sm4_1 && (HW.FeatureLevel >= D3D_FEATURE_LEVEL_10_1);
-
     //	MSAA option dependencies
 
     o.dx10_msaa = !!ps_r3_msaa;
@@ -337,11 +337,10 @@ void CRender::create()
 
     o.dx10_msaa_opt = ps_r2_ls_flags.test(R3FLAG_MSAA_OPT);
     o.dx10_msaa_opt = o.dx10_msaa_opt && o.dx10_msaa && (HW.FeatureLevel >= D3D_FEATURE_LEVEL_10_1) ||
-        o.dx10_msaa && (HW.FeatureLevel >= D3D_FEATURE_LEVEL_11_0);
+    o.dx10_msaa && (HW.FeatureLevel >= D3D_FEATURE_LEVEL_11_0);
 
-    // o.dx10_msaa_hybrid	= ps_r2_ls_flags.test(R3FLAG_MSAA_HYBRID);
-    o.dx10_msaa_hybrid = ps_r2_ls_flags.test((u32)R3FLAG_USE_DX10_1);
-    o.dx10_msaa_hybrid &= !o.dx10_msaa_opt && o.dx10_msaa && (HW.FeatureLevel >= D3D_FEATURE_LEVEL_10_1);
+	o.dx10_sm4_1 = o.dx10_msaa_opt;
+    o.dx10_msaa_hybrid = o.dx10_msaa_opt;
 
     //	Allow alpha test MSAA for DX10.0
 
@@ -894,6 +893,8 @@ HRESULT CRender::shader_compile(LPCSTR name, IReader* fs, LPCSTR pFunctionName,
     char c_sun_shafts[32];
     char c_ssao[32];
     char c_sun_quality[32];
+    // For SSR setting's
+    char c_dt_ssr_samp[32];
 
     char sh_name[MAX_PATH] = "";
 
@@ -1095,23 +1096,30 @@ HRESULT CRender::shader_compile(LPCSTR name, IReader* fs, LPCSTR pFunctionName,
 
     if (o.dx10_msaa)
     {
-        static char def[256];
-        // if( m_MSAASample < 0 )
-        //{
-        def[0] = '0';
-        //	sh_name[len]='0'; ++len;
-        //}
-        // else
-        //{
-        //	def[0]= '0' + char(m_MSAASample);
-        //	sh_name[len]='0' + char(m_MSAASample); ++len;
-        //}
-        def[1] = 0;
-        defines[def_it].Name = "ISAMPLE";
-        defines[def_it].Definition = def;
-        def_it++;
-        sh_name[len] = '0';
-        ++len;
+        if (o.dx10_msaa_opt)
+        {
+            static char def[256];
+            def[0] = '0';
+            def[1] = 0;
+            defines[def_it].Name = "ISAMPLE";
+            defines[def_it].Definition = def;
+            def_it++;
+            sh_name[len] = '0';
+            ++len;
+        }
+        else
+        {
+            static char def[256];
+            if (m_MSAASample < 0)
+                def[0] = '0';
+            else
+                def[0] = '0' + char(m_MSAASample);
+
+            def[1] = 0;
+            defines[def_it].Name = "ISAMPLE";
+            defines[def_it].Definition = def;
+            def_it++;
+        }
     }
     else
     {
@@ -1290,6 +1298,16 @@ HRESULT CRender::shader_compile(LPCSTR name, IReader* fs, LPCSTR pFunctionName,
     sh_name[len] = '0' + char(o.dx10_gbuffer_opt);
     ++len;
 
+	// DWM: For SSR setting's
+    {
+        sprintf_s(c_dt_ssr_samp, "%d", dt_ssr_samp);
+        defines[def_it].Name = "G_SSR_QUALITY";
+        defines[def_it].Definition = c_dt_ssr_samp;
+        def_it++;
+        sh_name[len] = '0' + char(dt_ssr_samp);
+        ++len;
+    }
+
     // R_ASSERT						( !o.dx10_sm4_1 );
     if (o.dx10_sm4_1)
     {
@@ -1307,6 +1325,15 @@ HRESULT CRender::shader_compile(LPCSTR name, IReader* fs, LPCSTR pFunctionName,
         def_it++;
     }
     sh_name[len] = '0' + char(o.dx10_winter_mode);
+    ++len;
+
+	if (o.dx10_lowland_fog_mode)
+    {
+        defines[def_it].Name = "G_USE_PARAMS_FROM_WEATHER";
+        defines[def_it].Definition = "1";
+        def_it++;
+    }
+    sh_name[len] = '0' + char(o.dx10_lowland_fog_mode);
     ++len;
 
     R_ASSERT(HW.FeatureLevel >= D3D_FEATURE_LEVEL_11_0);

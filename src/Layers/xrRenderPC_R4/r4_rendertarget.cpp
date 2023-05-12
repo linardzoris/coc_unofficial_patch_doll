@@ -20,6 +20,7 @@
 #include "blender_hud_blood.h"
 #include "blender_hud_stamina.h"
 #include "blender_hud_bleeding.h"
+#include "blender_dof.h"
 
 void CRenderTarget::u_setrt(const ref_rt& _1, const ref_rt& _2, const ref_rt& _3, ID3DDepthStencilView* zb)
 {
@@ -345,6 +346,7 @@ CRenderTarget::CRenderTarget()
     b_hud_blood = new CBlender_Hud_Blood();
     b_hud_power = new CBlender_Hud_Stamina();
     b_hud_bleeding = new CBlender_Hud_Bleeding();
+    b_dof = new CBlender_dof();
 
     // HDAO
     b_hdao_cs = new CBlender_CS_HDAO();
@@ -439,8 +441,15 @@ CRenderTarget::CRenderTarget()
         rt_Generic_0.create(r2_RT_generic0, w, h, D3DFMT_A8R8G8B8, 1);
         rt_Generic_1.create(r2_RT_generic1, w, h, D3DFMT_A8R8G8B8, 1);
         rt_Generic.create(r2_RT_generic, w, h, D3DFMT_A8R8G8B8, 1);
+
+        rt_dof.create(r2_RT_dof, w, h, D3DFMT_A8R8G8B8);
         rt_secondVP.create (r2_RT_secondVP, w, h, D3DFMT_A8R8G8B8, 1); //--#SM+#-- +SecondVP+
         rt_ui_pda.create(r2_RT_ui, w, h, D3DFMT_A8R8G8B8);
+
+		if (RImplementation.o.dx10_msaa)
+            rt_Generic_temp.create("$user$generic_temp", w, h, D3DFMT_A8R8G8B8, SampleCount);
+        else
+            rt_Generic_temp.create("$user$generic_temp", w, h, D3DFMT_A8R8G8B8, 1);
 
         if (RImplementation.o.dx10_msaa)
         {
@@ -472,6 +481,8 @@ CRenderTarget::CRenderTarget()
     s_hud_power.create(b_hud_power, "r3\\hud_power");
     // Hud Bleeding
     s_hud_bleeding.create(b_hud_bleeding, "r3\\hud_bleeding");
+    // Anomaly DoF
+    s_dof.create(b_dof, "r3\\dof");
 
     // DIRECT (spot)
     pcstr smapTarget = r2_RT_smap_depth;
@@ -1124,6 +1135,7 @@ CRenderTarget::~CRenderTarget()
     xr_delete(b_hud_blood);
     xr_delete(b_hud_power);
     xr_delete(b_hud_bleeding);
+    xr_delete(b_dof);
 
     if (RImplementation.o.dx10_msaa)
     {
