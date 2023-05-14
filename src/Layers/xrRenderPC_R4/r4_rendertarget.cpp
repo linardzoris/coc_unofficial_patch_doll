@@ -347,6 +347,7 @@ CRenderTarget::CRenderTarget()
     b_hud_blood = new CBlender_Hud_Blood();
     b_hud_power = new CBlender_Hud_Stamina();
     b_hud_bleeding = new CBlender_Hud_Bleeding();
+    //Закомментировал тк не даёт скомпилить
     //b_blur = new CBlender_blur();
     b_dof = new CBlender_dof();
 

@@ -400,6 +400,7 @@ void CRenderTarget::phase_combine()
     }
 
 	// Compute blur textures
+    // Закомментировал тк не даёт скомпилить
     //phase_blur();
 
 	if (ps_r2_ls_flags.test(R2FLAG_DOF))
