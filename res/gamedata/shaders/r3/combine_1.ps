@@ -7,6 +7,13 @@
 #include "lmodel.h"
 #include "hmodel.h"
 
+// Check MODs
+#include "check_screenspace.h"
+
+#ifdef SSFX_SSR
+	#include "screenspace_reflections.h"
+#endif
+
 uniform	Texture2D					s_half_depth;
 
 //#include "ssao_blur.ps"
@@ -168,26 +175,29 @@ _out main ( _input I, uint iSample : SV_SAMPLEINDEX )
 #endif // USE_HDAO
 	
 	hmodel	(hdiffuse, hspecular, mtl, N.w, D.w, P.xyz, N.xyz);
-//      hmodel		(hdiffuse, hspecular, mtl, 1, D.w, P.xyz, N.xyz);
-//	hdiffuse*=hdiffuse;			//. high contrast hemi
-//	hdiffuse*=(D.rgb*0.8 + 0.2h);	// rise texture contrast for diffuse lighting
-//	hdiffuse = 0.8;
-//	hdiffuse *= (occ*(D.rgb + .1h));
 	hdiffuse *= occ;
-	hspecular *= occ;
 
-        float4         light       = float4         (L.rgb + hdiffuse, L.w)        ;
-        float4         C           = D*light       ;                             // rgb.gloss * light(diffuse.specular)
-//        float3         spec        = (C.rgb*.5h + .5h)*C.w + hspecular + hspecular + hspecular;			// replicated specular
-	float3         spec        = C.www         + hspecular;      // replicated specular
+	// Disable specular if SSR is enabled. ( Temporary fix? )
+#ifdef SSFX_SSR
+	hspecular = 0;
+#else
+	hspecular *= occ;	
+#endif
+
+float4         light       = float4(L.rgb + hdiffuse, L.w);
+float4         C           = D*light;                             // rgb.gloss * light(diffuse.specular)
+float3 		   spec 	   = C.www * L.rgb + hspecular * C.rgba; // replicated specular
 
 #ifdef         USE_SUPER_SPECULAR
                       spec      = (C.rgb*.5h + .5h)*C.w + hspecular        ;
 #endif
-//		float3       color     = C.rgb + D.rgb*spec     ;
-//		float3       color     = C.rgb + (D.rgb*spec+spec)/0.5h;
+
 		float3       color     = C.rgb + spec     ;
-//		float3       color     = C.rgb + D.rgb*spec+hspecular+hspecular     ;	//	More realistic and contrast specular - Ugrumiy edition
+
+// SSR Implementation
+#ifdef SSFX_SSR
+	SSFX_ScreenSpaceReflections(I.tc0, P, N, rain_params.y / 5.0f, color, ISAMPLE);	
+#endif
 
 ////////////////////////////////////////////////////////////////////////////////
 /// For Test ///////////////////////////////////////////////////////////////////

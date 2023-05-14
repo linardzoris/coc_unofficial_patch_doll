@@ -335,6 +335,12 @@
     </ClInclude>
     <ClInclude Include="blender_hud_bleeding.h">
       <Filter>Shading templates</Filter>
+    </ClInclude>
+    <ClCompile Include="blender_blur.h">
+      <Filter>Shading templates</Filter>
+    </ClCompile>		
+    <ClInclude Include="blender_dof.h">
+      <Filter>Shading templates</Filter>
     </ClInclude>	
     <ClInclude Include="..\xrRender\Blender_detail_still.h">
       <Filter>Shading templates\R1</Filter>
@@ -1280,6 +1286,15 @@
     <ClCompile Include="..\xrRender\rendertarget_phase_dlaa.cpp">
       <Filter>Core_Target</Filter>
     </ClCompile>
+    <ClCompile Include="..\xrRender\rendertarget_phase_blur.cpp">
+      <Filter>Core_Target</Filter>
+    </ClCompile>	
+    <ClCompile Include="blender_dof.cpp">
+      <Filter>Shading templates</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrRender\rendertarget_phase_dof.cpp">
+      <Filter>Core_Target</Filter>
+    </ClCompile>			
    <ClCompile Include="blender_hud_blood.cpp">
       <Filter>Shading templates</Filter>
     </ClCompile>
@@ -1292,6 +1307,9 @@
     <ClCompile Include="blender_hud_bleeding.cpp">
       <Filter>Shading templates</Filter>
     </ClCompile>	
+    <ClCompile Include="blender_blur.cpp">
+      <Filter>Shading templates</Filter>
+    </ClCompile>		
     <ClCompile Include="..\xrRenderDX10\MSAA\dx10MSAABlender.cpp">
       <Filter>Interfase implementations\MSAARender</Filter>
     </ClCompile>

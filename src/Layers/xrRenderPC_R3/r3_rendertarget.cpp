@@ -19,6 +19,8 @@
 #include "blender_hud_blood.h"
 #include "blender_hud_stamina.h"
 #include "blender_hud_bleeding.h"
+#include "blender_blur.h"
+#include "blender_dof.h"
 
 void CRenderTarget::u_setrt(const ref_rt& _1, const ref_rt& _2, const ref_rt& _3, ID3DDepthStencilView* zb)
 {
@@ -343,6 +345,8 @@ CRenderTarget::CRenderTarget()
     b_hud_blood = new CBlender_Hud_Blood();
     b_hud_power = new CBlender_Hud_Stamina();
     b_hud_bleeding = new CBlender_Hud_Bleeding();
+    b_blur = new CBlender_blur();
+    b_dof = new CBlender_dof();
 
     if (RImplementation.o.dx10_msaa)
     {
@@ -430,6 +434,7 @@ CRenderTarget::CRenderTarget()
         rt_Generic.create(r2_RT_generic, w, h, D3DFMT_A8R8G8B8, 1);
         rt_secondVP.create (r2_RT_secondVP, w, h, D3DFMT_A8R8G8B8, 1); //--#SM+#-- +SecondVP+
         rt_ui_pda.create(r2_RT_ui, w, h, D3DFMT_A8R8G8B8);
+        rt_dof.create(r2_RT_dof, w, h, D3DFMT_A8R8G8B8);
 
         if (RImplementation.o.dx10_msaa)
         {
@@ -441,25 +446,21 @@ CRenderTarget::CRenderTarget()
         //	temp: for higher quality blends
         if (RImplementation.o.advancedpp)
             rt_Generic_2.create(r2_RT_generic2, w, h, D3DFMT_A16B16G16R16F, SampleCount);
+
+		// RT Blur
+        rt_blur_h_2.create(r2_RT_blur_h_2, u32(w / 2), u32(h / 2), D3DFMT_A8R8G8B8);
+        rt_blur_2.create(r2_RT_blur_2, u32(w / 2), u32(h / 2), D3DFMT_A8R8G8B8);
+
+        rt_blur_h_4.create(r2_RT_blur_h_4, u32(w / 4), u32(h / 4), D3DFMT_A8R8G8B8);
+        rt_blur_4.create(r2_RT_blur_4, u32(w / 4), u32(h / 4), D3DFMT_A8R8G8B8);
+
+        rt_blur_h_8.create(r2_RT_blur_h_8, u32(w / 8), u32(h / 8), D3DFMT_A8R8G8B8);
+        rt_blur_8.create(r2_RT_blur_8, u32(w / 8), u32(h / 8), D3DFMT_A8R8G8B8);
+
+        rt_pp_bloom.create(r2_RT_pp_bloom, w, h, D3DFMT_A8R8G8B8);
     }
     // OCCLUSION
     s_occq.create(b_occq, "r2\\occq");
-
-    // FXAA
-    s_fxaa.create(b_fxaa, "r3\\fxaa");
-    g_fxaa.create(FVF::F_V, RCache.Vertex.Buffer(), RCache.QuadIB);
-
-    // DLAA
-    s_dlaa.create("effects_dlaa");
-
-	// Hud Mask
-    s_hud_mask.create(b_hud_mask, "r3\\hud_mask");
-    // Hud Blood
-    s_hud_blood.create(b_hud_blood, "r3\\hud_blood");
-    // Hud Stamina
-    s_hud_power.create(b_hud_power, "r3\\hud_power");
-    // Hud Bleeding
-    s_hud_bleeding.create(b_hud_bleeding, "r3\\hud_bleeding");
 
     // DIRECT (spot)
     pcstr smapTarget = r2_RT_smap_depth;
@@ -691,6 +692,26 @@ CRenderTarget::CRenderTarget()
 
         s_ssao.create(b_ssao, "r2\\ssao");
     }
+
+    // FXAA
+    s_fxaa.create(b_fxaa, "r3\\fxaa");
+    g_fxaa.create(FVF::F_V, RCache.Vertex.Buffer(), RCache.QuadIB);
+
+    // DLAA
+    s_dlaa.create("effects_dlaa");
+
+    // Hud Mask
+    s_hud_mask.create(b_hud_mask, "r3\\hud_mask");
+    // Hud Blood
+    s_hud_blood.create(b_hud_blood, "r3\\hud_blood");
+    // Hud Stamina
+    s_hud_power.create(b_hud_power, "r3\\hud_power");
+    // Hud Bleeding
+    s_hud_bleeding.create(b_hud_bleeding, "r3\\hud_bleeding");
+    // Blur
+    s_blur.create(b_blur, "r2\\blur");
+    // Anomaly DoF
+	s_dof.create(b_dof, "r3\\dof");
 
     if (RImplementation.o.ssao_blur_on)
     {
@@ -1096,6 +1117,8 @@ CRenderTarget::~CRenderTarget()
     xr_delete(b_hud_blood);
     xr_delete(b_hud_power);
     xr_delete(b_hud_bleeding);
+    xr_delete(b_blur);
+    xr_delete(b_dof);
 
     if (RImplementation.o.dx10_msaa)
     {

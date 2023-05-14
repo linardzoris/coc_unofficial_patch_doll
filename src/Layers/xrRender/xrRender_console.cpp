@@ -3,6 +3,7 @@
 
 #include "xrRender_console.h"
 #include "xrCore/xr_token.h"
+#include	"../../xrEngine/x_ray.h"
 
 u32 r2_aa_mode = 1;
 xr_token r2_aa_mode_token[] = {   
@@ -854,11 +855,18 @@ public:
 //-----------------------------------------------------------------------
 void xrRender_initconsole()
 {
+    Fvector4 tw2_min = {-100.f, -100.f, -100.f, -100.f};
+    Fvector4 tw2_max = {100.f, 100.f, 100.f, 100.f};
+
     // Оптимизация
     CMD4(CCC_Integer, "r__optimize_static_geom", &opt_static, 0, 4);
     CMD4(CCC_Integer, "r__optimize_dynamic_geom", &opt_dynamic, 0, 4);
     psDeviceFlags2.set(rsOptShadowGeom, TRUE);
     CMD3(CCC_Mask, "r__optimize_shadow_geom", &psDeviceFlags2, rsOptShadowGeom);
+
+	// Screen Space Shaders
+    CMD4(CCC_Vector4, "ssfx_wpn_dof_1", &ps_ssfx_wpn_dof_1, tw2_min, tw2_max);
+    CMD4(CCC_Float, "ssfx_wpn_dof_2", &ps_ssfx_wpn_dof_2, 0.0f, 1.0f);
 
     CMD3(CCC_Preset, "_preset", &ps_Preset, qpreset_token);
 

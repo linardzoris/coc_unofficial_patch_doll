@@ -274,10 +274,12 @@
     <ClInclude Include="..\xrRender\xrStripify.h" />
     <ClInclude Include="..\xrRender\xr_effgamma.h" />
     <ClInclude Include="blender_bloom_build.h" />
+	<ClInclude Include="blender_blur.h" />
     <ClInclude Include="blender_combine.h" />
     <ClInclude Include="blender_deffer_aref.h" />
     <ClInclude Include="blender_deffer_flat.h" />
     <ClInclude Include="blender_deffer_model.h" />
+	<ClInclude Include="blender_dof.h" />
     <ClInclude Include="blender_fxaa.h" />	
     <ClInclude Include="blender_hud_bleeding.h" />
     <ClInclude Include="blender_hud_blood.h" />
@@ -401,6 +403,8 @@
     <ClCompile Include="..\xrRender\ParticleGroup.cpp" />
     <ClCompile Include="..\xrRender\PSLibrary.cpp" />
     <ClCompile Include="..\xrRender\rendertarget_phase_dlaa.cpp" />	
+    <ClCompile Include="..\xrRender\rendertarget_phase_blur.cpp" />	
+	<ClCompile Include="..\xrRender\rendertarget_phase_dof.cpp" />
     <ClCompile Include="..\xrRender\rendertarget_raindrops.cpp" />	
     <ClCompile Include="..\xrRender\rendertarget_phase_hud_effects.cpp" />	
     <ClCompile Include="..\xrRender\rendertarget_phase_hud_mask.cpp" />	
@@ -442,10 +446,12 @@
     <ClCompile Include="..\xrRender\xrStripify.cpp" />
     <ClCompile Include="..\xrRender\xr_effgamma.cpp" />
     <ClCompile Include="blender_bloom_build.cpp" />
+	<ClCompile Include="blender_blur.cpp" />
     <ClCompile Include="blender_combine.cpp" />
     <ClCompile Include="blender_deffer_aref.cpp" />
     <ClCompile Include="blender_deffer_flat.cpp" />
     <ClCompile Include="blender_deffer_model.cpp" />
+	<ClCompile Include="blender_dof.cpp" />
     <ClCompile Include="blender_fxaa.cpp" />
     <ClCompile Include="blender_hud_bleeding.cpp" />
     <ClCompile Include="blender_hud_blood.cpp" />
