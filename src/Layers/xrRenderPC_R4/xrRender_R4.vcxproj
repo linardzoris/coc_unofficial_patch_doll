@@ -451,7 +451,7 @@
     <ClCompile Include="..\xrRender\xrStripify.cpp" />
     <ClCompile Include="..\xrRender\xr_effgamma.cpp" />
     <ClCompile Include="blender_bloom_build.cpp" />
-	<ClInclude Include="blender_blur.cpp" />	
+	<ClCompile Include="blender_blur.cpp" />
     <ClCompile Include="blender_combine.cpp" />
     <ClCompile Include="blender_deffer_aref.cpp" />
     <ClCompile Include="blender_deffer_flat.cpp" />

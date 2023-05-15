@@ -456,8 +456,6 @@ CRenderTarget::CRenderTarget()
 
         rt_blur_h_8.create(r2_RT_blur_h_8, u32(w / 8), u32(h / 8), D3DFMT_A8R8G8B8);
         rt_blur_8.create(r2_RT_blur_8, u32(w / 8), u32(h / 8), D3DFMT_A8R8G8B8);
-
-        rt_pp_bloom.create(r2_RT_pp_bloom, w, h, D3DFMT_A8R8G8B8);
     }
     // OCCLUSION
     s_occq.create(b_occq, "r2\\occq");
@@ -711,7 +709,7 @@ CRenderTarget::CRenderTarget()
     // Blur
     s_blur.create(b_blur, "r2\\blur");
     // Anomaly DoF
-	s_dof.create(b_dof, "r3\\dof");
+	s_dof.create(b_dof, "r2\\dof");
 
     if (RImplementation.o.ssao_blur_on)
     {

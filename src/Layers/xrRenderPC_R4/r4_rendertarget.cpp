@@ -347,8 +347,7 @@ CRenderTarget::CRenderTarget()
     b_hud_blood = new CBlender_Hud_Blood();
     b_hud_power = new CBlender_Hud_Stamina();
     b_hud_bleeding = new CBlender_Hud_Bleeding();
-    //Закомментировал тк не даёт скомпилить
-    //b_blur = new CBlender_blur();
+    b_blur = new CBlender_blur();
     b_dof = new CBlender_dof();
 
     // HDAO
@@ -468,8 +467,6 @@ CRenderTarget::CRenderTarget()
 
         rt_blur_h_8.create(r2_RT_blur_h_8, u32(w / 8), u32(h / 8), D3DFMT_A8R8G8B8);
         rt_blur_8.create(r2_RT_blur_8, u32(w / 8), u32(h / 8), D3DFMT_A8R8G8B8);
-
-        rt_pp_bloom.create(r2_RT_pp_bloom, w, h, D3DFMT_A8R8G8B8);
     }
 
     // OCCLUSION
@@ -493,7 +490,7 @@ CRenderTarget::CRenderTarget()
     // Blur
     s_blur.create(b_blur, "r2\\blur");
     // Anomaly DoF
-    s_dof.create(b_dof, "r3\\dof");
+    s_dof.create(b_dof, "r2\\dof");
 
     // DIRECT (spot)
     pcstr smapTarget = r2_RT_smap_depth;
