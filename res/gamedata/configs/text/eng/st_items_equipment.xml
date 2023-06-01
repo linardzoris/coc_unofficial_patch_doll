@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <string_table>
+	<string id="st_dev_cigarettes_mechta_blue_name">
+		<text>Sigarettes «Dream blue»</text>
+	</string>
+	<string id="st_dev_cigarettes_mechta_blue_descr">
+		<text>Cheap locally produced cigarettes that enter the Zone through soldiers and the perimeter. Smoking does not provide any benefits other than blunting the feeling of hunger, but in return it takes away health and rewards psychological dependence.</text>
+	</string>
+	<string id="st_dev_cigarettes_mechta_red_name">
+		<text>Sigarettes «Dream red»</text>
+	</string>
+	<string id="st_dev_cigarettes_mechta_red_descr">
+		<text>Cheap locally produced cigarettes that enter the Zone through soldiers and the perimeter. Red cigarettes are somewhat stronger than blue ones. Smoking does not provide any benefits other than blunting the feeling of hunger, but in return it takes away health and rewards psychological dependence.</text>
+	</string>	
 	<string id="st_item_water_bottle">
 		<text>Water Bottle «Carpathians»</text>
 	</string>

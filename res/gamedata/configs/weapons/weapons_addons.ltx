@@ -2,82 +2,139 @@
 ; Глушители
 ;-----------------------------------------------------------------------------
 
-[wpn_addon_silencer]:identity_immunities
-discovery_dependency                     =
-$spawn                                   = "weapons\addons\silencer"
-class                                    = WP_SILEN
-visual                                   = dynamics\weapons\wpn_upgrade\wpn_silencer.ogf
-description                              = st_addon_silencer_descr
-$prefetch                                = 32
-slot                                     = -1
-cost                                     = 500
-inv_name                                 = st_addon_silencer
-inv_name_short                           = st_addon_silencer
-inv_weight                               = 0.4
+[wpn_addon_silencer_9x18]:identity_immunities
+$prefetch                                          = 32
+slot							                   = -1
+$spawn                                             = "weapons\addons\wpn_addon_silencer_9x18"
+bullet_hit_impulse_k                               = 1.0
+bullet_hit_power_k                                 = 0.9
+bullet_speed_k                                     = 0.9
+cam_dispersion_inc_k                               = 0.7
+cam_dispersion_k                                   = 0.7
+fire_dispersion_base_k                             = 0.8
+cform                                              = skeleton
+class                                              = WP_SILEN
+cost                                               = 1500
+discovery_dependency                               = 
+GroupControlSection                                = spawn_group
+inv_grid_height                                    = 1
+inv_grid_width                                     = 1
+inv_grid_x                                         = 55
+inv_grid_y                                         = 0
+inv_name                                           = st_wpn_addon_silencer_9x18
+description                                        = st_wpn_addon_silencer_all
+inv_weight                                         = 0.132
+visual                                             = dynamics\weapons\wpn_upgrade\wpn_addon_silencer_9_18.ogf
 
-inv_grid_width                           = 1
-inv_grid_height                          = 1
-inv_grid_x                               = 12
-inv_grid_y                               = 10
+[wpn_addon_silencer_9x19]:wpn_addon_silencer_9x18
+$spawn                                             = "weapons\addons\wpn_addon_silencer_9x19"
+cost                                               = 950
+inv_grid_height                                    = 1
+inv_grid_width                                     = 1
+inv_grid_x                                         = 55
+inv_grid_y                                         = 1
+inv_name                                           = st_wpn_addon_silencer_9x19
+inv_weight                                         = 0.15
+visual                                             = dynamics\weapons\wpn_upgrade\wpn_addon_silencer.ogf
 
-bullet_hit_power_k                       = 0.9
-bullet_hit_impulse_k                     = 0.9
-bullet_speed_k                           = 1.0
-fire_dispersion_base_k                   = 1.0
-cam_dispersion_k                         = 0.9
-cam_dispersion_inc_k                     = 0.9
-PDM_disp_base_k                          = 1.05
-PDM_disp_accel_k                         = 1.1
-PDM_disp_vel_k                           = 1.1
-crosshair_inertion_k                     = 1.1
-zoom_rotate_time_k                       = 1.04
-condition_shot_dec_k                     = 1.1
+[wpn_addon_silencer_9x39]:wpn_addon_silencer_9x18
+$spawn                                             = "weapons\addons\wpn_addon_silencer_9x39"
+cost                                               = 950
+inv_grid_height                                    = 1
+inv_grid_width                                     = 1
+inv_grid_x                                         = 55
+inv_grid_y                                         = 5
+inv_name                                           = st_wpn_addon_silencer_9x39
+inv_weight                                         = 0.490
+visual                                             = dynamics\weapons\wpn_upgrade\wpn_addon_silencer_9_39.ogf
 
-[wpn_addon_pistol_suppressor]:wpn_addon_silencer
-inv_name                                 = st_addon_pistol_suppressor
-inv_name_short                           = st_addon_pistol_suppressor
-description                              = st_addon_pistol_suppressor_descr
+[wpn_addon_silencer_5_7x28]:wpn_addon_silencer_9x18
+$spawn                                             = "weapons\addons\wpn_addon_silencer_5_7x28"
+cost                                               = 950
+inv_grid_height                                    = 1
+inv_grid_width                                     = 1
+inv_grid_x                                         = 55
+inv_grid_y                                         = 9
+inv_name                                           = st_wpn_addon_silencer_5_7x28
+inv_weight                                         = 0.320
+visual                                             = dynamics\weapons\wpn_upgrade\wpn_addon_silencer_5_7x28.ogf
 
-inv_grid_x                               = 12
-inv_grid_y                               = 10
+[wpn_addon_silencer_45]:wpn_addon_silencer_9x18
+$spawn                                             = "weapons\addons\wpn_addon_silencer_45"
+cost                                               = 750
+inv_grid_height                                    = 1
+inv_grid_width                                     = 1
+inv_grid_x                                         = 55
+inv_grid_y                                         = 6
+inv_name                                           = st_wpn_addon_silencer_45
+inv_weight                                         = 0.250
+visual                                             = dynamics\weapons\wpn_upgrade\wpn_addon_silencer_45.ogf
 
-cost                                     = 2500
-inv_weight                               = 0.3
+[wpn_addon_silencer_5x45]:wpn_addon_silencer_9x18
+$spawn                                             = "weapons\addons\wpn_addon_silencer_5x45"
+cost                                               = 600
+inv_grid_height                                    = 1
+inv_grid_width                                     = 1
+inv_grid_x                                         = 55
+inv_grid_y                                         = 7
+inv_name                                           = st_wpn_addon_silencer_5x45
+inv_weight                                         = 0.370
+visual                                             = dynamics\weapons\wpn_upgrade\wpn_addon_silencer_5_45.ogf
 
-bullet_hit_power_k                       = 1
-bullet_hit_impulse_k                     = 1
-bullet_speed_k                           = 1.03
-fire_dispersion_base_k                   = 1
-cam_dispersion_k                         = 0.8
-cam_dispersion_inc_k                     = 0.8
-PDM_disp_base_k                          = 1.1
-PDM_disp_accel_k                         = 1.1
-PDM_disp_vel_k                           = 1.1
-crosshair_inertion_k                     = 1.1
-zoom_rotate_time_k                       = 1.04
+[wpn_addon_silencer_5x56]:wpn_addon_silencer_9x18
+$spawn                                             = "weapons\addons\wpn_addon_silencer_5x56"
+cost                                               = 1200
+inv_grid_height                                    = 1
+inv_grid_width                                     = 1
+inv_grid_x                                         = 55
+inv_grid_y                                         = 8
+inv_name                                           = st_wpn_addon_silencer_5x56
+inv_weight                                         = 0.320
+visual                                             = dynamics\weapons\wpn_upgrade\wpn_addon_silencer_5_56.ogf
 
-[wpn_addon_rifle_suppressor]:wpn_addon_silencer
-inv_name                                 = st_addon_rifle_suppressor
-inv_name_short                           = st_addon_rifle_suppressor
-description                              = st_addon_rifle_suppressor_descr
+[wpn_addon_silencer_7_62x39]:wpn_addon_silencer_9x18
+$spawn                                             = "weapons\addons\wpn_addon_silencer_7_62x39"
+cost                                               = 900
+inv_grid_height                                    = 1
+inv_grid_width                                     = 1
+inv_grid_x                                         = 55
+inv_grid_y                                         = 3
+inv_name                                           = st_wpn_addon_silencer_7_62x39
+inv_weight                                         = 0.360
+visual                                             = dynamics\weapons\wpn_upgrade\wpn_addon_silencer_7_62x39.ogf
 
-inv_grid_x                               = 11
-inv_grid_y                               = 10
+[wpn_addon_silencer_7_62x54]:wpn_addon_silencer_9x18
+$spawn                                             = "weapons\addons\wpn_addon_silencer_7_62x54"
+cost                                               = 900
+inv_grid_height                                    = 1
+inv_grid_width                                     = 1
+inv_grid_x                                         = 55
+inv_grid_y                                         = 2
+inv_name                                           = st_wpn_addon_silencer_7_62x54
+inv_weight                                         = 0.410
+visual                                             = dynamics\weapons\wpn_upgrade\wpn_addon_silencer_7_62x54.ogf
 
-cost                                     = 5000
-inv_weight                               = 0.7
+[wpn_addon_silencer_7_62x51]:wpn_addon_silencer_9x18
+$spawn                                             = "weapons\addons\wpn_addon_silencer_7_62x51"
+cost                                               = 900
+inv_grid_height                                    = 1
+inv_grid_width                                     = 1
+inv_grid_x                                         = 55
+inv_grid_y                                         = 4
+inv_name                                           = st_wpn_addon_silencer_7_62x51
+inv_weight                                         = 0.390
+visual                                             = dynamics\weapons\wpn_upgrade\wpn_addon_silencer_7_62x51.ogf
 
-bullet_hit_power_k                       = 1
-bullet_hit_impulse_k                     = 1
-bullet_speed_k                           = 1
-fire_dispersion_base_k                   = 1
-cam_dispersion_k                         = 0.9
-cam_dispersion_inc_k                     = 0.9
-PDM_disp_base_k                          = 1.05
-PDM_disp_accel_k                         = 1.07
-PDM_disp_vel_k                           = 1.07
-crosshair_inertion_k                     = 1.1
-zoom_rotate_time_k                       = 1.04
+[wpn_addon_silencer_12x70]:wpn_addon_silencer_9x18
+$spawn                                             = "weapons\addons\wpn_addon_silencer_12x70"
+cost                                               = 900
+inv_grid_height                                    = 1
+inv_grid_width                                     = 1
+inv_grid_x                                         = 55
+inv_grid_y                                         = 10
+inv_name                                           = st_wpn_addon_silencer_12x70
+inv_weight                                         = 0.5
+visual                                             = dynamics\weapons\wpn_upgrade\wpn_addon_silencer_12_70.ogf
 
 ;-----------------------------------------------------------------------------
 ; Подствольные гранатомёты
@@ -93,13 +150,12 @@ $prefetch                                = 32
 
 cost                                     = 8500
 inv_name                                 = st_grenade_launcher
-inv_name_short                           = st_grenade_launcher
 inv_weight                               = 1.3
 
 inv_grid_width                           = 2
 inv_grid_height                          = 1
 inv_grid_x                               = 52
-inv_grid_y                               = 0
+inv_grid_y                               = 1
 grenade_vel                              = 56
 
 cam_dispersion_k                         = 0.85
@@ -127,9 +183,8 @@ slot							         = -1
 inv_grid_height                          = 1
 inv_grid_width                           = 2
 inv_grid_x                               = 52
-inv_grid_y                               = 2
+inv_grid_y                               = 3
 inv_name                                 = st_grenade_launcher_groza
-inv_name_short                           = st_grenade_launcher_groza
 inv_weight                               = 2.100
 visual                                   = dynamics\weapons\wpn_upgrade\wpn_grenade_launcher.ogf
 grenade_class                            = ammo_vog-25
@@ -144,13 +199,40 @@ $prefetch                                = 32
 slot                                     = -1
 cost                                     = 8500
 inv_name                                 = st_grenade_launcher_m203
-inv_name_short                           = st_grenade_launcher_m203
 inv_weight                               = 1.36
 
 inv_grid_width                           = 2
 inv_grid_height                          = 1
 inv_grid_x                               = 52
-inv_grid_y                               = 1
+inv_grid_y                               = 2
+grenade_vel                              = 56
+
+cam_dispersion_k                         = 0.85
+cam_dispersion_inc_k                     = 0.85
+PDM_disp_base_k                          = 1.1
+PDM_disp_accel_k                         = 1.1
+PDM_disp_vel_k                           = 1.1
+crosshair_inertion_k                     = 1.15
+zoom_rotate_time_k                       = 1.08
+
+grenade_class							 = ammo_m209
+
+[wpn_addon_grenade_launcher_fngl]:identity_immunities
+discovery_dependency                     =
+$spawn                                   = "weapons\addons\wpn_addon_grenade_launcher_fngl"
+class                                    = WP_GLAUN
+visual                                   = dynamics\weapons\wpn_upgrade\wpn_grenade_launcher_m203.ogf
+$prefetch                                = 32
+slot                                     = -1
+cost                                     = 8500
+inv_name                                 = st_wpn_addon_grenade_launcher_fngl
+description                              = st_wpn_addon_grenade_launcher_fngl_descr
+inv_weight                               = 1.00
+
+inv_grid_width                           = 2
+inv_grid_height                          = 1
+inv_grid_x                               = 52
+inv_grid_y                               = 0
 grenade_vel                              = 56
 
 cam_dispersion_k                         = 0.85

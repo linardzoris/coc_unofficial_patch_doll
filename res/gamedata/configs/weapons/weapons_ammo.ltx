@@ -20,6 +20,7 @@ k_disp                                   = 1
 k_hit                                    = 1
 k_impulse                                = 1
 tracer_color_ID                          = 0
+snd_on_take                              = ammo
 
 [ammo_knife]:ammo_base
 box_size                                 = 1
@@ -29,10 +30,27 @@ inv_grid_width                           = 1
 inv_grid_x                               = 0
 inv_grid_y                               = 0
 inv_name                                 = "ammo_knife"
-inv_name_short                           = "ammo_knife"
 inv_weight                               = 0
 k_air_resistance                         = 1
 k_ap                                     = 0.5
+tracer                                   = off
+visual                                   = dynamics\weapons\wpn_ammo\ammo_9x18_fmj.ogf
+wm_size                                  = 0.04
+
+[ammo_axe]:ammo_base
+box_size                                 = 1
+cost                                     = 1
+inv_grid_height                          = 1
+inv_grid_width                           = 1
+inv_grid_x                               = 0
+inv_grid_y                               = 0
+inv_name                                 = "ammo_axe"
+inv_weight                               = 0
+k_air_resistance                         = 1
+k_ap                                     = 1.87
+k_dist			                         = 1
+k_disp			                         = 1.0
+k_hit			                         = 2.0
 tracer                                   = off
 visual                                   = dynamics\weapons\wpn_ammo\ammo_9x18_fmj.ogf
 wm_size                                  = 0.04
@@ -41,7 +59,6 @@ wm_size                                  = 0.04
 $spawn                                   = "weapons\ammo\ammo_9x18_fmj"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_9x18_fmj.ogf
 inv_name                                 = st_ammo_9x18_fmj
-inv_name_short                           = st_ammo_9x18_fmj_s
 description                              = st_ammo_9x18_fmj_descr
 
 inv_grid_width                           = 1
@@ -63,7 +80,6 @@ k_air_resistance                         = 1.0 ; Эффект сопротивления ветру. Чем
 $spawn                                   = "weapons\ammo\ammo_9x18_pmm"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_9x18_pmm.ogf
 inv_name                                 = st_ammo_9x18_pmm
-inv_name_short                           = st_ammo_9x18_pmm_s
 description                              = st_ammo_9x18_pmm_descr
 
 inv_grid_width                           = 1
@@ -88,7 +104,6 @@ k_cam_dispersion                         = 1.1
 $spawn                                   = "weapons\ammo\ammo_9x19_fmj"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_9x19_fmj.ogf
 inv_name                                 = st_ammo_9x19_fmj
-inv_name_short                           = st_ammo_9x19_fmj_s
 description                              = st_ammo_9x19_fmj_descr
 
 inv_grid_width                           = 1
@@ -111,7 +126,6 @@ k_air_resistance                         = 1.0
 $spawn                                   = "weapons\ammo\ammo_9x19_pbp"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_9x19_pbp.ogf
 inv_name                                 = st_ammo_9x19_pbp
-inv_name_short                           = st_ammo_9x19_pbp_s
 description                              = st_ammo_9x19_pbp_descr
 
 inv_grid_width                           = 1
@@ -136,7 +150,6 @@ k_bullet_speed                           = 1.25
 $spawn                                   = "weapons\ammo\ammo_11.43x23_fmj"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_1143x23_fmj.ogf
 inv_name                                 = st_ammo_11.43x23_fmj
-inv_name_short                           = st_ammo_11.43x23_fmj_s
 description                              = st_ammo_11.43x23_fmj_descr
 
 inv_grid_width                           = 1
@@ -160,7 +173,6 @@ k_cam_dispersion                         = 1.2
 $spawn                                   = "weapons\ammo\ammo_11.43x23_hydro"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_1143x23_hydro.ogf
 inv_name                                 = st_ammo_11.43x23_hydro
-inv_name_short                           = st_ammo_11.43x23_hydro_s
 description                              = st_ammo_11.43x23_hydro_descr
 
 inv_grid_width                           = 1
@@ -185,7 +197,6 @@ k_cam_dispersion                         = 1.2
 $spawn                                   = "weapons\ammo\ammo_357_fmj"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_357_fmj.ogf
 inv_name                                 = st_ammo_357_fmj
-inv_name_short                           = st_ammo_357_fmj_s
 description                              = st_ammo_357_fmj_descr
 
 inv_grid_width                           = 1
@@ -209,7 +220,6 @@ k_cam_dispersion                         = 1.3
 $spawn                                   = "weapons\ammo\ammo_5_7x28_ss190"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_5_7x28_ss190.ogf
 inv_name                                 = st_ammo_5_7x28_ss190
-inv_name_short                           = st_ammo_5_7x28_ss190_s
 description                              = st_ammo_5_7x28_ss190_descr
 
 inv_grid_width                           = 2
@@ -232,7 +242,6 @@ k_air_resistance                         = 0.5
 $spawn                                   = "weapons\ammo\ammo_7_62x25_fmj"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_762x25_p.ogf
 inv_name                                 = st_ammo_7_62x25_fmj
-inv_name_short                           = st_ammo_7_62x25_fmj_s
 description                              = st_ammo_7_62x25_fmj_descr
 
 inv_grid_width                           = 1
@@ -256,7 +265,6 @@ k_cam_dispersion                         = 1.1
 $spawn                                   = "weapons\ammo\ammo_7_62x25_ap"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_762x25_ps.ogf
 inv_name                                 = st_ammo_7_62x25_ap
-inv_name_short                           = st_ammo_7_62x25_ap_s
 description                              = st_ammo_7_62x25_ap_descr
 
 inv_grid_width                           = 1
@@ -281,7 +289,6 @@ k_cam_dispersion                         = 1.15
 $spawn                                   = "weapons\ammo\ammo_5.45x39_fmj"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_545x39_fmj.ogf
 inv_name                                 = st_ammo_5.45x39_fmj
-inv_name_short                           = st_ammo_5.45x39_fmj_s
 description                              = st_ammo_5.45x39_fmj_descr
 
 inv_grid_width                           = 2
@@ -304,7 +311,6 @@ k_air_resistance                         = 1.1
 $spawn                                   = "weapons\ammo\ammo_5.45x39_ap"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_545x39_ap.ogf
 inv_name                                 = st_ammo_5.45x39_ap
-inv_name_short                           = st_ammo_5.45x39_ap_s
 description                              = st_ammo_5.45x39_ap_descr
 
 inv_grid_width                           = 2
@@ -327,7 +333,6 @@ k_air_resistance                         = 1.1
 $spawn                                   = "weapons\ammo\ammo_7_62x39_fmj"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_762x39_fmj.ogf
 inv_name                                 = st_ammo_7_62x39_fmj
-inv_name_short                           = st_ammo_7_62x39_fmj_s
 description                              = st_ammo_7_62x39_fmj_descr
 
 inv_grid_width                           = 2
@@ -350,7 +355,6 @@ k_air_resistance                         = 0.7
 $spawn                                   = "weapons\ammo\ammo_7_62x39_ap"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_762x39_ap.ogf
 inv_name                                 = st_ammo_7_62x39_ap
-inv_name_short                           = st_ammo_7_62x39_ap_s
 description                              = st_ammo_7_62x39_ap_descr
 
 inv_grid_width                           = 2
@@ -373,7 +377,6 @@ k_air_resistance                         = 0.6
 $spawn                                   = "weapons\ammo\ammo_5.56x45_ss190"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_556x45_ss190.ogf
 inv_name                                 = st_ammo_5.56x45_ss190
-inv_name_short                           = st_ammo_5.56x45_ss190_s
 description                              = st_ammo_5.56x45_ss190_descr
 
 inv_grid_width                           = 2
@@ -396,7 +399,6 @@ k_air_resistance                         = 1.1
 $spawn                                   = "weapons\ammo\ammo_5.56x45_ap"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_556x45_ap.ogf
 inv_name                                 = st_ammo_5.56x45_ap
-inv_name_short                           = st_ammo_5.56x45_ap_s
 description                              = st_ammo_5.56x45_ap_descr
 
 inv_grid_width                           = 2
@@ -419,7 +421,6 @@ k_air_resistance                         = 1.1
 $spawn                                   = "weapons\ammo\ammo_pkm_100"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_pkm.ogf
 inv_name                                 = st_ammo_pkm_100
-inv_name_short                           = st_ammo_pkm_100_s
 description                              = st_ammo_pkm_100_descr
 
 inv_grid_width                           = 2
@@ -442,7 +443,6 @@ k_air_resistance                         = 0.5
 $spawn                                   = "weapons\ammo\ammo_7.62x54_7h1"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_762x54_7h1.ogf
 inv_name                                 = st_ammo_7_62x54_7h1
-inv_name_short                           = st_ammo_7_62x54_7h1_s
 description                              = st_ammo_7_62x54_7h1_descr
 
 inv_grid_width                           = 2
@@ -464,7 +464,6 @@ wm_size                                  = 0.07
 $spawn                                   = "weapons\ammo\ammo_7_62x54_ap"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_762x54_7h14.ogf
 inv_name                                 = st_ammo_7_62x54_ap
-inv_name_short                           = st_ammo_7_62x54_ap_s
 description                              = st_ammo_7_62x54_ap_descr
 
 inv_grid_width                           = 2
@@ -486,7 +485,6 @@ wm_size                                  = 0.07
 $spawn                                   = "weapons\ammo\ammo_7_62x51_fmj"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_762x51_fmj.ogf
 inv_name                                 = st_ammo_7_62x51_fmj
-inv_name_short                           = st_ammo_7_62x51_fmj_s
 description                              = st_ammo_7_62x51_fmj_descr
 
 inv_grid_width                           = 2
@@ -509,7 +507,6 @@ k_air_resistance                         = 0.35
 $spawn                                   = "weapons\ammo\ammo_7_62x51_ap"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_762x51_ap.ogf
 inv_name                                 = st_ammo_7_62x51_ap
-inv_name_short                           = st_ammo_7_62x51_ap_s
 description                              = st_ammo_7_62x51_ap_descr
 
 inv_grid_width                           = 2
@@ -531,7 +528,6 @@ wm_size                                  = 0.07
 $spawn                                   = "weapons\ammo\ammo_gauss"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_gauss.ogf
 inv_name                                 = st_ammo_gauss
-inv_name_short                           = st_ammo_gauss
 description                              = st_ammo_gauss_descr
 
 inv_grid_width                           = 1
@@ -554,7 +550,6 @@ explosive                                = on
 $spawn                                   = "weapons\ammo\ammo_gauss_cardan"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_gauss_custom.ogf
 inv_name                                 = st_ammo_gauss_cardan
-inv_name_short                           = st_ammo_gauss_cardan
 description                              = st_ammo_gauss_cardandescr
 
 inv_grid_x                               = 14
@@ -566,7 +561,6 @@ cost                                     = 4000
 $spawn                                   = "weapons\ammo\ammo_9x39_pab9"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_9x39_sp5.ogf
 inv_name                                 = st_ammo_9x39_sp5
-inv_name_short                           = st_ammo_9x39_sp5_s
 description                              = st_ammo_9x39_sp5_descr
 
 inv_grid_width                           = 2
@@ -589,7 +583,6 @@ k_air_resistance                         = 1.0
 $spawn                                   = "weapons\ammo\ammo_9x39_ap"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_9x39_ap.ogf
 inv_name                                 = st_ammo_9x39_ap
-inv_name_short                           = st_ammo_9x39_ap_s
 description                              = st_ammo_9x39_ap_descr
 
 inv_grid_width                           = 2
@@ -612,7 +605,6 @@ k_air_resistance                         = 1.5
 $spawn                                   = "weapons\ammo\ammo_12x70_buck"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_12x70_buck.ogf
 inv_name                                 = st_ammo_12x70_buck
-inv_name_short                           = st_ammo_12x70_buck_s
 description                              = st_ammo_12x70_buck_descr
 
 inv_grid_width                           = 2
@@ -638,7 +630,6 @@ k_air_resistance                         = 1.5
 $spawn                                   = "weapons\ammo\ammo_12x76_zhekan"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_12x76_zhekan.ogf
 inv_name                                 = st_ammo_12x76_zhekan
-inv_name_short                           = st_ammo_12x76_zhekan_s
 description                              = st_ammo_12x76_zhekan_descr
 
 inv_grid_width                           = 2
@@ -662,7 +653,6 @@ k_bullet_speed                           = 1.15
 $spawn                                   = "weapons\ammo\ammo_20x70_buck"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_20x70_buck.ogf
 inv_name                                 = st_ammo_20x70_buck
-inv_name_short                           = st_ammo_20x70_buck_s
 description                              = st_ammo_20x70_buck_descr
 
 inv_grid_width                           = 2
@@ -688,7 +678,6 @@ k_air_resistance                         = 1.5
 $spawn                                   = "weapons\ammo\ammo_20x76_zhekan"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_20x76_zhekan.ogf
 inv_name                                 = st_ammo_20x76_zhekan
-inv_name_short                           = st_ammo_20x76_zhekan_s
 description                              = st_ammo_20x76_zhekan_descr
 
 inv_grid_width                           = 2
@@ -724,7 +713,6 @@ $spawn                                   = "weapons\ammo\ammo_og-7b"
 class                                    = S_OG7B
 visual                                   = dynamics\weapons\wpn_ammo\ammo_og_7b.ogf
 inv_name                                 = st_ammo_og_7b
-inv_name_short                           = st_ammo_og_7b_s
 description                              = st_ammo_og_7b_descr
 
 inv_grid_width                           = 3
@@ -751,7 +739,6 @@ $spawn                                   = "weapons\ammo\ammo_pg_26"
 class                                    = S_OG7B
 visual                                   = dynamics\weapons\wpn_rpg_26\ammo_pg26.ogf
 inv_name                                 = st_ammo_pg_26
-inv_name_short                           = st_ammo_pg_26_s
 description                              = st_ammo_pg_26_descr
 
 inv_grid_width                           = 2
@@ -782,7 +769,6 @@ $spawn                                   = "weapons\ammo\ammo_vog-25"
 class                                    = S_VOG25
 visual                                   = dynamics\weapons\wpn_ammo\ammo_vog_25.ogf
 inv_name                                 = st_ammo_vog_25
-inv_name_short                           = st_ammo_vog_25_s
 description                              = st_ammo_vog_25_descr
 
 inv_grid_width                           = 1
@@ -809,7 +795,6 @@ $spawn                                   = "weapons\ammo\ammo_vog_25p"
 class                                    = S_VOG25
 visual                                   = dynamics\weapons\wpn_ammo\ammo_vog_25.ogf
 inv_name                                 = st_ammo_vog_25p
-inv_name_short                           = st_ammo_vog_25p_s
 description                              = st_ammo_vog_25p_descr
 
 inv_grid_width                           = 1
@@ -836,7 +821,6 @@ $spawn                                   = "weapons\ammo\ammo_m209"
 class                                    = S_M209
 visual                                   = dynamics\weapons\wpn_ammo\ammo_m209.ogf
 inv_name                                 = st_ammo_m209
-inv_name_short                           = st_ammo_m209_s
 description                              = st_ammo_m209_descr
 
 inv_grid_width                           = 1

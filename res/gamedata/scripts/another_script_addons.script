@@ -1,7 +1,5 @@
---| Hotkey to toggle suppressor (By TKGP)
-
 -------------------------------
--- SILENCER
+-- Hotkey to toggle suppressor (By TKGP)
 -------------------------------
 
 local sil_delay = 1500 -- Additional time (milliseconds) before weapon is reequipped
@@ -91,9 +89,72 @@ local function on_key_release(key)
 end
 
 -------------------------------
+-- Sound on take item (anomaly)
+-------------------------------
+
+local time_snd_prev = 0
+local snd_on_take = {
+	["coin"]    = {"interface\\items\\inv_items_money_coin"},
+	["bolt"]    = {"interface\\items\\inv_items_ammo_1"},
+	["paper"]   = {"interface\\items\\inv_items_money_paper"},
+	["bottle"]   = {"interface\\items\\inv_items_bottle_",1,2},
+	["pills"]   = {"interface\\items\\inv_items_pills_2"},
+	["part"]   = {"interface\\items\\inv_items_parts_",1,2},
+	["outfit"]  = {"interface\\items\\inv_items_cloth_",1,3},
+	["ammo"]    = {"interface\\items\\inv_items_ammo_",4,7},
+	["grenade"] = {"interface\\items\\inv_items_grenade_",1,2},
+	["knife"]    = {"interface\\items\\inv_items_knife_",1,2},
+	["weapon"]  = {"interface\\items\\inv_items_wpn_",1,2},
+	["other"]   = {"interface\\items\\inv_items_generic_",2,5},
+}
+
+function play_item_sound(item, vol)
+	if (not item) then
+		printe("!ERROR itms_manager | play_item_sound | no object recieved!")
+	end
+
+	local snd_type = SYS_GetParam(0,item:section(),"snd_on_take")
+	if not (snd_type and snd_type ~= "") then
+		return
+	end
+	
+	local snd = snd_on_take[snd_type]
+	if (not snd) then
+		return
+	end
+	
+	local snd_obj
+	if (#snd == 1) then
+		snd_obj = sound_object(snd[1])
+	else
+		snd_obj = sound_object(snd[1] .. tostring(math.random(snd[2],snd[3])))
+	end
+
+	local time_g = time_global()
+	if snd_obj and (time_g > time_snd_prev + 25) then
+		snd_obj:play(db.actor,0,sound_object.s2d)
+		snd_obj.volume = vol or 1
+	end
+	time_snd_prev = time_g
+end
+
+function actor_on_item_take(obj)
+	local sec = obj:section()
+	
+	-- Play sound effect for item taking
+	play_item_sound(obj)
+
+	--if (sec == "inv_money_deadbody") then 
+		--db.actor:give_money(math.random(50,2500))
+		--xr_effects.remove_item_no_message(actor, npc, {"inv_money_deadbody"})	
+	--end
+end
+
+-------------------------------
 -- Каллбеки
 -------------------------------
 
 function on_game_start()
 	RegisterScriptCallback("on_key_release",on_key_release)
+	RegisterScriptCallback("actor_on_item_take",actor_on_item_take)
 end

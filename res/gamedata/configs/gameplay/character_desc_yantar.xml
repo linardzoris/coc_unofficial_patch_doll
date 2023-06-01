@@ -124,7 +124,7 @@
 	<money min="20000" max="20000" infinitive="1"/>
 	<reputation>998</reputation>
 
-	<visual>actors\stalker_soldier\stalker_soldier1b</visual>
+	<visual>actors\stalker_soldier\stalker_soldier_1b</visual>
 	<supplies>
 
 	[spawn] \n

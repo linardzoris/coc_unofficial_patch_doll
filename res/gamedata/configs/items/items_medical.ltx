@@ -8,7 +8,6 @@ visual                         = dynamics\devices\dev_bandage\dev_bandage.ogf
 description                    = st_bandage_descr
 
 inv_name                       = st_bandage
-inv_name_short                 = st_bandage
 inv_weight                     = 0.05
 cost                           = 350
 
@@ -17,18 +16,33 @@ inv_grid_height                = 1
 inv_grid_x                     = 17
 inv_grid_y                     = 1
 
+has_anim 					   = true
+hud_section                    = bandage_hud
+
 boost_time                     = 4.0
 boost_bleeding_restore         = 0.015
 
 use_sound                      = interface\inv_bandage
 
 hide_time_wpn                  = 3
+snd_on_take				       = other
+
+[bandage_hud]:hud_base
+hands_position				   = 0.0,-0.02,0.14
+hands_orientation			   = 0.0,0.0,0.0
+hands_position_16x9			   = 0.0,-0.02,0.14
+hands_orientation_16x9		   = 0.0,0.0,0.0
+item_position                  = 0,0,0
+item_orientation               = 0,0,0
+anm_use          			   = bandage_1_hands_eat_invtrans, bint_wpn_eat
+snd_using                      = interface\item_usage\bandage_use
+single_handed_anim             = 2 ;0 - правая, 1 - левая, 2 - обе
+item_visual                    = dynamics\devices\first_person_animated\dev_bandage\bandage_hud
 
 [antirad]:booster
 $spawn                         = "food and drugs\antirad"
 visual                         = dynamics\devices\dev_antirad\dev_antirad.ogf
 inv_name                       = st_antirad
-inv_name_short                 = st_antirad
 description                    = st_antirad_descr
 inv_weight                     = 0.01
 
@@ -38,6 +52,9 @@ inv_grid_x                     = 16
 inv_grid_y                     = 1
 cost                           = 500
 
+has_anim 					   = true
+hud_section                    = antirad_hud
+
 eat_satiety                    = -0.1
 eat_thirst					   = -0.1
 eat_intoxication			   = 3
@@ -45,15 +62,27 @@ eat_intoxication			   = 3
 boost_time                     = 5.0
 boost_radiation_restore        = 0.01
 
-use_sound                      = interface\inv_pills
+;use_sound                      = interface\inv_pills
 
 hide_time_wpn                  = 4
+snd_on_take				       = other
+
+[antirad_hud]:hud_base
+hands_position				   = 0.0,-0.02,0.14
+hands_orientation			   = 0.0,0.0,0.0
+hands_position_16x9			   = 0.0,-0.02,0.14
+hands_orientation_16x9		   = 0.0,0.0,0.0
+item_position                  = 0,0,0
+item_orientation               = 0,0,0
+anm_use          			   = dev_syringe_gwr_hud, med             ;dev_antirad_gwr_1_hand_animation, syringe1
+snd_using                      = interface\item_usage\medkit_use      ;interface\item_usage\antirad_use
+single_handed_anim             = 2 ;0 - правая, 1 - левая, 2 - обе
+item_visual                    = dynamics\devices\first_person_animated\dev_medkit\syringe_hud      ;dynamics\devices\first_person_animated\dev_antirad\antirad_hud
 
 [medkit]:booster
 $spawn                         = "food and drugs\medkit"
 visual                         = dynamics\devices\dev_aptechka\dev_aptechka_low.ogf
 inv_name                       = st_medkit
-inv_name_short                 = st_medkit
 description                    = st_medkit_descr
 inv_weight                     = 0.5
 
@@ -76,12 +105,27 @@ use_sound                      = interface\inv_medkit
 remove_after_use               = true
 
 hide_time_wpn                  = 5
+snd_on_take				       = other
+
+has_anim 					   = true
+hud_section                    = medkit_hud
+
+[medkit_hud]:hud_base
+hands_position				   = 0.0,-0.02,0.14
+hands_orientation			   = 0.0,0.0,0.0
+hands_position_16x9			   = 0.0,-0.02,0.14
+hands_orientation_16x9		   = 0.0,0.0,0.0
+item_position                  = 0,0,0
+item_orientation               = 0,0,0
+anm_use          			   = aptechka_hands_eat_invtrans, aptechka_wpn_eat
+snd_using                      = interface\item_usage\medkit_use
+single_handed_anim             = 2 ;0 - правая, 1 - левая, 2 - обе
+item_visual                    = dynamics\devices\first_person_animated\dev_medkit\medkit_hud
 
 [medkit_army]:booster
 $spawn                         = "food and drugs\medkit_army"
 visual                         = dynamics\devices\dev_aptechka\dev_aptechka_high.ogf
 inv_name                       = st_medkit_army
-inv_name_short                 = st_medkit_army
 description                    = st_medkit_army_descr
 inv_weight                     = 0.5
 
@@ -100,17 +144,32 @@ boost_health_restore           = 0.006
 boost_radiation_restore        = 0.001
 boost_bleeding_restore         = 0.003
 
-use_sound                      = interface\inv_medkit
+;use_sound                      = interface\inv_medkit
 
 remove_after_use               = true
 
 hide_time_wpn                  = 5
+snd_on_take				       = other
+
+has_anim 					   = true
+hud_section                    = medkit_army_hud
+
+[medkit_army_hud]:hud_base
+hands_position				   = 0.0,-0.02,0.14
+hands_orientation			   = 0.0,0.0,0.0
+hands_position_16x9			   = 0.0,-0.02,0.14
+hands_orientation_16x9		   = 0.0,0.0,0.0
+item_position                  = 0,0,0
+item_orientation               = 0,0,0
+anm_use          			   = aptechka_hands_eat_invtrans, aptechka_wpn_eat
+snd_using                      = interface\item_usage\medkit_use
+single_handed_anim             = 2 ;0 - правая, 1 - левая, 2 - обе
+item_visual                    = dynamics\devices\first_person_animated\dev_medkit\medkit_army_hud
 
 [medkit_scientic]:booster
 $spawn                         = "food and drugs\medkit_scientic"
 visual                         = dynamics\devices\dev_aptechka\dev_aptechka_mid.ogf
 inv_name                       = st_medkit_science
-inv_name_short                 = st_medkit_science
 description                    = st_medkit_science_descr
 inv_weight                     = 0.5
 
@@ -129,8 +188,24 @@ boost_health_restore           = 0.006
 boost_radiation_restore        = 0.005
 boost_bleeding_restore         = 0.001
 
-use_sound                      = interface\inv_medkit
+;use_sound                      = interface\inv_medkit
 
 remove_after_use               = true
 
 hide_time_wpn                  = 5
+snd_on_take				       = other
+
+has_anim 					   = true
+hud_section                    = medkit_scientic_hud
+
+[medkit_scientic_hud]:hud_base
+hands_position				   = 0.0,-0.02,0.14
+hands_orientation			   = 0.0,0.0,0.0
+hands_position_16x9			   = 0.0,-0.02,0.14
+hands_orientation_16x9		   = 0.0,0.0,0.0
+item_position                  = 0,0,0
+item_orientation               = 0,0,0
+anm_use          			   = aptechka_hands_eat_invtrans, aptechka_wpn_eat
+snd_using                      = interface\item_usage\medkit_use
+single_handed_anim             = 2 ;0 - правая, 1 - левая, 2 - обе
+item_visual                    = dynamics\devices\first_person_animated\dev_medkit\medkit_sci_hud

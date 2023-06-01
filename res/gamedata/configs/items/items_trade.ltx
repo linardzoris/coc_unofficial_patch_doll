@@ -2,14 +2,17 @@
 [itm_pda_common]:base_quest_item
 can_take = true 
 can_trade = false ; These are traded through dialog
+snd_on_take	= other
 
 [itm_pda_uncommon]:base_quest_item
 can_take = true 
 can_trade = false
+snd_on_take	= other
 
 [itm_pda_rare]:base_quest_item
 can_take = true 
 can_trade = false
+snd_on_take	= other
 
 ; For encyclopedia.
 [itm_guide_usb_1]:booster
@@ -21,10 +24,10 @@ description                              = st_pda_descr
 inv_grid_x                               = 8
 inv_grid_y                               = 3
 inv_name                                 = st_memory_stick_name
-inv_name_short                           = st_memory_stick_name
 use1_action_functor                      = dxr_encyclopedia.context_action_functor
 use1_functor                             = dxr_encyclopedia.context_functor
 visual                                   = dynamics\devices\dev_flash_1\dev_flash_1.ogf
+snd_on_take	                             = other
 
 [itm_guide_usb_2]:booster
 can_take                                 = true
@@ -35,7 +38,7 @@ description                              = st_pda_descr
 inv_grid_x                               = 9
 inv_grid_y                               = 3
 inv_name                                 = st_memory_stick_name
-inv_name_short                           = st_memory_stick_name
 use1_action_functor                      = dxr_encyclopedia.context_action_functor
 use1_functor                             = dxr_encyclopedia.context_functor
 visual                                   = dynamics\devices\dev_flash_2\dev_flash_2.ogf
+snd_on_take	                             = other

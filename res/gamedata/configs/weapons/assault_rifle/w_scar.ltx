@@ -14,7 +14,6 @@ ef_main_weapon_type			= 0
 ef_weapon_type				= 5
 
 inv_name					= st_wpn_scar_h
-inv_name_short				= st_wpn_scar_h
 
 inv_grid_width				= 5
 inv_grid_height				= 2
@@ -122,10 +121,13 @@ scope_x 						= 49
 scope_y 						= 7
 
 silencer_status					= 2
-grenade_launcher_status	   	 	= 0
+grenade_launcher_name           = wpn_addon_grenade_launcher_fngl
+grenade_launcher_status         = 2
+grenade_launcher_x              = 89
+grenade_launcher_y              = 38
 zoom_enabled					= true
 zoom_rotate_time				= 0.2
-silencer_name 					= wpn_addon_silencer_7_62
+silencer_name 					= wpn_addon_silencer_7_62x51
 silencer_x                 		= 252
 silencer_y                  	= 17
 
@@ -141,10 +143,10 @@ snd_empty               		= weapons\_dryfire\556_dry_2
 snd_reload						= weapons\scar\scarh_reload
 snd_reload_empty				= weapons\scar\scarh_reload_empty
 snd_reload_misfire				= weapons\scar\scarh_reload_misfire
-snd_shoot_grenade       		= nil
-snd_reload_grenade      		= nil
-snd_switch              		= nil
-snd_bore 						= nil
+snd_reload_grenade      		= weapons\_shared\scar_reload_gl
+snd_shoot_grenade               = weapons\_shared\scar_gl_shot
+snd_switch                      = weapons\_shared\scar_switch_gl_on
+snd_bore 						= weapons\scar\scar_boring
 
 snd_shoot               		= weapons\_gunfire\scar\close_1
 snd_shoot1              		= weapons\_gunfire\scar\close_2
@@ -255,8 +257,8 @@ item_visual             				 = dynamics\weapons\wpn_scar\wpn_scar_h_hud.ogf
 [wpn_scar_h_barska_scope]:wpn_scar_h
 $spawn             		            = "weapons\wpn_scar_h_barska_scope"
 hud						            = wpn_scar_h_barska_scope_hud
-scope_x                             = 84
-scope_y                             = -1
+scope_x                             = 79
+scope_y                             = -7
 
 [wpn_scar_h_barska_scope_hud]:wpn_scar_h_hud
 aim_hud_offset_pos					= -0.049560,0.006190,-0.142104
@@ -268,34 +270,34 @@ item_visual            	 			= dynamics\weapons\wpn_scar\wpn_scar_h_barska_hud.og
 [wpn_scar_h_acog_scope]:wpn_scar_h
 $spawn					            = "weapons\wpn_scar_h_acog_scope"
 hud						            = wpn_scar_h_acog_scope_hud
-scope_x                             = 86
-scope_y                             = 1
+scope_x                             = 80
+scope_y                             = -6
 
 [wpn_scar_h_acog_scope_hud]:wpn_scar_h_hud
-aim_hud_offset_pos					= -0.048560,-0.002610,-0.114705
-aim_hud_offset_rot					= -0.033150,0.009900,0.012050
-aim_hud_offset_pos_16x9				= -0.048560,-0.002610,-0.114705
-aim_hud_offset_rot_16x9				= -0.033150,0.009900,0.012050
+aim_hud_offset_pos					= -0.050060,-0.005610,-0.171704
+aim_hud_offset_rot					= -0.033950,0.012825,0.012050
+aim_hud_offset_pos_16x9				= -0.050060,-0.005610,-0.171704
+aim_hud_offset_rot_16x9				= -0.033950,0.012825,0.012050
 item_visual            	 			= dynamics\weapons\wpn_scar\wpn_scar_h_acog_hud.ogf
 
 [wpn_scar_h_pn23_scope]:wpn_scar_h
 $spawn					            = "weapons\wpn_scar_h_pn23_scope"
 hud						            = wpn_scar_h_pn23_scope_hud
-scope_x                             = 101
-scope_y                             = 0
+scope_x                             = 78
+scope_y                             = -6
 
 [wpn_scar_h_pn23_scope_hud]:wpn_scar_h_hud
-aim_hud_offset_pos					= -0.048560,-0.007610,-0.089705
-aim_hud_offset_rot					= 0.013050,0.010700,0.012050
-aim_hud_offset_pos_16x9				= -0.048560,-0.007610,-0.089705
-aim_hud_offset_rot_16x9				= 0.013050,0.010700,0.012050
+aim_hud_offset_pos					= -0.050060,-0.006610,-0.156705
+aim_hud_offset_rot					= 0.013375,0.012850,0.012050
+aim_hud_offset_pos_16x9				= -0.050060,-0.006610,-0.156705
+aim_hud_offset_rot_16x9				= 0.013375,0.012850,0.012050
 item_visual            	 		    = dynamics\weapons\wpn_scar\wpn_scar_h_pn23_hud.ogf
 
 [wpn_scar_h_eotech_scope]:wpn_scar_h
 $spawn					            = "weapons\wpn_scar_h_eotech_scope"
 hud						            = wpn_scar_h_eotech_scope_hud
-scope_x                             = 158
-scope_y                             = -2
+scope_x                             = 81
+scope_y                             = -7
 
 [wpn_scar_h_eotech_scope_hud]:wpn_scar_h_hud
 aim_hud_offset_pos					= -0.049560,-0.002210,-0.118705
@@ -307,14 +309,14 @@ item_visual            	 		    = dynamics\weapons\wpn_scar\wpn_scar_h_eotech_hud
 [wpn_scar_h_specter_scope]:wpn_scar_h
 $spawn					            = "weapons\wpn_scar_h_specter_scope"
 hud						            = wpn_scar_h_specter_scope_hud
-scope_x                             = 86
+scope_x                             = 75
 scope_y                             = -8
 
 [wpn_scar_h_specter_scope_hud]:wpn_scar_h_hud
-aim_hud_offset_pos					= -0.048560,-0.002610,-0.114705
-aim_hud_offset_rot					= -0.033150,0.009900,0.012050
-aim_hud_offset_pos_16x9				= -0.048560,-0.002610,-0.114705
-aim_hud_offset_rot_16x9				= -0.033150,0.009900,0.012050
+aim_hud_offset_pos					= -0.048560,-0.003610,-0.145705
+aim_hud_offset_rot					= -0.031225,0.008400,0.012050
+aim_hud_offset_pos_16x9				= -0.048560,-0.003610,-0.145705
+aim_hud_offset_rot_16x9				= -0.031225,0.008400,0.012050
 aim_hud_offset_alt_pos				= -0.049500,-0.014000,-0.052000
 aim_hud_offset_alt_rot				= 0.005250,0.011025,0.000000
 aim_hud_offset_alt_pos_16x9			= -0.049500,-0.014000,-0.052000

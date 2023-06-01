@@ -9,7 +9,6 @@ default_to_ruck                                    = false
 sprint_allowed                                     = true
 description                                        = st_pda_descr
 inv_name                                           = st_pda_name
-inv_name_short                                     = st_pda_name
 inv_weight                               	   	   = 0.1
 inv_grid_width                                     = 1
 inv_grid_height                                    = 1
@@ -22,6 +21,7 @@ attach_bone_name                                   = bip01_l_hand
 auto_attach                                        = false 
 can_trade                               	   	   = false
 can_use 					                       = false
+snd_on_take				                           = other
 
 [device_pda]:identity_immunities
 GroupControlSection                                = spawn_group
@@ -44,7 +44,6 @@ power_decay_rate 						 		   = 0.000057 ;скорость израсходования заряда
 passive_decay_rate 						 		   = 0.000027 ;пассивная скорость израсходования (в инвентаре)
 
 inv_name                                           = st_pda_name
-inv_name_short                                     = st_pda_name
 inv_weight                                         = 0.1	                                       ;0.2
 
 inv_grid_width                                     = 1
@@ -141,10 +140,10 @@ default_to_ruck                          = false
 inv_weight                               = 0.05
 
 inv_name                                 = st_pda_name
-inv_name_short                           = st_pda_name
 description                              = st_pda_descr
 cost                                     = 0
 can_trade                                = false
+snd_on_take				                 = other
 
 [dev_flash_2]:identity_immunities
 GroupControlSection                      = spawn_group
@@ -166,10 +165,10 @@ default_to_ruck                          = false
 inv_weight                               = 0.05
 
 inv_name                                 = st_pda_name
-inv_name_short                           = st_pda_name
 description                              = st_pda_descr
 cost                                     = 0
 can_trade                                = false
+snd_on_take				                 = other
 
 [device_torch]:identity_immunities
 GroupControlSection                      = spawn_group
@@ -182,7 +181,6 @@ visual                                   = dynamics\devices\dev_torch_light\dev_
 description                              = st_device_torch_descr
 cost                                     = 500
 inv_name                                 = st_device_torch_name
-inv_name_short                           = st_device_torch_name
 inv_weight                               = 0.1
 inv_grid_width							 = 2
 inv_grid_height							 = 1
@@ -235,10 +233,10 @@ default_to_ruck                          = true
 sprint_allowed                           = false
 control_inertion_factor                  = 1
 disabled_maps                            = ai_test,ai_test2, andy_test_
+snd_on_take				                 = other
 
 [device_torch_bad]:device_torch
 inv_name                                 = st_device_torch_bad_name
-inv_name_short                           = st_device_torch_bad_name
 description                              = st_device_torch_bad_descr
 
 torch_allowed                            = on 
@@ -259,7 +257,6 @@ visual                                   = dynamics\devices\dev_torch_light\devi
 
 [device_torch_mid]:device_torch
 inv_name                                 = st_device_torch_mid_name
-inv_name_short                           = st_device_torch_mid_name
 description                              = st_device_torch_mid_descr
 
 torch_allowed                            = on
@@ -280,7 +277,6 @@ visual                                   = dynamics\devices\dev_torch_light\devi
 
 [device_torch_far]:device_torch
 inv_name                                 = st_device_torch_far_name
-inv_name_short                           = st_device_torch_far_name
 description                              = st_device_torch_far_descr
 
 torch_allowed                            = on 
@@ -301,7 +297,6 @@ visual                                   = dynamics\devices\dev_torch_light\devi
 
 [device_torch_wid]:device_torch
 inv_name                                 = st_device_torch_wid_name
-inv_name_short                           = st_device_torch_wid_name
 description                              = st_device_torch_wid_descr
 
 torch_allowed                            = on
@@ -322,7 +317,6 @@ visual                                   = dynamics\devices\dev_torch_light\devi
 
 [device_torch_top]:device_torch
 inv_name                                 = st_device_torch_top_name
-inv_name_short                           = st_device_torch_top_name
 description                              = st_device_torch_top_descr
 
 torch_allowed                            = on
@@ -343,7 +337,6 @@ visual                                   = dynamics\devices\dev_torch_light\devi
 
 [device_nvg_1]:device_torch
 inv_name                                 = st_device_nvg_1_name
-inv_name_short                           = st_device_nvg_1_name
 description                              = st_device_nvg_1_descr
 
 torch_allowed                            = off
@@ -365,7 +358,6 @@ visual                                   = dynamics\devices\dev_torch_light\dev_
 
 [device_nvg_2]:device_torch
 inv_name                                 = st_device_nvg_2_name
-inv_name_short                           = st_device_nvg_2_name
 description                              = st_device_nvg_2_descr
 
 torch_allowed                            = off
@@ -387,7 +379,6 @@ visual                                   = dynamics\devices\dev_torch_light\dev_
 
 [device_nvg_3]:device_torch
 inv_name                                 = st_device_nvg_3_name
-inv_name_short                           = st_device_nvg_3_name
 description                              = st_device_nvg_3_descr
 
 torch_allowed                            = off
@@ -414,7 +405,6 @@ description                              = enc_weapons1_wpn_flare
 
 inv_weight                               = 0.2
 inv_name                                 = device_flare
-inv_name_short                           = device_flare_short
 
 inv_grid_width                           = 2
 inv_grid_height                          = 1
@@ -477,7 +467,6 @@ inv_grid_height                          = 1
 inv_grid_x                               = 5
 inv_grid_y                               = 39
 inv_name                                 = st_device_flashlight_name
-inv_name_short                           = st_device_flashlight_name
 description                              = st_device_flashlight_desc
 
 power_decay_rate 						 = 0.000297 ;скорость израсходования заряда
@@ -499,6 +488,7 @@ snd_turn_off                             = device\pda\pda_btn_press, 1
 
 attach_angle_offset                      = 3.062, 0.008, -1.532
 attach_position_offset                   = 0.134, -0.007, 0.09
+snd_on_take				                 = other
 
 [device_flashlight_hud]:detector_base_hud
 hands_position							 = 0.061000,-0.169000,-0.124500

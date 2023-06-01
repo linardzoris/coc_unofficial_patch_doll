@@ -2,7 +2,6 @@
 $spawn                                   = "repair\gunsmith_toolkit"
 description                              = st_itm_gunsmith_toolkit_descr
 inv_name                                 = st_itm_gunsmith_toolkit
-inv_name_short                           = st_itm_gunsmith_toolkit
 can_trade                                = true
 quest_item                               = false
 cost                                     = 10000
@@ -13,7 +12,7 @@ inv_grid_height                          = 1
 inv_grid_x                               = 14
 inv_grid_y                               = 10
 
-repair_min_condition                     = 0.29 ;Min required condition to use
+repair_min_condition                     = 0.0 ;Min required condition to use
 repair_max_condition                     = 0.94 ;Max required condition to use
 repair_add_condition                     = 0.20 ;Amount of condition added to repaired item
 repair_part_bonus                        = 0.15 ;Amount bonus to add_condition if parts are used
@@ -30,13 +29,13 @@ max_uses                                 = 4
 remove_after_use                         = false
 empty_weight                             = 1.5
 
-hide_time_wpn = 10
+hide_time_wpn                            = 10
+snd_on_take				                 = other
 
 [itm_outfit_toolkit]:itm_gunsmith_toolkit
 $spawn                                   = "repair\outfit_toolkit"
 description                              = st_itm_outfit_toolkit_descr
 inv_name                                 = st_itm_outfit_toolkit
-inv_name_short                           = st_itm_outfit_toolkit
 cost                                     = 15000
 inv_weight                               = 3.0
 visual                                   = dynamics\equipments\item_sewingkit.ogf
@@ -50,13 +49,13 @@ repair_refuse                            =
 
 max_uses                                 = 4
 empty_weight                             = 0.6
+snd_on_take				                 = other
 
 [itm_cold_weapon_toolkit]:itm_gunsmith_toolkit
 $spawn                                   = "devices\itm_cold_weapon_toolkit"
 
 description                              = st_itm_cold_weapon_toolkit_descr
 inv_name                                 = st_itm_cold_weapon_toolkit
-inv_name_short                           = st_itm_cold_weapon_toolkit
 inv_weight                               = 0.8
 visual                                   = dynamics\equipments\item_sewingkit.ogf
 
@@ -70,13 +69,13 @@ repair_parts_include                     =
 
 max_uses                                 = 5
 empty_weight                             = 0.75
+snd_on_take				                 = other
 
 [itm_battery_detectors_simple]:booster_script
 $spawn                                   = "devices\itm_battery_detector"
 
 description                              = st_itm_battery_detectors_simple_descr
 inv_name                                 = st_itm_battery_detectors_simple
-inv_name_short                           = st_itm_battery_detectors_simple
 
 can_trade                                = true
 quest_item                               = false
@@ -105,13 +104,13 @@ remove_after_use                         = true
 empty_weight                             = 0.2
 
 visual                                   = dynamics\devices\dev_instrument_1\dev_instrument_1.ogf
+snd_on_take				                 = other
 
 [itm_battery_detectors_elite]:booster_script
 $spawn                                   = "devices\itm_battery_detector"
 
 description                              = st_itm_battery_detectors_elite_descr
 inv_name                                 = st_itm_battery_detectors_elite
-inv_name_short                           = st_itm_battery_detectors_elite
 
 can_trade                                = true
 quest_item                               = false
@@ -140,13 +139,13 @@ remove_after_use                         = true
 empty_weight                             = 0.2	
 
 visual                                   = dynamics\devices\dev_instrument_1\dev_instrument_1.ogf
+snd_on_take				                 = other
 
 [itm_battery_actor_pda]:booster_script
 $spawn                                   = "devices\itm_battery_detector"
 
 description                              = st_itm_battery_actor_pda_descr
 inv_name                                 = st_itm_battery_actor_pda
-inv_name_short                           = st_itm_battery_actor_pda
 
 can_trade                                = true
 quest_item                               = false
@@ -175,13 +174,13 @@ remove_after_use                         = true
 empty_weight                             = 0.3
 
 visual                                   = dynamics\devices\dev_instrument_1\dev_instrument_1.ogf
+snd_on_take				                 = other
 
 [itm_battery_torch]:booster_script
 $spawn                                   = "devices\itm_battery_torch"
 
 description                              = st_itm_battery_torch_descr
 inv_name                                 = st_itm_battery_torch
-inv_name_short                           = st_itm_battery_torch
 
 can_trade                                = true
 quest_item                               = false
@@ -210,6 +209,7 @@ remove_after_use                         = false
 empty_weight                             = 0.05
 
 visual                                   = dynamics\devices\dev_instrument_1\dev_instrument_1.ogf
+snd_on_take				                 = other
 
 [itm_repairkit_tier_1]:itm_gunsmith_toolkit
 $spawn                                   = "repair\repairkit_1"
@@ -225,9 +225,9 @@ visual                                   = dynamics\equipments\quest\box_toolkit
 
 description                              = st_itm_repairkit_tier_1_descr
 inv_name                                 = st_itm_repairkit_tier_1_name
-inv_name_short                           = st_itm_repairkit_tier_1_name
 
 use_condition                            = false
+snd_on_take				                 = other
 
 [itm_repairkit_tier_2]:itm_repairkit_tier_1
 $spawn                                   = "repair\repairkit_2"
@@ -242,7 +242,7 @@ visual                                   = dynamics\equipments\quest\box_toolkit
 
 description                              = st_itm_repairkit_tier_2_descr
 inv_name                                 = st_itm_repairkit_tier_2_name
-inv_name_short                           = st_itm_repairkit_tier_2_name
+snd_on_take				                 = other
 
 [itm_repairkit_tier_3]:itm_repairkit_tier_2
 $spawn                                   = "repair\repairkit_3"
@@ -257,4 +257,4 @@ visual                                   = dynamics\equipments\quest\box_toolkit
 
 description                              = st_itm_repairkit_tier_3_descr
 inv_name                                 = st_itm_repairkit_tier_3_name
-inv_name_short                           = st_itm_repairkit_tier_3_name
+snd_on_take				                 = other

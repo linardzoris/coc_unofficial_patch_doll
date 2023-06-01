@@ -92,8 +92,8 @@ function get_object_data(sobj)
 		["EQ_HLMET"]  = this.get_item_data,
 		["E_BAKPK"]   = this.get_item_data,
 		["EQ_BAKPK"]  = this.get_item_data,	
-		["E_UNVEST"]   = this.get_item_data,
-		["EQ_UNVEST"]  = this.get_item_data,	
+		["E_UNVST"]   = this.get_item_data,
+		["EQ_UNVST"]  = this.get_item_data,	
 		
 		["II_BANDG"] = this.get_item_data,
 		["II_MEDKI"] = this.get_item_data,
@@ -251,8 +251,8 @@ function set_object_data(t,sobj)
 		["EQ_HLMET"]  = this.set_item_data,
 		["E_BAKPK"]   = this.get_item_data,
 		["EQ_BAKPK"]  = this.get_item_data,	
-		["E_UNVEST"]   = this.get_item_data,
-		["EQ_UNVEST"]  = this.get_item_data,	
+		["E_UNVST"]   = this.get_item_data,
+		["EQ_UNVST"]  = this.get_item_data,	
 		
 		["II_BANDG"] = this.set_item_data,
 		["II_MEDKI"] = this.set_item_data,

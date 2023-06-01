@@ -50,7 +50,6 @@ inv_grid_width                                     = 4
 inv_grid_x                                         = 33
 inv_grid_y                                         = 0
 inv_name                                           = st_wpn_ak74u
-inv_name_short                                     = st_wpn_ak74u
 inv_weight                                         = 2.7
 launch_speed                                       = 76
 light_color                                        = 0.6, 0.5, 0.3
@@ -81,14 +80,14 @@ scope_status                                       = 0
 scope_zoom_factor                                  = 1.1
 scopes                                             = none
 
-shell_particles                                    = weapons\545x39
+shell_particles                                    = ;weapons\545x39
 
 silencer_light_color                               = 0.6, 0.5, 0.3
 silencer_light_range                               = 0.01
 silencer_light_time                                = 0.2
 silencer_light_var_color                           = 0.05
 silencer_light_var_range                           = 0.5
-silencer_name                                      = wpn_addon_silencer_5_45
+silencer_name                                      = wpn_addon_silencer_5x45
 silencer_status                                    = 2
 silencer_x                                         = 160
 silencer_y                                         = 10
@@ -177,12 +176,20 @@ anm_hide                			= ak105_holster, holster
 anm_idle                			= ak105_idle, idle
 anm_idle_sprint         			= ak105_idle_sprint
 anm_idle_moving         			= ak105_idle_walk
-anm_shots               			= ak105_shoot, shoot
+anm_shots               			= ak105_shoot, shot
 anm_reload	        				= ak105_reload, reload
 anm_reload_empty	        		= ak105_reload_empty, reload_empty
 anm_idle_moving_crouch  			= ak105_idle_crouch_walk, idle
 anm_idle_aim            			= ak105_idle_aim
 anm_bore                			= ak105_idle_bore
-anm_reload_misfire	        		= ak105_misfire
+anm_reload_misfire	        		= ak105_revive, revive
+
+anm_hide_jammed                     = ak105_holster, idle_jammed         
+anm_idle_jammed                     = ak105_idle, idle_jammed
+anm_idle_aim_jammed                 = ak105_idle_aim, idle_jammed
+anm_idle_moving_jammed              = ak105_idle_walk, idle_jammed
+anm_idle_moving_crouch_jammed       = ak105_idle_crouch_walk, idle_jammed
+anm_idle_sprint_jammed              = ak105_idle_sprint, idle_jammed
+anm_show_jammed                     = ak105_draw, idle_jammed
 
 item_visual                         = dynamics\weapons\wpn_ak74u\wpn_ak74u_hud.ogf

@@ -5,7 +5,6 @@ visual                         = dynamics\devices\dev_vodka\dev_vodka.ogf
 description                    = st_vodka_descr
 
 inv_name                       = st_vodka
-inv_name_short                 = st_vodka
 inv_weight                     = 0.9
 
 inv_grid_width                 = 1
@@ -34,7 +33,7 @@ eat_thirst					   = -0.1
 eat_intoxication			   = 0.5
 
 has_anim 					   = true
-hud_section                    = vodka_hud_anim
+hud_section                    = vodka_hud
 
 use_sound                      = interface\inv_vodka
 use_condition                  = true
@@ -42,19 +41,19 @@ max_uses                       = 3
 remove_after_use               = true
 empty_weight                   = 0.3
 allow_repair                   = false
+snd_on_take				       = bottle
 
-[vodka_hud_anim]:hud_base
+[vodka_hud]:hud_base
 hands_position				   = 0.0,-0.02,0.14
 hands_orientation			   = 0.0,0.0,0.0
 hands_position_16x9			   = 0.0,-0.02,0.14
 hands_orientation_16x9		   = 0.0,0.0,0.0
 item_position                  = 0,0,0
 item_orientation               = 0,0,0
-anm_use          			   = dev_vodka_gwr_hand_animation, vodka
-snd_using                      = interface\inv_vodka
+anm_use          			   = vodka_1_hands_eat_invtrans, vodka_wpn_eat
+snd_using                      = interface\item_usage\vodka_use
 single_handed_anim             = 2 ;0 - правая, 1 - левая, 2 - обе
-item_visual                    = dynamics\devices\first_person_animated\dev_vodka\vodka_hud
-attach_place_idx               = 1
+item_visual                    = dynamics\devices\first_person_animated\dev_bottles\vodka_hud
 
 [vodka_script]:vodka
 $spawn                         = "food and drugs\vodka_script"
@@ -64,7 +63,6 @@ inv_weight                     = 0
 $spawn                         = "food and drugs\energy_drink"
 cform                          = skeleton
 inv_name                       = st_energy_drink
-inv_name_short                 = st_energy_drink
 visual                         = dynamics\devices\dev_drink_stalker\dev_drink_stalker
 description                    = st_energy_drink_descr
 cost                           = 400
@@ -80,6 +78,9 @@ attach_position_offset         = 0.087266, -0.078540, 0.052360
 attach_bone_name               = bip01_r_hand
 auto_attach                    = false
 
+has_anim 					   = true
+hud_section                    = energy_drink_hud
+
 bone_name                      = bip01_r_hand
 position_offset                = 0.0,0.0,0.0
 angle_offset                   = 1.570790,1.570790,3.92699
@@ -93,17 +94,29 @@ eat_alcohol                    = -0.15
 eat_satiety                    = 0.0
 eat_thirst					   = 0.4
 
-use_sound                      = interface\inv_softdrink
+;use_sound                      = interface\inv_softdrink
 use_condition                  = false
 ;max_uses                       = 2
 empty_weight                   = 0.05
 
 hide_time_wpn                  = 5
+snd_on_take				       = other
+
+[energy_drink_hud]:hud_base
+hands_position				   = 0.0,-0.02,0.14
+hands_orientation			   = 0.0,0.0,0.0
+hands_position_16x9			   = 0.0,-0.02,0.14
+hands_orientation_16x9		   = 0.0,0.0,0.0
+item_position                  = 0,0,0
+item_orientation               = 0,0,0
+anm_use          			   = energy_1_hands_eat_invtrans, banka_1_wpn_eat
+snd_using                      = interface\item_usage\drink_energy_use
+single_handed_anim             = 2 ;0 - правая, 1 - левая, 2 - обе
+item_visual                    = dynamics\devices\first_person_animated\dev_energy\energy_drink_hud
 
 [energy_drink_nonstop]:energy_drink
 $spawn                         = "food and drugs\energy_drink_nonstop"
 inv_name                       = st_energy_drink_nonstop
-inv_name_short                 = st_energy_drink_nonstop
 visual                         = dynamics\devices\dev_drink_stalker_nonstop\dev_drink_stalker_nonstop
 description                    = st_energy_drink_nonstop_descr
 cost                           = 250
@@ -114,16 +127,31 @@ inv_grid_x                     = 17
 inv_grid_y                     = 3
 inv_weight                     = 0.5
 
+has_anim 					   = true
+hud_section                    = energy_drink_nonstop_hud
+
 boost_time                     = 30.0
 boost_radiation_restore        = 0
 boost_power_restore            = 0.003 
 eat_thirst                     = 0.45
 boost_dec_sleepeness		   = 1.0
+snd_on_take				       = other
+
+[energy_drink_nonstop_hud]:hud_base
+hands_position				   = 0.0,-0.02,0.14
+hands_orientation			   = 0.0,0.0,0.0
+hands_position_16x9			   = 0.0,-0.02,0.14
+hands_orientation_16x9		   = 0.0,0.0,0.0
+item_position                  = 0,0,0
+item_orientation               = 0,0,0
+anm_use          			   = energy_1_hands_eat_invtrans, banka_1_wpn_eat
+snd_using                      = interface\item_usage\drink_energy_use
+single_handed_anim             = 2 ;0 - правая, 1 - левая, 2 - обе
+item_visual                    = dynamics\devices\first_person_animated\dev_energy\energy_drink_nonstop_hud
 
 [item_use_water_bottle]:energy_drink
 $spawn                         = "food and drugs\water_drink"
 inv_name                       = st_item_use_water_bottle
-inv_name_short                 = st_item_use_water_bottle
 visual                         = dynamics\devices\dev_water\item_water_bottle
 description                    = st_item_use_water_bottle_descr
 cost                           = 500
@@ -145,3 +173,19 @@ eat_alcohol                    = -0.05
 use_condition                  = true
 max_uses                       = 2
 empty_weight                   = 0.1
+snd_on_take				       = other
+
+has_anim 					   = true
+hud_section                    = item_use_water_bottle_hud
+
+[item_use_water_bottle_hud]:hud_base
+hands_position				   = 0.0,-0.02,0.14
+hands_orientation			   = 0.0,0.0,0.0
+hands_position_16x9			   = 0.0,-0.02,0.14
+hands_orientation_16x9		   = 0.0,0.0,0.0
+item_position                  = 0,0,0
+item_orientation               = 0,0,0
+anm_use          			   = vodka_1_hands_eat_invtrans, vodka_wpn_eat
+snd_using                      = interface\item_usage\inv_drink_water
+single_handed_anim             = 2 ;0 - правая, 1 - левая, 2 - обе
+item_visual                    = dynamics\devices\first_person_animated\dev_bottles\water_bottle_hud

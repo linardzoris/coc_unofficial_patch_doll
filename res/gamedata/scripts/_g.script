@@ -1948,3 +1948,28 @@ end
 function vec_add(a,b)
 	return vector():set(a):add(b)
 end
+
+-- param caching
+local ini_sys = system_ini()
+INISYS_CACHE = {}
+function SYS_GetParam(typ, sec, param, def)
+	if not (sec and param) then
+		printe("!ERROR SYS_GetParam(%s, %s, %s) | What's missing?", typ, sec, param)
+		callstack()
+		return
+	end
+	
+	if (INISYS_CACHE[sec] == nil) then
+		INISYS_CACHE[sec] = {}
+	end
+	if (INISYS_CACHE[sec][param] == nil) then
+		if typ == 0 then
+			INISYS_CACHE[sec][param] = ini_sys:r_string_ex(sec,param) or def
+		elseif typ == 1 then
+			INISYS_CACHE[sec][param] = ini_sys:r_bool_ex(sec,param)
+		elseif typ == 2 then
+			INISYS_CACHE[sec][param] = ini_sys:r_float_ex(sec,param) or def
+		end
+	end
+	return INISYS_CACHE[sec][param]
+end

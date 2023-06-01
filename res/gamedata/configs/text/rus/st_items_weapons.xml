@@ -6,17 +6,11 @@
 	<string id="st_ammo_357_fmj">
 		<text>Патроны 9х33R (.357 magnum)</text>
 	</string>
-	<string id="st_ammo_357_fmj_s">
-		<text>.357</text>
-	</string>
 	<string id="st_ammo_357_fmj_descr">
 		<text>Мощный патрон и ходовой американский патрон, разработанный специально под полицейские револьверы.</text>
 	</string>	
 	<string id="st_ammo_5_7x28_ss190">
 		<text>Патроны 5.7х28 (SS190)</text>
-	</string>
-	<string id="st_ammo_5_7x28_ss190_s">
-		<text>5.7х28 мм</text>
 	</string>
 	<string id="st_ammo_5_7x28_ss190_descr">
 		<text>Создавался как замена стандартному пистолетному калибру НАТО, но стандартом так и не стал.</text>
@@ -24,17 +18,11 @@
 	<string id="st_ammo_12x70_buck">
 		<text>Патроны 12х70 дробь</text>
 	</string>
-	<string id="st_ammo_12x70_buck_s">
-		<text>12х70 др</text>
-	</string>
 	<string id="st_ammo_12x70_buck_descr">
 		<text>Самый ходовой патрон в Зоне, ими снаряжается большинство дробовиков.</text>
 	</string>
 	<string id="st_ammo_12x76_zhekan">
 		<text>Патроны 12x76</text>
-	</string>
-	<string id="st_ammo_12x76_zhekan_s">
-		<text>12x76 жк</text>
 	</string>
 	<string id="st_ammo_12x76_zhekan_descr">
 		<text>Менее популярный боеприпас, который использует пулю. Малоэффективен против подвижных мутантов.</text>
@@ -42,17 +30,11 @@
 	<string id="st_ammo_20x70_buck">
 		<text>Патроны 20х70</text>
 	</string>
-	<string id="st_ammo_20x70_buck_s">
-		<text>20х70 др</text>
-	</string>
 	<string id="st_ammo_20x70_buck_descr">
 		<text>Не совсем привычные многим патроны 20го калибра, в данном случае с дробью.</text>
 	</string>	
 	<string id="st_ammo_20x76_bullet">
 		<text>Патроны 20x76</text>
-	</string>
-	<string id="st_ammo_20x76_bullet_s">
-		<text>20x76 жк</text>
 	</string>
 	<string id="st_ammo_20x76_bullet_descr">
 		<text>Боеприпас, который представляет собой довольно-таки большую пулю, эффективен для "охоты" на крупную дичь.</text>
@@ -60,17 +42,11 @@
 	<string id="st_ammo_9x18_fmj">
 		<text>Патроны 9x18 мм ПМ</text>
 	</string>
-	<string id="st_ammo_9x18_fmj_s">
-		<text>9x18мм</text>
-	</string>
 	<string id="st_ammo_9x18_fmj_descr">
         <text>Пистолетный стандарт стран ОВД, которому однако не раз пытались найти замену, но после развала блока для этого не осталось ничего.</text>
 	</string>
 	<string id="st_ammo_9x18_pmm">
 		<text>Патроны 9x18мм ПБМ</text>
-	</string>
-	<string id="st_ammo_9x18_pmm_s">
-		<text>9x18мм ПБМ</text>
 	</string>
 	<string id="st_ammo_9x18_pmm_descr">
 		<text>Бронебойная версия стандартного советского пистолетного патрона.</text>
@@ -78,17 +54,11 @@
 	<string id="st_ammo_9x19_fmj">
 		<text>Патроны 9x19 мм</text>
 	</string>
-	<string id="st_ammo_9x19_fmj_s">
-		<text>9x19мм Парабеллум</text>
-	</string>
 	<string id="st_ammo_9x19_fmj_descr">
 		<text>Пистолетный стандарт стран ЕС и НАТО, которому однако пытались найти замену, до безуспешно.</text>
 	</string>
 	<string id="st_ammo_9x19_pbp">
 		<text>Патроны 9x19 мм +P+</text>
-	</string>
-	<string id="st_ammo_9x19_pbp_s">
-		<text>9x19мм +P+</text>
 	</string>
 	<string id="st_ammo_9x19_pbp_descr">
 		<text>Пуля с избыточным давлением, что в теории повышает скорость её полёта.</text>
@@ -96,17 +66,11 @@
 	<string id="st_ammo_11.43x23_fmj">
 		<text>Патроны 11.43х23 мм (.45ACP)</text>
 	</string>
-	<string id="st_ammo_11.43x23_fmj_s">
-		<text>.45ACP</text>
-	</string>
 	<string id="st_ammo_11.43x23_fmj_descr">
         <text>Распространённый патрон, который был разработан специально для пистолета Colt 1911.</text>
 	</string>
 	<string id="st_ammo_11.43x23_hydro">
 		<text>Патроны 11.43х23 мм HS (.45ACP)</text>
-	</string>
-	<string id="st_ammo_11.43x23_hydro_s">
-		<text>.45ACP HS</text>
 	</string>
 	<string id="st_ammo_11.43x23_hydro_descr">
 		<text>Использует полый сердечник, нанося большие повреждения, но не проникая дальше, чем необходимо.</text>
@@ -114,17 +78,11 @@
 	<string id="st_ammo_5.45x39_fmj">
 		<text>Патроны 5.45x39 мм (7Н10)</text>
 	</string>
-	<string id="st_ammo_5.45x39_fmj_s">
-		<text>5.45x39 (7Н10)</text>
-	</string>
 	<string id="st_ammo_5.45x39_fmj_descr">
 		<text>Основной боевой автоматный патрон советско-российской армии, оружие питаемое им хоть и распространено в достаточной степени, но имеет неприятный эффект - разрыв ствола вследствие интенсивной стрельбы.</text>
 	</string>	
 	<string id="st_ammo_5.45x39_ap">
 		<text>Патроны 5.45x39 мм (7Н22)</text>
-	</string>
-	<string id="st_ammo_5.45x39_ap_s">
-		<text>5.45x39 (7Н22)</text>
 	</string>
 	<string id="st_ammo_5.45x39_ap_descr">
 		<text>Альтернативная версия патрона, отличается увеличенным бронепробитием.</text>
@@ -132,17 +90,11 @@
 	<string id="st_ammo_5.56x45_ss190">
 		<text>Патроны 5.56x45 мм (SS109)</text>
 	</string>
-	<string id="st_ammo_5.56x45_ss190_s">
-		<text>5.56x45 (SS109)</text>
-	</string>
 	<string id="st_ammo_5.56x45_ss190_descr">
 		<text>Патрон, который используют Западные образцы вооружения, встречается у военных из-за новой программы перевооружения и наёмников.</text>
 	</string>
 	<string id="st_ammo_5.56x45_ap">
 		<text>Патроны 5.56x45 мм (P112)</text>
-	</string>
-	<string id="st_ammo_5.56x45_ap_s">
-		<text>5.56x45 (P112)</text>
 	</string>
 	<string id="st_ammo_5.56x45_ap_descr">
 		<text>Бронебойный тип стандартного патрона НАТОвских винтовок.</text>
@@ -150,17 +102,11 @@
 	<string id="st_ammo_9x39_sp5">
 		<text>Патроны 9x39 мм СП-5</text>
 	</string>
-	<string id="st_ammo_9x39_sp5_s">
-		<text>9x39 СП-5</text>
-	</string>
 	<string id="st_ammo_9x39_sp5_descr">
 		<text>Штатный боеприпас для винтовки ВСС "Винторез", ВСК и сходных с ними изделий. Встречается у наёмников.</text>
 	</string>
 	<string id="st_ammo_9x39_ap">
 		<text>Патроны 9x39 мм СП-6</text>
-	</string>
-	<string id="st_ammo_9x39_ap_s">
-		<text>9x39 СП-6</text>
 	</string>
 	<string id="st_ammo_9x39_ap_descr">
 		<text>Бронебойная более тяжёлая версия боеприпаса, является штатной для АС "ВАЛ".</text>
@@ -168,17 +114,11 @@
 	<string id="st_ammo_7_62x39_fmj">
 		<text>Патроны 7.62x39 мм</text>
 	</string>
-	<string id="st_ammo_7_62x39_fmj_s">
-		<text>7.62x39 мм</text>
-	</string>
 	<string id="st_ammo_7_62x39_fmj_descr">
 		<text>Старый и редкий боеприпас, которым некогда снаряжались советские автоматы и винтовки. На данный момент оружие, которое использует его весьма непопулярно, хотя менее подвержено износу.</text>
 	</string>	
 	<string id="st_ammo_7_62x39_ap">
 		<text>Патроны 7.62x39 мм (7Н23)</text>
-	</string>
-	<string id="st_ammo_7_62x39_ap_s">
-		<text>7.62x39 (7Н23)</text>
 	</string>
 	<string id="st_ammo_7_62x39_ap_descr">
 		<text>Бронебойная версия боеприпаса, позволяет поражать цели за некоторыми укрытиями, вроде широких деревянных досок или кирпичных кладок.</text>
@@ -186,17 +126,11 @@
 	<string id="st_ammo_7_62x51_fmj">
 		<text>Патроны 7,62x51 М59 (.308 Win)</text>
 	</string>
-	<string id="st_ammo_7_62x51_fmj_s">
-		<text>7,62x51</text>
-	</string>
 	<string id="st_ammo_7_62x51_fmj_descr">
 		<text>Винтовочный боеприпас стандарта НАТО. Калибр - 7,62мм. Простая оболочечная пуля со свинцовым сердечником.</text>
 	</string>
 	<string id="st_ammo_7_62x51_ap">
 		<text>Патроны 7,62x51 М61 (.308 Win)</text>
-	</string>
-	<string id="st_ammo_7_62x51_ap_s">
-		<text>7,62x51 AP</text>
 	</string>
 	<string id="st_ammo_7_62x51_ap_descr">
 		<text>Винтовочный бронебойный боеприпас стандарта НАТО. Калибр - 7,62мм. Пуля со стальным сердечником, улучшенная бронебойность.</text>
@@ -213,26 +147,17 @@
 	<string id="st_ammo_7_62x25_ap">
 		<text>Патроны 7,62x25 мм Пст</text>
 	</string>
-	<string id="st_ammo_7_62x25_ap_s">
-		<text>7,62x25 Пст</text>
-	</string>
 	<string id="st_ammo_7_62x25_ap_descr">
 		<text>Советский пистолетный патрон калибра 7,62мм. Пуля со стальным сердечником, улучшенная бронебойность.</text>
 	</string>	
 	<string id="st_ammo_7_62x54_7h1">
 		<text>Патроны 7.62x54мм ПП</text>
 	</string>
-	<string id="st_ammo_7_62x54_7h1_s">
-		<text>7.62x54 ПП</text>
-	</string>
 	<string id="st_ammo_7_62x54_7h1_descr">
 		<text>Боеприпас, предназначенный для советско-российских винтовок и пулемётов.</text>
 	</string>
 	<string id="st_ammo_7_62x54_ap">
 		<text>Патроны 7.62x54мм БП</text>
-	</string>
-	<string id="st_ammo_7_62x54_ap_s">
-		<text>7.62x54 БП</text>
 	</string>
 	<string id="st_ammo_7_62x54_ap_descr">
 		<text>Бронебойный тип винтовочного боеприпаса.</text>
@@ -252,29 +177,20 @@
 	<string id="st_ammo_pkm_100">
 		<text>Патроны 7.62x54мм R</text>
 	</string>
-	<string id="st_ammo_pkm_100_s">
-		<text>7.62x54 R</text>
-	</string>
 	<string id="st_ammo_pkm_100_descr">
 		<text>Короб и пулемётная лента, предназначенная для питания ПКМ и ПКП, способны пробить небольшую укреплённую позицию или бронированный транспорт.</text>
 	</string>
-
+	
 <!-- Гранаты и мины -->		
 		
 	<string id="st_ammo_pg_26">
 		<text>Граната ПГ-26</text>
 	</string>
-	<string id="st_ammo_pg_26_s">
-		<text>ПГ-26</text>
-	</string>		
 	<string id="st_ammo_pg_26_descr">
 		<text>Реактивная граната ПГ-26, являющаяся боевой частью РПГ-26 «Аглень».</text>
 	</string>		
 	<string id="st_ammo_og_7b">
 		<text>Граната ОГ-7В</text>
-	</string>
-	<string id="st_ammo_og_7b_s">
-		<text>ОГ-7В</text>
 	</string>
 	<string id="st_ammo_og_7b_descr">
 		<text>Граната, используемая в РПГ. Отрывают с руками бандиты, в прямом смысле этого слова.</text>
@@ -306,26 +222,17 @@
 	<string id="st_ammo_vog_25">
 		<text>Граната ВОГ-25</text>
 	</string>
-	<string id="st_ammo_vog_25_s">
-		<text>ВОГ-25</text>
-	</string>
 	<string id="st_ammo_vog_25_descr">
 		<text>Граната для подствольного гранатомёта типа ГП-25.</text>
 	</string>
 	<string id="st_ammo_vog_25p">
 		<text>Граната ВОГ-25П "Подкидыш"</text>
 	</string>
-	<string id="st_ammo_vog_25p_s">
-		<text>ВОГ-25П</text>
-	</string>
 	<string id="st_ammo_vog_25p_descr">
 		<text>Граната для подствольного гранатомёта типа ГП-25. В отличие от обычной ВОГ-25, эта начинена осколочной "рубашкой" гранаты, которая выталкивается на расстояние до 1.5 метров вверх, что позволяет поразить дополнительные цели.</text>
 	</string>
 	<string id="st_ammo_m209">
 		<text>Граната М433 HEDP</text>
-	</string>
-	<string id="st_ammo_m209s">
-		<text>М433 HEDP</text>
 	</string>
 	<string id="st_ammo_m209_descr">
 		<text>Фугасная граната, предназначенная для поражения живых целей, защищённых укрытиями.</text>
@@ -336,5 +243,72 @@
     <string id="st_wpn_mine_descr">
 		<text>Противопехотная мина "ПФМ-1", печально известная благодаря причинению многочисленных жертв среди мирного населения. В обиходе носит название "мина-лепесток", из-за своей формы.</text>
     </string>
+	
+<!-- Глушители -->
+
+	<string id="st_wpn_addon_silencer_9x18">
+		<text>ПБС для 9х18мм</text>
+	</string>
+	<string id="st_wpn_addon_silencer_9x19">
+		<text>ПБС для 9х19мм</text>
+	</string>
+	<string id="st_wpn_addon_silencer_9x39">
+		<text>ПБС для 9х39мм</text>
+	</string>
+	<string id="st_wpn_addon_silencer_5_7x28">
+		<text>ПБС для 5.7х28мм</text>
+	</string>
+	<string id="st_wpn_addon_silencer_45">
+		<text>ПБС для .45 калибра</text>
+	</string>
+	<string id="st_wpn_addon_silencer_5x45">
+		<text>ПБС для 5.45х39мм</text>
+	</string>
+	<string id="st_wpn_addon_silencer_5x56">
+		<text>ПБС для 5.56х45мм</text>
+	</string>
+	<string id="st_wpn_addon_silencer_7_62x39">
+		<text>ПБС для 7.62х39мм</text>
+	</string>
+	<string id="st_wpn_addon_silencer_7_62x54">
+		<text>ПБС для 7.62х54мм</text>
+	</string>
+	<string id="st_wpn_addon_silencer_7_62x51">
+		<text>ПБС для 7.62х51мм</text>
+	</string>
+	<string id="st_wpn_addon_silencer_12x70">
+		<text>ПБС для 12 кал.</text>
+	</string>
+	
+	<string id="st_wpn_addon_silencer_all">
+		<text>Стандартный набор прибора бесшумной стрельбы с переходниками под большинство оружия, поддерживающего данный калибр по технологии изготовления.</text>
+	</string>		
+	
+<!-- Подствольные гранатомёты -->
+	
+	<string id="st_grenade_launcher">
+		<text>ГП-25 "Костёр"</text>
+	</string>
+	<string id="st_grenade_launcher_descr">
+		<text>Штатный подствольный гранатомёт к большинству советского оружия.</text>
+	</string>
+	<string id="st_grenade_launcher_groza">
+		<text>ГП-5</text>
+	</string>
+	<string id="st_grenade_launcher_groza_descr">
+		<text>Данный подствольный гранатомёт разработан специально для ОЦ-14 "Гроза" и позволяет метать гранаты и вести огонь одним спусковым механизмом при предварительном переключении режима.</text>
+	</string>
+	<string id="st_grenade_launcher_m203">
+		<text>M203 GL</text>
+	</string>
+	<string id="st_grenade_launcher_m203_descr">
+		<text>Американский штатный подствольный гранатомёт. Использует снаряды, которые отстреливают гильзу в отличие от советских гранат.</text>
+	</string>	
+	<string id="st_wpn_addon_grenade_launcher_fngl">
+		<text>FN40 GL</text>
+	</string>
+	<string id="st_wpn_addon_grenade_launcher_fngl_descr">
+		<text>Подствольный гранатомёт из Бельгии, который массово используется на таком оружии как FN Scar. Особых отличий от М203 помимо удобства и эргономики не возымел.</text>
+	</string>	
 	
 </string_table>

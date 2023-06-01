@@ -13,7 +13,6 @@ ef_main_weapon_type					= 2
 ef_weapon_type						= 8
 
 inv_name 							= st_wpn_sig550
-inv_name_short						= st_wpn_sig550
 description							= st_wpn_sig550_descr
 
 inv_grid_width						= 5
@@ -131,7 +130,7 @@ strap_bone1                     	= bip01_spine1
 strap_position                  	= -0.26, -0.11, 0.25
 strap_orientation               	= -15, -9, 110
 
-shell_particles         			= weapons\556x45
+shell_particles         			= ;weapons\556x45
 
 light_disabled						= false
 light_color							= 0.6,0.5,0.3
@@ -156,7 +155,7 @@ grenade_launcher_name				= wpn_addon_grenade_launcher_m203
 grenade_launcher_x          		= 109
 grenade_launcher_y          		= 30
 
-silencer_name						= wpn_addon_silencer_5_56
+silencer_name						= wpn_addon_silencer_5x56
 silencer_x							= 223
 silencer_y							= 20
 
@@ -202,7 +201,7 @@ anm_idle_sprint                          = wpn_hand_sig550_run, idle
 anm_reload                               = wpn_hand_sig550_reload, wpn_sig550_tact_reload
 anm_reload_empty                         = wpn_hand_sig550_reload_empty, wpn_sig550_tact_reload_empty
 anm_changefiremode                       = wpn_hand_sig550_switch_mode, idle
-anm_shots                                = wpn_hand_sig550_shoot, wpn_sig550_tact_shoot
+anm_shots                                = wpn_hand_sig550_shot, shot ;wpn_hand_sig550_shoot, wpn_sig550_tact_shoot
 anm_show                                 = wpn_hand_sig550_in, idle
 anm_reload_misfire                       = wpn_hand_sig550_misfire, wpn_sig550_tact_misfire
 anm_bore                                 = wpn_hand_sig550_boring, idle
@@ -216,7 +215,7 @@ anm_idle_moving_empty                    = wpn_hand_sig550_walk, wpn_sig550_tact
 anm_idle_moving_crouch_empty             = wpn_hand_sig550_walk, wpn_sig550_tact_idle_empty
 anm_idle_sprint_empty                    = wpn_hand_sig550_run, wpn_sig550_tact_idle_empty
 anm_changefiremode_empty                 = wpn_hand_sig550_switch_mode, wpn_sig550_tact_idle_empty
-anm_shots_l                              = wpn_hand_sig550_shoot, wpn_sig550_tact_shoot_empty_w_gl
+anm_shots_l                              = wpn_hand_sig550_shot, shot ;wpn_sig550_tact_shoot_empty_w_gl
 anm_show_empty                           = wpn_hand_sig550_in, wpn_sig550_tact_idle_empty
 anm_bore_empty                           = wpn_hand_sig550_boring, wpn_sig550_tact_idle_empty
 
@@ -233,10 +232,10 @@ scope_x                             = 67
 scope_y                             = 0
 
 [wpn_sig550_barska_scope_hud]:wpn_sig550_hud
-aim_hud_offset_pos					= -0.044780,0.009331,-0.047963
-aim_hud_offset_rot					= -0.003490,0.002370,0.000000
-aim_hud_offset_pos_16x9				= -0.044780,0.009331,-0.047963
-aim_hud_offset_rot_16x9				= -0.003490,0.002370,0.000000
+aim_hud_offset_pos					= -0.045780,0.007331,-0.047963
+aim_hud_offset_rot					= -0.006740,0.003345,0.000000
+aim_hud_offset_pos_16x9				= -0.045780,0.007331,-0.047963
+aim_hud_offset_rot_16x9				= -0.006740,0.003345,0.000000
 item_visual            	 			= dynamics\weapons\wpn_sig550\wpn_sig550_barska_hud.ogf
 
 [wpn_sig550_eotech_scope]:wpn_sig550
@@ -246,9 +245,9 @@ scope_x                             = 67
 scope_y                             = -1
 
 [wpn_sig550_eotech_scope_hud]:wpn_sig550_hud
-aim_hud_offset_pos					= -0.044380,0.001631,-0.047963
+aim_hud_offset_pos					= -0.044380,0.004131,-0.047963
 aim_hud_offset_rot					= -0.003490,0.002370,0.000000
-aim_hud_offset_pos_16x9				= -0.044380,0.001631,-0.047963
+aim_hud_offset_pos_16x9				= -0.044380,0.004131,-0.047963
 aim_hud_offset_rot_16x9				= -0.003490,0.002370,0.000000
 item_visual            	 			= dynamics\weapons\wpn_sig550\wpn_sig550_eotech_hud.ogf
 
@@ -259,10 +258,10 @@ scope_x                             = 58
 scope_y                             = 3
 
 [wpn_sig550_acog_scope_hud]:wpn_sig550_hud
-aim_hud_offset_pos					= -0.030580,0.002231,-0.047963
-aim_hud_offset_rot					= -0.003490,0.002370,0.000000
-aim_hud_offset_pos_16x9				= -0.030580,0.002231,-0.047963
-aim_hud_offset_rot_16x9				= -0.003490,0.002370,0.000000
+aim_hud_offset_pos					= -0.045080,0.005731,-0.047963
+aim_hud_offset_rot					= -0.008340,0.006770,0.000000
+aim_hud_offset_pos_16x9				= -0.045080,0.005731,-0.047963
+aim_hud_offset_rot_16x9				= -0.008340,0.006770,0.000000
 item_visual            	 		    = dynamics\weapons\wpn_sig550\wpn_sig550_acog_hud.ogf
 
 [wpn_sig550_pn23_scope]:wpn_sig550
@@ -272,10 +271,10 @@ scope_x                             = 57
 scope_y                             = 1
 
 [wpn_sig550_pn23_scope_hud]:wpn_sig550_hud
-aim_hud_offset_pos					= -0.038850,-0.009540,-0.080700
-aim_hud_offset_rot					= 0.016300,0.002750,0.000000
-aim_hud_offset_pos_16x9				= -0.038850,-0.009540,-0.080700
-aim_hud_offset_rot_16x9				= 0.016300,0.002750,0.000000
+aim_hud_offset_pos					= -0.044350,-0.001540,-0.096700
+aim_hud_offset_rot					= 0.000150,0.000900,0.000000
+aim_hud_offset_pos_16x9				= -0.044350,-0.001540,-0.096700
+aim_hud_offset_rot_16x9				= 0.000150,0.000900,0.000000
 item_visual            	 		    = dynamics\weapons\wpn_sig550\wpn_sig550_pn23_hud.ogf
 
 [wpn_sig550_specter_scope]:wpn_sig550
@@ -285,12 +284,12 @@ scope_x                         	= 61
 scope_y                         	= -1
 
 [wpn_sig550_specter_scope_hud]:wpn_sig550_hud
-aim_hud_offset_pos					= -0.043580,0.007431,-0.098663
-aim_hud_offset_rot					= -0.003490,0.002370,0.000000
-aim_hud_offset_pos_16x9				= -0.043580,0.007431,-0.098663
-aim_hud_offset_rot_16x9				= -0.003490,0.002370,0.000000
-aim_hud_offset_alt_pos				= -0.044180,-0.017969,-0.047963
-aim_hud_offset_alt_rot				= -0.007635,0.002235,0.000000
-aim_hud_offset_alt_pos_16x9			= -0.044180,-0.017969,-0.047963
-aim_hud_offset_alt_rot_16x9			= -0.007635,0.002235,0.000000
+aim_hud_offset_pos					= -0.044080,0.010931,-0.098663
+aim_hud_offset_rot					= -0.002865,0.002345,0.000000
+aim_hud_offset_pos_16x9				= -0.044080,0.010931,-0.098663
+aim_hud_offset_rot_16x9				= -0.002865,0.002345,0.000000
+aim_hud_offset_alt_pos				= -0.044180,-0.008969,-0.047963
+aim_hud_offset_alt_rot				= -0.007810,0.003210,0.000000
+aim_hud_offset_alt_pos_16x9			= -0.044180,-0.008969,-0.047963
+aim_hud_offset_alt_rot_16x9			= -0.007810,0.003210,0.000000
 item_visual							= dynamics\weapons\wpn_sig550\wpn_sig550_specter_hud.ogf
