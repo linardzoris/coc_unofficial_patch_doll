@@ -316,7 +316,7 @@ void CPda::UpdateCL()
     const bool b_main_menu_is_active = (g_pGamePersistent->m_pMainMenu && g_pGamePersistent->m_pMainMenu->IsActive());
 
     // For battery icon
-    const float condition = GetCondition();
+    const float condition = this->GetCondition();
     const auto pda = &CurrentGameUI()->GetPdaMenu();
     pda->m_power = condition;
 

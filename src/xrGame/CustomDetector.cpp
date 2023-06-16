@@ -306,7 +306,7 @@ void CCustomDetector::UpdateCL()
         this->ChangeCondition(-m_fPassiveDecayRate * Device.fTimeDelta);
     }
 
-	if (ParentIsActor())
+	if (ParentIsActor() && m_bWorking && IsUsingCondition())
     {
         if (GetCondition() >= 0.01)
         {
