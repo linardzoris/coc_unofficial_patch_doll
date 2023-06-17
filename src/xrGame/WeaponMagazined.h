@@ -73,6 +73,7 @@ public:
     virtual void switch2_ChangeFireMode();
     virtual void PlayAnimFireMode();
     bool m_bNeedBulletInGun;
+    bool m_bCartridgeInTheChamber;
     virtual bool bMarkCanShow() { return IsZoomed(); }
 
 protected:
@@ -199,8 +200,7 @@ protected:
     virtual int ShotsFired() { return m_iShotNum; }
     virtual float GetWeaponDeterioration();
 
-    virtual void FireBullet(const Fvector& pos, const Fvector& dir, float fire_disp, const CCartridge& cartridge,
-        u16 parent_id, u16 weapon_id, bool send_hit);
+    virtual void FireBullet(const Fvector& pos, const Fvector& dir, float fire_disp, const CCartridge& cartridge, u16 parent_id, u16 weapon_id, bool send_hit);
 
     //AVO: for custom added sounds check if sound exists
     bool WeaponSoundExist(pcstr section, pcstr sound_name) const;

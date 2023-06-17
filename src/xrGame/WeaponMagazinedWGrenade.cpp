@@ -1208,13 +1208,11 @@ void CWeaponMagazinedWGrenade::CheckMagazine()
     if (m_bGrenadeMode)
         return;
 
-    if ((isHUDAnimationExist("anm_reload_empty_w_gl") || isHUDAnimationExist("anm_reload_empty")) &&
-        m_ammoElapsed.type1 >= 1 && m_bNeedBulletInGun == false)
+    if (m_bCartridgeInTheChamber == true && (isHUDAnimationExist("anm_reload_empty_w_gl") || isHUDAnimationExist("anm_reload_empty")) && m_ammoElapsed.type1 >= 1 && m_bNeedBulletInGun == false)
     {
         m_bNeedBulletInGun = true;
     }
-    else if ((isHUDAnimationExist("anm_reload_empty_w_gl") || isHUDAnimationExist("anm_reload_empty")) &&
-        m_ammoElapsed.type1 == 0 && m_bNeedBulletInGun == true)
+    else if ((isHUDAnimationExist("anm_reload_empty_w_gl") || isHUDAnimationExist("anm_reload_empty")) && m_ammoElapsed.type1 == 0 && m_bNeedBulletInGun == true)
     {
         m_bNeedBulletInGun = false;
     }

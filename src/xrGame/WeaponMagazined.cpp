@@ -201,6 +201,8 @@ void CWeaponMagazined::Load(LPCSTR section)
         empty_click_speed = READ_IF_EXISTS(pSettings, r_float, *hud_sect, "empty_click_anm_speed", 1.f);
         empty_click_power = READ_IF_EXISTS(pSettings, r_float, *hud_sect, "empty_click_anm_power", 1.f);
     }
+
+    m_bCartridgeInTheChamber = READ_IF_EXISTS(pSettings, r_bool, section, "CartridgeInTheChamberEnabled", true);
 }
 
 bool CWeaponMagazined::UseScopeTexture()
@@ -2211,7 +2213,7 @@ void CWeaponMagazined::CheckMagazine() // Остаётся ли патрон в 
         return;
     }
 
-    if (isHUDAnimationExist("anm_reload_empty") && m_ammoElapsed.type1 >= 1 && m_bNeedBulletInGun == false)
+    if (m_bCartridgeInTheChamber == true && isHUDAnimationExist("anm_reload_empty") && m_ammoElapsed.type1 >= 1 && m_bNeedBulletInGun == false)
     {
         m_bNeedBulletInGun = true;
     }
