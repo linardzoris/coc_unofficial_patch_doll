@@ -138,6 +138,7 @@ protected:
     ALife::_TIME_ID m_dwWeaponIndependencyTime;
 
     virtual bool IsHudModeNow();
+    u8 last_idx;
 
 public:
     void signal_HideComplete();
@@ -369,6 +370,7 @@ protected:
     bool m_can_be_strapped;
 
     Fmatrix m_Offset;
+    Fvector m_hud_offset[2];
     // 0-используется без участия рук, 1-одна рука, 2-две руки
     EHandDependence eHandDependence;
     bool m_bIsSingleHanded;

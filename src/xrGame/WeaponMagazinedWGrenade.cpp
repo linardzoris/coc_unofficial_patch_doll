@@ -1042,11 +1042,11 @@ u8 CWeaponMagazinedWGrenade::GetCurrentHudOffsetIdx()
     else
         // Альт. прицел
         if (m_bGrenadeMode)
-        return 2;
-    else if (m_zoomtype == 1)
-        return 3;
-    else
-        return 1;
+            return 2;
+        else if (m_zoomtype == 1)
+            return 3;
+        else
+            return 1;
 }
 
 bool CWeaponMagazinedWGrenade::install_upgrade_ammo_class(LPCSTR section, bool test)

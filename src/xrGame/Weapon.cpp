@@ -2230,8 +2230,7 @@ void CWeapon::UpdateHudAdditional(Fmatrix& trans)
 
     //============= Поворот ствола во время аима =============//
 
-    if ((IsZoomed() && m_zoom_params.m_fZoomRotationFactor <= 1.f) ||
-        (!IsZoomed() && m_zoom_params.m_fZoomRotationFactor > 0.f))
+    if ((IsZoomed() && m_zoom_params.m_fZoomRotationFactor <= 1.f) || (!IsZoomed() && m_zoom_params.m_fZoomRotationFactor > 0.f))
     {
         Fvector curr_offs, curr_rot;
         curr_offs = hi->m_measures.m_hands_offset[0][idx]; // pos,aim
@@ -2344,8 +2343,7 @@ void CWeapon::UpdateHudAdditional(Fmatrix& trans)
             float fUD_lim = (m_fUD_ShootingFactor < 0.0f ? vShOffsets.z : vShOffsets.w);
 
             Fvector curr_offs;
-            curr_offs = {fLR_lim * m_fLR_ShootingFactor, fUD_lim * -1.f * m_fUD_ShootingFactor,
-                -1.f * fShootingBackwOffset * m_fBACKW_ShootingFactor};
+            curr_offs = {fLR_lim * m_fLR_ShootingFactor, fUD_lim * -1.f * m_fUD_ShootingFactor, -1.f * fShootingBackwOffset * m_fBACKW_ShootingFactor};
 
             Fmatrix hud_rotation;
             hud_rotation.identity();
@@ -2354,8 +2352,7 @@ void CWeapon::UpdateHudAdditional(Fmatrix& trans)
         }
     }
     //============= Боковой стрейф с оружием =============//
-    float fStrafeMaxTime =
-        m_strafe_offset[2][idx].y; // Макс. время в секундах, за которое мы наклонимся из центрального положения
+    float fStrafeMaxTime = m_strafe_offset[2][idx].y; // Макс. время в секундах, за которое мы наклонимся из центрального положения
     if (fStrafeMaxTime <= EPS)
         fStrafeMaxTime = 0.01f;
 
@@ -2365,8 +2362,7 @@ void CWeapon::UpdateHudAdditional(Fmatrix& trans)
     float fCamReturnSpeedMod = 1.5f; // Восколько ускоряем нормализацию наклона, полученного от движения камеры (только от бедра)
 
     // Высчитываем минимальную скорость поворота камеры для начала инерции
-    float fStrafeMinAngle =
-        _lerp(m_strafe_offset[3][0].y, m_strafe_offset[3][1].y, m_zoom_params.m_fZoomRotationFactor);
+    float fStrafeMinAngle = _lerp(m_strafe_offset[3][0].y, m_strafe_offset[3][1].y, m_zoom_params.m_fZoomRotationFactor);
 
     // Высчитываем мксимальный наклон от поворота камеры
     float fCamLimitBlend = _lerp(m_strafe_offset[3][0].x, m_strafe_offset[3][1].x, m_zoom_params.m_fZoomRotationFactor);
@@ -2375,7 +2371,6 @@ void CWeapon::UpdateHudAdditional(Fmatrix& trans)
     if (abs(fYMag) > (m_fLR_CameraFactor == 0.0f ? fStrafeMinAngle : 0.0f))
     { //--> Камера крутится по оси Y
         m_fLR_CameraFactor -= (fYMag * 0.025f);
-
         clamp(m_fLR_CameraFactor, -fCamLimitBlend, fCamLimitBlend);
     }
     else
@@ -2549,17 +2544,13 @@ void CWeapon::UpdateHudAdditional(Fmatrix& trans)
 
     Fvector4 vIOffsets; // x = L, y = R, z = U, w = D
     vIOffsets.x = _lerp(hi->m_measures.m_inertion_params.m_offset_LRUD.x,
-                      hi->m_measures.m_inertion_params.m_offset_LRUD_aim.x, m_zoom_params.m_fZoomRotationFactor) *
-        fInertiaPower;
+        hi->m_measures.m_inertion_params.m_offset_LRUD_aim.x, m_zoom_params.m_fZoomRotationFactor) * fInertiaPower;
     vIOffsets.y = _lerp(hi->m_measures.m_inertion_params.m_offset_LRUD.y,
-                      hi->m_measures.m_inertion_params.m_offset_LRUD_aim.y, m_zoom_params.m_fZoomRotationFactor) *
-        fInertiaPower;
+        hi->m_measures.m_inertion_params.m_offset_LRUD_aim.y, m_zoom_params.m_fZoomRotationFactor) * fInertiaPower;
     vIOffsets.z = _lerp(hi->m_measures.m_inertion_params.m_offset_LRUD.z,
-                      hi->m_measures.m_inertion_params.m_offset_LRUD_aim.z, m_zoom_params.m_fZoomRotationFactor) *
-        fInertiaPower;
+        hi->m_measures.m_inertion_params.m_offset_LRUD_aim.z, m_zoom_params.m_fZoomRotationFactor) * fInertiaPower;
     vIOffsets.w = _lerp(hi->m_measures.m_inertion_params.m_offset_LRUD.w,
-                      hi->m_measures.m_inertion_params.m_offset_LRUD_aim.w, m_zoom_params.m_fZoomRotationFactor) *
-        fInertiaPower;
+        hi->m_measures.m_inertion_params.m_offset_LRUD_aim.w, m_zoom_params.m_fZoomRotationFactor) * fInertiaPower;
 
     // Высчитываем инерцию из поворотов камеры
     bool bIsInertionPresent = m_fLR_InertiaFactor != 0.0f || m_fUD_InertiaFactor != 0.0f;
@@ -2904,10 +2895,11 @@ u8 CWeapon::GetCurrentHudOffsetIdx()
 	// Альт. прицел
     if (!b_aiming)
         return 0;
-    else if (m_zoomtype == 1)
-        return 3;
-    else
-        return 1;
+    else 
+        if (m_zoomtype == 1)
+            return 3;
+        else
+            return 1;
 }
 
 void CWeapon::render_hud_mode() { RenderLight(); }
