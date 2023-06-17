@@ -253,7 +253,7 @@ bool attachable_hud_item::need_renderable()
 void attachable_hud_item::render()
 {
     GEnv.Render->set_Transform(&m_item_transform);
-    GEnv.Render->add_Visual(m_model->dcast_RenderVisual());
+    GEnv.Render->add_Visual(m_model->dcast_RenderVisual(), true);
     debug_draw_firedeps();
     m_parent_hud_item->render_hud_mode();
 }
@@ -756,9 +756,9 @@ void player_hud::render_hud()
         return;
 
     GEnv.Render->set_Transform(&m_transform);
-    GEnv.Render->add_Visual(m_model->dcast_RenderVisual());
+    GEnv.Render->add_Visual(m_model->dcast_RenderVisual(), true);
     GEnv.Render->set_Transform(&m_transform_2);
-    GEnv.Render->add_Visual(m_model_2->dcast_RenderVisual());
+    GEnv.Render->add_Visual(m_model_2->dcast_RenderVisual(), true);
 
     if (m_attached_items[0])
         m_attached_items[0]->render();
@@ -769,7 +769,7 @@ void player_hud::render_hud()
 	if (script_anim_item_model)
     {
         GEnv.Render->set_Transform(&m_item_pos);
-        GEnv.Render->add_Visual(script_anim_item_model->dcast_RenderVisual());
+        GEnv.Render->add_Visual(script_anim_item_model->dcast_RenderVisual(), true);
     }
 }
 
