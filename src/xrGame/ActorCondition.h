@@ -63,7 +63,6 @@ public:
     void BoostParameters(const SBooster& B);
     void DisableBoostParameters(const SBooster& B);
     IC void BoostMaxWeight(const float value);
-    IC void BoostDecSleepeness(const float value);
     IC void BoostHpRestore(const float value);
     IC void BoostPowerRestore(const float value);
     IC void BoostRadiationRestore(const float value);

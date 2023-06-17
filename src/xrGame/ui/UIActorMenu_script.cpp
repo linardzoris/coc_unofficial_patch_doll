@@ -369,7 +369,6 @@ SCRIPT_EXPORT(CUIActorMenu, (CUIDialogWnd),
 			.def_readonly("m_ind_boost_chem", &CUIMainIngameWnd::m_ind_boost_chem)
 			.def_readonly("m_ind_boost_wound", &CUIMainIngameWnd::m_ind_boost_wound)
 			.def_readonly("m_ind_boost_weight", &CUIMainIngameWnd::m_ind_boost_weight)
-            .def_readonly("m_ind_boost_dec_sleepeness", &CUIMainIngameWnd::m_ind_boost_dec_sleepeness)
 			.def_readonly("m_ind_boost_health", &CUIMainIngameWnd::m_ind_boost_health)
 			.def_readonly("m_ind_boost_power", &CUIMainIngameWnd::m_ind_boost_power)
 			.def_readonly("m_ind_boost_rad", &CUIMainIngameWnd::m_ind_boost_rad),
