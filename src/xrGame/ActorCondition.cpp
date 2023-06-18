@@ -454,7 +454,7 @@ void CActorCondition::UpdateAlcohol()
 
     if (psActorFlags.test(AF_GODMODE_RT))
     {
-        m_fAlcohol += m_fV_Alcohol * m_fDeltaTime;
+        m_fAlcohol -= m_fV_Alcohol * m_fDeltaTime;
         clamp(m_fAlcohol, 0.0f, 1.0f);
         if (IsGameTypeSingle())
         {

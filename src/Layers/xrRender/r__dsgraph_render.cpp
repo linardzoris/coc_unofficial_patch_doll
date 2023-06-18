@@ -335,6 +335,7 @@ class hud_transform_helper
 {
     Fmatrix Pold;
     Fmatrix FTold;
+    Fmatrix Vold;
 
 public:
     hud_transform_helper()
@@ -344,6 +345,7 @@ public:
         // Change projection
         Pold  = Device.mProject;
         FTold = Device.mFullTransform;
+        Vold = Device.mView;
 
         // XXX: Xottab_DUTY: custom FOV. Implement it someday
         // It should be something like this:
@@ -361,10 +363,12 @@ public:
         // In the commit:
         // https://github.com/ShokerStlk/xray-16-SWM/commit/869de0b6e74ac05990f541e006894b6fe78bd2a5#diff-4199ef700b18ce4da0e2b45dee1924d0R83
 
+        Device.mView.build_camera_dir(Fvector().set(0.f, 0.f, 0.f), Device.vCameraDirection, Device.vCameraTop);
         Device.mProject.build_projection(deg2rad(psHUD_FOV * Device.fFOV /* *Device.fASPECT*/), Device.fASPECT,
              /*VIEWPORT_NEAR*/0.02f, g_pGamePersistent->Environment().CurrentEnv->far_plane);
 
         Device.mFullTransform.mul(Device.mProject, Device.mView);
+        RCache.set_xform_view(Device.mView);
         RCache.set_xform_project(Device.mProject);
 
         RImplementation.rmNear();
@@ -378,6 +382,8 @@ public:
         Device.mProject = Pold;
         Device.mFullTransform = FTold;
         RCache.set_xform_project(Device.mProject);
+        Device.mView = Vold;
+        RCache.set_xform_view(Device.mView);
     }
 };
 
