@@ -36,6 +36,7 @@ ENGINE_API BOOL g_bRendering = FALSE;
 BOOL g_bLoaded = FALSE;
 ref_light precache_light = 0;
 u32 g_dwFPSlimit = 60;
+ENGINE_API int g_3dscopes_fps_factor = 2; // На каком кадре с момента прошлого рендера во второй вьюпорт мы начнём новый (не может быть меньше 2 - каждый второй кадр, чем больше тем более низкий FPS во втором вьюпорте)
 
 BOOL CRenderDevice::Begin()
 {
@@ -575,7 +576,7 @@ void CRenderDevice::CSecondVPParams::SetSVPActive(bool bState) //--#SM+#-- +Seco
 
 bool CRenderDevice::CSecondVPParams::IsSVPFrame() //--#SM+#-- +SecondVP+
 {
-    return IsSVPActive() && Device.dwFrame % frameDelay == 0;
+    return IsSVPActive() && Device.dwFrame % g_3dscopes_fps_factor == 0;
 }
 
 void CRenderDevice::time_factor(const float& time_factor)

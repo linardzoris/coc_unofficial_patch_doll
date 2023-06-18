@@ -102,6 +102,9 @@ int g_keypress_on_start = 1;
 
 ENGINE_API extern float g_console_sensitive;
 
+// 3d Scopes FPS factor
+ENGINE_API extern int g_3dscopes_fps_factor;
+
 //Alundaio
 extern BOOL g_ai_die_in_anomaly;
 extern BOOL g_invert_zoom;
@@ -1763,6 +1766,7 @@ void CCC_RegisterCommands()
     CMD3(CCC_Mask, "g_simple_pda", &psActorFlags, AF_SIMPLE_PDA);
     psActorFlags.set(AF_3DSCOPE_ENABLE, FALSE);
     CMD3(CCC_Mask, "g_3d_scopes", &psActorFlags, AF_3DSCOPE_ENABLE);
+    CMD4(CCC_Integer, "g_3d_scopes_fps_factor", &g_3dscopes_fps_factor, 2, 5);
     psActorFlags.set(AF_ITEM_ANIMATIONS_ENABLE, FALSE);
     CMD3(CCC_Mask, "g_item_animations", &psActorFlags, AF_ITEM_ANIMATIONS_ENABLE);
 

@@ -138,8 +138,6 @@ public:
     class ENGINE_API CSecondVPParams //--#SM+#-- +SecondVP+
     {
         bool isActive; // Флаг активации рендера во второй вьюпорт
-        u8 frameDelay;  // На каком кадре с момента прошлого рендера во второй вьюпорт мы начнём новый
-                          //(не может быть меньше 2 - каждый второй кадр, чем больше тем более низкий FPS во втором вьюпорте)
     
     public:
         bool isCamReady; // Флаг готовности камеры (FOV, позиция, и т.п) к рендеру второго вьюпорта
@@ -147,13 +145,6 @@ public:
         IC bool IsSVPActive() { return isActive; }
         IC void SetSVPActive(bool bState);
         bool    IsSVPFrame();
-
-        IC u8 GetSVPFrameDelay() { return frameDelay; }
-        void  SetSVPFrameDelay(u8 iDelay)
-        {
-            frameDelay = iDelay;
-            clamp<u8>(frameDelay, 2, u8(-1));
-        }
     };
 
 private:
@@ -221,7 +212,6 @@ public:
         m_bNearer = FALSE;
         //--#SM+#-- +SecondVP+
         m_SecondViewport.SetSVPActive(false);
-        m_SecondViewport.SetSVPFrameDelay(2);
         m_SecondViewport.isCamReady = false;
     };
 
