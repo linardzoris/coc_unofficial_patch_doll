@@ -162,61 +162,20 @@ bool CWeapon::install_upgrade_hit(LPCSTR section, bool test)
 #else
         fvHitPower[egdMaster] = (float)atof(_GetItem(*s_sHitPower, 0, buffer));
 #endif
-        fvHitPower[egdNovice] = fvHitPower[egdStalker] = fvHitPower[egdVeteran] = fvHitPower[egdMaster];
+        fvHitPower[egdNovice] = fvHitPower[egdMaster];
 
         int num_game_diff_param = _GetItemCount(*s_sHitPower);
 #ifdef COC_EDITION
         if (num_game_diff_param > 1)
         {
-            fvHitPower[egdVeteran] += (float)atof(_GetItem(*s_sHitPower, 1, buffer));
-        }
-        if (num_game_diff_param > 2)
-        {
-            fvHitPower[egdStalker] += (float)atof(_GetItem(*s_sHitPower, 2, buffer));
-        }
-        if (num_game_diff_param > 3)
-        {
-            fvHitPower[egdNovice] += (float)atof(_GetItem(*s_sHitPower, 3, buffer));
+            fvHitPower[egdNovice] += (float)atof(_GetItem(*s_sHitPower, 1, buffer));
         }
 #else
         if (num_game_diff_param > 1)
         {
-            fvHitPower[egdVeteran] = (float)atof(_GetItem(*s_sHitPower, 1, buffer));
-        }
-        if (num_game_diff_param > 2)
-        {
-            fvHitPower[egdStalker] = (float)atof(_GetItem(*s_sHitPower, 2, buffer));
-        }
-        if (num_game_diff_param > 3)
-        {
-            fvHitPower[egdNovice] = (float)atof(_GetItem(*s_sHitPower, 3, buffer));
+            fvHitPower[egdNovice] = (float)atof(_GetItem(*s_sHitPower, 1, buffer));
         }
 #endif
-    }
-    result |= result2;
-
-    shared_str s_sHitPowerCritical;
-    result2 = process_if_exists_set(section, "hit_power_critical", &CInifile::r_string_wb, s_sHitPower, test);
-    if (result2 && !test)
-    {
-        string32 buffer;
-        fvHitPowerCritical[egdMaster] = (float)atof(_GetItem(*s_sHitPowerCritical, 0, buffer));
-        fvHitPowerCritical[egdNovice] = fvHitPowerCritical[egdStalker] = fvHitPowerCritical[egdVeteran] =
-            fvHitPowerCritical[egdMaster];
-
-        int num_game_diff_param = _GetItemCount(*s_sHitPowerCritical);
-        if (num_game_diff_param > 1)
-        {
-            fvHitPowerCritical[egdVeteran] = (float)atof(_GetItem(*s_sHitPowerCritical, 1, buffer));
-        }
-        if (num_game_diff_param > 2)
-        {
-            fvHitPowerCritical[egdStalker] = (float)atof(_GetItem(*s_sHitPowerCritical, 2, buffer));
-        }
-        if (num_game_diff_param > 3)
-        {
-            fvHitPowerCritical[egdNovice] = (float)atof(_GetItem(*s_sHitPowerCritical, 3, buffer));
-        }
     }
     result |= result2;
 

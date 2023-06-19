@@ -28,9 +28,7 @@ public:
 enum ESingleGameDifficulty
 {
     egdNovice = 0,
-    egdStalker = 1,
-    egdVeteran = 2,
-    egdMaster = 3,
+    egdMaster = 1,
     egdCount,
     egd_force_u32 = u32(-1)
 };

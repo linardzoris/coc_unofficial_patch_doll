@@ -11,10 +11,10 @@
 
 using namespace luabind;
 
-ESingleGameDifficulty g_SingleGameDifficulty = egdStalker;
+ESingleGameDifficulty g_SingleGameDifficulty = egdNovice;
 
 extern const  xr_token difficulty_type_token[] = {
-    {"gd_novice", egdNovice}, {"gd_stalker", egdStalker}, {"gd_veteran", egdVeteran}, {"gd_master", egdMaster}, {0, 0}};
+    {"gd_novice", egdNovice}, {"gd_master", egdMaster}, {0, 0}};
 
 game_cl_Single::game_cl_Single()
 {
@@ -93,6 +93,6 @@ SCRIPT_EXPORT(CScriptGameDifficulty, (), {
     {
     };
     module(luaState)[class_<CScriptGameDifficulty>("game_difficulty")
-                         .enum_("game_difficulty")[value("novice", int(egdNovice)), value("stalker", int(egdStalker)),
-                             value("veteran", int(egdVeteran)), value("master", int(egdMaster))]];
+                         .enum_("game_difficulty")[value("novice", int(egdNovice)),
+ value("master", int(egdMaster))]];
 });

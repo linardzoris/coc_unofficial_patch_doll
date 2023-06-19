@@ -2018,7 +2018,7 @@ bool CActor::can_attach(const CInventoryItem* inventory_item) const
 void CActor::OnDifficultyChanged()
 {
     // immunities
-    VERIFY(g_SingleGameDifficulty >= egdNovice && g_SingleGameDifficulty <= egdMaster);
+    VERIFY(g_SingleGameDifficulty == egdNovice || g_SingleGameDifficulty == egdMaster);
     pcstr diff_name = get_token_name(difficulty_type_token, g_SingleGameDifficulty);
     string128 tmp;
     strconcat(sizeof(tmp), tmp, "actor_immunities_", diff_name);
