@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <string_table>
+	<string id="ui_inv_thirst">
+		<text>Filling</text>
+	</string>	
+	<string id="ui_inv_intoxication">
+		<text>Intoxication</text>
+	</string>	
+	<string id="ui_inv_sleepeness">
+		<text>Sleepiness</text>
+	</string>
+	<string id="ui_inv_af_artefact_count">
+		<text>Pockets</text>
+	</string>	
 	<string id="st_percent">
 		<text>%</text>
 	</string>
@@ -246,21 +258,6 @@
 	<string id="ui_inv_satiety">
 		<text>Hunger elimination</text>
 	</string>
-	<string id="ui_inv_thirst">
-		<text>Water elimination</text>
-	</string>	
-	<string id="ui_inv_intoxication">
-		<text>Intoxication</text>
-	</string>		
-	<string id="ui_inv_sleepeness">
-		<text>Sleepiness</text>
-	</string>
-	<string id="ui_inv_af_artefact_count">
-		<text>Pockets</text>
-	</string>	
-	<string id="ui_inv_boost_dec_sleepeness">
-		<text>Cheerfulness</text>
-	</string>			
 	<string id="ui_inv_scope_rifle">
 		<text>Buy optical scope for rifle (S)</text>
 	</string>
@@ -388,8 +385,8 @@
 	</string>
 	<string id="st_money_infinitive">
 		<text>--- RU</text>
-	</string>	
+	</string>
 	<string id="ui_inv_psy_health_restore">
 		<text>Mentality</text>
-	</string>		
+	</string>			
 </string_table>

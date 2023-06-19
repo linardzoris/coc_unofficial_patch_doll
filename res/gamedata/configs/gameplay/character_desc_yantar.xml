@@ -1,8 +1,6 @@
 <?xml version='1.0' encoding="windows-1251"?>
 <xml>
-
-    <!-- Сахаров -->
-	
+    <!-- SAKHAROV -->
     <specific_character id="yan_stalker_sakharov" team_default = "1">
     <name>yan_st_sakharov_name</name>
     <icon>ui_inGame2_sakharov</icon>
@@ -35,19 +33,51 @@
     <actor_dialog>actor_break_dialog</actor_dialog>
     </specific_character>
     
-    <!-- Семёнов (медик) -->
-	
+    <!-- KRUGLOV -->
+    <specific_character id="yan_ecolog_kruglov" team_default = "1">
+    <name>yan_kruglov_name</name>
+    <icon>ui_inGame2_ecolog_green</icon>
+    <map_icon x="0" y="6"></map_icon>
+    <bio>yan_kruglov_bio</bio>
+    <class>yan_ecolog_kruglov</class>
+    <community>ecolog</community>
+	<terrain_sect>stalker_terrain</terrain_sect>
+	<mechanic_mode>1</mechanic_mode>
+    <money min="2000" max="5000" infinitive="0"></money>
+    <rank>4142</rank>
+    <reputation>-603</reputation>
+    <visual>actors\stalker_ecologist\stalker_ecolog_military</visual>
+    <snd_config>characters_voice\human\ecolog_3\</snd_config>
+    <crouch_type>1</crouch_type>
+    <supplies>
+        [spawn] \n
+        wpn_protecta \n
+        ammo_12x76_zhekan = 2 \n
+        wpn_walther \n
+        ammo_9x19_fmj \n
+        detector_simple \n
+    </supplies>
+#include "gameplay\character_criticals.xml"
+    <start_dialog>yan_ecolog_kruglov_start_dialog</start_dialog>
+    <actor_dialog>dm_ordered_task_dialog</actor_dialog>
+    <actor_dialog>dm_ordered_task_completed_dialog</actor_dialog>
+    <actor_dialog>dm_ordered_task_cancel_dialog</actor_dialog>
+    <actor_dialog>dm_tech_repair</actor_dialog>
+	<actor_dialog>dm_broker_dialog</actor_dialog>
+    <actor_dialog>actor_break_dialog</actor_dialog>
+    </specific_character>
+    
+    <!-- SEMENOV -->
     <specific_character id="yan_ecolog_semenov" team_default = "1">
     <name>yan_semenov_name</name>
     <icon>ui_inGame2_ecolog_orange</icon>
     <map_icon x="0" y="6"></map_icon>
     <bio>yan_semenov_bio</bio>
     <class>yan_ecolog_semenov</class>
-    <community>ecolog</community> 
-	<terrain_sect>stalker_terrain</terrain_sect>
+    <community>ecolog</community> <terrain_sect>stalker_terrain</terrain_sect>
     <money min="600" max="2000" infinitive="0"></money>
-    <rank>4700</rank>
-    <reputation>1500</reputation>
+    <rank>708</rank>
+    <reputation>-1809</reputation>
     <visual>actors\stalker_ecologist\stalker_ecolog</visual>
     <snd_config>characters_voice\human\ecolog_3\</snd_config>
     <crouch_type>1</crouch_type>
@@ -60,90 +90,44 @@
         detector_simple \n
     </supplies>
 #include "gameplay\character_criticals.xml"
-    <start_dialog>yan_bun_semenov_hello</start_dialog>
-    <actor_dialog>yan_bun_semenov_talk</actor_dialog>	
-    <actor_dialog>yan_bun_semenov_heal</actor_dialog>
+    <start_dialog>yan_ecolog_semenov_start_dialog</start_dialog>
     <actor_dialog>dm_ordered_task_dialog</actor_dialog>
     <actor_dialog>dm_ordered_task_completed_dialog</actor_dialog>
     <actor_dialog>dm_ordered_task_cancel_dialog</actor_dialog>
+    <actor_dialog>dm_is_actor_companion_dialog</actor_dialog>
+    <actor_dialog>dm_companion_patrol</actor_dialog>
+    <actor_dialog>dm_companion_leave</actor_dialog>
     <actor_dialog>actor_break_dialog</actor_dialog>
     </specific_character>
     
-    <!-- Сапсан (техник) -->
-
-	<specific_character id="yan_ecolog_army_tech" team_default="1">
-	<name>st_yan_ecolog_army_tech_name</name>
-	<icon>ui_inGame2_Soldier_3</icon>
-	<map_icon x="1" y="0"></map_icon>
-	<bio>Информация отсутствует.</bio>
-
-	<class>yan_ecolog_army_tech</class>
-	<community>ecolog</community> 
-	<terrain_sect>stalker_terrain</terrain_sect>
-	<mechanic_mode>1</mechanic_mode>
-	<snd_config>characters_voice\human_03\military\</snd_config>
-
-	<rank>3500</rank>
-	<money min="0" max="0" infinitive="0"/>
-	<reputation>1500</reputation>
-
-	<visual>actors\stalker_soldier\stalker_soldier_3</visual>
-	<supplies>
-	[spawn] \n
-	wpn_ak74m \n
-	ammo_5.45x39_fmj = 3 \n
-	wpn_fort \n
-	ammo_9x18_fmj = 3 \n
-	detector_elite = 1 \n
-	#include "gameplay\supplies\character_items.xml"
-	#include "gameplay\supplies\character_food.xml"
-	#include "gameplay\supplies\character_drugs.xml"
-	</supplies>
-	
-	#include "gameplay\character_criticals.xml"
-    <start_dialog>yan_ecolog_army_tech_hello</start_dialog>	
-	<actor_dialog>yan_ecolog_army_about_tool</actor_dialog>
-	<actor_dialog>dm_tech_repair</actor_dialog>
-	<actor_dialog>actor_break_dialog</actor_dialog>
-	</specific_character>	
-	
-    <!-- Солдат на складе -->
-
-	<specific_character id="yan_ecolog_army_soldier" team_default="1">
-	<name>st_yan_ecolog_army_soldier_name</name>
-	<icon>ui_inGame2_Soldier_1</icon>
-	<map_icon x="1" y="0"></map_icon>
-	<bio>Информация отсутствует.</bio>
-
-	<class>yan_ecolog_army_soldier</class>
-	<community>ecolog</community> 
-	<terrain_sect>stalker_terrain</terrain_sect>
-	<snd_config>characters_voice\human_01\military\</snd_config>
-
-	<rank>600</rank>
-	<money min="20000" max="20000" infinitive="1"/>
-	<reputation>998</reputation>
-
-	<visual>actors\stalker_soldier\stalker_soldier_1b</visual>
-	<supplies>
-
-	[spawn] \n
-	wpn_ak74 \n
-	ammo_5.45x39_fmj = 3 \n
-
-	#include "gameplay\supplies\character_items.xml"
-	#include "gameplay\supplies\character_food.xml"
-	#include "gameplay\supplies\character_drugs.xml"
-	</supplies>
-	#include "gameplay\character_criticals.xml"
-	<actor_dialog>yan_soldier_angar_army_mlr_meet</actor_dialog>
-	<actor_dialog>yan_soldier_angar_army_mlr_barter</actor_dialog>
-	<actor_dialog>yan_soldier_angar_army_mlr_barter_list</actor_dialog>
-	<actor_dialog>actor_break_dialog</actor_dialog>
-	</specific_character>	
-	
-    <!-- Охрана бункера -->
-	
+    <!-- CHERENKOV -->
+	<!-- TECHNICALLY VASILYEV IN ALL CONFIGS, BUT HE'S DEAD IN LORE SO IS RENAMED-->
+    <specific_character id="yan_ecolog_vasilyev" team_default = "1">
+    <name>yan_cherenkov_name</name>
+    <icon>ui_inGame2_ecolog_orange</icon>
+    <map_icon x="0" y="6"></map_icon>
+    <bio>yan_vasilyev_bio</bio>
+    <class>yan_ecolog_vasilyev</class>
+    <community>ecolog</community> <terrain_sect>stalker_terrain</terrain_sect>
+    <rank>40</rank>
+    <reputation>768</reputation>
+    <visual>actors\stalker_ecologist\stalker_ecolog</visual>
+    <snd_config>characters_voice\human\ecolog_3\</snd_config>
+    <crouch_type>1</crouch_type>
+    <supplies>
+        [spawn] \n
+        wpn_protecta \n
+        ammo_12x76_zhekan = 2 \n
+        wpn_walther \n
+        ammo_9x19_fmj \n
+        detector_simple \n
+    </supplies>
+#include "gameplay\character_criticals.xml"
+    <start_dialog>yan_ecolog_vasilyev_start_dialog</start_dialog>
+    <actor_dialog>actor_break_dialog</actor_dialog>
+    </specific_character>
+    
+    <!-- Bunker guards -->
     <specific_character id="yan_merc_01" team_default = "1">
     <name>yan_merc_01</name>
     <icon>ui_inGame2_ecolog_guard_gas</icon>
@@ -188,7 +172,7 @@
     <visual>actors\stalker_ecologist\stalker_ecolog_guard_gas</visual>
     <supplies>
         [spawn] \n
-        wpn_m4a1 \n
+        wpn_l85 \n
         ammo_5.56x45_ap  = 1 \n
         wpn_sig220 \n
         ammo_11.43x23_fmj  = 1 \n
@@ -216,7 +200,7 @@
     <visual>actors\stalker_ecologist\stalker_ecolog_guard</visual>
     <supplies>
         [spawn] \n
-        wpn_m4a1 \n
+        wpn_l85 \n
         ammo_5.56x45_ap  = 1 \n
         wpn_sig220 \n
         ammo_11.43x23_fmj  = 1 \n
@@ -229,8 +213,6 @@
 #include "gameplay\character_criticals.xml"
     </specific_character>
     
-	<!-- Труп Призрака -->
-	
     <specific_character id="yan_ghost" team_default = "1">
     <name>yan_ghost_name</name>
     <icon>ui_inGame2_ghost</icon>

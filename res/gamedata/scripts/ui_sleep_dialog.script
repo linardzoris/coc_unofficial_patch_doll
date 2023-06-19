@@ -1,11 +1,8 @@
 local sleep_control = nil
 local wide = false
 class "sleep_dialog" (CUIScriptWnd)
-
 function sleep_dialog:__init() super()
-
 	self:SetWndRect(Frect():set(0,0,1024,768))
-	
 	if(device().width/device().height>(1024/768+0.01)) then
 		wide = true
 	end
@@ -47,7 +44,6 @@ function sleep_dialog:__init() super()
 end
 
 function sleep_dialog:Initialize()
-
 	local cur_hours = level.get_time_hours()
 	for i = 1, 24 do
 		local hours = cur_hours + i
@@ -84,7 +80,6 @@ function sleep_dialog:__finalize()
 end
 
 function sleep_dialog:TestAndShow()
-
 	if (self.ph_sleepbag_id and self.item_section) then
 		local sim = alife()
 		sim:create(self.item_section,db.actor:position(),0,0,0)
@@ -108,8 +103,8 @@ function sleep_dialog:TestAndShow()
 		elseif (radiation) then
 			SetHudMsg(game.translate_string("st_sleep_irradiated"),4)
 		end
-	elseif (not sleepeness) then
-			SetHudMsg(game.translate_string("st_sleep_not_sleepeness"),4)	
+	--elseif (not sleepeness) then
+			--SetHudMsg(game.translate_string("st_sleep_not_sleepeness"),4)		
 		return
 	end
 	
@@ -126,9 +121,7 @@ function sleep_dialog:TestAndShow()
 end
 
 function sleep_dialog:Update()
-
 	CUIScriptWnd.Update(self)
-	
 	if self:IsShown() then
 		local sleep_time = self.time_track:GetIValue()-1
 		local x = math.floor(591/24*sleep_time)
@@ -146,11 +139,9 @@ function sleep_dialog:OnTrackButton()
 end
 
 function sleep_dialog:OnButtonSleep()
-
 	if self:IsShown() then
 		self:HideDialog()
 	end
-	
 	db.actor:give_info_portion("actor_is_sleeping")
 	
 	utils.save_var(db.actor,"heli_enemy_flag",nil)

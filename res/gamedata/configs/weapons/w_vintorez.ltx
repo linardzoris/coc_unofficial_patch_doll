@@ -1,283 +1,179 @@
-[wpn_vintorez]:new_weapon_params
-$npc                                               = off
-$prefetch                                          = 8
-$spawn                                             = "weapons\vintorez"
-ammo_class                                         = ammo_9x39_pab9, ammo_9x39_ap
-ammo_elapsed                                       = 10
-ammo_mag_size                                      = 10
-animation_slot                                     = 2
-bullet_speed                                       = 295
-cam_return							               = 0
+[wpn_vintorez]:default_weapon_params
+$npc                                     = off
+$prefetch                                = 8
+$spawn                                   = "weapons\vintorez"
+PDM_disp_accel_factor                    = 1.75
+PDM_disp_base                            = 0.95
+PDM_disp_crouch                          = 1.0
+PDM_disp_crouch_no_acc                   = 1.0
+PDM_disp_vel_factor                      = 1.75
+ammo_class                               = ammo_9x39_pab9, ammo_9x39_ap
+ammo_elapsed                             = 10
+ammo_mag_size                            = 10
+animation_slot                           = 2
+bullet_speed                             = 300
+cam_dispersion                           = 0.5
+cam_dispersion_frac                      = 1.0
+cam_dispersion_inc                       = 0.05
+cam_max_angle                            = 100.0
+cam_max_angle_horz                       = 5.0
+cam_relax_speed                          = 10
+cam_relax_speed_ai                       = 360
+cam_return                               = 0
+cam_step_angle_horz                      = 0.4
+class                                    = WP_AK74
+condition_queue_shot_dec                 = 0.0010
+condition_shot_dec                       = 0.0009
+control_inertion_factor                  = 1.25
+cost                                     = 40000
+cost_repair                              = 32500
+crosshair_inertion                       = 6.25
+description                              = st_wpn_vintorez_descr
+ef_main_weapon_type                      = 3
+ef_weapon_type                           = 7
+fire_dispersion_base                     = 0.15
+fire_dispersion_condition_factor         = 2
+fire_distance                            = 500
+fire_modes                               = 1, -1
+fire_point                               = 0.0, 0.137, 0.649
+fire_point2                              = 0.0, 0.097, 0.722
+grenade_class                            = ammo_m209
+grenade_flame_particles                  = weapons\generic_weapon01
+grenade_launcher_name                    = wpn_addon_grenade_launcher_m203
+grenade_launcher_status                  = 0
+grenade_launcher_x                       = 109
+grenade_launcher_y                       = 30
+hit_impulse                              = 40
+hit_power                                = 0.58, 0.58, 0.58, 0.58
+hud                                      = wpn_vintorez_hud
+inertion_origin_offset                   = -0.042
+inertion_origin_aim_offset               = -0.023
+inertion_tendto_speed                    = 5.6
+inertion_tendto_aim_speed                = 9.2
+inv_grid_height                          = 2
+inv_grid_width                           = 5
+inv_grid_x                               = 0
+inv_grid_y                               = 27
+inv_name                                 = st_wpn_vintorez
+inv_weight                               = 3.2
+light_disabled                           = true
+light_range                              = 0.01
+light_time                               = 0.01
+misfire_end_condition                    = 0.1
+misfire_end_prob                         = 0.075
+misfire_start_condition                  = 0.75
+misfire_start_prob                       = 0.005
+orientation                              = 0, 0, 0
+ph_mass                                  = 3
+position                                 = -0.026, -0.097, 0.0
+reload_dof                               = 0.0, 0.5, 5, 2
+rpm                                      = 775
+scope_name                               = wpn_addon_scope
+scope_status                             = 1
+scope_texture                            = wpn_crosshair
+scope_x                                  = 78
+scope_y                                  = 0
+scope_zoom_factor                        = 4
+shell_dir                                = 0.0, 0.0, 0.4
+shell_particles                          = weapons\generic_shells
+shell_point                              = -0.020000,0.167000,0.082000
+silencer_name                            = wpn_addon_rifle_suppressor
+silencer_smoke_particles                 = weapons\generic_shoot_00
+silencer_status                          = 1
+silencer_x                               = 221
+silencer_y                               = 16
+single_handed                            = 0
+slot                                     = 2
+smoke_particles                          = weapons\generic_shoot_00
 
-cam_relax_speed						               = 10.0
-cam_dispersion						               = 0.8
-;cam_dispersion_horz 			                   = 0.8
-cam_dispersion_inc 					               = 0.8
-cam_dispersion_frac 				               = 0.7			
-cam_max_angle						               = 12.0				
-cam_max_angle_horz 					               = 7.0				
-cam_step_angle_horz 				               = 0.25	
+snd_draw                                 = weapons\vintorez\vintorez_draw
+snd_empty                                = weapons\vintorez\vintorez_empty
+snd_holster                              = weapons\generic_holster
+snd_reload                               = weapons\vintorez\vintorez_reload
+snd_reload_empty                         = weapons\vintorez\vintorez_reload_empty
+snd_reload_grenade                       = weapons\gen_grenload, 1.0, 0.8
+snd_shoot                                = weapons\vintorez\vintorez_shoot
+snd_shoot1                               = weapons\vintorez\vintorez_shoot1
+snd_shoot_grenade                        = weapons\gen_grenshoot
+snd_silncer_shot                         = weapons\vintorez\vintorez_shoot
+snd_silncer_shot1                        = weapons\vintorez\vintorez_shoot1
+snd_switch                               = weapons\groza_switch, 1.0, 0.5
 
-class                                              = WP_AK74
+strap_bone0                              = bip01_spine2
+strap_bone1                              = bip01_spine1
+strap_orientation                        = -15,-9,110
+strap_position                           = -0.26,-0.11,0.25
+time_to_aim                              = 1.0
+upgr_icon_height                         = 78
+upgr_icon_width                          = 290
+upgr_icon_x                              = 8
+upgr_icon_y                              = 395
+upgrade_scheme                           = upgrade_scheme_vintorez
+upgrades                                 = up_gr_firstab_vintorez, up_gr_seconab_vintorez, up_gr_thirdab_vintorez, up_gr_fourtab_vintorez, up_gr_fourtcd_vintorez, up_gr_fourtef_vintorez, up_gr_fifthab_vintorez
+visual                                   = dynamics\weapons\wpn_vintorez\wpn_vintorez.ogf
+weapon_class                             = sniper_rifle
+zoom_cam_dispersion                      = 0.33
+zoom_cam_dispersion_inc                  = 0.035
+zoom_cam_step_angle_horz                 = 0.25
+zoom_enabled                             = true
+zoom_rotate_time                         = 0.24
 
-condition_shot_dec                                 = 0.00111
-condition_queue_shot_dec                           = 0.00166
+[wpn_vintorez_hud]:hud_base
+hands_position                           = -0.078, -0.126, -0.167
+hands_position_16x9                      = -0.078, -0.126, -0.167
+hands_orientation                        = 0.0, 0.0, -2
+hands_orientation_16x9                   = 0.0, 0.0, -2
+aim_hud_offset_pos                       = -0.0705 0.044, -0.06
+aim_hud_offset_pos_16x9                  = -0.0705,0.044, -0.06
+aim_hud_offset_rot                       = -0.005, 0.0, -0.0
+aim_hud_offset_rot_16x9                  = -0.005, 0.0, -0.0
+item_position							 = 0,0,0
+item_orientation						 = 0,0,0
 
-control_inertion_factor                            = 1.25f
-cost                                               = 55000
-crosshair_inertion                                 = 6.25
-description                                        = st_wpn_vintorez_descr
-ef_main_weapon_type                                = 3
-ef_weapon_type                                     = 7
-fire_dispersion_base                               = 0.13
-fire_dispersion_condition_factor                   = 2
-fire_distance                                      = 750
-fire_modes                                         = 1, -1
-grenade_class                                      = ammo_m209
-grenade_launcher_status                            = 0
-GroupControlSection                                = spawn_group
-hand_dependence                                    = 1
-hit_power                                          = 0.4
-hit_probability_gd_master                          = 0.85
-hit_probability_gd_novice                          = 0.55
-hit_probability_gd_stalker                         = 0.65
-hit_probability_gd_veteran                         = 0.75
-hit_type                                           = fire_wound
-holder_fov_modifier                                = 1.00
-holder_range_modifier                              = 2.00
-hud                                                = wpn_vintorez_hud
-installed_upgrades                                 = 
-inv_grid_height                                    = 2
-inv_grid_width                                     = 5
-inv_grid_x                                         = 37
-inv_grid_y                                         = 22
-inv_name                                           = st_wpn_vintorez
-inv_weight                                         = 3.2
-launch_speed                                       = 0
-light_color                                        = 0.6, 0.5, 0.3
-light_disabled                                     = true
-light_range                                        = 0.01
-light_time                                         = 0.2
-light_var_color                                    = 0.05
-light_var_range                                    = 0.5
-max_radius                                         = 90
-min_radius                                         = 50
-misfire_end_condition                              = 0.1
-misfire_end_prob                                   = 0.063
-misfire_probability                                = 0.005
-misfire_start_condition                            = 0.6
-misfire_start_prob                                 = 0.005
+anm_show             					 = vintorez_draw
+anm_hide             					 = vintorez_holster
+anm_idle             					 = vintorez_idle
+anm_idle_sprint         				 = vintorez_idle_sprint
+anm_idle_moving 						 = vintorez_idle_moving
+anm_idle_moving_crouch				     = vintorez_idle_crouch
+anm_shots              					 = vintorez_shoot, shoot
+anm_reload             					 = vintorez_reload, reload
+anm_reload_empty        				 = vintorez_reload_empty, reload_empty
+anm_idle_aim           			 		 = vintorez_idle_aim
+anm_bore								 = vintorez_idle_aim
 
-parent_section                                     = wpn_vintorez
+shell_point								 = 0,0,0
+shell_dir               	 			 = 0.0, 1.0, 0.0
+shell_bone								 = gilza
 
-PDM_disp_base 				                       = 0.2
-PDM_disp_vel_factor 		                       = 0.7
-PDM_disp_accel_factor 			                   = 0.7
-PDM_disp_crouch	 			                       = 0.55
-PDM_disp_crouch_no_acc 			                   = 0.55
-
-ph_mass                                            = 3
-position										   = -0.026,-0.097,0
-orientation										   = 0,0,0
-shell_point										   = -0.02,0.167,0.082
-fire_point										   = 0,0.137,0.649
-fire_point2										   = 0,0.097,0.722
-
-reload_dof                                         = 0.0, 0.5, 5, 2
-rpm                                                = 800
-rpm_empty_click                                    = 200
-scheduled                                          = off Simulator
-scope_name                                         = pso_scope
-scope_status                                       = 2
-scope_x                                            = 55
-scope_y                                            = 0
-scope_zoom_factor                                  = 1.1
-scope_dynamic_zoom                                 = off
-
-scopes                                             = pso_scope, 1p29_scope, 1pn93_scope, kobra_scope, okp_scope
-use_alt_aim_hud 								   = true
-
-shell_particles                                    = ;weapons\9x39
-
-silencer_light_color                               = 0.6, 0.5, 0.3
-silencer_light_range                               = 0.01
-silencer_light_time                                = 0.2
-silencer_light_var_color                           = 0.05
-silencer_light_var_range                           = 0.5
-silencer_name                                      = wpn_addon_silencer_9x39
-silencer_status                                    = 1
-silencer_x                                         = 221
-silencer_y                                         = 16
-single_handed                                      = 0
-slot                                               = 2
-
-snd_bore                                           = nil
-snd_draw										   = weapons\vintorez\vss_draw
-snd_empty               						   = weapons\_dryfire\939_dry
-snd_holster										   = weapons\vintorez\vss_hide
-snd_reload										   = weapons\vintorez\vss_reload
-snd_reload_empty								   = weapons\vintorez\vss_reload_full
-snd_reload_misfire								   = weapons\vintorez\vss_revival
-snd_changefiremode                                 = weapons\vintorez\vss_firemode
-
-snd_shoot               						   = weapons\_gunfire\val\close_1
-snd_shoot1              						   = weapons\_gunfire\val\close_2
-snd_shoot2              						   = weapons\_gunfire\val\close_3
-snd_shoot3              						   = weapons\_gunfire\val\close_4
-snd_silncer_shot               					   = weapons\_gunfire\val\close_1
-snd_silncer_shot1              					   = weapons\_gunfire\val\close_2
-snd_silncer_shot2              					   = weapons\_gunfire\val\close_3
-snd_silncer_shot3              					   = weapons\_gunfire\val\close_4
-snd_reflect                	 					   = weapons\_gunfire\val\close_distance
-snd_shoot_distant           					   = nil
-snd_shoot_distant_far       					   = nil
-
-strap_bone0                                        = bip01_spine2
-strap_bone1                                        = bip01_spine1
-strap_orientation                                  = -15, -9, 110
-strap_position                                     = -0.26, -0.11, 0.25
-time_to_aim                                        = 1.0
-
-upgrade_scheme                                     = upgrade_scheme_assault_rifle
-upgrades                                           = up_gr_firstab_assault_rifle, up_gr_seconab_assault_rifle, up_gr_thirdab_assault_rifle, up_gr_fourtab_assault_rifle, up_gr_fifthab_assault_rifle
-
-use_aim_bullet                                     = true
-visual                                             = dynamics\weapons\wpn_vintorez\wpn_vintorez.ogf
-weapon_class                                       = sniper_rifle
-
-zoom_cam_relax_speed				               = 12.0	
-zoom_cam_dispersion					               = 0.7
-zoom_cam_dispersion_inc				               = 0.7
-zoom_cam_dispersion_frac			               = 0.8
-zoom_cam_max_angle					               = 5.0
-zoom_cam_max_angle_horz				               = 3.0
-zoom_cam_step_angle_horz			               = 0.1
-
-zoom_dof                                           = 0.5, 1.0, 180
-zoom_enabled                                       = true
-zoom_rotate_time                                   = 0.25
-
-smoke_particles									   = amik\weapons\smoke_particles\smoke_particles_00
-grenade_flame_particles 						   = amik\weapons\grenade_flame_particles\grenade_flame_particles_00
-silencer_smoke_particles   						   = ghost_particles\weapons\generic_smoke_eft_sil
-
-[wpn_vintorez_hud]:hud_base_weapon
-hands_position							 = -0.006500,-0.011500,-0.033000
-hands_orientation					 	 = 1.460502,2.890998,0.150000
-hands_position_16x9						 = -0.006500,-0.011500,-0.033000
-hands_orientation_16x9					 = 1.460502,2.890998,0.150000
-aim_hud_offset_pos						 = -0.065500,0.038700,-0.005826
-aim_hud_offset_rot						 = 0.050650,0.025665,-0.004100
-aim_hud_offset_pos_16x9					 = -0.065500,0.038700,-0.005826
-aim_hud_offset_rot_16x9					 = 0.050650,0.025665,-0.004100
-aim_hud_offset_alt_pos						 = -0.065500,0.038700,-0.005826
-aim_hud_offset_alt_rot						 = 0.050650,0.025665,-0.004100
-aim_hud_offset_alt_pos_16x9					 = -0.065500,0.038700,-0.005826
-aim_hud_offset_alt_rot_16x9					 = 0.050650,0.025665,-0.004100
-item_position                    		 = 0, 0, 0
-item_orientation                         = 0, 0, 0
-
-anm_hide                                 = vss_gwr_hide, idle
-anm_idle                                 = vss_gwr_idle, idle
-anm_bore                                 = vss_gwr_idle, idle
-anm_idle_aim                             = vss_gwr_aim, idle
-anm_idle_aim_moving                      = vss_gwr_walk, idle
-anm_idle_aim_moving_crouch               = vss_gwr_walk, idle
-anm_idle_moving                          = vss_gwr_walk, idle
-anm_idle_moving_crouch                   = vss_gwr_walk, idle
-anm_idle_sprint                          = vss_gwr_sprint, idle
-anm_reload                               = vss_gwr_reload, vss_reload
-anm_reload_empty                         = vss_gwr_reload_empty, vss_reload_full
-anm_shots                                = vss_gwr_shoot, vss_shoot
-anm_show                                 = vss_gwr_draw, idle
-anm_changefiremode                       = vss_gwr_fire_select, idle
-anm_reload_misfire                       = vss_gwr_misfire, vss_revival
-
-anm_changefiremode_jammed                = vss_gwr_fire_select, idle_jammed
-anm_hide_jammed             			 = vss_gwr_hide, idle_jammed
-anm_idle_jammed             			 = vss_gwr_idle, idle_jammed
-anm_idle_aim_jammed         			 = vss_gwr_aim, idle_jammed
-anm_idle_aim_moving_jammed  			 = vss_gwr_walk, idle_jammed
-anm_idle_aim_moving_crouch_jammed 		 = vss_gwr_walk, idle_jammed
-anm_idle_aim_moving_jammed  			 = vss_gwr_walk, idle_jammed
-anm_idle_moving_jammed      			 = vss_gwr_walk, idle_jammed
-anm_idle_moving_crouch_jammed 			 = vss_gwr_walk, idle_jammed
-anm_idle_sprint_jammed      			 = vss_gwr_sprint, idle_jammed
-anm_show_jammed             			 = vss_gwr_draw, idle_jammed
-
-fire_bone                       		 = sight
-fire_bone2                      		 = sight
-fire_point                      		 = 0,0,0
-fire_point2                     		 = 0,0,0
-shell_bone                               = wpn_body
-shell_point                              = 0.059500,-0.000500,0.000000
+fire_point								 = 0,0,0
+fire_bone      	      					 = muzzle
+fire_point2								 = 0,0,0
+fire_bone2								 = muzzle
 
 item_visual                              = dynamics\weapons\wpn_vintorez\wpn_vintorez_hud.ogf
 
 ;-----------------------------------------------------------------------------
-; ְההמםû
+; Special
 ;-----------------------------------------------------------------------------
 
-[wpn_vintorez_pso_scope]:wpn_vintorez
-$spawn                          = "weapons\wpn_vintorez_pso_scope"
-scope_x                         = 48
-scope_y                         = 6
-hud                             = wpn_vintorez_pso_scope_hud
+[wpn_vintorez_nimble]:wpn_vintorez
+$spawn                                   = "weapons\unique\vintorez_nimble"
+PDM_disp_accel_factor                    = 1.65
+PDM_disp_vel_factor                      = 1.65
+cam_dispersion_frac                      = 0.8
+condition_queue_shot_dec                 = 0.0009
+condition_shot_dec                       = 0.0008
+cost                                     = 45000
+cost_repair                              = 40000
+description                              = st_wpn_vintorez_nimble_descr
+fire_dispersion_base                     = 0.13
+hit_power                                = 0.62, 0.62, 0.62, 0.62
+installed_upgrades                       = up_secona_vintorez,up_fiftha_vintorez
+inv_name                                 = st_wpn_vintorez_nimble
+rpm                                      = 550
+zoom_cam_dispersion_frac                 = 0.5
+hud                                      = wpn_vintorez_nimble_hud
 
-[wpn_vintorez_pso_scope_hud]:wpn_vintorez_hud
-aim_hud_offset_pos				= -0.056500,0.008200,-0.096826
-aim_hud_offset_rot				= 0.047200,0.025315,-0.004100
-aim_hud_offset_pos_16x9			= -0.056500,0.008200,-0.096826
-aim_hud_offset_rot_16x9			= 0.047200,0.025315,-0.004100
-
-[wpn_vintorez_kobra_scope]:wpn_vintorez
-$spawn                          = "weapons\wpn_vintorez_kobra_scope"
-scope_x                         = 88
-scope_y                         = 8
-hud                             = wpn_vintorez_kobra_scope_hud
-
-[wpn_vintorez_kobra_scope_hud]:wpn_vintorez_hud
-aim_hud_offset_pos				= -0.065000,0.006200,-0.086826
-aim_hud_offset_rot				= 0.050650,0.025665,-0.004100
-aim_hud_offset_pos_16x9			= -0.065000,0.006200,-0.086826
-aim_hud_offset_rot_16x9			= 0.050650,0.025665,-0.004100
-item_visual                     = dynamics\weapons\wpn_vintorez\wpn_vintorez_kobra_hud.ogf
-
-[wpn_vintorez_1p29_scope]:wpn_vintorez
-$spawn                          = "weapons\wpn_vintorez_1p29_scope"
-scope_x                         = 80
-scope_y                         = 8
-hud                             = wpn_vintorez_1p29_scope_hud
-
-[wpn_vintorez_1p29_scope_hud]:wpn_vintorez_hud
-aim_hud_offset_pos				= -0.069000,-0.003300,-0.110826
-aim_hud_offset_rot				= 0.051125,0.024640,-0.004100
-aim_hud_offset_pos_16x9			= -0.069000,-0.003300,-0.110826
-aim_hud_offset_rot_16x9			= 0.051125,0.024640,-0.004100
-item_visual                     = dynamics\weapons\wpn_vintorez\wpn_vintorez_1p29_hud.ogf
-
-[wpn_vintorez_okp_scope]:wpn_vintorez
-$spawn                          = "weapons\wpn_vintorez_okp_scope"
-scope_x                         = 88
-scope_y                         = 6
-hud                             = wpn_vintorez_okp_scope_hud
-
-[wpn_vintorez_okp_scope_hud]:wpn_vintorez_hud
-aim_hud_offset_pos				= -0.063500,0.008200,-0.086826
-aim_hud_offset_rot				= 0.050650,0.025665,-0.004100
-aim_hud_offset_pos_16x9			= -0.063500,0.008200,-0.086826
-aim_hud_offset_rot_16x9			= 0.050650,0.025665,-0.004100
-item_visual                     = dynamics\weapons\wpn_vintorez\wpn_vintorez_okp_hud.ogf
-
-[wpn_vintorez_1pn93_scope]:wpn_vintorez
-$spawn                          = "weapons\wpn_vintorez_1pn93_scope"
-scope_x                         = 80
-scope_y                         = 8
-hud                             = wpn_vintorez_1pn93_scope_hud
-
-[wpn_vintorez_1pn93_scope_hud]:wpn_vintorez_hud
-aim_hud_offset_pos				= -0.056500,0.007200,-0.133826
-aim_hud_offset_rot				= 0.050375,0.026940,-0.004100
-aim_hud_offset_pos_16x9			= -0.056500,0.007200,-0.133826
-aim_hud_offset_rot_16x9			= 0.050375,0.026940,-0.004100
-item_visual                     = dynamics\weapons\wpn_vintorez\wpn_vintorez_1pn93_hud.ogf
+[wpn_vintorez_nimble_hud]:wpn_vintorez_hud
+item_visual		                         = dynamics\weapons\wpn_vintorez\wpn_vintorez_nimble_hud.ogf

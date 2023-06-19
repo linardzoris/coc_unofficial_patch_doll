@@ -93,7 +93,7 @@ function get_object_data(sobj)
 		["E_BAKPK"]   = this.get_item_data,
 		["EQ_BAKPK"]  = this.get_item_data,	
 		["E_UNVST"]   = this.get_item_data,
-		["EQ_UNVST"]  = this.get_item_data,	
+		["EQ_UNVST"]  = this.get_item_data,
 		
 		["II_BANDG"] = this.get_item_data,
 		["II_MEDKI"] = this.get_item_data,
@@ -124,7 +124,7 @@ function get_object_data(sobj)
 		["WP_VAL"] = this.get_weapon_data,
 		["W_MOUNTD"] = this.get_weapon_data,
 		["W_STMGUN"] = this.get_weapon_data,
-		
+
 		["S_EXPLO"]  = this.get_item_data,
 		["II_EXPLO"]  = this.get_item_data,
 
@@ -283,7 +283,7 @@ function set_object_data(t,sobj)
 		["WP_VAL"] = this.set_weapon_data,
 		["W_MOUNTD"] = this.set_weapon_data,
 		["W_STMGUN"] = this.set_weapon_data,
-		
+
 		["S_EXPLO"]  = this.set_item_data,
 		["II_EXPLO"]  = this.set_item_data,
 

@@ -522,6 +522,18 @@ function cmd.attach(me,txt,owner,p)
 		if (firearm) then
 			if (wpn.weapon_addon_attach) then
 				local addons = {
+					"wpn_addon_scope",
+					"wpn_addon_scope_x2.7",
+					"wpn_addon_scope_detector",
+					"wpn_addon_scope_night",
+					"wpn_addon_scope_susat",
+					"wpn_addon_scope_susat_x1.6",
+					"wpn_addon_scope_susat_custom",
+					"wpn_addon_scope_susat_dusk",
+					"wpn_addon_scope_susat_night",
+					"wpn_addon_silencer",
+					"wpn_addon_pistol_suppressor",
+					"wpn_addon_rifle_suppressor",
 					"wpn_addon_grenade_launcher",
 					"wpn_addon_grenade_launcher_m203"
 					}
@@ -553,6 +565,18 @@ function cmd.detach(me,txt,owner,p)
 		local firearm = IsWeapon(wpn)
 		if (firearm and wpn.weapon_addon_detach) then
 			local addons = {
+				"wpn_addon_scope",
+				"wpn_addon_scope_x2.7",
+				"wpn_addon_scope_detector",
+				"wpn_addon_scope_night",
+				"wpn_addon_scope_susat",
+				"wpn_addon_scope_susat_x1.6",
+				"wpn_addon_scope_susat_custom",
+				"wpn_addon_scope_susat_dusk",
+				"wpn_addon_scope_susat_night",
+				"wpn_addon_silencer",
+				"wpn_addon_pistol_suppressor",
+				"wpn_addon_rifle_suppressor",
 				"wpn_addon_grenade_launcher",
 				"wpn_addon_grenade_launcher_m203"
 				}

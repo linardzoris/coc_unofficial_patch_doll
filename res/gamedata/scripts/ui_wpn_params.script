@@ -39,7 +39,7 @@ function read_float(wpn_section, upgr_sections, param)
 		return rocket_section and ltx:r_float_ex(rocket_section,"blast") or 0
 	elseif (class == "WP_RPG26") then 
 		local rocket_section = ltx:r_string_ex(wpn_section,"rocket_class")
-		return rocket_section and ltx:r_float_ex(rocket_section,"blast") or 0		
+		return rocket_section and ltx:r_float_ex(rocket_section,"blast") or 0			
 	end
 	
 	if (param == "hit_power") then

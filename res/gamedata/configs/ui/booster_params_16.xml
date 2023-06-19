@@ -19,7 +19,7 @@
 			<text color="ui_3" font="letterica16" vert_align="c" x="18" y="0"/>
 		</caption>
 <!--		<texture_minus>ui_am_prop_radio_restore</texture_minus> -->
-		<value x="117" y="0" width="30" height="20" magnitude="10000">
+		<value x="117" y="0" width="30" height="20" sign_inverse="1" magnitude="10000">
 			<text font="letterica16" vert_align="c"/>
 		</value>
 	</boost_radiation_restore>
@@ -270,16 +270,6 @@
 			<text font="letterica16" vert_align="c"/>
 		</value>
 	</boost_max_weight>
-
-	<boost_dec_sleepeness x="0" y="0" width="214" height="20" >
-		<caption x="0" y="0" width="15" height="20" stretch="1">
-			<texture>ui_am_boost_dec_sleepeness</texture>
-			<text color="ui_3" font="letterica16" vert_align="c" x="18" y="0"/>
-		</caption>
-		<value x="117" y="0" width="30" height="20" magnitude="1">
-			<text font="letterica16" vert_align="c"/>
-		</value>
-	</boost_dec_sleepeness>
 
 
 	<boost_time x="0" y="0" width="214" height="20" >

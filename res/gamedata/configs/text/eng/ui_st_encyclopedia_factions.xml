@@ -21,6 +21,23 @@
 		</text>
 	</string>
 	
+	<string id="encyclopedia_factions_clear_sky">
+		<text>Clear Sky</text>
+	</string>
+	<string id="encyclopedia_factions_clear_sky_text">
+		<text>
+			%c[guide_blue]Clear Sky%c[default] are a scientific faction dedicated to learning about the Zone's inner workings.\n
+			\n%c[guide_green]Information%c[default]
+			\nDespite recent history they are generally considered to be a peaceful faction, preferring to invest their time and resources into research, rather than in playing politics.\n
+			\nThey view the Zone and its creation as both a gift and a curse - an incredible event with unappreciated potential - and a threat to humanity if not properly kept in balance.\n
+			\nIt was this latter part of their ideology which led them to near destruction, in chasing a stalker who they believed would greatly upset this balance, they fielded one of the largest forces ever seen in the Zone.\n
+			\nAfter the ensuing battles against the Monolith in their path, and the emission that followed them, the faction was left leaderless and in a state of near disrepair.\n
+			\nToday however they are led by Cold, who has helped them to rebuild and recover - carrying on the research of their predecessors and keeping the peace in the south of the Zone.\n
+			\n%c[guide_green]Statistics%c[default]\n
+			\n• Leaders: Cold\n• Headquarters: Great Swamp\n• Colours: Blue and white
+		</text>
+	</string>
+	
 	<string id="encyclopedia_factions_duty">
 		<text>Duty</text>
 	</string>

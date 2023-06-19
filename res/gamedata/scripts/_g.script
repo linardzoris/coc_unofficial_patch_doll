@@ -920,10 +920,10 @@ function IsLauncher(o,c)
 	local launcher = {
 					[clsid.wpn_rg6_s] = true,
 					[clsid.wpn_rpg7_s] = true,
-					[clsid.wpn_rpg26_s] = true,					
+					[clsid.wpn_rpg26_s] = true,						
 					[clsid.wpn_rg6] = true,
 					[clsid.wpn_rpg7] = true,
-					[clsid.wpn_rpg26] = true					
+					[clsid.wpn_rpg26] = true						
 	}
 	return c and launcher[c] or false
 end
@@ -949,9 +949,11 @@ function IsRifle(o,c)
 	end
 	local rifle = {
 				[clsid.wpn_ak74_s] = true,
-				[clsid.wpn_groza_s] = true,			
+				[clsid.wpn_groza_s] = true,
+				[clsid.wpn_val_s] = true,
 				[clsid.wpn_ak74] = true,
-				[clsid.wpn_groza] = true
+				[clsid.wpn_groza] = true,
+				[clsid.wpn_val] = true
 	}
 	return c and rifle[c] or false
 end
@@ -1058,10 +1060,11 @@ function IsWeapon(o,c)
 				[clsid.wpn_svu_s] 				= true,
 				[clsid.wpn_rg6_s] 				= true,
 				[clsid.wpn_rpg7_s] 				= true,
-				[clsid.wpn_rpg26_s] 			= true,				
+				[clsid.wpn_rpg26_s] 			= true,					
+				[clsid.wpn_val_s] 				= true,
 				[clsid.wpn_walther_s] 			= true,
 				[clsid.wpn_usp45_s] 			= true,
-				[clsid.wpn_groza_s] 			= true,			
+				[clsid.wpn_groza_s] 			= true,
 				[clsid.wpn_knife_s] 			= true,
 				[clsid.wpn_vintorez] 			= true,
 				[clsid.wpn_ak74] 				= true,
@@ -1075,10 +1078,11 @@ function IsWeapon(o,c)
 				[clsid.wpn_svu] 				= true,
 				[clsid.wpn_rg6] 				= true,
 				[clsid.wpn_rpg7] 				= true,
-				[clsid.wpn_rpg26] 				= true,				
+				[clsid.wpn_rpg26] 				= true,					
+				[clsid.wpn_val] 				= true,
 				[clsid.wpn_walther] 			= true,
 				[clsid.wpn_usp45] 				= true,
-				[clsid.wpn_groza] 				= true,			
+				[clsid.wpn_groza] 				= true,
 				[clsid.wpn_knife] 				= true
 		}
 	end
@@ -1947,29 +1951,4 @@ end
 
 function vec_add(a,b)
 	return vector():set(a):add(b)
-end
-
--- param caching
-local ini_sys = system_ini()
-INISYS_CACHE = {}
-function SYS_GetParam(typ, sec, param, def)
-	if not (sec and param) then
-		printe("!ERROR SYS_GetParam(%s, %s, %s) | What's missing?", typ, sec, param)
-		callstack()
-		return
-	end
-	
-	if (INISYS_CACHE[sec] == nil) then
-		INISYS_CACHE[sec] = {}
-	end
-	if (INISYS_CACHE[sec][param] == nil) then
-		if typ == 0 then
-			INISYS_CACHE[sec][param] = ini_sys:r_string_ex(sec,param) or def
-		elseif typ == 1 then
-			INISYS_CACHE[sec][param] = ini_sys:r_bool_ex(sec,param)
-		elseif typ == 2 then
-			INISYS_CACHE[sec][param] = ini_sys:r_float_ex(sec,param) or def
-		end
-	end
-	return INISYS_CACHE[sec][param]
 end

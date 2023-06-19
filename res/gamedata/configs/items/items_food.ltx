@@ -25,13 +25,11 @@ position_offset                = 0.0,0.0,0.0
 angle_offset                   = 1.570790,1.570790,3.92699
 
 eat_satiety                    = 0.3
-eat_thirst					   = -0.05
 eat_alcohol                    = -0.02
 
 use_sound                      = interface\inv_food
 
-timer_wpn_hide                 = 5
-snd_on_take				       = other
+hide_time_wpn                  = 5
 
 [kolbasa]:booster
 $spawn                         = "food and drugs\kolbasa"
@@ -58,13 +56,11 @@ position_offset                = 0.0,0.0,0.0
 angle_offset                   = 1.570790,1.570790,3.92699
 
 eat_satiety                    = 0.5
-eat_thirst					   = -0.05
 eat_alcohol                    = -0.04
 
 use_sound                      = interface\inv_food
 
 hide_time_wpn                  = 5
-snd_on_take				       = other
 
 [conserva]:booster
 $spawn                         = "food and drugs\conserva"
@@ -81,33 +77,16 @@ inv_grid_y                     = 1
 cost                           = 500
 
 eat_satiety                    = 0.3
-eat_thirst					   = -0.02
 eat_alcohol                    = -0.02
-
-has_anim 					   = true
-hud_section                    = conserva_hud
 
 attach_angle_offset            = 0.440521, 1.378287, -0.644026
 attach_position_offset         = 0.104196, -0.010821, 0.076969
 attach_bone_name               = bip01_r_hand
 auto_attach                    = false
 
-;use_sound                      = interface\inv_food
+use_sound                      = interface\inv_food
 
 hide_time_wpn                  = 5
-snd_on_take				       = other
-
-[conserva_hud]:hud_base
-hands_position 				   = 0.0, -0.143296, 0.284578
-hands_orientation		       = 0.0, 16.4738, 0.0
-hands_position_16x9			   = 0.003000,-0.165296,0.185578
-hands_orientation_16x9		   = 0.000000,16.473801,0.000000
-item_position                  = 0,0,0
-item_orientation               = 0,0,0
-anm_use          			   = dev_conserva_gwr_hand_animation, tushka_draw
-snd_using                      = interface\item_usage\conserva_use
-single_handed_anim             = 2 ;0 - правая, 1 - левая, 2 - обе
-item_visual                    = dynamics\devices\first_person_animated\dev_conserva\conserva_hud
 
 
 ; ZONE-PRODUCED FOOD
@@ -122,7 +101,7 @@ position_offset                = 0.0,0.0,0.0 0.117
 angle_offset                   = 1.570790,1.570790,3.92699
 use_sound                      = interface\inv_food
 eat_alcohol                    = -0.03
-eat_thirst					   = -0.04
+
 hide_time_wpn                  = 5
 
 [meat_tushkano]:meat_base
@@ -139,7 +118,6 @@ eat_satiety                    = 0.1
 eat_radiation                  = 0.01
 description                    = st_meat_tushkano_descr
 cost                           = 100
-snd_on_take				       = other
 
 [meat_dog]:meat_base
 $spawn                         = "food and drugs\meat_dog"
@@ -155,7 +133,6 @@ eat_satiety                    = 0.2
 eat_radiation                  = 0.02
 description                    = st_meat_dog_descr
 cost                           = 200
-snd_on_take				       = other
 
 [meat_pseudodog]:meat_base
 $spawn                         = "food and drugs\meat_pseudodog"
@@ -170,7 +147,6 @@ eat_satiety                    = 0.3
 eat_radiation                  = 0.03
 description                    = st_meat_pseudodog_descr
 cost                           = 300
-snd_on_take				       = other
 
 [meat_flesh]:meat_base
 $spawn                         = "food and drugs\meat_flesh"
@@ -185,7 +161,6 @@ eat_satiety                    = 0.4
 eat_radiation                  = 0.03
 description                    = st_meat_flesh_descr
 cost                           = 350
-snd_on_take				       = other
 
 [meat_boar]:meat_base
 $spawn                         = "food and drugs\meat_boar"
@@ -200,7 +175,6 @@ eat_satiety                    = 0.45
 eat_radiation                  = 0.04
 description                    = st_meat_boar_descr
 cost                           = 450
-snd_on_take				       = other
 
 [meat_bloodsucker]:meat_base
 $spawn                         = "food and drugs\meat_bloodsucker"
@@ -215,7 +189,6 @@ eat_satiety                    = 0.4
 eat_radiation                  = 0.04
 description                    = st_meat_bloodsucker_descr
 cost                           = 600
-snd_on_take				       = other
 
 [meat_chimera]:meat_base
 $spawn                         = "food and drugs\meat_chimera"
@@ -231,4 +204,3 @@ eat_radiation                  = 0.06
 description                    = st_meat_chimera_descr
 cost                           = 1000
 eat_alcohol                    = -0.04
-snd_on_take				       = other

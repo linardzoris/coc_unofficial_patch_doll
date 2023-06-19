@@ -396,7 +396,7 @@
 <specific_character id="sim_default_duty_1_default_0" team_default = "1">
 	<bio>Хорошие Долговские штурмы и просто душевные ребята.</bio>
 	<icon>ui_inGame2_Dolg_2</icon>
-	<visual first_visual = "1" last_visual = "3">random_characters\dolg\duty_veteran_</visual>
+	<visual first_visual = "1" last_visual = "6">random_characters\dolg\duty_veteran_</visual>
 	<snd_config>characters_voice\human\dolg_3\</snd_config>
 	<map_icon x="1" y="0"></map_icon>
 	<class>sim_default_duty_1</class>

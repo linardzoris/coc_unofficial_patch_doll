@@ -275,6 +275,13 @@
         </check_r__enable_grass_shadow>
 		
 <!-- Новое -->	
+        <cap_3d_scopes_fps_factor x="15" y="3" width="108" height="24">
+            <text r="170" g="170" b="170" font="letterica16" align="r" vert_align="c">ui_mm_3d_scopes_fps_factor</text>
+        </cap_3d_scopes_fps_factor>
+        <track_3d_scopes_fps_factor x="147" y="6" width="188" height="16" step="1" is_integer="1">
+            <options_item entry="g_3d_scopes_fps_factor" group="mm_opt_video_adv"/>
+        </track_3d_scopes_fps_factor>
+
         <cap_3d_scopes_enable x="20" y="3" width="135" height="24">
             <text r="170" g="170" b="170" font="letterica16" align="r" vert_align="c">ui_mm_3d_scopes</text>
         </cap_3d_scopes_enable>

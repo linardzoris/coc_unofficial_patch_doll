@@ -1,29 +1,5 @@
 <?xml version="1.0" encoding="windows-1251" ?>
 <string_table>
-	<string id="st_dev_cigarettes_mechta_blue_name">
-		<text>Сигареты «Мечта синие»</text>
-	</string>
-	<string id="st_dev_cigarettes_mechta_blue_descr">
-		<text>Дешёвые сигареты местного производства, которые попадают в Зону через солдат и периметр. Курение не даёт никаких преимуществ, кроме притупления чувства голода, но взамен забирает здоровье и награждает психологической зависимостью.</text>
-	</string>
-	<string id="st_dev_cigarettes_mechta_red_name">
-		<text>Сигареты «Мечта красные»</text>
-	</string>
-	<string id="st_dev_cigarettes_mechta_red_descr">
-		<text>Дешёвые сигареты местного производства, которые попадают в Зону через солдат и периметр. Красные сигареты несколько более крепкие, нежели синие. Курение не даёт никаких преимуществ, кроме притупления чувства голода, но взамен забирает здоровье и награждает психологической зависимостью.</text>
-	</string>	
-	<string id="st_item_water_bottle">
-		<text>Бутылка воды «Карпаты»</text>
-	</string>
-	<string id="st_item_water_bottle_descr">
-		<text>Самая обыкновенная питьевая вода, которую сталкеры часто берут с собой. Хорошо утоляет жажду и немного восстанавливает силы.</text>
-	</string>
-	<string id="st_energy_drink_nonstop">
-		<text>Энергетический напиток «Non Stop»</text>
-	</string>
-	<string id="st_energy_drink_nonstop_descr">
-		<text>Отличный энергетический напиток «Non Stop». Содержит кофеин, таурин и мощный витаминный комплекс, снимающие усталость и прибавляющие силы. Не в состоянии сделать даже шаг? Тогда это именно то, что нужно.</text>
-	</string>
 	<string id="st_antirad">
 		<text>Противорадиационный препарат</text>
 	</string>

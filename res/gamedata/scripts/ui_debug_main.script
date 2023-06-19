@@ -90,7 +90,7 @@ function get_spawn_table(name)
 		["E_BAKPK"] = "Outfits",
 		["EQ_BAKPK"] = "Outfits",
 		["E_UNVST"] = "Outfits",
-		["EQ_UNVST"] = "Outfits",		
+		["EQ_UNVST"] = "Outfits",
 		["EQ_PATCH"] = "Items (Misc.)",
 		["II_ATTCH"] = "Items (Misc.)",
 		["II_BTTCH"] = "Items (Misc.)",
@@ -144,7 +144,7 @@ function get_spawn_table(name)
 		["WP_SVD"] = "Weapons (Rifle)",
 		["WP_SVU"] = "Weapons (Rifle)",
 		["WP_VAL"] = "Weapons (Rifle)",
-		
+
 		["S_EXPLO"]  = "Physic (Misc.)",
 		["II_EXPLO"]  = "Physic (Misc.)",
 

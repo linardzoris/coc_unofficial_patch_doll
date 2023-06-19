@@ -789,7 +789,7 @@ function CSurgeManager:update()
 				if (self.effector_set) then
 					level.set_pp_effector_factor(surge_shock_pp_eff, currentPPEfactor)
 					self:displayIndicators(currentPPEfactor)
-					if (db.actor:alive() and character_community(db.actor) ~= "actor_monolith") then
+					if (db.actor:alive() and (character_community(db.actor) ~= "actor_monolith" or character_community(db.actor) ~= "actor_zombied")) then
 						local h = hit()
 						h.type = hit.telepatic
 						h.power = self:hit_power(hitPower, h.type)
@@ -844,7 +844,7 @@ function CSurgeManager:update()
 						self:kill_obj_at_pos(wave_pos.z)
 					end
 					if (wave_pos.z<actor_pos.z) then
-						if (k==1 and not self.actor_in_cover and not character_community(db.actor) == "actor_monolith") then
+						if (k==1 and not self.actor_in_cover and (character_community(db.actor) ~= "actor_monolith" or character_community(db.actor) ~= "actor_zombied")) then
 				            local h = hit()
 				            h.type = hit.telepatic
 				            h.power = self:hit_power(2, h.type)+0.5

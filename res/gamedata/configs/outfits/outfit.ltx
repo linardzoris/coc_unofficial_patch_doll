@@ -4,32 +4,26 @@ discovery_dependency                     =
 class                                    = EQU_STLK ;Change to E_STLK if you want to use se_item.se_outfit script binding
 cform                                    = skeleton
 
-player_hud_section                       = actor_hud_loner_sunrise
+player_hud_section                       = actor_hud
 
 additional_inventory_weight              = 10 ; +max_walk_weight
 additional_inventory_weight2             = 10 ;	+40 kg
-thirst_restore_speed                     = 0
-sleepeness_restore_speed                 = 0
-intoxication_restore_speed               = 0
-psy_health_restore_speed                 = 0
 
 default_to_ruck                          = false
 sprint_allowed                           = true
 control_inertion_factor                  = 1
 power_restore_speed                      = 0
 
+thirst_restore_speed                     = 0
+sleepeness_restore_speed                 = 0
+intoxication_restore_speed               = 0
+psy_health_restore_speed                 = 0
+
 ef_equipment_type                        = 3
 slot                                     = 6
 
 inv_grid_width                           = 2
 inv_grid_height                          = 3
-
-upgr_icon_height            			 = 200
-upgr_icon_width             			 = 300
-upgr_icon_x								 = 0
-upgr_icon_y 							 = 0
-
-snd_on_take						         = outfit
 
 [without_outfit]:outfit_base
 full_scale_icon                          = 6,6
@@ -53,6 +47,10 @@ inv_weight                               = 7.5
 
 inv_grid_x                               = 12
 inv_grid_y                               = 18
+upgr_icon_x                              = 317
+upgr_icon_y                              = 0
+upgr_icon_width                          = 302
+upgr_icon_height                         = 130
 
 cost                                     = 15000
 full_scale_icon                          = 14,11
@@ -111,7 +109,7 @@ $spawn                                   = "outfit\cs_light_outfit"
 visual                                   = dynamics\outfit\cs_light_outfit
 actor_visual                             = actors\stalker_nebo\stalker_nebo_1
 npc_visual                               = actors\stalker_nebo\stalker_nebo_1
-player_hud_section                       = actor_hud_cs_light
+player_hud_section                       = actor_hud_cs1
 
 inv_name                                 = csky_light_outfit_name
 description                              = csky_light_outfit_description
@@ -121,6 +119,11 @@ additional_inventory_weight              = 8
 additional_inventory_weight2             = 8
 inv_grid_x                               = 0
 inv_grid_y                               = 15
+
+upgr_icon_x                              = 606
+upgr_icon_y                              = 1309
+upgr_icon_width                          = 306
+upgr_icon_height                         = 132
 
 cost                                     = 9000
 full_scale_icon                          = 2,6
@@ -179,7 +182,7 @@ $spawn                                   = "outfit\svoboda_light_outfit"
 visual                                   = dynamics\outfit\svoboda_light_outfit
 actor_visual                             = actors\stalker_freedom\stalker_freedom_1.ogf
 npc_visual                               = actors\stalker_freedom\stalker_freedom_1.ogf
-player_hud_section                       = actor_hud_svoboda_light
+player_hud_section                       = actor_hud_freedom_wind
 
 inv_name                                 = svoboda_light_outfit_name
 description                              = svoboda_light_outfit_description
@@ -189,6 +192,11 @@ additional_inventory_weight              = 8
 additional_inventory_weight2             = 8
 inv_grid_x                               = 8
 inv_grid_y                               = 15
+
+upgr_icon_x                              = 6
+upgr_icon_y                              = 455
+upgr_icon_width                          = 302
+upgr_icon_height                         = 117
 
 cost                                     = 9000
 full_scale_icon                          = 10,11
@@ -247,7 +255,7 @@ $spawn                                   = "outfit\svoboda_heavy_outfit"
 visual                                   = dynamics\outfit\svoboda_heavy_outfit
 actor_visual                             = actors\stalker_freedom\stalker_freedom_3.ogf
 npc_visual                               = actors\stalker_freedom\stalker_freedom_3.ogf
-player_hud_section                       = actor_hud_svoboda_heavy
+player_hud_section                       = actor_hud_freedom_sentinel
 
 inv_name                                 = svoboda_heavy_outfit_name
 description                              = svoboda_heavy_outfit_description
@@ -257,6 +265,11 @@ additional_inventory_weight              = 12
 additional_inventory_weight2             = 12
 inv_grid_x                               = 16
 inv_grid_y                               = 15
+
+upgr_icon_x                              = 317
+upgr_icon_y                              = 308
+upgr_icon_width                          = 303
+upgr_icon_height                         = 127
 
 cost                                     = 25000
 full_scale_icon                          = 2,6
@@ -325,6 +338,11 @@ additional_inventory_weight2             = 12
 inv_grid_x                               = 14
 inv_grid_y                               = 15
 
+upgr_icon_x                              = 318
+upgr_icon_y                              = 163
+upgr_icon_width                          = 303
+upgr_icon_height                         = 126
+
 cost                                     = 20000
 full_scale_icon                          = 4,6
 
@@ -381,7 +399,7 @@ $spawn                                   = "outfit\military_outfit"
 visual                                   = dynamics\outfit\military_outfit
 actor_visual                             = actors\stalker_soldier\stalker_soldier_4.ogf
 npc_visual                               = actors\stalker_soldier\stalker_soldier_4.ogf
-player_hud_section                       = actor_hud_military_bulat
+player_hud_section                       = actor_hud_military_skat9
 
 ef_equipment_type                        = 4
 
@@ -394,6 +412,11 @@ additional_inventory_weight2             = 15
 
 inv_grid_x                               = 12
 inv_grid_y                               = 15
+
+upgr_icon_x                              = 648
+upgr_icon_y                              = 353
+upgr_icon_width                          = 280
+upgr_icon_height                         = 145
 
 cost                                     = 35000
 full_scale_icon                          = 10,6
@@ -451,7 +474,7 @@ $spawn                                   = "outfit\dolg_outfit"
 visual                                   = dynamics\outfit\dolg_outfit
 actor_visual                             = actors\stalker_dolg\stalker_dolg_2.ogf
 npc_visual                               = actors\stalker_dolg\stalker_dolg_2.ogf
-player_hud_section                       = actor_hud_dolg_outfit
+player_hud_section                       = actor_hud_duty_ps5m
 
 inv_name                                 = dolg_outfit_name
 description                              = dolg_outfit_description
@@ -460,6 +483,11 @@ inv_weight                               = 8.5
 
 inv_grid_x                               = 6
 inv_grid_y                               = 15
+
+upgr_icon_x                              = 0
+upgr_icon_y                              = 161
+upgr_icon_width                          = 302
+upgr_icon_height                         = 130
 
 cost                                     = 17000
 full_scale_icon                          = 8,11
@@ -517,7 +545,7 @@ $spawn                                   = "outfit\dolg_heavy_outfit"
 visual                                   = dynamics\outfit\dolg_heavy_outfit
 actor_visual                             = actors\stalker_dolg\stalker_dolg_3.ogf
 npc_visual                               = actors\stalker_dolg\stalker_dolg_3.ogf
-player_hud_section                       = actor_hud_military_skat_9
+player_hud_section                       = actor_hud_duty_psz9d
 
 ef_equipment_type                        = 4
 
@@ -529,6 +557,11 @@ additional_inventory_weight              = 15
 additional_inventory_weight2             = 15
 inv_grid_x                               = 10
 inv_grid_y                               = 15
+
+upgr_icon_x                              = 0
+upgr_icon_y                              = 0
+upgr_icon_width                          = 301
+upgr_icon_height                         = 157
 
 cost                                     = 33000
 full_scale_icon                          = 8,6
@@ -596,6 +629,11 @@ inv_weight                               = 7
 inv_grid_x                               = 14
 inv_grid_y                               = 18
 
+upgr_icon_x                              = 1552
+upgr_icon_y                              = 35
+upgr_icon_width                          = 300
+upgr_icon_height                         = 130
+
 cost                                     = 12500
 full_scale_icon                          = 2,11
 
@@ -652,7 +690,7 @@ $spawn                                   = "outfit\merc_heavy_outfit"
 visual                                   = dynamics\outfit\merc_heavy_outfit
 actor_visual                             = actors\stalker_merc\stalker_merc_s.ogf
 npc_visual                               = actors\stalker_merc\stalker_merc_s.ogf
-player_hud_section                       = actor_hud_military_skat_9
+player_hud_section                       = actor_hud_merc_stalker
 
 ef_equipment_type                        = 4
 
@@ -667,6 +705,10 @@ additional_inventory_weight2             = 12
 
 inv_grid_x                               = 4
 inv_grid_y                               = 15
+upgr_icon_x                              = 2521
+upgr_icon_y                              = 1216
+upgr_icon_width                          = 300
+upgr_icon_height                         = 125
 
 burn_protection                          = 0.056
 shock_protection                         = 0.16
@@ -723,7 +765,7 @@ $spawn                                   = "outfit\banditmerc_outfit"
 visual                                   = dynamics\outfit\banditmerc_outfit
 actor_visual                             = actors\stalker_bandit\stalker_bandit_2_merc.ogf
 npc_visual                               = actors\stalker_bandit\stalker_bandit_2_merc.ogf
-player_hud_section                       = actor_hud_bandit_merc
+player_hud_section                       = actor_hud_bandit_suit
 
 inv_name                                 = banditmerc_outfit_name
 description                              = banditmerc_outfit_description
@@ -732,6 +774,11 @@ inv_weight                               = 6.5
 
 inv_grid_x                               = 16
 inv_grid_y                               = 18
+
+upgr_icon_x                              = 1248
+upgr_icon_y                              = 35
+upgr_icon_width                          = 300
+upgr_icon_height                         = 130
 
 cost                                     = 9500
 full_scale_icon                          = 2,11
@@ -796,6 +843,11 @@ description                              = monolith_outfit_description
 
 inv_grid_x                               = 2
 inv_grid_y                               = 15
+
+upgr_icon_x                              = 1515
+upgr_icon_y                              = 210
+upgr_icon_width                          = 302
+upgr_icon_height                         = 130
 
 cost                                     = 17000
 

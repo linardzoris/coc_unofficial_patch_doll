@@ -233,11 +233,11 @@ function create_random_stash(no_spot,hint,bonus_items, map_spot)
 		local v = ini:r_string_ex(section,"class","")
 		return v == "EQ_BAKPK" or v == "E_BAKPK"
 	end
-
+	
 	local function is_unvest(section)
 		local v = ini:r_string_ex(section,"class","")
 		return v == "EQ_UNVST" or v == "E_UNVST"
-	end
+	end	
 	
 	local function is_toolkit(section)
 		return section == "itm_repairkit_tier_1" or section == "itm_repairkit_tier_2" or section == "itm_repairkit_tier_3"
@@ -324,7 +324,7 @@ function create_random_stash(no_spot,hint,bonus_items, map_spot)
 			local bOutfit = not bWeapon and is_outfit(section)
 			local bBackpack = not bWeapon and not bOutfit and is_backpack(section)
 			local bUnvest = not bWeapon and not bOutfit and not bBackpack and is_unvest(section)
-			if (bWeapon or bOutfit or bBackpack or bArtefact) then
+			if (bWeapon or bOutfit or bBackpack or bUnvest or bArtefact) then
 				if not (allow_item) then
 					skip = true
 				end
@@ -478,7 +478,7 @@ function create_random_stash(no_spot,hint,bonus_items, map_spot)
 				end
 			end
 			
-			if (has_spawned) and (bWeapon or bOutfit or bBackpack or bArtefact or bUnvest) then
+			if (has_spawned) and (bWeapon or bOutfit or bBackpack or bUnvest or bArtefact) then
 				if (allow_item) then 
 					allow_item = false 
 				end

@@ -2,13 +2,16 @@
 squad_id = 5
 max_population = 2
 respawn_params = respawn@aes_smart_terrain_soldier2
-respawn_idle = 60000
-arrive_dist = 50
-respawn_radius = 150
+respawn_idle = 162000
 
 [respawn@aes_smart_terrain_soldier2]
-spawn
+spawn_army
+spawn_monolith
 
-[spawn]
-spawn_squads = simulation_zombie, simulation_snork
-spawn_num = 3
+[spawn_army]
+spawn_squads = army_sim_squad_advanced
+spawn_num = {-bar_deactivate_radar_done} 0, 3
+
+[spawn_monolith]
+spawn_squads = monolith_sim_squad_advanced
+spawn_num = {-bar_deactivate_radar_done} 2, 0

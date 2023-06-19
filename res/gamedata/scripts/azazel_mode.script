@@ -190,11 +190,11 @@ function actor_on_before_death(whoID,flags)
 	if (string.find(section,"_4")) then 
 		local f = {
 			["stalker"] = "radiation_outfit",
-			["bandit"] = "banditmerc_outfit",
-			["killer"] = "merc_scientific_outfit",
-			["army"] = "military_outfit",
+			["bandit"] = "radiation_outfit",
+			["killer"] = "merc_radiation_outfit",
+			["army"] = "military_exo_outfit",
 			["dolg"] = "dolg_radiation_outfit",
-			["freedom"] = "svoboda_heavy_outfit",
+			["freedom"] = "svoboda_radiation_outfit",
 			["ecolog"] = "ecolog_outfit_orange",
 			["monolith"] = "monolith_radiation_outfit"
 		}
@@ -202,13 +202,13 @@ function actor_on_before_death(whoID,flags)
 	elseif (string.find(section,"_3")) then 
 		local f = {
 			["stalker"] = "radiation_outfit",
-			["bandit"] = "banditmerc_outfit",
+			["bandit"] = "radiation_outfit",
 			["killer"] = "merc_scientific_outfit",
-			["army"] = "military_outfit",
-			["dolg"] = "dolg_radiation_outfit",
+			["army"] = "commander_outfit",
+			["dolg"] = "dolg_scientific_outfit",
 			["freedom"] = "svoboda_heavy_outfit",
 			["ecolog"] = "ecolog_outfit_orange",
-			["monolith"] = "monolith_radiation_outfit"
+			["monolith"] = "monolith_scientific_outfit"
 		}
 		give_object_to_actor(f[faction] or "novice_outfit")		
 	elseif (string.find(section,"_2")) then 
@@ -216,7 +216,7 @@ function actor_on_before_death(whoID,flags)
 			["stalker"] = "stalker_outfit",
 			["bandit"] = "trenchcoat_outfit",
 			["killer"] = "merc_outfit",
-			["army"] = "military_outfit",
+			["army"] = "specops_outfit",
 			["dolg"] = "dolg_outfit",
 			["freedom"] = "svoboda_light_outfit",
 			["ecolog"] = "ecolog_outfit_green",
@@ -228,7 +228,7 @@ function actor_on_before_death(whoID,flags)
 			["stalker"] = "stalker_outfit",
 			["bandit"] = "trenchcoat_outfit",
 			["killer"] = "merc_outfit",
-			["army"] = "specops_outfit",
+			["army"] = "military_outfit",
 			["dolg"] = "dolg_outfit",
 			["freedom"] = "svoboda_light_outfit",
 			["ecolog"] = "ecolog_outfit_green",
@@ -240,7 +240,7 @@ function actor_on_before_death(whoID,flags)
 			["stalker"] = "novice_outfit",
 			["bandit"] = "bandit_novice_outfit",
 			["killer"] = "merc_outfit",
-			["army"] = "specops_outfit",
+			["army"] = "army_outfit",
 			["dolg"] = "dolg_novice_outfit",
 			["freedom"] = "svoboda_novice_outfit",
 			["ecolog"] = "stalker_outfit",

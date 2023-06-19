@@ -640,12 +640,16 @@ function setup_weapon_fetch_task(actor,npc,p)
 				"wpn_mp5",
 				"wpn_ak74",
 				"wpn_abakan",
+				"wpn_l85",
+				"wpn_lr300",
 				"wpn_sig550",
 				"wpn_groza",
+				"wpn_val",
 				"wpn_vintorez",
 				"wpn_svu",
 				"wpn_svd",
 				"wpn_g36",
+				"wpn_fn2000",
 				"wpn_pkm"
 		}
 		wpn = itm[math.random(#itm)]
@@ -3610,7 +3614,7 @@ function jup_b10_spawn_drunk_dead_items(actor, npc, p)
 
 	local items = {
 					[2] = 	{
-							["wpn_sig550"] = 1,
+							["wpn_sig550_luckygun"] = 1,
 							},
 					[1] = 	{
 							["ammo_5.45x39_fmj"] = 5,
@@ -3768,12 +3772,13 @@ function zat_b202_spawn_random_loot(actor, npc, p)
 		[2] = {item = {"helm_respirator"}}
 	}
 	si_table[5] = {
-		[1] = {item = {"wpn_vintorez","ammo_9x39_ap","ammo_9x39_ap","ammo_9x39_ap"}},
+		[1] = {item = {"wpn_val","ammo_9x39_ap","ammo_9x39_ap","ammo_9x39_ap"}},
 		[2] = {item = {"wpn_spas12","ammo_12x70_buck","ammo_12x70_buck","ammo_12x70_buck","ammo_12x70_buck"}},
 		[3] = {item = {"wpn_desert_eagle","ammo_11.43x23_fmj","ammo_11.43x23_fmj","ammo_11.43x23_hydro","ammo_11.43x23_hydro"}},
 		[4] = {item = {"wpn_abakan","ammo_5.45x39_ap","ammo_5.45x39_ap"}},
 		[5] = {item = {"wpn_sig550","ammo_5.56x45_ap","ammo_5.56x45_ap"}},
-		[6] = {item = {"wpn_ak74","ammo_5.45x39_fmj","ammo_5.45x39_fmj"}}
+		[6] = {item = {"wpn_ak74","ammo_5.45x39_fmj","ammo_5.45x39_fmj"}},
+		[7] = {item = {"wpn_l85","ammo_5.56x45_ss190","ammo_5.56x45_ss190"}}
 	}
 	si_table[6] = {
 		[1] = {item = {"specops_outfit"}},
@@ -3926,6 +3931,11 @@ function damage_actor_items_on_start(actor, npc)
 		obj:set_condition(0.76)
 	end
 
+	obj = actor:object("wpn_pm_actor")
+	if obj ~= nil then
+		obj:set_condition(0.9)
+	end
+
 	obj = actor:object("wpn_ak74u")
 	if obj ~= nil then
 		obj:set_condition(0.7)
@@ -3934,8 +3944,8 @@ function damage_actor_items_on_start(actor, npc)
 end
 
 function damage_pri_a17_gauss()
-	local obj = get_story_object("wpn_gauss")
-	--local obj = npc:object("wpn_gauss")
+	local obj = get_story_object("pri_a17_gauss_rifle")
+	--local obj = npc:object("pri_a17_gauss_rifle")
 	if obj ~= nil then
 		obj:set_condition(0.0)
 	end
@@ -4292,7 +4302,7 @@ function create_cutscene_actor_with_weapon(actor, npc, p)
 
 	local actor_weapon = alife_object(active_item:id())
 	local section_name = actor_weapon:section_name()
-	if section_name == "wpn_gauss" then
+	if section_name == "pri_a17_gauss_rifle" then
 		section_name = "wpn_gauss"
 	end
 

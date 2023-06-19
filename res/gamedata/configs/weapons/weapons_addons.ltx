@@ -1,144 +1,82 @@
-;-----------------------------------------------------------------------------
-; Глушители
-;-----------------------------------------------------------------------------
+;-------------
+; WEAPON ADDON
+;-------------
 
-[wpn_addon_silencer_9x18]:identity_immunities
-$prefetch                                          = 32
-slot							                   = -1
-$spawn                                             = "weapons\addons\wpn_addon_silencer_9x18"
-bullet_hit_impulse_k                               = 1.0
-bullet_hit_power_k                                 = 0.9
-bullet_speed_k                                     = 0.9
-cam_dispersion_inc_k                               = 0.7
-cam_dispersion_k                                   = 0.7
-fire_dispersion_base_k                             = 0.8
-cform                                              = skeleton
-class                                              = WP_SILEN
-cost                                               = 1500
-discovery_dependency                               = 
-GroupControlSection                                = spawn_group
-inv_grid_height                                    = 1
-inv_grid_width                                     = 1
-inv_grid_x                                         = 55
-inv_grid_y                                         = 0
-inv_name                                           = st_wpn_addon_silencer_9x18
-description                                        = st_wpn_addon_silencer_all
-inv_weight                                         = 0.132
-visual                                             = dynamics\weapons\wpn_upgrade\wpn_addon_silencer_9_18.ogf
+[wpn_addon_silencer]:identity_immunities
+discovery_dependency                     =
+$spawn                                   = "weapons\addons\silencer"
+class                                    = WP_SILEN
+visual                                   = dynamics\weapons\wpn_upgrade\wpn_silencer.ogf
+description                              = st_addon_silencer_descr
+$prefetch                                = 32
+slot                                     = -1
+cost                                     = 500
+inv_name                                 = st_addon_silencer
+inv_weight                               = 0.4
 
-[wpn_addon_silencer_9x19]:wpn_addon_silencer_9x18
-$spawn                                             = "weapons\addons\wpn_addon_silencer_9x19"
-cost                                               = 950
-inv_grid_height                                    = 1
-inv_grid_width                                     = 1
-inv_grid_x                                         = 55
-inv_grid_y                                         = 1
-inv_name                                           = st_wpn_addon_silencer_9x19
-inv_weight                                         = 0.15
-visual                                             = dynamics\weapons\wpn_upgrade\wpn_addon_silencer.ogf
+inv_grid_width                           = 1
+inv_grid_height                          = 1
+inv_grid_x                               = 2
+inv_grid_y                               = 6
 
-[wpn_addon_silencer_9x39]:wpn_addon_silencer_9x18
-$spawn                                             = "weapons\addons\wpn_addon_silencer_9x39"
-cost                                               = 950
-inv_grid_height                                    = 1
-inv_grid_width                                     = 1
-inv_grid_x                                         = 55
-inv_grid_y                                         = 5
-inv_name                                           = st_wpn_addon_silencer_9x39
-inv_weight                                         = 0.490
-visual                                             = dynamics\weapons\wpn_upgrade\wpn_addon_silencer_9_39.ogf
+bullet_hit_power_k                       = 0.9
+bullet_hit_impulse_k                     = 0.9
+bullet_speed_k                           = 1.0
+fire_dispersion_base_k                   = 1.0
+cam_dispersion_k                         = 0.9
+cam_dispersion_inc_k                     = 0.9
+PDM_disp_base_k                          = 1.05
+PDM_disp_accel_k                         = 1.1
+PDM_disp_vel_k                           = 1.1
+crosshair_inertion_k                     = 1.1
+zoom_rotate_time_k                       = 1.04
+condition_shot_dec_k                     = 1.1
 
-[wpn_addon_silencer_5_7x28]:wpn_addon_silencer_9x18
-$spawn                                             = "weapons\addons\wpn_addon_silencer_5_7x28"
-cost                                               = 950
-inv_grid_height                                    = 1
-inv_grid_width                                     = 1
-inv_grid_x                                         = 55
-inv_grid_y                                         = 9
-inv_name                                           = st_wpn_addon_silencer_5_7x28
-inv_weight                                         = 0.320
-visual                                             = dynamics\weapons\wpn_upgrade\wpn_addon_silencer_5_7x28.ogf
+addon_bone								 = wpn_silencer
 
-[wpn_addon_silencer_45]:wpn_addon_silencer_9x18
-$spawn                                             = "weapons\addons\wpn_addon_silencer_45"
-cost                                               = 750
-inv_grid_height                                    = 1
-inv_grid_width                                     = 1
-inv_grid_x                                         = 55
-inv_grid_y                                         = 6
-inv_name                                           = st_wpn_addon_silencer_45
-inv_weight                                         = 0.250
-visual                                             = dynamics\weapons\wpn_upgrade\wpn_addon_silencer_45.ogf
+[wpn_addon_pistol_suppressor]:wpn_addon_silencer
+inv_name                                 = st_addon_pistol_suppressor
+description                              = st_addon_pistol_suppressor_descr
 
-[wpn_addon_silencer_5x45]:wpn_addon_silencer_9x18
-$spawn                                             = "weapons\addons\wpn_addon_silencer_5x45"
-cost                                               = 600
-inv_grid_height                                    = 1
-inv_grid_width                                     = 1
-inv_grid_x                                         = 55
-inv_grid_y                                         = 7
-inv_name                                           = st_wpn_addon_silencer_5x45
-inv_weight                                         = 0.370
-visual                                             = dynamics\weapons\wpn_upgrade\wpn_addon_silencer_5_45.ogf
+inv_grid_x                               = 5
+inv_grid_y                               = 40
 
-[wpn_addon_silencer_5x56]:wpn_addon_silencer_9x18
-$spawn                                             = "weapons\addons\wpn_addon_silencer_5x56"
-cost                                               = 1200
-inv_grid_height                                    = 1
-inv_grid_width                                     = 1
-inv_grid_x                                         = 55
-inv_grid_y                                         = 8
-inv_name                                           = st_wpn_addon_silencer_5x56
-inv_weight                                         = 0.320
-visual                                             = dynamics\weapons\wpn_upgrade\wpn_addon_silencer_5_56.ogf
+cost                                     = 2500
+inv_weight                               = 0.3
 
-[wpn_addon_silencer_7_62x39]:wpn_addon_silencer_9x18
-$spawn                                             = "weapons\addons\wpn_addon_silencer_7_62x39"
-cost                                               = 900
-inv_grid_height                                    = 1
-inv_grid_width                                     = 1
-inv_grid_x                                         = 55
-inv_grid_y                                         = 3
-inv_name                                           = st_wpn_addon_silencer_7_62x39
-inv_weight                                         = 0.360
-visual                                             = dynamics\weapons\wpn_upgrade\wpn_addon_silencer_7_62x39.ogf
+bullet_hit_power_k                       = 1
+bullet_hit_impulse_k                     = 1
+bullet_speed_k                           = 1.03
+fire_dispersion_base_k                   = 1
+cam_dispersion_k                         = 0.8
+cam_dispersion_inc_k                     = 0.8
+PDM_disp_base_k                          = 1.1
+PDM_disp_accel_k                         = 1.1
+PDM_disp_vel_k                           = 1.1
+crosshair_inertion_k                     = 1.1
+zoom_rotate_time_k                       = 1.04
 
-[wpn_addon_silencer_7_62x54]:wpn_addon_silencer_9x18
-$spawn                                             = "weapons\addons\wpn_addon_silencer_7_62x54"
-cost                                               = 900
-inv_grid_height                                    = 1
-inv_grid_width                                     = 1
-inv_grid_x                                         = 55
-inv_grid_y                                         = 2
-inv_name                                           = st_wpn_addon_silencer_7_62x54
-inv_weight                                         = 0.410
-visual                                             = dynamics\weapons\wpn_upgrade\wpn_addon_silencer_7_62x54.ogf
+[wpn_addon_rifle_suppressor]:wpn_addon_silencer
+inv_name                                 = st_addon_rifle_suppressor
+description                              = st_addon_rifle_suppressor_descr
 
-[wpn_addon_silencer_7_62x51]:wpn_addon_silencer_9x18
-$spawn                                             = "weapons\addons\wpn_addon_silencer_7_62x51"
-cost                                               = 900
-inv_grid_height                                    = 1
-inv_grid_width                                     = 1
-inv_grid_x                                         = 55
-inv_grid_y                                         = 4
-inv_name                                           = st_wpn_addon_silencer_7_62x51
-inv_weight                                         = 0.390
-visual                                             = dynamics\weapons\wpn_upgrade\wpn_addon_silencer_7_62x51.ogf
+inv_grid_x                               = 2
+inv_grid_y                               = 6
 
-[wpn_addon_silencer_12x70]:wpn_addon_silencer_9x18
-$spawn                                             = "weapons\addons\wpn_addon_silencer_12x70"
-cost                                               = 900
-inv_grid_height                                    = 1
-inv_grid_width                                     = 1
-inv_grid_x                                         = 55
-inv_grid_y                                         = 10
-inv_name                                           = st_wpn_addon_silencer_12x70
-inv_weight                                         = 0.5
-visual                                             = dynamics\weapons\wpn_upgrade\wpn_addon_silencer_12_70.ogf
+cost                                     = 5000
+inv_weight                               = 0.7
 
-;-----------------------------------------------------------------------------
-; Подствольные гранатомёты
-;-----------------------------------------------------------------------------
+bullet_hit_power_k                       = 1
+bullet_hit_impulse_k                     = 1
+bullet_speed_k                           = 1
+fire_dispersion_base_k                   = 1
+cam_dispersion_k                         = 0.9
+cam_dispersion_inc_k                     = 0.9
+PDM_disp_base_k                          = 1.05
+PDM_disp_accel_k                         = 1.07
+PDM_disp_vel_k                           = 1.07
+crosshair_inertion_k                     = 1.1
+zoom_rotate_time_k                       = 1.04
 
 [wpn_addon_grenade_launcher]:identity_immunities
 discovery_dependency                     =
@@ -154,8 +92,8 @@ inv_weight                               = 1.3
 
 inv_grid_width                           = 2
 inv_grid_height                          = 1
-inv_grid_x                               = 52
-inv_grid_y                               = 1
+inv_grid_x                               = 10
+inv_grid_y                               = 9
 grenade_vel                              = 56
 
 cam_dispersion_k                         = 0.85
@@ -166,28 +104,8 @@ PDM_disp_vel_k                           = 1.1
 crosshair_inertion_k                     = 1.15
 zoom_rotate_time_k                       = 1.08
 
+addon_bone								 = wpn_launcher
 grenade_class							 = ammo_vog-25
-
-[wpn_addon_grenade_launcher_groza]:identity_immunities
-$prefetch                                = 32
-$spawn                                   = "weapons\addons\grenade_launcher_groza"
-cform                                    = skeleton
-class                                    = WP_GLAUN
-cost                                     = 3000
-description                              = st_grenade_launcher_groza_descr
-discovery_dependency                     = 
-fire_distance                            = 400
-grenade_vel                              = 76
-GroupControlSection                      = spawn_group
-slot							         = -1
-inv_grid_height                          = 1
-inv_grid_width                           = 2
-inv_grid_x                               = 52
-inv_grid_y                               = 3
-inv_name                                 = st_grenade_launcher_groza
-inv_weight                               = 2.100
-visual                                   = dynamics\weapons\wpn_upgrade\wpn_grenade_launcher.ogf
-grenade_class                            = ammo_vog-25
 
 [wpn_addon_grenade_launcher_m203]:identity_immunities
 discovery_dependency                     =
@@ -203,8 +121,8 @@ inv_weight                               = 1.36
 
 inv_grid_width                           = 2
 inv_grid_height                          = 1
-inv_grid_x                               = 52
-inv_grid_y                               = 2
+inv_grid_x                               = 12
+inv_grid_y                               = 9
 grenade_vel                              = 56
 
 cam_dispersion_k                         = 0.85
@@ -215,39 +133,12 @@ PDM_disp_vel_k                           = 1.1
 crosshair_inertion_k                     = 1.15
 zoom_rotate_time_k                       = 1.08
 
+addon_bone								 = wpn_launcher
 grenade_class							 = ammo_m209
 
-[wpn_addon_grenade_launcher_fngl]:identity_immunities
-discovery_dependency                     =
-$spawn                                   = "weapons\addons\wpn_addon_grenade_launcher_fngl"
-class                                    = WP_GLAUN
-visual                                   = dynamics\weapons\wpn_upgrade\wpn_grenade_launcher_m203.ogf
-$prefetch                                = 32
-slot                                     = -1
-cost                                     = 8500
-inv_name                                 = st_wpn_addon_grenade_launcher_fngl
-description                              = st_wpn_addon_grenade_launcher_fngl_descr
-inv_weight                               = 1.00
-
-inv_grid_width                           = 2
-inv_grid_height                          = 1
-inv_grid_x                               = 52
-inv_grid_y                               = 0
-grenade_vel                              = 56
-
-cam_dispersion_k                         = 0.85
-cam_dispersion_inc_k                     = 0.85
-PDM_disp_base_k                          = 1.1
-PDM_disp_accel_k                         = 1.1
-PDM_disp_vel_k                           = 1.1
-crosshair_inertion_k                     = 1.15
-zoom_rotate_time_k                       = 1.08
-
-grenade_class							 = ammo_m209
-
-;-----------------------------------------------------------------------------
-; Лазеры
-;-----------------------------------------------------------------------------
+;-------------
+; LASER
+;-------------
 
 [red_laser]
 laser_light_section 					 = red_laser_definition
@@ -263,13 +154,13 @@ laserdot_world_attach_offset_y           = 0.1
 laserdot_world_attach_offset_z           = 0.05
 
 [red_laser_definition]
-range                                    = 100	                            ; дальность в метрах
-range_r2                                 = 100	                            ; дальность в метрах (для динамического освещения)
-color                                    = 3.0f, 0.0f, 0.0f, 1.0f			; цвет, из 4 компонентов <r,g,b,a> значением от 0 до 3.
-color_r2                                 = 3.0f, 0.0f, 0.0f, 1.0f			; цвет, из 4 компонентов <r,g,b,a> значением от 0 до 3. (для динамического освещения)
-color_animator                           = ;battery_low								; цвет аниматора (empty - аниматор не используется). //light_torch_01
-;spot_texture                            = internal\internal_light_torch_r3	; текстура яркой точки (только для динамического освещения).
-spot_angle                               = 0.3	                            ; угол разлета света (определяет размер пятна)		; угол освещения в градусах.
+range                                    = 100	                            ; aaeuiinou a iao?ao
+range_r2                                 = 100	                            ; aaeuiinou a iao?ao (aey aeiaie?aneiai inaauaiey)
+color                                    = 3.0f, 0.0f, 0.0f, 1.0f			; oaao, ec 4 eiiiiiaioia <r,g,b,a> cia?aieai io 0 ai 3.
+color_r2                                 = 3.0f, 0.0f, 0.0f, 1.0f			; oaao, ec 4 eiiiiiaioia <r,g,b,a> cia?aieai io 0 ai 3. (aey aeiaie?aneiai inaauaiey)
+color_animator                           = ;battery_low								; oaao aieiaoi?a (empty - aieiaoi? ia eniieucoaony). //light_torch_01
+;spot_texture                            = internal\internal_light_torch_r3	; oaenoo?a y?eie oi?ee (oieuei aey aeiaie?aneiai inaauaiey).
+spot_angle                               = 0.3	                            ; oaie ?aceaoa naaoa (ii?aaaeyao ?acia? iyoia)		; oaie inaauaiey a a?aaonao.
 
 
 [green_laser]:red_laser
@@ -278,15 +169,15 @@ laser_light_section                      = green_laser_definition
 
 [green_laser_definition]:red_laser_definition
 
-color                                    = 0.0f, 0.0f, 3.0f, 1.0f			; цвет, из 4 компонентов <r,g,b,a> значением от 0 до 3.
-color_r2                                 = 0.0f, 0.0f, 3.0f, 1.0f			; цвет, из 4 компонентов <r,g,b,a> значением от 0 до 3. (для динамического освещения)
+color                                    = 0.0f, 0.0f, 3.0f, 1.0f			; oaao, ec 4 eiiiiiaioia <r,g,b,a> cia?aieai io 0 ai 3.
+color_r2                                 = 0.0f, 0.0f, 3.0f, 1.0f			; oaao, ec 4 eiiiiiaioia <r,g,b,a> cia?aieai io 0 ai 3. (aey aeiaie?aneiai inaauaiey)
 
-;-----------------------------------------------------------------------------
-; Фонарики
-;-----------------------------------------------------------------------------
+;-------------
+; FLASHLIGHT
+;-------------
 
 [tactical_torch]
-flashlight_section                       = wpn_flashlight_definition
+flashlight_section                       = flashlight_definition
 
 torch_cone_bones                         = light
 
@@ -309,24 +200,24 @@ torch_omni_world_attach_offset_x         = 0.0
 torch_omni_world_attach_offset_y         = 0.0
 torch_omni_world_attach_offset_z         = 0.0
 
-[wpn_flashlight_definition]
+[flashlight_definition_weapon]
 ;DIRECT		                             = 0,
 ;POINT		                             = 1,
 ;SPOT		                             = 2,
 ;OMNIPART	                             = 3,
 ;REFLECTED	                             = 4,
-omni_type                                = 2 ;KRodin: вообще omni это обычно поинт, но поинт светит во все стороны от себя, поэтому тут спот используется.
+omni_type                                = 2 ;KRodin: aiiaua omni yoi iau?ii iieio, ii iieio naaoeo ai ana noi?iiu io naay, iiyoiio ooo niio eniieucoaony.
 
-range                                    = 50	                            			; дальность в метрах
-range_r2                                 = 50	                            			; дальность в метрах (для динамического освещения)
-color                                    = 1.0,1.0,1.0,0.6								; цвет, из 4 компонентов <r,g,b,a> значением от 0 до 3.
-color_r2                                 = 1.0,1.1,1.2,1.2								; цвет, из 4 компонентов <r,g,b,a> значением от 0 до 3. (для динамического освещения)
-omni_range                               = 0.25											; дистанция освещения от фонариков неписей в метрах.
-omni_range_r2                            = 0.25											; дистанция освещения от фонариков неписей в метрах. (для динамического освещения)
-omni_color                               = 1.0,1.0,1.0,0.3								; цвет фонариков неписей, из 4 компонентов <r,g,b,a> значением от 0 до 3.
-omni_color_r2                            = 1.0,1.1,1.2,0.2								; цвет фонариков неписей, из 4 компонентов <r,g,b,a> значением от 0 до 3. (для динамического освещения)
-color_animator                           = empty										; цвет аниматора (empty - аниматор не используется). //light_torch_01
-spot_texture                             = internal\internal_light_torch_r2 	; текстура яркой точки (только для динамического освещения).
-spot_angle                               = 60	                            			; угол разлета света (определяет размер пятна)		; угол освещения в градусах.
-glow_texture                             = glow\glow_torch_r2			    			; текстура свечения фонарика, когда он направлен в глаза (обязательный параметр).
-glow_radius                              = 0.3											; радиус свечения в метрах.
+range                                    = 50	                            			; aaeuiinou a iao?ao
+range_r2                                 = 50	                            			; aaeuiinou a iao?ao (aey aeiaie?aneiai inaauaiey)
+color                                    = 1.0,1.0,1.0,0.6								; oaao, ec 4 eiiiiiaioia <r,g,b,a> cia?aieai io 0 ai 3.
+color_r2                                 = 1.0,1.1,1.2,1.2								; oaao, ec 4 eiiiiiaioia <r,g,b,a> cia?aieai io 0 ai 3. (aey aeiaie?aneiai inaauaiey)
+omni_range                               = 0.25											; aenoaioey inaauaiey io oiia?eeia iaienae a iao?ao.
+omni_range_r2                            = 0.25											; aenoaioey inaauaiey io oiia?eeia iaienae a iao?ao. (aey aeiaie?aneiai inaauaiey)
+omni_color                               = 1.0,1.0,1.0,0.3								; oaao oiia?eeia iaienae, ec 4 eiiiiiaioia <r,g,b,a> cia?aieai io 0 ai 3.
+omni_color_r2                            = 1.0,1.1,1.2,0.2								; oaao oiia?eeia iaienae, ec 4 eiiiiiaioia <r,g,b,a> cia?aieai io 0 ai 3. (aey aeiaie?aneiai inaauaiey)
+color_animator                           = empty										; oaao aieiaoi?a (empty - aieiaoi? ia eniieucoaony). //light_torch_01
+spot_texture                             = internal\internal_light_torch_tactical_r2 	; oaenoo?a y?eie oi?ee (oieuei aey aeiaie?aneiai inaauaiey).
+spot_angle                               = 60	                            			; oaie ?aceaoa naaoa (ii?aaaeyao ?acia? iyoia)		; oaie inaauaiey a a?aaonao.
+glow_texture                             = glow\glow_torch_r2			    			; oaenoo?a naa?aiey oiia?eea, eiaaa ii iai?aaeai a aeaca (iaycaoaeuiue ia?aiao?).
+glow_radius                              = 0.3											; ?aaeon naa?aiey a iao?ao.

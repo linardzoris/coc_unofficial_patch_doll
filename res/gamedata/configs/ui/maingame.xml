@@ -58,10 +58,6 @@
 		<texture>ui_inGame2_shield_radiation_cleanup</texture>
 	</indicator_booster_rad>
 
-    <indicator_booster_dec_sleepeness x="675" y="728" width="18" height="27">
-		<texture>ui_inGame2_shield_sleepeness_cleanup</texture>
-	</indicator_booster_dec_sleepeness>
-
 <!--
 	<radiation_static x="0" y="0" width="64" height="64">
 		<texture>ui_hud_icon_radiation</texture>

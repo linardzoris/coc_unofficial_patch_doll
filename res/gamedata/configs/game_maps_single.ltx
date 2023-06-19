@@ -26,6 +26,7 @@ l02_garbage =
 l03_agroprom =
 l04_darkvalley =
 l05_bar =
+l06_rostok =
 l07_military =
 l08_yantar =
 l09_deadcity =
@@ -35,6 +36,7 @@ l10_red_forest =
 l11_hospital =
 l11_pripyat =
 l12_stancia =
+l12_stancia_2 =
 l13_generators =
 pripyat	=
 zaton =
@@ -103,9 +105,14 @@ music_tracks    = l04_labx18_musics
 weathers        = indoor
 
 [l05_bar]
-global_rect     = 258.0,1414.0,556.0,1712
+global_rect     = 407.0,1414.0,556.0,1712
 weathers        = atmosfear
 music_tracks    = l05_bar_musics
+
+[l06_rostok]
+global_rect     = 258.0,1414.0,407.0,1712
+weathers        = atmosfear
+music_tracks    = l06_rostok_musics
 
 [l07_military]
 global_rect     = 425.0, 1231.0, 590, 1396.000000
@@ -159,9 +166,20 @@ weathers        = atmosfear
 music_tracks    = l11_pripyat_musics
 
 [l12_stancia]
-global_rect		= 322,101,728,495
+;global_rect     = 253.0, 74.0,	737.0,541.358704
+; nv100315 - new half-height map
+;global_rect		= 253.0, 314.8,	737.0, 559.6
+global_rect		= 322,298,728,495
 weathers        = atmosfear
 music_tracks    = l12_stancia_musics
+
+[l12_stancia_2]
+;global_rect     = 253.0, 74.0,	737.0,541.358704
+; nv100315 - new half-height map
+;global_rect		= 253.0, 81.6, 737, 314.8	;70.0,	737.0, 314.8
+global_rect		= 322,101,728,298
+weathers        = atmosfear
+music_tracks    = l12_stancia_2_musics
 
 [l13_generators]
 ;global_rect     = 391.0,0.0,573.0,182.0

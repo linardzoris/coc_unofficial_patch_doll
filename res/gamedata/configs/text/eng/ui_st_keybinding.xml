@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <string_table>
-	<string id="kb_laser_on">
-		<text>Weapon laser</text>
+	<string id="kb_turn_auto_engine">
+		<text>Turn engine</text>
 	</string>
-	<string id="kb_flashlight_on">
-		<text>Weapon flashlight</text>
-	</string>
+	<string id="kb_wpn_laser_on">
+		<text>Tact. designator</text>
+	</string>	
+	<string id="kb_wpn_flashlight_on">
+		<text>Tact. flashlight</text>
+	</string>			
 	<string id="kb_active_jobs">
 		<text>PDA</text>
 	</string>
@@ -159,9 +162,6 @@
 	<string id="kb_flashlight">
  		<text>Flashlight</text>
  	</string>
-	<string id="kb_turn_engine">
-		<text>Activate</text>
-	</string>
 	<string id="kb_up">
 		<text>Up</text>
 	</string>
@@ -275,10 +275,7 @@
 	<string id="kb_custom8">
 		<text>Hide mimimap</text>
 	</string>
-	<string id="kb_custom9">
-		<text>Toggle suppressor</text>
-	</string>
-	
+
 	<string id="kb_kick">
 		<text>Kick</text>
 	</string>
@@ -305,7 +302,7 @@
 	<string id="kb_grp_auto">
 		<text>Transport</text>
 	</string>	
-	<string id="kb_turn_auto_engine">
+	<string id="kb_turn_engine">
 		<text>Start the engine</text>
 	</string>
 	<string id="kb_switch_horn">

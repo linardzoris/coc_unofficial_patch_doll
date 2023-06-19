@@ -63,7 +63,7 @@
     <visual>actors\stalker_monolith\stalker_monolith_3</visual>
     <supplies>
         [spawn] \n
-        wpn_vintorez \n
+        wpn_val \n
         ammo_9x39_ap = 1 \n
 #include "gameplay\supplies\character_items.xml"
 #include "gameplay\supplies\character_food.xml"

@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="windows-1251" ?>
 <string_table>
+	<string id="ui_inv_thirst">
+		<text>Наполнение</text>
+	</string>	
+	<string id="ui_inv_intoxication">
+		<text>Интоксикация</text>
+	</string>	
+	<string id="ui_inv_sleepeness">
+		<text>Сонливость</text>
+	</string>
+	<string id="ui_inv_af_artefact_count">
+		<text>Карманы</text>
+	</string>	
 	<string id="st_percent">
 		<text>%</text>
 	</string>
@@ -264,21 +276,6 @@
 	<string id="ui_inv_satiety">
 		<text>Насыщение</text>
 	</string>
-	<string id="ui_inv_thirst">
-		<text>Наполнение</text>
-	</string>	
-	<string id="ui_inv_intoxication">
-		<text>Интоксикация</text>
-	</string>	
-	<string id="ui_inv_sleepeness">
-		<text>Сонливость</text>
-	</string>
-	<string id="ui_inv_af_artefact_count">
-		<text>Карманы</text>
-	</string>	
-	<string id="ui_inv_boost_dec_sleepeness">
-		<text>Бодрость</text>
-	</string>			
 	<string id="ui_inv_scope_rifle">
 		<text>Купить оптический прицел для винтовки (S)</text>
 	</string>
@@ -378,15 +375,12 @@
 	<string id="ui_st_disassemble">
 		<text>Разборка</text>
 	</string>
-	<string id="ui_st_create_stash">
-		<text>заложить тайник</text>
-	</string>
 	<string id="st_money">
 		<text>%d RU</text>
 	</string>
 	<string id="st_money_infinitive">
 		<text>--- RU</text>
-	</string>	
+	</string>
 	<string id="ui_st_create_stash">
 		<text>заложить тайник</text>
 	</string>	

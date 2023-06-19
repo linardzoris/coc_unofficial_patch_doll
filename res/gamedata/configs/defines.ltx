@@ -96,14 +96,14 @@ cost						= 1
 ; eatable item
 eat_health					= 0
 eat_satiety					= 0
-eat_thirst					= 0
-eat_intoxication			= 0
 eat_power					= 0
 eat_max_power				= 0
 eat_radiation				= 0
 eat_alcohol					= 0
-eat_sleepeness				= 0
+eat_thirst					= 0
 wounds_heal_perc			= 0
+eat_intoxication			= 0
+eat_sleepeness				= 0
 
 boost_time					= 0.0
 boost_max_weight			= 0.0
@@ -111,7 +111,6 @@ boost_health_restore		= 0.0
 boost_power_restore			= 0.0
 boost_radiation_restore		= 0.0
 boost_bleeding_restore		= 0.0
-boost_dec_sleepeness		= 0.0
 
 boost_radiation_protection	= 0.0
 boost_telepat_protection	= 0.0
@@ -143,7 +142,6 @@ class						= S_FOOD
 immunities_sect				= sect_zero_immunities
 
 [default_weapon_params]:identity_immunities
-cform                       = skeleton
 use_aim_bullet				= false
 use_first_bullet			= false
 k_hit_critical				= 0
@@ -166,15 +164,11 @@ sprint_allowed				= true
 control_inertion_factor		= 1.0
 zoom_rotate_time			= 0.25
 scope_zoom_factor			= 1.25
+ironsight_zoom_factor		= 1.25		;Really only used for Grenade Launcher Attachments
 holder_fov_modifier			= 1.0
 holder_range_modifier		= 1.0
 installed_upgrades			= 
 launch_speed				= 0
-
-upgr_icon_height            = 200
-upgr_icon_width             = 300
-upgr_icon_x					= 0
-upgr_icon_y 				= 0
 
 $npc						= on
 $prefetch					= 8
@@ -195,12 +189,9 @@ silencer_light_var_range	= 0.5
 min_radius = 1
 max_radius = 500
 
-scope_name				    = pso_scope
+scope_name				    = wpn_addon_scope
 scope_x					    = 0
 scope_y					    = 0
-
-cam_relax_speed_ai          = 80
-zoom_cam_relax_speed_ai     = 60
 
 ; Удалять ли один патрон при расклине
 misfire_one_cartridge_remove                       = false
@@ -252,6 +243,7 @@ anim_prepare                             = vodka_5
 anim_eat                                 = vodka_3
 
 ;;;;;;;;;;;;;;;;;Оружие
+
 [default_scope]
 scope_name                                         = pso_scope
 scope_x                                            = 0
@@ -347,18 +339,6 @@ silencer_bullet_speed                    		   = 700
 silencer_fire_distance                   		   = 200
 silencer_hit_impulse                     		   = 100
 silencer_hit_power                       		   = 0.42, 0.42, 0.42, 0.42
-
-snd_weapon_jam                                     = characters_voice\player\gun_jam_1
-snd_weapon_jam1                                    = nil
-snd_weapon_jam2                                    = characters_voice\player\gun_jam_2
-snd_weapon_jam3                                    = nil
-snd_weapon_jam4                                    = characters_voice\player\gun_jam_3
-snd_weapon_jam5                                    = nil
-snd_weapon_jam6                                    = characters_voice\player\gun_jam_4
-snd_weapon_jam7                                    = nil
-snd_weapon_jam8                                    = characters_voice\player\gun_jam_5
-snd_weapon_jam9                                    = nil
-snd_weapon_jam10                                   = characters_voice\player\gun_jam_6
 
 [hud_base_weapon]
 item_position                                      = 0,0,0

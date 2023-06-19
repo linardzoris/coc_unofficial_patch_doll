@@ -75,8 +75,8 @@ function opt_menu_on_init(menu)
 			con:execute("ai_aim_predict_time 0.40")
 		end
 	end}	
-
-	-- Анимации предметов
+	
+	-- Show Item Animations
 	menu.gameplay_options["show_item_animations"] = {default=false, 	debug_only=false, 	typ="check", on_accept=function(handler,optMgr,ctrl)	
 		local con = get_console()
 			if (ctrl:GetCheck()) then
@@ -84,9 +84,9 @@ function opt_menu_on_init(menu)
 			else
 				con:execute("g_item_animations off")
 			end	
-		end}
+		end}	
 	
-	-- Показывать ли у сталкеров имена или оставить лишь клички?
+	-- Show NPC First Names
 	menu.gameplay_options["show_first_name"] = {default=false, 	debug_only=false, 	typ="check", on_accept=function(handler,optMgr,ctrl)	
 		local con = get_console()
 			if (ctrl:GetCheck()) then

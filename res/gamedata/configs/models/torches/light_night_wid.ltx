@@ -1,13 +1,13 @@
 [torch_definition]
 type								= 2										; type  0-Direct 1-Point 2-Spot 3-OMNIPART 4-Reflected
-range           					= 9										; range                 <in meters>
-range_r2        					= 9
-range_2                             = 9.0									; range                 <in meters>
-range_r2_2                          = 9.0			                        ; range                 <in meters>
+range           					= 13									; range                 <in meters>
+range_r2        					= 13
+range_2                             = 13.0									; range                 <in meters>
+range_r2_2                          = 13.0			                        ; range                 <in meters>
 
 color           					= 0.8,0.7,0.7,0.2						; four color components <r,g,b,a> 0.f<X<3.f
 color_r2        					= 1.0,0.9,0.9,0.9						; four color components <r,g,b,a> 0.f<X<3.f
-color_animator  					= light_torch_01						; color animator name   (empty - not using animator) //light_torch_01
+color_animator  					= svet_02						; color animator name   (empty - not using animator) //light_torch_01
 volumetric						 	= false
 volumetric_for_actor				= false
 volumetric_quality				 	= 0.3
@@ -26,8 +26,8 @@ spot_texture    					= internal\internal_light_torch_r2		; spot texture name    
 spot_angle      					= 105									; spot angle            <in gradus>
 
 glow_texture    					= glow\glow_torch_r2					; glow texture name     (required)
-glow_radius     					= 0.5									; glow radius           <in meters>
-glow_radius_2                       = 0.5									; glow radius           <in meters>
+glow_radius     					= 0.4									; glow radius           <in meters>
+glow_radius_2                       = 0.4									; glow radius           <in meters>
 guide_bone      					= lights_bone							; guid bone name        (required)
 
 [torch_definition_volumetric]
@@ -36,7 +36,7 @@ range           					= 37									; range                 <in meters>
 range_r2        					= 37			 						; range                 <in meters>
 color           					= 0.8,0.7,0.7,0.2						; four color components <r,g,b,a> 0.f<X<3.f
 color_r2        					= 1.0,0.9,0.9,0.9						; four color components <r,g,b,a> 0.f<X<3.f
-color_animator  					= light_torch_01									; color animator name   (empty - not using animator) //light_torch_01
+color_animator  					= svet_02									; color animator name   (empty - not using animator) //light_torch_01
 volumetric						 	= false
 volumetric_for_actor				= false
 volumetric_quality				 	= 0.3

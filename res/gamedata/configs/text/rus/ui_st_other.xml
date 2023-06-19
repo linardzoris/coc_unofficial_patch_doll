@@ -525,7 +525,7 @@
 	</string>
 	<string id="st_sleep_not_sleepeness">
 		<text>Вы не можете спать, так как ещё не устали.</text>
-	</string>		
+	</string>	
 	<string id="st_sleep_bleeding">
 		<text>Сейчас нельзя! У Вас опасное кровотечение.</text>
 	</string>

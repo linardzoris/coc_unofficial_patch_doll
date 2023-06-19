@@ -1,3 +1,4 @@
+;boosters
 [drug_booster]:booster
 $spawn                         = "food and drugs\drug_booster"
 visual                         = dynamics\equipments\medical\drug_booster.ogf
@@ -12,28 +13,11 @@ cost                           = 1000
 
 boost_time                     = 300.0
 boost_max_weight               = 10.0
-eat_thirst					   = 0.3
 
-has_anim 					   = true
-hud_section                    = drug_booster_hud
-
-;use_sound                      = interface\inv_softdrink
+use_sound                      = interface\inv_softdrink
 inv_weight                     = 0.1
 
 hide_time_wpn                  = 3
-snd_on_take				       = other
-
-[drug_booster_hud]:hud_base
-hands_position				   = 0.0,-0.02,0.14
-hands_orientation			   = 0.0,0.0,0.0
-hands_position_16x9			   = 0.0,-0.02,0.14
-hands_orientation_16x9		   = 0.0,0.0,0.0
-item_position                  = 0,0,0
-item_orientation               = 0,0,0
-anm_use          			   = dev_booster_drug_gwr_hud, gerkules
-snd_using                      = interface\item_usage\gerkules_use
-single_handed_anim             = 2 ;0 - правая, 1 - левая, 2 - обе
-item_visual                    = dynamics\devices\first_person_animated\dev_bottles\drug_booster_hud
 
 [drug_coagulant]:booster
 $spawn                         = "food and drugs\drug_coagulant"
@@ -50,7 +34,9 @@ cost                           = 1000
 boost_time                     = 240.0
 boost_bleeding_restore         = 0.0005
 
-;use_sound                      = interface\inv_pills
+use_sound                      = interface\inv_pills
+
+boost_intoxication             = 0.05
 
 use_condition                  = true
 max_uses                       = 2
@@ -58,22 +44,6 @@ remove_after_use               = true
 empty_weight                   = 0.01
 
 hide_time_wpn                  = 4
-snd_on_take				       = pills
-
-has_anim 					   = true
-hud_section                    = drug_coagulant_hud
-
-[drug_coagulant_hud]:hud_base
-hands_position				   = 0.0,-0.02,0.14
-hands_orientation			   = 0.0,0.0,0.0
-hands_position_16x9			   = 0.0,-0.02,0.14
-hands_orientation_16x9		   = 0.0,0.0,0.0
-item_position                  = 0,0,0
-item_orientation               = 0,0,0
-anm_use          			   = tabletki_1_hands_eat_invtrans, tabletki_1_wpn_eat
-snd_using                      = interface\item_usage\pills_use
-single_handed_anim             = 2 ;0 - правая, 1 - левая, 2 - обе
-item_visual                    = dynamics\devices\first_person_animated\dev_pills\coagulant_hud
 
 [drug_psy_blockade]:booster
 $spawn                         = "food and drugs\drug_psy_blockade"
@@ -90,7 +60,9 @@ cost                           = 4000
 boost_time                     = 240.0
 boost_telepat_protection       = 0.05
 
-;use_sound                      = interface\inv_pills
+use_sound                      = interface\inv_pills
+
+boost_intoxication             = 0.1
 
 use_condition                  = true
 max_uses                       = 5
@@ -98,22 +70,6 @@ remove_after_use               = true
 empty_weight                   = 0.01
 
 hide_time_wpn                  = 4
-snd_on_take				       = pills
-
-has_anim 					   = true
-hud_section                    = drug_psy_blockade_hud
-
-[drug_psy_blockade_hud]:hud_base
-hands_position				   = 0.0,-0.02,0.14
-hands_orientation			   = 0.0,0.0,0.0
-hands_position_16x9			   = 0.0,-0.02,0.14
-hands_orientation_16x9		   = 0.0,0.0,0.0
-item_position                  = 0,0,0
-item_orientation               = 0,0,0
-anm_use          			   = tabletki_1_hands_eat_invtrans, tabletki_1_wpn_eat
-snd_using                      = interface\item_usage\pills_use
-single_handed_anim             = 2 ;0 - правая, 1 - левая, 2 - обе
-item_visual                    = dynamics\devices\first_person_animated\dev_pills\psy_blockade_hud
 
 [drug_antidot]:booster
 $spawn                         = "food and drugs\drug_antidot"
@@ -130,7 +86,9 @@ cost                           = 1500
 boost_time                     = 120.0
 boost_chemburn_protection      = 0.05
 
-;use_sound                      = interface\inv_pills
+use_sound                      = interface\inv_pills
+
+boost_intoxication             = 0.1
 
 use_condition                  = true
 max_uses                       = 3
@@ -138,22 +96,6 @@ remove_after_use               = true
 empty_weight                   = 0.01
 
 hide_time_wpn                  = 4
-snd_on_take				       = pills
-
-has_anim 					   = true
-hud_section                    = drug_antidot_hud
-
-[drug_antidot_hud]:hud_base
-hands_position				   = 0.0,-0.02,0.14
-hands_orientation			   = 0.0,0.0,0.0
-hands_position_16x9			   = 0.0,-0.02,0.14
-hands_orientation_16x9		   = 0.0,0.0,0.0
-item_position                  = 0,0,0
-item_orientation               = 0,0,0
-anm_use          			   = bandage_1_hands_eat_invtrans, tabletki_2_wpn_eat
-snd_using                      = interface\item_usage\pills_use
-single_handed_anim             = 2 ;0 - правая, 1 - левая, 2 - обе
-item_visual                    = dynamics\devices\first_person_animated\dev_pills\antidot_hud
 
 [drug_radioprotector]:booster
 $spawn                         = "food and drugs\drug_radioprotector"
@@ -170,7 +112,9 @@ cost                           = 1000
 boost_time                     = 240.0
 boost_radiation_protection     = 0.02
 
-;use_sound                      = interface\inv_pills
+use_sound                      = interface\inv_pills
+
+boost_intoxication             = 0.1
 
 use_condition                  = true
 max_uses                       = 2
@@ -178,22 +122,6 @@ remove_after_use               = true
 empty_weight                   = 0.01
 
 hide_time_wpn                  = 4
-snd_on_take				       = pills
-
-has_anim 					   = true
-hud_section                    = drug_radioprotector_hud
-
-[drug_radioprotector_hud]:hud_base
-hands_position				   = 0.0,-0.02,0.14
-hands_orientation			   = 0.0,0.0,0.0
-hands_position_16x9			   = 0.0,-0.02,0.14
-hands_orientation_16x9		   = 0.0,0.0,0.0
-item_position                  = 0,0,0
-item_orientation               = 0,0,0
-anm_use          			   = tabletki_1_hands_eat_invtrans, tabletki_3_wpn_eat
-snd_using                      = interface\item_usage\pills_use
-single_handed_anim             = 2 ;0 - правая, 1 - левая, 2 - обе
-item_visual                    = dynamics\devices\first_person_animated\dev_pills\radioprotector_hud
 
 [drug_anabiotic]:booster
 $spawn                         = "food and drugs\drug_anabiotic"
@@ -207,102 +135,6 @@ inv_grid_x                     = 0
 inv_grid_y                     = 2
 cost                           = 2500
 
-;use_sound                      = interface\inv_pills
-eat_thirst					   = -0.2
+use_sound                      = interface\inv_pills
 
 hide_time_wpn                  = 4
-
-has_anim 					   = true
-hud_section                    = drug_anabiotic_hud
-
-[drug_anabiotic_hud]:hud_base
-hands_position				   = 0.0,-0.02,0.14
-hands_orientation			   = 0.0,0.0,0.0
-hands_position_16x9			   = 0.0,-0.02,0.14
-hands_orientation_16x9		   = 0.0,0.0,0.0
-item_position                  = 0,0,0
-item_orientation               = 0,0,0
-anm_use          			   = dev_anabiotic_gwr_hud, biotic
-snd_using                      = interface\item_usage\anabiotic_use
-single_handed_anim             = 2 ;0 - правая, 1 - левая, 2 - обе
-item_visual                    = dynamics\devices\first_person_animated\dev_anabiotic\anabiotic_hud
-
-[dev_cigarettes_mechta_blue]:booster_script
-$spawn                                   = "food and drugs\dev_cigarettes_mechta_blue"
-cform                                    = skeleton
-visual                                   = dynamics\devices\dev_cigarettes_mechta\dev_cigarettes_mechta_blue.ogf
-description                              = st_dev_cigarettes_mechta_blue_descr
-
-inv_name                                 = st_dev_cigarettes_mechta_blue_name
-inv_name_short                           = st_dev_cigarettes_mechta_blue_name
-inv_weight                               = 0.22
-
-inv_grid_width                           = 1
-inv_grid_height                          = 1
-inv_grid_x                               = 7
-inv_grid_y                               = 40
-cost                                     = 80
-
-attach_angle_offset		                 = -0.287979, 1.560923, 1.544060
-attach_position_offset	                 = 0.096910, -0.013594, 0.107925
-attach_bone_name		                 = bip01_r_hand
-auto_attach				                 = false
-
-bone_name				                 = bip01_r_hand
-position_offset			                 = 0.0,0.0,0.0
-angle_offset			                 = 1.570790,1.570790,3.92699
-
-boost_time                               = 24.0
-boost_power_restore                      = -0.001
-eat_alcohol				                 = 0.001
-eat_thirst                               = -0.1
-eat_satiety                              = 0.1
-
-use_sound                                = interface\inv_smoke
-
-use_condition                            = true
-max_uses                                 = 5
-remove_after_use                         = true
-empty_weight                             = 0.094
-allow_repair                             = false
-snd_on_take								 = other
-
-[dev_cigarettes_mechta_red]:booster_script
-$spawn                                   = "food and drugs\dev_cigarettes_mechta_red"
-cform                                    = skeleton
-visual                                   = dynamics\devices\dev_cigarettes_mechta\dev_cigarettes_mechta_red.ogf
-description                              = st_dev_cigarettes_mechta_red_descr
-
-inv_name                                 = st_dev_cigarettes_mechta_red_name
-inv_name_short                           = st_dev_cigarettes_mechta_red_name
-inv_weight                               = 0.22
-
-inv_grid_width                           = 1
-inv_grid_height                          = 1
-inv_grid_x                               = 6
-inv_grid_y                               = 40
-cost                                     = 95
-
-attach_angle_offset		                 = -0.287979, 1.560923, 1.544060
-attach_position_offset	                 = 0.096910, -0.013594, 0.107925
-attach_bone_name		                 = bip01_r_hand
-auto_attach				                 = false
-
-bone_name				                 = bip01_r_hand
-position_offset			                 = 0.0,0.0,0.0
-angle_offset			                 = 1.570790,1.570790,3.92699
-
-boost_time                               = 26.0
-boost_power_restore                      = -0.001
-eat_alcohol				                 = 0.0012
-eat_thirst                               = -0.1
-eat_satiety                              = 0.1
-
-use_sound                                = interface\inv_smoke
-
-use_condition                            = true
-max_uses                                 = 5
-remove_after_use                         = true
-empty_weight                             = 0.094
-allow_repair                             = false
-snd_on_take								 = other

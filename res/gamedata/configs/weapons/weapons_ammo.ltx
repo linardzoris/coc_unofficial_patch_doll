@@ -20,7 +20,6 @@ k_disp                                   = 1
 k_hit                                    = 1
 k_impulse                                = 1
 tracer_color_ID                          = 0
-snd_on_take                              = ammo
 
 [ammo_knife]:ammo_base
 box_size                                 = 1
@@ -37,29 +36,11 @@ tracer                                   = off
 visual                                   = dynamics\weapons\wpn_ammo\ammo_9x18_fmj.ogf
 wm_size                                  = 0.04
 
-[ammo_axe]:ammo_base
-box_size                                 = 1
-cost                                     = 1
-inv_grid_height                          = 1
-inv_grid_width                           = 1
-inv_grid_x                               = 0
-inv_grid_y                               = 0
-inv_name                                 = "ammo_axe"
-inv_weight                               = 0
-k_air_resistance                         = 1
-k_ap                                     = 1.87
-k_dist			                         = 1
-k_disp			                         = 1.0
-k_hit			                         = 2.0
-tracer                                   = off
-visual                                   = dynamics\weapons\wpn_ammo\ammo_9x18_fmj.ogf
-wm_size                                  = 0.04
-
 [ammo_9x18_fmj]:ammo_base ; 7H15
 $spawn                                   = "weapons\ammo\ammo_9x18_fmj"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_9x18_fmj.ogf
-inv_name                                 = st_ammo_9x18_fmj
-description                              = st_ammo_9x18_fmj_descr
+inv_name                                 = ammo-9x18-fmj
+description                              = ammo-9x18-fmj_descr
 
 inv_grid_width                           = 1
 inv_grid_height                          = 1
@@ -74,13 +55,13 @@ k_ap                                     = 0.1
 tracer                                   = on
 tracer_color_ID                          = 1
 wm_size                                  = 0.06
-k_air_resistance                         = 1.0 ; Эффект сопротивления ветру. Чем меньше, тем меньше ветер влияет
+k_air_resistance                         = 1.0
 
 [ammo_9x18_pmm]:ammo_base ; 7H16
 $spawn                                   = "weapons\ammo\ammo_9x18_pmm"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_9x18_pmm.ogf
-inv_name                                 = st_ammo_9x18_pmm
-description                              = st_ammo_9x18_pmm_descr
+inv_name                                 = ammo-9x18-pmm
+description                              = ammo-9x18-pmm_descr
 
 inv_grid_width                           = 1
 inv_grid_height                          = 1
@@ -91,7 +72,8 @@ box_size                                 = 20
 cost                                     = 500
 inv_weight                               = .2
 
-k_ap                                     = 0.2
+k_hit                                    = 1.25
+k_ap                                     = 0.15
 impair                                   = 1.1
 tracer                                   = on
 tracer_color_ID                          = 1
@@ -103,8 +85,8 @@ k_cam_dispersion                         = 1.1
 [ammo_9x19_fmj]:ammo_base ; 124gr
 $spawn                                   = "weapons\ammo\ammo_9x19_fmj"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_9x19_fmj.ogf
-inv_name                                 = st_ammo_9x19_fmj
-description                              = st_ammo_9x19_fmj_descr
+inv_name                                 = ammo-9x19-fmj
+description                              = ammo-9x19-fmj_descr
 
 inv_grid_width                           = 1
 inv_grid_height                          = 1
@@ -115,7 +97,6 @@ box_size                                 = 20
 cost                                     = 350
 inv_weight                               = .25
 
-k_hit                                    = 1.05
 k_ap                                     = 0.15
 tracer                                   = on
 tracer_color_ID                          = 2
@@ -125,8 +106,8 @@ k_air_resistance                         = 1.0
 [ammo_9x19_pbp]:ammo_base ; 7H21
 $spawn                                   = "weapons\ammo\ammo_9x19_pbp"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_9x19_pbp.ogf
-inv_name                                 = st_ammo_9x19_pbp
-description                              = st_ammo_9x19_pbp_descr
+inv_name                                 = ammo-9x19-pbp
+description                              = ammo-9x19-pbp_descr
 
 inv_grid_width                           = 1
 inv_grid_height                          = 1
@@ -137,159 +118,66 @@ box_size                                 = 20
 cost                                     = 600
 inv_weight                               = .25
 
-k_hit                                    = 1.05
+k_hit                                    = 1.2
 k_ap                                     = 0.2
 impair                                   = 1.1
 tracer                                   = on
 tracer_color_ID                          = 2
 wm_size                                  = 0.06
-k_air_resistance                         = 0.5
+k_air_resistance                         = 1.0
 k_bullet_speed                           = 1.25
+k_cam_dispersion                         = 1.1
 
 [ammo_11.43x23_fmj]:ammo_base
 $spawn                                   = "weapons\ammo\ammo_11.43x23_fmj"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_1143x23_fmj.ogf
-inv_name                                 = st_ammo_11.43x23_fmj
-description                              = st_ammo_11.43x23_fmj_descr
+inv_name                                 = ammo-11.43x23-fmj
+description                              = ammo-11.43x23-fmj_descr
 
-inv_grid_width                           = 1
+inv_grid_width                           = 2
 inv_grid_height                          = 1
-inv_grid_x                               = 17
-inv_grid_y                               = 9
+inv_grid_x                               = 18
+inv_grid_y                               = 7
 
 box_size                                 = 20
 cost                                     = 500
 inv_weight                               = .4
 
-k_hit                                    = 1.2
-k_ap                                     = 0.3
+k_ap                                     = 0.1
 tracer                                   = on
 tracer_color_ID                          = 2
 wm_size                                  = 0.08
 k_air_resistance                         = 0.75
-k_cam_dispersion                         = 1.2
 
 [ammo_11.43x23_hydro]:ammo_base
 $spawn                                   = "weapons\ammo\ammo_11.43x23_hydro"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_1143x23_hydro.ogf
-inv_name                                 = st_ammo_11.43x23_hydro
-description                              = st_ammo_11.43x23_hydro_descr
+inv_name                                 = ammo-11.43x23-hydro
+description                              = ammo-11.43x23-hydro_descr
 
-inv_grid_width                           = 1
+inv_grid_width                           = 2
 inv_grid_height                          = 1
-inv_grid_x                               = 16
-inv_grid_y                               = 9
+inv_grid_x                               = 0
+inv_grid_y                               = 8
 
 box_size                                 = 20
 cost                                     = 1000
 inv_weight                               = .4
 
-k_hit                                    = 1.2
-k_ap                                     = 0.1
+k_hit                                    = 1.1
+k_ap                                     = 0.25
 tracer                                   = on
 tracer_color_ID                          = 2
 wm_size                                  = 0.09
 k_air_resistance                         = 0.8
 k_bullet_speed                           = 1.25
-k_cam_dispersion                         = 1.2
-
-[ammo_357_fmj]:ammo_base
-$spawn                                   = "weapons\ammo\ammo_357_fmj"
-visual                                   = dynamics\weapons\wpn_ammo\ammo_357_fmj.ogf
-inv_name                                 = st_ammo_357_fmj
-description                              = st_ammo_357_fmj_descr
-
-inv_grid_width                           = 1
-inv_grid_height                          = 1
-inv_grid_x                               = 0
-inv_grid_y                               = 10
-
-box_size                                 = 20
-cost                                     = 900
-inv_weight                               = .75
-
-k_hit                                    = 1.4
-k_ap                                     = 0.5
-tracer                                   = on
-tracer_color_ID                          = 2
-wm_size                                  = 0.1
-k_air_resistance                         = 0.5
-k_cam_dispersion                         = 1.3
-
-[ammo_5_7x28_ss190]:ammo_base
-$spawn                                   = "weapons\ammo\ammo_5_7x28_ss190"
-visual                                   = dynamics\weapons\wpn_ammo\ammo_5_7x28_ss190.ogf
-inv_name                                 = st_ammo_5_7x28_ss190
-description                              = st_ammo_5_7x28_ss190_descr
-
-inv_grid_width                           = 2
-inv_grid_height                          = 1
-inv_grid_x                               = 0
-inv_grid_y                               = 9
-
-box_size                                 = 50
-cost                                     = 2100
-inv_weight                               = .33
-
-k_hit                                    = 1.2
-k_ap                                     = 0.4
-tracer                                   = on
-tracer_color_ID                          = 2
-wm_size                                  = 0.04
-k_air_resistance                         = 0.5
-
-[ammo_7_62x25_fmj]:ammo_base
-$spawn                                   = "weapons\ammo\ammo_7_62x25_fmj"
-visual                                   = dynamics\weapons\wpn_ammo\ammo_762x25_p.ogf
-inv_name                                 = st_ammo_7_62x25_fmj
-description                              = st_ammo_7_62x25_fmj_descr
-
-inv_grid_width                           = 1
-inv_grid_height                          = 1
-inv_grid_x                               = 19
-inv_grid_y                               = 5
-
-box_size                                 = 20
-cost                                     = 400
-inv_weight                               = .45
-
-k_hit                                    = 1.2
-k_ap                                     = 0.5
-tracer                                   = on
-tracer_color_ID                          = 1
-wm_size                                  = 0.07
-k_air_resistance                         = 1.0
 k_cam_dispersion                         = 1.1
-
-[ammo_7_62x25_ap]:ammo_base
-$spawn                                   = "weapons\ammo\ammo_7_62x25_ap"
-visual                                   = dynamics\weapons\wpn_ammo\ammo_762x25_ps.ogf
-inv_name                                 = st_ammo_7_62x25_ap
-description                              = st_ammo_7_62x25_ap_descr
-
-inv_grid_width                           = 1
-inv_grid_height                          = 1
-inv_grid_x                               = 18
-inv_grid_y                               = 5
-
-box_size                                 = 20
-cost                                     = 600
-inv_weight                               = .45
-
-k_hit                                    = 1.3
-k_ap                                     = 0.6
-tracer                                   = on
-tracer_color_ID                          = 1
-wm_size                                  = 0.08
-k_air_resistance                         = 0.6
-k_bullet_speed                           = 1.25
-k_cam_dispersion                         = 1.15
 
 [ammo_5.45x39_fmj]:ammo_base ; 7H10
 $spawn                                   = "weapons\ammo\ammo_5.45x39_fmj"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_545x39_fmj.ogf
-inv_name                                 = st_ammo_5.45x39_fmj
-description                              = st_ammo_5.45x39_fmj_descr
+inv_name                                 = ammo-5.45x39-fmj
+description                              = ammo-5.45x39-fmj_descr
 
 inv_grid_width                           = 2
 inv_grid_height                          = 1
@@ -300,7 +188,6 @@ box_size                                 = 30
 cost                                     = 1500
 inv_weight                               = .32
 
-k_hit                                    = 1.1
 k_ap                                     = 0.5
 tracer                                   = on
 tracer_color_ID                          = 1
@@ -310,8 +197,8 @@ k_air_resistance                         = 1.1
 [ammo_5.45x39_ap]:ammo_base ; 7H22
 $spawn                                   = "weapons\ammo\ammo_5.45x39_ap"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_545x39_ap.ogf
-inv_name                                 = st_ammo_5.45x39_ap
-description                              = st_ammo_5.45x39_ap_descr
+inv_name                                 = ammo-5.45x39-ap
+description                              = ammo-5.45x39-ap_descr
 
 inv_grid_width                           = 2
 inv_grid_height                          = 1
@@ -322,62 +209,17 @@ box_size                                 = 30
 cost                                     = 2500
 inv_weight                               = .32
 
-k_hit                                    = 1.1
 k_ap                                     = 0.6
 tracer                                   = on
 tracer_color_ID                          = 1
 wm_size                                  = 0.05
 k_air_resistance                         = 1.1
 
-[ammo_7_62x39_fmj]:ammo_base
-$spawn                                   = "weapons\ammo\ammo_7_62x39_fmj"
-visual                                   = dynamics\weapons\wpn_ammo\ammo_762x39_fmj.ogf
-inv_name                                 = st_ammo_7_62x39_fmj
-description                              = st_ammo_7_62x39_fmj_descr
-
-inv_grid_width                           = 2
-inv_grid_height                          = 1
-inv_grid_x                               = 0
-inv_grid_y                               = 8
-
-box_size                                 = 30
-cost                                     = 1100
-inv_weight                               = .49
-
-k_hit                                    = 1.3
-k_ap                                     = 0.7
-tracer                                   = on
-tracer_color_ID                          = 1
-wm_size                                  = 0.0562
-k_air_resistance                         = 0.7
-
-[ammo_7_62x39_ap]:ammo_base
-$spawn                                   = "weapons\ammo\ammo_7_62x39_ap"
-visual                                   = dynamics\weapons\wpn_ammo\ammo_762x39_ap.ogf
-inv_name                                 = st_ammo_7_62x39_ap
-description                              = st_ammo_7_62x39_ap_descr
-
-inv_grid_width                           = 2
-inv_grid_height                          = 1
-inv_grid_x                               = 18
-inv_grid_y                               = 7
-
-box_size                                 = 30
-cost                                     = 2000
-inv_weight                               = .5
-
-k_hit                                    = 1.3
-k_ap                                     = 0.75
-tracer                                   = on
-tracer_color_ID                          = 1
-wm_size                                  = 0.057
-k_air_resistance                         = 0.6
-
 [ammo_5.56x45_ss190]:ammo_base ; SS109 (M855) green tip
 $spawn                                   = "weapons\ammo\ammo_5.56x45_ss190"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_556x45_ss190.ogf
-inv_name                                 = st_ammo_5.56x45_ss190
-description                              = st_ammo_5.56x45_ss190_descr
+inv_name                                 = ammo-5.56x45-ss190
+description                              = ammo-5.56x45-ss190_descr
 
 inv_grid_width                           = 2
 inv_grid_height                          = 1
@@ -388,7 +230,6 @@ box_size                                 = 30
 cost                                     = 1650
 inv_weight                               = .36
 
-k_hit                                    = 1.2
 k_ap                                     = 0.5
 tracer                                   = on
 tracer_color_ID                          = 2
@@ -398,8 +239,8 @@ k_air_resistance                         = 1.1
 [ammo_5.56x45_ap]:ammo_base ; M855A1
 $spawn                                   = "weapons\ammo\ammo_5.56x45_ap"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_556x45_ap.ogf
-inv_name                                 = st_ammo_5.56x45_ap
-description                              = st_ammo_5.56x45_ap_descr
+inv_name                                 = ammo-5.56x45-ap
+description                              = ammo-5.56x45-ap_descr
 
 inv_grid_width                           = 2
 inv_grid_height                          = 1
@@ -410,8 +251,8 @@ box_size                                 = 30
 cost                                     = 3000
 inv_weight                               = .35
 
-k_hit                                    = 1.2
-k_ap                                     = 0.65
+k_hit                                    = 1.1
+k_ap                                     = 0.6
 tracer                                   = on
 tracer_color_ID                          = 2
 wm_size                                  = 0.05
@@ -420,30 +261,29 @@ k_air_resistance                         = 1.1
 [ammo_pkm_100]:ammo_base
 $spawn                                   = "weapons\ammo\ammo_pkm_100"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_pkm.ogf
-inv_name                                 = st_ammo_pkm_100
-description                              = st_ammo_pkm_100_descr
+inv_name                                 = ammo-7.62x54-pkm
+description                              = ammo-7.62x54-pkm_descr
 
 inv_grid_width                           = 2
 inv_grid_height                          = 1
-inv_grid_x                               = 18
+inv_grid_x                               = 0
 inv_grid_y                               = 9
 
 box_size                                 = 100
 cost                                     = 10000
 inv_weight                               = 2.5
 
-k_hit                                    = 1.5
-k_ap                                     = 1.2
+k_ap                                     = 0.7
 tracer                                   = on
 tracer_color_ID                          = 1
 wm_size                                  = 0.07
 k_air_resistance                         = 0.5
 
-[ammo_7.62x54_7h1]:ammo_base
+[ammo_7.62x54_7h1]:ammo_base ; 7H14
 $spawn                                   = "weapons\ammo\ammo_7.62x54_7h1"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_762x54_7h1.ogf
-inv_name                                 = st_ammo_7_62x54_7h1
-description                              = st_ammo_7_62x54_7h1_descr
+inv_name                                 = ammo-7.62x54-7h14
+description                              = ammo-7.62x54-7h14_descr
 
 inv_grid_width                           = 2
 inv_grid_height                          = 1
@@ -454,81 +294,18 @@ box_size                                 = 10
 cost                                     = 1250
 inv_weight                               = .25
 
-k_hit                                    = 1.5
-k_ap                                     = 1.2
+k_disp                                   = 0.9
+k_ap                                     = 0.9
 tracer                                   = on
 tracer_color_ID                          = 1
 wm_size                                  = 0.07
-
-[ammo_7_62x54_ap]:ammo_base
-$spawn                                   = "weapons\ammo\ammo_7_62x54_ap"
-visual                                   = dynamics\weapons\wpn_ammo\ammo_762x54_7h14.ogf
-inv_name                                 = st_ammo_7_62x54_ap
-description                              = st_ammo_7_62x54_ap_descr
-
-inv_grid_width                           = 2
-inv_grid_height                          = 1
-inv_grid_x                               = 14
-inv_grid_y                               = 9
-
-box_size                                 = 10
-cost                                     = 1750
-inv_weight                               = .25
-
-k_hit                                    = 1.5
-k_ap                                     = 1.35
-tracer                                   = on
-tracer_color_ID                          = 1
-wm_size                                  = 0.07
-
-[ammo_7_62x51_fmj]:ammo_base ; 7H14
-$spawn                                   = "weapons\ammo\ammo_7_62x51_fmj"
-visual                                   = dynamics\weapons\wpn_ammo\ammo_762x51_fmj.ogf
-inv_name                                 = st_ammo_7_62x51_fmj
-description                              = st_ammo_7_62x51_fmj_descr
-
-inv_grid_width                           = 2
-inv_grid_height                          = 1
-inv_grid_x                               = 2
-inv_grid_y                               = 9
-
-box_size                                 = 10
-cost                                     = 1500
-inv_weight                               = .25
-
-k_hit                                    = 1.4
-k_ap                                     = 1.15
-tracer                                   = on
-tracer_color_ID                          = 1
-wm_size                                  = 0.07
-k_air_resistance                         = 0.35
-
-[ammo_7_62x51_ap]:ammo_base ; 7H14
-$spawn                                   = "weapons\ammo\ammo_7_62x51_ap"
-visual                                   = dynamics\weapons\wpn_ammo\ammo_762x51_ap.ogf
-inv_name                                 = st_ammo_7_62x51_ap
-description                              = st_ammo_7_62x51_ap_descr
-
-inv_grid_width                           = 2
-inv_grid_height                          = 1
-inv_grid_x                               = 2
-inv_grid_y                               = 10
-
-box_size                                 = 10
-cost                                     = 1750
-inv_weight                               = .25
-
-k_hit                                    = 1.4
-k_ap                                     = 1.3
-tracer                                   = on
-tracer_color_ID                          = 1
-wm_size                                  = 0.07
+k_air_resistance                         = 0.4
 
 [ammo_gauss]:ammo_base
 $spawn                                   = "weapons\ammo\ammo_gauss"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_gauss.ogf
-inv_name                                 = st_ammo_gauss
-description                              = st_ammo_gauss_descr
+inv_name                                 = ammo-gauss
+description                              = ammo-gauss_descr
 
 inv_grid_width                           = 1
 inv_grid_height                          = 1
@@ -539,18 +316,18 @@ box_size                                 = 10
 cost                                     = 7500
 inv_weight                               = .5
 
-k_hit                                    = 100
-k_ap                                     = 100
+k_hit                                    = 2
+k_ap                                     = 5
 tracer                                   = off
 wm_size                                  = 0.02
-k_air_resistance                         = 0
+k_air_resistance                         = 0.01
 explosive                                = on
 
 [ammo_gauss_cardan]:ammo_gauss
 $spawn                                   = "weapons\ammo\ammo_gauss_cardan"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_gauss_custom.ogf
-inv_name                                 = st_ammo_gauss_cardan
-description                              = st_ammo_gauss_cardandescr
+inv_name                                 = ammo-gauss_cardan
+description                              = ammo-gauss_cardan_descr
 
 inv_grid_x                               = 14
 
@@ -560,8 +337,8 @@ cost                                     = 4000
 [ammo_9x39_pab9]:ammo_base ; SP5
 $spawn                                   = "weapons\ammo\ammo_9x39_pab9"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_9x39_sp5.ogf
-inv_name                                 = st_ammo_9x39_sp5
-description                              = st_ammo_9x39_sp5_descr
+inv_name                                 = ammo-9x39-pab9
+description                              = ammo-9x39-pab9_descr
 
 inv_grid_width                           = 2
 inv_grid_height                          = 1
@@ -572,18 +349,17 @@ box_size                                 = 20
 cost                                     = 1800
 inv_weight                               = .45
 
-k_hit                                    = 1.3
-k_ap                                     = 0.7
+k_ap                                     = 0.45
 tracer                                   = on
 tracer_color_ID                          = 1
 wm_size                                  = 0.07
-k_air_resistance                         = 1.0
+k_air_resistance                         = 0.25
 
 [ammo_9x39_ap]:ammo_base ; SP6
 $spawn                                   = "weapons\ammo\ammo_9x39_ap"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_9x39_ap.ogf
-inv_name                                 = st_ammo_9x39_ap
-description                              = st_ammo_9x39_ap_descr
+inv_name                                 = ammo-9x39-ap
+description                              = ammo-9x39-ap_descr
 
 inv_grid_width                           = 2
 inv_grid_height                          = 1
@@ -594,18 +370,17 @@ box_size                                 = 20
 cost                                     = 2200
 inv_weight                               = .45
 
-k_hit                                    = 1.3
-k_ap                                     = 0.6
+k_ap                                     = 0.55
 tracer                                   = on
 tracer_color_ID                          = 1
 wm_size                                  = 0.07
-k_air_resistance                         = 1.5
+k_air_resistance                         = 0.25
 
 [ammo_12x70_buck]:ammo_base ; #00 buck
 $spawn                                   = "weapons\ammo\ammo_12x70_buck"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_12x70_buck.ogf
-inv_name                                 = st_ammo_12x70_buck
-description                              = st_ammo_12x70_buck_descr
+inv_name                                 = ammo-12x70-buck
+description                              = ammo-12x70-buck_descr
 
 inv_grid_width                           = 2
 inv_grid_height                          = 1
@@ -629,8 +404,8 @@ k_air_resistance                         = 1.5
 [ammo_12x76_zhekan]:ammo_base
 $spawn                                   = "weapons\ammo\ammo_12x76_zhekan"
 visual                                   = dynamics\weapons\wpn_ammo\ammo_12x76_zhekan.ogf
-inv_name                                 = st_ammo_12x76_zhekan
-description                              = st_ammo_12x76_zhekan_descr
+inv_name                                 = ammo-12x76-zhekan
+description                              = ammo-12x76-zhekan_descr
 
 inv_grid_width                           = 2
 inv_grid_height                          = 1
@@ -639,60 +414,12 @@ inv_grid_y                               = 8
 
 box_size                                 = 10
 cost                                     = 500
-inv_weight                               = .5
+inv_weight                               = .45
 
 k_hit                                    = 2
 k_ap                                     = 0.15
 tracer                                   = off
 wm_size                                  = 0.1
-explosive                                = off
-k_air_resistance                         = 1.25
-k_bullet_speed                           = 1.15
-
-[ammo_20x70_buck]:ammo_base
-$spawn                                   = "weapons\ammo\ammo_20x70_buck"
-visual                                   = dynamics\weapons\wpn_ammo\ammo_20x70_buck.ogf
-inv_name                                 = st_ammo_20x70_buck
-description                              = st_ammo_20x70_buck_descr
-
-inv_grid_width                           = 2
-inv_grid_height                          = 1
-inv_grid_x                               = 18
-inv_grid_y                               = 10
-
-box_size                                 = 10
-cost                                     = 900
-inv_weight                               = .7
-
-k_dist                                   = 0.75
-k_disp                                   = 9
-k_hit                                    = 0.6
-k_impulse                                = 0.5
-k_ap                                     = 0.04
-buck_shot                                = 9
-tracer                                   = off
-wm_size                                  = 0.045
-k_air_resistance                         = 1.5
-
-[ammo_20x76_zhekan]:ammo_base
-$spawn                                   = "weapons\ammo\ammo_20x76_zhekan"
-visual                                   = dynamics\weapons\wpn_ammo\ammo_20x76_zhekan.ogf
-inv_name                                 = st_ammo_20x76_zhekan
-description                              = st_ammo_20x76_zhekan_descr
-
-inv_grid_width                           = 2
-inv_grid_height                          = 1
-inv_grid_x                               = 18
-inv_grid_y                               = 11
-
-box_size                                 = 10
-cost                                     = 1500
-inv_weight                               = .75
-
-k_hit                                    = 3
-k_ap                                     = 0.3
-tracer                                   = off
-wm_size                                  = 0.15
 explosive                                = off
 k_air_resistance                         = 1.25
 k_bullet_speed                           = 1.15
@@ -712,43 +439,17 @@ tracer_color_ID                          = 3
 $spawn                                   = "weapons\ammo\ammo_og-7b"
 class                                    = S_OG7B
 visual                                   = dynamics\weapons\wpn_ammo\ammo_og_7b.ogf
-inv_name                                 = st_ammo_og_7b
-description                              = st_ammo_og_7b_descr
+inv_name                                 = ammo-og-7b
+description                              = ammo-og-7b_descr
 
 inv_grid_width                           = 3
 inv_grid_height                          = 1
-inv_grid_x                               = 0
-inv_grid_y                               = 6
+inv_grid_x                               = 10
+inv_grid_y                               = 13
 
 box_size                                 = 1
 cost                                     = 5000
 inv_weight                               = 2.0
-
-k_ap                                     = 0.25
-buck_shot                                = 0
-tracer                                   = off
-wm_size                                  = 0.5
-
-wallmark_section                         = explosion_marks
-
-;могут ли боеприпасы быть неограниченными : 1 - могут, 0 - не могут
-can_be_unlimited                         = true
-
-[ammo_pg_26]:ammo_base
-$spawn                                   = "weapons\ammo\ammo_pg_26"
-class                                    = S_OG7B
-visual                                   = dynamics\weapons\wpn_rpg_26\ammo_pg26.ogf
-inv_name                                 = st_ammo_pg_26
-description                              = st_ammo_pg_26_descr
-
-inv_grid_width                           = 2
-inv_grid_height                          = 1
-inv_grid_x                               = 3
-inv_grid_y                               = 6
-
-box_size                                 = 1
-cost                                     = 4000
-inv_weight                               = 1.8
 
 k_ap                                     = 0.25
 buck_shot                                = 0
@@ -768,8 +469,8 @@ can_be_unlimited                         = true
 $spawn                                   = "weapons\ammo\ammo_vog-25"
 class                                    = S_VOG25
 visual                                   = dynamics\weapons\wpn_ammo\ammo_vog_25.ogf
-inv_name                                 = st_ammo_vog_25
-description                              = st_ammo_vog_25_descr
+inv_name                                 = ammo-vog-25
+description                              = ammo-vog-25_descr
 
 inv_grid_width                           = 1
 inv_grid_height                          = 1
@@ -790,38 +491,12 @@ fake_grenade_name                        = wpn_fake_missile
 ;могут ли боеприпасы быть неограниченными : 1 - могут, 0 - не могут
 can_be_unlimited                         = true
 
-[ammo_vog_25p]:ammo_base
-$spawn                                   = "weapons\ammo\ammo_vog_25p"
-class                                    = S_VOG25
-visual                                   = dynamics\weapons\wpn_ammo\ammo_vog_25.ogf
-inv_name                                 = st_ammo_vog_25p
-description                              = st_ammo_vog_25p_descr
-
-inv_grid_width                           = 1
-inv_grid_height                          = 1
-inv_grid_x                               = 17
-inv_grid_y                               = 5
-
-box_size                                 = 1
-cost                                     = 4000
-inv_weight                               = .25
-
-k_ap                                     = 0.25
-buck_shot                                = 0
-tracer                                   = off
-wm_size                                  = 0.3
-
-fake_grenade_name                        = wpn_fake_missile1
-
-;могут ли боеприпасы быть неограниченными : 1 - могут, 0 - не могут
-can_be_unlimited                         = true
-
 [ammo_m209]:ammo_base
 $spawn                                   = "weapons\ammo\ammo_m209"
 class                                    = S_M209
 visual                                   = dynamics\weapons\wpn_ammo\ammo_m209.ogf
-inv_name                                 = st_ammo_m209
-description                              = st_ammo_m209_descr
+inv_name                                 = ammo-m209
+description                              = ammo-m209_descr
 
 inv_grid_width                           = 1
 inv_grid_height                          = 1

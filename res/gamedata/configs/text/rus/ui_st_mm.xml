@@ -419,7 +419,7 @@
 	</string>
 	<string id="ssdo">
 		<text>SSDO</text>
-	</string>	
+	</string>
 	<string id="ui_st_disable_hud">
 		<text>¬кл. интерфейс</text>
 	</string>
@@ -703,5 +703,8 @@
 	</string>
 	<string id="ui_mm_3d_scopes">
 		<text>3D прицелы</text>
+	</string>	
+	<string id="ui_mm_3d_scopes_fps_factor">
+		<text>FPS фактор в 3D прицелах</text>
 	</string>	
 </string_table>

@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <string_table>
+	<string id="st_wpn_fn2000_nimble">
+		<text>FN F2000 «Twilight»</text>
+	</string>
+
+	<string id="st_pso_scope">
+		<text>Scope PSO</text>
+	</string>
+	<string id="st_pso_scope_descr">
+		<text>Standard sight of the OVD block for mounting on the dovetail side bar.</text>
+	</string>	
+	<string id="st_susat_scope">
+		<text>Scope SUSAT</text>
+	</string>
+	<string id="st_susat_scope_descr">
+		<text>Standard sight of the NATO block for mounting on a rail bar.</text>
+	</string>
+
 	<string id="ammo-11.43x23-fmj">
 		<text>.45 ACP FMJ rounds</text>
 	</string>
@@ -255,10 +272,10 @@
 	<string id="st_grenade_rgd5_descr">
 		<text>A cheap fragmentation grenade with relatively small radius. Often used by stalkers to 'smoke out' mutants due to its low cost.</text>
 	</string>
-	<string id="st_grenade_rgdm">
-		<text>RGD-M</text>
+	<string id="st_grenade_smoke">
+		<text>Smoke grenade</text>
 	</string>
-	<string id="st_grenade_rgdm_descr">
+	<string id="st_grenade_smoke_descr">
 		<text>A hand smoke grenade. Used to put up smoke screens. Once the grenade is thrown it takes 10 seconds for the smoke screen to expand.</text>
 	</string>
 	<string id="st_wpn_abakan">
@@ -276,17 +293,32 @@
 	<string id="st_wpn_bm16">
 		<text>Sawed-off shotgun</text>
 	</string>
+	<string id="st_wpn_bm16_full">
+		<text>TOZ-66</text>
+	</string>	
 	<string id="st_wpn_bm16_descr">
-		<text>A sawed-off hunting shotgun with two side-by-side barrels, making it lighter and more compact than a full shotgun. One of the most popular weapons among bandits due to its combination of ease of concealment and extreme effectiveness in close combat.</text>
+		<text>Hunting shotgun with two side-by-side barrels. One of the most popular weapons, extreme effectiveness in close combat.</text>
 	</string>
 	<string id="st_wpn_colt1911">
 		<text>Kora-919</text>
 	</string>
+	<string id="st_wpn_desert_eagle_nimble">
+		<text>Steppe Eagle</text>
+	</string>
+	<string id="st_wpn_desert_eagle_nimble_descr">
+		<text>A hand-made pistol based on the Black Kite design. The components are finely tuned to achieve incredible accuracy for a handgun of this type.</text>
+	</string>
 	<string id="st_wpn_eagle">
 		<text>Black Kite</text>
 	</string>
+	<string id="st_wpn_fn2000">
+		<text>FT-200M</text>
+	</string>
 	<string id="st_wpn_fort">
 		<text>Fora-12</text>
+	</string>
+	<string id="st_wpn_fort_nimble">
+		<text>Auto-12</text>
 	</string>
 	<string id="st_wpn_g36">
 		<text>GP37</text>
@@ -300,14 +332,47 @@
 	<string id="st_wpn_groza_descr">
 		<text>This assault rifle combined with a grenade launcher, which is similar to the AKM series, was specially developed for rapid response units. The main differences are its 9x39 calibre ammunition, bullpup layout, and extensive configuration options. This weapon is highly valued by military stalkers due to its ability to kill enemies wearing body armour behind improvised cover at a distance during urban combat, as well as its excellent stopping power.</text>
 	</string>
+	<string id="st_wpn_groza_specops">
+		<text>Tunder 5.45</text>
+	</string>
+	<string id="st_wpn_groza_nimble">
+		<text>Storm</text>
+	</string>
+	<string id="st_wpn_groza_nimble_descr">
+		<text>An experimental version of an assault rifle and grenade launcher system, a Russian modification of the standard Tunder S14, this weapon was specially designed for units operating in the Zone. Notable for its increased magazine capacity.</text>
+	</string>
+	<string id="st_wpn_hpsa">
+		<text>HPSS-1m</text>
+	</string>
+	<string id="st_wpn_hpsa_descr">
+		<text>A modified model of a pistol from the first half of the 20th century, which is as reliable, powerful, and accurate as the original. Pistols of this series deserve their reputation as one of the best handguns of the 20th century and are in great demand in the Zone.</text>
+	</string>
+	<string id="st_wpn_l85">
+		<text>IL 86</text>
+	</string>
+	<string id="st_wpn_lr300">
+		<text>TRs 301</text>
+	</string>
 	<string id="st_wpn_mine_name">
 		<text>Butterfly mine</text>
 	</string>
 	<string id="st_wpn_mp5">
 		<text>Viper 5</text>
 	</string>
+	<string id="st_wpn_mp5_m1">
+		<text>Viper 5 9x18</text>
+	</string>
 	<string id="st_wpn_mp5_descr">
 		<text>This submachine gun has gained popularity around the world thanks to its reliability, ease of use, and accuracy. Over the last few decades, the Viper 5 was in service with special armed forces and police units worldwide. Not surprisingly, having flooded the global black markets, it eventually made its way to the Zone.</text>
+	</string>
+	<string id="st_wpn_mp5_nimble">
+		<text>Frasier</text>
+	</string>
+	<string id="st_wpn_mp5_nimble_descr">
+		<text>A submachine gun prototype based on the excellent Viper 5 model. Designed as a next generation close quarter combat weapon, it benefits from a higher calibre and accuracy.</text>
+	</string>
+	<string id="st_wpn_pb">
+		<text>PB-1s</text>
 	</string>
 	<string id="st_wpn_pm">
 		<text>PMm</text>
@@ -333,6 +398,12 @@
 	<string id="st_wpn_sig220">
 		<text>SIP-t M200</text>
 	</string>
+	<string id="st_wpn_sig220_nimble">
+		<text>Alpine</text>
+	</string>
+	<string id="st_wpn_sig220_nimble_descr">
+		<text>A unique model of the SIP-t M200 handgun. Part of a small limited edition made for an unidentified special forces unit. The model benefits from an increased magazine capacity, a high durability steel barrel and an ultra-durable polymer receiver.</text>
+	</string>
 	<string id="st_wpn_sig550">
 		<text>SGI-5k</text>
 	</string>
@@ -341,6 +412,12 @@
 	</string>
 	<string id="st_wpn_spas12">
 		<text>SPSA-14</text>
+	</string>
+	<string id="st_wpn_spas12_nimble">
+		<text>Carabineer</text>
+	</string>
+	<string id="st_wpn_spas12_nimble_descr">
+		<text>An army shotgun designed specifically for assault units on the basis of the SPSA-14. Capable of semi-automatic fire like its predecessor, but provides better recoil compensation thanks to a balanced shock free system.</text>
 	</string>
 	<string id="st_wpn_svd">
 		<text>SVDm-2</text>
@@ -375,11 +452,26 @@
 	<string id="st_wpn_usp_descr">
 		<text>Impeccable reliability and durability combined with excellent accuracy are the main noteworthy features of this weapon. Its minor drawbacks include its considerable size, relatively high center of gravity, and massive bolt, which make it difficult to conceal, but do not outweigh the weapon's positive features. The weapon is especially popular with veterans of the Zone.</text>
 	</string>
+	<string id="st_wpn_usp_nimble">
+		<text>March</text>
+	</string>
+	<string id="st_wpn_usp_nimble_descr">
+		<text>A compact, large calibre pistol with short bolt movement and lightweight bolt assembly. Used to belong to a mercenary called Wolfhound. Appears to be a modified UDP Compact pistol.</text>
+	</string>
+	<string id="st_wpn_val">
+		<text>SA Avalanche</text>
+	</string>
 	<string id="st_wpn_vintorez">
 		<text>Vintar BC</text>
 	</string>
 	<string id="st_wpn_vintorez_descr">
 		<text>A special military sniper rifle purpose-built for silent, flashless sniping during special operations where early detection of the shooter may be critical. The Vintar BC provides high armour-piercing capability and stopping power, as well as being equipped with an integrated sniper and optical scope. Highly rated by many stalkers despite its small magazine.</text>
+	</string>
+	<string id="st_wpn_vintorez_nimble">
+		<text>Tide</text>
+	</string>
+	<string id="st_wpn_vintorez_nimble_descr">
+		<text>A weapon made for military units on the basis of the silent sniper rifle. The rifle has higher stopping power than the Vintar BC, its predecessor, at the expense of its rate of fire, which allows the shooter to eliminate enemy forces one by one without revealing his position.</text>
 	</string>
 	<string id="st_wpn_walther">
 		<text>Walker P9m</text>
@@ -389,6 +481,12 @@
 	</string>
 	<string id="st_wpn_wincheaster1300_descr">
 		<text>A Western smoothbore shotgun that is extremely popular around the world thanks to its amazing reliability and faster reloading speed. Particularly valued for its functionality by the Zone's hunters. All of its parts are coated with an anti-corrosion compound.</text>
+	</string>
+	<string id="st_wpn_wincheaster1300_trapper">
+		<text>Predator</text>
+	</string>
+	<string id="st_wpn_wincheaster1300_trapper_descr">
+		<text>A tailor-made pump-action shotgun which used to belong to Trapper. The hunter's only requirement in respect of his weapon was that it needed to kill predators in one shot. This philosophy was based on the belief that no matter how many people an animal had killed, it was still just an animal, and thus should not suffer.</text>
 	</string>
 	<string id="ammo-gauss_cardan">
 		<text>Homemade batteries</text>
@@ -411,14 +509,29 @@
 	<string id="st_wpn_eagle_descr">
 		<text>The ultimate hand cannon: bulky, heavy, and highly lethal. Developed as a specialised weapon for hunting medium-sized and large game, as well as for shooting competitions involving firing at steel body targets at distances over 50 metres. Its limited use in the Zone can be attributed to its price, size and weight, which are all double those of other pistols.</text>
 	</string>
+	<string id="st_wpn_fn2000_descr">
+		<text>This futuristic-looking weapon with a bullpup layout is actually a mass produced modular system, comprising a rifle and grenade complex with a computerised fire control system and a 40mm grenade launcher. Despite its bulky appearance, the weapon is highly ergonomic, easy to use, and benefits from good technical characteristics.</text>
+	</string>
 	<string id="st_wpn_fort_descr">
 		<text>A Ukrainian-made pistol predominantly used by law enforcement organisations. Provides higher accuracy, better ergonomics, and a larger magazine capacity than the PMm. These pistols make it into the Zone in large numbers thanks to the sale of defective weapons, which suffer from technical miscalculations in early design models. Despite this, the pistol is in demand among stalkers thanks to its good combat characteristics.</text>
+	</string>
+	<string id="st_wpn_fort_nimble_descr">
+		<text>A customised Fora-12 pistol capable of firing fully automatic. The conversion made the pistol ever so slightly more reliable.</text>
 	</string>
 	<string id="st_wpn_g36_descr">
 		<text>A new addition to the Western-made assault rifle family, which differs significantly from previous models in the series built on an automatic foundation with a semi-open bolt assembly, this weapon is more like American automatic gas-operated assault rifles with a short-stroke gas piston system. These changes ensure that the rifle is a first-rate example of a modern weapon: lightweight, reliable, and ergonomic.</text>
 	</string>
+	<string id="st_wpn_l85_descr">
+		<text>This rifle's considerable number of drawbacks caused most of these weapons to be modernised, with the retired stock making its way to the Zone via the black market. The rifle's main advantages are its built-in 4x scope, high single-shot accuracy, and reliable upgrade technology. When the weapon is fired in bursts, its accuracy decreases significantly, and the rifle's basic internal mechanisms become somewhat unreliable.</text>
+	</string>
+	<string id="st_wpn_lr300_descr">
+		<text>A new step in the development of this famous weapon family. The changes were made to the upper half of the steel construction comprising the barrel, gas tube and bolt assembly, reducing the weapon's weight, improving ergonomics and its gas system. The weapon is highly accurate, although its propensity to catch dirt makes it a poor choice for the Zone's difficult conditions.</text>
+	</string>
 	<string id="st_wpn_mine_descr">
 		<text>The PFM-1 is an anti-personnel mine with an infamous reputation for being the cause of large amounts of civilian casualties. Often referred to as a 'butterfly' mine due to its unusual shape.</text>
+	</string>
+	<string id="st_wpn_pb_descr">
+		<text>This pistol was developed in the second half of the 20th century on the basis of the PMm for use by special forces and scouting units. The front of the pistol's barrel is covered with an integrated silencer, while the bolt mechanism is short, which prevents a back-moving spring from being located inside it, and it is therefore situated in the weapon's handle. Morally obsolete, the weapon is still effective in the right hands.</text>
 	</string>
 	<string id="st_wpn_pm_descr">
 		<text>This Soviet legacy is the most common pistol in the Zone and is one of the best compact self-defence handguns available. It is small, highly reliable, easy to use and maintain in working order. It also suffers from several drawbacks, including its short range, low firing accuracy, and poor stopping power, while also losing out to modern pistols in its class in terms of weight and magazine size.</text>
@@ -437,6 +550,9 @@
 	</string>
 	<string id="st_wpn_svu_descr">
 		<text>A modernised version of the SVDm-2 sniper rifle in a compact bullpup design made on the order of rapid response forces. It allows faster precision fire and is considerably lighter, while its single shot firing accuracy at short and medium range is similar to that of its predecessor. These qualities have earned it the admiration of countless stalkers.</text>
+	</string>
+	<string id="st_wpn_val_descr">
+		<text>A modified version of the silent Vintar BC sniper rifle, this assault rifle was designed as a special forces weapon. The rifle's primary purpose is effective fire against enemies employing modern personal protection equipment without disclosing the shooter's location. Thanks to its integrated silencer and 9x39 calibre round with a heavy subsonic bullet, the weapon's noise and muzzle flash have been reduced to a minimum.</text>
 	</string>
 	<string id="st_wpn_gauss_descr">
 		<text>A super-accurate hi-tech weapon known as item 62, this rifle was developed in secret laboratories located inside the Zone. The weapon operates by accelerating bullets to extremely high speeds using a system of electromagnets, which provides incredible stopping power with virtually no recoil. The weapon is powered by using encapsulated artefact fragments in the batteries.</text>

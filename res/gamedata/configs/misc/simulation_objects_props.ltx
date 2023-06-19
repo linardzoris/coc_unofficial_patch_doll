@@ -577,6 +577,7 @@ freedom		= 1
 surge 		= 1
 sim_avail 	= true
 stalker		= 1 
+csky		= 1 
 ecolog		= 1
 
 ;smaller base, gate
@@ -817,9 +818,8 @@ monster_predatory_night = 1
 monster_zombied_day 	= 1
 monster_zombied_night 	= 1
 
-;----------- << ROSTOK-BAR >> ------------
+;----------- << BAR >> ------------
 ;---------	SIMULATION	--------
-
 ;sim smarties
 [bar_zastava_dogs_lair]:default_lair
 sim_avail 	= {+faction_base_defense_active} false, true
@@ -861,6 +861,9 @@ sim_avail = {+bar_zastava_2_minigunner_dead +bar_zastava_2_duty2_guard1_dead +ba
 surge = 1
 dolg = 1
 
+;----------- << ROSTOK >> ------------
+;---------	SIMULATION	--------
+;sim smarties
 [ros_smart_killers1]:default_base
 sim_avail 	= true
 surge 		= 1
@@ -878,7 +881,7 @@ sim_avail 	= true
 [ros_smart_poltergeist2]:default_lair
 sim_avail 	= true
 
-[ros_entrance_dogs]:default_lair
+[ros_smart_snork1]:default_lair
 sim_avail 	= true
 
 [ros_smart_stalker_killers1]:default_base
@@ -886,9 +889,15 @@ sim_avail 	= true
 surge 		= 1
 killer		= 1
 
+[ros_smart_stalker1]:default_base
+sim_avail 	= true
+stalker		= 1 
+ecolog		= 1 
+dolg		= 1
+
 ;----------- << YANTAR >> ------------
 ;---------	SIMULATION	--------
-
+;sim smarties
 [yan_smart_terrain_1_6]:default_lair
 sim_avail 	= true
 
@@ -958,6 +967,13 @@ zombied   = 1
 ;scientist base
 [yan_smart_terrain_6_4]:default_base
 sim_avail 	= true
+surge		= 1
+stalker		= 1 
+ecolog		= 1 
+
+;scientist base shelters
+[yan_smart_terrain_6_6]:default_base
+sim_avail =  true
 surge		= 1
 stalker		= 1 
 ecolog		= 1 
@@ -1233,6 +1249,11 @@ sim_avail 		= true
 sim_avail 	= true
 surge		= 1
 
+[lim_smart_terrain_10]:default_territory
+sim_avail 		= true
+surge 			= 1
+monolith_heli	= 1
+
 [lim_smart_terrain_3]:default_territory
 sim_avail 	= true
 surge 		= 1
@@ -1262,17 +1283,6 @@ sim_avail 		= true
 surge 			= 1
 monolith		= 5
 monolith_heli	= 1
-
-[lim_smart_terrain_10]:default_territory
-sim_avail 		= true
-surge 			= 1
-monolith_heli	= 1
-
-[lim_smart_terrain_11]:default_lair
-sim_avail 		= true
-
-[lim_smart_terrain_12]:default_lair
-sim_avail 		= true
 
 ;----------- << HOSPITAL >> ------------
 ;---------	SIMULATION	--------
@@ -1548,7 +1558,6 @@ monster_vegetarian		= 1
 
 ;----------- << STANCIA_1 >> ------------
 ;---------	SIMULATION	--------
-
 [aes_smart_terrain_monolit_blockpost]:default_base
 sim_avail 		= true
 monolith		= 1
@@ -1592,41 +1601,6 @@ army_heli	= 1
 sim_avail 	= true
 all_stalker			= 0
 army 				= 1
-
-[aes2_monolith_camp1]:default_base
-sim_avail 		= true
-monolith		= 5
-monolith_heli	= 1
-
-[aes2_monolith_camp2]:default_base
-sim_avail 		= true
-monolith		= 5
-monolith_heli	= 1
-
-[aes2_monolith_camp3]:default_base
-sim_avail 		= true
-monolith		= 5
-monolith_heli	= 1
-
-[aes2_monolith_camp4]:default_base
-sim_avail 		= true
-monolith		= 5
-monolith_heli	= 1
-
-[aes2_monolith_snipers_1]:default_territory
-sim_avail = true
-
-[aes2_monolith_snipers_2]:default_territory
-sim_avail = true
-
-[aes2_monolith_snipers_3]:default_territory
-sim_avail = true
-
-[aes2_monsters1]:default_territory
-sim_avail = true
-
-[aes2_monsters2]:default_territory
-sim_avail = true
 
 ;----------- << SARCOFAG >> ------------
 
@@ -1689,6 +1663,43 @@ lair 					= 1
 monster_predatory_night = 1
 monster_zombied_day 	= 1
 monster_zombied_night	= 1
+
+;----------- << STANCIA_2 >> ------------
+;---------	SIMULATION	--------
+[aes2_monolith_camp1]:default_base
+sim_avail 		= true
+monolith		= 5
+monolith_heli	= 1
+
+[aes2_monolith_camp2]:default_base
+sim_avail 		= true
+monolith		= 5
+monolith_heli	= 1
+
+[aes2_monolith_camp3]:default_base
+sim_avail 		= true
+monolith		= 5
+monolith_heli	= 1
+
+[aes2_monolith_camp4]:default_base
+sim_avail 		= true
+monolith		= 5
+monolith_heli	= 1
+
+[aes2_monolith_snipers_1]:default_territory
+sim_avail = true
+
+[aes2_monolith_snipers_2]:default_territory
+sim_avail = true
+
+[aes2_monolith_snipers_3]:default_territory
+sim_avail = true
+
+[aes2_monsters1]:default_territory
+sim_avail = true
+
+[aes2_monsters2]:default_territory
+sim_avail = true
 
 
 ;----------- << GENERATORS >> ------------

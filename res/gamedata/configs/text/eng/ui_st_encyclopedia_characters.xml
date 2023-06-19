@@ -304,6 +304,24 @@
 		</text>
 	</string>
 	
+	<string id="encyclopedia_characters_professor_kruglov">
+		<text>Professor Kruglov</text>
+	</string>
+	<string id="encyclopedia_characters_professor_kruglov_text">
+		<text>
+			%c[guide_blue]Professor Kruglov%c[default] is a doctor of biological sciences.\n
+			\n%c[guide_green]Information%c[default]
+			\nPrior to arriving in the Zone, Kruglov studied pathogenic mutations in animals and their effects, so it was only a matter of time until his research brought him here.\n
+			\nFor the last several years he has worked with his associate, Professor Sakharov, and claims to have made several major discoveries - though few stalkers actually know what he's talking about and usually just feign an understanding.\n
+			\nAs of late he has taken to running his own research lab in a pod near the main bunker in Yantar, where he offers a variety of technical work to those who visit him.\n
+			\n%c[guide_green]Statistics%c[default]
+			\n• Faction: Ecologist\n• Rank: Experienced\n• Reputation: Neutral\n
+			\n%c[guide_green]Trivia%c[default]
+			\n• He is infamous for his difficult escort mission in S.T.A.L.K.E.R.: Shadow of Chernobyl.
+			\n• Until update 1.5 he wandered around aimlessly; killing any enemies he found in Yantar.
+		</text>
+	</string>
+	
 	<string id="encyclopedia_characters_professor_sakharov">
 		<text>Professor Sakharov</text>
 	</string>

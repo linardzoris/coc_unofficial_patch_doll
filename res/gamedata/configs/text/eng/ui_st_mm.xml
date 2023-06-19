@@ -422,7 +422,7 @@
 	</string>
 	<string id="ssdo">
 		<text>SSDO</text>
-	</string>	
+	</string>
 	<string id="ui_st_disable_hud">
 		<text>Show interface</text>
 	</string>
@@ -683,10 +683,10 @@
 	<string id="point_crosshair">
 		<text>Point</text>
 	</string>		
-
+	
 	<string id="ui_mm_show_item_animations">
 		<text>Show item animations</text>
-	</string>		
+	</string>	
 	<string id="ui_mm_show_first_name">
 		<text>NPC has first names</text>
 	</string>	
@@ -710,4 +710,7 @@
 	<string id="ui_mm_3d_scopes">
 		<text>PiP Scopes</text>
 	</string>	
+	<string id="ui_mm_3d_scopes_fps_factor">
+		<text>FPS factor in PiP scopes</text>
+	</string>		
 </string_table>
