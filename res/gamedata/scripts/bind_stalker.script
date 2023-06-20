@@ -327,9 +327,7 @@ function actor_binder:load(reader)
 
 	local game_difficulty_by_num = {
 				[0] = "gd_novice",
-				[1] = "gd_stalker",
-				[2] = "gd_veteran",
-				[3] = "gd_master"
+				[1] = "gd_master"
 				}
 	local dif = game_difficulty_by_num[reader:r_u8()]
 	if not (dif) then
@@ -401,11 +399,9 @@ function actor_binder:load_state(m_data)
 	--alun_utils.debug_write("actor_binder:load_state before")
 	local game_difficulty_by_num = {
 				[0] = "gd_novice",
-				[1] = "gd_stalker",
-				[2] = "gd_veteran",
-				[3] = "gd_master"
+				[1] = "gd_master"
 				}
-	get_console():execute("g_game_difficulty "..game_difficulty_by_num[state.actor_binder.game_difficulty or 3])
+	get_console():execute("g_game_difficulty "..game_difficulty_by_num[state.actor_binder.game_difficulty or 1])
 	self.st.disable_input_time = state.actor_binder.disable_input_time
 	SIMBOARD.simulation_started = state.actor_binder.simulation_started
 	--self.last_level_name = state.actor_binder.last_level_name

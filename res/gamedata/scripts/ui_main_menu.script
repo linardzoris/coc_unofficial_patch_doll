@@ -74,8 +74,6 @@ end
 function main_menu:InitCallBacks()
 	-- new game
 	self:AddCallback("btn_novice",		ui_events.BUTTON_CLICKED,				self.OnButton_new_novice_game,		self)
-	self:AddCallback("btn_stalker",		ui_events.BUTTON_CLICKED,				self.OnButton_new_stalker_game,		self)
-	self:AddCallback("btn_veteran",		ui_events.BUTTON_CLICKED,				self.OnButton_new_veteran_game,		self)
 	self:AddCallback("btn_master",		ui_events.BUTTON_CLICKED,				self.OnButton_new_master_game,		self)
 	self:AddCallback("btn_spawn",		ui_events.BUTTON_CLICKED,				self.OnButton_load_spawn,			self)
 	-- options
@@ -210,18 +208,6 @@ end
 function main_menu:OnButton_new_novice_game()
 	local console = get_console()
 	console:execute("g_game_difficulty gd_novice")
-	self:ShowFactionUI()
-end
-
-function main_menu:OnButton_new_stalker_game()
-	local console = get_console()
-	console:execute("g_game_difficulty gd_stalker")
-	self:ShowFactionUI()
-end
-
-function main_menu:OnButton_new_veteran_game()
-	local console = get_console()
-	console:execute("g_game_difficulty gd_veteran")
 	self:ShowFactionUI()
 end
 

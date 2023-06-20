@@ -29,6 +29,7 @@ monster_zombied_day		= 0
 monster_zombied_night	= 0
 monster_special_night	= 0
 monster_special_day		= 0
+monster_laboratory 		= 0
 
 army_heli		= 0
 monolith_heli 	= 0
@@ -59,6 +60,14 @@ monster_zombied_day		= 1
 monster_zombied_night	= 1
 monster_special_night	= 1
 monster_special_day		= 1
+
+[default_laboratory]:default
+lair					= 1
+territory				= 1
+monster_predatory_night = 1
+monster_zombied_day		= 1
+monster_zombied_night	= 1
+monster_laboratory 		= 1
 
 [default_territory]:default			; Use only if smart supports both stalker and monster jobs
 territory 	= 1
@@ -92,8 +101,6 @@ sim_avail 	= false
 [mar_smart_terrain_3_3]:default_base
 sim_avail 	= true
 bandit 		= 2
-freedom		= 1
-killer 		= 1
 surge 		= 1
 
 [mar_smart_terrain_3_7]:default_territory
@@ -121,13 +128,11 @@ sim_avail 	= true
 ecolog		= 1
 stalker		= 1
 bandit		= 1
-killer		= 1
 surge 		= 1
 
 ;South, fishing village
 [mar_smart_terrain_5_12]:default_base
 sim_avail 	= {+faction_base_defense_active} false, true
-ecolog		= 1
 stalker		= 1
 bandit		= 1
 surge 		= 1
@@ -168,8 +173,6 @@ monster_zombied_day		= 1
 ;South watchtower
 [mar_smart_terrain_6_11]:default_base
 sim_avail 	= true
-army		= 0
-ecolog		= 1
 stalker		= 1
 bandit		= 1
 
@@ -199,7 +202,6 @@ monster_predatory_night	= 1
 sim_avail 	= true
 lair 		= 1
 stalker		= 1
-ecolog		= 1 
 
 [mar_smart_terrain_8_9]:default_territory
 sim_avail = true
@@ -210,10 +212,8 @@ monster_zombied_day		= 1
 ;East temple
 [mar_smart_terrain_8_11]:default_base
 sim_avail = true
-ecolog		= 1
 stalker		= 1
 bandit		= 1
-killer		= 1
 surge 		= 1
 
 ;NE car repair, military
@@ -243,10 +243,6 @@ sim_avail 	= true
 surge 		= 1
 stalker		= 1
 bandit		= 1 
-ecolog		= 1 
-killer		= 1
-freedom		= 1
-dolg		= 1
 
 ;NE village, exit2 to Escape
 [mar_smart_terrain_12_2]:default_resource
@@ -254,10 +250,6 @@ sim_avail 	= true
 base        = 1
 surge 		= 1
 stalker		= 1
-ecolog		= 1 
-dolg		= 1 
-freedom		= 1 
-bandit 		= 1
 
 ;--------- <<  ESCAPE >> ----------------
 ;---------	SIMULATION	--------
@@ -266,14 +258,13 @@ bandit 		= 1
 [esc_smart_terrain_2_12]:default_base
 sim_avail 	= true
 surge		= 1
-stalker		= 5 
-ecolog		= 1
+stalker		= 1 
 
 ;military base
 [esc_smart_terrain_3_16]:default_base
 sim_avail 	= true
 surge		= 1
-army 		= 5
+army 		= 2
 army_heli	= 1
 
 ;car repair
@@ -301,25 +292,17 @@ army_heli	= 1
 sim_avail 	= true
 surge 		= 1
 stalker		= 5
-ecolog		= 1
-dolg		= 1
 
 ;mill
 [esc_smart_terrain_5_9]:default_base
 sim_avail 	= true
 surge 		= 1
 bandit 		= 5
-freedom		= 1
-killer		= 1
 
 ;fox house
 [esc_smart_terrain_6_6]:default_base
 sim_avail 	= true
 surge 		= 1
-ecolog 		= 1 
-freedom 	= 2
-dolg		= 1
-killer 		= 1
 
 [esc_smart_terrain_1_11]:default_resource
 sim_avail 	= true
@@ -577,7 +560,6 @@ freedom		= 1
 surge 		= 1
 sim_avail 	= true
 stalker		= 1 
-csky		= 1 
 ecolog		= 1
 
 ;smaller base, gate
@@ -780,27 +762,23 @@ monster_predatory_night = 1
 monster_zombied_day 	= 1
 monster_zombied_night 	= 1
 
-[dar_control_poltergeist]:default_lair
+[dar_control_poltergeist]:default_laboratory
 sim_avail = {+dar_military_scout_squad_killed} true, false
 all_monster 			= 0
 monster 				= 1
-monster_predatory_day 	= 1
-monster_predatory_night = 1
-monster_zombied_day 	= 1
-monster_zombied_night 	= 1
 
 [dar_military_scout]:default_territory
 sim_avail = false
 
-[dar_poltergeist_ring]:default_lair
+[dar_poltergeist_ring]:default_laboratory
 sim_avail = false
 monster_vegetarian = 0
 
-[dar_poltergeist_tele]:default_lair
+[dar_poltergeist_tele]:default_laboratory
 sim_avail = false
 monster_vegetarian = 0
 
-[dar_poltergeist_tele_round]:default_lair
+[dar_poltergeist_tele_round]:default_laboratory
 sim_avail = false
 monster_vegetarian = 0
 
@@ -1002,10 +980,6 @@ army 					= 1
 monolith				= 1
 zombied 				= 1
 all_monster 			= 0
-lair 					= 1
-monster					= 1
-monster_zombied_day 	= 1
-monster_zombied_night 	= 1
 
 [x162_st_gigant]:default_territory
 sim_avail = {+yan_kill_brain_done} true, false
@@ -1016,11 +990,6 @@ stalker					= 1
 army 					= 1
 zombied					= 1
 all_monster 			= 0
-lair 					= 1
-monster					= 1
-monster_zombied_day 	= 1
-monster_zombied_night 	= 1
-monster_predatory_night	= 1
 
 [x162_st_snork]:default_territory
 sim_avail = {+yan_kill_brain_done} true, false
@@ -1030,13 +999,11 @@ lair 					= 1
 monster_zombied_day 	= 1
 monster_zombied_night 	= 1
 
-[x162_st_poltergeist]:default_lair
+[x162_st_poltergeist]:default_laboratory
 sim_avail = {+yan_kill_brain_done} true, false
 all_stalker				= 0
 all_monster 			= 0
 lair 					= 1
-monster_zombied_day 	= 1
-monster_zombied_night 	= 1
 
 ;----------- << ARMY WAREHOUSES >> ------------
 ;---------	SIMULATION	--------
@@ -1455,10 +1422,6 @@ army			= 1
 zombied			= 1
 all_monster				= 0
 lair					= 1
-monster 				= 1
-monster_predatory_night	= 1
-monster_zombied_day		= 1
-monster_zombied_night	= 1
 
 [bun2_tushkano_lair]:default_territory
 sim_avail 	= {+bar_deactivate_radar_done} true, false
@@ -1470,9 +1433,6 @@ army			= 1
 all_monster				= 0
 lair					= 1
 monster 				= 1
-monster_predatory_night	= 1
-monster_zombied_day		= 1
-monster_zombied_night	= 1
 
 ;----------- << PRIPYAT >> ------------
 ;---------	SIMULATION	--------

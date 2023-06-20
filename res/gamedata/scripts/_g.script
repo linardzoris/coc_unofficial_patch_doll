@@ -1159,6 +1159,7 @@ is_squad_monster = {
 		["monster_special_day"] 	= true,
 		["monster_special_night"] 	= true,
 		["monster"]					= true,
+		["monster_laboratory"] 		= true,		
 		["zoo_monster"]				= true
 }
 squad_community_by_behaviour = {
@@ -1179,6 +1180,7 @@ squad_community_by_behaviour = {
 		["monster_zombied_night"]			= "monster",
 		["monster_special_day"]				= "monster",
 		["monster_special_night"]			= "monster",
+		["monster_laboratory"]				= "monster",
 		["zoo_monster"]						= "monster"
 }
 -------------------------------------------------------------------------------------------

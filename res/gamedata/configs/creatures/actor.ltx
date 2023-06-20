@@ -65,10 +65,8 @@ weapon_bone2                = bip01_r_finger11
 
 damage                      = actor_damage
 
-hit_probability_gd_novice	= 1
-hit_probability_gd_stalker	= 1
-hit_probability_gd_veteran	= 1
-hit_probability_gd_master	= 1
+hit_probability_gd_novice	= 0.5
+hit_probability_gd_master	= 0.8
 
 hit_sounds                = actor_hit_snds
 ;actor condition
@@ -132,48 +130,26 @@ quick_item_3 = antirad
 quick_item_4 = conserva
 
 [actor_immunities_gd_novice]
-burn_immunity           = 0.33
-strike_immunity         = 0.33
-shock_immunity          = 0.33
-wound_immunity          = 0.25
-radiation_immunity      = 0.33
-telepatic_immunity      = 0.33
-chemical_burn_immunity  = 0.33
-explosion_immunity      = 0.25
-fire_wound_immunity 	= 0.25
-
-[actor_immunities_gd_stalker]
-burn_immunity           = 0.66
-strike_immunity         = 0.66
-shock_immunity          = 0.66
-wound_immunity          = 0.5
-radiation_immunity      = 0.66
-telepatic_immunity      = 0.66
-chemical_burn_immunity  = 0.66
-explosion_immunity      = 0.5
-fire_wound_immunity 	= 0.5
-
-[actor_immunities_gd_veteran]
-burn_immunity           = 1
-strike_immunity         = 1
-shock_immunity          = 1
-wound_immunity          = 0.75
-radiation_immunity      = 1
-telepatic_immunity      = 1
-chemical_burn_immunity  = 1
-explosion_immunity      = 0.75
-fire_wound_immunity     = 0.75
+burn_immunity           = 0.5
+strike_immunity         = 0.5
+shock_immunity          = 0.5
+wound_immunity          = 0.35
+radiation_immunity      = 0.5
+telepatic_immunity      = 0.5
+chemical_burn_immunity  = 0.5
+explosion_immunity      = 0.35
+fire_wound_immunity 	= 0.35
 
 [actor_immunities_gd_master]
 burn_immunity           = 1.33
-strike_immunity         = 1.33
+strike_immunity         = 1.0
 shock_immunity          = 1.33
-wound_immunity          = 1
+wound_immunity          = 1.0
 radiation_immunity      = 1.33
 telepatic_immunity      = 1.33
 chemical_burn_immunity  = 1.33
-explosion_immunity      = 1
-fire_wound_immunity     = 1
+explosion_immunity      = 1.0
+fire_wound_immunity     = 1.0
 
 [actor_condition]
 satiety_v				= 0.0000162 ;скорость уменьшени€ сытости со временем
@@ -270,16 +246,6 @@ hud_radiation_blink     = 0.05
 killing_hit_treshold		= 0.2	; ≈сли наноситс€ потенциально смертельный хит, и у игрока хитов больше, чем killing_hit_treshold,
 last_chance_health			= 0.1	; его хиты уменьшаютс€ до last_chance_health (должно быть меньше, чем killing_hit_treshold) и
 invulnerable_time			= 500	; включаетс€ бессмертие на врем€ invulnerable_time (в миллисекундах)
-
-[actor_thd_gd_stalker]				; —екци€ настроек неодноударного убийства дл€ сложности stalker
-killing_hit_treshold		= 0.2
-last_chance_health			= 0.1
-invulnerable_time			= 500
-
-[actor_thd_gd_veteran]				; —екци€ настроек неодноударного убийства дл€ сложности veteran
-killing_hit_treshold		= 0.0
-last_chance_health			= 0.0
-invulnerable_time			= 0.0
 
 [actor_thd_gd_master]				; —екци€ настроек неодноударного убийства дл€ сложности master
 killing_hit_treshold		= 0.0

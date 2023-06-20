@@ -624,7 +624,7 @@ function faction_ui:load_icon_list()
 end
 
 --[[function faction_ui:load_list_difficulty()
-	self.difficulty_tbl = {"novice","stalker","veteran","master"}
+	self.difficulty_tbl = {"novice","master"}
 	self.difficulty_list:ClearList()
 	for i=1,#self.difficulty_tbl do
 		self.difficulty_list:AddItem(game.translate_string("ui_mm_" .. self.difficulty_tbl[i]), i)

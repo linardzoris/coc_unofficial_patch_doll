@@ -144,13 +144,7 @@ immunities_sect				= sect_zero_immunities
 [default_weapon_params]:identity_immunities
 use_aim_bullet				= false
 use_first_bullet			= false
-k_hit_critical				= 0
-hit_power					= 0.50, 0.50, 0.50, 0.50
-hit_power_critical			= 1.00, 1.00, 1.00, 1.00
-hit_probability_gd_novice	= 1
-hit_probability_gd_stalker	= 1
-hit_probability_gd_veteran	= 1
-hit_probability_gd_master	= 1
+hit_power					= 0.50, 0.50
 hit_type					= fire_wound
 silencer_hit_power			= 0.45, 0.45, 0.45, 0.45
 hit_impulse					= 10						; size of physic impulse by bullet
@@ -273,11 +267,6 @@ misfire_one_cartridge_remove                       = false
 ; Меняет анимации и скорострельность для авторежима, используется rpm_mode_2
 different_shot_modes                               = false
 
-hit_probability_gd_master                          = 0.95
-hit_probability_gd_novice                          = 0.40
-hit_probability_gd_stalker                         = 0.60
-hit_probability_gd_veteran                         = 0.80
-
 immunities_sect                                    = sect_identity_immunities
 
 gl_zoom_factor                                     = 1.1
@@ -295,13 +284,10 @@ scope_y					                           = 0
 control_inertion_factor                            = 1.0
 default_to_ruck                                    = false
 description                                        = no_description
-frag_hit_critical                                  = 0
 hit_impulse                                        = 10
-hit_power                                          = 0.50, 0.50, 0.50, 0.50
-hit_power_critical                                 = 1.00, 1.00, 1.00, 1.00
-k_hit_critical                                     = 0
+hit_power                                          = 0.50, 0.50
 silencer_hit_impulse                               = 9
-silencer_hit_power                                 = 0.45, 0.45, 0.45, 0.45
+silencer_hit_power                                 = 0.45, 0.45
 slot                                               = -1
 sprint_allowed                                     = true
 use1_action_functor                                = dxr_scopes.context_action_functor
@@ -402,11 +388,7 @@ animation_slot              					   = 5
 use_aim_bullet									   = false
 use_first_bullet								   = false
 scheduled                   					   = off
-k_hit_critical									   = 0
-frag_hit_critical								   = 0
-hit_power										   = 0.50, 0.50, 0.50, 0.50
-hit_power_critical								   = 1.00, 1.00, 1.00, 1.00
-silencer_hit_power								   = 0.45, 0.45, 0.45, 0.45
+hit_power										   = 0.50, 0.50
 hit_type										   = wound
 hit_type_2										   = wound
 hit_impulse										   = 10					
@@ -464,11 +446,6 @@ cam_max_angle                    				   = 0
 cam_max_angle_horz               				   = 0
 cam_relax_speed                  				   = 8
 cam_step_angle_horz              				   = 0
-
-hit_probability_gd_novice 						   = 0.8
-hit_probability_gd_stalker 						   = 0.9
-hit_probability_gd_veteran 						   = 1.00
-hit_probability_gd_master 						   = 1.00
 
 fire_point										   = 0, 0, 0
 fire_point2									       = 0, 0, 0

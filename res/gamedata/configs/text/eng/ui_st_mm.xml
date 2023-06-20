@@ -36,9 +36,6 @@
 	<string id="gd_novice">
 		<text>Easy</text>
 	</string>
-	<string id="gd_veteran">
-		<text>Hard</text>
-	</string>
 	<string id="icon">
 		<text>ICONS</text>
 	</string>
@@ -345,9 +342,6 @@
 	<string id="ui_mm_sound_quality">
 		<text>Sound quality</text>
 	</string>
-	<string id="ui_mm_stalker">
-		<text>Normal</text>
-	</string>
 	<string id="ui_mm_sun_quality">
 		<text>Shadow quality</text>
 	</string>
@@ -365,9 +359,6 @@
 	</string>
 	<string id="ui_mm_tips">
 		<text>NPC identification</text>
-	</string>
-	<string id="ui_mm_veteran">
-		<text>Hard</text>
 	</string>
 	<string id="ui_mm_video">
 		<text>Video</text>
@@ -428,9 +419,6 @@
 	</string>
 	<string id="ui_mm_hud_draw">
 		<text>Show interface</text>
-	</string>
-	<string id="gd_stalker">
-		<text>Normal</text>
 	</string>
 	<string id="st_opt_extreme">
 		<text>Extreme</text>
