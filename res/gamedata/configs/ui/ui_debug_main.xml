@@ -147,6 +147,70 @@
 	            <texture>ui_inGame2_opt_buttons_frame</texture>
 	        </auto_static>
 		</dialog>
+		<!--1 столбик -->
+		<cap_hint_num0 x="5" y="-265" width="300" height="20">
+			<text r="220" g="220" b="220" font="letterica16" align="l" vert_align="l">st_num0</text>
+		</cap_hint_num0>
+		<cap_hint_num1 x="5" y="-245" width="300" height="20">
+			<text r="220" g="220" b="220" font="letterica16" align="l" vert_align="l">st_num1</text>
+		</cap_hint_num1>
+		<cap_hint_num2 x="5" y="-225" width="300" height="20">
+			<text r="220" g="220" b="220" font="letterica16" align="l" vert_align="l">st_num2</text>
+		</cap_hint_num2>
+		<cap_hint_num3 x="5" y="-205" width="300" height="20">
+			<text r="220" g="220" b="220" font="letterica16" align="l" vert_align="l">st_num3</text>
+		</cap_hint_num3>
+		<cap_hint_num4 x="5" y="-185" width="300" height="20">
+			<text r="220" g="220" b="220" font="letterica16" align="l" vert_align="l">st_num4</text>
+		</cap_hint_num4>
+		<cap_hint_num5 x="5" y="-165" width="300" height="20">
+			<text r="220" g="220" b="220" font="letterica16" align="l" vert_align="l">st_num5</text>
+		</cap_hint_num5>
+		<cap_hint_num6 x="5" y="-145" width="300" height="20">
+			<text r="220" g="220" b="220" font="letterica16" align="l" vert_align="l">st_num6</text>
+		</cap_hint_num6>
+		<cap_hint_num7 x="5" y="-125" width="300" height="20">
+			<text r="220" g="220" b="220" font="letterica16" align="l" vert_align="l">st_num7</text>
+		</cap_hint_num7>
+		<cap_hint_num8 x="5" y="-105" width="300" height="20">
+			<text r="220" g="220" b="220" font="letterica16" align="l" vert_align="l">st_num8</text>
+		</cap_hint_num8>
+		<cap_hint_num9 x="5" y="-85" width="300" height="20">
+			<text r="220" g="220" b="220" font="letterica16" align="l" vert_align="l">st_num9</text>
+		</cap_hint_num9>
+        <!--2 столбик -->
+        <!-- 
+		<cap_hint_num0 x="320" y="-265" width="300" height="20">
+			<text r="220" g="220" b="220" font="letterica16" align="l" vert_align="l">st_num10</text>
+		</cap_hint_num0>
+		<cap_hint_num1 x="320" y="-245" width="300" height="20">
+			<text r="220" g="220" b="220" font="letterica16" align="l" vert_align="l">st_num11</text>
+		</cap_hint_num1>
+		<cap_hint_num2 x="320" y="-225" width="300" height="20">
+			<text r="220" g="220" b="220" font="letterica16" align="l" vert_align="l">st_num12</text>
+		</cap_hint_num2>
+		<cap_hint_num3 x="320" y="-205" width="300" height="20">
+			<text r="220" g="220" b="220" font="letterica16" align="l" vert_align="l">st_num13</text>
+		</cap_hint_num3>
+		<cap_hint_num4 x="320" y="-185" width="300" height="20">
+			<text r="220" g="220" b="220" font="letterica16" align="l" vert_align="l">st_num14</text>
+		</cap_hint_num4>
+		<cap_hint_num5 x="320" y="-165" width="300" height="20">
+			<text r="220" g="220" b="220" font="letterica16" align="l" vert_align="l">st_num15</text>
+		</cap_hint_num5>
+		<cap_hint_num6 x="320" y="-145" width="300" height="20">
+			<text r="220" g="220" b="220" font="letterica16" align="l" vert_align="l">st_num16</text>
+		</cap_hint_num6>
+		<cap_hint_num7 x="320" y="-125" width="300" height="20">
+			<text r="220" g="220" b="220" font="letterica16" align="l" vert_align="l">st_num17</text>
+		</cap_hint_num7>
+		<cap_hint_num8 x="320" y="-105" width="300" height="20">
+			<text r="220" g="220" b="220" font="letterica16" align="l" vert_align="l">st_num18</text>
+		</cap_hint_num8>
+		<cap_hint_num9 x="320" y="-85" width="300" height="20">
+			<text r="220" g="220" b="220" font="letterica16" align="l" vert_align="l">st_num19</text>
+		</cap_hint_num9>		
+		--> 		
 
 		<cap_focus_id x="5" y="-65" width="120" height="30">
 			<text r="220" g="220" b="220" font="letterica18" align="l" vert_align="c">HUD Target</text>
@@ -161,7 +225,8 @@
 				<texture>ui_bt_upgrade_border</texture>
 			</auto_static>
 		</cap_near_id>
-			<form x="10" y="-30" width="60" height="30" stretch="1">
+		
+            <form x="10" y="-30" width="60" height="30" stretch="1">
 				<txt_focus x="0" y="0" width="60" height="20">
 					<text align="c" font="letterica18"/>
 				</txt_focus>

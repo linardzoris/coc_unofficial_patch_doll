@@ -323,7 +323,30 @@ function debug_ui:InitControls()
 
 	xml:InitStatic("main_dialog:cap_near_id", self.dialog)
 	self.txt_near = xml:InitTextWnd("main_dialog:form:txt_near", self.form)
-
+	--1 столбик
+	xml:InitStatic("main_dialog:cap_hint_num0", self.dialog)
+	xml:InitStatic("main_dialog:cap_hint_num1", self.dialog)
+	xml:InitStatic("main_dialog:cap_hint_num2", self.dialog)
+	xml:InitStatic("main_dialog:cap_hint_num3", self.dialog)
+	xml:InitStatic("main_dialog:cap_hint_num4", self.dialog)
+	xml:InitStatic("main_dialog:cap_hint_num5", self.dialog)
+	xml:InitStatic("main_dialog:cap_hint_num6", self.dialog)
+	xml:InitStatic("main_dialog:cap_hint_num7", self.dialog)
+	xml:InitStatic("main_dialog:cap_hint_num8", self.dialog)
+	xml:InitStatic("main_dialog:cap_hint_num9", self.dialog)
+    --2 столбик
+	--[=[
+	xml:InitStatic("main_dialog:cap_hint_num10", self.dialog)
+	xml:InitStatic("main_dialog:cap_hint_num11", self.dialog)
+	xml:InitStatic("main_dialog:cap_hint_num12", self.dialog)
+	xml:InitStatic("main_dialog:cap_hint_num13", self.dialog)
+	xml:InitStatic("main_dialog:cap_hint_num14", self.dialog)
+	xml:InitStatic("main_dialog:cap_hint_num15", self.dialog)
+	xml:InitStatic("main_dialog:cap_hint_num16", self.dialog)
+	xml:InitStatic("main_dialog:cap_hint_num17", self.dialog)
+	xml:InitStatic("main_dialog:cap_hint_num18", self.dialog)
+	xml:InitStatic("main_dialog:cap_hint_num19", self.dialog)
+    --]=]	
 	-- Tabs
 	--self:CreateTab("spawner")
 	--self:CreateTab("editor")
@@ -728,7 +751,30 @@ function debug_ui:OnKeyboard(dik, keyboard_action)
 			self.spawn_lvid = db.actor:level_vertex_id()
 			self.spawn_gvid = db.actor:game_vertex_id()
 			self:SendOutput("Set current spawning position to actor location. [To set to default type spawn reset]")
-		end
+	    elseif dik == DIK_keys.DIK_NUMPAD0 then
+		   self:OnQuit()
+           surge_manager.start_surge()
+	    elseif dik == DIK_keys.DIK_NUMPAD1 then
+		   self:OnQuit()
+           local mgr = psi_storm_manager.get_psi_storm_manager()
+           mgr:start()
+		elseif dik == DIK_keys.DIK_NUMPAD2 then
+		
+		elseif dik == DIK_keys.DIK_NUMPAD3 then
+		
+		elseif dik == DIK_keys.DIK_NUMPAD4 then
+		
+		elseif dik == DIK_keys.DIK_NUMPAD5 then
+		
+		elseif dik == DIK_keys.DIK_NUMPAD6 then
+		
+		elseif dik == DIK_keys.DIK_NUMPAD7 then
+		
+		elseif dik == DIK_keys.DIK_NUMPAD8 then
+		
+		elseif dik == DIK_keys.DIK_NUMPAD9 then
+		
+    	end
 	end
 	return true
 end

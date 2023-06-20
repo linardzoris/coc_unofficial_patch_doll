@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<string_table>
+    <string id="st_num0">
+        <text>NUM0 - вызвать выброс</text>   
+    </string>
+    <string id="st_num1">
+        <text>NUM1 - выфзвать пси-шторм</text>   
+    </string>
+    <string id="st_num2">
+        <text>NUM2 - </text>   
+    </string>
+    <string id="st_num3">
+        <text>NUM3 - </text>   
+    </string>
+    <string id="st_num4">
+        <text>NUM4 - </text>   
+    </string>
+    <string id="st_num5">
+        <text>NUM5 - </text>   
+    </string>
+    <string id="st_num6">
+        <text>NUM6 - </text>   
+    </string>
+    <string id="st_num7">
+        <text>NUM7 - </text>   
+    </string>
+    <string id="st_num8">
+        <text>NUM8 - </text>   
+    </string>
+    <string id="st_num9">
+        <text>NUM9 - </text>   
+    </string>
+    <string id="st_num10">
+        <text> - </text>   
+    </string>
+    <string id="st_num11">
+        <text> - </text>   
+    </string>
+    <string id="st_num12">
+        <text> - </text>   
+    </string>
+    <string id="st_num13">
+        <text> - </text>   
+    </string>
+    <string id="st_num14">
+        <text> - </text>   
+    </string>
+    <string id="st_num15">
+        <text> - </text>   
+    </string>
+    <string id="st_num16">
+        <text> - </text>   
+    </string>
+    <string id="st_num17">
+        <text> - </text>   
+    </string>
+    <string id="st_num18">
+        <text> - </text>   
+    </string>
+    <string id="st_num19">
+        <text> - </text>   
+    </string>	
+</string_table>
