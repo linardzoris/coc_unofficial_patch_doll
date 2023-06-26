@@ -79,6 +79,7 @@ public:
     virtual void SendHiddenItem(); // same as OnHiddenItem but for client... (sends message to a server)...
 
 // Новое
+    float fActorPowerLeakAimSpeed; // Скорость утечки выносливости во время прицеливания
     float fConditionToBroke; // При достижении этого порога оружие ломается
 
 	float m_fLR_ShootingFactor; // Фактор горизонтального сдвига худа при стрельбе [-1; +1] // SWM 3

@@ -31,6 +31,7 @@
 #include "../xrEngine/x_ray.h"
 #include "XrayGameConstants.h"
 #include "../xrEngine/LightAnimLibrary.h"
+#include "ActorCondition.h"
 
 #define WEAPON_REMOVE_TIME 60000
 #define ROTATION_TIME 0.25f
@@ -101,6 +102,8 @@ CWeapon::CWeapon()
     m_fBACKW_ShootingFactor = 0.f;
 
 	m_fSecondRTZoomFactor = -1.0f;
+
+    fActorPowerLeakAimSpeed = 0.f;
 
 	bHasBulletsToHide = false;
     bullet_cnt = 0;
@@ -648,7 +651,7 @@ void CWeapon::Load(LPCSTR section)
 
 	m_APk = READ_IF_EXISTS(pSettings, r_float, section, "ap_modifier",1.0f);
 
-// Модификатор для HUD FOV от бедра
+    // Модификатор для HUD FOV от бедра
     m_hud_fov_add_mod = READ_IF_EXISTS(pSettings, r_float, section, "hud_fov_addition_modifier", 0.f);
 
     // Параметры изменения HUD FOV, когда игрок стоит вплотную к стене
@@ -695,6 +698,9 @@ void CWeapon::Load(LPCSTR section)
     {
         bAltScopeIsHasTexture = true;
     }
+
+    // Скорость утечки выносливости во время прицеливания
+    fActorPowerLeakAimSpeed = READ_IF_EXISTS(pSettings, r_float, section, "actor_power_leak_aim_speed", 0.f);
 
     // Скрытие костей из GWR
     if (pSettings->line_exist(section, "silencer_bone"))
@@ -1526,9 +1532,15 @@ bool CWeapon::Action(u16 cmd, u32 flags)
                     {
                         if (!IsPending())
                         {
-                            if (GetState() != eIdle)
-                                SwitchState(eIdle);
-                                OnZoomIn();
+                            CActor* pActor = smart_cast<CActor*>(H_Parent());
+
+                            // Не позволяем войти в прицел, если от усталости хромаем
+                            if (pActor && Actor()->conditions().GetPower() >= Actor()->conditions().GetLimpingPowerEnd())
+                            {
+                                if (GetState() != eIdle)
+                                    SwitchState(eIdle);
+                                    OnZoomIn();
+                            }
                         }
                     }
                     else

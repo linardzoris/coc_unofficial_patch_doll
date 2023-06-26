@@ -88,9 +88,12 @@ public:
 
     void PowerHit(float power, bool apply_outfit);
     float GetPower() const { return m_fPower; }
+    float GetLimpingPowerBegin() const { return m_fLimpingPowerBegin; }
+    float GetLimpingPowerEnd() const { return m_fLimpingPowerEnd; }
     void ConditionJump(float weight);
     void ConditionWalk(float weight, bool accel, bool sprint);
     void ConditionStand(float weight);
+    void ConditionAim();
     IC float MaxWalkWeight() const { return m_MaxWalkWeight; }
     float xr_stdcall GetAlcohol() { return m_fAlcohol; }
     float xr_stdcall GetPsy() { return 1.0f - GetPsyHealth(); }

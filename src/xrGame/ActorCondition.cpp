@@ -233,6 +233,8 @@ void CActorCondition::UpdateCondition()
         ConditionStand(cur_weight / base_weight);
     }
 
+    ConditionAim();
+
     if (IsGameTypeSingle())
     {
         float k_max_power = 1.0f;
@@ -663,6 +665,29 @@ void CActorCondition::ConditionStand(float weight)
     float power = m_fStandPower;
     power *= m_fDeltaTime;
     m_fPower -= power;
+}
+
+void CActorCondition::ConditionAim() // На мастере во время аима отнимаем от силы fActorPowerLeakAimSpeed, которая для каждого оружия может быть своей. Во время усталости выходим из прицеливания.
+{
+    PIItem item = m_object->inventory().ItemFromSlot(m_object->inventory().GetActiveSlot());
+    CWeapon* pWeapon = smart_cast<CWeapon*>(item);
+
+    if (!pWeapon || !pWeapon->fActorPowerLeakAimSpeed)
+        return;
+
+    if (g_SingleGameDifficulty == egdMaster)
+    {
+        float power = pWeapon->fActorPowerLeakAimSpeed;
+
+        if (pWeapon && pWeapon->IsZoomed())
+        {
+            power *= m_fDeltaTime;
+            m_fPower -= power;
+        }
+    }
+
+    if (pWeapon && pWeapon->IsZoomed() && m_fPower <= m_fLimpingPowerBegin)
+        pWeapon->OnZoomOut();
 }
 
 bool CActorCondition::IsCantWalk() const
