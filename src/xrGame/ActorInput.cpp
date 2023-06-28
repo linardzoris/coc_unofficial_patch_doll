@@ -252,19 +252,6 @@ void CActor::IR_OnKeyboardPress(int cmd)
         }
     }
     break;
-    case kWPN_ADDON: {
-        auto wpn = smart_cast<CWeapon*>(inventory().ActiveItem());
-
-        if (wpn)
-        {
-            if (wpn->HasLaser())
-                wpn->SwitchLaser(!wpn->IsLaserOn());
-
-            if (wpn->HasFlashlight())
-                wpn->SwitchFlashlight(!wpn->IsFlashlightOn());
-        }
-    }
-    break;
 #ifdef COC_KICK
     case kKICK:
         actorKick();

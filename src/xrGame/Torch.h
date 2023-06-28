@@ -42,6 +42,8 @@ protected:
 
     bool m_bTorchModeEnabled; // Режим фонаря
 
+    virtual bool install_upgrade_impl(LPCSTR section, bool test);
+
 private:
     inline bool can_use_dynamic_lights();
 

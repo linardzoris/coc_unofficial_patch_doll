@@ -158,6 +158,7 @@ public:
         eFiremodePrev,
         eFiremodeNext,
         eBroken,
+        eAddonSwitch,
     };
     enum EWeaponSubStates
     {

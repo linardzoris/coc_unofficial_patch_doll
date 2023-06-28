@@ -110,6 +110,8 @@ void CWeaponMagazined::Load(LPCSTR section)
         m_sounds.LoadSound(section, "snd_weapon_jam", "sndWpnJam", false, m_eSoundEmptyClick);
 	if (WeaponSoundExist(section, "snd_changefiremode"))
         m_sounds.LoadSound(section, "snd_changefiremode", "sndFireModes", false, m_eSoundEmptyClick);
+    if (WeaponSoundExist(section, "snd_addon_switch"))
+        m_sounds.LoadSound(section, "snd_addon_switch", "sndAddonSwitch", false, m_eSoundEmptyClick);
     if (WeaponSoundExist(section, "snd_pump_gun"))
         m_sounds.LoadSound(section, "snd_pump_gun", "sndPumpGun", true, m_eSoundReload);
     if (WeaponSoundExist(section, "snd_draw_empty"))
@@ -226,6 +228,7 @@ void CWeaponMagazined::FireStart()
                 if (GetState() == eFiremodePrev) return;
                 if (GetState() == eFiremodeNext) return;
                 if (GetState() == eBroken) return;
+                if (GetState() == eAddonSwitch) return;
 
                 inherited::FireStart();
 				
@@ -608,6 +611,11 @@ void CWeaponMagazined::OnStateSwitch(u32 S, u32 oldState)
         switch2_ChangeFireMode();
     }
     break;
+    case eAddonSwitch: {
+        PlaySound("sndAddonSwitch", get_LastFP());
+        switch2_AddonSwitch();
+    }
+    break;
     }
 }
 
@@ -950,6 +958,10 @@ void CWeaponMagazined::OnAnimationEnd(u32 state)
     case eFiremodeNext: {
         SwitchState(eIdle);
         break;
+    } 
+    case eAddonSwitch: {
+        SwitchState(eIdle);
+        break;
     } // End
     }
     inherited::OnAnimationEnd(state);
@@ -975,6 +987,16 @@ void CWeaponMagazined::switch2_ChangeFireMode()
     SetPending(TRUE);
 }
 
+void CWeaponMagazined::switch2_AddonSwitch()
+{
+    if (GetState() != eAddonSwitch)
+        return;
+
+    FireEnd();
+    PlayAnimAddonSwitch();
+    SetPending(TRUE);
+}
+
 void CWeaponMagazined::PlayAnimFireMode()
 {
     if (isHUDAnimationExist("anm_changefiremode_w_gl") && !IsMisfire() && IsGrenadeLauncherAttached() && m_ammoElapsed.type1 > 0)
@@ -996,6 +1018,29 @@ void CWeaponMagazined::PlayAnimFireMode()
         PlayHUDMotion("anm_changefiremode_jammed_w_gl", true, this, GetState());
     if (isHUDAnimationExist("anm_changefiremode_empty_jammed_w_gl") && IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 == 0)
         PlayHUDMotion("anm_changefiremode_empty_jammed_w_gl", true, this, GetState());
+}
+
+void CWeaponMagazined::PlayAnimAddonSwitch() // Для лазера/фонаря
+{
+    if (isHUDAnimationExist("anm_addon_switch_w_gl") && !IsMisfire() && IsGrenadeLauncherAttached() && m_ammoElapsed.type1 > 0)
+        PlayHUDMotion("anm_addon_switch_w_gl", true, this, GetState());
+    if (isHUDAnimationExist("anm_addon_switch_empty_w_gl") && !IsMisfire() && IsGrenadeLauncherAttached() && m_ammoElapsed.type1 == 0)
+        PlayHUDMotion("anm_addon_switch_empty_w_gl", true, this, GetState());
+
+    if (isHUDAnimationExist("anm_addon_switch") && !IsMisfire() && !IsGrenadeLauncherAttached() && m_ammoElapsed.type1 > 0)
+        PlayHUDMotion("anm_addon_switch", true, this, GetState());
+    if (isHUDAnimationExist("anm_addon_switch_empty") && !IsMisfire() && !IsGrenadeLauncherAttached() && m_ammoElapsed.type1 == 0)
+        PlayHUDMotion("anm_addon_switch_empty", true, this, GetState());
+
+    if (isHUDAnimationExist("anm_addon_switch_jammed") && !IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 > 0)
+        PlayHUDMotion("anm_addon_switch_jammed", true, this, GetState());
+    if (isHUDAnimationExist("anm_addon_switch_empty_jammed") && !IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 == 0)
+        PlayHUDMotion("anm_addon_switch_empty_jammed", true, this, GetState());
+
+    if (isHUDAnimationExist("anm_addon_switch_jammed_w_gl") && IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 > 0)
+        PlayHUDMotion("anm_addon_switch_jammed_w_gl", true, this, GetState());
+    if (isHUDAnimationExist("anm_addon_switch_empty_jammed_w_gl") && IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 == 0)
+        PlayHUDMotion("anm_addon_switch_empty_jammed_w_gl", true, this, GetState());
 }
 
 #ifdef DEBUG
@@ -1192,6 +1237,14 @@ bool CWeaponMagazined::Action(u16 cmd, u32 flags)
         if (flags & CMD_START)
         {
             OnNextFireMode();
+            return true;
+        };
+    }
+    break;
+    case kWPN_ADDON: {
+        if (flags & CMD_START)
+        {
+            OnWeaponAddonSwitch();
             return true;
         };
     }
@@ -1878,11 +1931,13 @@ bool CWeaponMagazined::SwitchMode()
 
 void CWeaponMagazined::OnNextFireMode()
 {
-    if (!m_bHasDifferentFireModes) return;
+    if (!m_bHasDifferentFireModes) 
+        return;
 
     SwitchState(eFiremodeNext);
 
-    if (GetState() != eIdle) return;
+    if (GetState() != eIdle) 
+        return;
 
     m_iCurFireMode = (m_iCurFireMode + 1 + m_aFireModes.size()) % m_aFireModes.size();
     SetQueueSize(GetCurrentFireMode());
@@ -1890,14 +1945,31 @@ void CWeaponMagazined::OnNextFireMode()
 
 void CWeaponMagazined::OnPrevFireMode()
 {
-    if (!m_bHasDifferentFireModes) return;
+    if (!m_bHasDifferentFireModes) 
+        return;
 
     SwitchState(eFiremodePrev);
 
-    if (GetState() != eIdle) return;
+    if (GetState() != eIdle) 
+        return;
 
     m_iCurFireMode = (m_iCurFireMode - 1 + m_aFireModes.size()) % m_aFireModes.size();
     SetQueueSize(GetCurrentFireMode());
+};
+
+void CWeaponMagazined::OnWeaponAddonSwitch() // Для лазера/фонаря
+{
+    SwitchState(eAddonSwitch);
+
+    if (GetState() != eIdle)
+        return;
+
+    // Можно перекинуть в OnAnimationEnd, но хз
+    if (HasLaser())
+        SwitchLaser(!IsLaserOn());
+
+    if (HasFlashlight())
+        SwitchFlashlight(!IsFlashlightOn());
 };
 
 void CWeaponMagazined::OnH_A_Chield()

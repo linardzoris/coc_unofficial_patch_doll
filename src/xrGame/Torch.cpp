@@ -551,3 +551,25 @@ void CTorch::ConditionUpdate()
         this->ChangeCondition(-m_fDecayRate * Device.fTimeDelta);
     }
 }
+
+bool CTorch::install_upgrade_impl(LPCSTR section, bool test)
+{
+    LPCSTR str;
+
+    // Msg("Torch Upgrade");
+    bool result = inherited::install_upgrade_impl(section, test);
+
+    result |= process_if_exists(section, "passive_decay_rate", &CInifile::r_float, m_fPassiveDecayRate, test);
+    result |= process_if_exists(section, "power_decay_rate", &CInifile::r_float, m_fDecayRate, test);
+    result |= process_if_exists(section, "inv_weight", &CInifile::r_float, m_weight, test);
+
+    bool value = m_bTorchModeEnabled;
+    bool result2 = process_if_exists_set(section, "torch_allowed", &CInifile::r_bool, value, test);
+    if (result2 && !test)
+    {
+        m_bTorchModeEnabled = !!value;
+    }
+    result |= result2;
+
+    return result;
+}
