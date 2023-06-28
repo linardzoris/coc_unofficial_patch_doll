@@ -252,14 +252,17 @@ void CActor::IR_OnKeyboardPress(int cmd)
         }
     }
     break;
-    case kWPN_LASER: {
-        if (auto wpn = smart_cast<CWeapon*>(inventory().ActiveItem()))
-            wpn->SwitchLaser(!wpn->IsLaserOn());
-    }
-    break;
-    case kWPN_FLASHLIGHT: {
-        if (auto wpn = smart_cast<CWeapon*>(inventory().ActiveItem()))
-            wpn->SwitchFlashlight(!wpn->IsFlashlightOn());
+    case kWPN_ADDON: {
+        auto wpn = smart_cast<CWeapon*>(inventory().ActiveItem());
+
+        if (wpn)
+        {
+            if (wpn->HasLaser())
+                wpn->SwitchLaser(!wpn->IsLaserOn());
+
+            if (wpn->HasFlashlight())
+                wpn->SwitchFlashlight(!wpn->IsFlashlightOn());
+        }
     }
     break;
 #ifdef COC_KICK

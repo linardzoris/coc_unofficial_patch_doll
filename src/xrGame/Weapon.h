@@ -802,6 +802,7 @@ public:
             m_flagsAddOnState &= ~CSE_ALifeItemWeapon::eWeaponAddonLaserOn;
     }
     inline bool IsLaserOn() const { return m_flagsAddOnState & CSE_ALifeItemWeapon::eWeaponAddonLaserOn; }
+    bool HasLaser() const { return has_laser; }
 
 private:
     bool has_flashlight;
@@ -828,6 +829,6 @@ public:
             m_flagsAddOnState &= ~CSE_ALifeItemWeapon::eWeaponAddonFlashlightOn;
     }
     inline bool IsFlashlightOn() const { return m_flagsAddOnState & CSE_ALifeItemWeapon::eWeaponAddonFlashlightOn; }
-
+    bool HasFlashlight() const { return has_flashlight; }
     // End=================================
 };
