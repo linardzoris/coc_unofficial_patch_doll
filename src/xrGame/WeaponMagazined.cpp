@@ -227,8 +227,8 @@ void CWeaponMagazined::FireStart()
                 if (GetState() == eUnMisfire) return;
                 if (GetState() == eFiremodePrev) return;
                 if (GetState() == eFiremodeNext) return;
+                if (GetState() == eSwitchAddon) return;
                 if (GetState() == eBroken) return;
-                if (GetState() == eAddonSwitch) return;
 
                 inherited::FireStart();
 				
@@ -611,7 +611,7 @@ void CWeaponMagazined::OnStateSwitch(u32 S, u32 oldState)
         switch2_ChangeFireMode();
     }
     break;
-    case eAddonSwitch: {
+    case eSwitchAddon: {
         PlaySound("sndAddonSwitch", get_LastFP());
         switch2_AddonSwitch();
     }
@@ -959,7 +959,7 @@ void CWeaponMagazined::OnAnimationEnd(u32 state)
         SwitchState(eIdle);
         break;
     } 
-    case eAddonSwitch: {
+    case eSwitchAddon: {
         SwitchState(eIdle);
         break;
     } // End
@@ -989,7 +989,7 @@ void CWeaponMagazined::switch2_ChangeFireMode()
 
 void CWeaponMagazined::switch2_AddonSwitch()
 {
-    if (GetState() != eAddonSwitch)
+    if (GetState() != eSwitchAddon)
         return;
 
     FireEnd();
@@ -1959,7 +1959,7 @@ void CWeaponMagazined::OnPrevFireMode()
 
 void CWeaponMagazined::OnWeaponAddonSwitch() // Для лазера/фонаря
 {
-    SwitchState(eAddonSwitch);
+    SwitchState(eSwitchAddon);
 
     if (GetState() != eIdle)
         return;

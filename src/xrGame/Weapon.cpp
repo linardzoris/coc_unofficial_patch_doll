@@ -322,7 +322,7 @@ void CWeapon::SwitchZoomType()
     }
     else if (IsGrenadeLauncherAttached())
     {
-        SwitchState(eSwitch);
+        SwitchState(eSwitchGL);
         return;
     }
     else if (m_zoomtype != 0)
@@ -1156,7 +1156,7 @@ void CWeapon::net_Import(NET_Packet& P)
     {
     case eFire:
     case eFire2:
-    case eSwitch:
+    case eSwitchGL:
     case eReload: {
     }
     break;

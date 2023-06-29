@@ -232,7 +232,7 @@ bool CWeaponMagazinedWGrenade::Action(u16 cmd, u32 flags)
     case kWPN_FUNC: 
     {
         if (flags & CMD_START && !IsPending())
-            SwitchState(eSwitch);
+            SwitchState(eSwitchGL);
         return true;
     }
     }
@@ -433,7 +433,7 @@ void CWeaponMagazinedWGrenade::OnStateSwitch(u32 S, u32 oldState)
 {
     switch (S)
     {
-    case eSwitch:
+    case eSwitchGL:
     {
         if (!SwitchMode())
         {
@@ -452,7 +452,9 @@ void CWeaponMagazinedWGrenade::OnAnimationEnd(u32 state)
 {
     switch (state)
     {
-    case eSwitch: { SwitchState(eIdle);
+    case eSwitchGL: 
+    { 
+        SwitchState(eIdle);
     }
     break;
     case eFire:
@@ -924,18 +926,18 @@ void CWeaponMagazinedWGrenade::PlayAnimModeSwitch()
 {
     if (m_bGrenadeMode)
         if (IsMisfire() && isHUDAnimationExist("anm_switch_jammed_g"))
-            PlayHUDMotion("anm_switch_jammed_g", true, this, eSwitch);
+            PlayHUDMotion("anm_switch_jammed_g", true, this, eSwitchGL);
         else if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_switch_empty_g"))
-            PlayHUDMotion("anm_switch_empty_g", true, this, eSwitch);
+            PlayHUDMotion("anm_switch_empty_g", true, this, eSwitchGL);
         else
-            PlayHUDMotion("anm_switch_g", true, this, eSwitch); 
+            PlayHUDMotion("anm_switch_g", true, this, eSwitchGL); 
     else if (!m_bGrenadeMode)
         if (IsMisfire() && isHUDAnimationExist("anm_switch_jammed"))
-            PlayHUDMotion("anm_switch_jammed", true, this, eSwitch);
+            PlayHUDMotion("anm_switch_jammed", true, this, eSwitchGL);
         else if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_switch_empty"))
-            PlayHUDMotion("anm_switch_empty", true, this, eSwitch);
+            PlayHUDMotion("anm_switch_empty", true, this, eSwitchGL);
         else
-            PlayHUDMotion("anm_switch", true, this, eSwitch);
+            PlayHUDMotion("anm_switch", true, this, eSwitchGL);
 
 }
 

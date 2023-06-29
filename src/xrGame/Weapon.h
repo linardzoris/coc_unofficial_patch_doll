@@ -153,12 +153,12 @@ public:
         eReload,
         eMisfire,
         eMagEmpty,
-        eSwitch,
+        eSwitchGL,
         eUnMisfire,
         eFiremodePrev,
         eFiremodeNext,
+        eSwitchAddon,
         eBroken,
-        eAddonSwitch,
     };
     enum EWeaponSubStates
     {
