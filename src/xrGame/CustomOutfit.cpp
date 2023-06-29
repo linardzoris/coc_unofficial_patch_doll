@@ -14,8 +14,7 @@
 #include "DynamicHudGlass.h"
 #include "ActorBackpack.h"
 #include "ActorUnvest.h"
-
-int m_iArtefactsCountOutfit = READ_IF_EXISTS(pSettings, r_u32, "gameplay", "max_belt", 5);
+#include "XrayGameConstants.h"
 
 CCustomOutfit::CCustomOutfit()
 {
@@ -115,7 +114,7 @@ void CCustomOutfit::Load(LPCSTR section)
     m_fOverweightWalkK = READ_IF_EXISTS(pSettings, r_float, section, "overweight_walk_accel", 1.f);
 
     m_artefact_count = READ_IF_EXISTS(pSettings, r_u32, section, "artefact_count", 0);
-    clamp(m_artefact_count, (u32)0, (u32)m_iArtefactsCountOutfit);
+    clamp(m_artefact_count, (u32)0, (u32)GameConstants::GetArtefactsCount());
 
     m_BonesProtectionSect = READ_IF_EXISTS(pSettings, r_string, section, "bones_koeff_protection", "");
     bIsHelmetAvaliable = !!READ_IF_EXISTS(pSettings, r_bool, section, "helmet_avaliable", true);
@@ -378,7 +377,7 @@ bool CCustomOutfit::install_upgrade_impl(LPCSTR section, bool test)
     clamp(m_fPowerLoss, 0.0f, 1.0f);
 
     result |= process_if_exists(section, "artefact_count", &CInifile::r_u32, m_artefact_count, test);
-    clamp(m_artefact_count, (u32)0, (u32)m_iArtefactsCountOutfit);
+    clamp(m_artefact_count, (u32)0, (u32)GameConstants::GetArtefactsCount());
 
     result |= process_if_exists(section, "jump_speed", &CInifile::r_float, m_fJumpSpeed, test);
     result |= process_if_exists(section, "walk_accel", &CInifile::r_float, m_fWalkAccel, test);

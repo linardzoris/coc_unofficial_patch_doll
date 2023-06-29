@@ -88,6 +88,7 @@ const float respawn_auto = 7.f;
 #include "helicopter.h"
 #include "Flashlight.h"
 //-Alundaio
+#include "XrayGameConstants.h"
 
 static float IReceived = 0;
 static float ICoincidenced = 0;
@@ -1704,8 +1705,6 @@ void CActor::OnItemBelt(CInventoryItem* inventory_item, const SInvItemPlace& pre
 
 #define ARTEFACTS_UPDATE_TIME 0.100f
 
-bool bAFRadiationFromBackpack = READ_IF_EXISTS(pSettings, r_bool, "gameplay", "af_radiation_backpack", false);
-
 void CActor::UpdateArtefactsOnBeltAndOutfit()
 {
     static float update_time = 0;
@@ -1727,7 +1726,7 @@ void CActor::UpdateArtefactsOnBeltAndOutfit()
     float walk_accel_add = 0.00;
 
     // Артефакт
-    if (bAFRadiationFromBackpack)
+    if (GameConstants::GetAfRadiationBackpack())
     {
         for (auto& it : inventory().m_all)
         {
@@ -1768,7 +1767,7 @@ void CActor::UpdateArtefactsOnBeltAndOutfit()
             jump_speed_add += (artefact->m_fJumpSpeed * art_cond);
             walk_accel_add += (artefact->m_fWalkAccel * art_cond);
 
-            if (!bAFRadiationFromBackpack)
+            if (!GameConstants::GetAfRadiationBackpack())
             {
                 if (artefact->m_fRadiationRestoreSpeed * art_cond > 0.0f)
                 {
@@ -2093,7 +2092,7 @@ float CActor::GetRestoreSpeed(ALife::EConditionRestoreType const& type)
     }
     case ALife::eRadiationRestoreSpeed:
     {
-        if (bAFRadiationFromBackpack)
+        if (GameConstants::GetAfRadiationBackpack())
         {
             for (auto& it : inventory().m_all)
             {

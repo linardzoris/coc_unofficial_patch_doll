@@ -21,6 +21,7 @@
 #include "xrScriptEngine/script_callback_ex.h"
 #include "script_game_object.h"
 #include "HudSound.h"
+#include "XrayGameConstants.h"
 
 CWeaponMagazined::CWeaponMagazined(ESoundTypes eSoundType) : CWeapon()
 {
@@ -50,8 +51,6 @@ CWeaponMagazined::CWeaponMagazined(ESoundTypes eSoundType) : CWeapon()
 	m_bNeedBulletInGun = false;
     bHasBulletsToHide = false;
     m_bHasDistantShotSound = false;
-
-	m_bAutoreloadEnabled = READ_IF_EXISTS(pSettings, r_bool, "gameplay", "autoreload_enabled", false);
 }
 
 CWeaponMagazined::~CWeaponMagazined()
@@ -279,7 +278,7 @@ void CWeaponMagazined::FireEnd()
 { 
     inherited::FireEnd(); 
 
-	if (m_bAutoreloadEnabled)
+	if (GameConstants::GetAutoreload())
     {
         CActor* actor = smart_cast<CActor*>(H_Parent());
 
@@ -818,26 +817,26 @@ void CWeaponMagazined::state_Broken(float dt)
 }
 
 void CWeaponMagazined::state_MagEmpty(float dt) {}
-void CWeaponMagazined::SetDefaults() { CWeapon::SetDefaults(); }
 
-bool bDistantSounds = READ_IF_EXISTS(pSettings, r_bool, "gameplay", "weapon_distant_sounds", false);
-u32 m_uDistSoundDistance = READ_IF_EXISTS(pSettings, r_u32, "gameplay", "weapon_distant_sound_distance", 125);
-u32 m_uDistSoundDistanceFar = READ_IF_EXISTS(pSettings, r_u32, "gameplay", "weapon_distant_sound_distance_far", 200);
+void CWeaponMagazined::SetDefaults() 
+{ 
+    CWeapon::SetDefaults(); 
+}
 
 void CWeaponMagazined::OnShot()
 {
     //Alundaio: LAYERED_SND_SHOOT
 #ifdef LAYERED_SND_SHOOT
-    if (m_bHasDistantShotSound && !IsSilencerAttached() && bDistantSounds && Position().distance_to(Device.vCameraPosition) > m_uDistSoundDistance && Position().distance_to(Device.vCameraPosition) < m_uDistSoundDistanceFar)
+    if (m_bHasDistantShotSound && !IsSilencerAttached() && GameConstants::GetWeaponDistantSounds() && Position().distance_to(Device.vCameraPosition) > GameConstants::GetWeaponSoundDist() && Position().distance_to(Device.vCameraPosition) < GameConstants::GetWeaponSoundDistFar())
         PlaySound("sndShotDist", get_LastFP());
-    else if (m_bHasDistantShotSound && !IsSilencerAttached() && bDistantSounds && Position().distance_to(Device.vCameraPosition) > m_uDistSoundDistanceFar)
+    else if (m_bHasDistantShotSound && !IsSilencerAttached() && GameConstants::GetWeaponDistantSounds() && Position().distance_to(Device.vCameraPosition) > GameConstants::GetWeaponSoundDistFar())
         PlaySound("sndShotDistFar", get_LastFP());
     else
         m_layered_sounds.PlaySound(m_sSndShotCurrent.c_str(), get_LastFP(), H_Root(), !!GetHUDmode(), false, (u8)-1);
 #else
-    if (m_bHasDistantShotSound && bDistantSounds && Position().distance_to(Device.vCameraPosition) > m_uDistSoundDistance && Position().distance_to(Device.vCameraPosition) < m_uDistSoundDistanceFar)
+    if (m_bHasDistantShotSound && GameConstants::GetWeaponDistantSounds() && Position().distance_to(Device.vCameraPosition) > GameConstants::GetWeaponSoundDist() && Position().distance_to(Device.vCameraPosition) < GameConstants::GetWeaponSoundDistFar())
         PlaySound("sndShotDist", get_LastFP());
-    else if (m_bHasDistantShotSound && bDistantSounds && Position().distance_to(Device.vCameraPosition) > m_uDistSoundDistanceFar)
+    else if (m_bHasDistantShotSound && GameConstants::GetWeaponDistantSounds() && Position().distance_to(Device.vCameraPosition) > GameConstants::GetWeaponSoundDistFar())
         PlaySound("sndShotDistFar", get_LastFP());
     else
         PlaySound(m_sSndShotCurrent.c_str(), get_LastFP(), (u8)-1); //Alundaio: Play sound at index (ie. snd_shoot, snd_shoot1, snd_shoot2, snd_shoot3)
@@ -1085,7 +1084,7 @@ void CWeaponMagazined::switch2_Fire()
 
 void CWeaponMagazined::switch2_Empty()
 {
-	if (m_bAutoreloadEnabled)
+    if (GameConstants::GetAutoreload())
     {
         if (!TryReload())
         {

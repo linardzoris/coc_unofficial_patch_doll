@@ -5,8 +5,7 @@
 #include "xr_level_controller.h"
 #include "actor.h"
 #include "inventory.h"
-
-bool bLessBolts = READ_IF_EXISTS(pSettings, r_bool, "gameplay", "less_bolts", false);
+#include "XrayGameConstants.h"
 
 CBolt::CBolt(void) { m_thrower_id = u16(-1); }
 CBolt::~CBolt(void) {}
@@ -23,7 +22,7 @@ void CBolt::State(u32 state, u32 old_state)
     switch (GetState())
     {
     case eThrowEnd: {
-        if (bLessBolts && smart_cast<CActor*>(this->H_Parent()) && (Level().CurrentViewEntity() == H_Parent()))
+        if (GameConstants::GetLessBolts() && smart_cast<CActor*>(this->H_Parent()) && (Level().CurrentViewEntity() == H_Parent()))
         {
             if (m_pPhysicsShell)
                 m_pPhysicsShell->Deactivate();
@@ -67,7 +66,7 @@ void CBolt::Throw()
 
 bool CBolt::Useful() const
 {
-    if (bLessBolts)
+    if (GameConstants::GetLessBolts())
         return true;
     else
         return false;

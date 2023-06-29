@@ -28,6 +28,7 @@
 #include "Bolt.h"
 #include "ActorBackpack.h"
 #include "ActorUnvest.h"
+#include "XrayGameConstants.h"
 
 CInventoryOwner::CInventoryOwner()
 {
@@ -356,8 +357,6 @@ void CInventoryOwner::spawn_supplies()
     VERIFY(game_object);
     if (smart_cast<CBaseMonster*>(this))
         return;
-
-    bool bLessBolts = READ_IF_EXISTS(pSettings, r_bool, "gameplay", "less_bolts", false);
 
 	if (use_bolts() && !smart_cast<CActor*>(this))
 	{

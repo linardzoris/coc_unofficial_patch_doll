@@ -27,6 +27,7 @@
 #include "UIMessageBoxEx.h"
 #include "xrUICore/PropertiesBox/UIPropertiesBox.h"
 #include "UIMainIngameWnd.h"
+#include "XrayGameConstants.h"
 //#include "script_engine.h"
 
 bool CUIActorMenu::AllowItemDrops(EDDListType from, EDDListType to)
@@ -82,11 +83,10 @@ bool CUIActorMenu::OnItemDrop(CUICellItem* itm)
     EDDListType t_old = GetListType(old_owner);
 
     // Lex_Addon
-    m_iArtefactsCount = READ_IF_EXISTS(pSettings, r_u32, "gameplay", "max_belt", 5); // Задать из конфига количество слотов
     PIItem iitem = (PIItem)itm->m_pData;
 
-    int first_row = m_iArtefactsCount / 2 + 1;
-    int last_row = m_iArtefactsCount + 1;
+    int first_row = GameConstants::GetArtefactsCount() / 2 + 1;
+    int last_row = GameConstants::GetArtefactsCount() + 1;
 
 	if (t_new == 3 && iitem->Belt())
     {

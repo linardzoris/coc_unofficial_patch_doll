@@ -23,17 +23,12 @@
 #include "xrUICore/Static/UIStatic.h"
 
 #include "CustomOutfit.h"
+#include "XrayGameConstants.h"
 
 #define MAX_SATIETY 1.0f
 #define START_SATIETY 0.5f
 #define MAX_THIRST 1.0f
 #define START_THIRST 0.5f
-
-bool bSatietyEffectorEnabled = READ_IF_EXISTS(pSettings, r_bool, "gameplay", "satiety_effector", false);
-bool bThirstEffectorEnabled = READ_IF_EXISTS(pSettings, r_bool, "gameplay", "thirst_effector", false);
-bool bSatietyMindLossEnabled = READ_IF_EXISTS(pSettings, r_bool, "gameplay", "satiety_mind_loss", false);
-bool bThirstMindLossEnabled = READ_IF_EXISTS(pSettings, r_bool, "gameplay", "thirst_mind_loss", false);
-bool bAlcoholMindLossEnabled = READ_IF_EXISTS(pSettings, r_bool, "gameplay", "alcohol_mind_loss", false);
 
 BOOL GodMode()
 {
@@ -444,7 +439,7 @@ void CActorCondition::UpdateAlcohol()
         clamp(m_fAlcohol, 0.0f, 1.0f);
     }
 
-    if (bAlcoholMindLossEnabled)
+    if (GameConstants::GetAlcoholMindLoss())
     {
         if (GetAlcohol() >= 0.9f)
         {
@@ -471,7 +466,7 @@ void CActorCondition::UpdateSatiety()
 {
     CEffectorCam* ce = Actor()->Cameras().GetCamEffector((ECamEffectorType)effSatiety);
 
-    if (bSatietyEffectorEnabled)
+    if (GameConstants::GetSatietyEffector())
     {
         if ((m_fSatiety <= m_fSatietyCritical))
         {
@@ -485,7 +480,7 @@ void CActorCondition::UpdateSatiety()
         }
     }
 
-    if (bSatietyMindLossEnabled)
+    if (GameConstants::GetSatietyMindLoss())
     {
         if (GetSatiety() <= 0.05f)
         {
@@ -513,7 +508,7 @@ void CActorCondition::UpdateThirst()
 {
     CEffectorCam* ce = Actor()->Cameras().GetCamEffector((ECamEffectorType)effThirst);
 
-    if (bThirstEffectorEnabled)
+    if (GameConstants::GetThirstEffector())
     {
         if ((m_fThirst <= m_fThirstCritical))
         {
@@ -527,7 +522,7 @@ void CActorCondition::UpdateThirst()
         }
     }
 
-    if (bThirstMindLossEnabled)
+    if (GameConstants::GetThirstMindLoss())
     {
         if (GetThirst() <= 0.05f)
         {

@@ -23,6 +23,7 @@
 #include "xrUICore/ProgressBar/UIProgressBar.h"
 #include "xrUICore/ui_base.h"
 #include "string_table.h"
+#include "XrayGameConstants.h"
 
 CUIActorMenu::CUIActorMenu()
 {
@@ -102,9 +103,6 @@ void CUIActorMenu::Construct()
     m_ArtefactSlotsHighlight.push_back(UIHelper::CreateStatic(uiXml, "artefact_slot_highlight", this));
     m_ArtefactSlotsHighlight[0]->Show(false);
 
-    m_iArtefactsCount = READ_IF_EXISTS(pSettings, r_u32, "gameplay", "max_belt", 5); // Задать из конфига количество слотов
-    m_bTwoRowsBelt = READ_IF_EXISTS(pSettings, r_bool, "gameplay", "belt_two_rows", false); // Разрешить два столбика с ячейками из конфига
-
     Fvector2 pos;
     pos = m_QuickSlotsHighlight[0]->GetWndPos();
     float dx = uiXml.ReadAttribFlt("quick_slot_highlight", 0, "dx", 24.0f);
@@ -118,12 +116,12 @@ void CUIActorMenu::Construct()
     pos = m_ArtefactSlotsHighlight[0]->GetWndPos();
     dx = uiXml.ReadAttribFlt("artefact_slot_highlight", 0, "dx", 24.0f);
     float dy = uiXml.ReadAttribFlt("artefact_slot_highlight", 0, "dy", 24.0f);
-    for (u8 i = 1; i < m_iArtefactsCount; i++)
+    for (u8 i = 1; i < GameConstants::GetArtefactsCount(); i++)
     {
         pos.x += dx;
-        if (m_bTwoRowsBelt && i == m_iArtefactsCount / 2)
+        if (GameConstants::GetBeltTwoRows() && i == GameConstants::GetArtefactsCount() / 2)
         {
-            pos.x -= m_iArtefactsCount / 2 * dx;
+            pos.x -= GameConstants::GetArtefactsCount() / 2 * dx;
             pos.y += dy;
         }
         m_ArtefactSlotsHighlight.push_back(UIHelper::CreateStatic(uiXml, "artefact_slot_highlight", this));
@@ -151,12 +149,12 @@ void CUIActorMenu::Construct()
     pos = m_belt_list_over[0]->GetWndPos();
     dx = uiXml.ReadAttribFlt("belt_list_over", 0, "dx", 10.0f);
     dy = uiXml.ReadAttribFlt("belt_list_over", 0, "dy", 10.0f);
-    for (u8 i = 1; i < m_iArtefactsCount; ++i)
+    for (u8 i = 1; i < GameConstants::GetArtefactsCount(); ++i)
     {
         pos.x += dx;
-        if (m_bTwoRowsBelt && i == m_iArtefactsCount / 2)
+        if (GameConstants::GetBeltTwoRows() && i == GameConstants::GetArtefactsCount() / 2)
         {
-            pos.x -= m_iArtefactsCount / 2 * dx;
+            pos.x -= GameConstants::GetArtefactsCount() / 2 * dx;
             pos.y += dy;
         }
         m_belt_list_over.push_back(UIHelper::CreateStatic(uiXml, "belt_list_over", this));

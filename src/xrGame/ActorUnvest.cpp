@@ -5,8 +5,7 @@
 #include "BoneProtections.h"
 #include "Include/xrRender/Kinematics.h"
 #include "player_hud.h"
-
-int m_iArtefactsCountUnvest = READ_IF_EXISTS(pSettings, r_u32, "gameplay", "max_belt", 5);
+#include "XrayGameConstants.h"
 
 CUnvest::CUnvest()
 {
@@ -92,7 +91,7 @@ void CUnvest::Load(LPCSTR section)
     m_fOverweightWalkK = READ_IF_EXISTS(pSettings, r_float, section, "overweight_walk_accel", 1.f);
 
     m_artefact_count = READ_IF_EXISTS(pSettings, r_u32, section, "artefact_count", 0);
-    clamp(m_artefact_count, (u32)0, (u32)m_iArtefactsCountUnvest);
+    clamp(m_artefact_count, (u32)0, (u32)GameConstants::GetArtefactsCount());
 
     m_flags.set(FUsingCondition, READ_IF_EXISTS(pSettings, r_bool, section, "use_condition", TRUE));
 	m_bShowStats = READ_IF_EXISTS(pSettings, r_bool, section, "show_protect_stats", FALSE); // Показывать outfit_info?
@@ -238,7 +237,7 @@ bool CUnvest::install_upgrade_impl(LPCSTR section, bool test)
     clamp(m_fPowerLoss, 0.0f, 1.0f);
 
     result |= process_if_exists(section, "artefact_count", &CInifile::r_u32, m_artefact_count, test);
-    clamp(m_artefact_count, (u32)0, (u32)m_iArtefactsCountUnvest);
+    clamp(m_artefact_count, (u32)0, (u32)GameConstants::GetArtefactsCount());
 
     result |= process_if_exists(section, "additional_inventory_weight", &CInifile::r_float, m_additional_weight, test);
     result |= process_if_exists(section, "additional_inventory_weight2", &CInifile::r_float, m_additional_weight2, test);

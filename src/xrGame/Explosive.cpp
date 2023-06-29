@@ -22,6 +22,7 @@
 #include "xrEngine/GameMtlLib.h"
 #include "HudSound.h"
 #include "script_game_object.h"
+#include "XrayGameConstants.h"
 
 #ifdef DEBUG
 #include "xrEngine/StatGraph.h"
@@ -371,13 +372,9 @@ void CExplosive::Explode()
     GEnv.Sound->play_at_pos(sndExplode, 0, pos, false);
 #endif
 
-    bool bDistantSounds = READ_IF_EXISTS(pSettings, r_bool, "gameplay", "weapon_distant_sounds", false);
-    u32 m_uDistSoundDistance = READ_IF_EXISTS(pSettings, r_u32, "gameplay", "weapon_distant_sound_distance", 125);
-    u32 m_uDistSoundDistanceFar = READ_IF_EXISTS(pSettings, r_u32, "gameplay", "weapon_distant_sound_distance_far", 200);
-
-	if (m_bHasDistantSound && bDistantSounds && pos.distance_to(Device.vCameraPosition) > m_uDistSoundDistance && pos.distance_to(Device.vCameraPosition) < m_uDistSoundDistanceFar)
+	if (m_bHasDistantSound && GameConstants::GetWeaponDistantSounds() && pos.distance_to(Device.vCameraPosition) > GameConstants::GetWeaponSoundDist() && pos.distance_to(Device.vCameraPosition) < GameConstants::GetWeaponSoundDistFar())
         GEnv.Sound->play_at_pos(sndDistantExplode, 0, pos, false);
-	else if (m_bHasDistantSound && bDistantSounds && pos.distance_to(Device.vCameraPosition) > m_uDistSoundDistanceFar)
+	else if (m_bHasDistantSound && GameConstants::GetWeaponDistantSounds() && pos.distance_to(Device.vCameraPosition) > GameConstants::GetWeaponSoundDistFar())
         GEnv.Sound->play_at_pos(sndDistantExplodeFar, 0, pos, false);
     else
         GEnv.Sound->play_at_pos(sndExplode, 0, pos, false);

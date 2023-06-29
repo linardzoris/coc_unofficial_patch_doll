@@ -170,7 +170,6 @@ void CUIActorMenu::SendMessage(CUIWindow* pWnd, s16 msg, void* pData) { CUIWndCa
 void CUIActorMenu::Show(bool status)
 {
     CActor* pActor = smart_cast<CActor*>(Level().CurrentEntity());
-    bool bHideWeaponInvOpen = READ_IF_EXISTS(pSettings, r_bool, "gameplay", "hide_weapon_when_inventory_open", false);
 
     inherited::Show(status);
     if (status)
@@ -179,7 +178,7 @@ void CUIActorMenu::Show(bool status)
         PlaySnd(eSndOpen);
         m_ActorStateInfo->UpdateActorInfo(m_pActorInvOwner);
 
-		if (pActor && bHideWeaponInvOpen)
+		if (pActor && GameConstants::GetHideWpnInvOpen())
         {
             Actor()->SetWeaponHideState(INV_STATE_BLOCK_ALL, true);
         }
@@ -189,7 +188,7 @@ void CUIActorMenu::Show(bool status)
         PlaySnd(eSndClose);
         SetMenuMode(mmUndefined);
 
-		if (pActor && bHideWeaponInvOpen)
+		if (pActor && GameConstants::GetHideWpnInvOpen())
         {
             Actor()->SetWeaponHideState(INV_STATE_BLOCK_ALL, false);
         }
@@ -472,8 +471,6 @@ void CUIActorMenu::UpdateItemsPlace()
 
 void CUIActorMenu::clear_highlight_lists()
 {
-    m_iArtefactsCount = READ_IF_EXISTS(pSettings, r_u32, "gameplay", "max_belt", 5);
-
     for (u8 i = 1; i <= m_slot_count; ++i)
     {
         if (m_pInvSlotHighlight[i])
@@ -482,7 +479,7 @@ void CUIActorMenu::clear_highlight_lists()
 
     for (u8 i = 0; i < 4; i++)
         m_QuickSlotsHighlight[i]->Show(false);
-    for (u8 i = 0; i < m_iArtefactsCount; i++)
+    for (u8 i = 0; i < GameConstants::GetArtefactsCount(); i++)
         m_ArtefactSlotsHighlight[i]->Show(false);
 
     m_pInventoryBagList->clear_select_armament();
@@ -505,8 +502,6 @@ void CUIActorMenu::clear_highlight_lists()
 
 void CUIActorMenu::highlight_item_slot(CUICellItem* cell_item)
 {
-    m_bEqualWeaponSlots = READ_IF_EXISTS(pSettings, r_bool, "gameplay", "equal_weapon_slots", true);
-
     PIItem item = (PIItem)cell_item->m_pData;
     if (!item)
         return;
@@ -515,7 +510,7 @@ void CUIActorMenu::highlight_item_slot(CUICellItem* cell_item)
         return;
 
     u16 slot_id = item->BaseSlot();
-    if (m_bEqualWeaponSlots)
+    if (GameConstants::GetEqualWeaponSlots())
     {
         if (slot_id == INV_SLOT_2 || slot_id == INV_SLOT_3)
         {
@@ -866,8 +861,6 @@ void CUIActorMenu::ResetMode()
 
 bool CUIActorMenu::CanSetItemToList(PIItem item, CUIDragDropListEx* l, u16& ret_slot)
 {
-    m_bEqualWeaponSlots = READ_IF_EXISTS(pSettings, r_bool, "gameplay", "equal_weapon_slots", true);
-
     u16 baseItemSlot = item->BaseSlot();
     if (GetSlotList(baseItemSlot) == l)
     {
@@ -875,7 +868,7 @@ bool CUIActorMenu::CanSetItemToList(PIItem item, CUIDragDropListEx* l, u16& ret_
         return true;
     }
 
-    if (m_bEqualWeaponSlots)
+    if (GameConstants::GetEqualWeaponSlots())
     {
         if (baseItemSlot == INV_SLOT_2)
         {

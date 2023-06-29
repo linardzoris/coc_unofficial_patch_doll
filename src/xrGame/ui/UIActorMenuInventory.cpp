@@ -35,6 +35,7 @@
 #include "ActorBackpack.h"
 #include "ActorUnvest.h"
 #include "../WeaponRPG26.h"
+#include "XrayGameConstants.h"
 
 void move_item_from_to(u16 from_id, u16 to_id, u16 what_id);
 
@@ -522,8 +523,6 @@ bool CUIActorMenu::ToSlotScript(CScriptGameObject* GO, const bool force_place, u
 
 bool CUIActorMenu::ToSlot(CUICellItem* itm, bool force_place, u16 slot_id)
 {
-    m_bEqualWeaponSlots = READ_IF_EXISTS(pSettings, r_bool, "gameplay", "equal_weapon_slots", true);
-
     CUIDragDropListEx* old_owner = itm->OwnerList();
     PIItem iitem = (PIItem)itm->m_pData;
 
@@ -621,7 +620,7 @@ bool CUIActorMenu::ToSlot(CUICellItem* itm, bool force_place, u16 slot_id)
             return false;
 
 #ifdef COC_SLOTS
-        if (m_bEqualWeaponSlots)
+        if (GameConstants::GetEqualWeaponSlots())
         {
             if (slot_id == INV_SLOT_2)
             {
@@ -648,7 +647,7 @@ bool CUIActorMenu::ToSlot(CUICellItem* itm, bool force_place, u16 slot_id)
         else
             slot_list = GetSlotList(slot_id);
 #else
-        if (m_bEqualWeaponSlots)
+        if (GameConstants::GetEqualWeaponSlots())
         {
             if (slot_id == INV_SLOT_2 && m_pActorInvOwner->inventory().CanPutInSlot(iitem, INV_SLOT_3))
                 return ToSlot(itm, force_place, INV_SLOT_3);
@@ -787,7 +786,6 @@ bool CUIActorMenu::ToBelt(CUICellItem* itm, bool b_use_cursor_pos)
 {
     PIItem iitem = (PIItem)itm->m_pData;
     bool b_own_item = (iitem->parent_id() == m_pActorInvOwner->object_id());
-    m_iArtefactsCount = READ_IF_EXISTS(pSettings, r_u32, "gameplay", "max_belt", 5); // Задать из конфига количество слотов
 
     if (m_pActorInvOwner->inventory().CanPutInBelt(iitem))
     {
@@ -827,8 +825,8 @@ bool CUIActorMenu::ToBelt(CUICellItem* itm, bool b_use_cursor_pos)
         else
             return false;
 
-        int first_row = m_iArtefactsCount / 2 + 1;
-        int last_row = m_iArtefactsCount + 1;
+        int first_row = GameConstants::GetArtefactsCount() / 2 + 1;
+        int last_row = GameConstants::GetArtefactsCount() + 1;
 
         Ivector2 belt_cell_pos = belt_list->PickCell(GetUICursor().GetCursorPosition());
         if (belt_cell_pos.x == -1 && belt_cell_pos.y == -1)
@@ -1528,16 +1526,13 @@ void CUIActorMenu::ProcessPropertiesBoxClicked(CUIWindow* w, void* d)
 
 void CUIActorMenu::UpdateOutfit()
 {
-    m_iArtefactsCount = READ_IF_EXISTS(pSettings, r_u32, "gameplay", "max_belt", 5); // Задать из конфига количество слотов
-    m_bTwoRowsBelt = READ_IF_EXISTS(pSettings, r_bool, "gameplay", "belt_two_rows", false); // Разрешить два столбика с ячейками из конфига
-
-    for (u8 i = 0; i < m_iArtefactsCount; ++i)
+    for (u8 i = 0; i < GameConstants::GetArtefactsCount(); ++i)
     {
         m_belt_list_over[i]->SetVisible(true);
     }
 
     u32 af_count = m_pActorInvOwner->inventory().BeltWidth();
-    VERIFY(0 <= af_count && af_count <= m_iArtefactsCount);
+    VERIFY(0 <= af_count && af_count <= GameConstants::GetArtefactsCount());
 
     VERIFY(m_pInventoryBeltList);
     CCustomOutfit* outfit = m_pActorInvOwner->GetOutfit();
@@ -1555,7 +1550,7 @@ void CUIActorMenu::UpdateOutfit()
     }
 
     Ivector2 afc;
-    if (m_bTwoRowsBelt)
+    if (GameConstants::GetBeltTwoRows())
     {
         afc.x = af_count / 2; // 1;
         afc.y = 2; // af_count;

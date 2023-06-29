@@ -1870,23 +1870,17 @@ void CWeapon::Reload()
 
 bool CWeapon::IsGrenadeLauncherAttached() const
 {
-    return (ALife::eAddonAttachable == m_eGrenadeLauncherStatus &&
-               0 != (m_flagsAddOnState & CSE_ALifeItemWeapon::eWeaponAddonGrenadeLauncher)) ||
-        ALife::eAddonPermanent == m_eGrenadeLauncherStatus;
+    return (ALife::eAddonAttachable == m_eGrenadeLauncherStatus && 0 != (m_flagsAddOnState & CSE_ALifeItemWeapon::eWeaponAddonGrenadeLauncher)) || ALife::eAddonPermanent == m_eGrenadeLauncherStatus;
 }
 
 bool CWeapon::IsScopeAttached() const
 {
-    return (ALife::eAddonAttachable == m_eScopeStatus &&
-               0 != (m_flagsAddOnState & CSE_ALifeItemWeapon::eWeaponAddonScope)) ||
-        ALife::eAddonPermanent == m_eScopeStatus;
+    return (ALife::eAddonAttachable == m_eScopeStatus && 0 != (m_flagsAddOnState & CSE_ALifeItemWeapon::eWeaponAddonScope)) || ALife::eAddonPermanent == m_eScopeStatus;
 }
 
 bool CWeapon::IsSilencerAttached() const
 {
-    return (ALife::eAddonAttachable == m_eSilencerStatus &&
-               0 != (m_flagsAddOnState & CSE_ALifeItemWeapon::eWeaponAddonSilencer)) ||
-        ALife::eAddonPermanent == m_eSilencerStatus;
+    return (ALife::eAddonAttachable == m_eSilencerStatus && 0 != (m_flagsAddOnState & CSE_ALifeItemWeapon::eWeaponAddonSilencer)) || ALife::eAddonPermanent == m_eSilencerStatus;
 }
 
 bool CWeapon::GrenadeLauncherAttachable() { return (ALife::eAddonAttachable == m_eGrenadeLauncherStatus); }
@@ -1900,7 +1894,8 @@ void CWeapon::UpdateHUDAddonsVisibility()
 
     u16 bone_id = HudItemData()->m_model->LL_BoneID(wpn_scope_def_bone);
 
-    auto SetBoneVisible = [&](const shared_str& boneName, BOOL visibility) {
+    auto SetBoneVisible = [&](const shared_str& boneName, BOOL visibility) 
+    {
         HudItemData()->set_bone_visible(boneName, visibility, TRUE);
     };
 
@@ -3309,7 +3304,6 @@ void CWeapon::UpdateAltScope()
         return;
 
     shared_str vis = pSettings->r_string(sectionNeedLoad, "visual");
-
     if (vis != cNameVisual())
     {
         cNameVisual_set(vis);
@@ -3389,16 +3383,6 @@ void CWeapon::LoadCurrentScopeParams(LPCSTR section)
     if (pSettings->line_exist(section, "scope_texture_alt") && m_zoomtype == 1) // Альт. прицеливание
     {
         bAltScopeIsHasTexture = true;
-    }
-
-    // По просьбе для "наборов кастомизации", пока так
-    if (pSettings->line_exist(section, "silencer_status"))
-    {
-        m_eSilencerStatus = (ALife::EWeaponAddonStatus)pSettings->r_s32(section, "silencer_status");
-    }
-    if (pSettings->line_exist(section, "grenade_launcher_status"))
-    {
-        m_eGrenadeLauncherStatus = (ALife::EWeaponAddonStatus)pSettings->r_s32(section, "grenade_launcher_status");
     }
 
     m_zoom_params.m_fScopeZoomFactor = pSettings->r_float(section, "scope_zoom_factor");

@@ -367,7 +367,16 @@ void CApplication::Level_Scan()
 
 void gen_logo_name(string_path& dest, LPCSTR level_name, int num)
 {
-    strconcat(sizeof(dest), dest, "intro\\intro_", level_name);
+    bool bWinterMode = READ_IF_EXISTS(pSettings, r_bool, "environment", "winter_mode", false);
+
+    if (!bWinterMode)
+    {
+        strconcat(sizeof(dest), dest, "intro\\intro_", level_name);
+    }
+    else
+    {
+        strconcat(sizeof(dest), dest, "intro_winter\\intro_", level_name);
+    }
 
     u32 len = xr_strlen(dest);
     if (dest[len - 1] == '\\')
