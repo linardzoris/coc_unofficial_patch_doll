@@ -1,17 +1,8 @@
 function main ()
 local items_table = {
-						"wpn_groza_nimble",
-						"wpn_desert_eagle_nimble",
-						"wpn_fn2000_nimble",
-						"wpn_g36_nimble",
-						"wpn_protecta_nimble",
-						"wpn_mp5_nimble",
-						"wpn_sig220_nimble",
-						"wpn_spas12_nimble",
-						"wpn_usp_nimble",
-						"wpn_vintorez_nimble",
-						"wpn_svu_nimble",
-						"wpn_svd_nimble",
+						"wpn_desert_eagle",
+						"wpn_g36k",
+						"wpn_protecta",
 
 					}
 local ammo_table = {

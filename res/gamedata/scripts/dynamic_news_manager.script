@@ -50,24 +50,28 @@ function DynamicNewsManager:__init()
 		["general"]			= true,
 		["stalker"]  		= true,
 		["monolith"] 		= (comm == "monolith"),
+		["csky"]   			= true,
 		["army"] 			= (comm == "army"),
 		["killer"]   		= true,
 		["ecolog"]   		= true,
 		["dolg"]    		= true,
 		["freedom"]  		= true,
 		["bandit"]   		= true,
+		["renegade"]   		= true,
 	}
 
 	self.queue = {
 		["general"]			= {},
 		["stalker"]  		= {},
 		["monolith"] 		= {},
+		["csky"]   			= {},
 		["army"] 			= {},
 		["killer"]   		= {},
 		["ecolog"]   		= {},
 		["dolg"]    		= {},
 		["freedom"]  		= {},
-		["bandit"]   		= {}
+		["bandit"]   		= {},
+		["renegade"]   		= {}
 	}
 	
 	self.spammer = {	

@@ -270,6 +270,7 @@ function specific_check_smart_under_faction_control(tsk,task_id)
 	if (smart.faction_controlled) then
 		local a_to_f = {	["actor_stalker"] = "stalker",
 							["actor_bandit"] = "bandit",
+							["actor_csky"] = "csky",							
 							["actor_ecolog"] = "ecolog",
 							["actor_dolg"] = "dolg",
 							["actor_freedom"] = "freedom",

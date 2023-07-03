@@ -185,12 +185,14 @@ function se_smart_terrain:read_params()
 			local p = utils.parse_names(self.faction_controlled)
 			if (p) then
 				local squads_by_faction = {
-					["army"] = "army_sim_squad_novice, army_sim_squad_advanced",
-					["bandit"] = "bandit_sim_squad_novice, bandit_sim_squad_advanced",
+					["army"] = "army_sim_squad_novice, army_sim_squad_advanced, army_sim_squad_veteran",
+					["bandit"] = "bandit_sim_squad_novice, bandit_sim_squad_advanced, bandit_sim_squad_veteran",
+					["renegade"] = "mar_renegade_generic",
+					["csky"] = "csky_sim_squad_novice, csky_sim_squad_advanced, csky_sim_squad_veteran",
 					["dolg"] = "duty_sim_squad_novice, duty_sim_squad_advanced, duty_sim_squad_veteran",
-					["ecolog"] = "ecolog_sim_squad_novice, ecolog_sim_squad_advanced",
-					["freedom"] = "freedom_sim_squad_novice, freedom_sim_squad_advanced",
-					["killer"] = "merc_sim_squad_novice, merc_sim_squad_advanced",
+					["ecolog"] = "ecolog_sim_squad_novice, ecolog_sim_squad_advanced, ecolog_sim_squad_veteran",
+					["freedom"] = "freedom_sim_squad_novice, freedom_sim_squad_advanced, freedom_sim_squad_veteran",
+					["killer"] = "merc_sim_squad_novice, merc_sim_squad_advanced, merc_sim_squad_veteran",
 					["monolith"] = "monolith_sim_squad_novice, monolith_sim_squad_advanced, monolith_sim_squad_veteran",
 					["stalker"] = "stalker_sim_squad_novice, stalker_sim_squad_advanced, stalker_sim_squad_veteran"				
 				}

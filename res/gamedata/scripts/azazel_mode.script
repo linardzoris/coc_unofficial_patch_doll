@@ -191,6 +191,7 @@ function actor_on_before_death(whoID,flags)
 		local f = {
 			["stalker"] = "radiation_outfit",
 			["bandit"] = "radiation_outfit",
+			["csky"] = "cs_heavy_outfit",			
 			["killer"] = "merc_radiation_outfit",
 			["army"] = "military_exo_outfit",
 			["dolg"] = "dolg_radiation_outfit",
@@ -203,6 +204,7 @@ function actor_on_before_death(whoID,flags)
 		local f = {
 			["stalker"] = "radiation_outfit",
 			["bandit"] = "radiation_outfit",
+			["csky"] = "cs_heavy_outfit",			
 			["killer"] = "merc_scientific_outfit",
 			["army"] = "commander_outfit",
 			["dolg"] = "dolg_scientific_outfit",
@@ -215,6 +217,7 @@ function actor_on_before_death(whoID,flags)
 		local f = {
 			["stalker"] = "stalker_outfit",
 			["bandit"] = "trenchcoat_outfit",
+			["csky"] = "cs_light_outfit",			
 			["killer"] = "merc_outfit",
 			["army"] = "specops_outfit",
 			["dolg"] = "dolg_outfit",
@@ -227,6 +230,7 @@ function actor_on_before_death(whoID,flags)
 		local f = {
 			["stalker"] = "stalker_outfit",
 			["bandit"] = "trenchcoat_outfit",
+			["csky"] = "cs_light_outfit",
 			["killer"] = "merc_outfit",
 			["army"] = "military_outfit",
 			["dolg"] = "dolg_outfit",
@@ -239,6 +243,7 @@ function actor_on_before_death(whoID,flags)
 		local f = {
 			["stalker"] = "novice_outfit",
 			["bandit"] = "bandit_novice_outfit",
+			["csky"] = "cs_novice_outfit",
 			["killer"] = "merc_outfit",
 			["army"] = "army_outfit",
 			["dolg"] = "dolg_novice_outfit",
