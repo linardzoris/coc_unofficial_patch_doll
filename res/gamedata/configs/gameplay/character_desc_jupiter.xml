@@ -348,7 +348,7 @@
     
     <specific_character id="jup_b207_freedom_recon_squad_leader" team_default = "1">
     <name>st_jup_b207_freedom_recon_squad_leader_name</name>
-    <icon>ui_inGame2_Freedom_1</icon>
+    <icon>ui_inGame2_Freedom_3</icon>
     <map_icon x="1" y="0"></map_icon>
     <bio>Опытный сталкер. Детальная информация отсутствует.</bio>
     <class>jup_b207_freedom_recon_squad_leader</class>
@@ -375,7 +375,7 @@
     
     <specific_character id="jup_b207_freedom_assault_squad_leader" team_default = "1">
     <name>st_jup_b207_freedom_assault_squad_leader_name</name>
-    <icon>ui_inGame2_Freedom_2</icon>
+    <icon>ui_inGame2_Freedom_4</icon>
     <map_icon x="1" y="0"></map_icon>
     <bio>Опытный сталкер. Детальная информация отсутствует.</bio>
     <class>jup_b207_freedom_assault_squad_leader</class>
@@ -1118,7 +1118,7 @@
     
     <specific_character id="jup_b4_freedom_leader" team_default = "1">
     <name>GENERATE_NAME_stalker</name>
-    <icon>ui_inGame2_Freedom_1</icon>
+    <icon>ui_inGame2_Freedom_3</icon>
     <map_icon x="1" y="0"></map_icon>
     <bio>Опытный сталкер. Детальная информация отсутствует.</bio>
     <class>jup_b4_freedom_leader</class>

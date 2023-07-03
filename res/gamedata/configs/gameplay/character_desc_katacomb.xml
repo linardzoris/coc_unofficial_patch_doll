@@ -136,7 +136,7 @@
     <snd_config>characters_voice\human\monolith_3\</snd_config>
     <rank>22664</rank>
     <reputation>1868</reputation>
-    <visual>actors\stalker_monolith\stalker_monolith_1</visual>
+    <visual>actors\stalker_monolith\stalker_monolith_4</visual>
     <supplies>
 #include "gameplay\loadouts\monolith_base.ltx"
 #include "gameplay\loadouts\monolith_sniper.ltx"
