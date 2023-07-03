@@ -617,7 +617,6 @@ void CWeapon::Load(LPCSTR section)
     }
 
 	UpdateAltScope();
-    InitAddons();
     UpdateUIScope();
 
     if (pSettings->line_exist(section, "weapon_remove_time"))
@@ -2125,7 +2124,7 @@ void CWeapon::UpdateAddonsVisibility()
     pWeaponVisual->CalculateBones(TRUE);
 }
 
-void CWeapon::InitAddons() 
+void CWeapon::InitAddons()  // Неужели без этого никак?
 { 
     UpdateUIScope(); 
 }
