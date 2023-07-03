@@ -16,6 +16,7 @@ decoder                                  ;NO TRADE
 duty_patch                               = 1.2, 1.8
 ecolog_patch                             = 1.3, 1.8
 freedom_patch                            = 1.1, 1.8
+csky_patch                               = 1.1, 1.8
 good_psy_helmet                          ;NO TRADE
 main_story_1_quest_case                  ;NO TRADE
 main_story_2_lab_x18_documents           ;NO TRADE
@@ -108,6 +109,8 @@ drug_coagulant                           ;NO TRADE
 drug_psy_blockade                        ;NO TRADE
 drug_radioprotector                      ;NO TRADE
 energy_drink                             ;NO TRADE
+item_use_water_flask                     ;NO TRADE
+item_use_water_bottle                    ;NO TRADE
 itm_gunsmith_toolkit                     = 1.1, 2
 itm_outfit_toolkit                       = 1.3, 1.9
 itm_cold_weapon_toolkit                  = 1.3, 1.9
@@ -140,7 +143,7 @@ wpn_mine                                 = 1.3, 1.8
 
 ;G_F1
 grenade_f1                               = 1.3, 1.9
-grenade_gd-05                            = 1.1, 1.9
+grenade_rgdm                             = 1.1, 1.9
 
 ;G_RGD5
 grenade_rgd5                             = 1.3, 2
@@ -176,6 +179,20 @@ ammo_m209                                = 1.2, 2
 
 ;WP_SCOPE
 pso_scope                                = 1.3, 2
+specter_scope                            = 1.3, 2
+kobra_scope                              = 1.3, 2
+1p29_scope                               = 1.3, 2
+1p59_scope                             	 = 1.3, 2
+pgo7_scope                               = 1.3, 2
+po4x34_scope                             = 1.3, 2
+okp_scope                                = 1.3, 2
+barska_scope                             = 1.3, 2
+eotech_scope                             = 1.3, 2
+acog_scope                               = 1.3, 2
+pn23_scope                               = 1.3, 2
+leupold_m4_scope                         = 1.3, 2
+1pn93_scope                              = 1.3, 2
+pu_scope                                 = 1.3, 2
 susat_scope                              = 1.3, 2
 
 ;WP_SILEN
@@ -185,47 +202,35 @@ wpn_addon_pistol_suppressor				 = 1.3, 1.9
 ;WP_GLAUN
 wpn_addon_grenade_launcher               = 1.1, 1.9
 wpn_addon_grenade_launcher_m203          = 1.2, 2
+wpn_addon_grenade_launcher_groza         = 1.2, 2
 
 ;WP_AK74
 wpn_abakan                               = 1.7, 1.9
 wpn_ak74                                 = 1.7, 1.9
+wpn_ak74m                                = 1.7, 1.9
 wpn_ak74u                                = 1.6, 1.8
-wpn_ak74u_snag                           = 1.5, 2
 wpn_g36                                  = 1.6, 1.9
-wpn_g36_nimble                           = 1.6, 2
+wpn_g36k                           		 = 1.6, 2
 wpn_groza                                = 1.7, 1.8
-wpn_groza_nimble                         = 1.6, 1.8
-wpn_groza_specops                        = 1.7, 1.8
 wpn_l85                                  = 1.5, 2
 wpn_lr300                                = 1.6, 1.9
+wpn_m4a1                                 = 1.6, 1.9
 wpn_pkm                                  = 1.5, 1.9
-wpn_pkm_zulus                            = 1.6, 1.9
 wpn_sig550                               = 1.5, 1.8
-wpn_sig550_luckygun                      = 1.6, 1.8
 wpn_vintorez                             = 1.7, 1.8
-wpn_vintorez_nimble                      = 1.7, 1.8
 
 ;WP_ASHTG
 wpn_protecta                             = 1.7, 2
-wpn_protecta_nimble                      = 1.7, 1.8
-wpn_spas12                               = 1.7, 1.9
-wpn_spas12_nimble                        = 1.6, 2
 wpn_wincheaster1300                      = 1.5, 2
-wpn_wincheaster1300_trapper              = 1.5, 1.8
 
 ;WP_BINOC
 wpn_binoc                                = 1.5, 1.8
 
 ;WP_BM16
 wpn_bm16                                 = 1.6, 2
+wpn_bm16_full                            = 1.6, 2
 wpn_toz34                                = 1.5, 2
-
-;WP_GROZA
-wpn_fn2000                               = 1.7, 1.9
-wpn_fn2000_nimble                        = 1.5, 2
-
-;WP_HPSA
-wpn_hpsa                                 = 1.7, 2
+wpn_toz34_obrez                          = 1.5, 2
 
 ;WP_KNIFE
 wpn_knife                                = 1.5, 1.9
@@ -233,41 +238,31 @@ wpn_knife                                = 1.5, 1.9
 ;WP_LR300
 wpn_beretta                              = 1.7, 1.8
 wpn_mp5                                  = 1.7, 1.9
-wpn_mp5_nimble                           = 1.6, 1.8
 wpn_sig220                               = 1.5, 1.8
-wpn_sig220_nimble                        = 1.7, 1.8
 wpn_usp                                  = 1.6, 1.8
-wpn_usp_nimble                           = 1.7, 1.9
 wpn_walther                              = 1.5, 1.8
 
 ;WP_PM
 wpn_colt1911                             = 1.6, 1.8
 wpn_desert_eagle                         = 1.6, 1.8
-wpn_desert_eagle_nimble                  = 1.7, 2
 wpn_fort                                 = 1.7, 1.8
-wpn_fort_snag                            = 1.6, 1.8
 wpn_pb                                   = 1.7, 2
 wpn_pm                                   = 1.5, 1.9
-wpn_pm_actor                             = 1.6, 1.8
 
 ;WP_RG6
 wpn_rg-6                                 = 1.6, 2
 
 ;WP_RPG7
 wpn_rpg7                                 = 1.6, 1.8
+wpn_rpg26                                = 1.6, 1.8
 
 ;WP_SVD
 pri_a17_gauss_rifle                      ;NO TRADE
 wpn_gauss                                = 1.5, 1.8
 wpn_svd                                  = 1.7, 1.8
-wpn_svd_nimble                           = 1.5, 1.8
 
 ;WP_SVU
 wpn_svu                                  = 1.6, 1.9
-wpn_svu_nimble                           = 1.5, 1.9
-
-;WP_VAL
-wpn_val                                  = 1.5, 1.8
 
 ;EQU_STLK
 bandit_novice_outfit                     = 1.3, 2
@@ -307,6 +302,8 @@ helm_respirator_joker                    = 1.2, 2
 helm_tactic                              = 1.2, 2
 deployable_mgun                          ;NO TRADE
 wpn_rpg7_missile                         ;NO TRADE
+ammo_pg_26                               ;NO TRADE
+wpn_ammo_pg_26_missile                   ;NO TRADE
 yantar_deployable_mgun                   ;NO TRADE
 
 [trade_generic_buy]
@@ -327,6 +324,7 @@ decoder                                  ;NO TRADE
 duty_patch                               = 0.58, 0.46
 ecolog_patch                             = 0.64, 0.63
 freedom_patch                            = 0.67, 0.55
+csky_patch                               = 0.67, 0.55
 good_psy_helmet                          ;NO TRADE
 main_story_1_quest_case                  ;NO TRADE
 main_story_2_lab_x18_documents           ;NO TRADE
@@ -419,6 +417,8 @@ drug_coagulant                           ;NO TRADE
 drug_psy_blockade                        ;NO TRADE
 drug_radioprotector                      ;NO TRADE
 energy_drink                             ;NO TRADE
+item_use_water_flask                     ;NO TRADE
+item_use_water_bottle                    ;NO TRADE
 itm_gunsmith_toolkit                     = 0.58, 0.57
 itm_outfit_toolkit                       = 0.51, 0.42
 itm_cold_weapon_toolkit                  = 0.51, 0.42
@@ -451,7 +451,7 @@ wpn_mine                                 = 0.47, 0.46
 
 ;G_F1
 grenade_f1                               = 0.28, 0.26
-grenade_gd-05                            = 0.22, 0.12
+grenade_rgdm                             = 0.22, 0.12
 
 ;G_RGD5
 grenade_rgd5                             = 0.27, 0.16
@@ -487,6 +487,20 @@ ammo_m209                                = 0.47, 0.43
 
 ;WP_SCOPE
 pso_scope                                = 0.21, 0.15
+specter_scope                            = 0.21, 0.15
+kobra_scope                              = 0.21, 0.15
+1p29_scope                               = 0.21, 0.15
+1p59_scope                             	 = 0.21, 0.15
+pgo7_scope                               = 0.21, 0.15
+po4x34_scope                             = 0.21, 0.15
+okp_scope                                = 0.21, 0.15
+barska_scope                             = 0.21, 0.15
+eotech_scope                             = 0.21, 0.15
+acog_scope                               = 0.21, 0.15
+pn23_scope                               = 0.21, 0.15
+leupold_m4_scope                         = 0.21, 0.15
+1pn93_scope                              = 0.21, 0.15
+pu_scope                                 = 0.21, 0.15
 susat_scope                              = 0.21, 0.15
 
 ;WP_SILEN
@@ -496,47 +510,35 @@ wpn_addon_pistol_suppressor				 = 0.24, 0.22
 ;WP_GLAUN
 wpn_addon_grenade_launcher               = 0.25, 0.14
 wpn_addon_grenade_launcher_m203          = 0.22, 0.16
+wpn_addon_grenade_launcher_groza         = 0.22, 0.16
 
 ;WP_AK74
 wpn_abakan                               = 0.23, 0.12
 wpn_ak74                                 = 0.23, 0.21
+wpn_ak74m                                = 0.23, 0.21
 wpn_ak74u                                = 0.24, 0.14
-wpn_ak74u_snag                           = 0.19, 0.18
 wpn_g36                                  = 0.21, 0.12
-wpn_g36_nimble                           = 0.18, 0.15
+wpn_g36k                           		 = 0.18, 0.15
 wpn_groza                                = 0.24, 0.09
-wpn_groza_nimble                         = 0.24, 0.14
-wpn_groza_specops                        = 0.22, 0.2
 wpn_l85                                  = 0.21, 0.07
 wpn_lr300                                = 0.2, 0.15
+wpn_m4a1                                 = 0.2, 0.15
 wpn_pkm                                  = 0.22, 0.07
-wpn_pkm_zulus                            = 0.22, 0.13
 wpn_sig550                               = 0.2, 0.16
-wpn_sig550_luckygun                      = 0.23, 0.13
 wpn_vintorez                             = 0.22, 0.15
-wpn_vintorez_nimble                      = 0.25, 0.14
 
 ;WP_ASHTG
 wpn_protecta                             = 0.22, 0.15
-wpn_protecta_nimble                      = 0.25, 0.17
-wpn_spas12                               = 0.19, 0.13
-wpn_spas12_nimble                        = 0.21, 0.21
 wpn_wincheaster1300                      = 0.2, 0.17
-wpn_wincheaster1300_trapper              = 0.18, 0.1
 
 ;WP_BINOC
 wpn_binoc                                = 0.23, 0.14
 
 ;WP_BM16
 wpn_bm16                                 = 0.24, 0.09
+wpn_bm16_full                            = 0.24, 0.09
 wpn_toz34                                = 0.23, 0.1
-
-;WP_GROZA
-wpn_fn2000                               = 0.2, 0.18
-wpn_fn2000_nimble                        = 0.19, 0.05
-
-;WP_HPSA
-wpn_hpsa                                 = 0.23, 0.21
+wpn_toz34_obrez                          = 0.23, 0.1
 
 ;WP_KNIFE
 wpn_knife                                = 0.21, 0.09
@@ -544,41 +546,31 @@ wpn_knife                                = 0.21, 0.09
 ;WP_LR300
 wpn_beretta                              = 0.23, 0.14
 wpn_mp5                                  = 0.2, 0.12
-wpn_mp5_nimble                           = 0.21, 0.18
 wpn_sig220                               = 0.25, 0.23
-wpn_sig220_nimble                        = 0.21, 0.09
 wpn_usp                                  = 0.24, 0.1
-wpn_usp_nimble                           = 0.21, 0.12
 wpn_walther                              = 0.24, 0.14
 
 ;WP_PM
 wpn_colt1911                             = 0.2, 0.2
 wpn_desert_eagle                         = 0.22, 0.13
-wpn_desert_eagle_nimble                  = 0.22, 0.21
 wpn_fort                                 = 0.25, 0.14
-wpn_fort_snag                            = 0.19, 0.12
 wpn_pb                                   = 0.2, 0.06
 wpn_pm                                   = 0.2, 0.16
-wpn_pm_actor                             = 0.2, 0.16
 
 ;WP_RG6
 wpn_rg-6                                 = 0.21, 0.13
 
 ;WP_RPG7
 wpn_rpg7                                 = 0.2, 0.14
+wpn_rpg26                                = 0.2, 0.14
 
 ;WP_SVD
 pri_a17_gauss_rifle                      ;NO TRADE
 wpn_gauss                                = 0.25, 0.15
 wpn_svd                                  = 0.22, 0.12
-wpn_svd_nimble                           = 0.19, 0.12
 
 ;WP_SVU
 wpn_svu                                  = 0.18, 0.1
-wpn_svu_nimble                           = 0.24, 0.09
-
-;WP_VAL
-wpn_val                                  = 0.19, 0.07
 
 ;EQU_STLK
 bandit_novice_outfit                     = 0.57, 0.55
@@ -618,6 +610,8 @@ helm_respirator_joker                    = 0.4, 0.29
 helm_tactic                              = 0.6, 0.58
 deployable_mgun                          ;NO TRADE
 wpn_rpg7_missile                         ;NO TRADE
+ammo_pg_26                               ;NO TRADE
+wpn_ammo_pg_26_missile                   ;NO TRADE
 yantar_deployable_mgun                   ;NO TRADE
 
 [buy_sell]
@@ -680,6 +674,8 @@ drug_coagulant                           = 1,3,0,1,0.7
 drug_psy_blockade                        = 1,3,0,1,0.7
 drug_radioprotector                      = 1,3,0,1,0.7
 energy_drink                             = 2,5,2,1,0.7
+item_use_water_flask                     = 2,5,2,1,0.7
+item_use_water_bottle                    = 2,5,2,1,0.7
 itm_gunsmith_toolkit                     = 0,1,0,1,0.7
 itm_outfit_toolkit                       = 0,1,0,1,0.7
 itm_cold_weapon_toolkit                  = 0,1,0,1,0.7
@@ -731,6 +727,20 @@ ammo_m209                                = 1,3,1,1,0.7
 
 ;WP_SCOPE
 pso_scope                                = 0,1,0,1,0.7
+specter_scope                            = 0,1,0,1,0.7
+kobra_scope                              = 0,1,0,1,0.7
+1p29_scope                               = 0,1,0,1,0.7
+1p59_scope                             	 = 0,1,0,1,0.7
+pgo7_scope                               = 0,1,0,1,0.7
+po4x34_scope                             = 0,1,0,1,0.7
+okp_scope                                = 0,1,0,1,0.7
+barska_scope                             = 0,1,0,1,0.7
+eotech_scope                             = 0,1,0,1,0.7
+acog_scope                               = 0,1,0,1,0.7
+pn23_scope                               = 0,1,0,1,0.7
+leupold_m4_scope                         = 0,1,0,1,0.7
+1pn93_scope                              = 0,1,0,1,0.7
+pu_scope                                 = 0,1,0,1,0.7
 susat_scope                              = 0,1,0,1,0.7
 
 ;WP_SILEN
@@ -740,33 +750,31 @@ wpn_addon_pistol_suppressor				 = 0,1,0,1,0.7
 ;WP_GLAUN
 wpn_addon_grenade_launcher               = 0,1,0,1,0.7
 wpn_addon_grenade_launcher_m203          = 0,1,0,1,0.7
+wpn_addon_grenade_launcher_groza         = 0,1,0,1,0.7
 
 ;WP_AK74
 wpn_abakan                               = 0,1,0,1,0.7
 wpn_ak74                                 = 0,1,0,1,0.7
+wpn_ak74m                                = 0,1,0,1,0.7
 wpn_ak74u                                = 0,1,0,1,0.7
 wpn_g36                                  = 0,1,0,1,0.7
 wpn_groza                                = 0,1,0,1,0.7
 wpn_l85                                  = 0,1,0,1,0.7
 wpn_lr300                                = 0,1,0,1,0.7
+wpn_m4a1                                 = 0,1,0,1,0.7
 wpn_pkm                                  = 0,1,0,1,0.7
 wpn_sig550                               = 0,1,0,1,0.7
 wpn_vintorez                             = 0,1,0,1,0.7
 
 ;WP_ASHTG
 wpn_protecta                             = 0,1,0,1,0.7
-wpn_spas12                               = 0,1,0,1,0.7
 wpn_wincheaster1300                      = 0,1,0,1,0.7
 
 ;WP_BM16
 wpn_bm16                                 = 0,1,0,1,0.7
+wpn_bm16_full                            = 0,1,0,1,0.7
 wpn_toz34                                = 0,1,0,1,0.7
-
-;WP_GROZA
-wpn_fn2000                               = 0,1,0,1,0.7
-
-;WP_HPSA
-wpn_hpsa                                 = 0,1,0,1,0.7
+wpn_toz34_obrez                          = 0,1,0,1,0.7
 
 ;WP_LR300
 wpn_beretta                              = 0,1,0,1,0.7
@@ -787,15 +795,13 @@ wpn_rg-6                                 = 0,1,0,1,0.7
 
 ;WP_RPG7
 wpn_rpg7                                 = 0,1,0,1,0.7
+wpn_rpg26                                = 0,1,0,1,0.7
 
 ;WP_SVD
 wpn_svd                                  = 0,1,0,1,0.7
 
 ;WP_SVU
 wpn_svu                                  = 0,1,0,1,0.7
-
-;WP_VAL
-wpn_val                                  = 0,1,0,1,0.7
 
 ;EQU_STLK
 dolg_heavy_outfit                        = 0,1,0,1,0.7

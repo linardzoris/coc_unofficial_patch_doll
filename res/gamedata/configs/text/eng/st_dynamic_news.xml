@@ -590,6 +590,48 @@
 	<string id="st_dyn_news_comm_ecolog_14">
 		<text>Someone, help!</text>
 	</string>
+	<string id="st_dyn_news_comm_csky_1">
+		<text>a Clear Sky stalker</text>
+	</string>
+	<string id="st_dyn_news_comm_csky_2">
+		<text>a guy from Clear Sky</text>
+	</string>
+	<string id="st_dyn_news_comm_csky_3">
+		<text>one of the guys from Clear Sky</text>
+	</string>
+	<string id="st_dyn_news_comm_csky_4">
+		<text>some guy from Clear Sky</text>
+	</string>
+	<string id="st_dyn_news_comm_csky_5">
+		<text>Clear Sky</text>
+	</string>
+	<string id="st_dyn_news_comm_csky_6">
+		<text>Clear Sky</text>
+	</string>
+	<string id="st_dyn_news_comm_csky_7">
+		<text>Clear Sky</text>
+	</string>
+	<string id="st_dyn_news_comm_csky_8">
+		<text>Clear Sky</text>
+	</string>
+	<string id="st_dyn_news_comm_csky_9">
+		<text>Clear Sky</text>
+	</string>
+	<string id="st_dyn_news_comm_csky_10">
+		<text>Clear Sky stalkers</text>
+	</string>
+	<string id="st_dyn_news_comm_csky_11">
+		<text>Help us out!</text>
+	</string>
+	<string id="st_dyn_news_comm_csky_12">
+		<text>This is Clear Sky, we need help!</text>
+	</string>
+	<string id="st_dyn_news_comm_csky_13">
+		<text>Stalkers, help us!</text>
+	</string>
+	<string id="st_dyn_news_comm_csky_14">
+		<text>Help!</text>
+	</string>
 	<string id="st_dyn_news_comm_army_1">
 		<text>a soldier</text>
 	</string>

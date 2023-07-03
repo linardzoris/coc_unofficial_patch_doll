@@ -73,6 +73,11 @@
 				<texture>ui_mm_faction_bandit</texture>
 			</auto_static>
 		</faction_bandit>
+		<faction_csky x="126" y="85" width="48" height="48">
+			<auto_static x="0" y="0" width="48" height="48" stretch="1">
+				<texture>ui_mm_faction_csky</texture>
+			</auto_static>
+		</faction_csky>
 		
 		<faction_dolg x="30" y="133" width="48" height="48">
 			<auto_static x="0" y="0" width="48" height="48" stretch="1">
@@ -117,6 +122,11 @@
 				<texture>ui_mm_faction_bandit_inactive</texture>
 			</auto_static>
 		</faction_bandit_inactive>
+		<faction_csky_inactive x="126" y="85" width="48" height="48">
+			<auto_static x="0" y="0" width="48" height="48" stretch="1">
+				<texture>ui_mm_faction_csky_inactive</texture>
+			</auto_static>
+		</faction_csky_inactive>
 		
 		<faction_dolg_inactive x="30" y="133" width="48" height="48">
 			<auto_static x="0" y="0" width="48" height="48" stretch="1">

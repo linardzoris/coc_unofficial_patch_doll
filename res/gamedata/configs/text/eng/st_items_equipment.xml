@@ -96,6 +96,12 @@
 	<string id="st_energy_drink_descr">
 		<text>Often used by stalkers on long trips when no breaks can be afforded. The drink contains easily digestible carbohydrates, as well as drugs that stimulate the release of adrenaline into the bloodstream.</text>
 	</string>
+	<string id="st_item_use_water_bottle">
+		<text>Bottle of water</text>
+	</string>
+	<string id="st_item_use_water_bottle_descr">
+		<text>Spills nearby beyond the perimeter. Perfectly quenches thirst.</text>
+	</string>	
 	<string id="st_guitar_descr">
 		<text>A trusty guitar.</text>
 	</string>
@@ -173,40 +179,11 @@
 	<string id="st_memory_stick_name">
 		<text>Memory stick</text>
 	</string>
-	<string id="st_equ_backpack_name">
-		<text>Backpack</text>
+	
+	<string id="st_item_use_water_flask">
+		<text>Water flask</text>
 	</string>
-	<string id="st_equ_backpack_desc">
-		<text>A regular water resistant backpack. It has high popularity among stalkers who travel around the Zone.</text>
-	</string>
-	<string id="st_equ_smallpack_name">
-		<text>Small backpack</text>
-	</string>
-	<string id="st_equ_smallpack_desc">
-		<text>Small backpack usually worn by rookies. The inside has been modified to keep water out. A crude but practical solution.</text>
-	</string>
-	<string id="st_equ_smilpack_name">
-		<text>Duffel bag</text>
-	</string>
-	<string id="st_equ_smilpack_desc">
-		<text>A cylindrical bag made from canvas, used by the military for well over a hundred years.</text>
-	</string>
-	<string id="st_equ_milpack_name">
-		<text>Combat backpack</text>
-	</string>
-	<string id="st_equ_milpack_desc">
-		<text>A combat backpack used by the military, often to store additional munitions and medical supplies.</text>
-	</string>
-	<string id="st_equ_touristpack_name">
-		<text>Tourist backpack</text>
-	</string>
-	<string id="st_equ_touristpack_desc">
-		<text>A tourist's backpack with a lot of storage space. Not very popular due to its cumbersome size.</text>
-	</string>
-	<string id="st_water">
-		<text>Water</text>
-	</string>
-	<string id="st_water_descr">
+	<string id="st_item_use_water_flask_descr">
 		<text>Clean and refreshing water. It can negate radioactivity received from Zone-produced food or help sober up.</text>
 	</string>
 	<string id="st_device_flashlight_name">

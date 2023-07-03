@@ -16,6 +16,9 @@
 	<string id="actor_bandit">
 		<text>Бандит</text>
 	</string>
+	<string id="actor_csky">
+		<text>«Чистое Небо»</text>
+	</string>
 	<string id="actor_dolg">
 		<text>«Долг»</text>
 	</string>
@@ -48,6 +51,9 @@
 	<string id="bandit">
 		<text>«Бандиты»</text>
 	</string>
+	<string id="csky">
+    		<text>«Чистое Небо»</text>
+  	</string>
 	<string id="dolg">
 		<text>«Долг»</text>
 	</string>

@@ -14,11 +14,9 @@
 #include "upgrades\w_bm16_up.ltx"
 #include "upgrades\w_colt1911_up.ltx"
 #include "upgrades\w_desert_eagle_up.ltx"
-#include "upgrades\w_fn2000_up.ltx"
 #include "upgrades\w_fort_up.ltx"
 #include "upgrades\w_g36_up.ltx"
 #include "upgrades\w_groza_up.ltx"
-#include "upgrades\w_hpsa_up.ltx"
 #include "upgrades\w_l85_up.ltx"
 #include "upgrades\w_lr300_up.ltx"
 #include "upgrades\w_mp5_up.ltx"
@@ -28,61 +26,57 @@
 #include "upgrades\w_protecta_up.ltx"
 #include "upgrades\w_sig220_up.ltx"
 #include "upgrades\w_sig550_up.ltx"
-#include "upgrades\w_spas12_up.ltx"
 #include "upgrades\w_svd_up.ltx"
 #include "upgrades\w_svu_up.ltx"
 #include "upgrades\w_toz34_up.ltx"
 #include "upgrades\w_usp45_up.ltx"
-#include "upgrades\w_val_up.ltx"
 #include "upgrades\w_vintorez_up.ltx"
 #include "upgrades\w_walther_up.ltx"
 #include "upgrades\w_wincheaster1300_up.ltx"
 
+; PISTOLS
 
-#include "w_ak74.ltx"
-#include "w_ak74u.ltx"
-#include "w_fn2000.ltx"
-#include "w_rpg7.ltx"
-#include "w_knife.ltx"
-#include "w_bolt.ltx"
-#include "w_f1.ltx"
-#include "w_rgd5.ltx"
-#include "w_gd5.ltx"
-#include "w_rg6.ltx"
-
-#include "w_vintorez.ltx"
-#include "w_lr300.ltx"
-#include "w_mp5.ltx"
-#include "w_val.ltx"
-
-#include "w_gauss.ltx"
-#include "w_groza.ltx"
-#include "w_hpsa.ltx"
 #include "w_pm.ltx"
-#include "w_pb.ltx"
-#include "w_walther.ltx"
-#include "w_usp45.ltx"
-#include "w_fort.ltx"
-#include "w_toz34.ltx"
-#include "w_svd.ltx"
-#include "w_svu.ltx"
-#include "w_binoc.ltx"
-#include "w_l85.ltx"
-
-#include "w_bm16.ltx"
-#include "w_spas12.ltx"
-#include "w_protecta.ltx"
-#include "w_wincheaster1300.ltx"
-
-#include "w_mounted.ltx"
-#include "w_colt1911.ltx"
 #include "w_beretta.ltx"
 #include "w_desert_eagle.ltx"
+#include "w_fort.ltx"
+#include "w_colt1911.ltx"
+#include "w_pb.ltx"
+#include "w_usp45.ltx"
+#include "w_walther_p99.ltx"
 #include "w_sig220.ltx"
-#include "w_sig550.ltx"
+
+; SMG
+#include "w_mp5.ltx"
+
+; ASSAULT
 #include "w_abakan.ltx"
-#include "w_g36.ltx"
-#include "w_pkm.ltx"
+#include "w_ak74.ltx"
+#include "w_aks74u.ltx"
+; #include "w_g36.ltx"
+#include "w_groza.ltx"
+#include "w_l85.ltx"
+#include "w_lr300.ltx"
+#include "w_m4.ltx"
+#include "w_sig550.ltx"
+
+; SHOTGUNS
+
+; SNIPER
+
+#include "w_gauss.ltx"
+
+; MG
+
+; OTHER
+
+#include "w_hand_grenades.ltx"
+#include "w_knife.ltx"
+#include "w_bolt.ltx"
+
+#include "w_binoc.ltx"
+
+#include "w_mounted.ltx"
 
 ;---------------------
 ; Огнестрельное оружие
@@ -322,3 +316,97 @@ lights_enabled                           = false	                               
 trail_light_color                        = 0.6,0.5,0.3
 trail_light_range                        = 8.0
 force_explode_time                       = 10000
+
+[wpn_rpg7_missile]:ammo_base
+$prefetch                                          = 32
+blast                                              = 4
+blast_impulse                                      = 350
+blast_impulse_factor                               = 1
+blast_r                                            = 10
+cform                                              = skeleton
+class                                              = G_RPG7
+cost                                               = 200
+engine_impulse                                     = 700
+engine_impulse_up                                  = 133.906               ;= 2*9.81*7 - значение этого параметра (который является некой подъемной силой, вопреки названию),
+engine_particles                                   = weapons\rpg_trail_00
+engine_present                                     = true
+engine_work_time                                   = 3000
+explode_duration                                   = 5
+explode_particles                                  = explosions\explosion_04
+force_explode_time                                 = 30000
+frag_ap                                            = 5.76
+frag_hit                                           = 5.30
+frag_hit_impulse                                   = 10
+fragment_speed                                     = 150
+frags                                              = 8
+frags_r                                            = 15.0
+hit_type_blast                                     = explosion
+hit_type_frag                                      = fire_wound
+inv_grid_height                                    = 1
+inv_grid_width                                     = 4
+inv_grid_x                                         = 15
+inv_grid_y                                         = 5
+inv_name                                           = "Og-7b"
+inv_weight                                         = .2
+inv_weight                                         = 0
+jump_height                                        = 0
+light_color                                        = 1.9,1.4,0.5
+light_range                                        = 24.0
+light_time                                         = 1.28
+lights_enabled                                     = true
+ph_mass                                            = 3
+snd_explode                                        = weapons\rpg7\rpg7_explode
+snd_fly_sound                                      = weapons\rpg7\rocket_fly
+trail_light_color                                  = 0.6,0.5,0.3
+trail_light_range                                  = 15.0
+up_throw_factor                                    = 0.25
+visual                                             = dynamics\weapons\wpn_rpg7\wpn_rpg7_grenade.ogf
+wallmark_section                                   = explosion_marks
+wm_size                                            = 0.5
+
+[wpn_ammo_pg_26_missile]:ammo_base
+$prefetch                                          = 32
+blast                                              = 10
+blast_impulse                                      = 350
+blast_impulse_factor                               = 1
+blast_r                                            = 12
+cform                                              = skeleton
+class                                              = G_RPG7
+cost                                               = 200
+engine_impulse                                     = 900
+engine_impulse_up                                  = 133.906              ;= 2*9.81*7 - значение этого параметра (который является некой подъемной силой, вопреки названию),
+engine_particles                                   = weapons\rpg_trail_00
+engine_present                                     = true
+engine_work_time                                   = 3000
+explode_duration                                   = 5
+explode_particles                                  = explosions\explosion_04
+force_explode_time                                 = 30000
+frag_ap                                            = 5.76
+frag_hit                                           = 5.30
+frag_hit_impulse                                   = 10
+fragment_speed                                     = 150
+frags                                              = 8
+frags_r                                            = 20.44
+hit_type_blast                                     = explosion
+hit_type_frag                                      = fire_wound
+inv_grid_height                                    = 1
+inv_grid_width                                     = 2
+inv_grid_x                                         = 8
+inv_grid_y                                         = 40
+inv_name                                           = "PG-26"
+inv_weight                                         = .2
+inv_weight                                         = 0
+jump_height                                        = 0
+light_color                                        = 1.9,1.4,0.5
+light_range                                        = 24.0
+light_time                                         = 1.28
+lights_enabled                                     = true
+ph_mass                                            = 3
+snd_explode                                        = weapons\rpg_26\rpg26_explode
+snd_fly_sound                                      = weapons\rpg_26\rpg26_grenade_engin
+trail_light_color                                  = 0.6,0.5,0.3
+trail_light_range                                  = 15.0
+up_throw_factor                                    = 0.25
+visual                                             = dynamics\weapons\wpn_rpg7\wpn_rpg7_grenade.ogf
+wallmark_section                                   = explosion_marks
+wm_size                                            = 0.4

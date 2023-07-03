@@ -1,3 +1,28 @@
+[base_quest_item]:booster
+GroupControlSection                                = spawn_group 
+discovery_dependency                               = 
+$spawn                                             = "devices\pda"
+$prefetch                                          = 16
+cform                                              = skeleton 
+visual                                   	   	   = dynamics\devices\dev_pda\dev_pda.ogf 
+default_to_ruck                                    = false
+sprint_allowed                                     = true
+description                                        = st_pda_descr
+inv_name                                           = st_pda_name
+inv_weight                               	   	   = 0.1
+inv_grid_width                                     = 1
+inv_grid_height                                    = 1
+inv_grid_x										   = 7
+inv_grid_y										   = 3
+cost                                     	   	   = 0
+attach_angle_offset                                = 0.000000, -1.204452, -1.262921 
+attach_position_offset                             = 0.081856, -0.035081, 0.011694 
+attach_bone_name                                   = bip01_l_hand 
+auto_attach                                        = false 
+can_trade                               	   	   = false
+can_use 					                       = false
+snd_on_take				                           = other
+
 [device_pda]:identity_immunities
 GroupControlSection                                = spawn_group
 discovery_dependency                               =
@@ -83,15 +108,15 @@ pitch_offset_forward					            = 0
 item_position                                       = 0,0,0
 item_orientation                                    = 0,0,0
 
-anm_show                                 		    = hands_draw
-anm_show_empty						   		        = hands_draw_empty
-anm_idle                                 		    = hands_idle
-anm_hide                                 		    = hands_holster
-anm_hide_empty                           		    = hands_holster_empty
-anm_idle_aim                             		    = hands_idle_aim
-anm_idle_moving                          		    = hands_walk_new
-anm_idle_sprint                          		    = hands_run_new
-anm_empty						                    = hands_dead
+anm_show                                 		   = hands_pda_draw
+anm_show_empty						   		       = hands_pda_draw_empty
+anm_idle                                 		   = hands_pda_idle
+anm_hide                                 		   = hands_pda_holster
+anm_hide_empty                           		   = hands_pda_holster_empty
+anm_idle_aim                             		   = hands_pda_idle_aim
+anm_idle_moving                          		   = hands_pda_walk_new
+anm_idle_sprint                          		   = hands_pda_run_new
+anm_empty						                   = hands_pda_dead
 
 [dev_flash_1]:identity_immunities
 GroupControlSection                      = spawn_group

@@ -96,6 +96,12 @@
 	<string id="st_energy_drink_descr">
 		<text>Часто используется сталкерами в многодневных походах, когда нет возможности остановиться и отдохнуть. Содержит легко усваиваемые углеводы, а также препараты, вызывающие выброс адреналина в кровь.</text>
 	</string>
+	<string id="st_item_use_water_bottle">
+		<text>Бутылка воды</text>
+	</string>
+	<string id="st_item_use_water_bottle_descr">
+		<text>Разливается неподалёку за Периметром, отлично утоляет жажду.</text>
+	</string>		
 	<string id="st_guitar_descr">
 		<text>Поговори хоть ты со мной, гитара семиструнная!..</text>
 	</string>
@@ -183,7 +189,7 @@
 		<text>Фляга с водой</text>
 	</string>
 	<string id="st_water_descr">
-		<text>Фляга содержащая в себе чистую воду.</text>
+		<text>Фляга содержащая в себе чистую воду. Обычно выдаётся военным и распространяется по Зоне через них.</text>
 	</string>
 	
 	<string id="st_device_nvg_1_name">
