@@ -1,0 +1,9 @@
+<bio>No data. He's dangerous.</bio>
+<community>monolith</community>
+<map_icon x="1" y="0"></map_icon>
+<money min="1500" max="3500" infinitive="0"/>
+<name>GENERATE_NAME_stalker</name>
+<reputation min="-1500" max="1500" />
+#include "gameplay\character_criticals.xml"
+#include "gameplay\character_dialogs.xml"
+<terrain_sect>stalker_terrain</terrain_sect>

@@ -3,7 +3,7 @@
 [trader]
 buy_condition                                      = buy_condition_scientist
 buy_item_condition_factor                          = 0.60
-buy_supplies                                       = {=actor_goodwill_ge(ecolog:1800)} supplies_special, {=heavy_pockets_functor} supplies_special, {=actor_goodwill_ge(ecolog:1000)} supplies_friend, supplies_generic
+buy_supplies                                       = {=actor_goodwill_ge(ecolog:1800)} supplies_special, {=heavy_pockets_functor} supplies_special, supplies_generic
 discounts                                          = {=actor_goodwill_ge(ecolog:2000)} discount_10, {=actor_goodwill_ge(ecolog:1800)} discount_9, {=actor_goodwill_ge(ecolog:1600)} discount_8, {=actor_goodwill_ge(ecolog:1400)} discount_7, {=actor_goodwill_ge(ecolog:1200)} discount_6, {=actor_goodwill_ge(ecolog:1000)} discount_5, {=actor_goodwill_ge(ecolog:800)} discount_4, {=actor_goodwill_ge(ecolog:600)} discount_3, {=actor_goodwill_ge(ecolog:400)} discount_2, {=actor_goodwill_ge(ecolog:200)} discount_1, discount_0
 sell_condition                                     = sell_condition_scientist
 
@@ -27,30 +27,7 @@ ecolog_outfit_orange                               = 1, 0.1
 helm_respirator                                    = 1, 0.3
 helm_respirator_2                                  = 1, 0.5
 
-[supplies_friend]:supplies_generic
-;Medical
-antirad                                            = 3, 0.5
-bandage                                            = 6, 0.6
-drug_antidot                                       = 2, 0.4
-drug_coagulant                                     = 2, 0.4
-drug_radioprotector                                = 2, 0.4
-medkit                                             = 4, 0.6
-medkit_scientic                                    = 2, 0.5
-
-;Devices
-detector_advanced                                  = 1, 0.5
-
-;Outfits
-ecolog_outfit_green                                = 1, 0.1
-ecolog_outfit_orange                               = 1, 0.3
-scientific_outfit                                  = 1, 0.25
-
-;Helmets
-helm_protective                                    = 1, 0.15
-helm_respirator                                    = 1, 0.5
-helm_respirator_2                                  = 1, 0.7
-
-[supplies_special]:supplies_friend
+[supplies_special]:supplies_generic
 ;Medical
 antirad                                            = 3, 0.5
 bandage                                            = 6, 0.6

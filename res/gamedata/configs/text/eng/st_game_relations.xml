@@ -15,6 +15,9 @@
 	<string id="actor_bandit">
 		<text>Bandit</text>
 	</string>
+	<string id="actor_csky">
+		<text>Clear Sky</text>
+	</string>
 	<string id="actor_dolg">
 		<text>Duty</text>
 	</string>
@@ -46,6 +49,9 @@
 	</string>
 	<string id="bandit">
 		<text>Bandit</text>
+	</string>
+	<string id="csky">
+		<text>Clear Sky</text>
 	</string>
 	<string id="dolg">
 		<text>Duty</text>

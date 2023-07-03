@@ -1243,6 +1243,9 @@ bool CWeaponMagazined::Action(u16 cmd, u32 flags)
     case kWPN_ADDON: {
         if (flags & CMD_START)
         {
+            if (!HasLaser() && !HasFlashlight())
+                return false;
+
             OnWeaponAddonSwitch();
             return true;
         };

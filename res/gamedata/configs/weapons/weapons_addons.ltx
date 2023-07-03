@@ -92,9 +92,38 @@ inv_weight                               = 1.3
 
 inv_grid_width                           = 2
 inv_grid_height                          = 1
-inv_grid_x                               = 10
-inv_grid_y                               = 9
+inv_grid_x                               = 35
+inv_grid_y                               = 38
 grenade_vel                              = 56
+
+cam_dispersion_k                         = 0.85
+cam_dispersion_inc_k                     = 0.85
+PDM_disp_base_k                          = 1.1
+PDM_disp_accel_k                         = 1.1
+PDM_disp_vel_k                           = 1.1
+crosshair_inertion_k                     = 1.15
+zoom_rotate_time_k                       = 1.08
+
+addon_bone								 = wpn_launcher
+grenade_class							 = ammo_vog-25
+
+[wpn_addon_grenade_launcher_groza]:identity_immunities
+discovery_dependency                     =
+$spawn                                   = "weapons\addons\wpn_addon_grenade_launcher_groza"
+class                                    = WP_GLAUN
+visual                                   = dynamics\weapons\wpn_upgrade\wpn_grenade_launcher.ogf
+description                              = st_grenade_launcher_groza_descr
+$prefetch                                = 32
+
+cost                                     = 11000
+inv_name                                 = st_grenade_launcher_groza
+inv_weight                               = 1.1
+
+inv_grid_width                           = 2
+inv_grid_height                          = 1
+inv_grid_x                               = 35
+inv_grid_y                               = 35
+grenade_vel                              = 40
 
 cam_dispersion_k                         = 0.85
 cam_dispersion_inc_k                     = 0.85
@@ -121,8 +150,8 @@ inv_weight                               = 1.36
 
 inv_grid_width                           = 2
 inv_grid_height                          = 1
-inv_grid_x                               = 12
-inv_grid_y                               = 9
+inv_grid_x                               = 35
+inv_grid_y                               = 39
 grenade_vel                              = 56
 
 cam_dispersion_k                         = 0.85

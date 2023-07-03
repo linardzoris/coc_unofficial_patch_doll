@@ -1,0 +1,126 @@
+<specific_character id="sim_default_monolith_1_default_0" team_default = "1">
+	#include "gameplay\profiles\character_desc_monolith_1.xml"
+	<icon>ui_inGame2_monolit_0</icon>
+	<visual>actors\stalker_monolith\stalker_monolith_0</visual>
+</specific_character>
+<specific_character id="sim_default_monolith_1_default_1" team_default = "1">
+	#include "gameplay\profiles\character_desc_monolith_1.xml"
+	<icon>ui_inGame2_monolit_2_old</icon>
+	<visual>actors\stalker_monolith\stalker_monolith_0_oldgas</visual>
+</specific_character>
+<specific_character id="sim_default_monolith_2_default_0" team_default = "1">
+	#include "gameplay\profiles\character_desc_monolith_2.xml"
+	<icon>ui_inGame2_monolit_2</icon>
+	<visual>actors\stalker_monolith\stalker_monolith_2</visual>
+</specific_character>
+<specific_character id="sim_default_monolith_2_default_1" team_default = "1">
+	#include "gameplay\profiles\character_desc_monolith_2.xml"
+	<icon>ui_inGame2_monolit_2_old</icon>
+	<visual>actors\stalker_monolith\stalker_monolith_2_oldgas</visual>
+</specific_character>
+<specific_character id="sim_default_monolith_2_default_2" team_default = "1">
+	#include "gameplay\profiles\character_desc_monolith_2.xml"
+	<icon>ui_inGame2_monolit_0</icon>
+	<visual>actors\stalker_monolith\stalker_monolith_2_halfgas</visual>
+</specific_character>
+<specific_character id="sim_default_monolith_2_default_3" team_default = "1">
+	#include "gameplay\profiles\character_desc_monolith_2.xml"
+	<icon>ui_inGame2_monolit_2_gp5</icon>
+	<visual>actors\stalker_monolith\stalker_monolith_2_gp5</visual>
+</specific_character>
+<specific_character id="sim_default_monolith_2_default_4" team_default = "1">
+	#include "gameplay\profiles\character_desc_monolith_2.xml"
+	<icon>ui_inGame2_monolit_2_nbc</icon>
+	<visual>actors\stalker_monolith\stalker_monolith_2_nbc</visual>
+</specific_character>
+<specific_character id="sim_default_monolith_3_default_0" team_default = "1">
+	#include "gameplay\profiles\character_desc_monolith_3.xml"
+	<icon>ui_inGame2_monolit_3</icon>
+	<visual>actors\stalker_monolith\stalker_monolith_3</visual>
+</specific_character>
+<specific_character id="sim_default_monolith_3_default_1" team_default = "1">
+	#include "gameplay\profiles\character_desc_monolith_3.xml"
+	<icon>ui_inGame2_monolit_3</icon>
+	<visual>actors\stalker_monolith\stalker_monolith_3a</visual>
+</specific_character>
+<specific_character id="sim_default_monolith_4_default_0" team_default = "1">
+	#include "gameplay\profiles\character_desc_monolith_4.xml"
+	<icon>ui_inGame2_monolit_4</icon>
+	<visual>actors\stalker_monolith\stalker_monolith_4</visual>
+</specific_character>
+<specific_character id="sim_default_monolith_4_default_1" team_default = "1">
+	#include "gameplay\profiles\character_desc_monolith_4.xml"
+	<icon>ui_inGame2_monolit_4</icon>
+	<visual>actors\stalker_monolith\stalker_monolith_4a</visual>
+</specific_character>
+<specific_character id="sim_monolith_sniper" team_default = "1">
+	#include "gameplay\profiles\character_desc_monolith_base.xml"
+	<icon>ui_inGame2_monolit_2_nohood</icon>
+	<class>sim_monolith_sniper</class>
+	<rank min="6000" max="15000" />
+	<panic_threshold>0.0</panic_threshold>
+	<snd_config>characters_voice\human\monolith_3\</snd_config>
+	<crouch_type>-1</crouch_type>
+	<visual>actors\stalker_monolith\stalker_monolith_2_nohood</visual>
+	<supplies>
+#include "gameplay\loadouts\monolith_base.ltx"
+#include "gameplay\loadouts\monolith_sniper.ltx"
+		[spawn] \n
+#include "gameplay\supplies\character_food.xml"
+#include "gameplay\supplies\character_medical.xml"
+#include "gameplay\supplies\character_drugs.xml"
+	</supplies>
+</specific_character>
+<specific_character id="sim_monolith_sniper_gauss" team_default = "1">
+	#include "gameplay\profiles\character_desc_monolith_base.xml"
+	<icon>ui_inGame2_monolit_2_nohood</icon>
+	<class>sim_monolith_sniper_gauss</class>
+	<rank min="6000" max="15000" />
+	<panic_threshold>0.0</panic_threshold>
+	<snd_config>characters_voice\human\monolith_3\</snd_config>
+	<crouch_type>-1</crouch_type>
+	<visual>actors\stalker_monolith\stalker_monolith_2_nohood</visual>
+	<supplies>
+#include "gameplay\loadouts\monolith_base.ltx"
+#include "gameplay\loadouts\monolith_sniper.ltx"
+		[spawn] \n
+#include "gameplay\supplies\character_food.xml"
+#include "gameplay\supplies\character_medical_army.xml"
+#include "gameplay\supplies\character_drugs.xml"
+	</supplies>
+</specific_character>
+<specific_character id="sim_monolith_specnaz_rg6" team_default = "1">
+	#include "gameplay\profiles\character_desc_monolith_base.xml"
+	<icon>ui_inGame2_monolit_2</icon>
+	<class>sim_monolith_specnaz_rg6</class>
+	<rank min="6000" max="15000" />
+	<panic_threshold>0.0</panic_threshold>
+	<snd_config>characters_voice\human\monolith_3\</snd_config>
+	<crouch_type>-1</crouch_type>
+	<visual>actors\stalker_monolith\stalker_monolith_2</visual>
+	<supplies>
+#include "gameplay\loadouts\monolith_base.ltx"
+#include "gameplay\loadouts\monolith_tier_3.ltx"
+		[spawn] \n
+#include "gameplay\supplies\character_food_2.xml"
+#include "gameplay\supplies\character_medical_army.xml"
+#include "gameplay\supplies\character_drugs_2.xml"
+	</supplies>
+</specific_character>
+<specific_character id="stalker_monolith_default" team_default = "1">
+	#include "gameplay\profiles\character_desc_monolith_base.xml"
+	<icon>ui_inGame2_monolit_2</icon>
+	<class>stalker_monolith_default</class>
+	<snd_config>characters_voice\human\monolith_3\</snd_config>
+	<rank min="6000" max="15000" />
+	<visual>actors\stalker_monolith\stalker_monolith_2</visual>
+	<supplies>
+#include "gameplay\loadouts\monolith_base.ltx"
+#include "gameplay\loadouts\monolith_tier_2.ltx"
+		[spawn] \n
+#include "gameplay\supplies\character_items.xml"
+#include "gameplay\supplies\character_food.xml"
+#include "gameplay\supplies\character_medical.xml"
+#include "gameplay\supplies\character_drugs.xml"
+	</supplies>
+</specific_character>

@@ -130,7 +130,7 @@
     <!-- Bunker guards -->
     <specific_character id="yan_merc_01" team_default = "1">
     <name>yan_merc_01</name>
-    <icon>ui_inGame2_ecolog_guard_gas</icon>
+    <icon>ui_inGame2_ecolog_guard_nbc</icon>
     <map_icon x="1" y="0">
     </map_icon>
     <bio>Опытный сталкер. Детальная информация отсутствует.</bio>
@@ -140,7 +140,7 @@
     <snd_config>characters_voice\human\stalker_4\</snd_config>
     <rank>23300</rank>
     <reputation>1373</reputation>
-    <visual>actors\stalker_ecologist\stalker_ecolog_guard_gas</visual>
+    <visual>actors\stalker_ecologist\stalker_ecolog_guard_nbc</visual>
     <supplies>
         [spawn] \n
         wpn_g36 \n

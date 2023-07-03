@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <string_table>
+	<string id="csky_patch">
+		<text>Clear Sky patch</text>
+	</string>
+	<string id="csky_patch_description">
+		<text>An insignia torn from a uniform of the Clear Sky faction.</text>
+	</string>
+
 	<string id="freedom_patch">
 		<text>Freedom patch</text>
 	</string>

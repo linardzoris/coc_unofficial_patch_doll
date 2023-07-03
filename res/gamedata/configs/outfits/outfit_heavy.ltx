@@ -1,109 +1,3 @@
-[outfit_exo_base]
-GroupControlSection                      = spawn_group
-discovery_dependency                     =
-class                                    = EQU_STLK ;Change to E_STLK if you want to use se_item.se_outfit script binding
-cform                                    = skeleton
-
-has_glass 								 = true
-
-player_hud_section                       = actor_hud
-
-discovery_dependency                     =
-installed_upgrades                       =
-
-ef_equipment_type                        = 5
-slot                                     = 6
-
-full_scale_icon                          = 2,11
-
-sprint_allowed                           = false
-helmet_avaliable                         = false
-default_to_ruck                          = false
-
-hit_fraction_actor                       = 0.2
-control_inertion_factor                  = 2.5
-power_loss                               = 0.5
-additional_inventory_weight              = 40
-additional_inventory_weight2             = 40
-
-power_restore_speed = 0
-
-thirst_restore_speed                     = 0
-sleepeness_restore_speed                 = 0
-intoxication_restore_speed               = 0
-psy_health_restore_speed                 = 0
-
-upgrades                                 = 
-upgrade_scheme                           = 
-
-bones_koeff_protection                   = actor_armor_exo
-
-burn_protection                          = 0.06
-shock_protection                         = 0.1
-radiation_protection                     = 0.007
-chemical_burn_protection                 = 0.06
-telepatic_protection                     = 0.035
-strike_protection                        = 0.375
-explosion_protection                     = 0.375
-wound_protection                         = 0.32
-immunities_sect                          = sect_exo_outfit_immunities
-
-inv_grid_width                           = 2
-inv_grid_height                          = 3
-
-mask_hud                                 = helm_exo ;mask_hud.script   
-
-[sect_exo_outfit_immunities]
-burn_immunity                            = 0.075
-strike_immunity                          = 0.03
-shock_immunity                           = 0.04
-wound_immunity                           = 0.022
-radiation_immunity                       = 0.0
-telepatic_immunity                       = 0.0
-chemical_burn_immunity                   = 0.075
-explosion_immunity                       = 0.022
-fire_wound_immunity                      = 0.016
-
-[sect_exo_outfit_immunities_add]
-burn_immunity                            = -0.011
-strike_immunity                          = -0.01
-shock_immunity                           = -0.011
-wound_immunity                           = -0.0055
-radiation_immunity                       = 0.0
-telepatic_immunity                       = 0.0
-chemical_burn_immunity                   = -0.011
-explosion_immunity                       = -0.0055
-fire_wound_immunity                      = -0.0035
-
-;---------------------------------------------------------------------------------------------
-;		Удалить, пока нет доступа к all.spawn
-;---------------------------------------------------------------------------------------------
-[exo_outfit]:outfit_exo_base
-$spawn                                   = "outfit\exo_outfit"
-visual                                   = dynamics\outfit\exo_outfit
-actor_visual                             = actors\stalker_neutral\stalker_neutral_4.ogf
-npc_visual                               = actors\stalker_neutral\stalker_neutral_4.ogf
-player_hud_section                       = actor_hud_exo
-
-inv_name                                 = exo_outfit_name
-description                              = exo_outfit_description
-
-inv_weight                               = 25.0
-
-inv_grid_x                               = 14
-inv_grid_y                               = 15
-
-upgr_icon_x                              = 334
-upgr_icon_y                              = 450
-upgr_icon_width                          = 303
-upgr_icon_height                         = 159
-
-cost                                     = 110000
-
-artefact_count                           = 1
-
-character_portrait                       = ui_inGame2_neutral_4
-
 ;---------------------------------------------------------------------------------------------
 ;		Radiation Suit
 ;---------------------------------------------------------------------------------------------
@@ -153,6 +47,11 @@ sprint_allowed                           = true
 default_to_ruck                          = false
 additional_inventory_weight              = 15
 additional_inventory_weight2             = 15
+
+thirst_restore_speed                     = 0
+sleepeness_restore_speed                 = 0
+intoxication_restore_speed               = 0
+psy_health_restore_speed                 = 0
 
 burn_protection                          = 0.075
 shock_protection                         = 0.2

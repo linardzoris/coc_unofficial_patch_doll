@@ -6,7 +6,7 @@ icon = ui_inGame2_PD_Opitniy_stalker
 prior = 90
 repeat_timeout = 86400
 storyline = false
-sim_communities = stalker, ecolog
+sim_communities = stalker, csky, ecolog
 title = simulation_task_1_name
 title_functor = general_fetch_task
 descr = simulation_task_1_text
@@ -58,7 +58,7 @@ condlist_0 = {!task_giver_alive(simulation_task_2)} fail
 [simulation_task_3]
 icon = ui_inGame2_Nochnaya_ohota
 prior = 75
-sim_communities = stalker, killer, freedom, bandit
+sim_communities = stalker, csky, killer, freedom, bandit
 storyline = false
 title = simulation_task_3_name
 title_functor = general_fetch_task
@@ -135,7 +135,7 @@ condlist_0 = {!task_giver_alive(simulation_task_5)} fail
 [simulation_task_6]
 icon = ui_inGame2_Osobiy_zakaz
 prior = 60
-sim_communities = dolg, killer, army
+sim_communities = dolg, killer, csky, army
 storyline = false
 title = simulation_task_6_name
 title_functor = general_fetch_task
@@ -423,7 +423,7 @@ repeat_timeout = 86400
 status_functor = bounty_task
 target_functor = general_bounty_task
 stage_complete = 1
-on_job_descr = %=on_init_bounty_hunt(simulation_task_17:stalker:bandit:freedom)%
+on_job_descr = %=on_init_bounty_hunt(simulation_task_17:stalker:bandit:freedom:csky)%
 on_complete = %=reward_random_money(5000:6500) =reward_stash(true) =inc_task_stage(simulation_task_17) =complete_task_inc_goodwill(25:army)%
 on_fail = %=fail_task_dec_goodwill(25:army)%
 condlist_0 = {!task_giver_alive(simulation_task_17)} fail

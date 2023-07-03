@@ -392,7 +392,7 @@ end
 
 function zat_b33_transfer_first_item(first_speaker, second_speaker)
 	local actor = dialogs.who_is_actor(first_speaker, second_speaker)
-	dialogs.relocate_item_section(actor,"wpn_fort_snag","in")
+	dialogs.relocate_item_section(actor,"wpn_fort","in")
 end
 
 function zat_b33_transfer_second_item(first_speaker, second_speaker)
@@ -757,10 +757,8 @@ function is_good_gun(npc, item)
 	local wpn_table = {
 						[1] = "wpn_sig550",
 						[2] = "wpn_g36",
-						[3] = "wpn_val",
-						[4] = "wpn_groza",
-						[5] = "wpn_vintorez",
-						[6] = "wpn_fn2000",
+						[3] = "wpn_groza",
+						[4] = "wpn_vintorez",
 						}
 
 	for k,v in pairs(wpn_table) do
@@ -884,18 +882,7 @@ end
 --Zaton B52
 
 function actor_has_nimble_weapon(first_speaker, second_speaker)
-	return db.actor:object("wpn_groza_nimble") ~= nil or
-	db.actor:object("wpn_vintorez_nimble") ~= nil or
-	db.actor:object("wpn_desert_eagle_nimble") ~= nil or
-	db.actor:object("wpn_fn2000_nimble") ~= nil or
-	db.actor:object("wpn_g36_nimble") ~= nil or
-	db.actor:object("wpn_protecta_nimble") ~= nil or
-	db.actor:object("wpn_mp5_nimble") ~= nil or
-	db.actor:object("wpn_sig220_nimble") ~= nil or
-	db.actor:object("wpn_spas12_nimble") ~= nil or
-	db.actor:object("wpn_usp_nimble") ~= nil or
-	db.actor:object("wpn_svu_nimble") ~= nil or
-	db.actor:object("wpn_svd_nimble") ~= nil
+	db.actor:object("wpn_g36") ~= nil
 end
 
 function zat_b51_robbery(first_speaker, second_speaker)
@@ -905,34 +892,7 @@ function zat_b51_robbery(first_speaker, second_speaker)
 	end
 	-- local need_item = {}
 
-	-- need_item["wpn_usp"] = true
-	-- need_item["wpn_desert_eagle"] = true
-	-- need_item["wpn_protecta"] = true
-	-- need_item["wpn_sig550"] = true
-	-- need_item["wpn_fn2000"] = true
 	-- need_item["wpn_g36"] = true
-	-- need_item["wpn_val"] = true
-	-- need_item["wpn_vintorez"] = true
-	-- need_item["wpn_groza"] = true
-	-- need_item["wpn_svd"] = true
-	-- need_item["wpn_svu"] = true
-	-- need_item["wpn_pkm"] = true
-	-- need_item["wpn_sig550_luckygun"] = true
-	-- need_item["wpn_pkm_zulus"] = true
-	-- need_item["wpn_wincheaster1300_trapper"] = true
-	-- need_item["wpn_gauss"] = true
-	-- need_item["wpn_groza_nimble"] = true
-	-- need_item["wpn_desert_eagle_nimble"] = true
-	-- need_item["wpn_fn2000_nimble"] = true
-	-- need_item["wpn_g36_nimble"] = true
-	-- need_item["wpn_protecta_nimble"] = true
-	-- need_item["wpn_mp5_nimble"] = true
-	-- need_item["wpn_sig220_nimble"] = true
-	-- need_item["wpn_spas12_nimble"] = true
-	-- need_item["wpn_usp_nimble"] = true
-	-- need_item["wpn_vintorez_nimble"] = true
-	-- need_item["wpn_svu_nimble"] = true
-	-- need_item["wpn_svd_nimble"] = true
 
 	-- for k,v in pairs(need_item) do
 		-- if db.actor:object(k) ~= nil then
@@ -946,18 +906,7 @@ function zat_b51_rob_nimble_weapon(first_speaker, second_speaker)
 	local need_item = {}
 	local actor_has_item = {}
 
-	need_item["wpn_groza_nimble"] = true
-	need_item["wpn_desert_eagle_nimble"] = true
-	need_item["wpn_fn2000_nimble"] = true
-	need_item["wpn_g36_nimble"] = true
-	need_item["wpn_protecta_nimble"] = true
-	need_item["wpn_mp5_nimble"] = true
-	need_item["wpn_sig220_nimble"] = true
-	need_item["wpn_spas12_nimble"] = true
-	need_item["wpn_usp_nimble"] = true
-	need_item["wpn_vintorez_nimble"] = true
-	need_item["wpn_svu_nimble"] = true
-	need_item["wpn_svd_nimble"] = true
+	need_item["wpn_g36"] = true
 
 	for k,v in pairs(need_item) do
 		if db.actor:object(k) ~= nil then
@@ -1003,21 +952,13 @@ zat_b51_costs_table[6] = {prepay_agreed = 6000, 	prepay_refused = 12000,	cost = 
 zat_b51_costs_table[7] = {prepay_agreed = 12000,	prepay_refused = 24000,	cost = 48000}
 
 local zat_b51_buy_item_table = {}
-zat_b51_buy_item_table[1] = {		[1] = {item = {"wpn_desert_eagle_nimble"}},
-									[2] = {item = {"wpn_sig220_nimble"}},
-									[3] = {item = {"wpn_usp_nimble"}}
+zat_b51_buy_item_table[1] = {		[1] = {item = {"wpn_desert_eagle"}}
 	}
-zat_b51_buy_item_table[2] = {		[1] = {item = {"wpn_mp5_nimble"}},
-								[2] = {item = {"wpn_spas12_nimble"}},
-								[3] = {item = {"wpn_protecta_nimble"}}
+zat_b51_buy_item_table[2] = {	[1] = {item = {"wpn_protecta"}}
 	}
-zat_b51_buy_item_table[3] = {		[1] = {item = {"wpn_groza_nimble"}},
-								[2] = {item = {"wpn_g36_nimble"}},
-								[3] = {item = {"wpn_fn2000_nimble"}}
+zat_b51_buy_item_table[3] = {   [1] = {item = {"wpn_g36k"}}
 	}
-zat_b51_buy_item_table[4] = {	[1] = {item = {"wpn_vintorez_nimble"}},
-								[2] = {item = {"wpn_svu_nimble"}},
-								[3] = {item = {"wpn_svd_nimble"}}
+zat_b51_buy_item_table[4] = {	[1] = {item = {"wpn_vintorez"}}
 	}
 zat_b51_buy_item_table[5] = {		[1] = {item = {"helm_tactic", "cs_heavy_outfit"}}
 	}
@@ -1566,7 +1507,7 @@ function is_not_zat_b106_hunting_time (first_speaker, second_speaker)
 end
 
 function zat_b106_transfer_weap_to_actor(first_speaker, second_speaker)
-	dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "wpn_spas12")
+	dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "wpn_wincheaster1300")
 end
 
 function zat_b106_soroka_reward(first_speaker, second_speaker)

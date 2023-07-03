@@ -36,6 +36,9 @@
 	<string id="jup_b1_stalker_3">
 		<text>Spirit</text>
 	</string>
+	<string id="jup_b1_stalker_4">
+		<text>Snake</text>
+	</string>
 	<string id="jup_b207_merc_leader_name">
 		<text>Grif</text>
 	</string>
@@ -473,6 +476,9 @@
 	</string>
 	<string id="mil_freedom_leader_name">
 		<text>Lukash</text>
+	</string>
+	<string id="mar_csky_commander_name">
+		<text>Lebedev</text>
 	</string>
 	<string id="warlab_osoznanie_name">
 		<text>C-Consciousness representative</text>
