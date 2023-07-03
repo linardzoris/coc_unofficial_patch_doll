@@ -909,11 +909,6 @@ function npc_ecolog(first_speaker, second_speaker)
 	return character_community(npc) == "ecolog"
 end
 
-function npc_csky(first_speaker, second_speaker)
-	local npc = who_is_npc(first_speaker, second_speaker)
-	return character_community(npc) == "csky"
-end
-
 function npc_monolith(first_speaker, second_speaker)
 	local npc = who_is_npc(first_speaker, second_speaker)
 	return character_community(npc) == "monolith"
@@ -1030,20 +1025,6 @@ end
 function actor_set_ecolog(a, b)
 	db.actor:set_character_community("actor_ecolog", 0, 0)
 	game_relations.set_community_goodwill_for_faction("actor_ecolog")
-end
-
-function actor_in_csky(a, b)
-	local npc = who_is_actor(a, b)
-	return character_community(npc) == "actor_csky"
-end
-
-function not_actor_in_csky(a, b)
-	return not actor_in_csky(a, b)
-end
-
-function actor_set_csky(a, b)
-	db.actor:set_character_community("actor_csky", 0, 0)
-	game_relations.set_community_goodwill_for_faction("actor_csky")
 end
 
 function actor_in_monolith(a, b)
@@ -1254,6 +1235,7 @@ function is_pistol(npc, item)
 	or(section=="wpn_colt1911")
 	or(section=="wpn_desert_eagle")
 	or(section=="wpn_fort")
+	or(section=="wpn_hpsa")
 	or(section=="wpn_pb")
 	or(section=="wpn_pm")
 	or(section=="wpn_usp")
@@ -1321,8 +1303,7 @@ function is_shootgun(npc, item)
 	if(section=="wpn_bm16")
 	or(section=="wpn_toz34")
 	or(section=="wpn_wincheaster1300")
-	or (section=="wpn_bm16_full")
-	or (section=="wpn_toz34_obrez")	then
+	or(section=="wpn_spas12") then
 		db.actor.shootgun = section
 	end
 end

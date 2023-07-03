@@ -41,20 +41,6 @@
         <visual>actors\stalker_bandit\stalker_bandit_a</visual>
         <terrain_sect>stalker_terrain</terrain_sect>
         </specific_character>
-<specific_character id="actor_csky" no_random = "1">
-        <name>GENERATE_NAME_stalker</name>
-        <icon>ui_inGame2_csky_4</icon>
-        <map_icon x="2" y="5"></map_icon>
-        <team>Actor</team>
-    <supplies></supplies>
-        <money min="500"  max="500"  infinitive="0"/>
-        <class>actor</class>
-        <community>actor_csky</community>
-        <rank>0</rank>
-        <reputation>0</reputation>
-        <visual>actors\stalker_nebo\stalker_nebo_r2</visual>
-        <terrain_sect>stalker_terrain</terrain_sect>
-        </specific_character>
 <specific_character id="actor_dolg" no_random = "1">
         <name>GENERATE_NAME_stalker</name>
         <icon>ui_inGame2_neutral_1</icon>

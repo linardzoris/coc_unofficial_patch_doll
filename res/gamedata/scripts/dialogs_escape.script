@@ -55,7 +55,6 @@ function mar_base_owl_stalker_trader_task_1_give_reward(a,b)
 	end
 	dialogs.relocate_money_to_actor(a,b,300)
 	task_manager.get_task_manager():set_task_completed("mar_base_owl_stalker_trader_task_1")
-	game_relations.change_factions_community_num("csky",0,100)	
 	game_relations.change_factions_community_num("stalker",0,100)
 end
 

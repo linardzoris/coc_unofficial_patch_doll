@@ -887,10 +887,12 @@ function IsPistol(o,c)
 					[clsid.wpn_pm_s] = true,
 					[clsid.wpn_walther_s] = true,
 					[clsid.wpn_usp45_s] = true,
+					[clsid.wpn_hpsa_s] = true,
 					[clsid.wpn_lr300_s] = true,
 					[clsid.wpn_pm] = true,
 					[clsid.wpn_walther] = true,
 					[clsid.wpn_usp45] = true,
+					[clsid.wpn_hpsa] = true,
 					[clsid.wpn_lr300] = true
 	}
 	return c and pistol[c] or false
@@ -948,8 +950,10 @@ function IsRifle(o,c)
 	local rifle = {
 				[clsid.wpn_ak74_s] = true,
 				[clsid.wpn_groza_s] = true,
+				[clsid.wpn_val_s] = true,
 				[clsid.wpn_ak74] = true,
-				[clsid.wpn_groza] = true
+				[clsid.wpn_groza] = true,
+				[clsid.wpn_val] = true
 	}
 	return c and rifle[c] or false
 end
@@ -1047,6 +1051,7 @@ function IsWeapon(o,c)
 				[clsid.wpn_vintorez_s] 			= true,
 				[clsid.wpn_ak74_s] 				= true,
 				[clsid.wpn_lr300_s] 			= true,
+				[clsid.wpn_hpsa_s] 				= true,
 				[clsid.wpn_pm_s] 				= true,
 				[clsid.wpn_shotgun_s] 			= true,
 				[clsid.wpn_auto_shotgun_s]		= true,
@@ -1056,6 +1061,7 @@ function IsWeapon(o,c)
 				[clsid.wpn_rg6_s] 				= true,
 				[clsid.wpn_rpg7_s] 				= true,
 				[clsid.wpn_rpg26_s] 			= true,					
+				[clsid.wpn_val_s] 				= true,
 				[clsid.wpn_walther_s] 			= true,
 				[clsid.wpn_usp45_s] 			= true,
 				[clsid.wpn_groza_s] 			= true,
@@ -1063,6 +1069,7 @@ function IsWeapon(o,c)
 				[clsid.wpn_vintorez] 			= true,
 				[clsid.wpn_ak74] 				= true,
 				[clsid.wpn_lr300] 				= true,
+				[clsid.wpn_hpsa] 				= true,
 				[clsid.wpn_pm] 					= true,
 				[clsid.wpn_shotgun] 			= true,
 				--[clsid.wpn_auto_shotgun]		= true,
@@ -1072,6 +1079,7 @@ function IsWeapon(o,c)
 				[clsid.wpn_rg6] 				= true,
 				[clsid.wpn_rpg7] 				= true,
 				[clsid.wpn_rpg26] 				= true,					
+				[clsid.wpn_val] 				= true,
 				[clsid.wpn_walther] 			= true,
 				[clsid.wpn_usp45] 				= true,
 				[clsid.wpn_groza] 				= true,
@@ -1157,8 +1165,6 @@ is_squad_monster = {
 squad_community_by_behaviour = {
 		["stalker"]							= "stalker",
 		["bandit"]							= "bandit",
-		["renegade"]						= "renegade",
-        ["csky"]							= "csky",		
 		["dolg"]							= "dolg",
 		["freedom"]							= "freedom",
 		["army"]							= "army",

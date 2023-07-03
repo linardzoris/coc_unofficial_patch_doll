@@ -276,13 +276,16 @@ function body_state:weapon_slot()
 		return 0
 	end
 	if id == clsid.wpn_pm_s or
-       id == clsid.wpn_walther_s or
+    	   id == clsid.wpn_walther_s or
+	   id == clsid.wpn_hpsa_s or
 	   id == clsid.wpn_fort_s or
 	   id == clsid.wpn_usp45_s then
 		return 1
 	end
 	if id == clsid.wpn_vintorez_s or
-	   id == clsid.wpn_groza_s or 
+	   id == clsid.wpn_val_s or
+	   id == clsid.wpn_groza_s or
+	   id == clsid.wpn_fn2000_s or   
 	   id == clsid.wpn_ak74_s or	
 	   id == clsid.wpn_lr300_s or
 	   id == clsid.wpn_svd_s or

@@ -3,9 +3,12 @@
 	<string id="kb_turn_auto_engine">
 		<text>Завести двигатель</text>
 	</string>
-	<string id="kb_wpn_addon">
-		<text>Целеуказатель/Фонарь</text>
+	<string id="kb_wpn_laser_on">
+		<text>Такт. целеуказатель</text>
 	</string>	
+	<string id="kb_wpn_flashlight_on">
+		<text>Такт. фонарь</text>
+	</string>		
 	<string id="kb_active_jobs">
 		<text>КПК</text>
 	</string>

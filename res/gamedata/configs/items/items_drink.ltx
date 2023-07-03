@@ -40,20 +40,7 @@ remove_after_use               = true
 empty_weight                   = 0.3
 allow_repair                   = false
 
-has_anim 					   = true
-hud_section                    = vodka_hud
-
-[vodka_hud]:hud_base
-hands_position				   = 0.0,-0.02,0.14
-hands_orientation			   = 0.0,0.0,0.0
-hands_position_16x9			   = 0.0,-0.02,0.14
-hands_orientation_16x9		   = 0.0,0.0,0.0
-item_position                  = 0,0,0
-item_orientation               = 0,0,0
-anm_use          			   = vodka_1_hands_eat_invtrans, vodka_wpn_eat
-snd_using                      = interface\item_usage\vodka_use
-single_handed_anim             = 2 ;0 - правая, 1 - левая, 2 - обе
-item_visual                    = dynamics\devices\first_person_animated\dev_bottles\vodka_hud
+hide_time_wpn                  = 5
 
 [vodka_script]:vodka
 $spawn                         = "food and drugs\vodka_script"
@@ -95,20 +82,7 @@ use_condition                  = false
 ;max_uses                       = 2
 empty_weight                   = 0.05
 
-has_anim 					   = true
-hud_section                    = energy_drink_hud
-
-[energy_drink_hud]:hud_base
-hands_position				   = 0.0,-0.02,0.14
-hands_orientation			   = 0.0,0.0,0.0
-hands_position_16x9			   = 0.0,-0.02,0.14
-hands_orientation_16x9		   = 0.0,0.0,0.0
-item_position                  = 0,0,0
-item_orientation               = 0,0,0
-anm_use          			   = energy_1_hands_eat_invtrans, banka_1_wpn_eat
-snd_using                      = interface\item_usage\drink_energy_use
-single_handed_anim             = 2 ;0 - правая, 1 - левая, 2 - обе
-item_visual                    = dynamics\devices\first_person_animated\dev_energy\energy_drink_hud
+hide_time_wpn                  = 5
 
 [water_drink]:energy_drink
 $spawn                         = "food and drugs\water_drink"
@@ -133,59 +107,3 @@ eat_thirst					   = 0.7
 use_condition                  = true
 max_uses                       = 2
 empty_weight                   = 0.1
-
-has_anim 					   = true
-hud_section                    = water_drink_hud
-
-[water_drink_hud]:hud_base
-hands_position				   = 0, 0, 0.08
-hands_orientation			   = 0.0,0.0,0.0
-hands_position_16x9			   = 0, 0, 0.08
-hands_orientation_16x9		   = 0.0,0.0,0.0
-item_position                  = 0,0,0
-item_orientation               = 0,0,0
-anm_use          			   = flask_rework_hand_drink, flask_rework_drink
-snd_using                      = interface\item_usage\new_drink_flask
-single_handed_anim             = 2 ;0 - правая, 1 - левая, 2 - обе
-item_visual                    = dynamics\devices\first_person_animated\dev_flask\dev_water_flask_hud
-
-[item_use_water_bottle]:energy_drink
-$spawn                         = "food and drugs\water_drink"
-inv_name                       = st_item_use_water_bottle
-visual                         = dynamics\devices\dev_water\item_water_bottle
-description                    = st_item_use_water_bottle_descr
-cost                           = 500
-
-inv_grid_width                 = 1
-inv_grid_height                = 2
-inv_grid_x                     = 10
-inv_grid_y                     = 39
-inv_weight                     = 0.6
-
-boost_time                     = 20.0
-boost_radiation_restore        = 0
-boost_power_restore            = 0
-eat_thirst					   = 1.0
-eat_intoxication			   = -1
-
-eat_alcohol                    = -0.05
-
-use_condition                  = true
-max_uses                       = 2
-empty_weight                   = 0.1
-snd_on_take				       = other
-
-has_anim 					   = true
-hud_section                    = item_use_water_bottle_hud
-
-[item_use_water_bottle_hud]:hud_base
-hands_position				   = 0.0,-0.02,0.14
-hands_orientation			   = 0.0,0.0,0.0
-hands_position_16x9			   = 0.0,-0.02,0.14
-hands_orientation_16x9		   = 0.0,0.0,0.0
-item_position                  = 0,0,0
-item_orientation               = 0,0,0
-anm_use          			   = vodka_1_hands_eat_invtrans, vodka_wpn_eat
-snd_using                      = interface\item_usage\inv_drink_water
-single_handed_anim             = 2 ;0 - правая, 1 - левая, 2 - обе
-item_visual                    = dynamics\devices\first_person_animated\dev_bottles\water_bottle_hud

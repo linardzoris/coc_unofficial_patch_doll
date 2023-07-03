@@ -65,7 +65,6 @@ function ecolog_companion_task_2_give_reward(a,b)
 		coc_treasure_manager.reveal_random_stash("treasure","st_stash_reward")
 	end
 	game_relations.change_factions_community_num("ecolog",0,50)
-	game_relations.change_factions_community_num("csky",0,100)	
 	game_relations.change_factions_community_num("killer",0,25)
 end
 
@@ -322,7 +321,7 @@ end
 -- b212
 
 function actor_relocate_trapper_reward(first_speaker, second_speaker)
-	dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "wpn_wincheaster1300")
+	dialogs.relocate_item_section_to_actor(first_speaker, second_speaker, "wpn_wincheaster1300_trapper")
 end
 
 function zat_b106_trapper_reward(first_speaker, second_speaker)
@@ -338,18 +337,28 @@ end
 function jup_a10_proverka_wpn(first_speaker, second_speaker)
 	local table = {
 					"wpn_desert_eagle",
+					"wpn_desert_eagle_nimble",
 					"wpn_sig550",
 					"wpn_g36",
-					"wpn_g36k",
+					"wpn_g36_nimble",
+					"wpn_fn2000",
+					"wpn_fn2000_nimble",
 					"wpn_groza",
+					"wpn_groza_nimble",
+					"wpn_val",
 					"wpn_vintorez",
+					"wpn_vintorez_nimble",
 					"wpn_svd",
 					"wpn_svu",
 					"wpn_pkm",
+					"wpn_spas12",
+					"wpn_spas12_nimble",
 					"wpn_protecta",
+					"wpn_protecta_nimble",
 					"wpn_gauss",
 					"wpn_rpg7",
 					"wpn_rg-6",
+					"wpn_pkm_zulus",
 
 					}
 

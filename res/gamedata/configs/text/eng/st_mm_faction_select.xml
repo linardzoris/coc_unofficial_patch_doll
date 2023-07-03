@@ -48,12 +48,6 @@
 	<string id="st_faction_monolith_desc">
 		<text>%c[0,245,245,220]Monolith are a fanatical religious cult hostile to all but their own.\n \nDespite the destruction of the C-Conciousness they have since re-emerged as a resurgent force, retaking many of their former territories.</text>
 	</string>
-	<string id="st_faction_csky">
-		<text>Clear Sky</text>
-	</string>
-	<string id="st_faction_csky_desc">
-		<text>%c[0,245,245,220]Clear Sky is an independent scientific and military organisation focused on researching and understanding the Zone.\n \nFacing almost complete collapse after a failed and costly assault on Chernobyl NPP, a handful of the few remaining survivors managed to rebuild the faction to its former stature.</text>
-	</string>
 	<string id="st_faction_zombied">
 		<text>Zombified</text>
 	</string>

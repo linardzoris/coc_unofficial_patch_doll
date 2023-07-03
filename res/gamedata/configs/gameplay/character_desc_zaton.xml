@@ -1138,7 +1138,7 @@
     <visual>actors\stalker_neutral\stalker_neutral_1</visual>
     <supplies>
         [spawn] \n
-        wpn_bm16_full \n
+        wpn_bm16 \n
         ammo_12x70_buck = 1 \n
         wpn_pm = 1 \n
         ammo_9x18_fmj = 1 \n
@@ -1724,56 +1724,6 @@
         wpn_ak74 \n
         ammo_5.45x39_fmj = 1 \n
         wpn_fort \n
-        ammo_9x18_fmj = 1 \n
-#include "gameplay\supplies\character_medical.xml"
-#include "gameplay\supplies\character_medical_army.xml"
-    </supplies>
-#include "gameplay\character_criticals.xml"
-    </specific_character>
-    
-    <specific_character id="zat_b100_military_2" team_default="1">
-    <name>zat_b100_army_2</name>
-    <icon>ui_inGame2_Soldier_2</icon>
-    <map_icon x="1" y="0">
-    </map_icon>
-    <bio>Опытный сталкер. Детальная информация отсутствует.</bio>
-    <class>zat_b100_military_2</class>
-    <community>army</community>
-    <terrain_sect>stalker_terrain</terrain_sect>
-    <snd_config>characters_voice\human\military_1\</snd_config>
-    <rank>9252</rank>
-    <reputation>-497</reputation>
-    <visual>actors\stalker_soldier\stalker_soldier_2</visual>
-    <supplies>
-        [spawn] \n
-        wpn_ak74u \n
-        ammo_5.45x39_fmj = 1 \n
-        wpn_fort \n
-        ammo_9x18_fmj = 1 \n
-#include "gameplay\supplies\character_medical.xml"
-#include "gameplay\supplies\character_medical_army.xml"
-    </supplies>
-#include "gameplay\character_criticals.xml"
-    </specific_character>
-    
-    <specific_character id="zat_b100_military_3" team_default="1">
-    <name>zat_b100_army_3</name>
-    <icon>ui_inGame2_Soldier_2</icon>
-    <map_icon x="1" y="0">
-    </map_icon>
-    <bio>Опытный сталкер. Детальная информация отсутствует.</bio>
-    <class>zat_b100_military_3</class>
-    <community>army</community>
-    <terrain_sect>stalker_terrain</terrain_sect>
-    <snd_config>characters_voice\human\military_1\</snd_config>
-    <rank>7632</rank>
-    <reputation>-1233</reputation>
-    <visual>actors\stalker_soldier\stalker_soldier_2</visual>
-    <supplies>
-        [spawn] \n
-        wpn_ak74 \n
-        ammo_5.45x39_fmj = 1 \n
-        wpn_pm \n
         ammo_9x18_fmj = 1 \n
 #include "gameplay\supplies\character_medical.xml"
 #include "gameplay\supplies\character_medical_army.xml"

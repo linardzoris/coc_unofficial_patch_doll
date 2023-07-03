@@ -10,7 +10,6 @@ function pda_relations_tab:__init() super()
 	self.list = {
 		"stalker",
 		"bandit",
-		"csky",		
 		"dolg",
 		"freedom",
 		"killer",

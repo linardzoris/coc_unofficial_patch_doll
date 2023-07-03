@@ -111,3 +111,47 @@ additional_inventory_weight2			 = 20
 power_loss								 = 0.05
 
 visual                                   = dynamics\devices\dev_rukzak\dev_equ_military_pack.ogf
+
+[equ_exoskeleton]:equ_backpack
+$spawn                                   = "equipments\equ_exoskeleton"
+description                              = st_equ_exoskeleton_desc
+inv_weight                               = 15
+inv_name                                 = st_equ_exoskeleton_name
+inv_grid_x                               = 32
+inv_grid_y                               = 39
+cost                                     = 500000
+additional_inventory_weight				 = 75
+additional_inventory_weight2			 = 75
+
+hit_fraction_actor                       = 0.8
+bones_koeff_protection                   = actor_armor_suit
+
+power_loss								 = -0.02
+walk_accel                               = 1.15
+jump_speed                               = 1.3                       
+power_restore_speed                      = 0.1
+
+burn_protection                          = 0.01
+shock_protection                         = 0.0
+radiation_protection                     = 0.0
+chemical_burn_protection                 = 0.05
+strike_protection                        = 0.3
+wound_protection                         = 0.1
+immunities_sect                          = sect_equ_exoskeleton_immunities
+use_condition                            = true
+
+is_exoskeleton                           = true ; Это экзоскелет?
+show_protect_stats                       = true ; Показывать защитные характеристики?
+
+visual                                   = dynamics\devices\dev_rukzak\dev_equ_exo.ogf
+
+[sect_equ_exoskeleton_immunities]
+burn_immunity                            = 0.01	 
+strike_immunity                          = 0.0
+shock_immunity                           = 0.04
+wound_immunity                           = 0.02
+radiation_immunity                       = 0.0
+telepatic_immunity                       = 0.0
+chemical_burn_immunity                   = 0.04
+explosion_immunity                       = 0.04
+fire_wound_immunity                      = 0.02

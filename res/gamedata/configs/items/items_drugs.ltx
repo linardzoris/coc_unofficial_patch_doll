@@ -17,20 +17,7 @@ boost_max_weight               = 10.0
 use_sound                      = interface\inv_softdrink
 inv_weight                     = 0.1
 
-has_anim 					   = true
-hud_section                    = drug_booster_hud
-
-[drug_booster_hud]:hud_base
-hands_position				   = 0.0,-0.02,0.14
-hands_orientation			   = 0.0,0.0,0.0
-hands_position_16x9			   = 0.0,-0.02,0.14
-hands_orientation_16x9		   = 0.0,0.0,0.0
-item_position                  = 0,0,0
-item_orientation               = 0,0,0
-anm_use          			   = dev_booster_drug_gwr_hud, gerkules
-snd_using                      = interface\item_usage\gerkules_use
-single_handed_anim             = 2 ;0 - правая, 1 - левая, 2 - обе
-item_visual                    = dynamics\devices\first_person_animated\dev_bottles\drug_booster_hud
+hide_time_wpn                  = 3
 
 [drug_coagulant]:booster
 $spawn                         = "food and drugs\drug_coagulant"
@@ -56,20 +43,7 @@ max_uses                       = 2
 remove_after_use               = true
 empty_weight                   = 0.01
 
-has_anim 					   = true
-hud_section                    = drug_coagulant_hud
-
-[drug_coagulant_hud]:hud_base
-hands_position				   = 0.0,-0.02,0.14
-hands_orientation			   = 0.0,0.0,0.0
-hands_position_16x9			   = 0.0,-0.02,0.14
-hands_orientation_16x9		   = 0.0,0.0,0.0
-item_position                  = 0,0,0
-item_orientation               = 0,0,0
-anm_use          			   = tabletki_1_hands_eat_invtrans, tabletki_1_wpn_eat
-snd_using                      = interface\item_usage\pills_use
-single_handed_anim             = 2 ;0 - правая, 1 - левая, 2 - обе
-item_visual                    = dynamics\devices\first_person_animated\dev_pills\coagulant_hud
+hide_time_wpn                  = 4
 
 [drug_psy_blockade]:booster
 $spawn                         = "food and drugs\drug_psy_blockade"
@@ -95,20 +69,7 @@ max_uses                       = 5
 remove_after_use               = true
 empty_weight                   = 0.01
 
-has_anim 					   = true
-hud_section                    = drug_psy_blockade_hud
-
-[drug_psy_blockade_hud]:hud_base
-hands_position				   = 0.0,-0.02,0.14
-hands_orientation			   = 0.0,0.0,0.0
-hands_position_16x9			   = 0.0,-0.02,0.14
-hands_orientation_16x9		   = 0.0,0.0,0.0
-item_position                  = 0,0,0
-item_orientation               = 0,0,0
-anm_use          			   = tabletki_1_hands_eat_invtrans, tabletki_1_wpn_eat
-snd_using                      = interface\item_usage\pills_use
-single_handed_anim             = 2 ;0 - правая, 1 - левая, 2 - обе
-item_visual                    = dynamics\devices\first_person_animated\dev_pills\psy_blockade_hud
+hide_time_wpn                  = 4
 
 [drug_antidot]:booster
 $spawn                         = "food and drugs\drug_antidot"
@@ -134,20 +95,7 @@ max_uses                       = 3
 remove_after_use               = true
 empty_weight                   = 0.01
 
-has_anim 					   = true
-hud_section                    = drug_antidot_hud
-
-[drug_antidot_hud]:hud_base
-hands_position				   = 0.0,-0.02,0.14
-hands_orientation			   = 0.0,0.0,0.0
-hands_position_16x9			   = 0.0,-0.02,0.14
-hands_orientation_16x9		   = 0.0,0.0,0.0
-item_position                  = 0,0,0
-item_orientation               = 0,0,0
-anm_use          			   = bandage_1_hands_eat_invtrans, tabletki_2_wpn_eat
-snd_using                      = interface\item_usage\pills_use
-single_handed_anim             = 2 ;0 - правая, 1 - левая, 2 - обе
-item_visual                    = dynamics\devices\first_person_animated\dev_pills\antidot_hud
+hide_time_wpn                  = 4
 
 [drug_radioprotector]:booster
 $spawn                         = "food and drugs\drug_radioprotector"
@@ -173,20 +121,7 @@ max_uses                       = 2
 remove_after_use               = true
 empty_weight                   = 0.01
 
-has_anim 					   = true
-hud_section                    = drug_radioprotector_hud
-
-[drug_radioprotector_hud]:hud_base
-hands_position				   = 0.0,-0.02,0.14
-hands_orientation			   = 0.0,0.0,0.0
-hands_position_16x9			   = 0.0,-0.02,0.14
-hands_orientation_16x9		   = 0.0,0.0,0.0
-item_position                  = 0,0,0
-item_orientation               = 0,0,0
-anm_use          			   = tabletki_1_hands_eat_invtrans, tabletki_3_wpn_eat
-snd_using                      = interface\item_usage\pills_use
-single_handed_anim             = 2 ;0 - правая, 1 - левая, 2 - обе
-item_visual                    = dynamics\devices\first_person_animated\dev_pills\radioprotector_hud
+hide_time_wpn                  = 4
 
 [drug_anabiotic]:booster
 $spawn                         = "food and drugs\drug_anabiotic"
@@ -202,17 +137,4 @@ cost                           = 2500
 
 use_sound                      = interface\inv_pills
 
-has_anim 					   = true
-hud_section                    = drug_anabiotic_hud
-
-[drug_anabiotic_hud]:hud_base
-hands_position				   = 0.0,-0.02,0.14
-hands_orientation			   = 0.0,0.0,0.0
-hands_position_16x9			   = 0.0,-0.02,0.14
-hands_orientation_16x9		   = 0.0,0.0,0.0
-item_position                  = 0,0,0
-item_orientation               = 0,0,0
-anm_use          			   = dev_anabiotic_gwr_hud, biotic
-snd_using                      = interface\item_usage\anabiotic_use
-single_handed_anim             = 2 ;0 - правая, 1 - левая, 2 - обе
-item_visual                    = dynamics\devices\first_person_animated\dev_anabiotic\anabiotic_hud
+hide_time_wpn                  = 4

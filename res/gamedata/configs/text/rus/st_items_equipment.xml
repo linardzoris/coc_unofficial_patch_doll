@@ -96,12 +96,6 @@
 	<string id="st_energy_drink_descr">
 		<text>Часто используется сталкерами в многодневных походах, когда нет возможности остановиться и отдохнуть. Содержит легко усваиваемые углеводы, а также препараты, вызывающие выброс адреналина в кровь.</text>
 	</string>
-	<string id="st_item_use_water_bottle">
-		<text>Бутылка воды</text>
-	</string>
-	<string id="st_item_use_water_bottle_descr">
-		<text>Разливается неподалёку за Периметром, отлично утоляет жажду.</text>
-	</string>		
 	<string id="st_guitar_descr">
 		<text>Поговори хоть ты со мной, гитара семиструнная!..</text>
 	</string>

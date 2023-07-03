@@ -1585,7 +1585,18 @@ end
 
 function actor_has_nimble_weapon(actor, npc)
 	local need_item = {}
-	need_item["wpn_g36"] = true
+	need_item["wpn_groza_nimble"] = true
+	need_item["wpn_desert_eagle_nimble"] = true
+	need_item["wpn_fn2000_nimble"] = true
+	need_item["wpn_g36_nimble"] = true
+	need_item["wpn_protecta_nimble"] = true
+	need_item["wpn_mp5_nimble"] = true
+	need_item["wpn_sig220_nimble"] = true
+	need_item["wpn_spas12_nimble"] = true
+	need_item["wpn_usp_nimble"] = true
+	need_item["wpn_vintorez_nimble"] = true
+	need_item["wpn_svu_nimble"] = true
+	need_item["wpn_svd_nimble"] = true
 	for k,v in pairs(need_item) do
 		if actor:object(k) ~= nil then
 			return true
@@ -1596,7 +1607,18 @@ end
 
 function actor_has_active_nimble_weapon(actor, npc)
 	local need_item = {}
-	need_item["wpn_g36"] = true
+	need_item["wpn_groza_nimble"] = true
+	need_item["wpn_desert_eagle_nimble"] = true
+	need_item["wpn_fn2000_nimble"] = true
+	need_item["wpn_g36_nimble"] = true
+	need_item["wpn_protecta_nimble"] = true
+	need_item["wpn_mp5_nimble"] = true
+	need_item["wpn_sig220_nimble"] = true
+	need_item["wpn_spas12_nimble"] = true
+	need_item["wpn_usp_nimble"] = true
+	need_item["wpn_vintorez_nimble"] = true
+	need_item["wpn_svu_nimble"] = true
+	need_item["wpn_svd_nimble"] = true
 
 	if actor:item_in_slot(2) ~= nil and need_item[actor:item_in_slot(2):section()] == true then
 		return true
@@ -2834,8 +2856,6 @@ function smart_under_faction_control(actor,npc,p)
 		local f = {
 			["stalker"] = "stalker",
 			["bandit"] = "bandit",
-			["csky"] = "csky",
-			["renegade"] = "renegade",			
 			["killer"] = "merc",
 			["dolg"] = "duty",
 			["freedom"] = "freedom",

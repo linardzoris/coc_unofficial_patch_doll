@@ -410,7 +410,7 @@
 	<crouch_type>-1</crouch_type>
 	<supplies>
 		[spawn] \n
-		wpn_toz34_obrez \n
+		wpn_toz34 \n
 		ammo_12x76_zhekan = 1 \n
 #include "gameplay\supplies\character_medical.xml"
 	</supplies>
@@ -586,7 +586,7 @@
 	<crouch_type>-1</crouch_type>
 	<supplies>
 		[spawn] \n
-		wpn_bm16_full \n
+		wpn_bm16 \n
 		ammo_12x70_buck \n
 #include "gameplay\supplies\character_medical.xml"
 	</supplies>
