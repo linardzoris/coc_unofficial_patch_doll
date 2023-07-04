@@ -213,7 +213,7 @@ bool CWeaponMagazined::UseScopeTexture()
 
 void CWeaponMagazined::FireStart()
 {
-    if (!IsMisfire() && !IsBroken())
+    if (!IsMisfire())
     {
         if (IsValid())
         {
@@ -227,7 +227,6 @@ void CWeaponMagazined::FireStart()
                 if (GetState() == eFiremodePrev) return;
                 if (GetState() == eFiremodeNext) return;
                 if (GetState() == eSwitchAddon) return;
-                if (GetState() == eBroken) return;
 
                 inherited::FireStart();
 				
@@ -246,7 +245,7 @@ void CWeaponMagazined::FireStart()
                 OnMagazineEmpty();
         }
     }
-    else if (IsMisfire())
+    else // misfire
     {
 #ifdef EXTENDED_WEAPON_CALLBACKS //Alundaio
         IGameObject	*object = smart_cast<IGameObject*>(H_Parent());
@@ -254,20 +253,9 @@ void CWeaponMagazined::FireStart()
             object->callback(GameObject::eOnWeaponJammed)(object->lua_game_object(), this->lua_game_object());
 #endif
 
-        if (smart_cast<CActor*>(this->H_Parent()) && (Level().CurrentViewEntity() == H_Parent()) &&
-            !m_sounds.FindSoundItem("sndWpnJam", false))
+        if (smart_cast<CActor*>(this->H_Parent()) && (Level().CurrentViewEntity() == H_Parent()) && !m_sounds.FindSoundItem("sndWpnJam", false))
             CurrentGameUI()->AddCustomStatic("gun_jammed", true);
         else if (m_sounds.FindSoundItem("sndWpnJam", false))
-            PlaySound("sndWpnJam", get_LastFP());
-
-        OnEmptyClick();
-    }
-    else if (IsBroken())
-    {
-        if (smart_cast<CActor*>(this->H_Parent()) && (Level().CurrentViewEntity() == H_Parent()) &&
-            !m_sounds.FindSoundItem("sndWpnJam", false))
-            CurrentGameUI()->AddCustomStatic("gun_broken", true);
-        if (m_sounds.FindSoundItem("sndWpnJam", false))
             PlaySound("sndWpnJam", get_LastFP());
 
         OnEmptyClick();
@@ -572,7 +560,6 @@ void CWeaponMagazined::OnStateSwitch(u32 S, u32 oldState)
     case eIdle: switch2_Idle(); break;
     case eFire: switch2_Fire(); break;
     case eMisfire: break;
-    case eBroken: break;
     case eUnMisfire:
         if (owner)
             m_sounds_enabled = owner->CanPlayShHdRldSounds();
@@ -623,12 +610,6 @@ void CWeaponMagazined::UpdateCL()
     inherited::UpdateCL();
     float dt = Device.fTimeDelta;
 
-    // Управляет поломкой оружия
-    if (this->GetCondition() <= fConditionToBroke)
-        bWeaponBroken = true;
-    else 
-        bWeaponBroken = false;
-
     //когда происходит апдейт состояния оружия
     //ничего другого не делать
     if (GetNextState() == GetState())
@@ -648,7 +629,6 @@ void CWeaponMagazined::UpdateCL()
         }
         break;
         case eMisfire: state_Misfire(dt); break;
-        case eBroken: state_Broken(dt); break;
         case eMagEmpty: state_MagEmpty(dt); break;
         case eHidden: break;
         }
@@ -731,7 +711,7 @@ void CWeaponMagazined::state_Fire(float dt)
         while (!m_magazine.empty() && fShotTimeCounter < 0 && (IsWorking() || m_bFireSingleShot) && (m_iQueueSize < 0 || m_iShotNum < m_iQueueSize))
         {
 #ifndef COC_EDITION
-            if (CheckForMisfire() || CheckForBroken())
+            if (CheckForMisfire())
             {
                 StopShooting();
                 return;
@@ -758,7 +738,7 @@ void CWeaponMagazined::state_Fire(float dt)
                 FireTrace(m_vStartPos, m_vStartDir);
 
 #ifdef COC_EDITION
-            if (CheckForMisfire() || CheckForBroken())
+            if (CheckForMisfire())
             {
                 StopShooting();
                 return;
@@ -802,16 +782,6 @@ void CWeaponMagazined::state_Misfire(float dt)
     SwitchState(eIdle);
 
     bMisfire = true;
-
-    UpdateSounds();
-}
-
-void CWeaponMagazined::state_Broken(float dt)
-{
-    OnEmptyClick();
-    SwitchState(eIdle);
-
-    bWeaponBroken = true;
 
     UpdateSounds();
 }
@@ -998,48 +968,60 @@ void CWeaponMagazined::switch2_AddonSwitch()
 
 void CWeaponMagazined::PlayAnimFireMode()
 {
-    if (isHUDAnimationExist("anm_changefiremode_w_gl") && !IsMisfire() && IsGrenadeLauncherAttached() && m_ammoElapsed.type1 > 0)
-        PlayHUDMotion("anm_changefiremode_w_gl", true, this, GetState());
-    if (isHUDAnimationExist("anm_changefiremode_empty_w_gl") && !IsMisfire() && IsGrenadeLauncherAttached() && m_ammoElapsed.type1 == 0)
-        PlayHUDMotion("anm_changefiremode_empty_w_gl", true, this, GetState());
+    if (!isHUDAnimationExist("anm_changefiremode")) // Если нет базовой анимации, не виснем в состоянии
+        SwitchState(eIdle);
 
-    if (isHUDAnimationExist("anm_changefiremode") && !IsMisfire() && !IsGrenadeLauncherAttached() && m_ammoElapsed.type1 > 0)
-        PlayHUDMotion("anm_changefiremode", true, this, GetState());
-    if (isHUDAnimationExist("anm_changefiremode_empty") && !IsMisfire() && !IsGrenadeLauncherAttached() && m_ammoElapsed.type1 == 0)
-        PlayHUDMotion("anm_changefiremode_empty", true, this, GetState());
+    if (isHUDAnimationExist("anm_changefiremode"))
+    {
+        if (!IsMisfire() && !IsGrenadeLauncherAttached() && m_ammoElapsed.type1 > 0)
+            PlayHUDMotion("anm_changefiremode", true, this, GetState());
+        if (isHUDAnimationExist("anm_changefiremode_empty") && !IsMisfire() && !IsGrenadeLauncherAttached() && m_ammoElapsed.type1 == 0)
+            PlayHUDMotion("anm_changefiremode_empty", true, this, GetState());
 
-    if (isHUDAnimationExist("anm_changefiremode_jammed") && !IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 > 0)
-        PlayHUDMotion("anm_changefiremode_jammed", true, this, GetState());
-    if (isHUDAnimationExist("anm_changefiremode_empty_jammed") && !IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 == 0)
-        PlayHUDMotion("anm_changefiremode_empty_jammed", true, this, GetState());
+        if (isHUDAnimationExist("anm_changefiremode_w_gl") && !IsMisfire() && IsGrenadeLauncherAttached() && m_ammoElapsed.type1 > 0)
+            PlayHUDMotion("anm_changefiremode_w_gl", true, this, GetState());
+        if (isHUDAnimationExist("anm_changefiremode_empty_w_gl") && !IsMisfire() && IsGrenadeLauncherAttached() && m_ammoElapsed.type1 == 0)
+            PlayHUDMotion("anm_changefiremode_empty_w_gl", true, this, GetState());
 
-    if (isHUDAnimationExist("anm_changefiremode_jammed_w_gl") && IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 > 0)
-        PlayHUDMotion("anm_changefiremode_jammed_w_gl", true, this, GetState());
-    if (isHUDAnimationExist("anm_changefiremode_empty_jammed_w_gl") && IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 == 0)
-        PlayHUDMotion("anm_changefiremode_empty_jammed_w_gl", true, this, GetState());
+        if (isHUDAnimationExist("anm_changefiremode_jammed") && !IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 > 0)
+            PlayHUDMotion("anm_changefiremode_jammed", true, this, GetState());
+        if (isHUDAnimationExist("anm_changefiremode_empty_jammed") && !IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 == 0)
+            PlayHUDMotion("anm_changefiremode_empty_jammed", true, this, GetState());
+
+        if (isHUDAnimationExist("anm_changefiremode_jammed_w_gl") && IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 > 0)
+            PlayHUDMotion("anm_changefiremode_jammed_w_gl", true, this, GetState());
+        if (isHUDAnimationExist("anm_changefiremode_empty_jammed_w_gl") && IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 == 0)
+            PlayHUDMotion("anm_changefiremode_empty_jammed_w_gl", true, this, GetState());
+    }
 }
 
 void CWeaponMagazined::PlayAnimAddonSwitch() // Для лазера/фонаря
 {
-    if (isHUDAnimationExist("anm_addon_switch_w_gl") && !IsMisfire() && IsGrenadeLauncherAttached() && m_ammoElapsed.type1 > 0)
-        PlayHUDMotion("anm_addon_switch_w_gl", true, this, GetState());
-    if (isHUDAnimationExist("anm_addon_switch_empty_w_gl") && !IsMisfire() && IsGrenadeLauncherAttached() && m_ammoElapsed.type1 == 0)
-        PlayHUDMotion("anm_addon_switch_empty_w_gl", true, this, GetState());
+    if (!isHUDAnimationExist("anm_addon_switch")) // Если нет базовой анимации, не виснем в состоянии
+        SwitchState(eIdle);
 
-    if (isHUDAnimationExist("anm_addon_switch") && !IsMisfire() && !IsGrenadeLauncherAttached() && m_ammoElapsed.type1 > 0)
-        PlayHUDMotion("anm_addon_switch", true, this, GetState());
-    if (isHUDAnimationExist("anm_addon_switch_empty") && !IsMisfire() && !IsGrenadeLauncherAttached() && m_ammoElapsed.type1 == 0)
-        PlayHUDMotion("anm_addon_switch_empty", true, this, GetState());
+    if (isHUDAnimationExist("anm_addon_switch"))
+    {
+        if (!IsMisfire() && !IsGrenadeLauncherAttached() && m_ammoElapsed.type1 > 0)
+            PlayHUDMotion("anm_addon_switch", true, this, GetState());
+        if (isHUDAnimationExist("anm_addon_switch_empty") && !IsMisfire() && !IsGrenadeLauncherAttached() && m_ammoElapsed.type1 == 0)
+            PlayHUDMotion("anm_addon_switch_empty", true, this, GetState());
 
-    if (isHUDAnimationExist("anm_addon_switch_jammed") && !IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 > 0)
-        PlayHUDMotion("anm_addon_switch_jammed", true, this, GetState());
-    if (isHUDAnimationExist("anm_addon_switch_empty_jammed") && !IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 == 0)
-        PlayHUDMotion("anm_addon_switch_empty_jammed", true, this, GetState());
+        if (isHUDAnimationExist("anm_addon_switch_w_gl") && !IsMisfire() && IsGrenadeLauncherAttached() && m_ammoElapsed.type1 > 0)
+            PlayHUDMotion("anm_addon_switch_w_gl", true, this, GetState());
+        if (isHUDAnimationExist("anm_addon_switch_empty_w_gl") && !IsMisfire() && IsGrenadeLauncherAttached() && m_ammoElapsed.type1 == 0)
+            PlayHUDMotion("anm_addon_switch_empty_w_gl", true, this, GetState());
 
-    if (isHUDAnimationExist("anm_addon_switch_jammed_w_gl") && IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 > 0)
-        PlayHUDMotion("anm_addon_switch_jammed_w_gl", true, this, GetState());
-    if (isHUDAnimationExist("anm_addon_switch_empty_jammed_w_gl") && IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 == 0)
-        PlayHUDMotion("anm_addon_switch_empty_jammed_w_gl", true, this, GetState());
+        if (isHUDAnimationExist("anm_addon_switch_jammed") && !IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 > 0)
+            PlayHUDMotion("anm_addon_switch_jammed", true, this, GetState());
+        if (isHUDAnimationExist("anm_addon_switch_empty_jammed") && !IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 == 0)
+            PlayHUDMotion("anm_addon_switch_empty_jammed", true, this, GetState());
+
+        if (isHUDAnimationExist("anm_addon_switch_jammed_w_gl") && IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 > 0)
+            PlayHUDMotion("anm_addon_switch_jammed_w_gl", true, this, GetState());
+        if (isHUDAnimationExist("anm_addon_switch_empty_jammed_w_gl") && IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 == 0)
+            PlayHUDMotion("anm_addon_switch_empty_jammed_w_gl", true, this, GetState());
+    }
 }
 
 #ifdef DEBUG
@@ -1243,6 +1225,9 @@ bool CWeaponMagazined::Action(u16 cmd, u32 flags)
     case kWPN_ADDON: {
         if (flags & CMD_START)
         {
+            if (!HasFlashlight() && !HasLaser())
+                return false;
+
             OnWeaponAddonSwitch();
             return true;
         };

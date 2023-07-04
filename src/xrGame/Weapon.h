@@ -80,7 +80,6 @@ public:
 
 // Новое
     float fActorPowerLeakAimSpeed; // Скорость утечки выносливости во время прицеливания
-    float fConditionToBroke; // При достижении этого порога оружие ломается
 
 	float m_fLR_ShootingFactor; // Фактор горизонтального сдвига худа при стрельбе [-1; +1] // SWM 3
     float m_fUD_ShootingFactor; // Фактор вертикального сдвига худа при стрельбе [-1; +1]
@@ -158,7 +157,6 @@ public:
         eFiremodePrev,
         eFiremodeNext,
         eSwitchAddon,
-        eBroken,
     };
     enum EWeaponSubStates
     {
@@ -177,9 +175,7 @@ public:
     BOOL IsUpdating();
 
     BOOL IsMisfire() const;
-    BOOL IsBroken() const;
     BOOL CheckForMisfire();
-    BOOL CheckForBroken();
 
     BOOL AutoSpawnAmmo() const { return m_bAutoSpawnAmmo; };
     bool IsTriStateReload() const { return m_bTriStateReload; }
@@ -213,8 +209,6 @@ protected:
 
     // a misfire happens, you'll need to rearm weapon
     bool bMisfire;
-    // Only repair
-    bool bWeaponBroken;
 
     BOOL m_bAutoSpawnAmmo;
     virtual bool AllowBore();

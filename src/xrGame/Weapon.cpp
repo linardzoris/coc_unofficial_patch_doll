@@ -518,9 +518,6 @@ void CWeapon::Load(LPCSTR section)
     conditionDecreasePerQueueShot = READ_IF_EXISTS(pSettings, r_float, section, "condition_queue_shot_dec", conditionDecreasePerShot);
     conditionDecreasePerShotOnHit = READ_IF_EXISTS(pSettings, r_float, section, "condition_shot_dec_on_hit", 0.f);
 
-    // При достижении этого порога оружие ломается
-    fConditionToBroke = READ_IF_EXISTS(pSettings, r_float, section, "condition_to_broke", 0.f);
-
     vLoadedFirePoint = pSettings->r_fvector3(section, "fire_point");
 
     if (pSettings->line_exist(section, "fire_point2"))
@@ -1471,7 +1468,6 @@ void CWeapon::SetDefaults()
 
     m_flags.set(FUsingCondition, TRUE);
     bMisfire = false;
-    bWeaponBroken = false;
     m_flagsAddOnState = 0;
     m_zoom_params.m_bIsZoomModeNow = false;
 }
@@ -1832,34 +1828,9 @@ BOOL CWeapon::CheckForMisfire()
     }
 }
 
-BOOL CWeapon::CheckForBroken()
-{
-    if (OnClient())
-        return FALSE;
-
-    if (this->GetCondition() <= fConditionToBroke)
-    {
-        FireEnd();
-
-        bWeaponBroken = true;
-        SwitchState(eBroken);
-
-        return TRUE;
-    }
-    else
-    {
-        return FALSE;
-    }
-}
-
 BOOL CWeapon::IsMisfire() const 
 { 
     return bMisfire; 
-}
-
-BOOL CWeapon::IsBroken() const 
-{ 
-    return bWeaponBroken; 
 }
 
 void CWeapon::Reload() 
