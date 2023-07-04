@@ -274,7 +274,7 @@ void CWeapon::UpdateUIScope()
         }
         else if (bIsSecondVPZoomPresent() && IsScopeAttached())
         {
-            m_zoom_params.m_f3dZoomFactor = pSettings->r_float(GetScopeName(), "3d_zoom_factor");
+            m_zoom_params.m_f3dZoomFactor = READ_IF_EXISTS(pSettings, r_float, cNameSect(), "3d_zoom_factor", 1.1);
         }
         else
         {
