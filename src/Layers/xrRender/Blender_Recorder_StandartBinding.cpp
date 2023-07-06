@@ -433,7 +433,10 @@ static class ssfx_wpn_dof_1 : public R_constant_setup
 
 static class ssfx_wpn_dof_2 : public R_constant_setup
 {
-    virtual void setup(R_constant* C) { RCache.set_c(C, ps_ssfx_wpn_dof_2, 0, 0, 0); }
+    virtual void setup(R_constant* C) 
+    { 
+        RCache.set_c(C, ps_ssfx_wpn_dof_2, 0, 0, 0); 
+    }
 } ssfx_wpn_dof_2;
 
 // Standart constant-binding
