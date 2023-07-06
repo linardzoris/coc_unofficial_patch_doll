@@ -1217,7 +1217,7 @@ void CUIActorMenu::PropertiesBoxForUsing(PIItem item, bool& b_show)
     CGameObject* GO = smart_cast<CGameObject*>(item);
     shared_str section_name = GO->cNameSect();
 
-	if (!item->Useful())
+	if (!item->GetCanUse())
         return;
 
     //ability to set eat string from settings

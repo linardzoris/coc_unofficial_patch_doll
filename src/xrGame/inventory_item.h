@@ -189,6 +189,8 @@ public:
     void DenyTrade() { m_flags.set(FCanTrade, FALSE); };
     virtual bool IsNecessaryItem(CInventoryItem* item);
     virtual bool IsNecessaryItem(const shared_str& item_sect) { return false; };
+    bool GetCanUse() const { return m_bCanUse; }
+
 protected:
     u32 m_cost;
     float m_weight;

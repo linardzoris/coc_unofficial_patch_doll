@@ -179,9 +179,6 @@ LPCSTR CInventoryItem::NameComplex()
 */
 bool CInventoryItem::Useful() const 
 {
-    if (!m_bCanUse)
-        return false;
-
     return CanTake(); 
 }
 

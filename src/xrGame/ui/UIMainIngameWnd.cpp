@@ -811,13 +811,16 @@ void CUIMainIngameWnd::UpdateMainIndicators()
         if (knife)
         {
             float condition = knife->GetCondition();
-            m_ind_weapon_broken->Show(true);
-            if (condition <= 0.75f && condition >= 0.5f)
-                m_ind_weapon_broken->InitTexture("ui_inGame2_circle_Gunbroken_green");
-            else if (condition < 0.5f && condition > 0.25f)
-                m_ind_weapon_broken->InitTexture("ui_inGame2_circle_Gunbroken_yellow");
-            else if (condition <= 0.25f)
-                m_ind_weapon_broken->InitTexture("ui_inGame2_circle_Gunbroken_red");
+            if (condition < 0.75f)
+            {
+                    m_ind_weapon_broken->Show(true);
+                if (condition > 0.5f)
+                    m_ind_weapon_broken->InitTexture("ui_inGame2_circle_Gunbroken_green");
+                else if (condition > 0.25f)
+                    m_ind_weapon_broken->InitTexture("ui_inGame2_circle_Gunbroken_yellow");
+                else
+                    m_ind_weapon_broken->InitTexture("ui_inGame2_circle_Gunbroken_red");
+            }
         }
     }
     // Overweight icon
