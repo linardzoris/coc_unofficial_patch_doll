@@ -109,9 +109,8 @@ void CCustomOutfit::Load(LPCSTR section)
     m_fIntoxicationRestoreSpeed = READ_IF_EXISTS(pSettings, r_float, section, "intoxication_restore_speed", 0.f);
     m_fSleepenessRestoreSpeed = READ_IF_EXISTS(pSettings, r_float, section, "sleepeness_restore_speed", 0.f);
 
-    m_fJumpSpeed = READ_IF_EXISTS(pSettings, r_float, section, "jump_speed", 1.f);
-    m_fWalkAccel = READ_IF_EXISTS(pSettings, r_float, section, "walk_accel", 1.f);
-    m_fOverweightWalkK = READ_IF_EXISTS(pSettings, r_float, section, "overweight_walk_accel", 1.f);
+    m_fJumpSpeed = READ_IF_EXISTS(pSettings, r_float, section, "jump_speed", 0.0f);
+    m_fWalkAccel = READ_IF_EXISTS(pSettings, r_float, section, "walk_accel", 0.0f);
 
     m_artefact_count = READ_IF_EXISTS(pSettings, r_u32, section, "artefact_count", 0);
     clamp(m_artefact_count, (u32)0, (u32)GameConstants::GetArtefactsCount());
@@ -381,11 +380,6 @@ bool CCustomOutfit::install_upgrade_impl(LPCSTR section, bool test)
 
     result |= process_if_exists(section, "jump_speed", &CInifile::r_float, m_fJumpSpeed, test);
     result |= process_if_exists(section, "walk_accel", &CInifile::r_float, m_fWalkAccel, test);
-    result |= process_if_exists(section, "overweight_walk_k", &CInifile::r_float, m_fOverweightWalkK, test);
-
-    m_fJumpSpeed = READ_IF_EXISTS(pSettings, r_float, section, "jump_speed", 1.f);
-    m_fWalkAccel = READ_IF_EXISTS(pSettings, r_float, section, "walk_accel", 1.f);
-    m_fOverweightWalkK = READ_IF_EXISTS(pSettings, r_float, section, "overweight_walk_accel", 1.f);
 
     return result;
 }

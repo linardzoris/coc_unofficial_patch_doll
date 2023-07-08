@@ -81,11 +81,11 @@ void CArtefact::Load(LPCSTR section)
     m_fPowerRestoreSpeed = pSettings->r_float(section, "power_restore_speed");
     m_fBleedingRestoreSpeed = pSettings->r_float(section, "bleeding_restore_speed");
     m_fThirstRestoreSpeed = pSettings->r_float(section, "thirst_restore_speed");
-    m_fIntoxicationRestoreSpeed = READ_IF_EXISTS(pSettings, r_float, section, "intoxication_restore_speed", 0.f);
-    m_fSleepenessRestoreSpeed = READ_IF_EXISTS(pSettings, r_float, section, "sleepeness_restore_speed", 0.f);
+    m_fIntoxicationRestoreSpeed = READ_IF_EXISTS(pSettings, r_float, section, "intoxication_restore_speed", 0.0f);
+    m_fSleepenessRestoreSpeed = READ_IF_EXISTS(pSettings, r_float, section, "sleepeness_restore_speed", 0.0f);
 
-    m_fJumpSpeed = READ_IF_EXISTS(pSettings, r_float, section, "jump_speed", 1.f);
-    m_fWalkAccel = READ_IF_EXISTS(pSettings, r_float, section, "walk_accel", 1.f);
+    m_fJumpSpeed = READ_IF_EXISTS(pSettings, r_float, section, "jump_speed", 0.0f);
+    m_fWalkAccel = READ_IF_EXISTS(pSettings, r_float, section, "walk_accel", 0.0f);
     if (pSettings->section_exist(pSettings->r_string(section, "hit_absorbation_sect")))
     {
         m_ArtefactHitImmunities.LoadImmunities(pSettings->r_string(section, "hit_absorbation_sect"), pSettings);

@@ -144,6 +144,7 @@ CActor::CActor() : CEntityAlive(), current_ik_cam_shift(0)
     m_fClimbFactor = 1.f;
     m_fCamHeightFactor = 0.87f;
 	m_fOverweightWalkAccel = 1.f;
+    m_fOverweightJumpSpeed = 1.f;
 
     m_fFallTime = s_fFallTime;
     m_bAnimTorsoPlayed = false;
@@ -327,6 +328,7 @@ void CActor::Load(LPCSTR section)
     m_fWalkAccel = m_fBaseWalkAccel;
     m_fWalkAccelLimit = pSettings->r_float(section, "walk_accel_limit");
 	m_fOverweightWalkAccel = READ_IF_EXISTS(pSettings, r_float, section, "overweight_walk_accel", 1.0f);
+    m_fOverweightJumpSpeed = READ_IF_EXISTS(pSettings, r_float, section, "overweight_jump_speed", 1.0f);
     m_fBaseJumpSpeed = pSettings->r_float(section, "jump_speed");
     m_fJumpSpeed = m_fBaseJumpSpeed;
     m_fJumpSpeedLimit = pSettings->r_float(section, "jump_speed_limit");
@@ -1798,9 +1800,6 @@ void CActor::UpdateArtefactsOnBeltAndOutfit()
 
         jump_speed_add += (outfit->m_fJumpSpeed);
         walk_accel_add += (outfit->m_fWalkAccel);
-
-        if (inventory().TotalWeight() > MaxCarryWeight())
-            m_fBaseWalkAccel *= outfit->m_fOverweightWalkK;
     }
 
     // Шлем
@@ -1834,9 +1833,7 @@ void CActor::UpdateArtefactsOnBeltAndOutfit()
         conditions().ChangeRadiation(pBackpack->m_fRadiationRestoreSpeed * f_update_time);
 
         jump_speed_add += (pBackpack->m_fJumpSpeed);
-
-        if (inventory().TotalWeight() > MaxCarryWeight())
-            m_fBaseWalkAccel *= pBackpack->m_fOverweightWalkK;
+        walk_accel_add += (pBackpack->m_fWalkAccel);
     }
 
     // Разгрузка
@@ -1850,17 +1847,20 @@ void CActor::UpdateArtefactsOnBeltAndOutfit()
         conditions().ChangeSatiety(pUnvest->m_fSatietyRestoreSpeed * f_update_time);
         conditions().ChangeRadiation(pUnvest->m_fRadiationRestoreSpeed * f_update_time);
 
-        if (inventory().TotalWeight() > MaxCarryWeight())
-            m_fBaseWalkAccel *= pUnvest->m_fOverweightWalkK;
+        jump_speed_add += (pUnvest->m_fJumpSpeed);
+        walk_accel_add += (pUnvest->m_fWalkAccel);
     }
 
     // Предельно общее
+
+    bool MaxWeight = inventory().TotalWeight() > MaxCarryWeight();
+
 	if (m_fBaseJumpSpeed + jump_speed_add <= 0)
-        m_fJumpSpeed = 0.01;
+        m_fJumpSpeed = 0.05;
     else if (m_fBaseJumpSpeed + jump_speed_add > m_fJumpSpeedLimit)
         m_fJumpSpeed = m_fJumpSpeedLimit;
     else
-        m_fJumpSpeed = m_fBaseJumpSpeed + jump_speed_add;
+        m_fJumpSpeed = MaxWeight ? m_fOverweightJumpSpeed + jump_speed_add : m_fBaseJumpSpeed + jump_speed_add;
 
     character_physics_support()->movement()->SetJumpUpVelocity(m_fJumpSpeed);
 
@@ -1869,7 +1869,7 @@ void CActor::UpdateArtefactsOnBeltAndOutfit()
     else if (m_fBaseWalkAccel + walk_accel_add > m_fWalkAccelLimit)
         m_fWalkAccel = m_fWalkAccelLimit;
     else
-        m_fWalkAccel = m_fBaseWalkAccel + walk_accel_add;
+        m_fWalkAccel = MaxWeight ? m_fOverweightWalkAccel + walk_accel_add : m_fBaseWalkAccel + walk_accel_add;
 }
 
 void CActor::UpdateInventoryItems()

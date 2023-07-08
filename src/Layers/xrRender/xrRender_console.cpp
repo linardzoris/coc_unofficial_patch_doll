@@ -23,7 +23,12 @@ const xr_token qpreset_token[] = {
     {nullptr, 0}
 };
 
-u32 ps_r_ssao_mode = 2;
+#if defined(USE_DX10) || defined(USE_DX11) || defined(USE_OGL)
+    u32 ps_r_ssao_mode = 4;
+#else
+    u32 ps_r_ssao_mode = 1;
+#endif
+
 const xr_token qssao_mode_token[] = {
     {"disabled_ao", 0},
     {"default_ao", 1},

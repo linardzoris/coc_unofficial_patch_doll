@@ -225,27 +225,6 @@ void CActor::g_cl_CheckControls(u32 mstate_wf, Fvector& vControlAccel, float& Ju
             mstate_real |= mcJump;
             m_bJumpKeyPressed = TRUE;
             float jumpSpd = m_fJumpSpeed;
-            TIItemContainer::iterator it = inventory().m_belt.begin();
-            TIItemContainer::iterator ite = inventory().m_belt.end();
-            for (; it != ite; ++it)
-            {
-                CArtefact* artefact = smart_cast<CArtefact*>(*it);
-                if (artefact)
-                {
-                    jumpSpd *= (artefact->m_fJumpSpeed * artefact->GetCondition());
-                }
-            }
-            CCustomOutfit* outfit = GetOutfit();
-            if (outfit)
-                jumpSpd *= outfit->m_fJumpSpeed;
-
-            CBackpack* backpack = smart_cast<CBackpack*>(inventory().ItemFromSlot(BACKPACK_SLOT));
-            if (backpack)
-                jumpSpd *= backpack->m_fJumpSpeed;
-
-            CUnvest* unvest = smart_cast<CUnvest*>(inventory().ItemFromSlot(UNVEST_SLOT));
-            if (unvest)
-                jumpSpd *= unvest->m_fJumpSpeed;
 
             Jump = jumpSpd;
             m_fJumpTime = s_fJumpTime;
@@ -308,9 +287,6 @@ void CActor::g_cl_CheckControls(u32 mstate_wf, Fvector& vControlAccel, float& Ju
             if (scale > EPS)
             {
                 float accel_k = m_fWalkAccel;
-
-				if (inventory().TotalWeight() > MaxCarryWeight())
-					accel_k *= m_fOverweightWalkAccel;
 
 				scale	=	accel_k/scale;
 				if (bAccelerated)

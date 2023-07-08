@@ -33,7 +33,6 @@ public:
 
     float m_fJumpSpeed;
     float m_fWalkAccel;
-    float m_fOverweightWalkK;
 
 protected:
     HitImmunity::HitTypeSVec m_HitTypeProtection;

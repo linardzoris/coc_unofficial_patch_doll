@@ -425,6 +425,7 @@ public:
     float m_fWalkAccel;
     float m_fWalkAccelLimit;
 	float m_fOverweightWalkAccel;
+    float m_fOverweightJumpSpeed;
     float m_fJumpSpeed;
     float m_fBaseJumpSpeed;
     float m_fJumpSpeedLimit;

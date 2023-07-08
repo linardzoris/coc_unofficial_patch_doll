@@ -37,7 +37,6 @@ protected:
 	UIArtefactParamItem* m_artefact_count;
     UIArtefactParamItem* m_fJumpSpeed;
     UIArtefactParamItem* m_fWalkAccel;
-    UIArtefactParamItem* m_fOverweightWalkAccel;
     UIArtefactParamItem* m_fThirstRestoreSpeed;
     UIArtefactParamItem* m_fPsyHealthRestoreSpeed;
     UIArtefactParamItem* m_fIntoxicationRestoreSpeed;

@@ -84,9 +84,8 @@ void CBackpack::Load(LPCSTR section)
     m_fPowerRestoreSpeed = READ_IF_EXISTS(pSettings, r_float, section, "power_restore_speed", 0.0f);
     m_fBleedingRestoreSpeed = READ_IF_EXISTS(pSettings, r_float, section, "bleeding_restore_speed", 0.0f);
 
-    m_fJumpSpeed = READ_IF_EXISTS(pSettings, r_float, section, "jump_speed", 1.f);
-    m_fWalkAccel = READ_IF_EXISTS(pSettings, r_float, section, "walk_accel", 1.f);
-    m_fOverweightWalkK = READ_IF_EXISTS(pSettings, r_float, section, "overweight_walk_accel", 1.f);
+    m_fJumpSpeed = READ_IF_EXISTS(pSettings, r_float, section, "jump_speed", 0.0f);
+    m_fWalkAccel = READ_IF_EXISTS(pSettings, r_float, section, "walk_accel", 0.0f);
 
     m_flags.set(FUsingCondition, READ_IF_EXISTS(pSettings, r_bool, section, "use_condition", TRUE));
 	m_bShowStats = READ_IF_EXISTS(pSettings, r_bool, section, "show_protect_stats", FALSE); // Показывать outfit_info?
@@ -272,6 +271,9 @@ bool CBackpack::install_upgrade_impl(LPCSTR section, bool test)
 
     result |= process_if_exists(section, "additional_inventory_weight", &CInifile::r_float, m_additional_weight, test);
     result |= process_if_exists(section, "additional_inventory_weight2", &CInifile::r_float, m_additional_weight2, test);
+
+    result |= process_if_exists(section, "jump_speed", &CInifile::r_float, m_fJumpSpeed, test);
+    result |= process_if_exists(section, "walk_accel", &CInifile::r_float, m_fWalkAccel, test);
 
     return result;
 }
