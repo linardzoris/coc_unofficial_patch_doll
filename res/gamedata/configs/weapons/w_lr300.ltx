@@ -7,7 +7,7 @@ scheduled					= off
 class						= WP_AK74
 description					= st_wpn_lr300_descr
 
-scopes 						= acog_scope, pn23_scope, barska_scope, eotech_scope ;, specter_scope
+scopes 						= acog_scope, pn23_scope, barska_scope, eotech_scope, specter_scope
 parent_section  			= wpn_lr300
 
 ef_main_weapon_type			= 2
@@ -120,17 +120,17 @@ holder_fov_modifier				= 1
 slot 			 				= 2
 animation_slot					= 2
 
-position                   		= -0.07, 0.097, -0.094
+position                   		= -0.026,-0.130,0.015
 orientation                		= 0,0,0
 
-fire_point              		= 0.05, -0.06, 0.575
-fire_point2             		= 0, 0.199, 0.575
+fire_point              		= 0,0.199,0.575
+fire_point2             		= 0,0.199,0.575
 
-shell_point             		= 0.12, 0, 0.07
+shell_point             		= 0.12,0,0.07
 shell_particles         		= ;weapons\556x45
 
-strap_position         			= -0.15, -0.15, 0.2
-strap_orientation      			= -10, -5, 10
+strap_position         			= -0.15,-0.37,0.2
+strap_orientation      			= -10,-5,10
 strap_bone0             		= bip01_spine2
 strap_bone1             		= bip01_spine1
 
@@ -204,8 +204,8 @@ anm_idle_moving_crouch                   = ras_m4a1_hand_crouch, idle
 anm_idle_aim_moving_crouch               = ras_m4a1_hand_crouch, idle
 anm_idle_moving                          = ras_m4a1_hand_walk, idle
 anm_idle_sprint                          = ras_m4a1_hand_run, idle
-anm_reload                               = ras_m4a1_hand_reload, ras_m4a1_reload
-anm_reload_empty                         = ras_m4a1_hand_reload_empty, ras_m4a1_reload_empty
+anm_reload                               = ras_m4a1_hand_reload, ras_lr300_reload
+anm_reload_empty                         = ras_m4a1_hand_reload_empty, ras_lr300_reload_empty
 anm_shots                                = ras_m4a1_hand_shot_shell, shot
 anm_show                                 = ras_m4a1_hand_in, idle
 anm_reload_misfire                       = ras_m4a1_hand_misfire, ras_m4a1_misfire
@@ -234,8 +234,8 @@ anm_idle_moving_w_gl_aim                 = ras_m4a1_hand_walk_w_gl_aim, idle
 anm_idle_sprint_w_gl                     = ras_m4a1_hand_run_w_gl, idle
 anm_idle_w_gl                            = ras_m4a1_hand_idle_w_gl, idle
 anm_idle_w_gl_aim                        = ras_m4a1_hand_idle_w_gl_aim, idle
-anm_reload_w_gl                          = ras_m4a1_hand_reload_w_gl, ras_m4a1_reload_w_gl
-anm_reload_empty_w_gl                    = ras_m4a1_hand_reload_empty_w_gl, ras_m4a1_reload_empty
+anm_reload_w_gl                          = ras_m4a1_hand_reload_w_gl, ras_lr300_reload_w_gl
+anm_reload_empty_w_gl                    = ras_m4a1_hand_reload_empty_w_gl, ras_lr300_reload_empty
 anm_shots_w_gl                           = ras_m4a1_hand_shot_w_gl_shell, shot
 anm_show_w_gl                            = ras_m4a1_hand_in_w_gl, idle
 anm_switch_g                             = ras_m4a1_hand_switch_on, ras_m4a1_switch_on
@@ -334,12 +334,12 @@ scope_x                         	= 82
 scope_y                         	= -7
 
 [wpn_lr300_specter_scope_hud]:wpn_lr300_hud
-aim_hud_offset_pos					= -0.058375,0.002325,-0.13
-aim_hud_offset_rot					= -0.047601,0.006343,0.001625
-aim_hud_offset_pos_16x9				= -0.058375,0.002325,-0.13
-aim_hud_offset_rot_16x9				= -0.047601,0.006343,0.001625
-aim_hud_offset_alt_pos				= -0.046250,0.000460,-0.028800
-aim_hud_offset_alt_rot				= 0.034805,0.020885,0.000000
-aim_hud_offset_alt_pos_16x9			= -0.046250,0.000460,-0.028800
-aim_hud_offset_alt_rot_16x9			= 0.034805,0.020885,0.000000
+aim_hud_offset_pos					= -0.057875,0.003325,-0.109000
+aim_hud_offset_rot					= -0.049601,0.003093,0.001625
+aim_hud_offset_pos_16x9				= -0.057875,0.003325,-0.109000
+aim_hud_offset_rot_16x9				= -0.049601,0.003093,0.001625
+aim_hud_offset_alt_pos				= -0.058250,-0.009040,-0.063800
+aim_hud_offset_alt_rot				= 0.001805,0.005385,0.000000
+aim_hud_offset_alt_pos_16x9			= -0.058250,-0.009040,-0.063800
+aim_hud_offset_alt_rot_16x9			= 0.001805,0.005385,0.000000
 item_visual							= dynamics\weapons\wpn_lr300\wpn_lr300_specter_hud.ogf

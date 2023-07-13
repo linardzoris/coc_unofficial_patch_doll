@@ -121,16 +121,10 @@ snd_changefiremode                                 = weapons\ak_gwr\ak_gwr_firem
 snd_switch                                         = weapons\ak_gwr\ak_gwr_gl_activate
 snd_bore										   = nil
 
-snd_shoot               						   = weapons\_gunfire\ak74\close_1
-snd_shoot1              						   = weapons\_gunfire\ak74\close_2
-snd_shoot2              						   = weapons\_gunfire\ak74\close_3
-snd_shoot3              						   = weapons\_gunfire\ak74\close_4
+snd_shoot               						   = weapons\ak_gwr\ak74_shoot
 snd_shoot_distant                                  = weapons\_gunfire\ak74\medium_distance
 snd_shoot_distant_far                              = nil
-snd_silncer_shot        						   = weapons\_sil\545\sd_close_1
-snd_silncer_shot1        						   = weapons\_sil\545\sd_close_2
-snd_silncer_shot2        						   = weapons\_sil\545\sd_close_3
-snd_silncer_shot3        						   = weapons\_sil\545\sd_close_4
+snd_silncer_shot        						   = weapons\ak_gwr\ak74_shot_sil
 
 time_to_aim                                        = 3.0
 
@@ -160,18 +154,18 @@ silencer_smoke_particles   						   = ghost_particles\weapons\generic_smoke_eft_
 
 
 [wpn_ak74_hud]:hud_base_weapon
-hands_position							 = 0.000878,-0.019599,-0.003785
-hands_orientation						 = 2.287302,4.569905,0.000000
-hands_position_16x9						 = 0.000878,-0.019599,-0.003785
-hands_orientation_16x9					 = 2.287302,4.569905,0.000000
-aim_hud_offset_pos						 = -0.057738,0.042776,-0.042335
-aim_hud_offset_rot						 = 0.068765,0.039224,-0.006000
-aim_hud_offset_pos_16x9					 = -0.057738,0.042776,-0.042335
-aim_hud_offset_rot_16x9					 = 0.068765,0.039224,-0.006000
-gl_hud_offset_pos						 = -0.016033,-0.292443,-0.115743
-gl_hud_offset_rot						 = -0.545852,0.032271,0.000000
-gl_hud_offset_pos_16x9					 = -0.016033,-0.292443,-0.115743
-gl_hud_offset_rot_16x9					 = -0.545852,0.032271,0.000000
+hands_position							 = 0.001878,-0.009599,-0.013785
+hands_orientation						 = -0.562697,0.069905,0
+hands_position_16x9						 = 0.001878,-0.009599,-0.013785
+hands_orientation_16x9					 = -0.562697,0.069905,0
+aim_hud_offset_pos						 = -0.059238,0.032776,-0.042335
+aim_hud_offset_rot						 = -0.005235,-0.009776,-0.006000
+aim_hud_offset_pos_16x9					 = -0.059238,0.032776,-0.042335
+aim_hud_offset_rot_16x9					 = -0.005235,-0.009776,-0.006000
+gl_hud_offset_pos						 = -0.019033,-0.157445,-0.115743
+gl_hud_offset_rot						 = -0.378353,-0.017729,0.000000
+gl_hud_offset_pos_16x9					 = -0.019033,-0.157445,-0.115743
+gl_hud_offset_rot_16x9					 = -0.378353,-0.017729,0.000000
 item_position							 = -0.001736,-0.019762,0.004953
 item_orientation						 = 0.000000,0.000000,0.000000
 
@@ -278,10 +272,10 @@ scope_y                         = 5
 hud                             = wpn_ak74_pso_scope_hud
 
 [wpn_ak74_pso_scope_hud]:wpn_ak74_hud
-aim_hud_offset_pos				= -0.043138,0.031976,-0.069135
-aim_hud_offset_rot				= 0.067940,0.040324,-0.006000
-aim_hud_offset_pos_16x9			= -0.043138,0.031976,-0.069135
-aim_hud_offset_rot_16x9			= 0.067940,0.040324,-0.006000
+aim_hud_offset_pos				= -0.047638,0.033976,-0.032135
+aim_hud_offset_rot				= 0.066440,0.038074,-0.006000
+aim_hud_offset_pos_16x9			= -0.047638,0.033976,-0.032135
+aim_hud_offset_rot_16x9			= 0.066440,0.038074,-0.006000
 
 [wpn_ak74_1p29_scope]:wpn_ak74
 $spawn                          = "weapons\wpn_ak74_1p29_scope"
@@ -290,10 +284,10 @@ scope_y                         = 6
 hud                             = wpn_ak74_1p29_scope_hud
 
 [wpn_ak74_1p29_scope_hud]:wpn_ak74_hud
-aim_hud_offset_pos				= -0.056938,0.017376,-0.055335
-aim_hud_offset_rot				= 0.065315,0.039124,-0.006000
-aim_hud_offset_pos_16x9			= -0.056938,0.017376,-0.055335
-aim_hud_offset_rot_16x9			= 0.065315,0.039124,-0.006000
+aim_hud_offset_pos				= -0.056438,0.013876,-0.020335
+aim_hud_offset_rot				= 0.102815,-0.016376,-0.006000
+aim_hud_offset_pos_16x9			= -0.056438,0.013876,-0.020335
+aim_hud_offset_rot_16x9			= 0.102815,-0.016376,-0.006000
 item_visual                     = dynamics\weapons\wpn_ak74\wpn_ak74_1p29_hud.ogf
 
 [wpn_ak74_kobra_scope]:wpn_ak74
@@ -303,10 +297,10 @@ scope_y                         = 7
 hud                             = wpn_ak74_kobra_scope_hud
 
 [wpn_ak74_kobra_scope_hud]:wpn_ak74_hud
-aim_hud_offset_pos				= -0.052338,0.022276,-0.042335
-aim_hud_offset_rot				= 0.090820,0.033209,-0.006000
-aim_hud_offset_pos_16x9			= -0.052338,0.022276,-0.042335
-aim_hud_offset_rot_16x9			= 0.090820,0.033209,-0.006000
+aim_hud_offset_pos				= -0.054338,0.009276,-0.042335
+aim_hud_offset_rot				= 0.016570,-0.010291,-0.006000
+aim_hud_offset_pos_16x9			= -0.054338,0.009276,-0.042335
+aim_hud_offset_rot_16x9			= 0.016570,-0.010291,-0.006000
 item_visual                     = dynamics\weapons\wpn_ak74\wpn_ak74_kobra_hud.ogf
 
 [wpn_ak74_okp_scope]:wpn_ak74
@@ -316,10 +310,10 @@ scope_y                         = 4
 hud                             = wpn_ak74_okp_scope_hud
 
 [wpn_ak74_okp_scope_hud]:wpn_ak74_hud
-aim_hud_offset_pos				= -0.051638,0.026276,-0.042335
-aim_hud_offset_rot				= 0.068765,0.039224,-0.006000
-aim_hud_offset_pos_16x9			= -0.051638,0.026276,-0.042335
-aim_hud_offset_rot_16x9			= 0.068765,0.039224,-0.006000
+aim_hud_offset_pos				= -0.054138,0.028276,-0.042335
+aim_hud_offset_rot				= 0.011765,0.006224,-0.006000
+aim_hud_offset_pos_16x9			= -0.054138,0.028276,-0.042335
+aim_hud_offset_rot_16x9			= 0.011765,0.006224,-0.006000
 item_visual                     = dynamics\weapons\wpn_ak74\wpn_ak74_okp_hud.ogf
 
 [wpn_ak74_1pn93_scope]:wpn_ak74
@@ -329,10 +323,10 @@ scope_y                         = 6
 hud                             = wpn_ak74_1pn93_scope_hud
 
 [wpn_ak74_1pn93_scope_hud]:wpn_ak74_hud
-aim_hud_offset_pos				= -0.043238,0.028676,-0.081335
-aim_hud_offset_rot				= 0.070040,0.041149,-0.005350
-aim_hud_offset_pos_16x9			= -0.043238,0.028676,-0.081335
-aim_hud_offset_rot_16x9			= 0.070040,0.041149,-0.005350
+aim_hud_offset_pos				= -0.045238,0.008676,-0.038335
+aim_hud_offset_rot				= 0.001040,-0.003101,-0.005350
+aim_hud_offset_pos_16x9			= -0.045238,0.008676,-0.038335
+aim_hud_offset_rot_16x9			= 0.001040,-0.003101,-0.005350
 item_visual                     = dynamics\weapons\wpn_ak74\wpn_ak74_1pn93_hud.ogf
 
 ;-----------------------------------------------------------------------------
@@ -375,14 +369,14 @@ hands_position							 = 0.000878,-0.019599,-0.003785
 hands_orientation						 = 2.287302,4.569905,0.000000
 hands_position_16x9						 = 0.000878,-0.019599,-0.003785
 hands_orientation_16x9					 = 2.287302,4.569905,0.000000
-aim_hud_offset_pos						 = -0.057738,0.049676,-0.042335
-aim_hud_offset_rot						 = 0.079755,0.041154,-0.006000
-aim_hud_offset_pos_16x9					 = -0.057738,0.049676,-0.042335
-aim_hud_offset_rot_16x9					 = 0.079755,0.041154,-0.006000
-gl_hud_offset_pos						 = -0.013433,-0.299343,-0.115743
-gl_hud_offset_rot						 = -0.547256,0.031906,0.000000
-gl_hud_offset_pos_16x9					 = -0.013433,-0.299343,-0.115743
-gl_hud_offset_rot_16x9					 = -0.547256,0.031906,0.000000
+aim_hud_offset_pos						 = -0.057738,0.042176,-0.042335
+aim_hud_offset_rot						 = 0.078005,0.039404,-0.006000
+aim_hud_offset_pos_16x9					 = -0.057738,0.042176,-0.042335
+aim_hud_offset_rot_16x9					 = 0.078005,0.039404,-0.006000
+gl_hud_offset_pos						 = -0.018433,-0.150345,-0.115743
+gl_hud_offset_rot						 = -0.287256,0.034406,0.000000
+gl_hud_offset_pos_16x9					 = -0.018433,-0.150345,-0.115743
+gl_hud_offset_rot_16x9					 = -0.287256,0.034406,0.000000
 item_position							 = -0.001043,-0.021106,0.022086
 item_orientation						 = 0.000000,0.000000,0.000000
 
@@ -399,10 +393,10 @@ scope_x							= 68
 scope_y							= 7
 
 [wpn_ak74m_kobra_scope_hud]:wpn_ak74m_hud
-aim_hud_offset_pos				= -0.054038,0.026376,-0.042335
-aim_hud_offset_rot				= 0.091535,0.036254,-0.006000
-aim_hud_offset_pos_16x9			= -0.054038,0.026376,-0.042335
-aim_hud_offset_rot_16x9			= 0.091535,0.036254,-0.006000
+aim_hud_offset_pos				= -0.052338,0.019776,-0.042335
+aim_hud_offset_rot				= 0.091070,0.027209,-0.006000
+aim_hud_offset_pos_16x9			= -0.052338,0.019776,-0.042335
+aim_hud_offset_rot_16x9			= 0.091070,0.027209,-0.006000
 item_visual                		= dynamics\weapons\wpn_ak74\wpn_ak74m_kobra_hud.ogf
 
 [wpn_ak74m_pso_scope]:wpn_ak74m
@@ -412,10 +406,10 @@ scope_x							= 31
 scope_y							= 6
 
 [wpn_ak74m_pso_scope_hud]:wpn_ak74m_hud
-aim_hud_offset_pos				= -0.042738,0.036776,-0.090335
-aim_hud_offset_rot				= 0.069740,0.040024,-0.006000
-aim_hud_offset_pos_16x9			= -0.042738,0.036776,-0.090335
-aim_hud_offset_rot_16x9			= 0.069740,0.040024,-0.006000
+aim_hud_offset_pos				= -0.042738,0.036776,-0.070335
+aim_hud_offset_rot				= 0.071240,0.023774,-0.007500
+aim_hud_offset_pos_16x9			= -0.042738,0.036776,-0.070335
+aim_hud_offset_rot_16x9			= 0.071240,0.023774,-0.007500
 
 [wpn_ak74m_1p29_scope]:wpn_ak74m
 $spawn                          = "weapons\wpn_ak74m_1p29_scope"
@@ -424,10 +418,10 @@ scope_y                         = 7
 hud                             = wpn_ak74m_1p29_scope_hud
 
 [wpn_ak74m_1p29_scope_hud]:wpn_ak74m_hud
-aim_hud_offset_pos				= -0.057138,0.023276,-0.082335
-aim_hud_offset_rot				= 0.082880,0.043429,-0.006000
-aim_hud_offset_pos_16x9			= -0.057138,0.023276,-0.082335
-aim_hud_offset_rot_16x9			= 0.082880,0.043429,-0.006000
+aim_hud_offset_pos				= -0.053638,0.017776,-0.040335
+aim_hud_offset_rot				= 0.114880,-0.004071,-0.006000
+aim_hud_offset_pos_16x9			= -0.053638,0.017776,-0.040335
+aim_hud_offset_rot_16x9			= 0.114880,-0.004071,-0.006000
 item_visual                     = dynamics\weapons\wpn_ak74\wpn_ak74m_1p29_hud.ogf
 
 [wpn_ak74m_okp_scope]:wpn_ak74m
@@ -450,8 +444,8 @@ scope_y                         = 7
 hud                             = wpn_ak74m_1pn93_scope_hud
 
 [wpn_ak74m_1pn93_scope_hud]:wpn_ak74m_hud
-aim_hud_offset_pos				= -0.042738,0.031776,-0.102335
-aim_hud_offset_rot				= 0.068015,0.038499,-0.006000
-aim_hud_offset_pos_16x9			= -0.042738,0.031776,-0.102335
-aim_hud_offset_rot_16x9			= 0.068015,0.038499,-0.006000
+aim_hud_offset_pos				= -0.042738,0.016776,-0.087335
+aim_hud_offset_rot				= 0.062265,0.016749,-0.006000
+aim_hud_offset_pos_16x9			= -0.042738,0.016776,-0.087335
+aim_hud_offset_rot_16x9			= 0.062265,0.016749,-0.006000
 item_visual                     = dynamics\weapons\wpn_ak74\wpn_ak74m_1pn93_hud.ogf

@@ -138,6 +138,24 @@
 
 <!-- AMMO -->
 
+	<string id="st_ammo_7_62x51_fmj">
+		<text>Cartridges 7,62x51 Ì59 (.308 Win)</text>
+	</string>
+	<string id="st_ammo_7_62x51_fmj_descr">
+		<text>NATO standard rifle ammunition. The caliber is 7.62mm. A simple shell bullet with a lead core.</text>
+	</string>
+	<string id="st_ammo_7_62x39_fmj">
+		<text>Cartridges 7.62x39 mm</text>
+	</string>
+	<string id="st_ammo_7_62x39_fmj_descr">
+		<text>An old and rare ammunition, which Soviet submachine guns and rifles were once equipped with. At the moment, the weapon that uses it is very unpopular, although it is less susceptible to wear.</text>
+	</string>	
+	<string id="st_ammo_7_62x39_ap">
+		<text>Cartridges 7.62x39 mm (7Í23)</text>
+	</string>
+	<string id="st_ammo_7_62x39_ap_descr">
+		<text>The armor-piercing version of the ammunition allows you to hit targets behind some shelters, such as wide wooden boards or brickwork.</text>
+	</string>	
 	<string id="st_ammo_pg_26">
 		<text>PG-26</text>
 	</string>
@@ -338,7 +356,55 @@
 	</string>
 	
 <!-- Weapons -->
-	
+
+	<string id="st_wpn_scar_h">
+		<text>FN SCAR H</text>
+	</string>
+	<string id="st_wpn_scar_h_descr">
+		<text>A fairly modern and convenient sample of weapons on the AR platform for a NATO 7.62 mm rifle cartridge.</text>
+	</string>
+	<string id="st_wpn_l96">
+		<text>AI L96A1</text>
+	</string>
+	<string id="st_wpn_l96_descr">
+		<text>A British rifle with a longitudinally sliding bolt, which increases its accuracy. It is used by various special services.</text>
+	</string>
+	<string id="st_wpn_sr25">
+		<text>SR-25</text>
+	</string>
+	<string id="st_wpn_sr25_descr">
+		<text>Marksman rifle based on the AR-15 for a more powerful caliber.</text>
+	</string>	
+	<string id="st_wpn_ak102">
+		<text>AK-102</text>
+	</string>
+	<string id="st_wpn_ak102_descr">
+		<text>Export Kalashnikov of the hundredth series for the NATO cartridge 5.56mm. You can fold the butt, there is a regular silencer, but there is no attachment for a grenade launcher under the barrel.</text>
+	</string>
+	<string id="st_wpn_akm">
+		<text>AKM</text>
+	</string>
+	<string id="st_wpn_akm_descr">
+		<text>One of the first modifications of the Kalashnikov. A rather old sample, and therefore there is no "dovetail" attachment in principle.</text>
+	</string>
+	<string id="wpn_vityaz">
+		<text>PP-19-01 "Vityaz"</text>
+	</string>
+	<string id="st_wpn_vityaz_descr">
+		<text>A regular submachine gun for many post-Soviet structures with the usual box magazine.</text>
+	</string>
+	<string id="st_wpn_saiga">
+		<text>Saiga-12</text>
+	</string>
+	<string id="st_wpn_saiga_descr">
+		<text>Modern hunting shotgun based on AK. It has a convenient box magazine and a semi-automatic firing mode.</text>
+	</string>
+	<string id="st_wpn_sks">
+		<text>SKS "Molot"</text>
+	</string>
+	<string id="st_wpn_sks_descr">
+		<text>Modern hunting and civilian carbines, which are produced by Russia and are used by many stalkers crossing the border of the CAZ. There is no mount for the sight, and it is unlikely because of the design of the weapon.</text>
+	</string>		
 	<string id="st_wpn_vihr">
 		<text>SR-3M "Vikhr"</text>
 	</string>
