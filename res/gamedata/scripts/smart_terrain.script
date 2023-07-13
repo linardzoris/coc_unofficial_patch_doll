@@ -187,7 +187,7 @@ function se_smart_terrain:read_params()
 				local squads_by_faction = {
 					["army"] = "army_sim_squad_novice, army_sim_squad_advanced, army_sim_squad_veteran",
 					["bandit"] = "bandit_sim_squad_novice, bandit_sim_squad_advanced, bandit_sim_squad_veteran",
-					["renegade"] = "mar_renegade_generic",
+					["renegade"] = "renegade_sim_squad_novice, renegade_sim_squad_advanced",
 					["csky"] = "csky_sim_squad_novice, csky_sim_squad_advanced, csky_sim_squad_veteran",
 					["dolg"] = "duty_sim_squad_novice, duty_sim_squad_advanced, duty_sim_squad_veteran",
 					["ecolog"] = "ecolog_sim_squad_novice, ecolog_sim_squad_advanced, ecolog_sim_squad_veteran",

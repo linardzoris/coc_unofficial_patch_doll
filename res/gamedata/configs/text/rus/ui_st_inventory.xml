@@ -385,6 +385,9 @@
 		<text>заложить тайник</text>
 	</string>	
 	<string id="ui_inv_psy_health_restore">
-		<text>Пси-воздействие</text>
-	</string>		
+		<text>Ментальное здоровье</text>
+	</string>
+	<string id="ui_inv_af_jump_speed">
+		<text>Высота прыжка</text>
+	</string>	
 </string_table>

@@ -388,5 +388,8 @@
 	</string>
 	<string id="ui_inv_psy_health_restore">
 		<text>Mentality</text>
-	</string>			
+	</string>	
+	<string id="ui_inv_af_jump_speed">
+		<text>Jump</text>
+	</string>		
 </string_table>

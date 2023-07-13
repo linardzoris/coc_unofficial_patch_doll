@@ -52,7 +52,7 @@
 		<text>«Бандиты»</text>
 	</string>
 	<string id="csky">
-    		<text>«Чистое Небо»</text>
+    	<text>«Чистое Небо»</text>
   	</string>
 	<string id="dolg">
 		<text>«Долг»</text>
@@ -79,7 +79,7 @@
 		<text>Мутант</text>
 	</string>
 	<string id="trader">
-    		<text>Торговец</text>
+    	<text>Торговец</text>
 	</string>
 	<string id="zombied">
 		<text>«Зомбированные»</text>

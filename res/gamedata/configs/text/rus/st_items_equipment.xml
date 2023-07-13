@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="windows-1251" ?>
 <string_table>
+	<string id="st_bolt">
+		<text>Болт</text>
+	</string>
+	<string id="st_bolt_descr">
+		<text>Используется сталкерами для прощупывания границ аномалий.</text>
+	</string>
 	<string id="st_antirad">
 		<text>Противорадиационный препарат</text>
 	</string>

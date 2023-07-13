@@ -136,6 +136,14 @@
 		<text>A grenade launcher from Belgium, which is massively used on such weapons as the FN Scar. Apart from convenience and ergonomics , it did not have any special differences from the M203.</text>
 	</string>	
 
+<!-- AMMO -->
+
+	<string id="st_ammo_pg_26">
+		<text>PG-26</text>
+	</string>
+	<string id="st_ammo_pg_26_descr">
+		<text>Charge for the RPG-26 grenade launcher, effective against vehicles.</text>
+	</string>	
 	<string id="ammo-11.43x23-fmj">
 		<text>.45 ACP FMJ rounds</text>
 	</string>
@@ -329,6 +337,32 @@
 		<text>A hand smoke grenade. Used to put up smoke screens. Once the grenade is thrown it takes 10 seconds for the smoke screen to expand.</text>
 	</string>
 	
+<!-- Weapons -->
+	
+	<string id="st_wpn_vihr">
+		<text>SR-3M "Vikhr"</text>
+	</string>
+	<string id="st_wpn_vihr_descr">
+		<text>Further development of the line of special weapons. It can be equipped with a 30-round magazine and a folding handle, and also has a folding stock.</text>
+	</string>		
+	<string id="st_wpn_kiparis">
+		<text>RPG-26 "Aglen"</text>
+	</string>
+	<string id="st_wpn_kiparis">
+		<text>A lightweight disposable grenade launcher often used by the military.</text>
+	</string>	
+	<string id="st_wpn_kiparis">
+		<text>OTs-02 "Kiparis"</text>
+	</string>	
+	<string id="st_wpn_kiparis_descr">
+		<text>A fast and fairly cheap Russian submachine gun with an inconvenient ejection window.</text>
+	</string>			
+	<string id="st_wpn_aps">
+		<text>APS</text>
+	</string>	
+	<string id="st_wpn_aps_descr">
+		<text>Stechkin pistol combines lethal power and rate of fire at short range.</text>
+	</string>	
 	<string id="st_wpn_abakan">
 		<text>AN-94</text>
 	</string>
@@ -356,7 +390,7 @@
 	<string id="st_wpn_colt1911">
 		<text>Colt M1911</text>
 	</string>
-	<string id="st_wpn_eagle">
+	<string id="st_wpn_desert_eagle">
 		<text>Desert Eagle</text>
 	</string>
 	<string id="st_wpn_fort">
@@ -365,7 +399,7 @@
 	<string id="st_wpn_g36">
 		<text>HK G36</text>
 	</string>
-	<string id="wpn_g36k">
+	<string id="st_wpn_g36k">
 		<text>HK G36K</text>
 	</string>	
 	<string id="st_wpn_g36k_descr">
@@ -398,6 +432,9 @@
 	<string id="st_wpn_mp5">
 		<text>HK MP-5</text>
 	</string>
+	<string id="st_wpn_mp5_descr">
+		<text>This submachine gun deservedly enjoys great popularity due to its reliability, ease of handling and high accuracy of shooting. Adopted by the army and police units of many countries, it appeared on the black market and eventually reached the Zone.</text>
+	</string>	
 	<string id="st_wpn_pb">
 		<text>PB</text>
 	</string>
@@ -476,6 +513,12 @@
 	<string id="st_wpn_wincheaster1300_descr">
 		<text>A Western smoothbore shotgun that is extremely popular around the world thanks to its amazing reliability and faster reloading speed. Particularly valued for its functionality by the Zone's hunters. All of its parts are coated with an anti-corrosion compound.</text>
 	</string>
+	<string id="st_wpn_mr133">
+		<text>MR-133</text>
+	</string>
+	<string id="st_wpn_mr133_descr">
+		<text>Ordinary pump-action shotgun from Russia, often used for hunting.</text>
+	</string>
 	
 	<string id="ammo-gauss_cardan">
 		<text>Homemade batteries</text>
@@ -492,7 +535,7 @@
 	<string id="st_wpn_colt1911_descr">
 		<text>An improved version of a classic automatic pistol, which passed all the major armed conflicts of the 20th century with flying colours and entered the new millennium with confidence. Produced by dozens if not hundreds of arms manufacturers around the world in both standard and modified configurations. The weapon's only drawback, its mediocre magazine capacity, is largely compensated by the hard-hitting ammo it uses.</text>
 	</string>
-	<string id="st_wpn_eagle_descr">
+	<string id="st_wpn_desert_eagle_descr">
 		<text>The ultimate hand cannon: bulky, heavy, and highly lethal. Developed as a specialised weapon for hunting medium-sized and large game, as well as for shooting competitions involving firing at steel body targets at distances over 50 metres. Its limited use in the Zone can be attributed to its price, size and weight, which are all double those of other pistols.</text>
 	</string>
 	<string id="st_wpn_fort_descr">

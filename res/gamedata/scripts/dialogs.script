@@ -1321,6 +1321,7 @@ function is_shootgun(npc, item)
 	if(section=="wpn_bm16")
 	or(section=="wpn_toz34")
 	or(section=="wpn_wincheaster1300")
+	or(section=="wpn_mr133")	
 	or (section=="wpn_bm16_full")
 	or (section=="wpn_toz34_obrez")	then
 		db.actor.shootgun = section

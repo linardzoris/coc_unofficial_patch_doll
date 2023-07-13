@@ -164,7 +164,7 @@ holder_range_modifier		= 1.0
 installed_upgrades			= 
 launch_speed				= 0
 
-actor_power_leak_aim_speed 	= 0.0715 ; Ќа мастере во врем€ прицеливани€ отнимает выносливость
+actor_power_leak_aim_speed 	= 0.0 ; Ќа мастере во врем€ прицеливани€ отнимает выносливость
 
 $npc						= on
 $prefetch					= 8
@@ -262,8 +262,6 @@ upgr_icon_x									       = 0
 upgr_icon_y 									   = 0
 gl_zoom_factor                  				   = 1.1
 
-actor_power_leak_aim_speed 						   = 0.0215 ; Ќа мастере во врем€ прицеливани€ отнимает выносливость
-
 snd_on_take                                        = weapon
 
 ; ”дал€ть ли один патрон при расклине
@@ -308,7 +306,6 @@ grenade_launcher_status                            = 0
 grenade_launcher_x                                 = 0
 grenade_launcher_y                                 = 0
 grenade_flame_particles        					   = weapons\generic_shoot_00
-condition_to_broke                                 = 0.05
 
 strafe_enabled                                     = true
 strafe_transition_time                             = 0.4
@@ -328,7 +325,19 @@ nearwall_speed_mod                                 = 10
 silencer_bullet_speed                    		   = 700
 silencer_fire_distance                   		   = 200
 silencer_hit_impulse                     		   = 100
-silencer_hit_power                       		   = 0.42, 0.42, 0.42, 0.42
+silencer_hit_power                       		   = 0.42, 0.42
+
+snd_weapon_jam                                     = characters_voice\player\gun_jam_1
+snd_weapon_jam1                                    = nil
+snd_weapon_jam2                                    = characters_voice\player\gun_jam_2
+snd_weapon_jam3                                    = nil
+snd_weapon_jam4                                    = characters_voice\player\gun_jam_3
+snd_weapon_jam5                                    = nil
+snd_weapon_jam6                                    = characters_voice\player\gun_jam_4
+snd_weapon_jam7                                    = nil
+snd_weapon_jam8                                    = characters_voice\player\gun_jam_5
+snd_weapon_jam9                                    = nil
+snd_weapon_jam10                                   = characters_voice\player\gun_jam_6
 
 [hud_base_weapon]
 item_position                                      = 0,0,0

@@ -617,7 +617,12 @@ void CWeaponMagazinedWGrenade::PlayAnimShow()
             else
                 PlayHUDMotion("anm_show_w_gl", FALSE, this, GetState());
         else
-            PlayHUDMotion("anm_show_g", FALSE, this, GetState());
+            if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_show_g_empty"))
+                PlayHUDMotion("anm_show_g_empty", TRUE, this, GetState());
+            else if (IsMisfire() && isHUDAnimationExist("anm_show_g_jammed"))
+                PlayHUDMotion("anm_show_g_jammed", true, this, GetState());
+            else
+                PlayHUDMotion("anm_show_g", TRUE, this, GetState());
     }
     else
         inherited::PlayAnimShow();
@@ -637,7 +642,12 @@ void CWeaponMagazinedWGrenade::PlayAnimHide()
             else
                 PlayHUDMotion("anm_hide_w_gl", TRUE, this, GetState());
         else
-            PlayHUDMotion("anm_hide_g", TRUE, this, GetState());
+            if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_hide_g_empty"))
+                PlayHUDMotion("anm_hide_g_empty", TRUE, this, GetState());
+            else if (IsMisfire() && isHUDAnimationExist("anm_hide_g_jammed"))
+                PlayHUDMotion("anm_hide_g_jammed", true, this, GetState());
+            else
+                PlayHUDMotion("anm_hide_g", TRUE, this, GetState());
     }
     else
         inherited::PlayAnimHide();
@@ -806,8 +816,10 @@ void CWeaponMagazinedWGrenade::PlayAnimIdle()
                         PlayHUDMotion("anm_idle_moving_crouch_jammed_g", true, nullptr, GetState());
                     else if (m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_idle_moving_crouch_empty_g"))
                         PlayHUDMotion("anm_idle_moving_crouch_empty_g", true, nullptr, GetState());
-                    else
+                    else if (isHUDAnimationExist("anm_idle_moving_crouch_g"))
                         PlayHUDMotion("anm_idle_moving_crouch_g", true, nullptr, GetState());
+                    else 
+                        PlayHUDMotion("anm_idle_moving_g", true, nullptr, GetState());
                     break;
                 }
             }

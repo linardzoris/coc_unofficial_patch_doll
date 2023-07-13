@@ -64,7 +64,6 @@
 	<texture id="ui_am_prop_power_loss" x="825" y="452" width="19" height="19"/>
 	<texture id="ui_am_prop_det_detect_radius" x="825" y="490" width="19" height="19"/>
 	<texture id="ui_am_prop_artefact_count" x="825" y="471" width="19" height="19"/>	
-	<texture id="ui_am_prop_overweight_movement" x="730" y="585" width="19" height="19" />
 	<texture id="ui_am_prop_artefact_count" x="825" y="471" width="19" height="19"/>
 	
 	<!-- Бустеры -->	

@@ -635,6 +635,7 @@ function setup_weapon_fetch_task(actor,npc,p)
 				"wpn_toz34",
 				"wpn_wincheaster1300",
 				"wpn_protecta",
+				"wpn_mr133",				
 				"wpn_ak74u",
 				"wpn_mp5",
 				"wpn_ak74",

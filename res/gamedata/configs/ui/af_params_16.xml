@@ -81,7 +81,7 @@
 			<text color="ui_3" font="letterica16" vert_align="c" x="18" y="0"/>
 		</caption>
 			<texture_minus>ui_am_prop_psy_health_restore_speed_minus</texture_minus>		
-		<value x="117" y="0" width="30" height="20" magnitude="100">
+		<value x="117" y="0" width="30" height="20" magnitude="1000">
 			<text font="letterica16" vert_align="c"/>
 		</value>
 	</psy_health_restore_speed>
@@ -212,7 +212,7 @@
 			<texture>ui_am_prop_jump</texture>
 			<text color="ui_3" font="letterica16" vert_align="c" x="22" y="0"/>
 		</caption>
-		<value x="140" y="0" width="30" height="20" magnitude="100">
+		<value x="117" y="0" width="30" height="20" magnitude="1" accuracy="1">
 			<text font="letterica16" vert_align="c"/>
 		</value>
 	</jump_speed>
@@ -222,20 +222,10 @@
 			<texture>ui_am_prop_movement</texture>
 			<text color="ui_3" font="letterica16" vert_align="c" x="22" y="0"/>
 		</caption>
-		<value x="140" y="0" width="30" height="20" magnitude="100" sign_inverse="1">
+		<value x="117" y="0" width="30" height="20" magnitude="1" accuracy="1">
 			<text font="letterica16" vert_align="c"/>
 		</value>
 	</walk_accel>
-
-	<overweight_walk_accel x="0" y="0" width="214" height="20" >
-		<caption x="0" y="0" width="15" height="20" stretch="1">
-			<texture>ui_am_prop_overweight_movement</texture>
-			<text color="ui_3" font="letterica16" vert_align="c" x="22" y="0"/>
-		</caption>
-		<value x="140" y="0" width="30" height="20" magnitude="100" sign_inverse="1">
-			<text font="letterica16" vert_align="c"/>
-		</value>
-	</overweight_walk_accel>	
 	
 	<artefact_count x="0" y="0" width="214" height="20" >
 		<caption x="0" y="0" width="15" height="20" stretch="1">

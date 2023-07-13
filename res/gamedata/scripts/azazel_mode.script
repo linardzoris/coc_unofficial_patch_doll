@@ -191,6 +191,7 @@ function actor_on_before_death(whoID,flags)
 		local f = {
 			["stalker"] = "radiation_outfit",
 			["bandit"] = "radiation_outfit",
+			["renegade"] = "radiation_outfit",			
 			["csky"] = "cs_heavy_outfit",			
 			["killer"] = "merc_radiation_outfit",
 			["army"] = "military_exo_outfit",
@@ -203,6 +204,7 @@ function actor_on_before_death(whoID,flags)
 	elseif (string.find(section,"_3")) then 
 		local f = {
 			["stalker"] = "radiation_outfit",
+			["renegade"] = "radiation_outfit",		
 			["bandit"] = "radiation_outfit",
 			["csky"] = "cs_heavy_outfit",			
 			["killer"] = "merc_scientific_outfit",
@@ -217,6 +219,7 @@ function actor_on_before_death(whoID,flags)
 		local f = {
 			["stalker"] = "stalker_outfit",
 			["bandit"] = "trenchcoat_outfit",
+			["renegade"] = "trenchcoat_outfit",			
 			["csky"] = "cs_light_outfit",			
 			["killer"] = "merc_outfit",
 			["army"] = "specops_outfit",
@@ -230,6 +233,7 @@ function actor_on_before_death(whoID,flags)
 		local f = {
 			["stalker"] = "stalker_outfit",
 			["bandit"] = "trenchcoat_outfit",
+			["renegade"] = "trenchcoat_outfit",				
 			["csky"] = "cs_light_outfit",
 			["killer"] = "merc_outfit",
 			["army"] = "military_outfit",
@@ -243,6 +247,7 @@ function actor_on_before_death(whoID,flags)
 		local f = {
 			["stalker"] = "novice_outfit",
 			["bandit"] = "bandit_novice_outfit",
+			["renegade"] = "novice_outfit",				
 			["csky"] = "cs_novice_outfit",
 			["killer"] = "merc_outfit",
 			["army"] = "army_outfit",

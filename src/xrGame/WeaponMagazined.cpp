@@ -1244,8 +1244,7 @@ bool CWeaponMagazined::CanAttach(PIItem pIItem)
     CGrenadeLauncher* pGrenadeLauncher = smart_cast<CGrenadeLauncher*>(pIItem);
 
     if (pScope && m_eScopeStatus == ALife::eAddonAttachable &&
-        (m_flagsAddOnState & CSE_ALifeItemWeapon::eWeaponAddonScope) == 0 /*&&
-		(m_scopes[cur_scope]->m_sScopeName == pIItem->object().cNameSect())*/)
+        (m_flagsAddOnState & CSE_ALifeItemWeapon::eWeaponAddonScope) == 0)
     {
         auto it = m_scopes.begin();
         for (; it != m_scopes.end(); it++)
@@ -1298,8 +1297,7 @@ bool CWeaponMagazined::CanAttach(PIItem pIItem)
 bool CWeaponMagazined::CanDetach(const char* item_section_name)
 {
     if (m_eScopeStatus == ALife::eAddonAttachable &&
-        0 != (m_flagsAddOnState & CSE_ALifeItemWeapon::eWeaponAddonScope)) /* &&
-        (m_scopes[cur_scope]->m_sScopeName	== item_section_name))*/
+        0 != (m_flagsAddOnState & CSE_ALifeItemWeapon::eWeaponAddonScope))
     {
         auto it = m_scopes.begin();
         for (; it != m_scopes.end(); it++)
@@ -1355,8 +1353,7 @@ bool CWeaponMagazined::Attach(PIItem pIItem, bool b_send_event)
     CGrenadeLauncher* pGrenadeLauncher = smart_cast<CGrenadeLauncher*>(pIItem);
 
     if (pScope && m_eScopeStatus == ALife::eAddonAttachable &&
-        (m_flagsAddOnState & CSE_ALifeItemWeapon::eWeaponAddonScope) == 0 /*&&
-        (m_scopes[cur_scope]->m_sScopeName == pIItem->object().cNameSect())*/)
+        (m_flagsAddOnState & CSE_ALifeItemWeapon::eWeaponAddonScope) == 0)
     {
         auto it = m_scopes.begin();
         for (; it != m_scopes.end(); it++)

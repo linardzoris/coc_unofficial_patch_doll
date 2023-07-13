@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <string_table>
+	<string id="st_bolt">
+		<text>Bolt</text>
+	</string>
+	<string id="st_bolt_descr">
+		<text>Used by stalkers to probe the boundaries of anomalies.</text>
+	</string>
 	<string id="st_antirad">
 		<text>Anti-radiation drugs</text>
 	</string>

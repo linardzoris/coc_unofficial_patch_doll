@@ -21,8 +21,9 @@ terrain                 = actor_terrain
 kick_impulse			= 100.0	;For keybinded action to kick objects with mass of 20.0 or less
 
 max_item_mass           = 10
-jump_speed              = 6.
-jump_speed_limit        = 15
+jump_speed              = 6     ; Based
+overweight_jump_speed   = 3     ; If TotalWeight() > MaxCarryWeight(), then jump_speed replaced overweight_jump_speed
+jump_speed_limit        = 15    ; Limit with artifact and armour bonuses
 crouch_coef             = 0.6
 climb_coef              = 0.7
 run_coef                = 2.0
@@ -30,9 +31,9 @@ sprint_koef             = 1.9
 run_back_coef           = 1.8
 walk_back_coef          = 0.8
 air_control_param       = 0.1
-walk_accel              = 18
-walk_accel_limit        = 30
-overweight_walk_accel   = 0.9	; walk_accel * overweight_walk_accel when overweight
+walk_accel              = 18    ; Based
+overweight_walk_accel   = 12    ; If TotalWeight() > MaxCarryWeight(), then walk_accel replaced overweight_walk_accel
+walk_accel_limit        = 30   	; Limit with artifact and armour bonuses
 show_corpses_dist		= 10
 
 ;радиус в котром над предметами выводятся их названия
@@ -43,7 +44,7 @@ feel_grenade_time       = 0.5	;время гранаты (сек) после которого актер чувствуе
 ef_creature_type        = 17	; option for evaluation functions
 
 ; attach params
-attachable_items        = device_torch,device_torch_bad,device_torch_mid,device_torch_wid,device_torch_top,device_nvg_1,device_nvg_2,device_nvg_3,attachable_item,hand_radio
+attachable_items        = device_torch,device_torch_bad,device_torch_mid,device_torch_far,device_torch_wid,device_torch_top,device_nvg_1,device_nvg_2,device_nvg_3,attachable_item,hand_radio
 
 ph_box0_center                   = 0.0,  0.9,  0.0
 ph_box0_size                     = 0.35, 0.9,  0.35
@@ -160,7 +161,7 @@ alcohol_v				= 0.0003	;скорость трезвения
 health_hit_part			= 1.0		;процент хита, уходящий на отнимание здоровья
 power_hit_part			= 0.05		;процент хита, уходящий на отнимание силы
 max_power_leak_speed	= 0.0		;накопление усталости (макс граница, до которой восстанавливается сила) в секунду игрового времени
-max_walk_weight			= 30
+max_walk_weight			= 15
 health_restore_v        = 0.0001
 bleeding_v 				= 0.003		;потеря крови при номинальной ране в секунду
 wound_incarnation_v		= 0.00015	;скорость заживления раны

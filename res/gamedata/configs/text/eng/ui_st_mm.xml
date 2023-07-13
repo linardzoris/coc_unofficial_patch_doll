@@ -46,19 +46,19 @@
 		<text>DirectX 9 (Static)</text>
 	</string>
 	<string id="renderer_r2a">
-		<text>DirectX 9 (Basic)</text>
+		<text>DirectX 9 (Static)</text>
 	</string>
 	<string id="renderer_r2">
-		<text>DirectX 9 (Normal)</text>
+		<text>DirectX 9</text>
 	</string>
 	<string id="renderer_r2.5">
 		<text>DirectX 9 (Enhanced)</text>
 	</string>
 	<string id="renderer_r3">
-		<text>DirectX 10 (Enhanced)</text>
+		<text>DirectX 10</text>
 	</string>
 	<string id="renderer_r4">
-		<text>DirectX 11 (Enhanced)</text>
+		<text>DirectX 11</text>
 	</string>
 	<string id="st_opt_high">
 		<text>High</text>

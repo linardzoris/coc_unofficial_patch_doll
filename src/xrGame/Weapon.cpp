@@ -1012,6 +1012,7 @@ void CWeapon::UpdateFlashlight()
 
 BOOL CWeapon::net_Spawn(CSE_Abstract* DC)
 {
+    BOOL bResult = inherited::net_Spawn(DC);
     CSE_Abstract* e = (CSE_Abstract*)(DC);
     CSE_ALifeItemWeapon* E = smart_cast<CSE_ALifeItemWeapon*>(e);
     m_cur_addon.data = E->a_current_addon.data;
@@ -1024,8 +1025,6 @@ BOOL CWeapon::net_Spawn(CSE_Abstract* DC)
         m_cur_addon.silencer = 0;
     if (m_cur_addon.launcher >= (u16)m_launchers.size())
         m_cur_addon.launcher = 0;
-
-    BOOL bResult = inherited::net_Spawn(DC);
 
 
 	if (m_bGrenadeMode) // normal ammo will be in *2

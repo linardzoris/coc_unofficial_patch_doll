@@ -2,7 +2,7 @@
 $npc                                               = on
 $prefetch                                          = 8
 $spawn                                             = "weapons\svd"
-ammo_class                                         = ammo_7.62x54_7h1, ammo_7.62x54_ap
+ammo_class                                         = ammo_7.62x54_7h1
 ammo_elapsed                                       = 10
 ammo_mag_size                                      = 10
 animation_slot                                     = 2
@@ -31,8 +31,6 @@ fire_dispersion_base                               = 0.08
 fire_dispersion_condition_factor                   = 1
 fire_distance                                      = 1700
 fire_modes                                         = 1
-fire_point                                         = 0,0.129,0.942
-fire_point2                                        = 0,0.129,0.942
 grenade_launcher_status                            = 0
 GroupControlSection                                = spawn_group
 hand_dependence                                    = 1
@@ -61,7 +59,6 @@ misfire_end_prob                                   = 0.055
 misfire_probability                                = 0.005
 misfire_start_condition                            = 0.6
 misfire_start_prob                                 = 0.0055
-orientation                                        = 0,0,0
 parent_section                                     = wpn_svd
 PDM_disp_accel_factor                              = 1.5
 PDM_disp_base                                      = 1.3
@@ -69,7 +66,6 @@ PDM_disp_crouch                                    = 1.0
 PDM_disp_crouch_no_acc                             = 1.0
 PDM_disp_vel_factor                                = 1.5
 ph_mass                                            = 5
-position                                           = -0.026,-0.077,0
 reload_dof                                         = 0, 0.5, 5, 2.2
 rpm                                                = 180
 rpm_empty_click                                    = 250
@@ -81,7 +77,6 @@ scope_y                                            = 7
 scope_zoom_factor                                  = 1.1
 scopes                                             = pso_scope, 1p29_scope, 1p59_scope, 1pn93_scope, kobra_scope, okp_scope
 shell_particles                                    = ;weapons\762x54
-shell_point                                        = 0, 0.129, 0.192
 
 silencer_light_color                               = 0.6, 0.5, 0.3
 silencer_light_range                               = 0.01
@@ -97,10 +92,10 @@ slot                                               = 2
 
 snd_draw										   = weapons\svd\svd_draw
 snd_empty               						   = weapons\_dryfire\sniper_dry
-snd_holster										   = weapons\sniper_holster
+snd_holster										   = weapons\svd\svd_hide
 snd_reload										   = weapons\svd\svd_reload
 snd_reload_empty								   = weapons\svd\svd_reload_empty
-snd_reload_misfire								   = weapons\svd\svd_misfire
+snd_reload_misfire								   = weapons\svd\svd_revival
 
 snd_shoot               						   = weapons\_gunfire\svd\close_1
 snd_shoot1              						   = weapons\_gunfire\svd\close_2
@@ -115,15 +110,16 @@ snd_silncer_shot2        						   = weapons\_sil\762_warsaw\sd_close_3
 snd_silncer_shot3        						   = weapons\_sil\762_warsaw\sd_close_4
 snd_reflect_sil                                    = weapons\_sil\762_warsaw\tail_sd_1
 
+position                                 		   = -0.026, -0.077, 0.00
+orientation                              		   = 0, 0, 0
+fire_point                               		   = 0.0, 0.129, 0.942
+fire_point2                              		   = 0.0, 0.129, 0.942
+shell_point		 			                       = 0.0, 0.129, 0.192
 strap_bone0                                        = bip01_spine2
 strap_bone1                                        = bip01_spine1
 strap_orientation                                  = -25, -189, 65
 strap_position                                     = -0.15, -0.15, 0.45
 time_to_aim                                        = 1.0
-upgr_icon_height                                   = 200
-upgr_icon_width                                    = 300
-upgr_icon_x										   = 0
-upgr_icon_y 									   = 0
 
 upgrade_scheme                                     = upgrade_scheme_svd
 upgrades                                           = up_gr_firstab_svd, up_gr_seconab_svd, up_gr_thirdab_svd, up_gr_fourtab_svd, up_gr_fourtcd_svd, up_gr_fourtef_svd
@@ -146,130 +142,153 @@ smoke_particles									   = ghost_particles\weapons\flame_eft_ak
 silencer_smoke_particles   						   = ghost_particles\weapons\generic_smoke_eft_sil
 
 [wpn_svd_hud]:hud_base_weapon
-hands_position				= -0.025100,-0.007000,-0.259199
-hands_orientation			= 0.250000,1.150000,0.000000
-hands_position_16x9			= -0.025100,-0.007000,-0.259199
-hands_orientation_16x9		= 0.250000,1.150000,0.000000
-aim_hud_offset_pos			= -0.044150,0.042400,-0.008100
-aim_hud_offset_rot			= 0.032500,0.015450,0.020000
-aim_hud_offset_pos_16x9		= -0.044150,0.042400,-0.008100
-aim_hud_offset_rot_16x9		= 0.032500,0.015450,0.020000
-item_position 				= 0,0,0
-item_orientation 			= 0,0,0
+hands_orientation          				 = 0.732, 0.053332, 0.8
+hands_orientation_16x9      			 = 0.732, 0.053332, 0.8
+hands_position              			 = -0.030218, 0.029845, -0.108633
+hands_position_16x9         			 = -0.030218, 0.029845, -0.108633
+aim_hud_offset_pos						 = 0.025509,0.004123,0.030619
+aim_hud_offset_rot						 = -0.000338,0.012878,0.012500
+aim_hud_offset_pos_16x9					 = 0.025509,0.004123,0.030619
+aim_hud_offset_rot_16x9					 = -0.000338,0.012878,0.012500
+item_position 							 = -0.004332,-0.000178,-0.025946
+item_orientation 						 = 0,0,0
 
-anm_show				    = svd_uanam_draw
-anm_hide             		= svd_uanam_holster
-anm_shots				    = svd_uanam_shoot_ng_shell, shot
-anm_reload				    = svd_ins_reload
-anm_reload_empty			= mlr_ins_reload_full_svd, svd_ins_reload_full
-anm_reload_misfire			= svd_misfire, revival
-anm_bore				    = svd_ins_idle_bore
-anm_idle             		= svd_ins_idle
-anm_idle_aim				= svd_ins_idle_aim
-anm_idle_moving 			= svd_ins_idle_moving
-anm_idle_sprint				= svd_uanam_idle_sprint
+anm_hide                                 = svd_gwr_hide, idle
+anm_hide_empty                           = svd_gwr_hide, idle_empty
+anm_idle                                 = svd_gwr_idle, idle
+anm_idle_empty                           = svd_gwr_idle, idle_empty
+anm_idle_aim                             = svd_gwr_aim, idle
+anm_idle_aim_empty                       = svd_gwr_aim, idle_empty
+anm_idle_aim_moving                      = svd_gwr_walk, idle, 0.75
+anm_idle_aim_moving_empty                = svd_gwr_walk, idle_empty, 0.75
+anm_idle_aim_moving_crouch               = svd_gwr_walk, idle, 0.7
+anm_idle_aim_moving_crouch_empty         = svd_gwr_walk, idle_empty, 0.7
+anm_idle_moving                          = svd_gwr_walk, idle
+anm_idle_moving_empty                    = svd_gwr_walk, idle_empty
+anm_idle_moving_crouch                   = svd_gwr_walk, idle, 0.7
+anm_idle_moving_crouch_empty             = svd_gwr_walk, idle_empty, 0.7
+anm_idle_sprint                          = svd_gwr_sprint, idle, 1.1
+anm_idle_sprint_empty                    = svd_gwr_sprint, idle_empty, 1.1
+anm_reload                               = svd_gwr_reload, svd_reload
+anm_reload_empty                         = svd_gwr_reload_empty, svd_reload_empty
+anm_shots                                = svd_gwr_shoot, svd_shoot
+anm_shot_l                               = svd_gwr_shoot, svd_shoot_empty
+anm_shots_aim                            = svd_gwr_aim_shoot, svd_shoot
+anm_shots_aim_l                          = svd_gwr_aim_shoot, svd_shoot_empty
+anm_show                                 = svd_gwr_draw, idle
+anm_show_empty                           = svd_gwr_draw, idle_empty
+anm_reload_misfire                       = svd_gwr_misfire, svd_revival
+anm_idle_aim_start                       = svd_gwr_aim_start, idle
+anm_idle_aim_end                         = svd_gwr_aim_end, idle
+anm_idle_aim_start_empty                 = svd_gwr_aim_start, idle_empty
+anm_idle_aim_end_empty                   = svd_gwr_aim_end, idle_empty
+anm_bore                                 = svd_gwr_dry, idle
+anm_bore_aim                             = svd_gwr_aim_dry_empty, idle
+anm_bore_empty                           = svd_gwr_dry, idle_empty
+anm_bore_aim_empty                       = svd_gwr_aim_dry_empty, idle_empty
 
-anm_show_empty				= svd_uanam_draw, idle_empty
-anm_hide_empty             	= svd_uanam_holster, idle_empty
-anm_idle_empty             	= svd_ins_idle, idle_empty
-anm_shot_l					= svd_uanam_shoot_ng_shell, shot_last
-anm_idle_aim_empty			= svd_ins_idle_aim, idle_empty
-anm_idle_moving_empty 		= svd_ins_idle_moving, idle_empty
-anm_idle_sprint_empty		= svd_uanam_idle_sprint, idle_empty
-anm_bore_empty				= svd_ins_idle_bore, idle_empty
+anm_changefiremode                       = svd_gwr_select_fire, idle
+anm_changefiremode_empty                 = svd_gwr_select_fire, idle_empty
+anm_changefiremode_jammed                = svd_gwr_select_fire, idle_jammed
 
-anm_show_jammed				= svd_uanam_draw, idle_jammed	
-anm_hide_jammed             = svd_uanam_holster, idle_jammed
-anm_idle_jammed             = svd_ins_idle, idle_jammed
-anm_idle_aim_jammed			= svd_ins_idle_aim, idle_jammed
-anm_idle_moving_jammed 		= svd_ins_idle_moving, idle_jammed
-anm_idle_sprint_jammed		= svd_uanam_idle_sprint, idle_jammed
-anm_bore_jammed				= svd_ins_idle_bore, idle_jammed
+anm_hide_jammed                        	 = svd_gwr_hide, idle_jammed         
+anm_idle_jammed                          = svd_gwr_idle, idle_jammed
+anm_idle_aim_jammed                      = svd_gwr_aim, idle_jammed
+anm_idle_aim_moving_jammed               = svd_gwr_walk, idle_jammed, 0.75
+anm_idle_aim_moving_crouch_jammed        = svd_gwr_walk, idle_jammed,  0.7
+anm_idle_moving_jammed                   = svd_gwr_walk, idle_jammed
+anm_idle_moving_crouch_jammed            = svd_gwr_walk, idle_jammed, 0.7
+anm_idle_sprint_jammed                   = svd_gwr_sprint, idle_jammed
+anm_show_jammed                          = svd_gwr_draw, idle_jammed
+anm_idle_aim_start_jammed                = svd_gwr_aim_start, idle_jammed
+anm_idle_aim_end_jammed                  = svd_gwr_aim_end, idle_jammed
+anm_bore_jammed                          = svd_gwr_dry, idle_jammed
+anm_bore_aim_jammed                      = svd_gwr_aim_dry_empty, idle_jammed
 
-fire_point				    = 0,0.043,1.002
-fire_bone                   = wpn_body
-shell_point				    = 0.025,0.055,0.221
-shell_bone				    = wpn_body
-item_visual                 = dynamics\weapons\wpn_svd\wpn_svd_hud.ogf
+shell_bone                               = wpn_body
+shell_point                              = 0, 0, 0
+fire_bone                                = wpn_body
+fire_point                               = 0, 0, 0.8
+
+item_visual                              = dynamics\weapons\wpn_svd\wpn_svd_hud.ogf
 
 ;-----------------------------------------------------------------------------
 ; ְההמםû
 ;-----------------------------------------------------------------------------
 
 [wpn_svd_pso_scope]:wpn_svd
-$spawn                          = "weapons\wpn_svd_pso_scope"
-scope_x                         = 36
-scope_y                         = 7
-hud					            = wpn_svd_pso_scope_hud
+$spawn                          		 = "weapons\wpn_svd_pso_scope"
+scope_x                         		 = 36
+scope_y                         		 = 7
+hud					            		 = wpn_svd_pso_scope_hud
 
 [wpn_svd_pso_scope_hud]:wpn_svd_hud
-aim_hud_offset_pos				= -0.028150,0.011300,-0.018000
-aim_hud_offset_rot				= 0.032500,0.015450,0.020000
-aim_hud_offset_pos_16x9			= -0.028150,0.011300,-0.018000
-aim_hud_offset_rot_16x9			= 0.032500,0.015450,0.020000
-item_visual                		= dynamics\weapons\wpn_svd\wpn_svd_pso_hud.ogf
+aim_hud_offset_pos						 = 0.038009,-0.020377,0.030619
+aim_hud_offset_rot						 = -0.010838,0.030128,0.012500
+aim_hud_offset_pos_16x9					 = 0.038009,-0.020377,0.030619
+aim_hud_offset_rot_16x9					 = -0.010838,0.030128,0.012500
 
 [wpn_svd_1p29_scope]:wpn_svd
-$spawn                          = "weapons\wpn_svd_1p29_scope"
-scope_x                         = 62
-scope_y                         = 8
-hud					            = wpn_svd_1p29_scope_hud
+$spawn                          		 = "weapons\wpn_svd_1p29_scope"
+scope_x                         		 = 62
+scope_y                         		 = 8
+hud					            		 = wpn_svd_1p29_scope_hud
 
 [wpn_svd_1p29_scope_hud]:wpn_svd_hud
-aim_hud_offset_pos				= -0.035650,0.009400,-0.068600
-aim_hud_offset_rot				= 0.032500,0.015450,0.020000
-aim_hud_offset_pos_16x9			= -0.035650,0.009400,-0.068600
-aim_hud_offset_rot_16x9			= 0.032500,0.015450,0.020000
-item_visual                		= dynamics\weapons\wpn_svd\wpn_svd_1p29_hud.ogf
+aim_hud_offset_pos						 = 0.024509,-0.028877,0.039619
+aim_hud_offset_rot						 = 0.004662,0.034378,0.012500
+aim_hud_offset_pos_16x9					 = 0.024509,-0.028877,0.039619
+aim_hud_offset_rot_16x9					 = 0.004662,0.034378,0.012500
+item_visual                				 = dynamics\weapons\wpn_svd\wpn_svd_1p29_hud.ogf
 
 [wpn_svd_1p59_scope]:wpn_svd
-$spawn                          = "weapons\wpn_svd_1p59_scope"
-scope_x                         = 45
-scope_y                         = 4
-hud					            = wpn_svd_1p59_scope_hud
+$spawn                          		 = "weapons\wpn_svd_1p59_scope"
+scope_x                         		 = 45
+scope_y                         		 = 4
+hud					            		 = wpn_svd_1p59_scope_hud
 
 [wpn_svd_1p59_scope_hud]:wpn_svd_hud
-aim_hud_offset_pos				= -0.032150,0.013400,-0.133600
-aim_hud_offset_rot				= 0.032500,0.015450,0.020000
-aim_hud_offset_pos_16x9			= -0.032150,0.013400,-0.133600
-aim_hud_offset_rot_16x9			= 0.032500,0.015450,0.020000
-item_visual                		= dynamics\weapons\wpn_svd\wpn_svd_1p59_hud.ogf
+aim_hud_offset_pos					= 0.040509,-0.019877,0.016619
+aim_hud_offset_rot					= 0.002662,0.014128,0.012000
+aim_hud_offset_pos_16x9				= 0.040509,-0.019877,0.016619
+aim_hud_offset_rot_16x9				= 0.002662,0.014128,0.012000
+item_visual                				 = dynamics\weapons\wpn_svd\wpn_svd_1p59_hud.ogf
 
 [wpn_svd_kobra_scope]:wpn_svd
-$spawn                          = "weapons\svd_kobra_scope"
-hud					            = wpn_svd_kobra_scope_hud
-scope_x			                = 72
-scope_y			                = 10
+$spawn                          		 = "weapons\svd_kobra_scope"
+hud					            		 = wpn_svd_kobra_scope_hud
+scope_x			                		 = 72
+scope_y			                		 = 10
 
 [wpn_svd_kobra_scope_hud]:wpn_svd_hud
-aim_hud_offset_pos				= -0.042150,0.008900,-0.008100
-aim_hud_offset_rot				= 0.032500,0.015450,0.020000
-aim_hud_offset_pos_16x9			= -0.042150,0.008900,-0.008100
-aim_hud_offset_rot_16x9			= 0.032500,0.015450,0.020000
-item_visual                		= dynamics\weapons\wpn_svd\wpn_svd_kobra_hud.ogf
+aim_hud_offset_pos						 = 0.026509,-0.025877,0.030619
+aim_hud_offset_rot						 = 0.015412,0.018378,0.012500
+aim_hud_offset_pos_16x9					 = 0.026509,-0.025877,0.030619
+aim_hud_offset_rot_16x9					 = 0.015412,0.018378,0.012500
+item_visual                				 = dynamics\weapons\wpn_svd\wpn_svd_kobra_hud.ogf
 
 [wpn_svd_1pn93_scope]:wpn_svd
-$spawn             		        = "weapons\wpn_svd_1pn93_scope"
-hud					            = wpn_svd_1pn93_scope_hud
-scope_x                         = 62
-scope_y                         = 8
+$spawn             		        		 = "weapons\wpn_svd_1pn93_scope"
+hud					            		 = wpn_svd_1pn93_scope_hud
+scope_x                         		 = 62
+scope_y                         		 = 8
 
 [wpn_svd_1pn93_scope_hud]:wpn_svd_hud
-aim_hud_offset_pos				= -0.029150,0.013900,-0.077100
-aim_hud_offset_rot				= 0.032500,0.015450,0.020000
-aim_hud_offset_pos_16x9			= -0.029150,0.013900,-0.077100
-aim_hud_offset_rot_16x9			= 0.032500,0.015450,0.020000
-item_visual                		= dynamics\weapons\wpn_svd\wpn_svd_1pn93_hud.ogf
+aim_hud_offset_pos						 = 0.039009,-0.025877,0.030619
+aim_hud_offset_rot						 = 0.019162,-0.003122,0.012500
+aim_hud_offset_pos_16x9					 = 0.039009,-0.025877,0.030619
+aim_hud_offset_rot_16x9					 = 0.019162,-0.003122,0.012500
+item_visual                				 = dynamics\weapons\wpn_svd\wpn_svd_1pn93_hud.ogf
 
 [wpn_svd_okp_scope]:wpn_svd
-$spawn             		        = "weapons\wpn_svd_okp_scope"
-hud					            = wpn_svd_okp_scope_hud
-scope_x			                = 74
-scope_y			                = 8
+$spawn             		        		 = "weapons\wpn_svd_okp_scope"
+hud					            		 = wpn_svd_okp_scope_hud
+scope_x			                		 = 74
+scope_y			                		 = 8
 
 [wpn_svd_okp_scope_hud]:wpn_svd_hud
-aim_hud_offset_pos				= -0.039650,0.019900,-0.008100
-aim_hud_offset_rot				= 0.032500,0.015450,0.020000
-aim_hud_offset_pos_16x9			= -0.039650,0.019900,-0.008100
-aim_hud_offset_rot_16x9			= 0.032500,0.015450,0.020000
-item_visual                	    = dynamics\weapons\wpn_svd\wpn_svd_okp_hud.ogf
+aim_hud_offset_pos						 = 0.029509,-0.019377,0.030619
+aim_hud_offset_rot						 = -0.001588,0.015628,0.012500
+aim_hud_offset_pos_16x9					 = 0.029509,-0.019377,0.030619
+aim_hud_offset_rot_16x9					 = -0.001588,0.015628,0.012500
+item_visual                	    		 = dynamics\weapons\wpn_svd\wpn_svd_okp_hud.ogf
