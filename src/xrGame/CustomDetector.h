@@ -152,6 +152,9 @@ public:
     void HideDetector(bool bFastMode);
     void ShowDetector(bool bFastMode);
     float m_fAfDetectRadius;
+    float m_fAfVisRadius;
+    float m_fDecayRate; // Alundaio
+    float m_fPassiveDecayRate; // Alundaio
     virtual bool CheckCompatibility(CHudItem* itm);
 
     virtual u32 ef_detector_type() const { return 1; };
@@ -166,9 +169,6 @@ protected:
     virtual void ResetUI(){};
 
     bool m_bWorking;
-    float m_fAfVisRadius;
-    float m_fDecayRate; //Alundaio
-    float m_fPassiveDecayRate; //Alundaio
     CAfList m_artefacts;
     virtual bool install_upgrade_impl(LPCSTR section, bool test);
 };

@@ -163,6 +163,13 @@ public:
         float pda_psy_influence;
         float pda_displaybrightness;
     } pda_shader_data;
+
+	struct laser_data
+    {
+        float laser_factor;
+        float laser_psy_influence;
+        float laser_brightness;
+    } laser_shader_data;
 };
 
 class IMainMenu

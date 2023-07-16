@@ -14,6 +14,7 @@
 #include "ActorHelmet.h"
 #include "ActorBackpack.h"
 #include "ActorUnvest.h"
+#include "CustomDetector.h"
 
 u32 const red_clr = color_argb(255, 210, 50, 50);
 u32 const green_clr = color_argb(255, 170, 170, 170);
@@ -37,6 +38,7 @@ CUIArtefactParams::CUIArtefactParams()
     m_fPsyHealthRestoreSpeed = nullptr;
     m_fSleepenessRestoreSpeed = nullptr;
     m_artefact_count = nullptr;
+    m_fAfVisRadius = nullptr;
 	m_Prop_line = nullptr;
 }
 
@@ -53,6 +55,7 @@ CUIArtefactParams::~CUIArtefactParams()
     xr_delete   (m_fPsyHealthRestoreSpeed);
     xr_delete   (m_fSleepenessRestoreSpeed);
     xr_delete   (m_artefact_count);
+    xr_delete   (m_fAfVisRadius);
 	xr_delete	(m_Prop_line);
 }
 
@@ -226,6 +229,15 @@ void CUIArtefactParams::InitFromXml(CUIXml& xml)
         m_artefact_count->SetAutoDelete(false);
         LPCSTR name = StringTable().translate("ui_inv_af_artefact_count").c_str();
         m_artefact_count->SetCaption(name);
+        xml.SetLocalRoot(base_node);
+    }
+
+    {
+        m_fAfVisRadius = new UIArtefactParamItem();
+        m_fAfVisRadius->Init(xml, "det_af_vis_radius");
+        m_fAfVisRadius->SetAutoDelete(false);
+        LPCSTR name = StringTable().translate("ui_inv_det_af_vis_radius").c_str();
+        m_fAfVisRadius->SetCaption(name);
         xml.SetLocalRoot(base_node);
     }
 
@@ -740,6 +752,39 @@ void CUIArtefactParams::SetInfo(const CUnvest* pInvItem)
 
             h += m_artefact_count->GetWndSize().y;
             AttachChild(m_artefact_count);
+        }
+    }
+
+    SetHeight(h);
+}
+
+void CUIArtefactParams::SetInfo(const CCustomDetector* pInvItem)
+{
+    DetachAll();
+    AttachChild(m_Prop_line);
+
+    CActor* actor = smart_cast<CActor*>(Level().CurrentViewEntity());
+    if (!actor)
+    {
+        return;
+    }
+
+    const shared_str& af_section = pInvItem->cNameSect();
+
+    float val = 0.0f, max_val = 1.0f;
+    Fvector2 pos;
+    float h = m_Prop_line->GetWndPos().y + m_Prop_line->GetWndSize().y;
+
+    {
+        float val = pInvItem->m_fAfVisRadius;
+        if (!fis_zero(val))
+        {
+            m_fAfVisRadius->SetValue(val);
+            pos.set(m_fAfVisRadius->GetWndPos());
+            pos.y = h;
+            m_fAfVisRadius->SetWndPos(pos);
+            h += m_fAfVisRadius->GetWndSize().y;
+            AttachChild(m_fAfVisRadius);
         }
     }
 

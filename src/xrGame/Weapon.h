@@ -181,6 +181,10 @@ public:
     bool IsTriStateReload() const { return m_bTriStateReload; }
     bool IsOpenWeaponEmptyCartridge() const { return m_bOpenWeaponEmptyCartridge; }
     bool IsDiffShotModes() const { return m_bDiffShotModes; }
+
+    // Костыль для лазера, пока не запилил аттач
+    bool IsHasLaserShader() const { return m_bHasLaserShader; }
+
     EWeaponSubStates GetReloadState() const { return (EWeaponSubStates)m_sub_state; }
     bool IsMisfireOneCartRemove() const { return m_bMisfireOneCartRemove; }
     bool IsMotionMarkShell() const { return m_bMotionMarkShell; }
@@ -206,6 +210,9 @@ protected:
     bool m_bOpenWeaponEmptyCartridge;
     bool m_bDiffShotModes;
     bool m_bMotionMarkShell;
+
+    // Костыль для лазера, пока не запилил аттач
+    bool m_bHasLaserShader;
 
     // a misfire happens, you'll need to rearm weapon
     bool bMisfire;
@@ -282,7 +289,7 @@ protected:
             u16 data;
             struct
             {
-                u16 scope : 6; // 2^6 possible scope sections // пометка
+                u16 scope : 6; // 2^6 possible scope sections // пометка 
                 u16 silencer : 5; // 2^5 possible silencer/launcher sections
                 u16 launcher : 5;
             };

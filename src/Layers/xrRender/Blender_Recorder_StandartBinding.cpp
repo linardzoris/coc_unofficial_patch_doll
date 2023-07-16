@@ -410,6 +410,96 @@ static class cl_pda_params : public R_constant_setup
 
 } binder_pda_params;
 
+// Laser
+extern Fvector4 ps_wpn_laser;
+
+static class cl_wpn_laser : public R_constant_setup
+{
+    virtual void setup(R_constant* C)
+    {
+        float laser_factor = g_pGamePersistent->laser_shader_data.laser_factor;
+        float laser_psy_influence = g_pGamePersistent->laser_shader_data.laser_psy_influence;
+        float laser_brightness = g_pGamePersistent->laser_shader_data.laser_brightness;
+        RCache.set_c(C, laser_factor, laser_psy_influence, laser_brightness, 0.0f);
+        //RCache.set_c(C, ps_wpn_laser.x, ps_wpn_laser.y, ps_wpn_laser.z, ps_wpn_laser.w);
+    }
+
+} binder_wpn_laser;
+
+// Sneaky debug stuff
+extern Fvector4 ps_dev_param_1;
+extern Fvector4 ps_dev_param_2;
+extern Fvector4 ps_dev_param_3;
+extern Fvector4 ps_dev_param_4;
+extern Fvector4 ps_dev_param_5;
+extern Fvector4 ps_dev_param_6;
+extern Fvector4 ps_dev_param_7;
+extern Fvector4 ps_dev_param_8;
+
+static class dev_param_1 : public R_constant_setup
+{
+    virtual void setup(R_constant* C)
+    {
+        RCache.set_c(C, ps_dev_param_1.x, ps_dev_param_1.y, ps_dev_param_1.z, ps_dev_param_1.w);
+    }
+} dev_param_1;
+
+static class dev_param_2 : public R_constant_setup
+{
+    virtual void setup(R_constant* C)
+    {
+        RCache.set_c(C, ps_dev_param_2.x, ps_dev_param_2.y, ps_dev_param_2.z, ps_dev_param_2.w);
+    }
+} dev_param_2;
+
+static class dev_param_3 : public R_constant_setup
+{
+    virtual void setup(R_constant* C)
+    {
+        RCache.set_c(C, ps_dev_param_3.x, ps_dev_param_3.y, ps_dev_param_3.z, ps_dev_param_3.w);
+    }
+} dev_param_3;
+
+static class dev_param_4 : public R_constant_setup
+{
+    virtual void setup(R_constant* C)
+    {
+        RCache.set_c(C, ps_dev_param_4.x, ps_dev_param_4.y, ps_dev_param_4.z, ps_dev_param_4.w);
+    }
+} dev_param_4;
+
+static class dev_param_5 : public R_constant_setup
+{
+    virtual void setup(R_constant* C)
+    {
+        RCache.set_c(C, ps_dev_param_5.x, ps_dev_param_5.y, ps_dev_param_5.z, ps_dev_param_5.w);
+    }
+} dev_param_5;
+
+static class dev_param_6 : public R_constant_setup
+{
+    virtual void setup(R_constant* C)
+    {
+        RCache.set_c(C, ps_dev_param_6.x, ps_dev_param_6.y, ps_dev_param_6.z, ps_dev_param_6.w);
+    }
+} dev_param_6;
+
+static class dev_param_7 : public R_constant_setup
+{
+    virtual void setup(R_constant* C)
+    {
+        RCache.set_c(C, ps_dev_param_7.x, ps_dev_param_7.y, ps_dev_param_7.z, ps_dev_param_7.w);
+    }
+} dev_param_7;
+
+static class dev_param_8 : public R_constant_setup
+{
+    virtual void setup(R_constant* C)
+    {
+        RCache.set_c(C, ps_dev_param_8.x, ps_dev_param_8.y, ps_dev_param_8.z, ps_dev_param_8.w);
+    }
+} dev_param_8;
+
 static class cl_inv_v : public R_constant_setup
 {
     u32 marker;
@@ -509,7 +599,23 @@ void CBlender_Compile::SetMapping()
     r_Constant("L_ambient", &binder_amb_color);
 #endif
     r_Constant("screen_res", &binder_screen_res);
+
+    // PDA display
     r_Constant("pda_params", &binder_pda_params);
+
+    // Laser
+    r_Constant("wpn_laser", &binder_wpn_laser);
+
+	// Shader stuff
+
+    r_Constant("shader_param_1", &dev_param_1);
+    r_Constant("shader_param_2", &dev_param_2);
+    r_Constant("shader_param_3", &dev_param_3);
+    r_Constant("shader_param_4", &dev_param_4);
+    r_Constant("shader_param_5", &dev_param_5);
+    r_Constant("shader_param_6", &dev_param_6);
+    r_Constant("shader_param_7", &dev_param_7);
+    r_Constant("shader_param_8", &dev_param_8);
 
 	// SSS DoF
     r_Constant("ssfx_wpn_dof_1", &ssfx_wpn_dof_1);

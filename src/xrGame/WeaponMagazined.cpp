@@ -1225,7 +1225,7 @@ bool CWeaponMagazined::Action(u16 cmd, u32 flags)
     case kWPN_ADDON: {
         if (flags & CMD_START)
         {
-            if (!HasFlashlight() && !HasLaser())
+            if (!IsHasLaserShader() && !HasFlashlight() && !HasLaser()) // IsHasLaserShader костыль для обесцвечивания шейдера
                 return false;
 
             OnWeaponAddonSwitch();
@@ -1945,11 +1945,16 @@ void CWeaponMagazined::OnWeaponAddonSwitch() // Для лазера/фонаря
     if (GetState() != eIdle)
         return;
 
+    if (IsHasLaserShader() && g_pGamePersistent->laser_shader_data.laser_factor == 0)
+        g_pGamePersistent->laser_shader_data.laser_factor = 1.f;
+    else if (IsHasLaserShader() && g_pGamePersistent->laser_shader_data.laser_factor > 0)
+        g_pGamePersistent->laser_shader_data.laser_factor = 0.f;
+
     // Можно перекинуть в OnAnimationEnd, но хз
-    if (HasLaser())
+    if (!IsHasLaserShader() && HasLaser())
         SwitchLaser(!IsLaserOn());
 
-    if (HasFlashlight())
+    if (!IsHasLaserShader() && HasFlashlight())
         SwitchFlashlight(!IsFlashlightOn());
 };
 

@@ -118,6 +118,9 @@ CWeapon::CWeapon()
     m_bMotionMarkShell = false;
     m_bMisfireOneCartRemove = false;
 
+    // Костыль для лазера, пока не запилил аттач
+    m_bHasLaserShader = false;
+
 	// Альт. прицеливание
     m_altAimPos = false;
     m_zoom_params.m_altAimPos = false;
@@ -529,6 +532,8 @@ void CWeapon::Load(LPCSTR section)
     m_bMotionMarkShell = READ_IF_EXISTS(pSettings, r_bool, section, "motion_mark_shell", false);
     m_bMisfireOneCartRemove = READ_IF_EXISTS(pSettings, r_bool, section, "misfire_one_cartridge_remove", false);
 
+    // Костыль для лазера, пока не запилил аттач
+    m_bHasLaserShader = READ_IF_EXISTS(pSettings, r_bool, section, "has_laser_shader", false);
 
     // hands
     eHandDependence = EHandDependence(pSettings->r_s32(section, "hand_dependence"));

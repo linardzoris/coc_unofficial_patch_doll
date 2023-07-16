@@ -12,6 +12,7 @@ class CHelmet;
 class CBackpack;
 class CUnvest;
 class CArtefact;
+class CCustomDetector;
 
 class CUIArtefactParams : public CUIWindow
 {
@@ -26,6 +27,7 @@ public:
     void SetInfo(const CBackpack* pInvItem);
     void SetInfo(const CUnvest* pInvItem);
     void SetInfo(const CArtefact* pInvItem);
+    void SetInfo(const CCustomDetector* pInvItem);
 
 protected:
     static constexpr u32 af_immunity_count = 9;
@@ -34,6 +36,7 @@ protected:
     UIArtefactParamItem* m_additional_weight;
     UIArtefactParamItem* m_disp_condition; //Alundaio: Show AF Condition
 
+	UIArtefactParamItem* m_fAfVisRadius;
 	UIArtefactParamItem* m_artefact_count;
     UIArtefactParamItem* m_fJumpSpeed;
     UIArtefactParamItem* m_fWalkAccel;

@@ -269,6 +269,19 @@ int ps_r2_wait_sleep = 0;
 float ps_r2_lt_smooth = 1.f; // 1.f
 float ps_r2_slight_fade = 0.5f; // 1.f
 
+// Laser
+Fvector4 ps_shader_wpn_laser = {.0f, .0f, .0f, .0f};
+
+// debug
+Fvector4 ps_dev_param_1 = {.0f, .0f, .0f, .0f};
+Fvector4 ps_dev_param_2 = {.0f, .0f, .0f, .0f};
+Fvector4 ps_dev_param_3 = {.0f, .0f, .0f, .0f};
+Fvector4 ps_dev_param_4 = {.0f, .0f, .0f, .0f};
+Fvector4 ps_dev_param_5 = {.0f, .0f, .0f, .0f};
+Fvector4 ps_dev_param_6 = {.0f, .0f, .0f, .0f};
+Fvector4 ps_dev_param_7 = {.0f, .0f, .0f, .0f};
+Fvector4 ps_dev_param_8 = {.0f, .0f, .0f, .0f};
+
 //  x - min (0), y - focus (1.4), z - max (100)
 Fvector3 ps_r2_dof = Fvector3().set(-1.25f, 1.4f, 600.f);
 float ps_r2_dof_sky = 30; //    distance to sky
@@ -862,6 +875,19 @@ void xrRender_initconsole()
 {
     Fvector4 tw2_min = {-100.f, -100.f, -100.f, -100.f};
     Fvector4 tw2_max = {100.f, 100.f, 100.f, 100.f};
+
+    // Laser
+    //CMD4(CCC_Vector4, "wpn_laser", &ps_shader_wpn_laser, tw2_min, tw2_max);
+
+    // Debug
+	CMD4(CCC_Vector4, "shader_param_1", &ps_dev_param_1, tw2_min, tw2_max);
+    CMD4(CCC_Vector4, "shader_param_2", &ps_dev_param_2, tw2_min, tw2_max);
+    CMD4(CCC_Vector4, "shader_param_3", &ps_dev_param_3, tw2_min, tw2_max);
+    CMD4(CCC_Vector4, "shader_param_4", &ps_dev_param_4, tw2_min, tw2_max);
+    CMD4(CCC_Vector4, "shader_param_5", &ps_dev_param_5, tw2_min, tw2_max);
+    CMD4(CCC_Vector4, "shader_param_6", &ps_dev_param_6, tw2_min, tw2_max);
+    CMD4(CCC_Vector4, "shader_param_7", &ps_dev_param_7, tw2_min, tw2_max);
+    CMD4(CCC_Vector4, "shader_param_8", &ps_dev_param_8, tw2_min, tw2_max);
 
     // Оптимизация
     CMD4(CCC_Integer, "r__optimize_static_geom", &opt_static, 0, 4);
