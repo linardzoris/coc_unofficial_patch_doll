@@ -120,6 +120,7 @@ CWeapon::CWeapon()
 
     // Костыль для лазера, пока не запилил аттач
     m_bHasLaserShader = false;
+    m_bLaserShaderOn = false;
 
 	// Альт. прицеливание
     m_altAimPos = false;

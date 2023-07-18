@@ -51,6 +51,7 @@ CWeaponMagazined::CWeaponMagazined(ESoundTypes eSoundType) : CWeapon()
 	m_bNeedBulletInGun = false;
     bHasBulletsToHide = false;
     m_bHasDistantShotSound = false;
+    m_bLaserShaderOn = false;
 }
 
 CWeaponMagazined::~CWeaponMagazined()
@@ -1945,10 +1946,16 @@ void CWeaponMagazined::OnWeaponAddonSwitch() // Для лазера/фонаря
     if (GetState() != eIdle)
         return;
 
-    if (IsHasLaserShader() && g_pGamePersistent->laser_shader_data.laser_factor == 0)
+    if (IsHasLaserShader() && !m_bLaserShaderOn)
+    {
         g_pGamePersistent->laser_shader_data.laser_factor = 1.f;
-    else if (IsHasLaserShader() && g_pGamePersistent->laser_shader_data.laser_factor > 0)
+        m_bLaserShaderOn = true;
+    }
+    else if (IsHasLaserShader() && m_bLaserShaderOn)
+    {
         g_pGamePersistent->laser_shader_data.laser_factor = 0.f;
+        m_bLaserShaderOn = false;
+    }
 
     // Можно перекинуть в OnAnimationEnd, но хз
     if (!IsHasLaserShader() && HasLaser())

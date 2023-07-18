@@ -184,6 +184,7 @@ public:
 
     // Костыль для лазера, пока не запилил аттач
     bool IsHasLaserShader() const { return m_bHasLaserShader; }
+    bool IsLaserShaderOn() const { return m_bLaserShaderOn; }
 
     EWeaponSubStates GetReloadState() const { return (EWeaponSubStates)m_sub_state; }
     bool IsMisfireOneCartRemove() const { return m_bMisfireOneCartRemove; }
@@ -213,6 +214,7 @@ protected:
 
     // Костыль для лазера, пока не запилил аттач
     bool m_bHasLaserShader;
+    bool m_bLaserShaderOn;
 
     // a misfire happens, you'll need to rearm weapon
     bool bMisfire;
