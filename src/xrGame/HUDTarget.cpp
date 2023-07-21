@@ -223,7 +223,7 @@ void CHUDTarget::Render()
 #endif
     }
 
-	if (auto Wpn = smart_cast<CWeapon*>(Actor->inventory().ActiveItem()); Wpn && Wpn->IsLaserOn() || Wpn->IsLaserShaderOn())
+	if (auto Wpn = smart_cast<CWeapon*>(Actor->inventory().ActiveItem()); Wpn && Wpn->IsLaserAttached() && Wpn->IsLaserShaderOn())
         return;
 
 	if (smart_cast<CPda*>(Actor->inventory().ActiveItem()))

@@ -118,8 +118,6 @@ CWeapon::CWeapon()
     m_bMotionMarkShell = false;
     m_bMisfireOneCartRemove = false;
 
-    // Костыль для лазера, пока не запилил аттач
-    m_bHasLaserShader = false;
     m_bLaserShaderOn = false;
 
 	// Альт. прицеливание
@@ -136,8 +134,7 @@ CWeapon::~CWeapon()
     xr_delete(m_UIScope);
     delete_data(m_scopes);
 
-    // Лазер и фонарик
-    laser_light_render.destroy();
+    // Фонарик
     flashlight_render.destroy();
     flashlight_omni.destroy();
     flashlight_glow.destroy();
@@ -361,6 +358,7 @@ void CWeapon::ForceUpdateFireParticles()
 LPCSTR wpn_scope_def_bone = "wpn_scope";
 LPCSTR wpn_silencer_def_bone = "wpn_silencer";
 LPCSTR wpn_launcher_def_bone = "wpn_launcher";
+LPCSTR wpn_laser_def_bone = "wpn_laser";
 
 void CWeapon::Load(LPCSTR section)
 {
@@ -533,9 +531,6 @@ void CWeapon::Load(LPCSTR section)
     m_bMotionMarkShell = READ_IF_EXISTS(pSettings, r_bool, section, "motion_mark_shell", false);
     m_bMisfireOneCartRemove = READ_IF_EXISTS(pSettings, r_bool, section, "misfire_one_cartridge_remove", false);
 
-    // Костыль для лазера, пока не запилил аттач
-    m_bHasLaserShader = READ_IF_EXISTS(pSettings, r_bool, section, "has_laser_shader", false);
-
     // hands
     eHandDependence = EHandDependence(pSettings->r_s32(section, "hand_dependence"));
     m_bIsSingleHanded = true;
@@ -549,6 +544,7 @@ void CWeapon::Load(LPCSTR section)
     m_eScopeStatus = (ALife::EWeaponAddonStatus)pSettings->r_s32(section, "scope_status");
     m_eSilencerStatus = (ALife::EWeaponAddonStatus)pSettings->r_s32(section, "silencer_status");
     m_eGrenadeLauncherStatus = (ALife::EWeaponAddonStatus)pSettings->r_s32(section, "grenade_launcher_status");
+    m_eLaserStatus = (ALife::EWeaponAddonStatus)pSettings->r_s32(section, "laser_status");
 
     m_zoom_params.m_bZoomEnabled = !!pSettings->r_bool(section, "zoom_enabled");
     m_zoom_params.m_fZoomRotateTime = pSettings->r_float(section, "zoom_rotate_time");
@@ -616,6 +612,24 @@ void CWeapon::Load(LPCSTR section)
         else
         {
             m_launchers.push_back(section);
+        }
+    }
+
+    if (m_eLaserStatus == ALife::eAddonAttachable)
+    {
+        if (pSettings->line_exist(section, "laser_sect"))
+        {
+            LPCSTR str = pSettings->r_string(section, "laser_sect");
+            for (int i = 0, count = _GetItemCount(str); i < count; ++i)
+            {
+                string128 scope_section;
+                _GetItem(str, i, scope_section);
+                m_lasers.push_back(scope_section);
+            }
+        }
+        else
+        {
+            m_lasers.push_back(section);
         }
     }
 
@@ -715,13 +729,17 @@ void CWeapon::Load(LPCSTR section)
     else
         m_sWpn_launcher_bone = wpn_launcher_def_bone;
 
-    // Лазер и фонарик
-	m_sWpn_laser_bone = READ_IF_EXISTS(pSettings, r_string, section, "laser_ray_bones", "");
+    if (pSettings->line_exist(section, "laser_bone"))
+        m_sWpn_laser_bone = pSettings->r_string(section, "laser_bone");
+    else
+        m_sWpn_laser_bone = wpn_laser_def_bone;
+
+    // Фонарик
 	m_sWpn_flashlight_bone = READ_IF_EXISTS(pSettings, r_string, section, "torch_cone_bones", "");
-	m_sHud_wpn_laser_bone = READ_IF_EXISTS(pSettings, r_string, hud_sect, "laser_ray_bones", m_sWpn_laser_bone);
 	m_sHud_wpn_flashlight_bone = READ_IF_EXISTS(pSettings, r_string, hud_sect, "torch_cone_bones", m_sWpn_flashlight_bone);
 
-    auto LoadBoneNames = [](pcstr section, pcstr line, RStringVec& list) {
+    auto LoadBoneNames = [](pcstr section, pcstr line, RStringVec& list) 
+    {
         list.clear();
         if (pSettings->line_exist(section, line))
         {
@@ -754,33 +772,7 @@ void CWeapon::Load(LPCSTR section)
             m_all_scope_bones.push_back(bone);
         }
     }
-    // Лазер и фонарик
-    if (!laser_light_render && pSettings->line_exist(section, "laser_light_section"))
-	{
-		has_laser = true;
-
-		laserdot_attach_bone = READ_IF_EXISTS(pSettings, r_string, section, "laserdot_attach_bone", "");
-		laserdot_attach_offset = Fvector{ READ_IF_EXISTS(pSettings, r_float, section, "laserdot_attach_offset_x", 0.0f), READ_IF_EXISTS(pSettings, r_float, section, "laserdot_attach_offset_y", 0.0f), READ_IF_EXISTS(pSettings, r_float, section, "laserdot_attach_offset_z", 0.0f) };
-		laserdot_world_attach_offset = Fvector{ READ_IF_EXISTS(pSettings, r_float, section, "laserdot_world_attach_offset_x", 0.0f), READ_IF_EXISTS(pSettings, r_float, section, "laserdot_world_attach_offset_y", 0.0f), READ_IF_EXISTS(pSettings, r_float, section, "laserdot_world_attach_offset_z", 0.0f) };
-
-		const bool b_r2 = psDeviceFlags.test(rsR2) || psDeviceFlags.test(rsR3) || psDeviceFlags.test(rsR4);
-
-		const char* m_light_section = pSettings->r_string(section, "laser_light_section");
-
-		laser_lanim = LALib.FindItem(READ_IF_EXISTS(pSettings, r_string, m_light_section, "color_animator", ""));
-
-		laser_light_render = GEnv.Render->light_create();
-		laser_light_render->set_type(IRender_Light::SPOT);
-		laser_light_render->set_shadow(true);
-
-		const Fcolor clr = READ_IF_EXISTS(pSettings, r_fcolor, m_light_section, b_r2 ? "color_r2" : "color", (Fcolor{ 1.0f, 0.0f, 0.0f, 1.0f }));
-		laser_fBrightness = clr.intensity();
-		laser_light_render->set_color(clr);
-		const float range = READ_IF_EXISTS(pSettings, r_float, m_light_section, b_r2 ? "range_r2" : "range", 100.f);
-		laser_light_render->set_range(range);
-		laser_light_render->set_cone(deg2rad(READ_IF_EXISTS(pSettings, r_float, m_light_section, "spot_angle", 1.f)));
-		laser_light_render->set_texture(READ_IF_EXISTS(pSettings, r_string, m_light_section, "spot_texture", nullptr));
-	}
+    // Фонарик
 
 	if (!flashlight_render && pSettings->line_exist(section, "flashlight_section"))
 	{
@@ -825,7 +817,7 @@ void CWeapon::Load(LPCSTR section)
 		flashlight_glow->set_radius(READ_IF_EXISTS(pSettings, r_float, m_light_section, "glow_radius", 0.3f));
 	}
 
-    // Лазер и фонарик
+    // Фонарик
     hud_recalc_koef = READ_IF_EXISTS(pSettings, r_float, hud_sect, "hud_recalc_koef", 1.35f);
 }
 
@@ -854,7 +846,7 @@ void CWeapon::LoadFireParams(LPCSTR section)
     CShootingObject::LoadFireParams(section);
 };
 
-// Лазер и фонарик
+// Фонарик
 
 void CWeapon::GetBoneOffsetPosDir(
     const shared_str& bone_name, Fvector& dest_pos, Fvector& dest_dir, const Fvector& offset)
@@ -881,63 +873,6 @@ void CWeapon::CorrectDirFromWorldToHud(Fvector& dir)
     dir.mul(diff);
     dir.add(CamDir);
     dir.normalize();
-}
-
-void CWeapon::UpdateLaser()
-{
-    if (laser_light_render)
-    {
-        auto io = smart_cast<CInventoryOwner*>(H_Parent());
-        if (!laser_light_render->get_active() && IsLaserOn() &&
-            (!H_Parent() || (io && this == io->inventory().ActiveItem())))
-        {
-            laser_light_render->set_active(true);
-            UpdateAddonsVisibility();
-        }
-        else if (laser_light_render->get_active() &&
-            (!IsLaserOn() || !(!H_Parent() || (io && this == io->inventory().ActiveItem()))))
-        {
-            laser_light_render->set_active(false);
-            UpdateAddonsVisibility();
-        }
-
-        if (laser_light_render->get_active())
-        {
-            Fvector laser_pos = get_LastFP(), laser_dir = get_LastFD();
-
-            if (GetHUDmode())
-            {
-                if (laserdot_attach_bone.size())
-                {
-                    GetBoneOffsetPosDir(laserdot_attach_bone, laser_pos, laser_dir, laserdot_attach_offset);
-                    CorrectDirFromWorldToHud(laser_dir);
-                }
-            }
-            else
-            {
-                XFORM().transform_tiny(laser_pos, laserdot_world_attach_offset);
-            }
-
-            Fmatrix laserXForm;
-            laserXForm.identity();
-            laserXForm.k.set(laser_dir);
-            Fvector::generate_orthonormal_basis_normalized(laserXForm.k, laserXForm.j, laserXForm.i);
-
-            laser_light_render->set_position(laser_pos);
-            laser_light_render->set_rotation(laserXForm.k, laserXForm.i);
-
-            // calc color animator
-            if (laser_lanim)
-            {
-                int frame;
-                const u32 clr = laser_lanim->CalculateBGR(Device.fTimeGlobal, frame);
-
-                Fcolor fclr{(float)color_get_B(clr), (float)color_get_G(clr), (float)color_get_R(clr), 1.f};
-                fclr.mul_rgb(laser_fBrightness / 255.f);
-                laser_light_render->set_color(fclr);
-            }
-        }
-    }
 }
 
 void CWeapon::UpdateFlashlight()
@@ -1031,7 +966,8 @@ BOOL CWeapon::net_Spawn(CSE_Abstract* DC)
         m_cur_addon.silencer = 0;
     if (m_cur_addon.launcher >= (u16)m_launchers.size())
         m_cur_addon.launcher = 0;
-
+    if (m_cur_addon.laser >= (u16)m_lasers.size())
+        m_cur_addon.laser = 0;
 
 	if (m_bGrenadeMode) // normal ammo will be in *2
     {
@@ -1368,8 +1304,7 @@ void CWeapon::UpdateCL()
     // Подсветка от выстрела
     UpdateLight();
 
-    // Лазер и фонарь
-    UpdateLaser();
+    // Фонарь и Лазер
     UpdateFlashlight();
 
     // Нарисовать партиклы
@@ -1858,9 +1793,15 @@ bool CWeapon::IsSilencerAttached() const
     return (ALife::eAddonAttachable == m_eSilencerStatus && 0 != (m_flagsAddOnState & CSE_ALifeItemWeapon::eWeaponAddonSilencer)) || ALife::eAddonPermanent == m_eSilencerStatus;
 }
 
+bool CWeapon::IsLaserAttached() const
+{
+    return (ALife::eAddonAttachable == m_eLaserStatus && 0 != (m_flagsAddOnState & CSE_ALifeItemWeapon::eWeaponAddonLaser)) || ALife::eAddonPermanent == m_eLaserStatus;
+}
+
 bool CWeapon::GrenadeLauncherAttachable() { return (ALife::eAddonAttachable == m_eGrenadeLauncherStatus); }
 bool CWeapon::ScopeAttachable() { return (ALife::eAddonAttachable == m_eScopeStatus); }
 bool CWeapon::SilencerAttachable() { return (ALife::eAddonAttachable == m_eSilencerStatus); }
+bool CWeapon::LaserAttachable() { return (ALife::eAddonAttachable == m_eLaserStatus); }
 
 void CWeapon::UpdateHUDAddonsVisibility()
 { // actor only
@@ -1929,10 +1870,18 @@ void CWeapon::UpdateHUDAddonsVisibility()
     else if (m_eGrenadeLauncherStatus == ALife::eAddonPermanent)
         SetBoneVisible(m_sWpn_launcher_bone, TRUE);
 
-    // Лазер и фонарик
-    if (m_sHud_wpn_laser_bone.size() && has_laser)
-        SetBoneVisible(m_sHud_wpn_laser_bone, IsLaserOn());
+    if (LaserAttachable())
+    {
+        SetBoneVisible(m_sWpn_laser_bone, IsLaserAttached());
+    }
+    if (m_eLaserStatus == ALife::eAddonDisabled)
+    {
+        SetBoneVisible(m_sWpn_laser_bone, FALSE);
+    }
+    else if (m_eLaserStatus == ALife::eAddonPermanent)
+        SetBoneVisible(m_sWpn_laser_bone, TRUE);
 
+    // Фонарик
     if (m_sHud_wpn_flashlight_bone.size() && has_flashlight)
         SetBoneVisible(m_sHud_wpn_flashlight_bone, IsFlashlightOn());
 }
@@ -1983,7 +1932,8 @@ void CWeapon::UpdateAddonsVisibility()
 
     bone_id = pWeaponVisual->LL_BoneID(wpn_scope_def_bone);
 
-    auto SetBoneVisible = [&](const shared_str& boneName, BOOL visibility) {
+    auto SetBoneVisible = [&](const shared_str& boneName, BOOL visibility) 
+    {
         u16 bone_id = pWeaponVisual->LL_BoneID(boneName);
         if (bone_id != BI_NONE && visibility != pWeaponVisual->LL_GetBoneVisible(bone_id))
             pWeaponVisual->LL_SetBoneVisible(bone_id, visibility, TRUE);
@@ -2048,6 +1998,7 @@ void CWeapon::UpdateAddonsVisibility()
     }
 
     bone_id = pWeaponVisual->LL_BoneID(m_sWpn_launcher_bone);
+
     if (GrenadeLauncherAttachable())
     {
         if (IsGrenadeLauncherAttached())
@@ -2067,21 +2018,28 @@ void CWeapon::UpdateAddonsVisibility()
         //		Log("gl", pWeaponVisual->LL_GetBoneVisible			(bone_id));
     }
 
-    // Лазер и фонарик
-	if (m_sWpn_laser_bone.size() && has_laser)
-    {
-        bone_id = pWeaponVisual->LL_BoneID(m_sWpn_laser_bone);
+    bone_id = pWeaponVisual->LL_BoneID(m_sWpn_laser_bone);
 
-        if (bone_id != BI_NONE)
+    if (LaserAttachable() && bone_id != BI_NONE)
+    {
+        if (IsLaserAttached())
         {
-            const bool laser_on = IsLaserOn();
-            if (pWeaponVisual->LL_GetBoneVisible(bone_id) && !laser_on)
-                pWeaponVisual->LL_SetBoneVisible(bone_id, FALSE, TRUE);
-            else if (!pWeaponVisual->LL_GetBoneVisible(bone_id) && laser_on)
+            if (!pWeaponVisual->LL_GetBoneVisible(bone_id))
                 pWeaponVisual->LL_SetBoneVisible(bone_id, TRUE, TRUE);
         }
+        else
+        {
+            if (pWeaponVisual->LL_GetBoneVisible(bone_id))
+                pWeaponVisual->LL_SetBoneVisible(bone_id, FALSE, TRUE);
+        }
+    }
+    if (m_eLaserStatus == ALife::eAddonDisabled && bone_id != BI_NONE && pWeaponVisual->LL_GetBoneVisible(bone_id))
+    {
+        pWeaponVisual->LL_SetBoneVisible(bone_id, FALSE, TRUE);
+        //		Log("laser", pWeaponVisual->LL_GetBoneVisible			(bone_id));
     }
 
+    // Фонарик
     if (m_sWpn_flashlight_bone.size() && has_flashlight)
     {
         bone_id = pWeaponVisual->LL_BoneID(m_sWpn_flashlight_bone);
@@ -3035,6 +2993,10 @@ float CWeapon::Weight() const
     {
         res += pSettings->r_float(GetSilencerName(), "inv_weight");
     }
+    if (IsLaserAttached() && m_lasers.size())
+    {
+        res += pSettings->r_float(GetLaserName(), "inv_weight");
+    }
     res += GetMagazineWeight(m_magazine);
 
     return res;
@@ -3178,6 +3140,10 @@ u32 CWeapon::Cost() const
     if (IsSilencerAttached() && m_silencers.size())
     {
         res += pSettings->r_u32(GetSilencerName(), "cost");
+    }
+    if (IsLaserAttached() && m_lasers.size())
+    {
+        res += pSettings->r_u32(GetLaserName(), "cost");
     }
 
     if (m_ammoElapsed.type1)

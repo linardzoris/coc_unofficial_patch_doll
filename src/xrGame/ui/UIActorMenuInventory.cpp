@@ -1100,7 +1100,17 @@ void CUIActorMenu::PropertiesBoxForWeapon(CUICellItem* cell_item, PIItem item, b
         {
         }
     }
-    CWeaponRPG26* pRPG26 = smart_cast<CWeaponRPG26*>(item);
+    if (pWeapon->LaserAttachable())
+    {
+        if (pWeapon->IsLaserAttached())
+        {
+            m_UIPropertiesBox->AddItem("st_detach_laser", NULL, INVENTORY_DETACH_LASER_ADDON);
+            b_show = true;
+        }
+        else
+        {
+        }
+    }
 
     if (smart_cast<CWeaponMagazined*>(pWeapon) && IsGameTypeSingle())
     {
@@ -1117,6 +1127,8 @@ void CUIActorMenu::PropertiesBoxForWeapon(CUICellItem* cell_item, PIItem item, b
                 }
             }
         }
+        CWeaponRPG26* pRPG26 = smart_cast<CWeaponRPG26*>(item);
+
         if (b && !pRPG26)
         {
             m_UIPropertiesBox->AddItem("st_unload_magazine", NULL, INVENTORY_UNLOAD_MAGAZINE);
@@ -1132,6 +1144,7 @@ void CUIActorMenu::PropertiesBoxForAddon(PIItem item, bool& b_show)
     CScope* pScope = smart_cast<CScope*>(item);
     CSilencer* pSilencer = smart_cast<CSilencer*>(item);
     CGrenadeLauncher* pGrenadeLauncher = smart_cast<CGrenadeLauncher*>(item);
+    CLaser* pLaser = smart_cast<CLaser*>(item);
     CInventory* inv = &m_pActorInvOwner->inventory();
 
     PIItem item_in_slot_2 = inv->ItemFromSlot(INV_SLOT_2);
@@ -1206,6 +1219,25 @@ void CUIActorMenu::PropertiesBoxForAddon(PIItem item, bool& b_show)
             //			m_UIPropertiesBox->AddItem( "st_attach_gl_to_rifle",  (void*)item_in_slot_3,
             //INVENTORY_ATTACH_ADDON
             //);
+            b_show = true;
+        }
+        return;
+    }
+
+    if (pLaser)
+    {
+        if (item_in_slot_2 && item_in_slot_2->CanAttach(pLaser))
+        {
+            shared_str str = StringTable().translate("st_attach_laser_to_weapon");
+            str.printf("%s %s", str.c_str(), item_in_slot_2->m_name.c_str());
+            m_UIPropertiesBox->AddItem(str.c_str(), (void*)item_in_slot_2, INVENTORY_ATTACH_ADDON);
+            b_show = true;
+        }
+        if (item_in_slot_3 && item_in_slot_3->CanAttach(pLaser))
+        {
+            shared_str str = StringTable().translate("st_attach_laser_to_weapon");
+            str.printf("%s %s", str.c_str(), item_in_slot_3->m_name.c_str());
+            m_UIPropertiesBox->AddItem(str.c_str(), (void*)item_in_slot_3, INVENTORY_ATTACH_ADDON);
             b_show = true;
         }
     }
@@ -1473,6 +1505,22 @@ void CUIActorMenu::ProcessPropertiesBoxClicked(CUIWindow* w, void* d)
                 if (child_iitm && wpn)
                 {
                     DetachAddon(wpn->GetGrenadeLauncherName().c_str(), child_iitm);
+                }
+            }
+        }
+        break;
+    case INVENTORY_DETACH_LASER_ADDON:
+        if (weapon)
+        {
+            DetachAddon(weapon->GetLaserName().c_str());
+            for (u32 i = 0; i < cell_item->ChildsCount(); ++i)
+            {
+                CUICellItem* child_itm = cell_item->Child(i);
+                PIItem child_iitm = (PIItem)(child_itm->m_pData);
+                CWeapon* wpn = smart_cast<CWeapon*>(child_iitm);
+                if (child_iitm && wpn)
+                {
+                    DetachAddon(wpn->GetLaserName().c_str(), child_iitm);
                 }
             }
         }

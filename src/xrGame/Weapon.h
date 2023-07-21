@@ -182,8 +182,6 @@ public:
     bool IsOpenWeaponEmptyCartridge() const { return m_bOpenWeaponEmptyCartridge; }
     bool IsDiffShotModes() const { return m_bDiffShotModes; }
 
-    // Костыль для лазера, пока не запилил аттач
-    bool IsHasLaserShader() const { return m_bHasLaserShader; }
     bool IsLaserShaderOn() const { return m_bLaserShaderOn; }
 
     EWeaponSubStates GetReloadState() const { return (EWeaponSubStates)m_sub_state; }
@@ -212,8 +210,6 @@ protected:
     bool m_bDiffShotModes;
     bool m_bMotionMarkShell;
 
-    // Костыль для лазера, пока не запилил аттач
-    bool m_bHasLaserShader;
     bool m_bLaserShaderOn;
 
     // a misfire happens, you'll need to rearm weapon
@@ -229,15 +225,18 @@ public:
     bool IsGrenadeLauncherAttached() const;
     bool IsScopeAttached() const;
     bool IsSilencerAttached() const;
+    bool IsLaserAttached() const;
     bool bGrenadeLauncherNSilencer;
 
     virtual bool GrenadeLauncherAttachable();
     virtual bool ScopeAttachable();
     virtual bool SilencerAttachable();
+    virtual bool LaserAttachable();
 
     ALife::EWeaponAddonStatus get_GrenadeLauncherStatus() const { return m_eGrenadeLauncherStatus; }
     ALife::EWeaponAddonStatus get_ScopeStatus() const { return m_eScopeStatus; }
     ALife::EWeaponAddonStatus get_SilencerStatus() const { return m_eSilencerStatus; }
+    ALife::EWeaponAddonStatus get_LaserStatus() const { return m_eLaserStatus; }
     virtual bool UseScopeTexture() { return true; };
     //обновление видимости для косточек аддонов
     void UpdateAddonsVisibility();
@@ -252,29 +251,31 @@ public:
     int GetSilencerY() { return pSettings->r_s32(m_silencers[m_cur_addon.silencer], "silencer_y"); }
     int GetGrenadeLauncherX() { return pSettings->r_s32(m_launchers[m_cur_addon.launcher], "grenade_launcher_x"); }
     int GetGrenadeLauncherY() { return pSettings->r_s32(m_launchers[m_cur_addon.launcher], "grenade_launcher_y"); }
+    int GetLaserX() { return pSettings->r_s32(m_lasers[m_cur_addon.laser], "laser_x"); }
+    int GetLaserY() { return pSettings->r_s32(m_lasers[m_cur_addon.laser], "laser_y"); }
     const shared_str GetGrenadeLauncherName() const { return pSettings->r_string(m_launchers[m_cur_addon.launcher], "grenade_launcher_name"); }
     const shared_str GetScopeName() const;
     const shared_str GetSilencerName() const { return pSettings->r_string(m_silencers[m_cur_addon.silencer], "silencer_name"); }
+    const shared_str GetLaserName() const { return pSettings->r_string(m_lasers[m_cur_addon.laser], "laser_name"); }
 
     IC void ForceUpdateAmmo() { m_BriefInfo_CalcFrame = 0; }
     u8 GetAddonsState() const { return m_flagsAddOnState; };
     void SetAddonsState(u8 st) { m_flagsAddOnState = st; } // dont use!!! for buy menu only!!!
 
-	RStringVec m_defShownBones;
-    RStringVec m_defHiddenBones;
-
 protected:
     shared_str m_sWpn_scope_bone;
     shared_str m_sWpn_silencer_bone;
     shared_str m_sWpn_launcher_bone;
-    // Лазер и фонарик
     shared_str m_sWpn_laser_bone;
+    // Фонарик
     shared_str m_sWpn_flashlight_bone;
-    shared_str m_sHud_wpn_laser_bone;
     shared_str m_sHud_wpn_flashlight_bone;
 
     xr_vector<shared_str> m_all_scope_bones;
     shared_str m_cur_scope_bone;
+
+	RStringVec m_defShownBones;
+    RStringVec m_defHiddenBones;
 
     //состояние подключенных аддонов
     u8 m_flagsAddOnState;
@@ -283,6 +284,7 @@ protected:
     ALife::EWeaponAddonStatus m_eScopeStatus;
     ALife::EWeaponAddonStatus m_eSilencerStatus;
     ALife::EWeaponAddonStatus m_eGrenadeLauncherStatus;
+    ALife::EWeaponAddonStatus m_eLaserStatus;
 
 	struct current_addon_t
     {
@@ -292,8 +294,9 @@ protected:
             struct
             {
                 u16 scope : 6; // 2^6 possible scope sections // пометка 
-                u16 silencer : 5; // 2^5 possible silencer/launcher sections
+                u16 silencer : 5; // 2^5 possible silencer/launcher/laser sections
                 u16 launcher : 5;
+                u16 laser : 5;
             };
         };
     };
@@ -616,6 +619,7 @@ public:
     SCOPES_VECTOR m_scopes;
     SCOPES_VECTOR m_silencers;
     SCOPES_VECTOR m_launchers;
+    SCOPES_VECTOR m_lasers;
 
     CWeaponAmmo* m_pCurrentAmmo;
 
@@ -771,10 +775,9 @@ public:
     virtual void SaveAttachableParams();
     virtual void ParseCurrentItem(CGameFont* F);
 
-    // Лазер и фонарик
+    // Фонарик
     virtual void processing_deactivate() override
     {
-        UpdateLaser();
         UpdateFlashlight();
         inherited::processing_deactivate();
     }
@@ -785,30 +788,6 @@ public:
 private:
     float hud_recalc_koef;
 
-    bool has_laser;
-    shared_str laserdot_attach_bone;
-    Fvector laserdot_attach_offset, laserdot_world_attach_offset;
-    ref_light laser_light_render;
-    CLAItem* laser_lanim;
-    float laser_fBrightness{1.f};
-
-    void UpdateLaser();
-
-public:
-    void SwitchLaser(bool on)
-    {
-        if (!has_laser)
-            return;
-
-        if (on)
-            m_flagsAddOnState |= CSE_ALifeItemWeapon::eWeaponAddonLaserOn;
-        else
-            m_flagsAddOnState &= ~CSE_ALifeItemWeapon::eWeaponAddonLaserOn;
-    }
-    inline bool IsLaserOn() const { return m_flagsAddOnState & CSE_ALifeItemWeapon::eWeaponAddonLaserOn; }
-    bool HasLaser() const { return has_laser; }
-
-private:
     bool has_flashlight;
     shared_str flashlight_attach_bone;
     Fvector flashlight_attach_offset, flashlight_omni_attach_offset, flashlight_world_attach_offset,

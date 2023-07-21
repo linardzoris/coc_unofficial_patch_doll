@@ -246,5 +246,9 @@ void CInventoryItem::pre_install_upgrade()
         {
             weapon->Detach(weapon->GetGrenadeLauncherName().c_str(), true);
         }
+        if (weapon->LaserAttachable() && weapon->IsLaserAttached())
+        {
+            weapon->Detach(weapon->GetLaserName().c_str(), true);
+        }
     }
 }
