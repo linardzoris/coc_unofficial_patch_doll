@@ -3322,7 +3322,7 @@ void CWeapon::LoadCurrentScopeParams(LPCSTR section)
     shared_str scope_tex_name = "none";
     bScopeIsHasTexture = false;
     bAltScopeIsHasTexture = false; // Альт. прицеливание
-    bScopeSupportClipReload = true;
+    bScopeSupportClipReload = false;
 
     if (pSettings->line_exist(section, "scope_texture"))
     {
