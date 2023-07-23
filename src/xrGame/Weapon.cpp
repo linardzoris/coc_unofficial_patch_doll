@@ -3322,7 +3322,6 @@ void CWeapon::LoadCurrentScopeParams(LPCSTR section)
     shared_str scope_tex_name = "none";
     bScopeIsHasTexture = false;
     bAltScopeIsHasTexture = false; // Альт. прицеливание
-    bScopeSupportClipReload = false;
 
     if (pSettings->line_exist(section, "scope_texture"))
     {
@@ -3335,10 +3334,7 @@ void CWeapon::LoadCurrentScopeParams(LPCSTR section)
         bAltScopeIsHasTexture = true;
     }
 
-    if (pSettings->line_exist(section, "scope_support_clip_reload")) // Поддерживает заряжание обоймой. Для ПУ к примеру false.
-    {
-        bScopeSupportClipReload = true;
-    }
+    bScopeSupportClipReload = READ_IF_EXISTS(pSettings, r_bool, section, "scope_support_clip_reload", true);
 
     m_zoom_params.m_fScopeZoomFactor = pSettings->r_float(section, "scope_zoom_factor");
     Load3DScopeParams(section);

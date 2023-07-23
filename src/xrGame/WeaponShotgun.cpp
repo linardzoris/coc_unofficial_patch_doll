@@ -54,6 +54,7 @@ bool CWeaponShotgun::Action(u16 cmd, u32 flags)
     {
         AddCartridge(1);
         m_sub_state = eSubstateReloadEnd;
+        switch2_EndReload();
         return true;
     }
     return false;
