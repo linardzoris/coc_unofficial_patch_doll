@@ -113,6 +113,7 @@ CWeapon::CWeapon()
     bGrenadeLauncherNSilencer = false;
     bNVsecondVPavaible = false;
     bNVsecondVPstatus = false;
+    bScopeSupportClipReload = true;
 
     m_bDiffShotModes = false;
     m_bMotionMarkShell = false;
@@ -1304,7 +1305,7 @@ void CWeapon::UpdateCL()
     // Подсветка от выстрела
     UpdateLight();
 
-    // Фонарь и Лазер
+    // Фонарь
     UpdateFlashlight();
 
     // Нарисовать партиклы
@@ -1362,6 +1363,12 @@ void CWeapon::UpdateCL()
     // После снятия прицела переключаем в дефолт.
     if (!m_altAimPos && !m_zoom_params.m_altAimPos)
         m_zoomtype = 0;
+
+    // Для винтовок типа трёхлинейки. Позволяет заряжать её обоймами и по одному патрону одновременно.
+    if (m_bTriStateReload && m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_reload_empty") && bScopeSupportClipReload)
+        m_bTriStateReload = false;
+    else if (m_ammoElapsed.type1 > 0 && isHUDAnimationExist("anm_add_cartridge") && isHUDAnimationExist("anm_reload_empty"))
+        m_bTriStateReload = true;
 }
 
 bool CWeapon::need_renderable() 
@@ -3315,6 +3322,8 @@ void CWeapon::LoadCurrentScopeParams(LPCSTR section)
     shared_str scope_tex_name = "none";
     bScopeIsHasTexture = false;
     bAltScopeIsHasTexture = false; // Альт. прицеливание
+    bScopeSupportClipReload = true;
+
     if (pSettings->line_exist(section, "scope_texture"))
     {
         scope_tex_name = pSettings->r_string(section, "scope_texture");
@@ -3324,6 +3333,11 @@ void CWeapon::LoadCurrentScopeParams(LPCSTR section)
     if (pSettings->line_exist(section, "scope_texture_alt") && m_zoomtype == 1) // Альт. прицеливание
     {
         bAltScopeIsHasTexture = true;
+    }
+
+    if (pSettings->line_exist(section, "scope_support_clip_reload")) // Поддерживает заряжание обоймой. Для ПУ к примеру false.
+    {
+        bScopeSupportClipReload = true;
     }
 
     m_zoom_params.m_fScopeZoomFactor = pSettings->r_float(section, "scope_zoom_factor");

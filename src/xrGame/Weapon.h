@@ -101,6 +101,8 @@ public:
     bool bNVsecondVPavaible;
     bool bNVsecondVPstatus;
     bool bAltScopeIsHasTexture; // Альт. прицеливание
+    bool bScopeSupportClipReload;
+
     bool bLoadAltScopesParams(LPCSTR section);
     bool bReloadSectionScope(LPCSTR section);
     void LoadOriginalScopesParams(LPCSTR section);
