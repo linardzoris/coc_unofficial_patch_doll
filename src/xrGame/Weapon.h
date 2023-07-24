@@ -189,6 +189,7 @@ public:
     EWeaponSubStates GetReloadState() const { return (EWeaponSubStates)m_sub_state; }
     bool IsMisfireOneCartRemove() const { return m_bMisfireOneCartRemove; }
     bool IsMotionMarkShell() const { return m_bMotionMarkShell; }
+    bool IsOutScopeAfterShot() const { return m_bOutScopeAfterShot; }
 
     void GetZoomData(const float scope_factor, float& delta, float& min_zoom_factor)
     {
@@ -211,6 +212,7 @@ protected:
     bool m_bOpenWeaponEmptyCartridge;
     bool m_bDiffShotModes;
     bool m_bMotionMarkShell;
+    bool m_bOutScopeAfterShot;
 
     bool m_bLaserShaderOn;
 

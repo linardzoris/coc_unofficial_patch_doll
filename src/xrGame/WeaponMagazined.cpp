@@ -628,7 +628,9 @@ void CWeaponMagazined::UpdateCL()
             clamp(fShotTimeCounter, 0.0f, flt_max);
         }
         break;
-        case eFire: { state_Fire(dt);
+        case eFire: 
+        { 
+            state_Fire(dt);
         }
         break;
         case eMisfire: state_Misfire(dt); break;
@@ -798,6 +800,9 @@ void CWeaponMagazined::SetDefaults()
 
 void CWeaponMagazined::OnShot()
 {
+    if (IsOutScopeAfterShot()) // Принудительно выходим из зума, если out_scope_after_shot = true (для болтовок)
+        OnZoomOut();
+
     //Alundaio: LAYERED_SND_SHOOT
 #ifdef LAYERED_SND_SHOOT
     if (m_bHasDistantShotSound && !IsSilencerAttached() && GameConstants::GetWeaponDistantSounds() && Position().distance_to(Device.vCameraPosition) > GameConstants::GetWeaponSoundDist() && Position().distance_to(Device.vCameraPosition) < GameConstants::GetWeaponSoundDistFar())

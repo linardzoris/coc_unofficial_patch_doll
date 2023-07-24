@@ -118,6 +118,7 @@ CWeapon::CWeapon()
     m_bDiffShotModes = false;
     m_bMotionMarkShell = false;
     m_bMisfireOneCartRemove = false;
+    m_bOutScopeAfterShot = false;
 
     m_bLaserShaderOn = false;
 
@@ -531,6 +532,7 @@ void CWeapon::Load(LPCSTR section)
     m_bDiffShotModes = READ_IF_EXISTS(pSettings, r_bool, section, "different_shot_modes", false);
     m_bMotionMarkShell = READ_IF_EXISTS(pSettings, r_bool, section, "motion_mark_shell", false);
     m_bMisfireOneCartRemove = READ_IF_EXISTS(pSettings, r_bool, section, "misfire_one_cartridge_remove", false);
+    m_bOutScopeAfterShot = READ_IF_EXISTS(pSettings, r_bool, section, "out_scope_after_shot", false);
 
     // hands
     eHandDependence = EHandDependence(pSettings->r_s32(section, "hand_dependence"));
@@ -1480,8 +1482,11 @@ bool CWeapon::Action(u16 cmd, u32 flags)
                             if (pActor && Actor()->conditions().GetPower() >= Actor()->conditions().GetLimpingPowerEnd())
                             {
                                 if (GetState() != eIdle)
-                                    SwitchState(eIdle);
-                                    OnZoomIn();
+                                    if (IsOutScopeAfterShot() && GetState() != eFire) // Чтобы не глючила для продолжительных анимаций, не знаю зачем тут этот стейт
+                                    {
+                                        SwitchState(eIdle);
+                                    }
+                                OnZoomIn();
                             }
                         }
                     }
@@ -1496,8 +1501,11 @@ bool CWeapon::Action(u16 cmd, u32 flags)
                     if (!IsZoomed() && !IsPending())
                     {
                         if (GetState() != eIdle)
-                            SwitchState(eIdle);
-                            OnZoomIn();
+                            if (IsOutScopeAfterShot() && GetState() != eFire) // Чтобы не глючила для продолжительных анимаций, не знаю зачем тут этот стейт
+                            {
+                                SwitchState(eIdle);
+                            }
+                        OnZoomIn();
                     }
                 }
                 else if (IsZoomed())
