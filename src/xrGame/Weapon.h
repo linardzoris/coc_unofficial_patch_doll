@@ -95,6 +95,8 @@ public:
 
     virtual void HUD_VisualBulletUpdate(bool force = false, int force_idx = -1);
 
+    bool bLaserSupportFlashlight;
+
     // Mortan/SWM 3 scope system
 	bool bUseAltScope;
     bool bScopeIsHasTexture;
@@ -108,6 +110,9 @@ public:
     void LoadOriginalScopesParams(LPCSTR section);
     void LoadCurrentScopeParams(LPCSTR section);
     void UpdateAltScope();
+
+    void LoadCurrentLaserParams(LPCSTR section);
+    void LoadCurrentFlashlightParams(LPCSTR section);
 
     shared_str GetNameWithAttachment();
 

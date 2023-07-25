@@ -1234,13 +1234,26 @@ bool CWeaponMagazined::Action(u16 cmd, u32 flags)
         };
     }
     break;
-    case kWPN_ADDON: {
+    case kWPN_ADDON_LASER: 
+    {
         if (flags & CMD_START)
         {
-            if (!IsLaserAttached() && !HasFlashlight())
+            if (!IsLaserAttached())
                 return false;
 
-            OnWeaponAddonSwitch();
+            OnWeaponAddonLaserSwitch();
+            return true;
+        };
+    }
+    break;
+    case kWPN_ADDON_FLASHLIGHT: 
+    {
+        if (flags & CMD_START)
+        {
+            if (!HasFlashlight() || IsLaserAttached() && !bLaserSupportFlashlight)
+                return false;
+
+            OnWeaponAddonFlashlightSwitch();
             return true;
         };
     }
@@ -1644,10 +1657,24 @@ void CWeaponMagazined::InitAddons()
         }
     }
 
-    if (m_eLaserStatus == ALife::eAddonAttachable && !IsLaserAttached() && m_bLaserShaderOn)
+    if (IsLaserAttached())
     {
-        g_pGamePersistent->laser_shader_data.laser_factor = 0.f;
-        //m_bLaserShaderOn = false;
+        if (m_eLaserStatus == ALife::eAddonAttachable)
+        {
+            LoadCurrentLaserParams(GetLaserName().c_str());
+
+            if (bLaserSupportFlashlight)
+                LoadCurrentFlashlightParams(GetLaserName().c_str());
+        }
+    }
+    if (m_eLaserStatus == ALife::eAddonAttachable && !IsLaserAttached())
+    {
+        if (HasFlashlight() && bLaserSupportFlashlight && m_bLaserShaderOn)
+            g_pGamePersistent->laser_shader_data.laser_factor = 0.f;
+            //m_bLaserShaderOn = false;
+
+        if (HasFlashlight() && bLaserSupportFlashlight)
+            SwitchFlashlight(!IsFlashlightOn());
     }
 
     if (IsSilencerAttached() /* && SilencerAttachable() */)
@@ -2017,7 +2044,7 @@ void CWeaponMagazined::OnPrevFireMode()
     SetQueueSize(GetCurrentFireMode());
 };
 
-void CWeaponMagazined::OnWeaponAddonSwitch() // Для лазера/фонаря
+void CWeaponMagazined::OnWeaponAddonLaserSwitch()
 {
     SwitchState(eSwitchAddon);
 
@@ -2034,9 +2061,16 @@ void CWeaponMagazined::OnWeaponAddonSwitch() // Для лазера/фонаря
         g_pGamePersistent->laser_shader_data.laser_factor = 0.f;
         m_bLaserShaderOn = false;
     }
+};
 
-    // Можно перекинуть в OnAnimationEnd, но хз
-    if (!IsLaserAttached() && HasFlashlight())
+void CWeaponMagazined::OnWeaponAddonFlashlightSwitch()
+{
+    SwitchState(eSwitchAddon);
+
+    if (GetState() != eIdle)
+        return;
+
+    if (HasFlashlight())
         SwitchFlashlight(!IsFlashlightOn());
 };
 

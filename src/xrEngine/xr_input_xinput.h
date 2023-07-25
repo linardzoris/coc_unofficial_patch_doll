@@ -55,7 +55,8 @@ enum EGameActions
     kWPN_FUNC,
     kWPN_FIREMODE_PREV,
     kWPN_FIREMODE_NEXT,
-    kWPN_ADDON,
+    kWPN_ADDON_LASER,
+    kWPN_ADDON_FLASHLIGHT,
 
     kPAUSE,
     kDROP,

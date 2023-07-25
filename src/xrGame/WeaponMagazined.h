@@ -167,7 +167,8 @@ public:
     virtual void OnZoomOut();
     void OnNextFireMode();
     void OnPrevFireMode();
-    void OnWeaponAddonSwitch();
+    void OnWeaponAddonLaserSwitch();
+    void OnWeaponAddonFlashlightSwitch();
     bool HasFireModes() { return m_bHasDifferentFireModes; };
 
     int GetCurrentFireMode() override

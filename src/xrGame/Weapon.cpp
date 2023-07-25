@@ -114,6 +114,7 @@ CWeapon::CWeapon()
     bNVsecondVPavaible = false;
     bNVsecondVPstatus = false;
     bScopeSupportClipReload = true;
+    bLaserSupportFlashlight = false;
 
     m_bDiffShotModes = false;
     m_bMotionMarkShell = false;
@@ -737,10 +738,6 @@ void CWeapon::Load(LPCSTR section)
     else
         m_sWpn_laser_bone = wpn_laser_def_bone;
 
-    // Фонарик
-	m_sWpn_flashlight_bone = READ_IF_EXISTS(pSettings, r_string, section, "torch_cone_bones", "");
-	m_sHud_wpn_flashlight_bone = READ_IF_EXISTS(pSettings, r_string, hud_sect, "torch_cone_bones", m_sWpn_flashlight_bone);
-
     auto LoadBoneNames = [](pcstr section, pcstr line, RStringVec& list) 
     {
         list.clear();
@@ -775,53 +772,6 @@ void CWeapon::Load(LPCSTR section)
             m_all_scope_bones.push_back(bone);
         }
     }
-    // Фонарик
-
-	if (!flashlight_render && pSettings->line_exist(section, "flashlight_section"))
-	{
-		has_flashlight = true;
-
-		flashlight_attach_bone = pSettings->r_string(section, "torch_light_bone");
-		flashlight_attach_offset = Fvector{ pSettings->r_float(section, "torch_attach_offset_x"), pSettings->r_float(section, "torch_attach_offset_y"), pSettings->r_float(section, "torch_attach_offset_z") };
-		flashlight_omni_attach_offset = Fvector{ pSettings->r_float(section, "torch_omni_attach_offset_x"), pSettings->r_float(section, "torch_omni_attach_offset_y"), pSettings->r_float(section, "torch_omni_attach_offset_z") };
-		flashlight_world_attach_offset = Fvector{ pSettings->r_float(section, "torch_world_attach_offset_x"), pSettings->r_float(section, "torch_world_attach_offset_y"), pSettings->r_float(section, "torch_world_attach_offset_z") };
-		flashlight_omni_world_attach_offset = Fvector{ pSettings->r_float(section, "torch_omni_world_attach_offset_x"), pSettings->r_float(section, "torch_omni_world_attach_offset_y"), pSettings->r_float(section, "torch_omni_world_attach_offset_z") };
-
-		const bool b_r2 = psDeviceFlags.test(rsR2) || psDeviceFlags.test(rsR3) || psDeviceFlags.test(rsR4);
-
-		const char* m_light_section = pSettings->r_string(section, "flashlight_section");
-
-		flashlight_lanim = LALib.FindItem(READ_IF_EXISTS(pSettings, r_string, m_light_section, "color_animator", ""));
-
-		flashlight_render = GEnv.Render->light_create();
-		flashlight_render->set_type(IRender_Light::SPOT);
-		flashlight_render->set_shadow(true);
-
-		const Fcolor clr = READ_IF_EXISTS(pSettings, r_fcolor, m_light_section, b_r2 ? "color_r2" : "color", (Fcolor{ 0.6f, 0.55f, 0.55f, 1.0f }));
-		flashlight_fBrightness = clr.intensity();
-		flashlight_render->set_color(clr);
-		const float range = READ_IF_EXISTS(pSettings, r_float, m_light_section, b_r2 ? "range_r2" : "range", 50.f);
-		flashlight_render->set_range(range);
-		flashlight_render->set_cone(deg2rad(READ_IF_EXISTS(pSettings, r_float, m_light_section, "spot_angle", 60.f)));
-		flashlight_render->set_texture(READ_IF_EXISTS(pSettings, r_string, m_light_section, "spot_texture", nullptr));
-
-		flashlight_omni = GEnv.Render->light_create();
-		flashlight_omni->set_type((IRender_Light::LT)(READ_IF_EXISTS(pSettings, r_u8, m_light_section, "omni_type", 2))); //KRodin: âîîáùå omni ýòî îáû÷íî ïîèíò, íî ïîèíò ñâåòèò âî âñå ñòîðîíû îò ñåáÿ, ïîýòîìó òóò ñïîò èñïîëüçóåòñÿ ïî óìîë÷àíèþ.
-		flashlight_omni->set_shadow(false);
-
-		const Fcolor oclr = READ_IF_EXISTS(pSettings, r_fcolor, m_light_section, b_r2 ? "omni_color_r2" : "omni_color", (Fcolor{ 1.0f , 1.0f , 1.0f , 0.0f }));
-		flashlight_omni->set_color(oclr);
-		const float orange = READ_IF_EXISTS(pSettings, r_float, m_light_section, b_r2 ? "omni_range_r2" : "omni_range", 0.25f);
-		flashlight_omni->set_range(orange);
-
-		flashlight_glow = GEnv.Render->glow_create();
-		flashlight_glow->set_texture(READ_IF_EXISTS(pSettings, r_string, m_light_section, "glow_texture", "glow\\glow_torch_r2"));
-		flashlight_glow->set_color(clr);
-		flashlight_glow->set_radius(READ_IF_EXISTS(pSettings, r_float, m_light_section, "glow_radius", 0.3f));
-	}
-
-    // Фонарик
-    hud_recalc_koef = READ_IF_EXISTS(pSettings, r_float, hud_sect, "hud_recalc_koef", 1.35f);
 }
 
 void CWeapon::LoadFireParams(LPCSTR section)
@@ -3538,4 +3488,64 @@ bool CWeapon::bChangeNVSecondVPStatus() // ПНВ
     bNVsecondVPstatus = !bNVsecondVPstatus;
 
     return true;
+}
+
+// Лазер, фонарик
+
+void CWeapon::LoadCurrentLaserParams(LPCSTR section)
+{
+    bLaserSupportFlashlight = READ_IF_EXISTS(pSettings, r_bool, section, "support_flashlight", false); // Для всяких AN/PEQ
+}
+
+void CWeapon::LoadCurrentFlashlightParams(LPCSTR section)
+{
+    m_sWpn_flashlight_bone = READ_IF_EXISTS(pSettings, r_string, section, "torch_cone_bones", "");
+    m_sHud_wpn_flashlight_bone = READ_IF_EXISTS(pSettings, r_string, hud_sect, "torch_cone_bones", m_sWpn_flashlight_bone);
+
+	if (!flashlight_render && pSettings->line_exist(section, "flashlight_section") && !IsLaserAttached() && !bLaserSupportFlashlight
+        || IsLaserAttached() && !flashlight_render && pSettings->line_exist(section, "flashlight_section") && bLaserSupportFlashlight)
+	{
+		has_flashlight = true;
+
+		flashlight_attach_bone = pSettings->r_string(section, "torch_light_bone");
+		flashlight_attach_offset = Fvector{ pSettings->r_float(section, "torch_attach_offset_x"), pSettings->r_float(section, "torch_attach_offset_y"), pSettings->r_float(section, "torch_attach_offset_z") };
+		flashlight_omni_attach_offset = Fvector{ pSettings->r_float(section, "torch_omni_attach_offset_x"), pSettings->r_float(section, "torch_omni_attach_offset_y"), pSettings->r_float(section, "torch_omni_attach_offset_z") };
+		flashlight_world_attach_offset = Fvector{ pSettings->r_float(section, "torch_world_attach_offset_x"), pSettings->r_float(section, "torch_world_attach_offset_y"), pSettings->r_float(section, "torch_world_attach_offset_z") };
+		flashlight_omni_world_attach_offset = Fvector{ pSettings->r_float(section, "torch_omni_world_attach_offset_x"), pSettings->r_float(section, "torch_omni_world_attach_offset_y"), pSettings->r_float(section, "torch_omni_world_attach_offset_z") };
+
+		const bool b_r2 = psDeviceFlags.test(rsR2) || psDeviceFlags.test(rsR3) || psDeviceFlags.test(rsR4);
+
+		const char* m_light_section = pSettings->r_string(section, "flashlight_section");
+
+		flashlight_lanim = LALib.FindItem(READ_IF_EXISTS(pSettings, r_string, m_light_section, "color_animator", ""));
+
+		flashlight_render = GEnv.Render->light_create();
+		flashlight_render->set_type(IRender_Light::SPOT);
+		flashlight_render->set_shadow(true);
+
+		const Fcolor clr = READ_IF_EXISTS(pSettings, r_fcolor, m_light_section, b_r2 ? "color_r2" : "color", (Fcolor{ 0.6f, 0.55f, 0.55f, 1.0f }));
+		flashlight_fBrightness = clr.intensity();
+		flashlight_render->set_color(clr);
+		const float range = READ_IF_EXISTS(pSettings, r_float, m_light_section, b_r2 ? "range_r2" : "range", 50.f);
+		flashlight_render->set_range(range);
+		flashlight_render->set_cone(deg2rad(READ_IF_EXISTS(pSettings, r_float, m_light_section, "spot_angle", 60.f)));
+		flashlight_render->set_texture(READ_IF_EXISTS(pSettings, r_string, m_light_section, "spot_texture", nullptr));
+
+		flashlight_omni = GEnv.Render->light_create();
+		flashlight_omni->set_type((IRender_Light::LT)(READ_IF_EXISTS(pSettings, r_u8, m_light_section, "omni_type", 2))); //KRodin: âîîáùå omni ýòî îáû÷íî ïîèíò, íî ïîèíò ñâåòèò âî âñå ñòîðîíû îò ñåáÿ, ïîýòîìó òóò ñïîò èñïîëüçóåòñÿ ïî óìîë÷àíèþ.
+		flashlight_omni->set_shadow(false);
+
+		const Fcolor oclr = READ_IF_EXISTS(pSettings, r_fcolor, m_light_section, b_r2 ? "omni_color_r2" : "omni_color", (Fcolor{ 1.0f , 1.0f , 1.0f , 0.0f }));
+		flashlight_omni->set_color(oclr);
+		const float orange = READ_IF_EXISTS(pSettings, r_float, m_light_section, b_r2 ? "omni_range_r2" : "omni_range", 0.25f);
+		flashlight_omni->set_range(orange);
+
+		flashlight_glow = GEnv.Render->glow_create();
+		flashlight_glow->set_texture(READ_IF_EXISTS(pSettings, r_string, m_light_section, "glow_texture", "glow\\glow_torch_r2"));
+		flashlight_glow->set_color(clr);
+		flashlight_glow->set_radius(READ_IF_EXISTS(pSettings, r_float, m_light_section, "glow_radius", 0.3f));
+	}
+
+    // Фонарик
+    hud_recalc_koef = READ_IF_EXISTS(pSettings, r_float, hud_sect, "hud_recalc_koef", 1.35f);
 }
