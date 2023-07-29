@@ -14,11 +14,14 @@
 #include "sight_manager.h"
 #include "stalker_movement_manager_smart_cover.h"
 #include "stalker_animation_manager.h"
+#include "CustomZone.h"
 
 #ifdef DEBUG
 #include "ai_debug.h"
 extern Flags32 psAI_Flags;
 #endif // DEBUG
+
+BOOL g_ai_die_in_anomaly = 0;
 
 bool CAI_Stalker::feel_vision_isRelevant(IGameObject* O)
 {
@@ -76,7 +79,7 @@ bool CAI_Stalker::feel_touch_on_contact(IGameObject* O)
 {
     VERIFY(O != this);
 
-    if ((O->GetSpatialData().type | STYPE_VISIBLEFORAI) != O->GetSpatialData().type)
+    if ((O->GetSpatialData().type | STYPE_VISIBLEFORAI) != O->GetSpatialData().type && !smart_cast<CCustomZone*>(O) && g_ai_die_in_anomaly == 0)
         return (false);
 
     return (inherited::feel_touch_on_contact(O));
