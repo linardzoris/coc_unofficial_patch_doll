@@ -131,6 +131,7 @@ public:
     IC float const& IntoxicationCritical() { return m_fIntoxicationCritical; }
     IC float const& V_Sleepeness() { return m_fV_Sleepeness; }
     IC float const& V_SleepenessPower() { return m_fV_SleepenessPower; }
+    IC float const& V_SleepenessPsyHealth() { return m_fV_SleepenessPsyHealth; }
     IC float const& SleepenessCritical() { return m_fSleepenessCritical; }
     IC float const& Sleepeness_V_Sleep() { return m_fSleepeness_V_Sleep; }
 
@@ -169,6 +170,7 @@ protected:
 
 	float m_fV_Sleepeness;
     float m_fV_SleepenessPower;
+    float m_fV_SleepenessPsyHealth;
     float m_fSleepenessCritical;
     float m_fSleepeness_V_Sleep;
 

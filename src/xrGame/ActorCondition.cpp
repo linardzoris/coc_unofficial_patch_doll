@@ -141,6 +141,7 @@ void CActorCondition::LoadCondition(LPCSTR entity_section)
     m_fV_Sleepeness = pSettings->r_float(section, "sleepeness_v");
     m_fV_SleepenessPower = pSettings->r_float(section, "sleepeness_power_v");
     m_fSleepeness_V_Sleep = pSettings->r_float(section, "sleepeness_v_sleep");
+    m_fV_SleepenessPsyHealth = pSettings->r_float(section, "sleepeness_psy_health_v");
 
     m_MaxWalkWeight = pSettings->r_float(section, "max_walk_weight");
 
@@ -198,16 +199,6 @@ float CActorCondition::GetZoneMaxPower(ALife::EHitType hit_type) const
 
 void CActorCondition::UpdateCondition()
 {
-    if (psActorFlags.test(AF_GODMODE_RT))
-    {
-        UpdateSatiety();
-        UpdateBoosters();
-        UpdateThirst();
-        UpdateIntoxication();
-        UpdateSleepeness();
-        UpdateAlcohol();
-    }
-
     if (GodMode())
         return;
     if (!object().g_Alive())
@@ -266,6 +257,7 @@ void CActorCondition::UpdateCondition()
     UpdateIntoxication();
     UpdateSleepeness();
     UpdateAlcohol();
+    UpdatePsyHealth();
 
     inherited::UpdateCondition();
 
@@ -422,7 +414,7 @@ void CActorCondition::UpdateAlcohol()
 
     if ((m_fAlcohol > 0.0001f))
     {
-        if (!ce)
+        if (!ce && pSettings->section_exist("effector_alcohol"))
         {
             AddEffector(m_object, effAlcohol, "effector_alcohol", GET_KOEFF_FUNC(this, &CActorCondition::GetAlcohol));
         }
@@ -470,7 +462,7 @@ void CActorCondition::UpdateSatiety()
     {
         if ((m_fSatiety <= m_fSatietyCritical))
         {
-            if (!ce)
+            if (!ce && pSettings->section_exist("effector_satiety"))
                 AddEffector(m_object, effSatiety, "effector_satiety", GET_KOEFF_FUNC(this, &CActorCondition::GetSatiety));
         }
         else
@@ -512,7 +504,7 @@ void CActorCondition::UpdateThirst()
     {
         if ((m_fThirst <= m_fThirstCritical))
         {
-            if (!ce)
+            if (!ce && pSettings->section_exist("effector_thirst"))
                 AddEffector(m_object, effThirst, "effector_thirst", GET_KOEFF_FUNC(this, &CActorCondition::GetThirst));
         }
         else
@@ -553,7 +545,7 @@ void CActorCondition::UpdateIntoxication()
 
 	if ((m_fIntoxication>=m_fIntoxicationCritical))
 	{
-		if (!ce) 
+        if (!ce && pSettings->section_exist("effector_intoxication")) 
 			AddEffector(m_object, effIntoxication, "effector_intoxication", GET_KOEFF_FUNC(this, &CActorCondition::GetIntoxication));
 	}
 	else 
@@ -580,13 +572,6 @@ void CActorCondition::UpdateIntoxication()
 // M.F.S. Team Sleepeness
 void CActorCondition::UpdateSleepeness()
 {
-    if (GetSleepeness() >= 0.85f)
-    {
-        luabind::functor<void> funct;
-        if (GEnv.ScriptEngine->functor("new_utils.generate_phantoms", funct))
-            funct();
-    }
-
     if (GetSleepeness() >= 1.0f)
     {
         luabind::functor<void> funct;
@@ -598,7 +583,7 @@ void CActorCondition::UpdateSleepeness()
 
     if (m_fSleepeness >= m_fSleepenessCritical)
     {
-        if (!ce)
+        if (!ce && pSettings->section_exist("effector_sleepeness"))
             AddEffector(m_object, effSleepeness, "effector_sleepeness", GET_KOEFF_FUNC(this, &CActorCondition::GetSleepeness));
     }
     else
@@ -620,7 +605,10 @@ void CActorCondition::UpdateSleepeness()
     if (CanBeHarmed() && !psActorFlags.test(AF_GODMODE_RT))
     {
         if (m_fSleepeness >= m_fSleepenessCritical)
+        {
             m_fDeltaPower -= m_fV_SleepenessPower * m_fSleepeness * m_fDeltaTime;
+            m_fDeltaPsyHealth -= m_fV_SleepenessPsyHealth * m_fSleepeness * m_fDeltaTime;
+        }
     }
 }
 
