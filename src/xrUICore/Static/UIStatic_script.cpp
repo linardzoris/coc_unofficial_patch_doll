@@ -27,6 +27,7 @@ SCRIPT_EXPORT(CUIStatic, (CUIWindow), {
                          .def("InitTexture", &CUIStatic::InitTexture)
                          .def("InitTextureEx", &CUIStatic::InitTextureEx)
                          .def("SetTextureRect", &CUIStatic::SetTextureRect_script)
+                         .def("SetHint", &CUIStatic::SetHint) 
                          .def("SetStretchTexture", &CUIStatic::SetStretchTexture)
                          .def("GetTextureRect", &CUIStatic::GetTextureRect_script)];
 });

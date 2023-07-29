@@ -81,6 +81,7 @@ public:
     bool GetConstHeading() { return m_bConstHeading; }
     virtual void ColorAnimationSetTextureColor(u32 color, bool only_alpha);
     virtual void ColorAnimationSetTextColor(u32 color, bool only_alpha);
+    void SetHint(LPCSTR hint_text);
 
 protected:
     CUILines* m_pTextControl;

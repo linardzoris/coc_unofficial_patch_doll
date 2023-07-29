@@ -239,6 +239,11 @@ void CUIStatic::ColorAnimationSetTextColor(u32 color, bool only_alpha)
     TextItemControl()->SetTextColor((only_alpha) ? subst_alpha(TextItemControl()->GetTextColor(), color) : color);
 }
 
+void CUIStatic::SetHint(LPCSTR hint_text)
+{
+	m_stat_hint_text = hint_text;
+}
+
 void CUIStatic::OnFocusLost()
 {
     inherited::OnFocusLost();
