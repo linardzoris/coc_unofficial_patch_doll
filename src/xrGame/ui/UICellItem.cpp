@@ -171,14 +171,14 @@ bool CUICellItem::OnKeyboardAction(int dik, EUIMessages keyboard_action)
     return inherited::OnKeyboardAction(dik, keyboard_action);
 }
 
-CUIDragItem* CUICellItem::CreateDragItem(bool bRotate) //--#SM+#--
+CUIDragItem* CUICellItem::CreateDragItem()
 {
     CUIDragItem* tmp;
     tmp = new CUIDragItem(this);
     Frect r;
     GetAbsoluteRect(r);
 
-    if (bRotate == false && m_UIStaticItem.GetFixedLTWhileHeading()) //--#SM+#--
+    if (m_UIStaticItem.GetFixedLTWhileHeading())
     {
         float t1, t2;
         t1 = r.width();
