@@ -14,6 +14,7 @@ CRenderTarget::CRenderTarget()
     RT = nullptr;
     RT_color_map = nullptr;
     RT_SecondVP  = nullptr; //--#SM+# +SecondVP+
+    rt_ui_pda = nullptr;
     pTempZB = nullptr;
     ZB = nullptr;
     pFB = nullptr;
@@ -118,6 +119,7 @@ CRenderTarget::~CRenderTarget()
     s_postprocess[1].destroy();
     g_postprocess.destroy();
     RT_SecondVP.destroy(); //--#SM+#-- +SecondVP+
+    rt_ui_pda.destroy();
     RT_distort.destroy();
     RT_color_map.destroy();
     RT.destroy();

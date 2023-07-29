@@ -214,6 +214,9 @@ CRenderTarget::CRenderTarget()
     param_noise_fps = 25.f;
     param_noise_scale = 1.f;
 
+	RT_SecondVP = nullptr; //--#SM+# +SecondVP+
+    rt_ui_pda = nullptr;
+
     im_noise_time = 1.f / 100.0f;
     im_noise_shift_w = 0;
     im_noise_shift_h = 0;
@@ -278,7 +281,7 @@ CRenderTarget::CRenderTarget()
         // generic(LDR) RTs
         rt_Generic_0.create(r2_RT_generic0, w, h, D3DFMT_A8R8G8B8);
         rt_Generic_1.create(r2_RT_generic1, w, h, D3DFMT_A8R8G8B8);
-        rt_secondVP.create (r2_RT_secondVP, w, h, D3DFMT_A8R8G8B8); //--#SM+#-- +SecondVP+
+        RT_SecondVP.create(r2_RT_secondVP, w, h, D3DFMT_A8R8G8B8); //--#SM+#-- +SecondVP+
         rt_ui_pda.create(r2_RT_ui, w, h, D3DFMT_A8R8G8B8);
 
         //  Igor: for volumetric lights
@@ -701,6 +704,9 @@ CRenderTarget::~CRenderTarget()
     accum_omnip_geom_destroy();
     accum_point_geom_destroy();
     accum_volumetric_geom_destroy();
+
+	RT_SecondVP.destroy(); //--#SM+#-- +SecondVP+
+    rt_ui_pda.destroy();
 
     // Blenders
     xr_delete(b_combine);

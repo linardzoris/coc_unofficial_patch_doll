@@ -89,7 +89,7 @@ public:
     ref_rt rt_Generic_1; // 32bit		(r,g,b,a)				// post-process, intermidiate results, etc.
 
     //  Second viewport
-    ref_rt rt_secondVP; // 32bit		(r,g,b,a) --//#SM+#-- +SecondVP+
+    ref_rt RT_SecondVP; // 32bit		(r,g,b,a) --//#SM+#-- +SecondVP+
     // 3d PDA
     ref_rt rt_ui_pda;
 

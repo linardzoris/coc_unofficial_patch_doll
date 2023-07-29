@@ -527,7 +527,7 @@ void CRender::AfterWorldRender()
         // Делает копию бэкбуфера (текущего экрана) в рендер-таргет второго вьюпорта
         ID3DTexture2D* pBuffer = NULL;
         HW.m_pSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (LPVOID*)&pBuffer);
-        HW.pContext->CopyResource(Target->rt_secondVP->pSurface, pBuffer);
+        HW.pContext->CopyResource(Target->RT_SecondVP->pSurface, pBuffer);
         pBuffer->Release(); // Корректно очищаем ссылку на бэкбуфер (иначе игра зависнет в опциях)
     }
 }
@@ -539,7 +539,7 @@ void CRender::RenderToTarget(RRT target)
     switch (target)
     {
     case rtPDA: RT = &Target->rt_ui_pda; break;
-    case rtSVP: RT = &Target->rt_secondVP; break;
+    case rtSVP: RT = &Target->RT_SecondVP; break;
     default: xrDebug::Fatal(DEBUG_INFO, "None or wrong Target specified: %i", target); break;
     }
 

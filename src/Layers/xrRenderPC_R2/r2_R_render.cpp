@@ -493,7 +493,7 @@ void CRender::AfterWorldRender()
         // Делает копию бэкбуфера (текущего экрана) в рендер-таргет второго вьюпорта
         IDirect3DSurface9* pBackBuffer = NULL;
         HW.pDevice->GetBackBuffer(0, 0, D3DBACKBUFFER_TYPE_MONO, &pBackBuffer); // Получаем ссылку на бэкбуфер
-        D3DXLoadSurfaceFromSurface(Target->rt_secondVP->pRT, 0, 0, pBackBuffer, 0, 0, D3DX_DEFAULT, 0);
+        D3DXLoadSurfaceFromSurface(Target->RT_SecondVP->pRT, 0, 0, pBackBuffer, 0, 0, D3DX_DEFAULT, 0);
         pBackBuffer->Release(); // Корректно очищаем ссылку на бэкбуфер (иначе игра зависнет в опциях)
     }
 }
@@ -505,7 +505,7 @@ void CRender::RenderToTarget(RRT target)
     switch (target)
     {
     case rtPDA: RT = &Target->rt_ui_pda; break;
-    case rtSVP: RT = &Target->rt_secondVP; break;
+    case rtSVP: RT = &Target->RT_SecondVP; break;
     default: xrDebug::Fatal(DEBUG_INFO, "None or wrong Target specified: %i", target); break;
     }
 
