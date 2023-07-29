@@ -276,9 +276,9 @@ protected:
     shared_str m_sWpn_silencer_bone;
     shared_str m_sWpn_launcher_bone;
     shared_str m_sWpn_laser_bone;
-    // Фонарик
-    shared_str m_sWpn_flashlight_bone;
-    shared_str m_sHud_wpn_flashlight_bone;
+    shared_str m_sWpn_laser_bone2;
+    shared_str m_sWpn_flashlight_cone_bone; // Луч света, мир
+    shared_str m_sHud_wpn_flashlight_cone_bone; // Луч света, худ
 
     xr_vector<shared_str> m_all_scope_bones;
     shared_str m_cur_scope_bone;
@@ -303,7 +303,7 @@ protected:
             struct
             {
                 u16 scope : 6; // 2^6 possible scope sections // пометка 
-                u16 silencer : 5; // 2^5 possible silencer/launcher/laser sections
+                u16 silencer : 5; // 2^5 possible sections
                 u16 launcher : 5;
                 u16 laser : 5;
             };
@@ -801,13 +801,15 @@ private:
     shared_str flashlight_attach_bone;
     Fvector flashlight_attach_offset, flashlight_omni_attach_offset, flashlight_world_attach_offset,
         flashlight_omni_world_attach_offset;
-    ref_light flashlight_render;
     ref_light flashlight_omni;
     ref_glow flashlight_glow;
     CLAItem* flashlight_lanim;
     float flashlight_fBrightness{1.f};
 
     void UpdateFlashlight();
+
+public:
+    ref_light flashlight_render;
 
 public:
     void SwitchFlashlight(bool on)

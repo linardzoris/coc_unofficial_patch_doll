@@ -1137,8 +1137,7 @@ int CScriptGameObject::Weapon_GrenadeLauncher_Status()
     CWeapon* weapon = smart_cast<CWeapon*>(&object());
     if (!weapon)
     {
-        GEnv.ScriptEngine->script_log(
-            LuaMessageType::Error, "CWeapon : cannot access class member Weapon_GrenadeLauncher_Status!");
+        GEnv.ScriptEngine->script_log(LuaMessageType::Error, "CWeapon : cannot access class member Weapon_GrenadeLauncher_Status!");
         return (false);
     }
     return (int)weapon->get_GrenadeLauncherStatus();
@@ -1149,8 +1148,7 @@ int CScriptGameObject::Weapon_Scope_Status()
     CWeapon* weapon = smart_cast<CWeapon*>(&object());
     if (!weapon)
     {
-        GEnv.ScriptEngine->script_log(
-            LuaMessageType::Error, "CWeapon : cannot access class member Weapon_Scope_Status!");
+        GEnv.ScriptEngine->script_log(LuaMessageType::Error, "CWeapon : cannot access class member Weapon_Scope_Status!");
         return (false);
     }
     return (int)weapon->get_ScopeStatus();
@@ -1161,8 +1159,7 @@ int CScriptGameObject::Weapon_Silencer_Status()
     CWeapon* weapon = smart_cast<CWeapon*>(&object());
     if (!weapon)
     {
-        GEnv.ScriptEngine->script_log(
-            LuaMessageType::Error, "CWeapon : cannot access class member Weapon_Silencer_Status!");
+        GEnv.ScriptEngine->script_log(LuaMessageType::Error, "CWeapon : cannot access class member Weapon_Silencer_Status!");
         return (false);
     }
     return (int)weapon->get_SilencerStatus();
@@ -1173,8 +1170,7 @@ int CScriptGameObject::Weapon_Laser_Status()
     CWeapon* weapon = smart_cast<CWeapon*>(&object());
     if (!weapon)
     {
-        GEnv.ScriptEngine->script_log(
-            LuaMessageType::Error, "CWeapon : cannot access class member Weapon_Laser_Status!");
+        GEnv.ScriptEngine->script_log(LuaMessageType::Error, "CWeapon : cannot access class member Weapon_Laser_Status!");
         return (false);
     }
     return (int)weapon->get_LaserStatus();
@@ -1185,8 +1181,7 @@ bool CScriptGameObject::Weapon_IsGrenadeLauncherAttached()
     CWeapon* weapon = smart_cast<CWeapon*>(&object());
     if (!weapon)
     {
-        GEnv.ScriptEngine->script_log(
-            LuaMessageType::Error, "CWeapon : cannot access class member Weapon_IsGrenadeLauncherAttached!");
+        GEnv.ScriptEngine->script_log(LuaMessageType::Error, "CWeapon : cannot access class member Weapon_IsGrenadeLauncherAttached!");
         return (false);
     }
     return weapon->IsGrenadeLauncherAttached();
@@ -1197,8 +1192,7 @@ bool CScriptGameObject::Weapon_IsScopeAttached()
     CWeapon* weapon = smart_cast<CWeapon*>(&object());
     if (!weapon)
     {
-        GEnv.ScriptEngine->script_log(
-            LuaMessageType::Error, "CWeapon : cannot access class member Weapon_IsScopeAttached!");
+        GEnv.ScriptEngine->script_log(LuaMessageType::Error, "CWeapon : cannot access class member Weapon_IsScopeAttached!");
         return (false);
     }
     return weapon->IsScopeAttached();
@@ -1209,8 +1203,7 @@ bool CScriptGameObject::Weapon_IsSilencerAttached()
     CWeapon* weapon = smart_cast<CWeapon*>(&object());
     if (!weapon)
     {
-        GEnv.ScriptEngine->script_log(
-            LuaMessageType::Error, "CWeapon : cannot access class member Weapon_IsSilencerAttached!");
+        GEnv.ScriptEngine->script_log(LuaMessageType::Error, "CWeapon : cannot access class member Weapon_IsSilencerAttached!");
         return (false);
     }
     return weapon->IsSilencerAttached();
@@ -1221,14 +1214,14 @@ bool CScriptGameObject::Weapon_IsLaserAttached()
     CWeapon* weapon = smart_cast<CWeapon*>(&object());
     if (!weapon)
     {
-        GEnv.ScriptEngine->script_log(
-            LuaMessageType::Error, "CWeapon : cannot access class member Weapon_IsLaserAttached!");
+        GEnv.ScriptEngine->script_log(LuaMessageType::Error, "CWeapon : cannot access class member Weapon_IsLaserAttached!");
         return (false);
     }
     return weapon->IsLaserAttached();
 }
 
 void CScriptGameObject::AllowSprint(bool b) { Actor()->SetCantRunState(!b); }
+
 int CScriptGameObject::animation_slot() const
 {
     CHudItem* hud_item = smart_cast<CHudItem*>(&object());

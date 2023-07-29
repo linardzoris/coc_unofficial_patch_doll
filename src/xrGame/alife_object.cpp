@@ -73,6 +73,7 @@ void CSE_ALifeObject::spawn_supplies(LPCSTR ini_string)
                     bool bSilencer = false;
                     bool bLauncher = false;
                     bool bLaser = false;
+
                     float f_cond = 1.0f;
                     int i_ammo_type = 0, n = 0;
                     int cur_scope = 0;
@@ -180,6 +181,7 @@ void CSE_ALifeObject::spawn_supplies(LPCSTR ini_string)
                     bSilencer = nullptr != strstr(V, "silencer");
                     bLauncher = nullptr != strstr(V, "launcher");
                     bLaser = nullptr != strstr(V, "laser");
+
                     // probability
                     if (nullptr != strstr(V, "prob="))
                         p = static_cast<float>(atof(strstr(V, "prob=") + 5));

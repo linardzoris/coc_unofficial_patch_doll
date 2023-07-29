@@ -358,10 +358,10 @@ void CWeapon::ForceUpdateFireParticles()
     }
 }
 
-LPCSTR wpn_scope_def_bone = "wpn_scope";
-LPCSTR wpn_silencer_def_bone = "wpn_silencer";
-LPCSTR wpn_launcher_def_bone = "wpn_launcher";
-LPCSTR wpn_laser_def_bone = "wpn_laser";
+LPCSTR wpn_scope_def_bone       = "wpn_scope";
+LPCSTR wpn_silencer_def_bone    = "wpn_silencer";
+LPCSTR wpn_launcher_def_bone    = "wpn_launcher";
+LPCSTR wpn_laser_def_bone       = "wpn_laser";
 
 void CWeapon::Load(LPCSTR section)
 {
@@ -1846,9 +1846,9 @@ void CWeapon::UpdateHUDAddonsVisibility()
     else if (m_eLaserStatus == ALife::eAddonPermanent)
         SetBoneVisible(m_sWpn_laser_bone, TRUE);
 
-    // Фонарик
-    if (m_sHud_wpn_flashlight_bone.size() && has_flashlight)
-        SetBoneVisible(m_sHud_wpn_flashlight_bone, IsFlashlightOn());
+    // Фонарик, световой луч
+    if (m_sHud_wpn_flashlight_cone_bone.size() && has_flashlight)
+        SetBoneVisible(m_sHud_wpn_flashlight_cone_bone, IsFlashlightOn());
 }
 
 void CWeapon::HUD_VisualBulletUpdate(bool force, int force_idx)
@@ -2004,10 +2004,10 @@ void CWeapon::UpdateAddonsVisibility()
         //		Log("laser", pWeaponVisual->LL_GetBoneVisible			(bone_id));
     }
 
-    // Фонарик
-    if (m_sWpn_flashlight_bone.size() && has_flashlight)
+    // Фонарик, световой луч
+    if (m_sWpn_flashlight_cone_bone.size() && has_flashlight)
     {
-        bone_id = pWeaponVisual->LL_BoneID(m_sWpn_flashlight_bone);
+        bone_id = pWeaponVisual->LL_BoneID(m_sWpn_flashlight_cone_bone);
 
         if (bone_id != BI_NONE)
         {
@@ -3499,11 +3499,10 @@ void CWeapon::LoadCurrentLaserParams(LPCSTR section)
 
 void CWeapon::LoadCurrentFlashlightParams(LPCSTR section)
 {
-    m_sWpn_flashlight_bone = READ_IF_EXISTS(pSettings, r_string, section, "torch_cone_bones", "");
-    m_sHud_wpn_flashlight_bone = READ_IF_EXISTS(pSettings, r_string, hud_sect, "torch_cone_bones", m_sWpn_flashlight_bone);
+    m_sWpn_flashlight_cone_bone = READ_IF_EXISTS(pSettings, r_string, section, "torch_cone_bones", "");
+    m_sHud_wpn_flashlight_cone_bone = READ_IF_EXISTS(pSettings, r_string, hud_sect, "torch_cone_bones", m_sWpn_flashlight_cone_bone);
 
-	if (!flashlight_render && pSettings->line_exist(section, "flashlight_section") && !IsLaserAttached() && !bLaserSupportFlashlight
-        || IsLaserAttached() && !flashlight_render && pSettings->line_exist(section, "flashlight_section") && bLaserSupportFlashlight)
+	if (!flashlight_render && pSettings->line_exist(section, "flashlight_section"))
 	{
 		has_flashlight = true;
 

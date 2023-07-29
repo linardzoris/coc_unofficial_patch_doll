@@ -1250,7 +1250,7 @@ bool CWeaponMagazined::Action(u16 cmd, u32 flags)
     {
         if (flags & CMD_START)
         {
-            if (!HasFlashlight() || IsLaserAttached() && !bLaserSupportFlashlight)
+            if (!IsLaserAttached() || IsLaserAttached() && !bLaserSupportFlashlight)
                 return false;
 
             OnWeaponAddonFlashlightSwitch();
@@ -1673,7 +1673,7 @@ void CWeaponMagazined::InitAddons()
             g_pGamePersistent->laser_shader_data.laser_factor = 0.f;
             //m_bLaserShaderOn = false;
 
-        if (HasFlashlight() && bLaserSupportFlashlight)
+        if (HasFlashlight() && bLaserSupportFlashlight && flashlight_render->get_active())
             SwitchFlashlight(!IsFlashlightOn());
     }
 
