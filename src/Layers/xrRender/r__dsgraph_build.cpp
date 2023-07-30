@@ -33,12 +33,6 @@ ICF float CalcSSA(float& distSQ, Fvector& C, float R)
     distSQ = Device.vCameraPosition.distance_to_sqr(C) + EPS;
     return R / distSQ;
 }
-ICF float CalcHudSSA(float& distSQ, Fvector& C, dxRender_Visual* V)
-{
-    float R = V->vis.sphere.R + 0;
-    distSQ = Fvector().set(0.f, 0.f, 0.f).distance_to_sqr(C) + EPS;
-    return R / distSQ;
-}
 
 // Static geometry optimization
 #define O_S_L1_S_LOW 10.f // geometry 3d volume size
@@ -325,12 +319,7 @@ void D3DXRenderBase::r_dsgraph_insert_dynamic(dxRender_Visual* pVisual, Fvector&
 #endif
 
     float distSQ;
-    float SSA;
-
-    if (!RI.val_bHUD)
-        SSA = CalcSSA(distSQ, Center, pVisual);
-    else
-        SSA = CalcHudSSA(distSQ, Center, pVisual);
+    float SSA = CalcSSA(distSQ, Center, pVisual);
 
     if (SSA <= r_ssaDISCARD)
         return;

@@ -277,7 +277,6 @@ protected:
     shared_str m_sWpn_launcher_bone;
     shared_str m_sWpn_laser_bone;
     shared_str m_sWpn_laser_bone2;
-    shared_str m_sWpn_flashlight_cone_bone; // Луч света, мир
     shared_str m_sHud_wpn_flashlight_cone_bone; // Луч света, худ
 
     xr_vector<shared_str> m_all_scope_bones;
@@ -790,9 +789,6 @@ public:
         UpdateFlashlight();
         inherited::processing_deactivate();
     }
-
-    void GetBoneOffsetPosDir(const shared_str& bone_name, Fvector& dest_pos, Fvector& dest_dir, const Fvector& offset);
-    void CorrectDirFromWorldToHud(Fvector& dir);
 
 private:
     float hud_recalc_koef;

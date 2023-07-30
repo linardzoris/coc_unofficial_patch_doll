@@ -214,15 +214,9 @@ void attachable_hud_item::setup_firedeps(firedeps& fd)
         Fmatrix& fire_mat = m_model->LL_GetTransform(m_measures.m_fire_bone);
         fire_mat.transform_tiny(fd.vLastFP, m_measures.m_fire_point_offset);
         m_item_transform.transform_tiny(fd.vLastFP);
-        fd.vLastFP.add(Device.vCameraPosition);
 
-		fd.vLastFD.set(0.f, 0.f, 1.f);
+		fd.vLastFD.set(m_measures.m_fire_direction);
         m_item_transform.transform_dir(fd.vLastFD);
-
-		auto Wpn = smart_cast<CWeapon*>(m_parent_hud_item);
-
-        if (Wpn) // && m_measures.useCopFirePoint)
-            Wpn->CorrectDirFromWorldToHud(fd.vLastFD);
 
         VERIFY(_valid(fd.vLastFD));
         VERIFY(_valid(fd.vLastFD));
@@ -239,7 +233,7 @@ void attachable_hud_item::setup_firedeps(firedeps& fd)
         Fmatrix& fire_mat = m_model->LL_GetTransform(m_measures.m_fire_bone2);
         fire_mat.transform_tiny(fd.vLastFP2, m_measures.m_fire_point2_offset);
         m_item_transform.transform_tiny(fd.vLastFP2);
-        fd.vLastFP2.add(Device.vCameraPosition);
+
         VERIFY(_valid(fd.vLastFP2));
         VERIFY(_valid(fd.vLastFP2));
     }
@@ -249,7 +243,7 @@ void attachable_hud_item::setup_firedeps(firedeps& fd)
         Fmatrix& fire_mat = m_model->LL_GetTransform(m_measures.m_shell_bone);
         fire_mat.transform_tiny(fd.vLastSP, m_measures.m_shell_point_offset);
         m_item_transform.transform_tiny(fd.vLastSP);
-        fd.vLastSP.add(Device.vCameraPosition);
+
         VERIFY(_valid(fd.vLastSP));
         VERIFY(_valid(fd.vLastSP));
     }

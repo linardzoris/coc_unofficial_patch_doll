@@ -801,48 +801,19 @@ void CWeapon::LoadFireParams(LPCSTR section)
 
 // Фонарик
 
-void CWeapon::GetBoneOffsetPosDir(
-    const shared_str& bone_name, Fvector& dest_pos, Fvector& dest_dir, const Fvector& offset)
-{
-    const u16 bone_id = HudItemData()->m_model->LL_BoneID(bone_name);
-    // ASSERT_FMT(bone_id != BI_NONE, "!![%s] bone [%s] not found in weapon [%s]", __FUNCTION__, bone_name.c_str(),
-    // cNameSect().c_str());
-    Fmatrix& fire_mat = HudItemData()->m_model->LL_GetTransform(bone_id);
-    fire_mat.transform_tiny(dest_pos, offset);
-    HudItemData()->m_item_transform.transform_tiny(dest_pos);
-    dest_pos.add(Device.vCameraPosition);
-    dest_dir.set(0.f, 0.f, 1.f);
-    HudItemData()->m_item_transform.transform_dir(dest_dir);
-}
-
-void CWeapon::CorrectDirFromWorldToHud(Fvector& dir)
-{
-    const auto& CamDir = Device.vCameraDirection;
-    const float Fov = Device.fFOV;
-    extern ENGINE_API float psHUD_FOV;
-    const float HudFov = psHUD_FOV < 1.f ? psHUD_FOV * Device.fFOV : psHUD_FOV;
-    const float diff = hud_recalc_koef * Fov / HudFov;
-    dir.sub(CamDir);
-    dir.mul(diff);
-    dir.add(CamDir);
-    dir.normalize();
-}
-
 void CWeapon::UpdateFlashlight()
 {
     if (flashlight_render)
     {
         auto io = smart_cast<CInventoryOwner*>(H_Parent());
-        if (!flashlight_render->get_active() && IsFlashlightOn() &&
-            (!H_Parent() || (io && this == io->inventory().ActiveItem())))
+        if (!flashlight_render->get_active() && IsFlashlightOn() && (!H_Parent() || (io && this == io->inventory().ActiveItem())))
         {
             flashlight_render->set_active(true);
             flashlight_omni->set_active(true);
             flashlight_glow->set_active(true);
             UpdateAddonsVisibility();
         }
-        else if (flashlight_render->get_active() &&
-            (!IsFlashlightOn() || !(!H_Parent() || (io && this == io->inventory().ActiveItem()))))
+        else if (flashlight_render->get_active() && (!GetHUDmode() || !IsFlashlightOn() || !(!H_Parent() || (io && this == io->inventory().ActiveItem()))))
         {
             flashlight_render->set_active(false);
             flashlight_omni->set_active(false);
@@ -854,22 +825,11 @@ void CWeapon::UpdateFlashlight()
         {
             Fvector flashlight_pos, flashlight_pos_omni, flashlight_dir, flashlight_dir_omni;
 
-            if (GetHUDmode())
-            {
-                GetBoneOffsetPosDir(flashlight_attach_bone, flashlight_pos, flashlight_dir, flashlight_attach_offset);
-                CorrectDirFromWorldToHud(flashlight_dir);
+            flashlight_dir = get_LastFD();
+            XFORM().transform_tiny(flashlight_pos, flashlight_world_attach_offset);
 
-                GetBoneOffsetPosDir(flashlight_attach_bone, flashlight_pos_omni, flashlight_dir_omni, flashlight_omni_attach_offset);
-                CorrectDirFromWorldToHud(flashlight_dir_omni);
-            }
-            else
-            {
-                flashlight_dir = get_LastFD();
-                XFORM().transform_tiny(flashlight_pos, flashlight_world_attach_offset);
-
-                flashlight_dir_omni = get_LastFD();
-                XFORM().transform_tiny(flashlight_pos_omni, flashlight_omni_world_attach_offset);
-            }
+            flashlight_dir_omni = get_LastFD();
+            XFORM().transform_tiny(flashlight_pos_omni, flashlight_omni_world_attach_offset);
 
             Fmatrix flashlightXForm;
             flashlightXForm.identity();
@@ -2002,21 +1962,6 @@ void CWeapon::UpdateAddonsVisibility()
     {
         pWeaponVisual->LL_SetBoneVisible(bone_id, FALSE, TRUE);
         //		Log("laser", pWeaponVisual->LL_GetBoneVisible			(bone_id));
-    }
-
-    // Фонарик, световой луч
-    if (m_sWpn_flashlight_cone_bone.size() && has_flashlight)
-    {
-        bone_id = pWeaponVisual->LL_BoneID(m_sWpn_flashlight_cone_bone);
-
-        if (bone_id != BI_NONE)
-        {
-            const bool flashlight_on = IsFlashlightOn();
-            if (pWeaponVisual->LL_GetBoneVisible(bone_id) && !flashlight_on)
-                pWeaponVisual->LL_SetBoneVisible(bone_id, FALSE, TRUE);
-            else if (!pWeaponVisual->LL_GetBoneVisible(bone_id) && flashlight_on)
-                pWeaponVisual->LL_SetBoneVisible(bone_id, TRUE, TRUE);
-        }
     }
 
     pWeaponVisual->CalculateBones_Invalidate();
@@ -3499,8 +3444,7 @@ void CWeapon::LoadCurrentLaserParams(LPCSTR section)
 
 void CWeapon::LoadCurrentFlashlightParams(LPCSTR section)
 {
-    m_sWpn_flashlight_cone_bone = READ_IF_EXISTS(pSettings, r_string, section, "torch_cone_bones", "");
-    m_sHud_wpn_flashlight_cone_bone = READ_IF_EXISTS(pSettings, r_string, hud_sect, "torch_cone_bones", m_sWpn_flashlight_cone_bone);
+    m_sHud_wpn_flashlight_cone_bone = READ_IF_EXISTS(pSettings, r_string, hud_sect, "torch_cone_bones", "");
 
 	if (!flashlight_render && pSettings->line_exist(section, "flashlight_section"))
 	{
