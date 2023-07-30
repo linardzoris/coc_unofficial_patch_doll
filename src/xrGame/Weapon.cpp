@@ -806,14 +806,14 @@ void CWeapon::UpdateFlashlight()
     if (flashlight_render)
     {
         auto io = smart_cast<CInventoryOwner*>(H_Parent());
-        if (!flashlight_render->get_active() && IsFlashlightOn() && (!H_Parent() || (io && this == io->inventory().ActiveItem())))
+        if (!flashlight_render->get_active() && (bLaserSupportFlashlight && IsLaserAttached()) && GetHUDmode()  && IsFlashlightOn() && (!H_Parent() || (io && this == io->inventory().ActiveItem())))
         {
             flashlight_render->set_active(true);
             flashlight_omni->set_active(true);
             flashlight_glow->set_active(true);
             UpdateAddonsVisibility();
         }
-        else if (flashlight_render->get_active() && (!GetHUDmode() || !IsFlashlightOn() || !(!H_Parent() || (io && this == io->inventory().ActiveItem()))))
+        else if (flashlight_render->get_active() && ((bLaserSupportFlashlight && !IsLaserAttached()) || !GetHUDmode() || !IsFlashlightOn() || !(!H_Parent() || (io && this == io->inventory().ActiveItem()))))
         {
             flashlight_render->set_active(false);
             flashlight_omni->set_active(false);

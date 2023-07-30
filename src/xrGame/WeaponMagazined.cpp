@@ -1672,9 +1672,6 @@ void CWeaponMagazined::InitAddons()
         if (HasFlashlight() && bLaserSupportFlashlight && m_bLaserShaderOn)
             g_pGamePersistent->laser_shader_data.laser_factor = 0.f;
             //m_bLaserShaderOn = false;
-
-        if (HasFlashlight() && bLaserSupportFlashlight && flashlight_render->get_active())
-            SwitchFlashlight(!IsFlashlightOn());
     }
 
     if (IsSilencerAttached() /* && SilencerAttachable() */)

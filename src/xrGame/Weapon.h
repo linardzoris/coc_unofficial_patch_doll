@@ -795,17 +795,14 @@ private:
 
     bool has_flashlight;
     shared_str flashlight_attach_bone;
-    Fvector flashlight_attach_offset, flashlight_omni_attach_offset, flashlight_world_attach_offset,
-        flashlight_omni_world_attach_offset;
+    Fvector flashlight_attach_offset, flashlight_omni_attach_offset, flashlight_world_attach_offset, flashlight_omni_world_attach_offset;
+    ref_light flashlight_render;
     ref_light flashlight_omni;
     ref_glow flashlight_glow;
     CLAItem* flashlight_lanim;
     float flashlight_fBrightness{1.f};
 
     void UpdateFlashlight();
-
-public:
-    ref_light flashlight_render;
 
 public:
     void SwitchFlashlight(bool on)
