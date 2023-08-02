@@ -132,8 +132,8 @@ function CSE_ALifeObject_spawn_supplies(se_obj,id,ini_string)
 		for i=0,j do
 			result, spawn_sec, value = ini:r_line(section,i,"","")
 			if (spawn_sec and spawn_sec ~= "" and sys_ini:section_exist(spawn_sec)) then 
-				local cond,prob,count,ammo_type = 1,1,1,0
-				local bLauncher, bScope, bSight, bSilencer
+				local cond,prob,count,ammo_type,cur_scope = 1,1,1,0,0
+				local bLauncher, bScope, bSight, bSilencer, bLaser
 				local sight, sights, variant_section
 				if (value and value ~= "") then
 					local _a,_b = string.find(value,",") 
@@ -149,10 +149,19 @@ function CSE_ALifeObject_spawn_supplies(se_obj,id,ini_string)
 					if (string.find(value,"silencer")) then 
 						bSilencer = true
 					end
+					if (string.find(value,"laser")) then 
+						bLaser = true
+					end							
 					if (string.find(value,"sight")) then 
 						bSight = true
-					end
-					for a,b in string.gmatch(value,"([%w_%-%s%.]*)=([%w_%-%s%.]*)") do
+					end			
+					if (string.find(value,"scope=") or string.find(value,"scope = ")) then 
+						cur_scope = tonumber(_b+1) or 1	-- What wrong with you? Why i should add 1 number, if want to see right scope-number?				
+					end	
+					if (string.find(value,"scope_random")) then 
+						cur_scope = math.random(1,5) or 1 -- Replase 5 actually information from "scopes" in weapon sonfig
+					end						
+					for a,b in string.gmatch(value,"([%w_%-%s%.]*)=([%w_%-%s%.]*)") do					
 						if (a == "cond") then 
 							cond = tonumber(b) or 1
 						elseif (a == "prob") then 
@@ -173,8 +182,10 @@ function CSE_ALifeObject_spawn_supplies(se_obj,id,ini_string)
 							bScope = math.random() <= (tonumber(b) or 0)
 						elseif (a == "silencer") then
 							bSilencer = math.random() <= (tonumber(b) or 0)
+						elseif (a == "laser") then
+							bLaser = math.random() <= (tonumber(b) or 0)									
 						elseif (a == "sight") then
-							bSight = math.random() <= (tonumber(b) or 0)
+							bSight = math.random() <= (tonumber(b) or 0)							
 						elseif (a == "skins") then
 							-- Number of skins, not the % of spawning.
 							skins = math.random(0, (tonumber(b) or 0))
@@ -191,7 +202,7 @@ function CSE_ALifeObject_spawn_supplies(se_obj,id,ini_string)
 					end
 				end
 				
-				-- STCoP Weapon Pack / Arsenal Overhaul 3
+				-- STCoP Weapon Pack (before 3 ver) / Arsenal Overhaul 3
 				-- Switches the weapon to a sighted variant if available.
 				if (bSight) then
 					sights = alun_utils.parse_list(sys_ini, create_section, "scopes")
@@ -203,7 +214,7 @@ function CSE_ALifeObject_spawn_supplies(se_obj,id,ini_string)
 						end
 					end
 				end
-				
+			
 				for k=1,count do 
 					if (prob == 1 or math.random() <= prob) then 
 						local se_item = create(sim,spawn_sec,se_obj.position,se_obj.m_level_vertex_id,se_obj.m_game_vertex_id,id)
@@ -214,9 +225,10 @@ function CSE_ALifeObject_spawn_supplies(se_obj,id,ini_string)
 								se_item:set_ammo_type(ammo_type)
 								--printf("spawn wpn=%s ammo_type=%s",spawn_sec,ammo_type)
 								
-								local flags = se_item:get_addon_flags()
+								local flags = se_item:get_addon_flags()								
 								if (bScope and se_item.scope_status == cse_alife_item_weapon.eAddonAttachable) then 
 									flags:set(cse_alife_item_weapon.eWeaponAddonScope,true)
+									se_item:get_cur_scope(cur_scope)	
 								end
 
 								if (bLauncher and se_item.grenade_launcher_status == cse_alife_item_weapon.eAddonAttachable) then
@@ -226,6 +238,10 @@ function CSE_ALifeObject_spawn_supplies(se_obj,id,ini_string)
 								if (bSilencer and se_item.silencer_status == cse_alife_item_weapon.eAddonAttachable) then
 									flags:set(cse_alife_item_weapon.eWeaponAddonSilencer,true)
 								end
+	
+								if (bLaser and se_item.laser_status == cse_alife_item_weapon.eAddonAttachable) then
+									flags:set(cse_alife_item_weapon.eWeaponAddonLaser,true)
+								end	
 							end
 						end
 					end
@@ -292,8 +308,8 @@ function CSE_ALifeObject_spawn_supplies(se_obj,id,ini_string)
 				local selected = spawn_list[math.random(size_t)]
 				local create_section = selected[1]
 				local value = selected[2]
-				local cond,count,ammo_type = 1,1,0
-				local bLauncher, bScope, bSight, bSilencer
+				local cond,count,ammo_type,cur_scope = 1,1,0,0
+				local bLauncher, bScope, bSight, bSilencer, bLaser
 				local sight, sights, skins, variant_section
 				if (value and value ~= "") then
 					-- parse params
@@ -310,9 +326,18 @@ function CSE_ALifeObject_spawn_supplies(se_obj,id,ini_string)
 					if (string.find(value,"silencer")) then 
 						bSilencer = true
 					end
+					if (string.find(value,"laser")) then 
+						bLaser = true
+					end								
 					if (string.find(value,"sight")) then 
 						bSight = true
-					end
+					end				
+					if (string.find(value,"scope=") or string.find(value,"scope = ")) then 
+						cur_scope = tonumber(_b+1) or 1					
+					end		
+					if (string.find(value,"scope_random")) then 
+						cur_scope = math.random(1,5) or 1 -- Replase 5 actually information from "scopes" in weapon sonfig
+					end							
 					for a,b in string.gmatch(value,"([%w_%-%s%.]+)=([%w_%-%s%.]+)") do
 						if (a == "cond") then 
 							cond = tonumber(b) or 1
@@ -333,8 +358,10 @@ function CSE_ALifeObject_spawn_supplies(se_obj,id,ini_string)
 							bScope = math.random() <= (tonumber(b) or 0)
 						elseif (a == "silencer") then
 							bSilencer = math.random() <= (tonumber(b) or 0)
+						elseif (a == "laser") then
+							bLaser = math.random() <= (tonumber(b) or 0)								
 						elseif (a == "sight") then
-							bSight = math.random() <= (tonumber(b) or 0)
+							bSight = math.random() <= (tonumber(b) or 0)							
 						elseif (a == "skins") then
 							-- Number of skins, not the % of spawning.
 							skins = math.random(0, (tonumber(b) or 0))
@@ -349,10 +376,9 @@ function CSE_ALifeObject_spawn_supplies(se_obj,id,ini_string)
 					if (sys_ini:section_exist(variant_section)) then
 						create_section = variant_section
 					end
-				end
+				end			
 				
-				
-				-- STCoP Weapon Pack / Arsenal Overhaul 3
+				-- STCoP Weapon Pack (before 3 ver) / Arsenal Overhaul 3
 				-- Switches the weapon to a sighted variant if available.
 				if (bSight) then
 					sights = alun_utils.parse_list(sys_ini, create_section, "scopes")
@@ -364,7 +390,7 @@ function CSE_ALifeObject_spawn_supplies(se_obj,id,ini_string)
 						end
 					end
 				end
-				
+		
 				-- Create the item and set params
 				local se_item = create(sim,create_section,se_obj.position,se_obj.m_level_vertex_id,se_obj.m_game_vertex_id,id)
 				if (se_item) then 
@@ -375,6 +401,7 @@ function CSE_ALifeObject_spawn_supplies(se_obj,id,ini_string)
 						local flags = se_item:get_addon_flags()
 						if (bScope and se_item.scope_status == cse_alife_item_weapon.eAddonAttachable) then 
 							flags:set(cse_alife_item_weapon.eWeaponAddonScope,true)
+							se_item:get_cur_scope(cur_scope)							
 						end
 
 						if (bLauncher and se_item.grenade_launcher_status == cse_alife_item_weapon.eAddonAttachable) then
@@ -385,9 +412,13 @@ function CSE_ALifeObject_spawn_supplies(se_obj,id,ini_string)
 							flags:set(cse_alife_item_weapon.eWeaponAddonSilencer,true)
 						end
 						
+						if (bLaser and se_item.laser_status == cse_alife_item_weapon.eAddonAttachable) then
+							flags:set(cse_alife_item_weapon.eWeaponAddonLaser,true)
+						end						
+	
 						-- Create the ammo 
 						se_item:set_ammo_type(ammo_type)
-						--printf("spawn_loadout%s wpn=%s ammo_type=%s scope=%s launcher=%s silencer=%s",itr_count,create_section,ammo_type,bScope,bLauncher,bSilencer)
+						--printf("spawn_loadout%s wpn=%s ammo_type=%s scope=%s launcher=%s silencer=%s laser=%s",itr_count,create_section,ammo_type,bScope,bLauncher,bSilencer,bLaser)
 
 						local ammos = alun_utils.parse_list(sys_ini,create_section,"ammo_class")
 						local ammo_section = ammos[ammo_type+1]
@@ -403,7 +434,7 @@ function CSE_ALifeObject_spawn_supplies(se_obj,id,ini_string)
 			section = "spawn_loadout"..itr_count
 		end
 	end
-	return true
+	return true -- Return false cause Mortan scope spawn system from engine. Turn it to true if your weapon support old CoC system
 end
 
 -- called from engine
