@@ -94,6 +94,7 @@ SCRIPT_EXPORT(CSE_ALifeItemWeapon, (CSE_ALifeItem),
 		    .def("set_ammo_type",		&CSE_ALifeItemWeapon::set_ammo_type)
 		    .def("set_ammo_type2",		&CSE_ALifeItemWeapon::set_ammo_type2)
             .def("get_addon_flags", &CSE_ALifeItemWeapon::get_addon_flags)
+            .def("get_cur_scope", &CSE_ALifeItemWeapon::get_cur_scope)
             //.def("set_addon_flags", &CSE_ALifeItemWeapon::set_addon_flags)
     ];
 });

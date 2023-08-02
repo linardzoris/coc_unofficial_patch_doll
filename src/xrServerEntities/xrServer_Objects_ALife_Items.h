@@ -258,6 +258,7 @@ public:
 	void							set_ammo_type(u8 count) { ammo_type.type1 = count; };
 	u8								get_ammo_type2() { return ammo_type.type2; };
 	void							set_ammo_type2(u8 count) { ammo_type.type2 = count; };
+    u8                              get_cur_scope(u8 count) { return cur_scope = count; }
 
     u16 get_ammo_magsize();
     Flags8& get_addon_flags() { return m_addon_flags; }
