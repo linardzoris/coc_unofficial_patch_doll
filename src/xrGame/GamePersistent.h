@@ -108,6 +108,7 @@ public:
     bool GetHudGlassEnabled();
     bool GetActorAliveStatus();
     bool GetActor();
+    bool IsCamFirstEye();
     float GetActorMaxHealth() override;
     float GetActorHealth() override;
     float GetActorMaxPower() override;

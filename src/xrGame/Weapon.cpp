@@ -32,6 +32,8 @@
 #include "XrayGameConstants.h"
 #include "../xrEngine/LightAnimLibrary.h"
 #include "ActorCondition.h"
+#include "ui/UIActorMenu.h"
+#include "UIGameCustom.h"
 
 #define WEAPON_REMOVE_TIME 60000
 #define ROTATION_TIME 0.25f
@@ -2980,15 +2982,18 @@ void CWeapon::OnStateSwitch(u32 S, u32 oldState)
         {
             CActor* current_actor = smart_cast<CActor*>(H_Parent());
 
-            if ((GetState() == eReload || GetState() == eUnMisfire || GetState() == eBore) && current_actor)
+            if (&CurrentGameUI()->GetActorMenu() && CurrentGameUI()->GetActorMenu().GetMenuMode() == mmUndefined)
             {
-                ps_ssfx_wpn_dof_1 = GameConstants::GetSSFX_FocusDoF();
-                ps_ssfx_wpn_dof_2 = GameConstants::GetSSFX_FocusDoF().z;
-            }
-            else
-            {
-                ps_ssfx_wpn_dof_1 = GameConstants::GetSSFX_DefaultDoF();
-                ps_ssfx_wpn_dof_2 = GameConstants::GetSSFX_DefaultDoF().z;
+                if ((GetState() == eReload || GetState() == eUnMisfire || GetState() == eBore) && current_actor)
+                {
+                    ps_ssfx_wpn_dof_1 = GameConstants::GetSSFX_FocusDoF();
+                    ps_ssfx_wpn_dof_2 = GameConstants::GetSSFX_FocusDoF().z;
+                }
+                else
+                {
+                    ps_ssfx_wpn_dof_1 = GameConstants::GetSSFX_DefaultDoF();
+                    ps_ssfx_wpn_dof_2 = GameConstants::GetSSFX_DefaultDoF().z;
+                }
             }
         }
     }

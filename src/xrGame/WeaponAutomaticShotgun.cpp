@@ -183,7 +183,7 @@ void CWeaponAutomaticShotgun::switch2_AddCartgidge()
 {
     if (!m_bOpenWeaponEmptyCartridge && isHUDAnimationExist("anm_add_cartridge_empty") && m_sounds.FindSoundItem("sndAddCartridgeEmpty", false) && m_ammoElapsed.type1 == 0)
         PlaySound("sndAddCartridgeEmpty", get_LastFP());
-    else if (!m_bOpenWeaponEmptyCartridge && isHUDAnimationExist("anm_add_cartridge_empty") && m_sounds.FindSoundItem("sndAddCartridgeEmpty", false) && m_ammoElapsed.type1 == 1)
+    else if (m_bOpenWeaponEmptyCartridge && isHUDAnimationExist("anm_add_cartridge_empty") && m_sounds.FindSoundItem("sndAddCartridgeEmpty", false) && m_ammoElapsed.type1 == 1)
         PlaySound("sndAddCartridgeEmpty", get_LastFP());
     else
         PlaySound("sndAddCartridge", get_LastFP());

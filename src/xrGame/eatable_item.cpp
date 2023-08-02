@@ -217,6 +217,9 @@ void CEatableItem::UpdateUseAnim()
         if (!pDet && !pFlight || pDet && pDet->IsHidden() || pFlight && pFlight->IsHidden())
             StartAnimation();
 
+	if (!IsActorAlive)
+        m_using_sound.stop();
+
     if (m_bActivated)
     {
         if (m_iAnimLength <= Device.dwTimeGlobal || !IsActorAlive)

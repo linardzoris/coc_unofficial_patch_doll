@@ -267,7 +267,7 @@ void CRenderTarget::phase_combine()
         phase_dlaa();
 
 	// Hud Effects & Hud Mask
-    if (!_menu_pp && g_pGamePersistent->GetActor())
+    if (!_menu_pp && g_pGamePersistent->GetActor() && g_pGamePersistent->IsCamFirstEye())
     {
         bool IsActorAlive = g_pGamePersistent->GetActorAliveStatus();
         bool HudGlassEnabled = g_pGamePersistent->GetHudGlassEnabled();
