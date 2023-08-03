@@ -645,12 +645,21 @@
 	<string id="ui_mm_optimize_static_geom">
 		<text>Optim. stat. geometry</text>
 	</string>
+	<string id="ui_mm_hint_optimize_static_geom">
+		<text>The higher the value, the closer dynamic objects will be drawn to the player's camera. Improves performance, but causes drawing bugs.</text>
+	</string>		
 	<string id="ui_mm_optimize_dynamic_geom">
 		<text>Optim. dyn. geometry</text>
 	</string>
+	<string id="ui_mm_hint_optimize_dynamic_geom">
+		<text>The higher the value, the closer static objects will be drawn to the player's camera. Improves performance, but causes drawing bugs.</text>
+	</string>		
 	<string id="ui_mm_optimize_shadow_geom">
 		<text>Shadow map optimize</text>
 	</string>	
+	<string id="ui_mm_hint_optimize_shadow_geom">
+		<text>When enabled, it optimizes the rendering of shadows. Improves performance, but causes rendering bugs.</text>
+	</string>		
 
 	<string id="ui_mm_raindrops">
 		<text>Rain Drops</text>
@@ -700,5 +709,12 @@
 	</string>	
 	<string id="ui_mm_3d_scopes_fps_factor">
 		<text>FPS factor in PiP scopes</text>
+	</string>		
+	
+	<string id="ui_mm_ssfx_dof_enable">
+		<text>SSFX DoF</text>
+	</string>	
+	<string id="ui_mm_hint_ssfx_dof_enable">
+		<text>Includes blurring while reloading weapons, picking through inventory, PDA, and using items.</text>
 	</string>		
 </string_table>

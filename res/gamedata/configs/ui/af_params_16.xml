@@ -210,7 +210,7 @@
 	<jump_speed x="0" y="0" width="214" height="20" >
 		<caption x="0" y="0" width="15" height="20" stretch="1">
 			<texture>ui_am_prop_jump</texture>
-			<text color="ui_3" font="letterica16" vert_align="c" x="22" y="0"/>
+			<text color="ui_3" font="letterica16" vert_align="c" x="18" y="0"/>
 		</caption>
 		<value x="117" y="0" width="30" height="20" magnitude="1" accuracy="1">
 			<text font="letterica16" vert_align="c"/>
@@ -220,7 +220,7 @@
 	<walk_accel x="0" y="0" width="214" height="20" >
 		<caption x="0" y="0" width="15" height="20" stretch="1">
 			<texture>ui_am_prop_movement</texture>
-			<text color="ui_3" font="letterica16" vert_align="c" x="22" y="0"/>
+			<text color="ui_3" font="letterica16" vert_align="c" x="18" y="0"/>
 		</caption>
 		<value x="117" y="0" width="30" height="20" magnitude="1" accuracy="1">
 			<text font="letterica16" vert_align="c"/>
@@ -235,5 +235,15 @@
 		<value x="117" y="0" width="30" height="20" magnitude="1">
 			<text font="letterica16" vert_align="c"/>
 		</value>
-	</artefact_count>			
+	</artefact_count>
+
+	<det_af_vis_radius x="0" y="0" width="214" height="20" >
+		<caption x="0" y="0" width="15" height="20" stretch="1">
+			<texture>ui_am_prop_det_detect_radius</texture>
+			<text color="ui_3" font="letterica16" vert_align="c" x="18" y="0"/>
+		</caption>
+		<value x="117" y="0" width="30" height="20" magnitude="1" unit_str="st_meters">
+			<text font="letterica16" vert_align="c"/>
+		</value>
+	</det_af_vis_radius>			
 </af_params>

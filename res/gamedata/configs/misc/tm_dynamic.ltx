@@ -295,7 +295,7 @@ status_functor = bounty_task
 target_functor = general_bounty_task
 stage_complete = 1
 on_job_descr = %=on_init_bounty_hunt(simulation_task_12:bandit)%
-on_complete = %=reward_random_item(wpn_ak74:1:wpn_lr300:1:wpn_wincheaster1300:1) =reward_random_item(vodka:1) =inc_task_stage(simulation_task_12) =reward_stash(true) =complete_task_inc_goodwill(25:stalker)%
+on_complete = %=reward_random_item(wpn_ak74:1:wpn_lr300:1:wpn_wincheaster1300:1:wpn_toz194:1) =reward_random_item(vodka:1) =inc_task_stage(simulation_task_12) =reward_stash(true) =complete_task_inc_goodwill(25:stalker)%
 on_fail = %=fail_task_dec_goodwill(25:stalker)%
 condlist_0 = {!task_giver_alive(simulation_task_12)} fail
 

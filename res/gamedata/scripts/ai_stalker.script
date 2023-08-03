@@ -434,7 +434,7 @@ function CSE_ALifeObject_spawn_supplies(se_obj,id,ini_string)
 			section = "spawn_loadout"..itr_count
 		end
 	end
-	return true -- Return false cause Mortan scope spawn system from engine. Turn it to true if your weapon support old CoC system
+	return true
 end
 
 -- called from engine

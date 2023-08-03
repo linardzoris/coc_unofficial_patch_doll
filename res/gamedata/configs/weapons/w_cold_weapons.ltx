@@ -1,0 +1,346 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;Штык-нож М9
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[wpn_knife]:default_knife_params
+$spawn                          = "weapons\knife"
+class                           = WP_KNIFE
+ammo_class                  	= ammo_knife
+cost                            = 9500
+description                     = st_knife_m9_descr
+
+fire_distance                   = 1.8
+fire_point                      = 0.0, 0.133, 0.161
+
+position                        = -0.021, -0.085, 0.024
+orientation                     = 0, 90, 0
+
+hit_power                       = 0.8
+hit_power_2                     = 1.2
+hit_impulse                     = 10
+hit_impulse_2                   = 50
+wm_size                         = 0.10
+condition_shot_dec_on_hit       = 0.000418
+
+inv_grid_height                 = 1
+inv_grid_width                  = 2
+inv_grid_x                      = 0
+inv_grid_y                      = 24
+inv_name                        = st_knife_m9
+inv_weight                      = 0.5
+
+fire_dispersion_base			= 0.1
+crosshair_inertion   			= 0.01
+
+PDM_disp_accel_factor           = 0.8
+PDM_disp_base                   = 1.0
+PDM_disp_crouch                 = 1.0
+PDM_disp_crouch_no_acc          = 1.0
+PDM_disp_vel_factor             = 0.8
+slot                            = 0
+
+snd_draw				        = weapons\_cold\knife_draw
+snd_holster				        = weapons\_cold\knife_holster
+snd_shoot				        = weapons\_cold\knife_1
+
+spash1_dist                     = 1.2
+spash1_radius                   = 0.5
+spash2_dist                     = 1.2
+spash2_radius                   = 0.5
+splash1_direction               = 0.0, -0.3, 1.0
+splash1_hits_count              = 3
+splash1_pervictim_hcount        = 1
+splash2_direction               = 0.0, 0.0, 1.0
+splash2_hits_count              = 2
+splash_hit_divide_factor        = 0.75
+
+visual                          = dynamics\weapons\wpn_knife\wpn_knife_m9.ogf
+hud                             = wpn_knife_hud
+
+[wpn_knife_hud]:hud_base_knife
+hands_position					= 0.043000,-0.174500,-0.055000
+hands_orientation				= 2.000000,0.800001,0.000000
+hands_position_16x9				= 0.043000,-0.174500,-0.055000
+hands_orientation_16x9			= 2.000000,0.800001,0.000000
+item_position					= 0,0,0
+item_orientation				= 0,0,0
+		
+anm_show						= knife_ins_draw
+anm_show_empty					= knife_ins_draw
+anm_hide             			= knife_ins_hide
+anm_idle             			= knife_ins_idle, idle
+anm_idle_aim					= knife_ins_idle
+anm_attack						= knife_ins_attack_cut, 1.5
+anm_attack2 					= knife_ins_attack_stab, 1.5
+anm_idle_moving 				= knife_ins_idle_moving
+anm_idle_moving_crouch			= knife_ins_idle_crouch
+anm_idle_sprint					= knife_ins_idle_sprint
+anm_bore						= knife_ins_bore
+
+fire_bone                       = knife
+fire_point                      = 0.0,0.0,0.0
+
+item_visual                     = dynamics\weapons\wpn_knife\wpn_knife_m9_hud.ogf
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;Штык-нож 6Х4
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[wpn_knife_shtik]:wpn_knife
+$spawn                  		= "weapons\wpn_knife_shtik"
+
+position                        = -0.021, -0.085, 0.024
+orientation                     = 0, 90, 0
+fire_point                      = 0.0, 0.133, 0.161
+
+inv_name						= st_wpn_knife_shtik
+description						= st_wpn_knife_shtik_descr
+condition_shot_dec_on_hit       = 0.011318
+cost							= 3000
+inv_weight						= 0.3
+
+inv_grid_width     				= 2
+inv_grid_height    				= 1
+inv_grid_x         				= 0
+inv_grid_y         				= 23
+
+visual							= dynamics\weapons\wpn_knife\wpn_knife_shtik.ogf
+hud								= wpn_knife_shtik_hud
+
+[wpn_knife_shtik_hud]:wpn_knife_hud
+item_visual                     = dynamics\weapons\wpn_knife\wpn_knife_shtik_hud.ogf
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;Нож туриста, DA
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[wpn_knife_touristik]:wpn_knife_shtik
+$spawn                  		 = "weapons\wpn_knife_touristik"
+condition_shot_dec_on_hit        = 0.006018
+hit_power               		 = 0.45
+hit_impulse		        		 = 10
+hit_type						 = wound
+hit_power_2             		 = 0.9
+hit_impulse_2	        		 = 5
+inv_name						 = st_wpn_knife_touristik
+description						 = st_wpn_knife_touristik_descr
+cost							 = 800
+inv_weight						 = 0.15
+
+inv_grid_width    				 = 2
+inv_grid_height   				 = 1
+inv_grid_x         				 = 0
+inv_grid_y         				 = 25
+
+visual							 = dynamics\weapons\wpn_knife\wpn_knife_touristik.ogf
+hud								 = wpn_knife_touristik_hud
+
+[wpn_knife_touristik_hud]:wpn_knife_hud
+item_visual                      = dynamics\weapons\wpn_knife\wpn_knife_touristik_hud.ogf
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;Топор
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+[wpn_axe]:wpn_knife
+$spawn                  		= "weapons\wpn_axe"
+
+inv_name						= st_wpn_axe
+description						= st_wpn_axe_descr
+
+slot                            = 2
+cost							= 800
+inv_weight						= 1.1
+ammo_class		 				= ammo_axe
+
+inv_grid_width    	 			= 4
+inv_grid_height    				= 2
+inv_grid_x         				= 0
+inv_grid_y         				= 27
+
+fire_dispersion_base			= 0.5
+crosshair_inertion   			= 0.01
+
+condition_shot_dec_on_hit       = 0.004418
+
+hit_power               		= 1.7
+hit_power_2             		= 2.7
+hit_impulse		        		= 20.5
+hit_impulse_2	        		= 11.5
+
+PDM_disp_base 					= 1.0
+PDM_disp_vel_factor 			= 0.8
+PDM_disp_accel_factor 			= 0.8
+PDM_disp_crouch 				= 1.0
+PDM_disp_crouch_no_acc 			= 1.0
+
+fire_distance           		= 6.75
+
+splash1_direction				= 0.0, -0.3, 1.0
+splash2_direction				= 0.0, 0.0, 1.0
+spash1_dist						= 2.1
+spash2_dist						= 1.7
+spash1_radius					= 0.7
+spash2_radius					= 0.5
+splash1_hits_count				= 3
+splash1_pervictim_hcount		= 1
+splash2_hits_count				= 2
+splash_hit_divide_factor		= 0.75
+
+position                        = 0.07, 0.05, 0
+orientation                     = 0, 90, -90
+fire_point						= 0, 0.133, 0.161
+
+snd_draw						= weapons\_cold\heavy_draw
+snd_holster						= weapons\_cold\heavy_holster
+snd_shoot						= weapons\_cold\axe_swing
+snd_bore 						= nil
+
+visual							= dynamics\weapons\wpn_knife\wpn_axe.ogf
+hud								= wpn_axe_hud
+
+[wpn_axe_hud]:wpn_knife_hud
+item_position           		= 0, 0, 0
+item_orientation        		= 0, 0, 0
+hands_orientation       		= -0.5, 1, 10
+hands_orientation_16x9  		= -0.5, 1, 10
+hands_position          		= -0.001529, -0.168825, 0.198185
+hands_position_16x9     		= -0.001529, -0.168825, 0.198185
+
+fire_point						= 0.004500,0.062500,-0.178499
+
+anm_show						= barry_axe_draw_hands
+anm_show_empty					= barry_axe_draw_hands
+anm_hide						= barry_axe_holster_hands
+anm_idle						= barry_axe_idle_hands
+anm_idle_aim					= barry_axe_idle_hands
+anm_attack						= barry_axe_light_hands
+anm_attack2						= barry_axe_heavy_hands
+anm_idle_moving 				= barry_axe_walk_hands
+anm_idle_sprint					= barry_axe_sprint_hands
+anm_bore						= barry_axe_inspect_hands
+
+item_visual						= dynamics\weapons\wpn_knife\wpn_axe_hud.ogf
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;Лопата
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[wpn_shovel]:wpn_axe
+cost							= 6000
+inv_weight						= 0.9
+
+hit_power               		= 1.7
+hit_power_2             		= 2.2
+hit_impulse		        		= 20.5
+hit_impulse_2	        		= 11.5
+
+condition_shot_dec_on_hit       = 0.001418
+inv_name						= st_wpn_shovel
+description						= st_wpn_shovel_descr
+
+inv_grid_width     				= 4
+inv_grid_height    				= 2
+inv_grid_x         				= 0
+inv_grid_y         				= 29
+
+hud								= wpn_shovel_hud
+
+visual							= dynamics\weapons\wpn_knife\wpn_shovel
+
+[wpn_shovel_hud]:wpn_axe_hud
+hands_orientation               = -0.5, 1, 10
+hands_orientation_16x9          = -0.5, 1, 10
+hands_position                  = -0.001529, -0.168825, 0.198185
+hands_position_16x9             = -0.001529, -0.168825, 0.198185
+
+anm_show						= barry_shovel_draw_hands
+anm_show_empty					= barry_shovel_draw_hands
+anm_hide						= barry_shovel_holster_hands
+anm_idle						= barry_shovel_idle_hands
+anm_idle_aim					= barry_shovel_idle_hands
+anm_attack						= barry_shovel_light_hands
+anm_attack2						= barry_shovel_heavy_hands
+anm_idle_moving 				= barry_shovel_walk_hands
+anm_idle_sprint					= barry_shovel_sprint_hands
+anm_bore						= barry_shovel_inspect_hands
+
+item_visual						= dynamics\weapons\wpn_knife\wpn_shovel_hud.ogf
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;Молот
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[wpn_sledge]:wpn_axe
+cost							= 3000
+inv_weight						= 0.9
+
+hit_power               		= 1.8
+hit_power_2             		= 2.5
+hit_impulse		        		= 20.5
+hit_impulse_2	        		= 11.5
+
+condition_shot_dec_on_hit       = 0.001418
+inv_name						= st_wpn_sledge
+description						= st_wpn_sledge_descr
+
+inv_grid_width     				= 4
+inv_grid_height    				= 2
+inv_grid_x         				= 4
+inv_grid_y         				= 27
+
+hud								= wpn_sledge_hud
+
+visual							= dynamics\weapons\wpn_knife\wpn_sledge
+
+[wpn_sledge_hud]:wpn_axe_hud
+hands_orientation           	= 6.3614, -4.82933, 9.645867
+hands_orientation_16x9      	= 6.3614, -4.82933, 9.645867
+hands_position              	= 0.001152, -0.127219, 0.102892
+hands_position_16x9         	= 0.001152, -0.127219, 0.102892
+
+anm_show						= barry_axe_draw_hands
+anm_show_empty					= barry_axe_draw_hands
+anm_hide						= barry_axe_holster_hands
+anm_idle						= barry_axe_idle_hands
+anm_idle_aim					= barry_axe_idle_hands
+anm_attack						= barry_axe_light_hands
+anm_attack2						= barry_axe_heavy_hands
+anm_idle_moving 				= barry_axe_walk_hands
+anm_idle_sprint					= barry_axe_sprint_hands
+anm_bore						= barry_sledge_inspect_hands
+
+item_visual						= dynamics\weapons\wpn_knife\wpn_sledge_hud.ogf
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;Лом
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+[wpn_crowbar]:wpn_axe
+cost							= 1500
+inv_weight						= 1.04
+
+hit_power               		= 1.5
+hit_power_2             		= 2.1
+hit_impulse		        		= 10
+hit_impulse_2	        		= 15
+
+inv_name						= st_wpn_crowbar
+description						= st_wpn_crowbar_descr
+
+inv_grid_width     				= 3
+inv_grid_height    				= 1
+inv_grid_x         				= 0
+inv_grid_y        				= 26
+condition_shot_dec_on_hit       = 0.001918
+
+hud								= wpn_crowbar_hud
+
+visual							= dynamics\weapons\wpn_knife\wpn_crowbar
+
+[wpn_crowbar_hud]:wpn_axe_hud
+item_position					= 0.001365,-0.002741,-0.000932
+item_orientation				= 0.000000,0.000000,0.000000
+item_visual						= dynamics\weapons\wpn_knife\wpn_crowbar_hud.ogf

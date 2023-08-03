@@ -120,19 +120,18 @@ holder_fov_modifier				= 1
 slot 			 				= 2
 animation_slot					= 2
 
-position                   		= -0.07, 0.097, -0.094
-orientation                		= 0,0,0
 
-fire_point              		= 0.05, -0.06, 0.575
-fire_point2             		= 0, 0.199, 0.575
+position                    = -0.026, -0.175, 0.0
+orientation                 = 0, 0, 0
+fire_point                  = 0, 0.218, 0.656
+fire_point2                 = 0, 0.161, 0.583
+shell_point                 = 0.07,0.2,0.466
+strap_bone0                 = bip01_spine2
+strap_bone1                 = bip01_spine1
+strap_position              = -0.18, -0.45, 0.2
+strap_orientation           = -10, -5, 10
 
-shell_point             		= 0.12, 0, 0.07
-shell_particles         		= ;weapons\556x45
-
-strap_position         			= -0.15, -0.15, 0.2
-strap_orientation      			= -10, -5, 10
-strap_bone0             		= bip01_spine2
-strap_bone1             		= bip01_spine1
+shell_particles         	= ;weapons\556x45
 
 light_disabled				= false
 light_color					= 0.6,0.5,0.3
@@ -272,7 +271,7 @@ anm_switch                               = ras_m4a1_hand_switch_off, ras_m4a1_sw
 item_visual						 		 = dynamics\weapons\wpn_m4\wpn_m4a1_hud.ogf
 
 ;-----------------------------------------------------------------------------
-; ְההמםû
+; Addons
 ;-----------------------------------------------------------------------------
 
 [wpn_m4a1_barska_scope]:wpn_m4a1
@@ -280,6 +279,7 @@ $spawn             		            = "weapons\wpn_m4a1_barska_scope"
 hud						            = wpn_m4a1_barska_scope_hud
 scope_x                             = 87
 scope_y                             = -8
+visual								= dynamics\weapons\wpn_m4\wpn_m4a1_barska.ogf
 
 [wpn_m4a1_barska_scope_hud]:wpn_m4a1_hud
 aim_hud_offset_pos					= -0.045450,0.028560,-0.018000
@@ -293,6 +293,7 @@ $spawn             		            = "weapons\wpn_m4a1_eotech_scope"
 hud						            = wpn_m4a1_eotech_scope_hud
 scope_x                             = 140
 scope_y                             = -8
+visual								= dynamics\weapons\wpn_m4\wpn_m4a1_eotech.ogf
 
 [wpn_m4a1_eotech_scope_hud]:wpn_m4a1_hud
 aim_hud_offset_pos					= -0.045350,0.022560,-0.001000
@@ -306,6 +307,7 @@ $spawn					            = "weapons\wpn_m4a1_acog_scope"
 hud						            = wpn_m4a1_acog_scope_hud
 scope_x                             = 74
 scope_y                             = -6
+visual								= dynamics\weapons\wpn_m4\wpn_m4a1_acog.ogf
 
 [wpn_m4a1_acog_scope_hud]:wpn_m4a1_hud
 aim_hud_offset_pos					= -0.044550,0.014660,-0.080500
@@ -319,6 +321,7 @@ $spawn					            = "weapons\wpn_m4a1_pn23_scope"
 hud						            = wpn_m4a1_pn23_scope_hud
 scope_x                             = 105
 scope_y                             = -7
+visual								= dynamics\weapons\wpn_m4\wpn_m4a1_pn23.ogf
 
 [wpn_m4a1_pn23_scope_hud]:wpn_m4a1_hud
 aim_hud_offset_pos					= -0.042750,0.003060,-0.075500
@@ -332,6 +335,7 @@ $spawn                          	= "weapons\wpn_m4a1_specter_scope"
 hud                             	= wpn_m4a1_specter_scope_hud
 scope_x                         	= 82
 scope_y                         	= -7
+visual								= dynamics\weapons\wpn_m4\wpn_m4a1_specter.ogf
 
 [wpn_m4a1_specter_scope_hud]:wpn_m4a1_hud
 aim_hud_offset_pos					= -0.045150,0.015160,-0.082901

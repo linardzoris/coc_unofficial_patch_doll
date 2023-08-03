@@ -12,6 +12,9 @@
 	<string id="ui_inv_af_artefact_count">
 		<text> арманы</text>
 	</string>	
+	<string id="ui_inv_det_af_vis_radius">
+		<text>–адиус</text>
+	</string>		
 	<string id="st_percent">
 		<text>%</text>
 	</string>
@@ -63,6 +66,9 @@
 	<string id="st_attach_silencer_to_pistol">
 		<text>прикрепить глушитель к</text>
 	</string>
+	<string id="st_attach_laser_to_weapon">
+		<text>прикрепить такт. блок к</text>
+	</string>		
 	<string id="st_base_cost">
 		<text>÷ена</text>
 	</string>
@@ -81,6 +87,9 @@
 	<string id="st_detach_silencer">
 		<text>отсоединить глушитель</text>
 	</string>
+	<string id="st_detach_laser">
+		<text>отсоединить такт. блок</text>
+	</string>		
 	<string id="st_use_iron">
 		<text>использовать механические прицелы</text>
 	</string>

@@ -101,14 +101,12 @@ snd_shoot               						   = weapons\_gunfire\svd\close_1
 snd_shoot1              						   = weapons\_gunfire\svd\close_2
 snd_shoot2              						   = weapons\_gunfire\svd\close_3
 snd_shoot3              						   = weapons\_gunfire\svd\close_4
-snd_reflect                	 					   = weapons\_gunfire\svd\close_distance
 snd_shoot_distant           					   = weapons\_gunfire\svd\medium_distance
 snd_shoot_distant_far       					   = weapons\_gunfire\svd\far_distance
 snd_silncer_shot        						   = weapons\_sil\762_warsaw\sd_close_1
 snd_silncer_shot1        						   = weapons\_sil\762_warsaw\sd_close_2
 snd_silncer_shot2        						   = weapons\_sil\762_warsaw\sd_close_3
 snd_silncer_shot3        						   = weapons\_sil\762_warsaw\sd_close_4
-snd_reflect_sil                                    = weapons\_sil\762_warsaw\tail_sd_1
 
 position                                 		   = -0.026, -0.077, 0.00
 orientation                              		   = 0, 0, 0
@@ -119,6 +117,7 @@ strap_bone0                                        = bip01_spine2
 strap_bone1                                        = bip01_spine1
 strap_orientation                                  = -25, -189, 65
 strap_position                                     = -0.15, -0.15, 0.45
+
 time_to_aim                                        = 1.0
 
 upgrade_scheme                                     = upgrade_scheme_svd
@@ -213,7 +212,7 @@ fire_point                               = 0, 0, 0.8
 item_visual                              = dynamics\weapons\wpn_svd\wpn_svd_hud.ogf
 
 ;-----------------------------------------------------------------------------
-; ְההמםû
+; Addons
 ;-----------------------------------------------------------------------------
 
 [wpn_svd_pso_scope]:wpn_svd
@@ -221,6 +220,7 @@ $spawn                          		 = "weapons\wpn_svd_pso_scope"
 scope_x                         		 = 36
 scope_y                         		 = 7
 hud					            		 = wpn_svd_pso_scope_hud
+visual                                   = dynamics\weapons\wpn_svd\wpn_svd.ogf
 
 [wpn_svd_pso_scope_hud]:wpn_svd_hud
 aim_hud_offset_pos						 = 0.037509,-0.016877,0.030619
@@ -233,6 +233,7 @@ $spawn                          		 = "weapons\wpn_svd_1p29_scope"
 scope_x                         		 = 62
 scope_y                         		 = 8
 hud					            		 = wpn_svd_1p29_scope_hud
+visual                                   = dynamics\weapons\wpn_svd\wpn_svd_1p29.ogf
 
 [wpn_svd_1p29_scope_hud]:wpn_svd_hud
 aim_hud_offset_pos						 = 0.023009,-0.039877,0.064619
@@ -246,6 +247,7 @@ $spawn                          		 = "weapons\wpn_svd_1p59_scope"
 scope_x                         		 = 45
 scope_y                         		 = 4
 hud					            		 = wpn_svd_1p59_scope_hud
+visual                                   = dynamics\weapons\wpn_svd\wpn_svd_1p59.ogf
 
 [wpn_svd_1p59_scope_hud]:wpn_svd_hud
 aim_hud_offset_pos						 = 0.040009,-0.024877,0.016619
@@ -259,6 +261,7 @@ $spawn                          		 = "weapons\svd_kobra_scope"
 hud					            		 = wpn_svd_kobra_scope_hud
 scope_x			                		 = 72
 scope_y			                		 = 10
+visual                                   = dynamics\weapons\wpn_svd\wpn_svd_kobra.ogf
 
 [wpn_svd_kobra_scope_hud]:wpn_svd_hud
 aim_hud_offset_pos						 = 0.026509,-0.025877,0.030619
@@ -272,6 +275,7 @@ $spawn             		        		 = "weapons\wpn_svd_1pn93_scope"
 hud					            		 = wpn_svd_1pn93_scope_hud
 scope_x                         		 = 62
 scope_y                         		 = 8
+visual                                   = dynamics\weapons\wpn_svd\wpn_svd_1pn93.ogf
 
 [wpn_svd_1pn93_scope_hud]:wpn_svd_hud
 aim_hud_offset_pos						 = 0.039009,-0.025877,0.030619
@@ -285,6 +289,7 @@ $spawn             		        		 = "weapons\wpn_svd_okp_scope"
 hud					            		 = wpn_svd_okp_scope_hud
 scope_x			                		 = 74
 scope_y			                		 = 8
+visual                                   = dynamics\weapons\wpn_svd\wpn_svd_okp.ogf
 
 [wpn_svd_okp_scope_hud]:wpn_svd_hud
 aim_hud_offset_pos						 = 0.030009,-0.014377,0.030619

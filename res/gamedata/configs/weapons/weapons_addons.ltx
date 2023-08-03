@@ -1,5 +1,105 @@
 ;-------------
-; WEAPON ADDON
+; FLASHLIGHT OPTIONS
+;-------------
+
+[tactical_torch]
+flashlight_section                       = flashlight_definition_weapon
+
+torch_cone_bones                         = light
+
+torch_light_bone                         = wpn_body
+
+torch_attach_offset_x                    = -0.008
+torch_attach_offset_y                    = 0.048
+torch_attach_offset_z                    = 0.0
+
+torch_world_attach_offset_x              = 0.0
+torch_world_attach_offset_y              = 0.05
+torch_world_attach_offset_z              = 0.25
+
+
+torch_omni_attach_offset_x               = 0.0 
+torch_omni_attach_offset_y               = 0.0
+torch_omni_attach_offset_z               = 0.0
+
+torch_omni_world_attach_offset_x         = 0.0 
+torch_omni_world_attach_offset_y         = 0.0
+torch_omni_world_attach_offset_z         = 0.0
+
+[flashlight_definition_weapon]
+;DIRECT		                             = 0,
+;POINT		                             = 1,
+;SPOT		                             = 2,
+;OMNIPART	                             = 3,
+;REFLECTED	                             = 4,
+
+omni_type                                = 4
+range                                    = 50	                            			
+range_r2                                 = 50	                            			
+color                                    = 1.0,1.0,1.0,0.6								
+color_r2                                 = 1.0,1.1,1.2,1.2								
+omni_range                               = 0.25											
+omni_range_r2                            = 0.25											
+omni_color                               = 1.0,1.0,1.0,0.3								
+omni_color_r2                            = 1.0,1.1,1.2,0.2								
+color_animator                           = empty										
+spot_texture                             = internal\internal_light_torch_tactical_r2 	
+spot_angle                               = 60	                            			
+glow_texture                             = glow\glow_torch_r2			    			
+glow_radius                              = 0.3			
+
+;-------------
+; LASER
+;-------------
+
+[wpn_addon_laser]:identity_immunities
+discovery_dependency                     =
+$spawn                                   = "weapons\addons\wpn_addon_laser"
+class                                    = WP_LASER
+visual                                   = dynamics\weapons\wpn_upgrade\wpn_laser_anpeq.ogf
+description                              = st_addon_laser_descr
+$prefetch                                = 32
+slot                                     = -1
+cost                                     = 5000
+inv_name                                 = st_addon_laser
+inv_weight                               = 0.4
+
+inv_grid_width                           = 1
+inv_grid_height                          = 1
+inv_grid_x                               = 35
+inv_grid_y                               = 34
+
+[wpn_addon_laser_weaver_an_peq]:wpn_addon_laser, tactical_torch
+visual                                   = dynamics\weapons\wpn_upgrade\wpn_laser_anpeq.ogf
+inv_name                                 = st_wpn_addon_laser_weaver_an_peq
+description                              = st_wpn_addon_laser_weaver_an_peq_descr
+cost                                     = 30000
+inv_weight                               = 0.21
+
+inv_grid_width                           = 1
+inv_grid_height                          = 1
+inv_grid_x                               = 35
+inv_grid_y                               = 34
+
+torch_cone_bones                         = flashlight_cone
+support_flashlight                       = true
+
+[wpn_addon_laser_weaver_zenit]:wpn_addon_laser, tactical_torch
+visual                                   = dynamics\weapons\wpn_upgrade\wpn_laser_zenit.ogf
+inv_name                                 = st_wpn_addon_laser_weaver_zenit
+description                              = st_wpn_addon_laser_weaver_zenit_descr
+cost                                     = 25000
+inv_weight                               = 0.16
+
+inv_grid_width                           = 1
+inv_grid_height                          = 1
+inv_grid_x                               = 36
+inv_grid_y                               = 34
+
+support_flashlight                       = true
+
+;-------------
+; SILENCER
 ;-------------
 
 [wpn_addon_silencer]:identity_immunities
@@ -77,6 +177,10 @@ PDM_disp_accel_k                         = 1.07
 PDM_disp_vel_k                           = 1.07
 crosshair_inertion_k                     = 1.1
 zoom_rotate_time_k                       = 1.04
+
+;-------------
+; LAUNCHER
+;-------------
 
 [wpn_addon_grenade_launcher]:identity_immunities
 discovery_dependency                     =
@@ -163,90 +267,4 @@ crosshair_inertion_k                     = 1.15
 zoom_rotate_time_k                       = 1.08
 
 addon_bone								 = wpn_launcher
-grenade_class							 = ammo_m209
-
-;-------------
-; LASER
-;-------------
-
-[red_laser]
-laser_light_section 					 = red_laser_definition
-laser_ray_bones                          = line
-
-laserdot_attach_bone                     = line
-laserdot_attach_offset_x                 = 0.0
-laserdot_attach_offset_y                 = 0.017
-laserdot_attach_offset_z                 = -0.6
-
-laserdot_world_attach_offset_x           = 0.0
-laserdot_world_attach_offset_y           = 0.1
-laserdot_world_attach_offset_z           = 0.05
-
-[red_laser_definition]
-range                                    = 100	                            ; aaeuiinou a iao?ao
-range_r2                                 = 100	                            ; aaeuiinou a iao?ao (aey aeiaie?aneiai inaauaiey)
-color                                    = 3.0f, 0.0f, 0.0f, 1.0f			; oaao, ec 4 eiiiiiaioia <r,g,b,a> cia?aieai io 0 ai 3.
-color_r2                                 = 3.0f, 0.0f, 0.0f, 1.0f			; oaao, ec 4 eiiiiiaioia <r,g,b,a> cia?aieai io 0 ai 3. (aey aeiaie?aneiai inaauaiey)
-color_animator                           = ;battery_low								; oaao aieiaoi?a (empty - aieiaoi? ia eniieucoaony). //light_torch_01
-;spot_texture                            = internal\internal_light_torch_r3	; oaenoo?a y?eie oi?ee (oieuei aey aeiaie?aneiai inaauaiey).
-spot_angle                               = 0.3	                            ; oaie ?aceaoa naaoa (ii?aaaeyao ?acia? iyoia)		; oaie inaauaiey a a?aaonao.
-
-
-[green_laser]:red_laser
-
-laser_light_section                      = green_laser_definition
-
-[green_laser_definition]:red_laser_definition
-
-color                                    = 0.0f, 0.0f, 3.0f, 1.0f			; oaao, ec 4 eiiiiiaioia <r,g,b,a> cia?aieai io 0 ai 3.
-color_r2                                 = 0.0f, 0.0f, 3.0f, 1.0f			; oaao, ec 4 eiiiiiaioia <r,g,b,a> cia?aieai io 0 ai 3. (aey aeiaie?aneiai inaauaiey)
-
-;-------------
-; FLASHLIGHT
-;-------------
-
-[tactical_torch]
-flashlight_section                       = flashlight_definition
-
-torch_cone_bones                         = light
-
-torch_light_bone                         = wpn_body
-
-torch_attach_offset_x                    = -0.008
-torch_attach_offset_y                    = 0.048
-torch_attach_offset_z                    = 0.0
-
-torch_world_attach_offset_x              = 0.0
-torch_world_attach_offset_y              = 0.05
-torch_world_attach_offset_z              = 0.25
-
-
-torch_omni_attach_offset_x               = 0.0 
-torch_omni_attach_offset_y               = 0.0
-torch_omni_attach_offset_z               = 0.0
-
-torch_omni_world_attach_offset_x         = 0.0 
-torch_omni_world_attach_offset_y         = 0.0
-torch_omni_world_attach_offset_z         = 0.0
-
-[flashlight_definition_weapon]
-;DIRECT		                             = 0,
-;POINT		                             = 1,
-;SPOT		                             = 2,
-;OMNIPART	                             = 3,
-;REFLECTED	                             = 4,
-omni_type                                = 2 ;KRodin: aiiaua omni yoi iau?ii iieio, ii iieio naaoeo ai ana noi?iiu io naay, iiyoiio ooo niio eniieucoaony.
-
-range                                    = 50	                            			; aaeuiinou a iao?ao
-range_r2                                 = 50	                            			; aaeuiinou a iao?ao (aey aeiaie?aneiai inaauaiey)
-color                                    = 1.0,1.0,1.0,0.6								; oaao, ec 4 eiiiiiaioia <r,g,b,a> cia?aieai io 0 ai 3.
-color_r2                                 = 1.0,1.1,1.2,1.2								; oaao, ec 4 eiiiiiaioia <r,g,b,a> cia?aieai io 0 ai 3. (aey aeiaie?aneiai inaauaiey)
-omni_range                               = 0.25											; aenoaioey inaauaiey io oiia?eeia iaienae a iao?ao.
-omni_range_r2                            = 0.25											; aenoaioey inaauaiey io oiia?eeia iaienae a iao?ao. (aey aeiaie?aneiai inaauaiey)
-omni_color                               = 1.0,1.0,1.0,0.3								; oaao oiia?eeia iaienae, ec 4 eiiiiiaioia <r,g,b,a> cia?aieai io 0 ai 3.
-omni_color_r2                            = 1.0,1.1,1.2,0.2								; oaao oiia?eeia iaienae, ec 4 eiiiiiaioia <r,g,b,a> cia?aieai io 0 ai 3. (aey aeiaie?aneiai inaauaiey)
-color_animator                           = empty										; oaao aieiaoi?a (empty - aieiaoi? ia eniieucoaony). //light_torch_01
-spot_texture                             = internal\internal_light_torch_tactical_r2 	; oaenoo?a y?eie oi?ee (oieuei aey aeiaie?aneiai inaauaiey).
-spot_angle                               = 60	                            			; oaie ?aceaoa naaoa (ii?aaaeyao ?acia? iyoia)		; oaie inaauaiey a a?aaonao.
-glow_texture                             = glow\glow_torch_r2			    			; oaenoo?a naa?aiey oiia?eea, eiaaa ii iai?aaeai a aeaca (iaycaoaeuiue ia?aiao?).
-glow_radius                              = 0.3											; ?aaeon naa?aiey a iao?ao.
+grenade_class							 = ammo_m209								

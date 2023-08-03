@@ -12,6 +12,9 @@
 	<string id="ui_inv_af_artefact_count">
 		<text>Pockets</text>
 	</string>	
+	<string id="ui_inv_det_af_vis_radius">
+		<text>Radius</text>
+	</string>		
 	<string id="st_percent">
 		<text>%</text>
 	</string>
@@ -63,6 +66,9 @@
 	<string id="st_attach_silencer_to_pistol">
 		<text>attach suppressor to</text>
 	</string>
+	<string id="st_attach_laser_to_weapon">
+		<text>attach tact. block to</text>
+	</string>			
 	<string id="st_base_cost">
 		<text>Price</text>
 	</string>
@@ -81,6 +87,9 @@
 	<string id="st_detach_silencer">
 		<text>detach suppressor</text>
 	</string>
+	<string id="st_detach_laser">
+		<text>detach tact. block</text>
+	</string>			
 	<string id="st_dress_outfit">
 		<text>wear suit</text>
 	</string>

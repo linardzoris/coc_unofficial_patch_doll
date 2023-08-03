@@ -639,12 +639,21 @@
 	<string id="ui_mm_optimize_static_geom">
 		<text>Оптим. дин. геометрии</text>
 	</string>
+	<string id="ui_mm_hint_optimize_static_geom">
+		<text>Чем выше значение - тем ближе к камере игрока будут отрисовываться динамические объекты. Повышает производительность, но вызывет баги с прорисовкой.</text>
+	</string>	
 	<string id="ui_mm_optimize_dynamic_geom">
 		<text>Оптим. стат. геометрии</text>
 	</string>
+	<string id="ui_mm_hint_optimize_dynamic_geom">
+		<text>Чем выше значение - тем ближе к камере игрока будут отрисовываться статические объекты. Повышает производительность, но вызывет баги с прорисовкой.</text>
+	</string>		
 	<string id="ui_mm_optimize_shadow_geom">
 		<text>Оптимизация карт теней</text>
 	</string>	
+	<string id="ui_mm_hint_optimize_shadow_geom">
+		<text>При включении оптимизирует отрисовку теней. Повышает производительность, но вызывает баги с отрисовкой.</text>
+	</string>		
 
 	<string id="ui_mm_raindrops">
 		<text>Капли на худе</text>
@@ -695,4 +704,11 @@
 	<string id="ui_mm_3d_scopes_fps_factor">
 		<text>FPS фактор в 3D прицелах</text>
 	</string>	
+	
+	<string id="ui_mm_ssfx_dof_enable">
+		<text>SSFX DoF</text>
+	</string>	
+	<string id="ui_mm_hint_ssfx_dof_enable">
+		<text>Включает размытие во время перезарядки оружия, ковыряния в инвентаре, КПК и использовании предметов.</text>
+	</string>		
 </string_table>

@@ -182,6 +182,11 @@ silencer_light_time			= 0.2
 silencer_light_var_color	= 0.05
 silencer_light_var_range	= 0.5
 
+laser_name                  = wpn_addon_laser
+laser_status                = 0
+laser_x                     = 0
+laser_y                     = 0
+
 min_radius = 1
 max_radius = 500
 
@@ -262,6 +267,19 @@ upgr_icon_x									       = 0
 upgr_icon_y 									   = 0
 gl_zoom_factor                  				   = 1.1
 
+ph_mass                                            = 4
+
+light_color                                        = 0.6, 0.5, 0.3
+light_range                                        = 6.0
+light_time                                         = 0.2
+light_var_color                                    = 0.05
+light_var_range                                    = 0.5
+
+laser_name                                         = wpn_addon_laser
+laser_status                                       = 0
+laser_x                                            = 0
+laser_y                                            = 0
+
 snd_on_take                                        = weapon
 
 ; Удалять ли один патрон при расклине
@@ -292,8 +310,6 @@ silencer_hit_impulse                               = 9
 silencer_hit_power                                 = 0.45, 0.45
 slot                                               = -1
 sprint_allowed                                     = true
-use1_action_functor                                = dxr_scopes.context_action_functor
-use1_functor                                       = dxr_scopes.context_functor
 use_aim_bullet                                     = false
 use_first_bullet                                   = false
 zoom_rotate_time                                   = 0.25
@@ -375,9 +391,9 @@ hud_collision_offset_pos_16x9	 				   = 0,-0.5,0
 hud_collision_offset_rot		 				   = -0.8,0,0
 hud_collision_offset_rot_16x9	 				   = -0.8,0,0
 
-empty_click_anm = script\misfire.anm
-empty_click_anm_speed = 2
-empty_click_anm_power = 1
+empty_click_anm                                    = script\misfire.anm
+empty_click_anm_speed                              = 2
+empty_click_anm_power                              = 1
 
 [default_knife_params]:identity_immunities
 GroupControlSection								   = spawn_group
@@ -446,6 +462,12 @@ installed_upgrades               				   =
 show_ammo                        				   = false
 silencer_status                  				   = 0
 grenade_launcher_status          				   = 0
+
+laser_name                                         = wpn_addon_laser
+laser_status                                       = 0
+laser_x                                            = 0
+laser_y                                            = 0
+
 scope_status                     				   = 0
 single_handed                    				   = 1
 light_disabled                   				   = true

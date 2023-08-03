@@ -162,7 +162,8 @@ function get_spawn_table(name)
 		["WP_SCOPE"] = "Weapons (Addons)",
 		["WP_SILEN"] = "Weapons (Addons)",
 		["WP_GLAUN"] = "Weapons (Addons)",
-
+		["WP_LASER"] = "Weapons (Addons)",		
+		
 		["ZS_MBALD"] = "Anomaly",
 		["ZS_GALAN"] = "Anomaly",
 		["ZS_MINCE"] = "Anomaly",
@@ -1241,6 +1242,7 @@ function debug_ui:OnEditorTriggerSectionSelection()
 	-- attachments
 	local silencer = ini:r_string_ex(section,"silencer_name")
 	local grenade_launcher = ini:r_string_ex(section,"grenade_launcher_name")
+	local laser = ini:r_string_ex(section,"laser_name")
 	
 	if (silencer and ini:section_exist(silencer)) then
 		self.addon_list:AddItem(silencer,idx)
@@ -1251,6 +1253,12 @@ function debug_ui:OnEditorTriggerSectionSelection()
 	if (grenade_launcher and ini:section_exist(grenade_launcher)) then 
 		self.addon_list:AddItem(grenade_launcher,idx)
 		self._addons[grenade_launcher] = "grenade_launcher"
+		idx = idx + 1
+	end 
+
+	if (laser and ini:section_exist(laser)) then 
+		self.addon_list:AddItem(laser,idx)
+		self._addons[laser] = "laser"
 		idx = idx + 1
 	end 
 	

@@ -65,6 +65,12 @@
     </auto_static>
   </wpn_crosshair_mark4>
 
+  <wpn_crosshair_leupold_rifleman x="0" y="0" width="2048" height="1536">
+    <auto_static x="0" y="0" width="1024" height="768" stretch="1">
+      <texture>wpn\2d_crosshair\wpn_crosshair_leupold_rifleman</texture>
+    </auto_static>
+  </wpn_crosshair_leupold_rifleman>
+
   <wpn_crosshair_pgo x="0" y="0" width="2048" height="1536">
     <auto_static x="0" y="0" width="1024" height="768" stretch="1">
       <texture>wpn\2d_crosshair\wpn_crosshair_pgo</texture>

@@ -3,8 +3,11 @@
 	<string id="kb_turn_auto_engine">
 		<text>Turn engine</text>
 	</string>
-	<string id="kb_wpn_addon">
-		<text>Designator/Flashlight</text>
+	<string id="kb_wpn_addon_laser">
+		<text>Tact. Designator</text>
+	</string>	
+	<string id="kb_wpn_addon_flashlight">
+		<text>Tact. Flashlight</text>
 	</string>			
 	<string id="kb_active_jobs">
 		<text>PDA</text>

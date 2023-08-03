@@ -352,6 +352,28 @@ scope_zoom_factor						 = 3.5
 scope_dynamic_zoom                       = off
 use_alt_aim_hud 						 = true
 
+[leupold_rifleman_scope]:identity_immunities, default_scope
+GroupControlSection                      = spawn_group
+slot							         = -1
+discovery_dependency                     =
+cform                                    = skeleton
+class                                    = WP_SCOPE
+$spawn                                   = "weapons\addons\leupold_rifleman_scope"
+visual                                   = dynamics\weapons\wpn_upgrade\wpn_scope_leupold_rifleman.ogf
+cost                                     = 20000
+inv_name                                 = st_leupold_rifleman_scope
+description                              = st_leupold_rifleman_scope_descr
+inv_weight                               = 0.371
+inv_grid_width                           = 2
+inv_grid_height                          = 1
+inv_grid_x                               = 39
+inv_grid_y                               = 38
+scope_texture                            = wpn_crosshair_leupold_rifleman
+scope_zoom_factor                        = 9
+3d_zoom_factor                           = 1.1
+3d_fov                                   = 0.32
+scope_dynamic_zoom                       = on
+
 ;-----------------------------------------------------------------------------
 ; Old scope system (Call of Chernobyl and Call of Pripyat)
 ;-----------------------------------------------------------------------------

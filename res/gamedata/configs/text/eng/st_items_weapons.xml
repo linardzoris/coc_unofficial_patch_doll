@@ -1,8 +1,470 @@
 <?xml version="1.0" encoding="windows-1251"?>
 <string_table>
 
+<!-- Weapons -->
+
+	<string id="st_wpn_spas12">
+		<text>SPAS 12</text>
+	</string>
+	<string id="st_wpn_spas12_descr">
+		<text>A pump-action shotgun with a semi-automatic firing mode. It is comfortable enough and has a small return, but it is expensive.</text>
+	</string>
+	<string id="st_wpn_vz61">
+		<text>Scorpion vz. 61</text>
+	</string>
+	<string id="st_wpn_vz61_descr">
+		<text>Compact Czechoslovak submachine gun, a veteran of many conflicts in the post-Soviet space.</text>
+	</string>	
+	<string id="st_wpn_bizon">
+		<text>PP-19 "Bizon"</text>
+	</string>
+	<string id="st_wpn_bizon_descr">
+		<text>A very rare experimental specimen with a screw magazine, each such magazine costs like a new weapon.</text>
+	</string>
+	<string id="st_wpn_aek971">
+		<text>AEK-971</text>
+	</string>
+	<string id="st_wpn_aek971_descr">
+		<text>A promising Russian automatic with balanced automation, which, however, did not get into mass circulation due to the complexity of the design relative to the AK.</text>
+	</string>	
+	<string id="st_wpn_fn_fal">
+		<text>FN FAL</text>
+	</string>
+	<string id="st_wpn_fn_fal_descr">
+		<text>A rather rare sample, the "right hand of democracy", this weapon uses a very serious NATO cartridge 7.62 mm and has a good killing power. All sorts of fasteners for optics are completely absent.</text>
+	</string>
+	<string id="st_wpn_barret_m82">
+		<text>Barret M82</text>
+	</string>
+	<string id="st_wpn_barret_m82_descr">
+		<text>The American sniper rifle of the bullpup layout, under the 50th caliber, capable of easily shooting down a helicopter.</text>
+	</string>	
+	<string id="st_wpn_toz106">
+		<text>TOZ-106</text>
+	</string>
+	<string id="st_wpn_toz106_descr">
+		<text>He was popularly nicknamed "the death of the chairman" because of the dimensions uncharacteristic for hunting rifles. It is charged with a box magazine of the 20th caliber through a longitudinally sliding shutter.</text>
+	</string>
+	<string id="st_wpn_izh18">
+		<text>IZh-18</text>
+	</string>
+	<string id="st_wpn_izh18_descr">
+		<text>Single-barrel hunting-sports rifle of Russian production, existing for different calibers. Inexpensive, used mainly to eliminate single targets from afar.</text>
+	</string>
+	<string id="st_wpn_remington700">
+		<text>Remington 700</text>
+	</string>
+	<string id="st_wpn_remington700_descr">
+		<text>A popular American self - loading rifle with a cartridge .308 win. A fairly early version, which has a non-removable magazine for 5 rounds.</text>
+	</string>
+	<string id="st_wpn_arisaka">
+		<text>Arisaka Type 38</text>
+	</string>
+	<string id="st_wpn_arisaka_descr">
+		<text>Japanese self-loading rifle with a magazine from the First and Second World Wars. I wonder how she ended up here?</text>
+	</string>	
+	<string id="st_wpn_rpk">
+		<text>RPK</text>
+	</string>
+	<string id="st_wpn_rpk_descr">
+		<text>Kalashnikov machine gun with a slightly non-standard drum magazine for 75 rounds.</text>
+	</string>	
+	<string id="st_wpn_rgm_40">
+		<text>RGM-40 "Kastet"</text>
+	</string>
+	<string id="st_wpn_rgm_40_descr">
+		<text>The single-shot grenade launcher, which has GP-25 in its base, is very compact and collapsible.</text>
+	</string>	
+	<string id="st_wpn_ump45">
+		<text>HK UMP 45</text>
+	</string>
+	<string id="st_wpn_ump45_descr">
+		<text>A killer and very distinctive German submachine gun, quite light and comfortable, although some question its quality due to the abundance of plastic parts.</text>
+	</string>
+	<string id="st_wpn_pkp">
+		<text>PKP "Pecheneg"</text>
+	</string>	
+	<string id="st_wpn_pkm_descr">
+		<text>A powerful hand-held machine gun that allows you to fire standing up. Later versions have a dovetail bar.</text>
+	</string>	
+	<string id="st_wpn_ppsh41">
+		<text>PPSh-41</text>
+	</string>
+	<string id="st_wpn_ppsh41_descr">
+		<text>The hero of the Great Patriotic War to this day remains one of the most coveted automatic weapons for beginners. He is no longer suitable for veterans, because he "spits out" his drum too quickly.</text>
+	</string>
+	<string id="st_wpn_tt33">
+		<text>TT-33</text>
+	</string>
+	<string id="st_wpn_tt33_descr">
+		<text>A Soviet pistol with a 7.62x25mm lethal cartridge popular at that time. Reliable and beautiful.</text>
+	</string>
+	<string id="st_wpn_g3">
+		<text>HK G3</text>
+	</string>
+	<string id="st_wpn_g3_descr">
+		<text>A post-war German rifle, designed essentially on the basis of the StG and became the platform for the following German weapons.</text>
+	</string>
+	<string id="st_wpn_glock">
+		<text>Glock 17</text>
+	</string>
+	<string id="st_wpn_glock_descr">
+		<text>A series of convenient and high-quality pistols, popular all over the world, has several firing modes.</text>
+	</string>
+	<string id="st_wpn_gsh18">
+		<text>GSH-18</text>
+	</string>
+	<string id="st_wpn_gsh18_descr">
+		<text>A promising pistol with a roomy magazine, under the "Luger" cartridge. The ejection of the sleeves is carried out upwards.</text>
+	</string>
+	<string id="st_wpn_fn_fiveseven">
+		<text>FN Five-Seven</text>
+	</string>
+	<string id="st_wpn_fn_fiveseven_descr">
+		<text>Pistol under special 5.7х28 mm. Pretty accuracy and power.</text>
+	</string>	
+	<string id="st_wpn_fnp45">
+		<text>FN FNP-45</text>
+	</string>
+	<string id="st_wpn_fnp45_descr">
+		<text>The Belgian pistol under .45 cal with completely nice sights.</text>
+	</string>	
+	<string id="st_wpn_mr412">
+		<text>MP-412 "Rex"</text>
+	</string>
+	<string id="st_wpn_mr412_descr">
+		<text>Export revolver for the popular "Magnum" cartridge, quite lethal and compact.</text>
+	</string>
+	<string id="st_wpn_fnp45">
+		<text>FN FNP-45</text>
+	</string>
+	<string id="st_wpn_fnp45_descr">
+		<text>The Belgian pistol is under .45 caliber with good stopping action. It is common in the US civilian market, and therefore in local black markets.</text>
+	</string>
+	<string id="st_wpn_fnp90">
+		<text>FN P90</text>
+	</string>
+	<string id="st_wpn_fnp90_descr">
+		<text>A very rare weapon, the undisputed advantage of which is reliability with a rather unusual feed and the store itself.</text>
+	</string>	
+	<string id="st_wpn_ks23">
+		<text>KS-23M</text>
+	</string>
+	<string id="st_wpn_ks23_descr">
+		<text>A heavy militia carbine with a wide range of ammunition, but only two types can be obtained in the Zone.</text>
+	</string>
+	<string id="st_wpn_toz194">
+		<text>TOZ-194</text>
+	</string>
+	<string id="st_wpn_toz194_descr">
+		<text>Pump-action post-perestroika rifle of the legendary TOZ line.</text>
+	</string>
+	<string id="st_wpn_ak12">
+		<text>AK-12</text>
+	</string>
+	<string id="st_wpn_ak12_descr">
+		<text>A modern Russian ar, however, not without some drawbacks. It is an upgrade of the AK-74M.</text>
+	</string>
+	<string id="st_wpn_cz75">
+		<text>CZ 75</text>
+	</string>
+	<string id="st_wpn_cz75_descr">
+		<text>A successful Czechoslovak pistol with good ergonomics. It is used by many countries of the world.</text>
+	</string>	
+	<string id="st_wpn_scar_h">
+		<text>FN SCAR H</text>
+	</string>
+	<string id="st_wpn_scar_h_descr">
+		<text>A fairly modern and convenient sample of weapons on the AR platform for a NATO 7.62 mm rifle cartridge.</text>
+	</string>
+	<string id="st_wpn_l96">
+		<text>AI L96A1</text>
+	</string>
+	<string id="st_wpn_l96_descr">
+		<text>A British rifle with a longitudinally sliding bolt, which increases its accuracy. It is used by various special services.</text>
+	</string>
+	<string id="st_wpn_sr25">
+		<text>SR-25</text>
+	</string>
+	<string id="st_wpn_sr25_descr">
+		<text>Marksman rifle based on the AR-15 for a more powerful caliber.</text>
+	</string>	
+	<string id="st_wpn_mp5sd">
+		<text>HK MP-5SD</text>
+	</string>
+	<string id="st_wpn_mp5sd_descr">
+		<text>Model with integrated suppressor for a silence special operations. Very rare gun.</text>
+	</string>	
+	<string id="st_wpn_ak102">
+		<text>AK-102</text>
+	</string>
+	<string id="st_wpn_ak102_descr">
+		<text>Export Kalashnikov of the hundredth series for the NATO cartridge 5.56mm. You can fold the butt, there is a regular silencer, but there is no attachment for a grenade launcher under the barrel.</text>
+	</string>
+	<string id="st_wpn_akm">
+		<text>AKM</text>
+	</string>
+	<string id="st_wpn_akm_descr">
+		<text>One of the first modifications of the Kalashnikov. A rather old sample, and therefore there is no "dovetail" attachment in principle.</text>
+	</string>
+	<string id="st_wpn_saiga">
+		<text>Saiga-12</text>
+	</string>
+	<string id="st_wpn_saiga_descr">
+		<text>Modern hunting shotgun based on AK. It has a convenient box magazine and a semi-automatic firing mode.</text>
+	</string>
+	<string id="st_wpn_sks">
+		<text>SKS "Molot"</text>
+	</string>
+	<string id="st_wpn_sks_descr">
+		<text>Modern hunting and civilian carbines, which are produced by Russia and are used by many stalkers crossing the border of the CAZ. There is no mount for the sight, and it is unlikely because of the design of the weapon.</text>
+	</string>		
+	<string id="st_wpn_vihr">
+		<text>SR-3M "Vikhr"</text>
+	</string>
+	<string id="st_wpn_vihr_descr">
+		<text>Further development of the line of special weapons. It can be equipped with a 30-round magazine and a folding handle, and also has a folding stock.</text>
+	</string>		
+	<string id="st_wpn_kiparis">
+		<text>RPG-26 "Aglen"</text>
+	</string>
+	<string id="st_wpn_kiparis">
+		<text>A lightweight disposable grenade launcher often used by the military.</text>
+	</string>	
+	<string id="st_wpn_kiparis">
+		<text>OTs-02 "Kiparis"</text>
+	</string>	
+	<string id="st_wpn_kiparis_descr">
+		<text>A fast and fairly cheap Russian submachine gun with an inconvenient ejection window.</text>
+	</string>			
+	<string id="st_wpn_aps">
+		<text>APS</text>
+	</string>	
+	<string id="st_wpn_aps_descr">
+		<text>Stechkin pistol combines lethal power and rate of fire at short range.</text>
+	</string>	
+	<string id="st_wpn_abakan">
+		<text>AN-94</text>
+	</string>
+	<string id="st_wpn_ak74">
+		<text>AK-74</text>
+	</string>
+	<string id="st_wpn_ak74m">
+		<text>AK-74M</text>
+	</string>	
+	<string id="st_wpn_ak74u">
+		<text>AKS-74U</text>
+	</string>
+	<string id="st_wpn_beretta">
+		<text>Beretta M9</text>
+	</string>
+	<string id="st_wpn_toz66">
+		<text>Sawed-off TOZ-66</text>
+	</string>
+	<string id="st_wpn_toz66_full">
+		<text>TOZ-66</text>
+	</string>	
+	<string id="st_wpn_toz66_descr">
+		<text>Hunting shotgun with two side-by-side barrels. One of the most popular weapons, extreme effectiveness in close combat.</text>
+	</string>
+	<string id="st_wpn_colt1911">
+		<text>Colt M1911</text>
+	</string>
+	<string id="st_wpn_desert_eagle">
+		<text>Desert Eagle</text>
+	</string>
+	<string id="st_wpn_fort">
+		<text>Fort-17</text>
+	</string>
+	<string id="st_wpn_g36">
+		<text>HK G36</text>
+	</string>
+	<string id="st_wpn_g36k">
+		<text>HK G36K</text>
+	</string>	
+	<string id="st_wpn_g36k_descr">
+		<text>A later version, on which the Picatinny rail is located. Allows you to set sights.</text>
+	</string>			
+	<string id="st_wpn_gauss">
+		<text>Gauss rifle</text>
+	</string>
+	<string id="st_wpn_groza">
+		<text>OTs-14 "Groza"</text>
+	</string>
+	<string id="st_wpn_groza_descr">
+		<text>This assault rifle combined with a grenade launcher, which is similar to the AKM series, was specially developed for rapid response units. The main differences are its 9x39 calibre ammunition, bullpup layout, and extensive configuration options. This weapon is highly valued by military stalkers due to its ability to kill enemies wearing body armour behind improvised cover at a distance during urban combat, as well as its excellent stopping power.</text>
+	</string>
+	<string id="st_wpn_l85">
+		<text>L85</text>
+	</string>
+	<string id="st_wpn_lr300">
+		<text>LR-300</text>
+	</string>
+	<string id="st_wpn_m4a1">
+		<text>M4A1</text>
+	</string>
+	<string id="st_wpn_m4a1_descr">
+		<text>A popular American assault rifle that has been in service for decades.</text>
+	</string>	
+	<string id="st_wpn_mine_name">
+		<text>PFM-1 "Lepestok"</text>
+	</string>
+	<string id="st_wpn_mp5">
+		<text>HK MP-5</text>
+	</string>
+	<string id="st_wpn_mp5_descr">
+		<text>This submachine gun deservedly enjoys great popularity due to its reliability, ease of handling and high accuracy of shooting. Adopted by the army and police units of many countries, it appeared on the black market and eventually reached the Zone.</text>
+	</string>	
+	<string id="st_wpn_pb">
+		<text>PB</text>
+	</string>
+	<string id="st_wpn_pm">
+		<text>PM</text>
+	</string>
+	<string id="st_wpn_pmm">
+		<text>PMM</text>
+	</string>	
+	<string id="st_wpn_pmm_descr">
+		<text>The most common pistol in the zone, a legacy of the Soviet era, PM is one of the best representatives of the class of compact self-defense weapons. It is small in size, extremely reliable, easy to use and maintain. Among the disadvantages are the short range and accuracy of shooting, low bullet efficiency and - in comparison with modern pistols of the same class - a rather large mass with insufficient magazine capacity. This version of the weapon has a slightly more spacious magazine.</text>
+	</string>	
+	<string id="st_wpn_protecta">
+		<text>PAS-12</text>
+	</string>
+	<string id="st_wpn_rg6">
+		<text>RG-6</text>
+	</string>
+	<string id="st_wpn_pkm">
+		<text>PKM</text>
+	</string>
+	<string id="st_wpn_pkm_descr">
+		<text>Manual modification of an army machine gun with belt power. Despite the high mass and unsatisfactory accuracy of the battle, he found himself quite widely used in the Zone. It is mainly used to suppress an outnumbered enemy and to clean up mutant lairs.</text>
+	</string>
+	<string id="st_wpn_rg6_descr">
+		<text>This revolver-type grenade launcher uses six rifled front-loading barrels, identical to under-barrel launcher attachments. The drum is also front-loading. Widely used for rapid suppression of enemy firing positions and, when in the open, attacking defended fixed targets or fighting particularly tough monsters.</text>
+	</string>
+	<string id="st_wpn_rpg7">
+		<text>RPG-7</text>
+	</string>
+	<string id="st_wpn_sig220">
+		<text>SIG-Sauer P220</text>
+	</string>
+	<string id="st_wpn_sig550">
+		<text>SIG SG 550</text>
+	</string>
+	<string id="st_wpn_sig550_descr">
+		<text>A relatively new assault rifle that has quickly found admirers around the world, despite lacking a 'trendy' design. Weapons of this series are one of the best in their class, renowned for their reliability, accuracy, and ease of use. Despite being relatively difficult to obtain in the Zone, this assault rifle is often ordered by experienced stalkers at considerable expense.</text>
+	</string>
+	<string id="st_wpn_svd">
+		<text>SVD</text>
+	</string>
+	<string id="st_wpn_svd_descr">
+		<text>An army sniper rifle that has been on the market for more than fifty years and has earned its reputation for exceptional reliability and ease of use. The SVDm-2 is normally used by the army to improve the effective range of its units, but stalkers respect this weapon for its armour-piercing properties, which allow it to penetrate mutant hide and army body armour.</text>
+	</string>
+	<string id="st_wpn_svu">
+		<text>SVU</text>
+	</string>
+	<string id="st_wpn_toz34">
+		<text>TOZ-34</text>
+	</string>
+	<string id="st_wpn_toz34_obrez">
+		<text>Sawed-off TOZ-34</text>
+	</string>		
+	<string id="st_wpn_toz34_descr">
+		<text>This extremely common over-and-under hunting shotgun can offer better protection against mutants than a pistol, thanks to its accuracy and stopping power. Used mostly by rookies on the outskirts of the Zone.</text>
+	</string>
+	<string id="st_wpn_usp">
+		<text>HK USP</text>
+	</string>
+	<string id="st_wpn_usp_descr">
+		<text>Impeccable reliability and durability combined with excellent accuracy are the main noteworthy features of this weapon. Its minor drawbacks include its considerable size, relatively high center of gravity, and massive bolt, which make it difficult to conceal, but do not outweigh the weapon's positive features. The weapon is especially popular with veterans of the Zone.</text>
+	</string>
+	<string id="st_wpn_vintorez">
+		<text>VSS "Vintorez"</text>
+	</string>
+	<string id="st_wpn_vintorez_descr">
+		<text>A special military sniper rifle purpose-built for silent, flashless sniping during special operations where early detection of the shooter may be critical. The Vintar BC provides high armour-piercing capability and stopping power, as well as being equipped with an integrated sniper and optical scope. Highly rated by many stalkers despite its small magazine.</text>
+	</string>
+	<string id="st_wpn_walther">
+		<text>Walther P99</text>
+	</string>
+	<string id="st_wpn_wincheaster1300">
+		<text>Wincheaster 1300</text>
+	</string>
+	<string id="st_wpn_wincheaster1300_descr">
+		<text>A Western smoothbore shotgun that is extremely popular around the world thanks to its amazing reliability and faster reloading speed. Particularly valued for its functionality by the Zone's hunters. All of its parts are coated with an anti-corrosion compound.</text>
+	</string>
+	<string id="st_wpn_mr133">
+		<text>MR-133</text>
+	</string>
+	<string id="st_wpn_mr133_descr">
+		<text>Ordinary pump-action shotgun from Russia, often used for hunting.</text>
+	</string>
+	<string id="st_wpn_abakan_descr">
+		<text>A modern assault rifle developed as a replacement for the ageing AKM 74/2. The main difference is its high speed 2-round burst firing mode, which allows two bullets to be fired at exactly the same spot on a target up to 100 metres away. This significantly increases the likelihood of hitting the target in comparison to the 1 round firing mode, which considerably improves kill potential, stopping power, and armour piercing capability.</text>
+	</string>
+	<string id="st_wpn_ak74_descr">
+		<text>This weapon, designed in 1974, signalled the adoption of small calibre and low impulse rounds by Warsaw Pact countries. A descendant of the most popular assault rifle in the world, the AKM-74/2 has an even bigger muzzle brake, resulting in a reduction of what was already manageable recoil. This facilitates better accuracy and groupings, especially when fired in fast single shots or bursts. As before, the rifle is very simple and reliable.</text>
+	</string>
+	<string id="st_wpn_ak74u_descr">
+		<text>Despite being similar to submachine guns in size, weight, and tactical purpose, this weapon is classified as an assault rifle due to the fact that its internal mechanism is identical to that of the AKM 74/2. The weapon is notable for its mobility in close quarters and high armour-penetration capacity, while its drawbacks are its short effective range, despite the relatively long bullet range, a tendency to overheat and high ricochet propensity.</text>
+	</string>
+	<string id="st_wpn_colt1911_descr">
+		<text>An improved version of a classic automatic pistol, which passed all the major armed conflicts of the 20th century with flying colours and entered the new millennium with confidence. Produced by dozens if not hundreds of arms manufacturers around the world in both standard and modified configurations. The weapon's only drawback, its mediocre magazine capacity, is largely compensated by the hard-hitting ammo it uses.</text>
+	</string>
+	<string id="st_wpn_desert_eagle_descr">
+		<text>The ultimate hand cannon: bulky, heavy, and highly lethal. Developed as a specialised weapon for hunting medium-sized and large game, as well as for shooting competitions involving firing at steel body targets at distances over 50 metres. Its limited use in the Zone can be attributed to its price, size and weight, which are all double those of other pistols.</text>
+	</string>
+	<string id="st_wpn_fort_descr">
+		<text>A Ukrainian-made pistol predominantly used by law enforcement organisations. Provides higher accuracy, better ergonomics, and a larger magazine capacity than the PMm. These pistols make it into the Zone in large numbers thanks to the sale of defective weapons, which suffer from technical miscalculations in early design models. Despite this, the pistol is in demand among stalkers thanks to its good combat characteristics.</text>
+	</string>
+	<string id="st_wpn_g36_descr">
+		<text>A new addition to the Western-made assault rifle family, which differs significantly from previous models in the series built on an automatic foundation with a semi-open bolt assembly, this weapon is more like American automatic gas-operated assault rifles with a short-stroke gas piston system. These changes ensure that the rifle is a first-rate example of a modern weapon: lightweight, reliable, and ergonomic.</text>
+	</string>
+	<string id="st_wpn_l85_descr">
+		<text>This rifle's considerable number of drawbacks caused most of these weapons to be modernised, with the retired stock making its way to the Zone via the black market. The rifle's main advantages are its built-in 4x scope, high single-shot accuracy, and reliable upgrade technology. When the weapon is fired in bursts, its accuracy decreases significantly, and the rifle's basic internal mechanisms become somewhat unreliable.</text>
+	</string>
+	<string id="st_wpn_lr300_descr">
+		<text>A new step in the development of this famous weapon family. The changes were made to the upper half of the steel construction comprising the barrel, gas tube and bolt assembly, reducing the weapon's weight, improving ergonomics and its gas system. The weapon is highly accurate, although its propensity to catch dirt makes it a poor choice for the Zone's difficult conditions.</text>
+	</string>
+	<string id="st_wpn_mine_descr">
+		<text>The PFM-1 is an anti-personnel mine with an infamous reputation for being the cause of large amounts of civilian casualties. Often referred to as a 'butterfly' mine due to its unusual shape.</text>
+	</string>
+	<string id="st_wpn_pb_descr">
+		<text>This pistol was developed in the second half of the 20th century on the basis of the PMm for use by special forces and scouting units. The front of the pistol's barrel is covered with an integrated silencer, while the bolt mechanism is short, which prevents a back-moving spring from being located inside it, and it is therefore situated in the weapon's handle. Morally obsolete, the weapon is still effective in the right hands.</text>
+	</string>
+	<string id="st_wpn_pm_descr">
+		<text>This Soviet legacy is the most common pistol in the Zone and is one of the best compact self-defence handguns available. It is small, highly reliable, easy to use and maintain in working order. It also suffers from several drawbacks, including its short range, low firing accuracy, and poor stopping power, while also losing out to modern pistols in its class in terms of weight and magazine size.</text>
+	</string>
+	<string id="st_wpn_protecta_descr">
+		<text>A smoothbore combat revolver-type shotgun intended to provide extreme firepower for militarised units. The weapon benefits from a large magazine and a high effective rate of fire, but its bulkiness and considerable weight, combined with a long reload time, are the price to be paid for these advantages. Rare in the Zone and is used primarily to clear closed spaces of mutants.</text>
+	</string>
+	<string id="st_wpn_rpg7_descr">
+		<text>This grenade launcher from the 1960s made its way into the Zone from army depots. The weapon is a smoothbore single-shot recoilless launch system with an open-rear tube. Comes with a PGO-7 x2.7 optical scope. Although its huge size and weight make it an unlikely choice for stalkers, it has found admirers in the Zone given its huge destructive power and ease of use.</text>
+	</string>
+	<string id="st_wpn_sig220_descr">
+		<text>The only remaining mass produced model of a globally renowned pistol, this weapon has earned a reputation for its excellent ergonomics and accuracy, and while its magazine is relatively small, it benefits from powerful ammo and a mechanism that functions like a Swiss watch. Some believe the SIP-t M200 to be the best mass produced .45 ACP calibre handgun there is, and it has certainly got a following among experienced stalkers and mercenaries.</text>
+	</string>
+	<string id="st_wpn_svu_descr">
+		<text>A modernised version of the SVDm-2 sniper rifle in a compact bullpup design made on the order of rapid response forces. It allows faster precision fire and is considerably lighter, while its single shot firing accuracy at short and medium range is similar to that of its predecessor. These qualities have earned it the admiration of countless stalkers.</text>
+	</string>
+	<string id="st_wpn_gauss_descr">
+		<text>A super-accurate hi-tech weapon known as item 62, this rifle was developed in secret laboratories located inside the Zone. The weapon operates by accelerating bullets to extremely high speeds using a system of electromagnets, which provides incredible stopping power with virtually no recoil. The weapon is powered by using encapsulated artefact fragments in the batteries.</text>
+	</string>
+	<string id="st_wpn_beretta_descr">
+		<text>Martha pistols enjoy the reputation of a relatively reliable, albeit somewhat cumbersome weapon, around the world. In service with armed forces and police across the ocean, as well as various military and law enforcement organisations worldwide. The pistol is equally popular with members of the underworld, thanks to its powerful round and magazine capacity. Marthas found in the Zone are usually dated, probably from retired stock.</text>
+	</string>
+	<string id="st_wpn_walther_descr">
+		<text>An excellent Western pistol known for its reliability, high capacity magazine, and good accuracy, as well as being among the most ergonomic handguns in its class. One of the most widely used pistols in the Zone, both among professionals and rookies who can afford it.</text>
+	</string>
+	
 <!-- Scopes -->	
 
+	<string id="st_leupold_rifleman_scope">
+		<text>Scope Leupold Rifleman</text>
+	</string>
+	<string id="st_leupold_rifleman_scope_descr">
+		<text>Commercial sight with a multiplicity of up to 9. It is mounted in a certain way, with the help of special rings not on the Weaver bar.</text>
+	</string>	
 	<string id="st_addon_susat_scope">
 		<text>Scope SUSAT L9A1</text>
 	</string>
@@ -138,6 +600,48 @@
 
 <!-- AMMO -->
 
+	<string id="st_ammo_12_7x99">
+		<text>Cartridges 12.7x99 (.50 BMG)</text>
+	</string>
+	<string id="ammo_12_7x99_descr">
+		<text>A large-caliber cartridge created in the USA for the Browning machine gun. They are usually equipped with antimaterial rifles.</text>
+	</string>	
+	<string id="st_ammo_7_62x25_fmj">
+		<text>Cartridges 7,62x25 mm П</text>
+	</string>
+	<string id="st_ammo_7_62x25_fmj_descr">
+		<text>Soviet pistol cartridge of 7.62mm caliber. A simple one-piece bullet with a lead core.</text>
+	</string>
+	<string id="st_ammo_7_62x25_ap">
+		<text>Cartridges 7,62x25 mm Pst</text>
+	</string>
+	<string id="st_ammo_7_62x25_ap_descr">
+		<text>Soviet pistol cartridge of 7.62mm caliber. Bullet with steel core, improved armor piercing.</text>
+	</string>	
+	<string id="st_ammo_357_fmj">
+		<text>Cartridges 9х33R (.357 magnum)</text>
+	</string>
+	<string id="st_ammo_357_fmj_descr">
+		<text>A powerful cartridge and a running American cartridge designed specifically for police revolvers.</text>
+	</string>	
+	<string id="st_ammo_5_7x28_ss190">
+		<text>Cartridges 5.7х28 (SS190)</text>
+	</string>
+	<string id="st_ammo_5_7x28_ss190_descr">
+		<text>It was created as a replacement for the standard NATO pistol caliber, but it never became a standard.</text>
+	</string>	
+	<string id="st_ammo_23x75_buck">
+		<text>Ammo "Shrapnel-10"</text>
+	</string>
+	<string id="st_ammo_23x75_buck_descr">
+		<text>Designed for the KS-23 shotgun. They are ordinary shrapnel, except that the shell of the sleeve is made of cardboard.</text>
+	</string>
+	<string id="st_ammo_23x75_bullet">
+		<text>Ammo "Barrikada"</text>
+	</string>
+	<string id="st_ammo_23x75_bullet_descr">
+		<text>This bullet in a cardboard shell is quite capable of disabling the engine of a truck.</text>
+	</string>
 	<string id="st_ammo_7_62x51_fmj">
 		<text>Cartridges 7,62x51 М59 (.308 Win)</text>
 	</string>
@@ -354,297 +858,8 @@
 	<string id="st_grenade_smoke_descr">
 		<text>A hand smoke grenade. Used to put up smoke screens. Once the grenade is thrown it takes 10 seconds for the smoke screen to expand.</text>
 	</string>
-	
-<!-- Weapons -->
-
-	<string id="st_wpn_scar_h">
-		<text>FN SCAR H</text>
-	</string>
-	<string id="st_wpn_scar_h_descr">
-		<text>A fairly modern and convenient sample of weapons on the AR platform for a NATO 7.62 mm rifle cartridge.</text>
-	</string>
-	<string id="st_wpn_l96">
-		<text>AI L96A1</text>
-	</string>
-	<string id="st_wpn_l96_descr">
-		<text>A British rifle with a longitudinally sliding bolt, which increases its accuracy. It is used by various special services.</text>
-	</string>
-	<string id="st_wpn_sr25">
-		<text>SR-25</text>
-	</string>
-	<string id="st_wpn_sr25_descr">
-		<text>Marksman rifle based on the AR-15 for a more powerful caliber.</text>
-	</string>	
-	<string id="st_wpn_ak102">
-		<text>AK-102</text>
-	</string>
-	<string id="st_wpn_ak102_descr">
-		<text>Export Kalashnikov of the hundredth series for the NATO cartridge 5.56mm. You can fold the butt, there is a regular silencer, but there is no attachment for a grenade launcher under the barrel.</text>
-	</string>
-	<string id="st_wpn_akm">
-		<text>AKM</text>
-	</string>
-	<string id="st_wpn_akm_descr">
-		<text>One of the first modifications of the Kalashnikov. A rather old sample, and therefore there is no "dovetail" attachment in principle.</text>
-	</string>
-	<string id="wpn_vityaz">
-		<text>PP-19-01 "Vityaz"</text>
-	</string>
-	<string id="st_wpn_vityaz_descr">
-		<text>A regular submachine gun for many post-Soviet structures with the usual box magazine.</text>
-	</string>
-	<string id="st_wpn_saiga">
-		<text>Saiga-12</text>
-	</string>
-	<string id="st_wpn_saiga_descr">
-		<text>Modern hunting shotgun based on AK. It has a convenient box magazine and a semi-automatic firing mode.</text>
-	</string>
-	<string id="st_wpn_sks">
-		<text>SKS "Molot"</text>
-	</string>
-	<string id="st_wpn_sks_descr">
-		<text>Modern hunting and civilian carbines, which are produced by Russia and are used by many stalkers crossing the border of the CAZ. There is no mount for the sight, and it is unlikely because of the design of the weapon.</text>
-	</string>		
-	<string id="st_wpn_vihr">
-		<text>SR-3M "Vikhr"</text>
-	</string>
-	<string id="st_wpn_vihr_descr">
-		<text>Further development of the line of special weapons. It can be equipped with a 30-round magazine and a folding handle, and also has a folding stock.</text>
-	</string>		
-	<string id="st_wpn_kiparis">
-		<text>RPG-26 "Aglen"</text>
-	</string>
-	<string id="st_wpn_kiparis">
-		<text>A lightweight disposable grenade launcher often used by the military.</text>
-	</string>	
-	<string id="st_wpn_kiparis">
-		<text>OTs-02 "Kiparis"</text>
-	</string>	
-	<string id="st_wpn_kiparis_descr">
-		<text>A fast and fairly cheap Russian submachine gun with an inconvenient ejection window.</text>
-	</string>			
-	<string id="st_wpn_aps">
-		<text>APS</text>
-	</string>	
-	<string id="st_wpn_aps_descr">
-		<text>Stechkin pistol combines lethal power and rate of fire at short range.</text>
-	</string>	
-	<string id="st_wpn_abakan">
-		<text>AN-94</text>
-	</string>
-	<string id="st_wpn_ak74">
-		<text>AK-74</text>
-	</string>
-	<string id="st_wpn_ak74m">
-		<text>AK-74M</text>
-	</string>	
-	<string id="st_wpn_ak74u">
-		<text>AKS-74U</text>
-	</string>
-	<string id="st_wpn_beretta">
-		<text>Beretta M9</text>
-	</string>
-	<string id="st_wpn_toz66">
-		<text>Sawed-off TOZ-66</text>
-	</string>
-	<string id="st_wpn_toz66_full">
-		<text>TOZ-66</text>
-	</string>	
-	<string id="st_wpn_toz66_descr">
-		<text>Hunting shotgun with two side-by-side barrels. One of the most popular weapons, extreme effectiveness in close combat.</text>
-	</string>
-	<string id="st_wpn_colt1911">
-		<text>Colt M1911</text>
-	</string>
-	<string id="st_wpn_desert_eagle">
-		<text>Desert Eagle</text>
-	</string>
-	<string id="st_wpn_fort">
-		<text>Fort-17</text>
-	</string>
-	<string id="st_wpn_g36">
-		<text>HK G36</text>
-	</string>
-	<string id="st_wpn_g36k">
-		<text>HK G36K</text>
-	</string>	
-	<string id="st_wpn_g36k_descr">
-		<text>A later version, on which the Picatinny rail is located. Allows you to set sights.</text>
-	</string>			
-	<string id="st_wpn_gauss">
-		<text>Gauss rifle</text>
-	</string>
-	<string id="st_wpn_groza">
-		<text>OTs-14 "Groza"</text>
-	</string>
-	<string id="st_wpn_groza_descr">
-		<text>This assault rifle combined with a grenade launcher, which is similar to the AKM series, was specially developed for rapid response units. The main differences are its 9x39 calibre ammunition, bullpup layout, and extensive configuration options. This weapon is highly valued by military stalkers due to its ability to kill enemies wearing body armour behind improvised cover at a distance during urban combat, as well as its excellent stopping power.</text>
-	</string>
-	<string id="st_wpn_l85">
-		<text>L85</text>
-	</string>
-	<string id="st_wpn_lr300">
-		<text>LR-300</text>
-	</string>
-	<string id="st_wpn_m4a1">
-		<text>M4A1</text>
-	</string>
-	<string id="st_wpn_m4a1_descr">
-		<text>A popular American assault rifle that has been in service for decades.</text>
-	</string>	
-	<string id="st_wpn_mine_name">
-		<text>PFM-1 "Lepestok"</text>
-	</string>
-	<string id="st_wpn_mp5">
-		<text>HK MP-5</text>
-	</string>
-	<string id="st_wpn_mp5_descr">
-		<text>This submachine gun deservedly enjoys great popularity due to its reliability, ease of handling and high accuracy of shooting. Adopted by the army and police units of many countries, it appeared on the black market and eventually reached the Zone.</text>
-	</string>	
-	<string id="st_wpn_pb">
-		<text>PB</text>
-	</string>
-	<string id="st_wpn_pm">
-		<text>PM</text>
-	</string>
-	<string id="st_wpn_pmm">
-		<text>PMM</text>
-	</string>	
-	<string id="st_wpn_pmm_descr">
-		<text>The most common pistol in the zone, a legacy of the Soviet era, PM is one of the best representatives of the class of compact self-defense weapons. It is small in size, extremely reliable, easy to use and maintain. Among the disadvantages are the short range and accuracy of shooting, low bullet efficiency and - in comparison with modern pistols of the same class - a rather large mass with insufficient magazine capacity. This version of the weapon has a slightly more spacious magazine.</text>
-	</string>	
-	<string id="st_wpn_protecta">
-		<text>PAS-12</text>
-	</string>
-	<string id="st_wpn_rg6">
-		<text>RG-6</text>
-	</string>
-	<string id="st_wpn_pkm">
-		<text>PKM</text>
-	</string>
-	<string id="st_wpn_pkm_descr">
-		<text>Manual modification of an army machine gun with belt power. Despite the high mass and unsatisfactory accuracy of the battle, he found himself quite widely used in the Zone. It is mainly used to suppress an outnumbered enemy and to clean up mutant lairs.</text>
-	</string>
-	<string id="st_wpn_rg6_descr">
-		<text>This revolver-type grenade launcher uses six rifled front-loading barrels, identical to under-barrel launcher attachments. The drum is also front-loading. Widely used for rapid suppression of enemy firing positions and, when in the open, attacking defended fixed targets or fighting particularly tough monsters.</text>
-	</string>
-	<string id="st_wpn_rpg7">
-		<text>RPG-7</text>
-	</string>
-	<string id="st_wpn_sig220">
-		<text>SIG-Sauer P220</text>
-	</string>
-	<string id="st_wpn_sig550">
-		<text>SIG SG 550</text>
-	</string>
-	<string id="st_wpn_sig550_descr">
-		<text>A relatively new assault rifle that has quickly found admirers around the world, despite lacking a 'trendy' design. Weapons of this series are one of the best in their class, renowned for their reliability, accuracy, and ease of use. Despite being relatively difficult to obtain in the Zone, this assault rifle is often ordered by experienced stalkers at considerable expense.</text>
-	</string>
-	<string id="st_wpn_svd">
-		<text>SVD</text>
-	</string>
-	<string id="st_wpn_svd_descr">
-		<text>An army sniper rifle that has been on the market for more than fifty years and has earned its reputation for exceptional reliability and ease of use. The SVDm-2 is normally used by the army to improve the effective range of its units, but stalkers respect this weapon for its armour-piercing properties, which allow it to penetrate mutant hide and army body armour.</text>
-	</string>
-	<string id="st_wpn_svu">
-		<text>SVU</text>
-	</string>
-	<string id="st_wpn_toz34">
-		<text>TOZ-34</text>
-	</string>
-	<string id="st_wpn_toz34_obrez">
-		<text>Sawed-off TOZ-34</text>
-	</string>		
-	<string id="st_wpn_toz34_descr">
-		<text>This extremely common over-and-under hunting shotgun can offer better protection against mutants than a pistol, thanks to its accuracy and stopping power. Used mostly by rookies on the outskirts of the Zone.</text>
-	</string>
-	<string id="st_wpn_usp">
-		<text>HK USP</text>
-	</string>
-	<string id="st_wpn_usp_descr">
-		<text>Impeccable reliability and durability combined with excellent accuracy are the main noteworthy features of this weapon. Its minor drawbacks include its considerable size, relatively high center of gravity, and massive bolt, which make it difficult to conceal, but do not outweigh the weapon's positive features. The weapon is especially popular with veterans of the Zone.</text>
-	</string>
-	<string id="st_wpn_vintorez">
-		<text>VSS "Vintorez"</text>
-	</string>
-	<string id="st_wpn_vintorez_descr">
-		<text>A special military sniper rifle purpose-built for silent, flashless sniping during special operations where early detection of the shooter may be critical. The Vintar BC provides high armour-piercing capability and stopping power, as well as being equipped with an integrated sniper and optical scope. Highly rated by many stalkers despite its small magazine.</text>
-	</string>
-	<string id="st_wpn_walther">
-		<text>Walther P99</text>
-	</string>
-	<string id="st_wpn_wincheaster1300">
-		<text>Wincheaster 1300</text>
-	</string>
-	<string id="st_wpn_wincheaster1300_descr">
-		<text>A Western smoothbore shotgun that is extremely popular around the world thanks to its amazing reliability and faster reloading speed. Particularly valued for its functionality by the Zone's hunters. All of its parts are coated with an anti-corrosion compound.</text>
-	</string>
-	<string id="st_wpn_mr133">
-		<text>MR-133</text>
-	</string>
-	<string id="st_wpn_mr133_descr">
-		<text>Ordinary pump-action shotgun from Russia, often used for hunting.</text>
-	</string>
-	
 	<string id="ammo-gauss_cardan">
 		<text>Homemade batteries</text>
-	</string>
-	<string id="st_wpn_abakan_descr">
-		<text>A modern assault rifle developed as a replacement for the ageing AKM 74/2. The main difference is its high speed 2-round burst firing mode, which allows two bullets to be fired at exactly the same spot on a target up to 100 metres away. This significantly increases the likelihood of hitting the target in comparison to the 1 round firing mode, which considerably improves kill potential, stopping power, and armour piercing capability.</text>
-	</string>
-	<string id="st_wpn_ak74_descr">
-		<text>This weapon, designed in 1974, signalled the adoption of small calibre and low impulse rounds by Warsaw Pact countries. A descendant of the most popular assault rifle in the world, the AKM-74/2 has an even bigger muzzle brake, resulting in a reduction of what was already manageable recoil. This facilitates better accuracy and groupings, especially when fired in fast single shots or bursts. As before, the rifle is very simple and reliable.</text>
-	</string>
-	<string id="st_wpn_ak74u_descr">
-		<text>Despite being similar to submachine guns in size, weight, and tactical purpose, this weapon is classified as an assault rifle due to the fact that its internal mechanism is identical to that of the AKM 74/2. The weapon is notable for its mobility in close quarters and high armour-penetration capacity, while its drawbacks are its short effective range, despite the relatively long bullet range, a tendency to overheat and high ricochet propensity.</text>
-	</string>
-	<string id="st_wpn_colt1911_descr">
-		<text>An improved version of a classic automatic pistol, which passed all the major armed conflicts of the 20th century with flying colours and entered the new millennium with confidence. Produced by dozens if not hundreds of arms manufacturers around the world in both standard and modified configurations. The weapon's only drawback, its mediocre magazine capacity, is largely compensated by the hard-hitting ammo it uses.</text>
-	</string>
-	<string id="st_wpn_desert_eagle_descr">
-		<text>The ultimate hand cannon: bulky, heavy, and highly lethal. Developed as a specialised weapon for hunting medium-sized and large game, as well as for shooting competitions involving firing at steel body targets at distances over 50 metres. Its limited use in the Zone can be attributed to its price, size and weight, which are all double those of other pistols.</text>
-	</string>
-	<string id="st_wpn_fort_descr">
-		<text>A Ukrainian-made pistol predominantly used by law enforcement organisations. Provides higher accuracy, better ergonomics, and a larger magazine capacity than the PMm. These pistols make it into the Zone in large numbers thanks to the sale of defective weapons, which suffer from technical miscalculations in early design models. Despite this, the pistol is in demand among stalkers thanks to its good combat characteristics.</text>
-	</string>
-	<string id="st_wpn_g36_descr">
-		<text>A new addition to the Western-made assault rifle family, which differs significantly from previous models in the series built on an automatic foundation with a semi-open bolt assembly, this weapon is more like American automatic gas-operated assault rifles with a short-stroke gas piston system. These changes ensure that the rifle is a first-rate example of a modern weapon: lightweight, reliable, and ergonomic.</text>
-	</string>
-	<string id="st_wpn_l85_descr">
-		<text>This rifle's considerable number of drawbacks caused most of these weapons to be modernised, with the retired stock making its way to the Zone via the black market. The rifle's main advantages are its built-in 4x scope, high single-shot accuracy, and reliable upgrade technology. When the weapon is fired in bursts, its accuracy decreases significantly, and the rifle's basic internal mechanisms become somewhat unreliable.</text>
-	</string>
-	<string id="st_wpn_lr300_descr">
-		<text>A new step in the development of this famous weapon family. The changes were made to the upper half of the steel construction comprising the barrel, gas tube and bolt assembly, reducing the weapon's weight, improving ergonomics and its gas system. The weapon is highly accurate, although its propensity to catch dirt makes it a poor choice for the Zone's difficult conditions.</text>
-	</string>
-	<string id="st_wpn_mine_descr">
-		<text>The PFM-1 is an anti-personnel mine with an infamous reputation for being the cause of large amounts of civilian casualties. Often referred to as a 'butterfly' mine due to its unusual shape.</text>
-	</string>
-	<string id="st_wpn_pb_descr">
-		<text>This pistol was developed in the second half of the 20th century on the basis of the PMm for use by special forces and scouting units. The front of the pistol's barrel is covered with an integrated silencer, while the bolt mechanism is short, which prevents a back-moving spring from being located inside it, and it is therefore situated in the weapon's handle. Morally obsolete, the weapon is still effective in the right hands.</text>
-	</string>
-	<string id="st_wpn_pm_descr">
-		<text>This Soviet legacy is the most common pistol in the Zone and is one of the best compact self-defence handguns available. It is small, highly reliable, easy to use and maintain in working order. It also suffers from several drawbacks, including its short range, low firing accuracy, and poor stopping power, while also losing out to modern pistols in its class in terms of weight and magazine size.</text>
-	</string>
-	<string id="st_wpn_protecta_descr">
-		<text>A smoothbore combat revolver-type shotgun intended to provide extreme firepower for militarised units. The weapon benefits from a large magazine and a high effective rate of fire, but its bulkiness and considerable weight, combined with a long reload time, are the price to be paid for these advantages. Rare in the Zone and is used primarily to clear closed spaces of mutants.</text>
-	</string>
-	<string id="st_wpn_rpg7_descr">
-		<text>This grenade launcher from the 1960s made its way into the Zone from army depots. The weapon is a smoothbore single-shot recoilless launch system with an open-rear tube. Comes with a PGO-7 x2.7 optical scope. Although its huge size and weight make it an unlikely choice for stalkers, it has found admirers in the Zone given its huge destructive power and ease of use.</text>
-	</string>
-	<string id="st_wpn_sig220_descr">
-		<text>The only remaining mass produced model of a globally renowned pistol, this weapon has earned a reputation for its excellent ergonomics and accuracy, and while its magazine is relatively small, it benefits from powerful ammo and a mechanism that functions like a Swiss watch. Some believe the SIP-t M200 to be the best mass produced .45 ACP calibre handgun there is, and it has certainly got a following among experienced stalkers and mercenaries.</text>
-	</string>
-	<string id="st_wpn_svu_descr">
-		<text>A modernised version of the SVDm-2 sniper rifle in a compact bullpup design made on the order of rapid response forces. It allows faster precision fire and is considerably lighter, while its single shot firing accuracy at short and medium range is similar to that of its predecessor. These qualities have earned it the admiration of countless stalkers.</text>
-	</string>
-	<string id="st_wpn_gauss_descr">
-		<text>A super-accurate hi-tech weapon known as item 62, this rifle was developed in secret laboratories located inside the Zone. The weapon operates by accelerating bullets to extremely high speeds using a system of electromagnets, which provides incredible stopping power with virtually no recoil. The weapon is powered by using encapsulated artefact fragments in the batteries.</text>
-	</string>
-	<string id="st_wpn_beretta_descr">
-		<text>Martha pistols enjoy the reputation of a relatively reliable, albeit somewhat cumbersome weapon, around the world. In service with armed forces and police across the ocean, as well as various military and law enforcement organisations worldwide. The pistol is equally popular with members of the underworld, thanks to its powerful round and magazine capacity. Marthas found in the Zone are usually dated, probably from retired stock.</text>
-	</string>
-	<string id="st_wpn_walther_descr">
-		<text>An excellent Western pistol known for its reliability, high capacity magazine, and good accuracy, as well as being among the most ergonomic handguns in its class. One of the most widely used pistols in the Zone, both among professionals and rookies who can afford it.</text>
 	</string>
 	<string id="ammo-gauss_descr">
 		<text>Batteries that use an encapsulated fragment of the Flash artefact as their power source. Manufactured using hi-tech equipment.</text>
@@ -652,4 +867,66 @@
 	<string id="ammo-gauss_cardan_descr">
 		<text>These lower-capacity cells use encapsulated fragments of the Flash artefact as their power source. Their lower capacity is due to makeshift production conditions and lack of specialised equipment.</text>
 	</string>
+
+<!-- Cold -->
+	
+	<string id="st_knife_m9">
+		<text>Bayonet M9</text>
+	</string>
+	<string id="st_knife_m9_descr">
+		<text>A rare, but very high-quality American bayonet knife.</text>
+	</string>	
+	<string id="st_wpn_knife_shtik">
+		<text>Bayonet 6x4</text>
+	</string>
+	<string id="st_wpn_knife_shtik_descr">
+		<text>A common Soviet bayonet for Kalashnikov, quite high-quality and functional.</text>
+	</string>	
+	<string id="st_wpn_knife_touristik">
+		<text>Tourist knife</text>
+	</string>
+	<string id="st_wpn_knife_touristik_descr">
+		<text>An ordinary knife, which many people drag from the mainland. It is suitable only for opening preserves.</text>
+	</string>	
+	<string id="st_wpn_axe">
+		<text>Axe</text>
+	</string>
+	<string id="st_wpn_axe_descr">
+		<text>In the Zone, it is quite often possible to find axes both still Soviet and new.</text>
+	</string>	
+	<string id="st_wpn_shovel">
+		<text>Bayonet shovel</text>
+	</string>
+	<string id="st_wpn_shovel_descr">
+		<text>An indispensable friend of any stalker, soldier and treasure hunter. The main thing is that the bayonet is of high quality and does not bend.</text>
+	</string>	
+	<string id="st_wpn_sledge">
+		<text>Hammer</text>
+	</string>
+	<string id="st_wpn_sledge_descr">
+		<text>You can find it on construction sites or in old garages, as well as with mercenaries.</text>
+	</string>	
+	<string id="st_wpn_crowbar">
+		<text>Nailer</text>
+	</string>
+	<string id="st_wpn_crowbar_descr">
+		<text>An indispensable attribute of hacking anything, is popular in the Zone.</text>
+	</string>
+	
+<!-- Lasers - Flashlights -->
+		
+	<string id="st_wpn_addon_laser_weaver_an_peq">
+		<text>Tactical block "Zenit-2"</text>
+	</string>	
+	<string id="st_wpn_addon_laser_weaver_an_peq_descr">
+		<text>A commercial Russian tactical unit that includes an laser, flashlight and a take-out button. Used on Soviet rail mounts.</text>
+	</string>		
+		
+	<string id="st_wpn_addon_laser_weaver_an_peq">
+		<text>Tactical block AN/PEQ-15</text>
+	</string>	
+	<string id="st_wpn_addon_laser_weaver_an_peq_descr">
+		<text>Universal sighting device for NATO standard weapons. Combines both the laser and the flashlight.</text>
+	</string>	
+	
 </string_table>

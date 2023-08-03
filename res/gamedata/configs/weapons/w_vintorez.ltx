@@ -73,11 +73,6 @@ PDM_disp_crouch	 			                       = 0.55
 PDM_disp_crouch_no_acc 			                   = 0.55
 
 ph_mass                                            = 3
-position										   = -0.026,-0.097,0
-orientation										   = 0,0,0
-shell_point										   = -0.02,0.167,0.082
-fire_point										   = 0,0.137,0.649
-fire_point2										   = 0,0.097,0.722
 
 reload_dof                                         = 0.0, 0.5, 5, 2
 rpm                                                = 800
@@ -124,15 +119,25 @@ snd_silncer_shot               					   = weapons\_gunfire\val\close_1
 snd_silncer_shot1              					   = weapons\_gunfire\val\close_2
 snd_silncer_shot2              					   = weapons\_gunfire\val\close_3
 snd_silncer_shot3              					   = weapons\_gunfire\val\close_4
-snd_reflect                	 					   = weapons\_gunfire\val\close_distance
 snd_shoot_distant           					   = nil
 snd_shoot_distant_far       					   = nil
 
+position										   = -0.026,-0.19,0.05
+orientation										   = 0,0,0
+shell_point										   = -0.02,0.167,0.082
+fire_point										   = 0,0.137,0.649
+fire_point2										   = 0,0.097,0.722
 strap_bone0                                        = bip01_spine2
 strap_bone1                                        = bip01_spine1
 strap_orientation                                  = -15, -9, 110
 strap_position                                     = -0.26, -0.11, 0.25
 time_to_aim                                        = 1.0
+
+laser_status									   = 2
+laser_name 						                   = wpn_addon_laser_weaver_zenit
+laser_x                     	                   = 173
+laser_y                     	                   = 29
+laser_bone                  	                   = laser
 
 upgrade_scheme                                     = upgrade_scheme_vintorez
 upgrades                                           = up_gr_firstab_vintorez, up_gr_seconab_vintorez, up_gr_thirdab_vintorez, up_gr_fourtab_vintorez, up_gr_fourtcd_vintorez, up_gr_fourtef_vintorez, up_gr_fifthab_vintorez
@@ -207,7 +212,7 @@ shell_point                              = 0.059500,-0.000500,0.000000
 item_visual                              = dynamics\weapons\wpn_vintorez\wpn_vintorez_hud.ogf
 
 ;-----------------------------------------------------------------------------
-; ְההמםû
+; Addons
 ;-----------------------------------------------------------------------------
 
 [wpn_vintorez_pso_scope]:wpn_vintorez
@@ -215,6 +220,7 @@ $spawn                          = "weapons\wpn_vintorez_pso_scope"
 scope_x                         = 48
 scope_y                         = 6
 hud                             = wpn_vintorez_pso_scope_hud
+visual                          = dynamics\weapons\wpn_vintorez\wpn_vintorez.ogf
 
 [wpn_vintorez_pso_scope_hud]:wpn_vintorez_hud
 aim_hud_offset_pos				= -0.056000,0.009200,-0.042826
@@ -227,6 +233,7 @@ $spawn                          = "weapons\wpn_vintorez_kobra_scope"
 scope_x                         = 88
 scope_y                         = 8
 hud                             = wpn_vintorez_kobra_scope_hud
+visual                          = dynamics\weapons\wpn_vintorez\wpn_vintorez_kobra.ogf
 
 [wpn_vintorez_kobra_scope_hud]:wpn_vintorez_hud
 aim_hud_offset_pos				= -0.065500,0.001700,-0.109826
@@ -240,6 +247,7 @@ $spawn                          = "weapons\wpn_vintorez_1p29_scope"
 scope_x                         = 80
 scope_y                         = 8
 hud                             = wpn_vintorez_1p29_scope_hud
+visual                          = dynamics\weapons\wpn_vintorez\wpn_vintorez_1p29.ogf
 
 [wpn_vintorez_1p29_scope_hud]:wpn_vintorez_hud
 aim_hud_offset_pos				= -0.064000,-0.001800,-0.079826
@@ -253,6 +261,7 @@ $spawn                          = "weapons\wpn_vintorez_okp_scope"
 scope_x                         = 88
 scope_y                         = 6
 hud                             = wpn_vintorez_okp_scope_hud
+visual                          = dynamics\weapons\wpn_vintorez\wpn_vintorez_okp.ogf
 
 [wpn_vintorez_okp_scope_hud]:wpn_vintorez_hud
 aim_hud_offset_pos				= -0.064000,0.013200,-0.086826
@@ -266,6 +275,7 @@ $spawn                          = "weapons\wpn_vintorez_1pn93_scope"
 scope_x                         = 80
 scope_y                         = 8
 hud                             = wpn_vintorez_1pn93_scope_hud
+visual                          = dynamics\weapons\wpn_vintorez\wpn_vintorez_1pn93.ogf
 
 [wpn_vintorez_1pn93_scope_hud]:wpn_vintorez_hud
 aim_hud_offset_pos				= -0.057000,-0.000300,-0.069826

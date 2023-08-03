@@ -24,7 +24,7 @@ cost 								= 40000
 weapon_class						= assault_rifle
 inv_weight							= 4.1
 hud									= wpn_sig550_hud
-visual								= dynamics\weapons\wpn_sig550\wpn_sig550_world.ogf
+visual								= dynamics\weapons\wpn_sig550\wpn_sig550.ogf
 
 upgrade_scheme                      = upgrade_scheme_sig550
 upgrades                            = up_gr_firstab_sig550, up_gr_seconab_sig550, up_gr_thirdab_sig550, up_gr_fourtab_sig550, up_gr_fifthab_sig550
@@ -120,15 +120,15 @@ holder_fov_modifier					= 1
 slot 			 					= 2
 animation_slot						= 2
 
-position                        	= -0.07, 0.097, -0.094
-orientation                     	= 0, 0, 0
-fire_point                      	= 0.05, -0.06, 0.575
-fire_point2                     	= 0, 0.199, 0.575
-shell_point                         = -0.020000,0.167000,0.082000
-strap_bone0                     	= bip01_spine2
-strap_bone1                     	= bip01_spine1
-strap_position                  	= -0.26, -0.11, 0.25
-strap_orientation               	= -15, -9, 110
+position                            = -0.026, -0.175, 0.0
+orientation                         = 0, 0, 0
+fire_point                          = 0, 0.218, 0.656
+fire_point2                         = 0, 0.161, 0.583
+shell_point                         = 0.07,0.2,0.466
+strap_bone0                         = bip01_spine2
+strap_bone1                         = bip01_spine1
+strap_position                      = -0.18, -0.45, 0.2
+strap_orientation                   = -10, -5, 10
 
 shell_particles         			= ;weapons\556x45
 
@@ -155,7 +155,7 @@ grenade_launcher_name				= wpn_addon_grenade_launcher_m203
 grenade_launcher_x          		= 109
 grenade_launcher_y          		= 30
 
-silencer_name						= wpn_addon_pistol_suppressor
+silencer_name						= wpn_addon_rifle_suppressor
 silencer_x							= 204
 silencer_y							= 19
 
@@ -222,7 +222,7 @@ anm_bore_empty                           = wpn_hand_sig550_boring, wpn_sig550_ta
 item_visual						 		 = dynamics\weapons\wpn_sig550\wpn_sig550_hud.ogf
 
 ;-----------------------------------------------------------------------------
-; ְההמםû
+; Addons
 ;-----------------------------------------------------------------------------
 
 [wpn_sig550_barska_scope]:wpn_sig550
@@ -230,12 +230,13 @@ $spawn             		            = "weapons\wpn_sig550_barska_scope"
 hud						            = wpn_sig550_barska_scope_hud
 scope_x                             = 67
 scope_y                             = 0
+visual								= dynamics\weapons\wpn_sig550\wpn_sig550_barska.ogf
 
 [wpn_sig550_barska_scope_hud]:wpn_sig550_hud
-aim_hud_offset_pos					= -0.045780,0.007331,-0.047963
-aim_hud_offset_rot					= -0.006740,0.003345,0.000000
-aim_hud_offset_pos_16x9				= -0.045780,0.007331,-0.047963
-aim_hud_offset_rot_16x9				= -0.006740,0.003345,0.000000
+aim_hud_offset_pos					= -0.044780,0.013831,-0.068963
+aim_hud_offset_rot					= 0.012510,0.000845,0.000000
+aim_hud_offset_pos_16x9				= -0.044780,0.013831,-0.068963
+aim_hud_offset_rot_16x9				= 0.012510,0.000845,0.000000
 item_visual            	 			= dynamics\weapons\wpn_sig550\wpn_sig550_barska_hud.ogf
 
 [wpn_sig550_eotech_scope]:wpn_sig550
@@ -243,12 +244,13 @@ $spawn             		            = "weapons\wpn_sig550_eotech_scope"
 hud						            = wpn_sig550_eotech_scope_hud
 scope_x                             = 67
 scope_y                             = -1
+visual								= dynamics\weapons\wpn_sig550\wpn_sig550_eotech.ogf
 
 [wpn_sig550_eotech_scope_hud]:wpn_sig550_hud
 aim_hud_offset_pos					= -0.044380,0.004131,-0.047963
-aim_hud_offset_rot					= -0.003490,0.002370,0.000000
+aim_hud_offset_rot					= 0.005010,0.000870,0.000000
 aim_hud_offset_pos_16x9				= -0.044380,0.004131,-0.047963
-aim_hud_offset_rot_16x9				= -0.003490,0.002370,0.000000
+aim_hud_offset_rot_16x9				= 0.005010,0.000870,0.000000
 item_visual            	 			= dynamics\weapons\wpn_sig550\wpn_sig550_eotech_hud.ogf
 
 [wpn_sig550_acog_scope]:wpn_sig550
@@ -256,12 +258,13 @@ $spawn					            = "weapons\wpn_sig550_acog_scope"
 hud						            = wpn_sig550_acog_scope_hud
 scope_x                             = 58
 scope_y                             = 3
+visual            	 				= dynamics\weapons\wpn_sig550\wpn_sig550_acog.ogf
 
 [wpn_sig550_acog_scope_hud]:wpn_sig550_hud
-aim_hud_offset_pos					= -0.045080,0.005731,-0.047963
-aim_hud_offset_rot					= -0.008340,0.006770,0.000000
-aim_hud_offset_pos_16x9				= -0.045080,0.005731,-0.047963
-aim_hud_offset_rot_16x9				= -0.008340,0.006770,0.000000
+aim_hud_offset_pos					= -0.045080,0.005731,-0.087963
+aim_hud_offset_rot					= -0.009590,0.004520,0.000000
+aim_hud_offset_pos_16x9				= -0.045080,0.005731,-0.087963
+aim_hud_offset_rot_16x9				= -0.009590,0.004520,0.000000
 item_visual            	 		    = dynamics\weapons\wpn_sig550\wpn_sig550_acog_hud.ogf
 
 [wpn_sig550_pn23_scope]:wpn_sig550
@@ -269,12 +272,13 @@ $spawn					            = "weapons\wpn_sig550_pn23_scope"
 hud						            = wpn_sig550_pn23_scope_hud
 scope_x                             = 57
 scope_y                             = 1
+visual								= dynamics\weapons\wpn_sig550\wpn_sig550_pn23.ogf
 
 [wpn_sig550_pn23_scope_hud]:wpn_sig550_hud
-aim_hud_offset_pos					= -0.044350,-0.001540,-0.096700
-aim_hud_offset_rot					= 0.000150,0.000900,0.000000
-aim_hud_offset_pos_16x9				= -0.044350,-0.001540,-0.096700
-aim_hud_offset_rot_16x9				= 0.000150,0.000900,0.000000
+aim_hud_offset_pos					= -0.044350,-0.001540,-0.074700
+aim_hud_offset_rot					= 0.014900,-0.000850,0.000000
+aim_hud_offset_pos_16x9				= -0.044350,-0.001540,-0.074700
+aim_hud_offset_rot_16x9				= 0.014900,-0.000850,0.000000
 item_visual            	 		    = dynamics\weapons\wpn_sig550\wpn_sig550_pn23_hud.ogf
 
 [wpn_sig550_specter_scope]:wpn_sig550
@@ -282,14 +286,15 @@ $spawn                          	= "weapons\wpn_sig550_specter_scope"
 hud                             	= wpn_sig550_specter_scope_hud
 scope_x                         	= 61
 scope_y                         	= -1
+visual								= dynamics\weapons\wpn_sig550\wpn_sig550_specter.ogf
 
 [wpn_sig550_specter_scope_hud]:wpn_sig550_hud
-aim_hud_offset_pos					= -0.044080,0.010931,-0.098663
-aim_hud_offset_rot					= -0.002865,0.002345,0.000000
-aim_hud_offset_pos_16x9				= -0.044080,0.010931,-0.098663
-aim_hud_offset_rot_16x9				= -0.002865,0.002345,0.000000
-aim_hud_offset_alt_pos				= -0.044180,-0.008969,-0.047963
-aim_hud_offset_alt_rot				= -0.007810,0.003210,0.000000
-aim_hud_offset_alt_pos_16x9			= -0.044180,-0.008969,-0.047963
-aim_hud_offset_alt_rot_16x9			= -0.007810,0.003210,0.000000
+aim_hud_offset_pos					= -0.045080,0.008931,-0.098663
+aim_hud_offset_rot					= -0.001115,0.003095,0.000000
+aim_hud_offset_pos_16x9				= -0.045080,0.008931,-0.098663
+aim_hud_offset_rot_16x9				= -0.001115,0.003095,0.000000
+aim_hud_offset_alt_pos				= -0.044680,-0.013469,-0.047963
+aim_hud_offset_alt_rot				= -0.011060,0.000960,0.000000
+aim_hud_offset_alt_pos_16x9			= -0.044680,-0.013469,-0.047963
+aim_hud_offset_alt_rot_16x9			= -0.011060,0.000960,0.000000
 item_visual							= dynamics\weapons\wpn_sig550\wpn_sig550_specter_hud.ogf
