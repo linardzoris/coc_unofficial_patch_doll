@@ -80,7 +80,6 @@ void CActor::g_fireParams(CHudItem* pHudItem, Fvector& fire_pos, Fvector& fire_d
             // fire_dir = weapon->get_LastFD();
             fire_pos = weapon->get_LastFP();
         }
-        }
     }
 }
 
