@@ -18,13 +18,14 @@ CUICellItem* CUICellItem::m_mouse_selected_item = NULL;
 
 CUICellItem::CUICellItem()
 {
-    m_pParentList = NULL;
-    m_pData = NULL;
-    m_custom_draw = NULL;
-    m_text = NULL;
-    //-	m_mark				= NULL;
-    m_upgrade = NULL;
-    m_pConditionState = NULL;
+    m_pParentList = nullptr;
+    m_pData = nullptr;
+    m_custom_draw = nullptr;
+    m_text = nullptr;
+    m_upgrade = nullptr;
+    m_qmark = nullptr;
+    m_radioactive = nullptr;
+    m_pConditionState = nullptr;
     m_drawn_frame = 0;
     SetAccelerator(0);
     m_b_destroy_childs = true;
@@ -33,6 +34,8 @@ CUICellItem::CUICellItem()
     m_select_equipped = false;
     m_cur_mark = false;
     m_has_upgrade = false;
+    m_is_quest = false;
+    m_is_radioactive = false;
 
     init();
 }
@@ -56,18 +59,26 @@ void CUICellItem::init()
     CUIXmlInit::InitStatic(uiXml, "cell_item_text", 0, m_text);
     m_text->Show(false);
 
-    /*	m_mark					= new CUIStatic();
-        m_mark->SetAutoDelete	( true );
-        AttachChild				( m_mark );
-        CUIXmlInit::InitStatic	( uiXml, "cell_item_mark", 0, m_mark );
-        m_mark->Show			( false );*/
-
     m_upgrade = new CUIStatic();
     m_upgrade->SetAutoDelete(true);
     AttachChild(m_upgrade);
     CUIXmlInit::InitStatic(uiXml, "cell_item_upgrade", 0, m_upgrade);
     m_upgrade_pos = m_upgrade->GetWndPos();
     m_upgrade->Show(false);
+
+	m_qmark = new CUIStatic();
+    m_qmark->SetAutoDelete(true);
+    AttachChild(m_qmark);
+    CUIXmlInit::InitStatic(uiXml, "cell_item_quest_mark", 0, m_qmark);
+    m_qmark_pos = m_qmark->GetWndPos();
+    m_qmark->Show(false);
+
+	m_radioactive = new CUIStatic();
+    m_radioactive->SetAutoDelete(true);
+    AttachChild(m_radioactive);
+    CUIXmlInit::InitStatic(uiXml, "cell_item_radioactive_mark", 0, m_radioactive);
+    m_radioactive_pos = m_radioactive->GetWndPos();
+    m_radioactive->Show(false);
 
     m_pConditionState = new CUIProgressBar();
     m_pConditionState->SetAutoDelete(true);
@@ -108,22 +119,49 @@ void CUICellItem::Update()
     }
 
     PIItem item = (PIItem)m_pData;
+
     if (item)
     {
         m_has_upgrade = item->has_any_upgrades();
+        m_is_quest = item->IsQuestItem();
+        m_is_radioactive = item->IsRadioactive();
 
         //		Fvector2 size      = GetWndSize();
         //		Fvector2 up_size = m_upgrade->GetWndSize();
         //		pos.x = size.x - up_size.x - 4.0f;
         Fvector2 pos;
-        pos.set(m_upgrade_pos);
-        if (ChildsCount())
+
+		if (m_has_upgrade)
         {
-            pos.x += m_text->GetWndSize().x + 2.0f;
+            pos.set(m_upgrade_pos);
+            if (ChildsCount())
+            {
+                pos.x += m_text->GetWndSize().x + 2.0f;
+            }
+            m_upgrade->SetWndPos(pos);
         }
-        m_upgrade->SetWndPos(pos);
+        if (m_is_quest)
+        {
+            pos.set(m_qmark_pos);
+            Fvector2 size = GetWndSize();
+            Fvector2 up_size = m_qmark->GetWndSize();
+            pos.x = size.x - up_size.x - 4.0f; // making pos at right-end of cell
+            pos.y = size.y - up_size.y - 4.0f; // making pos at bottom-end of cell
+            m_qmark->SetWndPos(pos);
+        }
+        if (m_is_radioactive)
+        {
+            pos.set(m_radioactive_pos);
+            Fvector2 size = GetWndSize();
+            Fvector2 up_size = m_radioactive->GetWndSize();
+            pos.x = size.x - up_size.x - 4.0f; // making pos at right-end of cell
+            pos.y = size.y - up_size.y - 4.0f; // making pos at bottom-end of cell
+            m_radioactive->SetWndPos(pos);
+        }
     }
     m_upgrade->Show(m_has_upgrade);
+    m_qmark->Show(m_is_quest);
+    m_radioactive->Show(m_is_radioactive);
 }
 
 bool CUICellItem::OnMouseAction(float x, float y, EUIMessages mouse_action)

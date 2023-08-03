@@ -120,6 +120,7 @@ public:
     IC float GetPower() const { return m_fPower; }
 	IC void	 SetPower(float val) { m_fPower = val; clamp(m_fPower, 0.f, m_fPowerMax); }
     IC float GetRadiation() const { return m_fRadiation; }
+	IC void	 SetRadiation(float val) { m_fRadiation = val; clamp(m_fRadiation, 0.f, m_fRadiationMax); }
     IC float GetPsyHealth() const { return m_fPsyHealth; }
     IC float GetSatiety() const { return 1.0f; }
     IC float GetThirst() const { return 1.0f; }

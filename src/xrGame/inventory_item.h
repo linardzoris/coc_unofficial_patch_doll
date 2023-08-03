@@ -146,6 +146,8 @@ public:
 
     BOOL IsInvalid() const;
 
+    bool m_bRadioactive;
+    BOOL IsRadioactive() const { return m_bRadioactive; }
     BOOL IsQuestItem() const { return m_flags.test(FIsQuestItem); }
     virtual u32 Cost() const { return m_cost; }
     //			u32					Cost				()	const	{ return m_cost; }

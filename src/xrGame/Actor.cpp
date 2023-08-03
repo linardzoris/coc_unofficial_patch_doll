@@ -1730,25 +1730,22 @@ void CActor::UpdateArtefactsOnBeltAndOutfit()
     float walk_accel_add = 0.00;
 
     // Артефакт
-    if (GameConstants::GetAfRadiationBackpack())
+    for (auto& it : inventory().m_all)
     {
-        for (auto& it : inventory().m_all)
+        const auto artefact = smart_cast<CArtefact*>(it);
+
+        if (GameConstants::GetAfRadiationBackpack() && artefact)
         {
-            const auto artefact = smart_cast<CArtefact*>(it);
+            float art_cond = artefact->GetCondition();
 
-            if (artefact)
+            if (artefact->m_fRadiationRestoreSpeed * art_cond > 0.0f)
             {
-                float art_cond = artefact->GetCondition();
-
-                if (artefact->m_fRadiationRestoreSpeed * art_cond > 0.0f)
-                {
-                    float val = artefact->m_fRadiationRestoreSpeed * art_cond - conditions().GetBoostRadiationImmunity();
-                    clamp(val, 0.0f, val);
-                    conditions().ChangeRadiation(val * f_update_time);
-                }
-                else
-                    conditions().ChangeRadiation(artefact->m_fRadiationRestoreSpeed * art_cond * f_update_time);
+                float val = artefact->m_fRadiationRestoreSpeed * art_cond - conditions().GetBoostRadiationImmunity();
+                clamp(val, 0.0f, val);
+                conditions().ChangeRadiation(val * f_update_time);
             }
+            else
+                conditions().ChangeRadiation(artefact->m_fRadiationRestoreSpeed * art_cond * f_update_time);
         }
     }
 

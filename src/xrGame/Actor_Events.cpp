@@ -267,6 +267,9 @@ void CActor::OnEvent(NET_Packet& P, u16 type)
                 }
                 else
                     inventory().Eat(iitem);
+
+                //if (pItemToEat->IsRadioactive()) // Есть и есть, может пригодится потом
+                   //conditions().ChangeRadiation(Random.randF(0.0f, 0.5f));
             }
             break; // 2
         } // switch

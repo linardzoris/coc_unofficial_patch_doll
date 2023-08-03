@@ -61,6 +61,7 @@ CInventoryItem::CInventoryItem()
     m_Description = "";
     m_section_id = 0;
     m_bCanUse = true;
+    m_bRadioactive = false;
     m_flags.set(FIsHelperItem, FALSE);
     m_flags.set(FCanStack, TRUE);
 }
@@ -128,6 +129,7 @@ void CInventoryItem::Load(LPCSTR section)
 
     m_fLowestBatteryCharge = READ_IF_EXISTS(pSettings, r_float, section, "power_critical", .03f);
     m_bCanUse = READ_IF_EXISTS(pSettings, r_bool, section, "can_use", true);
+    m_bRadioactive = READ_IF_EXISTS(pSettings, r_bool, section, "is_radioactive", false);
 }
 
 void CInventoryItem::ReloadNames()
