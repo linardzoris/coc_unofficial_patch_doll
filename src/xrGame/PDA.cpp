@@ -425,7 +425,7 @@ void CPda::UpdateCL()
 
         clamp(g_pGamePersistent->pda_shader_data.pda_display_factor, 0.f, 1.f);
     }
-    if (GameConstants::GetSSS_DoF())
+    if (psActorFlags.test(AF_SSFX_DOF))
     {
         if (m_bZoomed)
         {

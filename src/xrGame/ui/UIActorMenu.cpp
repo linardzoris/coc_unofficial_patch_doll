@@ -152,7 +152,7 @@ void CUIActorMenu::SetMenuMode(EMenuMode mode)
     }
     UpdateButtonsLayout();
 
-	if (GameConstants::GetSSS_DoF() && m_currMenuMode >= 1)
+	if (psActorFlags.test(AF_SSFX_DOF) && m_currMenuMode >= 1)
     {
         ps_ssfx_wpn_dof_1 = GameConstants::GetSSFX_FocusDoF();
         ps_ssfx_wpn_dof_2 = GameConstants::GetSSFX_FocusDoF().z;

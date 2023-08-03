@@ -19,8 +19,6 @@ bool m_bWeaponDistantSounds = false;
 bool m_bBeltTwoRows = false;
 bool m_bEqualWeaponSlots = false;
 
-bool m_bSSS_DoF = false;
-
 Fvector4 m_FV4DefaultDoF = Fvector4().set(0.1f, 0.25f, 0.0f, 0.0f);
 Fvector4 m_FV4FocusDoF = Fvector4().set(0.1f, 0.25f, 0.0f, 0.0f);
 
@@ -52,7 +50,6 @@ namespace GameConstants
         m_bBeltTwoRows = READ_IF_EXISTS(pSettings, r_bool, "gameplay", "belt_two_rows", false); // inventory
         m_bEqualWeaponSlots = READ_IF_EXISTS(pSettings, r_bool, "gameplay", "equal_weapon_slots", false);
 
-        m_bSSS_DoF = READ_IF_EXISTS(pSettings, r_bool, "gameplay", "SSS_DoF", false);
 		m_FV4DefaultDoF = READ_IF_EXISTS(pSettings, r_fvector4, "gameplay", "SSS_default_dof", Fvector4().set(0.1f, 0.25f, 0.0f, 0.0f));
 		m_FV4FocusDoF = READ_IF_EXISTS(pSettings, r_fvector4, "gameplay", "SSS_focus_dof", Fvector4().set(0.1f, 0.25f, 0.0f, 0.0f));
 	}
@@ -107,11 +104,6 @@ namespace GameConstants
 	bool GetEqualWeaponSlots()
 	{
 		return m_bEqualWeaponSlots;
-	}
-
-	bool GetSSS_DoF()
-	{
-		return m_bSSS_DoF;
 	}
 
 	Fvector4 GetSSFX_DefaultDoF()

@@ -2976,7 +2976,7 @@ void CWeapon::OnStateSwitch(u32 S, u32 oldState)
     inherited::OnStateSwitch(S, oldState);
     m_BriefInfo_CalcFrame = 0;
 
-    if (GameConstants::GetSSS_DoF())
+    if (psActorFlags.test(AF_SSFX_DOF))
     {
         if (H_Parent() == Level().CurrentEntity())
         {

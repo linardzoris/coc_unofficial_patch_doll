@@ -1769,6 +1769,8 @@ void CCC_RegisterCommands()
     CMD4(CCC_Integer, "g_3d_scopes_fps_factor", &g_3dscopes_fps_factor, 2, 5);
     psActorFlags.set(AF_ITEM_ANIMATIONS_ENABLE, FALSE);
     CMD3(CCC_Mask, "g_item_animations", &psActorFlags, AF_ITEM_ANIMATIONS_ENABLE);
+    psActorFlags.set(AF_SSFX_DOF, TRUE);
+    CMD3(CCC_Mask, "g_ssfx_dof", &psActorFlags, AF_SSFX_DOF);
 
     CMD1(CCC_GameDifficulty, "g_game_difficulty");
     CMD1(CCC_GameLanguage, "g_language");
