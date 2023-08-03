@@ -75,17 +75,11 @@ void CActor::g_fireParams(CHudItem* pHudItem, Fvector& fire_pos, Fvector& fire_d
     }
     else if (auto weapon = smart_cast<CWeapon*>(pHudItem))
     {
-        if (g_SingleGameDifficulty == egdMaster)
+        if ((g_SingleGameDifficulty == egdMaster || weapon->IsLaserAttached() && weapon->IsLaserShaderOn() || !psHUD_Flags.test(HUD_CROSSHAIR)) && cam_active == eacFirstEye && !(weapon->IsZoomed() && !weapon->IsRotatingToZoom()))
         {
+            // fire_dir = weapon->get_LastFD();
             fire_pos = weapon->get_LastFP();
         }
-        else
-        {
-            if ((weapon->IsLaserAttached() && weapon->IsLaserShaderOn() || !psHUD_Flags.test(HUD_CROSSHAIR)) && cam_active == eacFirstEye && !(weapon->IsZoomed() && !weapon->IsRotatingToZoom()))
-            {
-                // fire_dir = weapon->get_LastFD();
-                fire_pos = weapon->get_LastFP();
-            }
         }
     }
 }
