@@ -361,6 +361,19 @@ static class cl_screen_res : public R_constant_setup
     }
 } binder_screen_res;
 
+static class cl_screen_params : public R_constant_setup
+{
+    Fvector4 result;
+    virtual void setup(R_constant* C)
+    {
+        float fov = float(Device.fFOV);
+        float aspect = float(Device.fASPECT);
+        result.set(fov, aspect, tan(deg2rad(fov) / 2), g_pGamePersistent->Environment().CurrentEnv->far_plane * 0.75f);
+        RCache.set_c(C, result);
+    }
+};
+static cl_screen_params binder_screen_params;
+
 // SM_TODO: RCache.hemi заменить на более "логичное" место
 static class cl_hud_params : public R_constant_setup //--#SM+#--
 {
@@ -599,6 +612,7 @@ void CBlender_Compile::SetMapping()
     r_Constant("L_ambient", &binder_amb_color);
 #endif
     r_Constant("screen_res", &binder_screen_res);
+    r_Constant("screen_params", &binder_screen_params);
 
     // PDA display
     r_Constant("pda_params", &binder_pda_params);

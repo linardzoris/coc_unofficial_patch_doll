@@ -44,6 +44,8 @@ protected:
 
     virtual bool install_upgrade_impl(LPCSTR section, bool test);
 
+    IC int GetTorchNV_Type() const { return m_NightVisionType; }
+
 private:
     inline bool can_use_dynamic_lights();
 
@@ -69,6 +71,7 @@ public:
     void Switch();
     void Switch(bool light_on);
     bool torch_active() const;
+    u32 m_NightVisionType;
 
     virtual bool can_be_attached() const;
 

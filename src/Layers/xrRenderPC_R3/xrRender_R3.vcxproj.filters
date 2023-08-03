@@ -1253,6 +1253,12 @@
     <ClCompile Include="..\xrRender\rendertarget_phase_blur.cpp">
       <Filter>Core_Target</Filter>
     </ClCompile>	
+    <ClCompile Include="..\xrRender\rendertarget_phase_nightvision.cpp">
+      <Filter>Core_Target</Filter>
+    </ClCompile>
+    <ClCompile Include="..\xrRender\rendertarget_phase_pp_bloom.cpp">
+      <Filter>Core_Target</Filter>
+    </ClCompile>	
     <ClCompile Include="blender_dof.cpp">
       <Filter>Shading templates</Filter>
     </ClCompile>
@@ -1272,6 +1278,12 @@
       <Filter>Shading templates</Filter>
     </ClCompile>	
     <ClCompile Include="blender_blur.cpp">
+      <Filter>Shading templates</Filter>
+    </ClCompile>	
+    <ClCompile Include="blender_nightvision.cpp">
+      <Filter>Shading templates</Filter>
+    </ClCompile>
+    <ClCompile Include="blender_pp_bloom.cpp">
       <Filter>Shading templates</Filter>
     </ClCompile>	
     <ClCompile Include="..\xrRenderDX10\MSAA\dx10MSAABlender.cpp">

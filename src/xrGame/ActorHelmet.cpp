@@ -15,6 +15,7 @@ CHelmet::CHelmet()
 
     m_boneProtection = new SBoneProtections();
     m_b_HasGlass = false;
+    m_NightVisionType = 0;
 }
 
 CHelmet::~CHelmet() { xr_delete(m_boneProtection); }
@@ -59,6 +60,7 @@ void CHelmet::Load(LPCSTR section)
     m_flags.set(FUsingCondition, READ_IF_EXISTS(pSettings, r_bool, section, "use_condition", true));
 
 	m_b_HasGlass = !!READ_IF_EXISTS(pSettings, r_bool, section, "has_glass", FALSE);
+    m_NightVisionType = READ_IF_EXISTS(pSettings, r_u32, section, "night_vision_type", 0);
 }
 
 void CHelmet::ReloadBonesProtection()
@@ -204,6 +206,8 @@ bool CHelmet::install_upgrade_impl(LPCSTR section, bool test)
     result2 = process_if_exists_set(section, "bones_koeff_protection_add", &CInifile::r_string, str, test);
     if (result2 && !test)
         AddBonesProtection(str);
+
+    result |= process_if_exists(section, "night_vision_type", &CInifile::r_u32, m_NightVisionType, test);
 
     return result;
 }

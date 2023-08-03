@@ -15,6 +15,7 @@ public:
 	CNightVisionEffector(const shared_str& sect, u16 effID = effNightvision);
 	void		Start(const shared_str& sect, CActor* pA, bool play_sound = true);
 	void		Stop(const float factor, bool play_sound = true);
+    void        StopOnlyEffector(const float factor);
     void        StartForScope(const shared_str& sect, CActor* pA, bool play_sound = true);
     void        StopForScope(const float factor, bool play_sound = true);
 	bool		IsActive();

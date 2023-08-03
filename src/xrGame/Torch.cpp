@@ -51,6 +51,8 @@ CTorch::CTorch(void)
 
     m_light_section = "torch_definition";
 	torch_mode = 1;
+
+    m_NightVisionType = 0;
 }
 
 CTorch::~CTorch()
@@ -146,6 +148,8 @@ void CTorch::Load(LPCSTR section)
         m_NightVisionSect = pSettings->r_string(section, "nightvision_sect");
     else
         m_NightVisionSect = "";
+
+    m_NightVisionType = READ_IF_EXISTS(pSettings, r_u32, section, "night_vision_type", 0);
 }
 
 void CTorch::Switch()
@@ -562,6 +566,7 @@ bool CTorch::install_upgrade_impl(LPCSTR section, bool test)
     result |= process_if_exists(section, "passive_decay_rate", &CInifile::r_float, m_fPassiveDecayRate, test);
     result |= process_if_exists(section, "power_decay_rate", &CInifile::r_float, m_fDecayRate, test);
     result |= process_if_exists(section, "inv_weight", &CInifile::r_float, m_weight, test);
+    result |= process_if_exists(section, "night_vision_type", &CInifile::r_u32, m_NightVisionType, test);
 
     bool value = m_bTorchModeEnabled;
     bool result2 = process_if_exists_set(section, "torch_allowed", &CInifile::r_bool, value, test);

@@ -28,6 +28,7 @@ CCustomOutfit::CCustomOutfit()
     m_artefact_count = 0;
     m_BonesProtectionSect = NULL;
     m_b_HasGlass = false;
+    m_NightVisionType = 0;
 }
 
 CCustomOutfit::~CCustomOutfit() 
@@ -124,6 +125,7 @@ void CCustomOutfit::Load(LPCSTR section)
     m_flags.set(FUsingCondition, READ_IF_EXISTS(pSettings, r_bool, section, "use_condition", true));
 
 	m_b_HasGlass = !!READ_IF_EXISTS(pSettings, r_bool, section, "has_glass", FALSE);
+    m_NightVisionType = READ_IF_EXISTS(pSettings, r_u32, section, "night_vision_type", 0);
 }
 
 void CCustomOutfit::ReloadBonesProtection()
@@ -371,6 +373,7 @@ bool CCustomOutfit::install_upgrade_impl(LPCSTR section, bool test)
     result |= process_if_exists(section, "thirst_restore_speed", &CInifile::r_float, m_fThirstRestoreSpeed, test);
     result |= process_if_exists(section, "intoxication_restore_speed", &CInifile::r_float, m_fIntoxicationRestoreSpeed, test);
     result |= process_if_exists(section, "sleepeness_restore_speed", &CInifile::r_float, m_fSleepenessRestoreSpeed, test);
+    result |= process_if_exists(section, "night_vision_type", &CInifile::r_u32, m_NightVisionType, test);
 
     result |= process_if_exists(section, "power_loss", &CInifile::r_float, m_fPowerLoss, test);
     clamp(m_fPowerLoss, 0.0f, 1.0f);

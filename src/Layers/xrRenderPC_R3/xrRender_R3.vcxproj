@@ -406,6 +406,8 @@
     <ClCompile Include="..\xrRender\rendertarget_phase_blur.cpp" />	
 	<ClCompile Include="..\xrRender\rendertarget_phase_dof.cpp" />
     <ClCompile Include="..\xrRender\rendertarget_raindrops.cpp" />	
+    <ClCompile Include="..\xrRender\rendertarget_phase_nightvision.cpp" />
+    <ClCompile Include="..\xrRender\rendertarget_phase_pp_bloom.cpp" />	
     <ClCompile Include="..\xrRender\rendertarget_phase_hud_effects.cpp" />	
     <ClCompile Include="..\xrRender\rendertarget_phase_hud_mask.cpp" />	
     <ClCompile Include="..\xrRender\ResourceManager.cpp" />
@@ -447,6 +449,8 @@
     <ClCompile Include="..\xrRender\xr_effgamma.cpp" />
     <ClCompile Include="blender_bloom_build.cpp" />
 	<ClCompile Include="blender_blur.cpp" />
+    <ClCompile Include="blender_nightvision.cpp" />
+    <ClCompile Include="blender_pp_bloom.cpp" />	
     <ClCompile Include="blender_combine.cpp" />
     <ClCompile Include="blender_deffer_aref.cpp" />
     <ClCompile Include="blender_deffer_flat.cpp" />

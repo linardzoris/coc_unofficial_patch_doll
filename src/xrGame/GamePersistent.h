@@ -105,10 +105,12 @@ public:
     virtual void OnAssetsChanged();
 
     int GetHudGlassElement();
+    int GetNightvisionType();
     bool GetHudGlassEnabled();
     bool GetActorAliveStatus();
     bool GetActor();
     bool IsCamFirstEye();
+    bool GetActorNightvision();
     float GetActorMaxHealth() override;
     float GetActorHealth() override;
     float GetActorMaxPower() override;

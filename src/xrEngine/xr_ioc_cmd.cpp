@@ -658,6 +658,8 @@ ENGINE_API int ps_r__Supersample = 1;
 int sheduler_smoother_max_per_time      = 10;
 int sheduler_smoother_frame_size        = 100;
 
+ENGINE_API int ps_r__ShaderNVG = 0;
+
 void CCC_Register()
 {
     // General
@@ -703,6 +705,7 @@ void CCC_Register()
     CMD4(CCC_Integer, "r__supersample", &ps_r__Supersample, 1, 4);
 
     CMD4(CCC_Integer, "rs_loadingstages", &ps_rs_loading_stages, 0, 1);
+    CMD4(CCC_Integer, "r__shader_nvg", &ps_r__ShaderNVG, 0, 1);     // Nightvision Type (PPE/Shader)
     CMD3(CCC_Mask, "rs_v_sync", &psDeviceFlags, rsVSync);
     // CMD3(CCC_Mask, "rs_disable_objects_as_crows",&psDeviceFlags, rsDisableObjectsAsCrows );
     CMD3(CCC_Mask, "rs_fullscreen", &psDeviceFlags, rsFullscreen);

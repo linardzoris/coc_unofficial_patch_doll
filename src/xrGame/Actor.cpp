@@ -105,6 +105,8 @@ static Fvector vFootExt;
 Flags32 psActorFlags = {AF_GODMODE_RT | AF_AUTOPICKUP | AF_RUN_BACKWARD | AF_IMPORTANT_SAVE | AF_USE_TRACERS };
 int psActorSleepTime = 1;
 
+ENGINE_API extern int ps_r__ShaderNVG;
+
 CActor::CActor() : CEntityAlive(), current_ik_cam_shift(0)
 {
     game_news_registry = new CGameNewsRegistryWrapper();
@@ -2318,7 +2320,7 @@ void CActor::SwitchNightVision(bool vision_on, bool use_sounds, bool send_event)
         }
     }
 
-    if (!m_bNightVisionOn && bIsActiveNow)
+    if ((!m_bNightVisionOn && bIsActiveNow) || (!m_bNightVisionOn && ps_r__ShaderNVG == 1))
     {
         m_night_vision->Stop(100000.0f, use_sounds);
         m_bTorchNightVision = false;

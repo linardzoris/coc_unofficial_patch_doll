@@ -273,6 +273,9 @@ float ps_r2_slight_fade = 0.5f; // 1.f
 Fvector4 ps_shader_wpn_laser = {.0f, .0f, .0f, .0f};
 
 // debug
+Fvector4 ps_pp_bloom_thresh = {.7, .8f, .9f, .0f};
+Fvector4 ps_pp_bloom_weight = {.33f, .33f, .33f, .0f};
+
 Fvector4 ps_dev_param_1 = {.0f, .0f, .0f, .0f};
 Fvector4 ps_dev_param_2 = {.0f, .0f, .0f, .0f};
 Fvector4 ps_dev_param_3 = {.0f, .0f, .0f, .0f};
@@ -873,6 +876,12 @@ public:
 //-----------------------------------------------------------------------
 void xrRender_initconsole()
 {
+
+	Fvector4 twb_min = {0.f, 0.f, 0.f, 0.f};
+    Fvector4 twb_max = {1.f, 1.f, 1.f, 1.f};
+    CMD4(CCC_Vector4, "r__bloom_weight", &ps_pp_bloom_weight, twb_min, twb_max);
+    CMD4(CCC_Vector4, "r__bloom_thresh", &ps_pp_bloom_thresh, twb_min, twb_max);
+
     Fvector4 tw2_min = {-100.f, -100.f, -100.f, -100.f};
     Fvector4 tw2_max = {100.f, 100.f, 100.f, 100.f};
 

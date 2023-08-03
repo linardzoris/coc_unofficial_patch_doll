@@ -1013,6 +1013,11 @@ int CGamePersistent::GetHudGlassElement()
 	return	(DynamicHudGlass::GetHudGlassElement());
 }
 
+int CGamePersistent::GetNightvisionType()
+{
+	return (DynamicHudGlass::GetNightvisionType());
+}
+
 bool CGamePersistent::GetHudGlassEnabled()
 {
 	return	(DynamicHudGlass::GetHudGlassEnabled());
@@ -1031,6 +1036,11 @@ bool CGamePersistent::IsCamFirstEye()
 bool CGamePersistent::GetActor()
 {
 	return	(Actor());
+}
+
+bool CGamePersistent::GetActorNightvision()
+{
+	return	(Actor()->GetNightVisionStatus());
 }
 
 float CGamePersistent::GetActorMaxHealth()

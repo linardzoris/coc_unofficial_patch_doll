@@ -22,6 +22,8 @@
 #include "blender_hud_bleeding.h"
 #include "blender_blur.h"
 #include "blender_dof.h"
+#include "blender_nightvision.h"
+#include "blender_pp_bloom.h"
 
 void CRenderTarget::u_setrt(const ref_rt& _1, const ref_rt& _2, const ref_rt& _3, ID3DDepthStencilView* zb)
 {
@@ -352,6 +354,8 @@ CRenderTarget::CRenderTarget()
     b_hud_bleeding = new CBlender_Hud_Bleeding();
     b_blur = new CBlender_blur();
     b_dof = new CBlender_dof();
+    b_nightvision = new CBlender_nightvision();
+    b_pp_bloom = new CBlender_pp_bloom();
 
     // HDAO
     b_hdao_cs = new CBlender_CS_HDAO();
@@ -470,6 +474,8 @@ CRenderTarget::CRenderTarget()
 
         rt_blur_h_8.create(r2_RT_blur_h_8, u32(w / 8), u32(h / 8), D3DFMT_A8R8G8B8);
         rt_blur_8.create(r2_RT_blur_8, u32(w / 8), u32(h / 8), D3DFMT_A8R8G8B8);
+
+        rt_pp_bloom.create(r2_RT_pp_bloom, w, h, D3DFMT_A8R8G8B8);
     }
 
     // OCCLUSION
@@ -494,6 +500,10 @@ CRenderTarget::CRenderTarget()
     s_blur.create(b_blur, "r2\\blur");
     // Anomaly DoF
     s_dof.create(b_dof, "r2\\dof");
+    // Nightvision
+    s_nightvision.create(b_nightvision, "r2\\nightvision");
+    // PP Bloom
+    s_pp_bloom.create(b_pp_bloom, "r2\\pp_bloom");
 
     // DIRECT (spot)
     pcstr smapTarget = r2_RT_smap_depth;
@@ -1151,6 +1161,8 @@ CRenderTarget::~CRenderTarget()
     xr_delete(b_hud_bleeding);
     xr_delete(b_blur);
     xr_delete(b_dof);
+    xr_delete(b_nightvision);
+    xr_delete(b_pp_bloom);
 
     if (RImplementation.o.dx10_msaa)
     {
