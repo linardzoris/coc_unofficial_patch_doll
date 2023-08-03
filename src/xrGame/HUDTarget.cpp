@@ -223,11 +223,16 @@ void CHUDTarget::Render()
 #endif
     }
 
-	if (auto Wpn = smart_cast<CWeapon*>(Actor->inventory().ActiveItem()); Wpn && Wpn->IsLaserAttached() && Wpn->IsLaserShaderOn())
+	if (g_SingleGameDifficulty == egdMaster)
         return;
+    else
+    {
+	    if (auto Wpn = smart_cast<CWeapon*>(Actor->inventory().ActiveItem()); Wpn && Wpn->IsLaserAttached() && Wpn->IsLaserShaderOn())
+            return;
 
-	if (smart_cast<CPda*>(Actor->inventory().ActiveItem()))
-        return;
+	    if (smart_cast<CPda*>(Actor->inventory().ActiveItem()))
+            return;
+    }
 
     //отрендерить кружочек или крестик
     if (!m_bShowCrosshair && crosshair_type == 1 || !m_bShowCrosshair && crosshair_type == 2 || !m_bShowCrosshair && crosshair_type == 3 || !m_bShowCrosshair && crosshair_type == 4)
