@@ -24,6 +24,8 @@
 #include "Grenade.h"
 #include "ActorUnVest.h"
 #include "XrayGameConstants.h"
+#include "ai/stalker/ai_stalker.h"
+#include "WeaponMagazined.h"
 
 using namespace InventoryUtilities;
 
@@ -126,6 +128,20 @@ void CInventory::Take(CGameObject* pObj, bool bNotActivate, bool strict_placemen
     // usually net_Import arrived for objects that not has a parent object..
     // for unknown reason net_Import arrived for object that has a parent, so correction prediction schema will crash
     Level().RemoveObject_From_4CrPr(pObj);
+
+	if (Level().CurrentEntity())
+    {
+        std::uint16_t actor_id = Level().CurrentEntity()->ID();
+        if (GetOwner()->object_id() == actor_id && this->m_pOwner->object_id() == actor_id) // actors inventory
+        {
+            CWeaponMagazined* pWeapon = smart_cast<CWeaponMagazined*>(pIItem);
+            if (pWeapon && pWeapon->strapped_mode())
+            {
+                pWeapon->strapped_mode(false);
+                Ruck(pWeapon);
+            }
+        }
+    }
 
     m_all.push_back(pIItem);
 
@@ -1346,7 +1362,19 @@ void CInventory::AddAvailableItems(TIItemContainer& items_container, bool for_tr
         }
     }
 
-    if (m_bSlotsUseful)
+	CAI_Stalker* pOwner = smart_cast<CAI_Stalker*>(m_pOwner);
+    if (pOwner && !pOwner->g_Alive())
+    {
+        std::uint16_t I = FirstSlot();
+        std::uint16_t E = LastSlot();
+        for (; I <= E; ++I)
+        {
+            PIItem item = ItemFromSlot(I);
+            if (item && (item->BaseSlot() != BOLT_SLOT))
+                items_container.push_back(item);
+        }
+    }
+    else if (m_bSlotsUseful)
     {
         u16 I = FirstSlot();
         u16 E = LastSlot();
@@ -1367,7 +1395,17 @@ void CInventory::AddAvailableItems(TIItemContainer& items_container, bool for_tr
                                 continue;
                         }
                     }
-                    items_container.push_back(item);
+                    if (pOwner)
+                    {
+                        std::uint32_t slot = item->BaseSlot();
+
+                        if (slot != INV_SLOT_3)
+                            items_container.push_back(item);
+                    }
+                    else
+                    {
+                        items_container.push_back(item);
+                    }
                 }
             }
         }
