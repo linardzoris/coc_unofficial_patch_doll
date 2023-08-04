@@ -26,8 +26,10 @@ namespace DynamicHudGlass
         CTorch* torch = smart_cast<CTorch*>(Actor()->inventory().ItemFromSlot(TORCH_SLOT));
 
         if (torch)
+        {
             NightVisionType = torch->m_NightVisionType;
-
+        }
+        else
 		if (helmet)
 		{
 			float condition = helmet->GetCondition();
