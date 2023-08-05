@@ -704,11 +704,18 @@
 	<string id="ui_mm_3d_scopes_fps_factor">
 		<text>FPS фактор в 3D прицелах</text>
 	</string>	
+	<string id="ui_mm_hint_3d_scopes_fps_factor">
+		<text>Чем выше - тем больше кадров пропускает и больше оптимизации.</text>
+	</string>		
 	
 	<string id="ui_mm_ssfx_dof_enable">
 		<text>SSFX DoF</text>
 	</string>	
 	<string id="ui_mm_hint_ssfx_dof_enable">
 		<text>Включает размытие во время перезарядки оружия, ковыряния в инвентаре, КПК и использовании предметов.</text>
-	</string>		
+	</string>	
+
+	<string id="ui_mm_shader_nvg">
+		<text>Шейдерные ПНВ</text>
+	</string>	
 </string_table>

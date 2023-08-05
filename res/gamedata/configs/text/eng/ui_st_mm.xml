@@ -710,11 +710,18 @@
 	<string id="ui_mm_3d_scopes_fps_factor">
 		<text>FPS factor in PiP scopes</text>
 	</string>		
+	<string id="ui_mm_hint_3d_scopes_fps_factor">
+		<text>The higher it is, the more frames it skips and the more optimization.</text>
+	</string>	
 	
 	<string id="ui_mm_ssfx_dof_enable">
 		<text>SSFX DoF</text>
 	</string>	
 	<string id="ui_mm_hint_ssfx_dof_enable">
 		<text>Includes blurring while reloading weapons, picking through inventory, PDA, and using items.</text>
+	</string>	
+
+	<string id="ui_mm_shader_nvg">
+		<text>Shader NVG's</text>
 	</string>		
 </string_table>
