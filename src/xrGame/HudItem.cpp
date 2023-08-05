@@ -81,6 +81,7 @@ void CHudItem::Load(LPCSTR section)
 
     m_strafe_offset[2].set(bStrafeEnabled ? 1.0f : 0.0f, fFullStrafeTime, 0.f); // normal
 
+    m_nearwall_enabled = READ_IF_EXISTS(pSettings, r_bool, section, "nearwall_on", true);
 	m_hud_fov_add_mod = READ_IF_EXISTS(pSettings, r_float, hud_sect, "hud_fov_addition_modifier", 0.f);
     m_nearwall_dist_min = READ_IF_EXISTS(pSettings, r_float, hud_sect, "nearwall_dist_min", 0.5f);
     m_nearwall_dist_max = READ_IF_EXISTS(pSettings, r_float, hud_sect, "nearwall_dist_max", 1.f);
@@ -796,7 +797,7 @@ void CHudItem::ReplaceHudSection(LPCSTR hud_section)
 
 float CHudItem::GetHudFov()
 {
-    if (smart_cast<CActor*>(this->object().H_Parent()) && (Level().CurrentViewEntity() == object().H_Parent()))
+    if (m_nearwall_enabled && ParentIsActor() && (Level().CurrentViewEntity() == object().H_Parent()))
     {
         collide::rq_result& RQ = HUD().GetCurrentRayQuery();
         float dist = RQ.range;

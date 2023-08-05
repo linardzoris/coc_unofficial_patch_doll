@@ -194,6 +194,7 @@ public:
     // SWM 3
     Fvector m_strafe_offset[3]; 
 
+    bool m_nearwall_enabled;
     float m_hud_fov_add_mod;
     float m_nearwall_dist_max;
     float m_nearwall_dist_min;
