@@ -257,4 +257,8 @@ extern void xrRender_initconsole();
 extern BOOL xrRender_test_hw();
 extern void xrRender_apply_tf();
 
+// Screen Space Shaders
+extern ECORE_API Fvector4 ps_ssfx_grass_shadows;
+extern ECORE_API Fvector3 ps_ssfx_shadow_cascades;
+
 #endif
