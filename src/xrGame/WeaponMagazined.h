@@ -72,8 +72,10 @@ public:
     virtual void switch2_Unmis();
     virtual void switch2_ChangeFireMode();
     virtual void switch2_AddonSwitch();
+    virtual void switch2_AmmoCheck();
     virtual void PlayAnimFireMode();
     virtual void PlayAnimAddonSwitch();
+    virtual void PlayAnimAmmoCheck();
     bool m_bNeedBulletInGun;
     bool m_bCartridgeInTheChamber;
     virtual bool bMarkCanShow() { return IsZoomed(); }
@@ -169,6 +171,7 @@ public:
     void OnPrevFireMode();
     void OnWeaponAddonLaserSwitch();
     void OnWeaponAddonFlashlightSwitch();
+    void OnWeaponAmmoCheck();
     bool HasFireModes() { return m_bHasDifferentFireModes; };
 
     int GetCurrentFireMode() override

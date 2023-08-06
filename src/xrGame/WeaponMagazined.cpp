@@ -106,6 +106,12 @@ void CWeaponMagazined::Load(LPCSTR section)
     m_sounds.LoadSound(section, "snd_empty", "sndEmptyClick", false, m_eSoundEmptyClick);
     m_sounds.LoadSound(section, "snd_reload", "sndReload", true, m_eSoundReload);
 
+	if (WeaponSoundExist(section, "snd_ammo_check"))
+        m_sounds.LoadSound(section, "snd_ammo_check", "sndAmmoCheck", false, m_eSoundEmptyClick);
+    if (WeaponSoundExist(section, "snd_ammo_check_empty"))
+        m_sounds.LoadSound(section, "snd_ammo_check_empty", "sndAmmoCheckEmpty", false, m_eSoundEmptyClick);
+    if (WeaponSoundExist(section, "snd_ammo_check_jammed"))
+        m_sounds.LoadSound(section, "snd_ammo_check_jammed", "sndAmmoCheckJammed", false, m_eSoundEmptyClick);
 	if (WeaponSoundExist(section, "snd_weapon_jam"))
         m_sounds.LoadSound(section, "snd_weapon_jam", "sndWpnJam", false, m_eSoundEmptyClick);
 	if (WeaponSoundExist(section, "snd_changefiremode"))
@@ -230,6 +236,7 @@ void CWeaponMagazined::FireStart()
                 if (GetState() == eFiremodePrev) return;
                 if (GetState() == eFiremodeNext) return;
                 if (GetState() == eSwitchAddon) return;
+                if (GetState() == eAmmoCheck) return;
 
                 inherited::FireStart();
 				
@@ -605,6 +612,10 @@ void CWeaponMagazined::OnStateSwitch(u32 S, u32 oldState)
         switch2_AddonSwitch();
     }
     break;
+    case eAmmoCheck: {
+        switch2_AmmoCheck();
+    }
+    break;
     }
 }
 
@@ -943,6 +954,21 @@ void CWeaponMagazined::OnAnimationEnd(u32 state)
     case eSwitchAddon: {
         SwitchState(eIdle);
         break;
+    }
+    case eAmmoCheck: {
+        SwitchState(eIdle);
+
+        if (smart_cast<CActor*>(this->H_Parent()) && (Level().CurrentViewEntity() == H_Parent()))
+        {
+            if (m_ammoElapsed.type1 == iMagazineSize)
+                CurrentGameUI()->AddCustomStatic("weapon_ammo_check_full", true);
+            else if (m_ammoElapsed.type1 == 0)
+                CurrentGameUI()->AddCustomStatic("weapon_ammo_check_empty", true);    
+            else
+                CurrentGameUI()->AddCustomStatic("weapon_ammo_check", true);  
+        }
+
+        break;
     } // End
     }
     inherited::OnAnimationEnd(state);
@@ -975,6 +1001,16 @@ void CWeaponMagazined::switch2_AddonSwitch()
 
     FireEnd();
     PlayAnimAddonSwitch();
+    SetPending(TRUE);
+}
+
+void CWeaponMagazined::switch2_AmmoCheck()
+{
+    if (GetState() != eAmmoCheck)
+        return;
+
+    FireEnd();
+    PlayAnimAmmoCheck();
     SetPending(TRUE);
 }
 
@@ -1033,6 +1069,35 @@ void CWeaponMagazined::PlayAnimAddonSwitch() // Для лазера/фонаря
             PlayHUDMotion("anm_addon_switch_jammed_w_gl", true, this, GetState());
         if (isHUDAnimationExist("anm_addon_switch_empty_jammed_w_gl") && IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 == 0)
             PlayHUDMotion("anm_addon_switch_empty_jammed_w_gl", true, this, GetState());
+    }
+}
+
+void CWeaponMagazined::PlayAnimAmmoCheck()
+{
+    if (!isHUDAnimationExist("anm_ammo_check"))
+        SwitchState(eIdle);
+
+    if (isHUDAnimationExist("anm_ammo_check"))
+    {
+        if (!IsMisfire() && !IsGrenadeLauncherAttached() && m_ammoElapsed.type1 > 0)
+            PlayHUDMotion("anm_ammo_check", true, this, GetState());
+        if (isHUDAnimationExist("anm_ammo_check_empty") && !IsMisfire() && !IsGrenadeLauncherAttached() && m_ammoElapsed.type1 == 0)
+            PlayHUDMotion("anm_ammo_check_empty", true, this, GetState());
+
+        if (isHUDAnimationExist("anm_ammo_check_w_gl") && !IsMisfire() && IsGrenadeLauncherAttached() && m_ammoElapsed.type1 > 0)
+            PlayHUDMotion("anm_ammo_check_w_gl", true, this, GetState());
+        if (isHUDAnimationExist("anm_ammo_check_empty_w_gl") && !IsMisfire() && IsGrenadeLauncherAttached() && m_ammoElapsed.type1 == 0)
+            PlayHUDMotion("anm_ammo_check_empty_w_gl", true, this, GetState());
+
+        if (isHUDAnimationExist("anm_ammo_check_jammed") && !IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 > 0)
+            PlayHUDMotion("anm_ammo_check_jammed", true, this, GetState());
+        if (isHUDAnimationExist("anm_ammo_check_empty_jammed") && !IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 == 0)
+            PlayHUDMotion("anm_ammo_check_empty_jammed", true, this, GetState());
+
+        if (isHUDAnimationExist("anm_ammo_check_jammed_w_gl") && IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 > 0)
+            PlayHUDMotion("anm_ammo_check_jammed_w_gl", true, this, GetState());
+        if (isHUDAnimationExist("anm_ammo_check_empty_jammed_w_gl") && IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 == 0)
+            PlayHUDMotion("anm_ammo_check_empty_jammed_w_gl", true, this, GetState());
     }
 }
 
@@ -1250,10 +1315,21 @@ bool CWeaponMagazined::Action(u16 cmd, u32 flags)
     {
         if (flags & CMD_START)
         {
-            if (!IsLaserAttached() || IsLaserAttached() && !bLaserSupportFlashlight)
+            if (!IsLaserAttached() || (IsLaserAttached() && !bLaserSupportFlashlight))
                 return false;
 
             OnWeaponAddonFlashlightSwitch();
+            return true;
+        };
+    }
+    break;
+    case kWPN_AMMO_CHECK: {
+        if (flags & CMD_START)
+        {
+            if (iMagazineSize == 0 || (IsGrenadeLauncherAttached() && m_bGrenadeMode))
+                return false;
+
+            OnWeaponAmmoCheck();
             return true;
         };
     }
@@ -2069,6 +2145,24 @@ void CWeaponMagazined::OnWeaponAddonFlashlightSwitch()
 
     if (HasFlashlight())
         SwitchFlashlight(!IsFlashlightOn());
+};
+
+void CWeaponMagazined::OnWeaponAmmoCheck()
+{
+    SwitchState(eAmmoCheck);
+
+    if (GetState() != eIdle)
+        return;
+
+    if (isHUDAnimationExist("anm_ammo_check"))
+    {
+        if (!IsMisfire() && m_ammoElapsed.type1 > 0)
+            PlaySound("sndAmmoCheck", get_LastFP());
+        if (isHUDAnimationExist("anm_ammo_check_empty") && m_ammoElapsed.type1 == 0)
+            PlaySound("sndAmmoCheckEmpty", get_LastFP());
+        if (isHUDAnimationExist("anm_ammo_check_jammed") && IsMisfire())
+            PlaySound("sndAmmoCheckJammed", get_LastFP());
+    }
 };
 
 void CWeaponMagazined::OnH_A_Chield()

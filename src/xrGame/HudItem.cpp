@@ -72,6 +72,7 @@ void CHudItem::Load(LPCSTR section)
     m_animation_slot = pSettings->r_u32(section, "animation_slot");
 
     m_sounds.LoadSound(section, "snd_bore", "sndBore", true);
+    m_sounds.LoadSound(section, "snd_bore_jammed", "sndBoreJammed", true);
 
 	m_strafe_offset[0] = READ_IF_EXISTS(pSettings, r_fvector3, hud_sect, "strafe_hud_offset_pos", Fvector().set(0.015f, 0.0f, 0.0f));
     m_strafe_offset[1] = READ_IF_EXISTS(pSettings, r_fvector3, hud_sect, "strafe_hud_offset_rot", Fvector().set(0.0f, 0.0f, 4.5f));
@@ -184,8 +185,10 @@ void CHudItem::OnStateSwitch(u32 S, u32 oldState)
         if (HudItemData())
         {
             Fvector P = HudItemData()->m_item_transform.c;
-            if (m_sounds.FindSoundItem("sndBore", false))
+            if (m_sounds.FindSoundItem("sndBore", false) && !IsMisfireNow())
                 m_sounds.PlaySound("sndBore", P, object().H_Root(), !!GetHUDmode(), false, m_started_rnd_anim_idx);
+            if (m_sounds.FindSoundItem("sndBoreJammed", false) && IsMisfireNow())
+                m_sounds.PlaySound("sndBoreJammed", P, object().H_Root(), !!GetHUDmode(), false, m_started_rnd_anim_idx);
         }
 
         break;

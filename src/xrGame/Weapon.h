@@ -164,6 +164,7 @@ public:
         eFiremodePrev,
         eFiremodeNext,
         eSwitchAddon,
+        eAmmoCheck,
     };
     enum EWeaponSubStates
     {

@@ -52,6 +52,7 @@ _action actions[] = {
     {"wpn_firemode_next", kWPN_FIREMODE_NEXT, _both},
 	{"wpn_addon_laser", kWPN_ADDON_LASER, _both}, 
 	{"wpn_addon_flashlight", kWPN_ADDON_FLASHLIGHT, _both}, 
+	{"wpn_ammo_check", kWPN_AMMO_CHECK, _both}, 
 
     {"pause", kPAUSE, _both},
     {"drop", kDROP, _both},
