@@ -116,6 +116,7 @@ public:
     float GetActorMaxPower() override;
     float GetActorPower() override;
     float GetActorBleeding() override;
+    float GetActorIntoxication() override;
 };
 
 IC CGamePersistent& GamePersistent() { return *((CGamePersistent*)g_pGamePersistent); }

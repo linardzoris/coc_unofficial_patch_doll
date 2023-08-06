@@ -1067,3 +1067,8 @@ float CGamePersistent::GetActorBleeding()
 {
 	return	(Actor()->conditions().BleedingSpeed());
 }
+
+float CGamePersistent::GetActorIntoxication()
+{
+	return	(Actor()->conditions().GetIntoxication());
+}

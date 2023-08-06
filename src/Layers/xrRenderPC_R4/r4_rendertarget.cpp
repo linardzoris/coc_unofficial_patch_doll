@@ -24,6 +24,7 @@
 #include "blender_dof.h"
 #include "blender_nightvision.h"
 #include "blender_pp_bloom.h"
+#include "blender_hud_intoxication.h"
 
 void CRenderTarget::u_setrt(const ref_rt& _1, const ref_rt& _2, const ref_rt& _3, ID3DDepthStencilView* zb)
 {
@@ -356,6 +357,7 @@ CRenderTarget::CRenderTarget()
     b_dof = new CBlender_dof();
     b_nightvision = new CBlender_nightvision();
     b_pp_bloom = new CBlender_pp_bloom();
+    b_hud_intoxication = new CBlender_Hud_Intoxication();
 
     // HDAO
     b_hdao_cs = new CBlender_CS_HDAO();
@@ -504,6 +506,8 @@ CRenderTarget::CRenderTarget()
     s_nightvision.create(b_nightvision, "r2\\nightvision");
     // PP Bloom
     s_pp_bloom.create(b_pp_bloom, "r2\\pp_bloom");
+    // Hud Intoxication
+    s_hud_intoxication.create(b_hud_intoxication, "r2\\hud_intoxication");
 
     // DIRECT (spot)
     pcstr smapTarget = r2_RT_smap_depth;
@@ -1163,6 +1167,7 @@ CRenderTarget::~CRenderTarget()
     xr_delete(b_dof);
     xr_delete(b_nightvision);
     xr_delete(b_pp_bloom);
+    xr_delete(b_hud_intoxication);
 
     if (RImplementation.o.dx10_msaa)
     {

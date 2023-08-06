@@ -58,6 +58,7 @@ public:
     IBlender* b_dof;
     IBlender* b_nightvision;
     IBlender* b_pp_bloom;
+    IBlender* b_hud_intoxication;
 
     // compute shader for hdao
     IBlender* b_hdao_cs;
@@ -180,6 +181,7 @@ private:
     ref_shader s_dof;
     ref_shader s_nightvision;
     ref_shader s_pp_bloom;
+    ref_shader s_hud_intoxication;
 
     ref_geom g_accum_point;
     ref_geom g_accum_spot;
@@ -313,6 +315,7 @@ public:
     void phase_dof();
     void phase_nightvision();
     void phase_pp_bloom();
+    void phase_hud_intoxication();
 
     //	Generates min/max sm
     void create_minmax_SM();

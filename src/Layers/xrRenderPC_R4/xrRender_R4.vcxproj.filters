@@ -330,6 +330,9 @@
    <ClInclude Include="blender_hud_blood.h">
       <Filter>Shading templates</Filter>
     </ClInclude>
+	<ClInclude Include="blender_hud_intoxication.h">
+      <Filter>Shading templates</Filter>
+    </ClInclude>		
     <ClInclude Include="blender_hud_stamina.h">
       <Filter>Shading templates</Filter>
     </ClInclude>
@@ -1310,6 +1313,9 @@
    <ClCompile Include="blender_hud_blood.cpp">
       <Filter>Shading templates</Filter>
     </ClCompile>
+   <ClCompile Include="blender_hud_intoxication.cpp">
+      <Filter>Shading templates</Filter>
+    </ClCompile>		
     <ClCompile Include="..\xrRender\rendertarget_phase_hud_effects.cpp">
       <Filter>Core_Target</Filter>
     </ClCompile>

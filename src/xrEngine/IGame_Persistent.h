@@ -154,6 +154,7 @@ public:
     virtual float GetActorMaxPower()        { return 0; };
     virtual float GetActorPower()           { return 0; };
     virtual float GetActorBleeding()        { return 0; };
+    virtual float GetActorIntoxication()    { return 0; };
     virtual bool IsCamFirstEye()            { return 0; };
     virtual bool GetActorNightvision()      { return 0; };
     virtual int  GetNightvisionType()       { return 0; };
