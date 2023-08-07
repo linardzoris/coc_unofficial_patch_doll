@@ -92,10 +92,12 @@ bool CUIGameSP::IR_UIOnKeyboardPress(int dik)
     if (Device.Paused())
         return false;
 
-
-    hud_adjust_mode_keyb(dik);
-    attach_adjust_mode_keyb(dik);
-
+	// Затычка на худ аджаст
+    if (strstr(Core.Params, "-dev") || strstr(Core.Params, "-dbg"))
+    {
+        hud_adjust_mode_keyb(dik);
+        attach_adjust_mode_keyb(dik);
+    }
 
     CInventoryOwner* pInvOwner = smart_cast<CInventoryOwner*>(Level().CurrentEntity());
     if (!pInvOwner)
