@@ -83,8 +83,12 @@ void CWeaponKnife::OnStateSwitch(u32 S, u32 oldState)
     case eShowing: switch2_Showing(); break;
     case eHiding:
     {
-        if (oldState != eHiding)
+        if (oldState != eHiding && !psActorFlags.test(AF_FAST_WEAPON_SELECT))
             switch2_Hiding();
+        else if (oldState != eHiding && psActorFlags.test(AF_FAST_WEAPON_SELECT))
+        {
+            SwitchState(eHidden);
+        }
         break;
     }
     case eHidden: switch2_Hidden(); break;

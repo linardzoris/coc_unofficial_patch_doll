@@ -21,6 +21,7 @@ enum
     AF_3DSCOPE_ENABLE = (1 << 17),
     AF_ITEM_ANIMATIONS_ENABLE = (1 << 18),
     AF_SSFX_DOF = (1 << 19),
+    AF_FAST_WEAPON_SELECT = (1 << 20),
 };
 
 extern Flags32 psActorFlags;

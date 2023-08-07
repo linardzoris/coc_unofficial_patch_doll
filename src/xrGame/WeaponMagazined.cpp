@@ -591,8 +591,13 @@ void CWeaponMagazined::OnStateSwitch(u32 S, u32 oldState)
     case eHiding:
         if (owner)
             m_sounds_enabled = owner->CanPlayShHdRldSounds();
-		if (oldState != eHiding)
-			switch2_Hiding();
+        if (oldState != eHiding && !psActorFlags.test(AF_FAST_WEAPON_SELECT))
+            switch2_Hiding();
+        else if (oldState != eHiding && psActorFlags.test(AF_FAST_WEAPON_SELECT))
+        {
+            OnZoomOut();
+            SwitchState(eHidden);
+        }
         break;
     case eHidden: 
         switch2_Hidden(); 
