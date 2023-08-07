@@ -133,7 +133,7 @@ void xrCore::initParamFlags()
     if (strstr(Params, "-dbgbullet"))
         ParamFlags.set(ParamFlag::dbgbullet, true);
 
-    if (strstr(Params, "-dev"))
+    if (strstr(Params, "-dev") || strstr(Params, "-dbg"))
         ParamFlags.set(ParamFlag::dev, true);
 
     if (strstr(Params, "-genbump"))

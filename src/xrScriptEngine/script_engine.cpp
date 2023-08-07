@@ -1033,7 +1033,7 @@ void CScriptEngine::init(ExporterFunc exporterFunc, bool loadGlobalNamespace)
 #ifdef DEBUG
     luajit::open_lib(lua(), LUA_DBLIBNAME, luaopen_debug);
 #endif
-    if (strstr(Core.Params, "-dev"))
+    if (strstr(Core.Params, "-dev") || strstr(Core.Params, "-dbg"))
         luajit::open_lib(lua(), LUA_DBLIBNAME, luaopen_debug);
 
     // XXX nitrocaster: with vanilla scripts, '-nojit' option requires script profiler to be disabled. The reason

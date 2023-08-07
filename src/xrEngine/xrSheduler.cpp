@@ -416,7 +416,7 @@ void CSheduler::ProcessStep()
         if (listOfItems.size() > sheduler_smoother_max_per_time)
         {
             const float neededDelayBtwnItems = (2.f * sheduler_smoother_frame_size) / sheduler_smoother_max_per_time;
-			if (strstr(Core.Params, "-dev"))
+            if (strstr(Core.Params, "-dev") || strstr(Core.Params, "-dbg"))
 			{
 				Msg("* xrSheduler: jam detected and smoothed for range [%d-%d msec] (were %d items)", preferedFrame,preferedFrame + sheduler_smoother_frame_size, listOfItems.size(), neededDelayBtwnItems);
 			}
