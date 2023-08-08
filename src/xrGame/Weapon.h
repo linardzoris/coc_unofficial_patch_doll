@@ -188,6 +188,7 @@ public:
     BOOL AutoSpawnAmmo() const { return m_bAutoSpawnAmmo; };
     bool IsTriStateReload() const { return m_bTriStateReload; }
     bool IsOpenWeaponEmptyCartridge() const { return m_bOpenWeaponEmptyCartridge; }
+    bool IsOpenWeaponCartridge() const { return m_bOpenWeaponCartridge; }
     bool IsDiffShotModes() const { return m_bDiffShotModes; }
 
     bool IsLaserShaderOn() const { return m_bLaserShaderOn; }
@@ -216,6 +217,7 @@ protected:
     bool m_bMisfireOneCartRemove;
     bool m_bTriStateReload;
     bool m_bOpenWeaponEmptyCartridge;
+    bool m_bOpenWeaponCartridge;
     bool m_bDiffShotModes;
     bool m_bMotionMarkShell;
     bool m_bOutScopeAfterShot;
