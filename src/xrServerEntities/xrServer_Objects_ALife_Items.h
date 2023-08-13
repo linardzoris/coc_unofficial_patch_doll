@@ -224,7 +224,7 @@ public:
             u16 data;
             struct
             {
-                u16 scope : 6; // 2^6 possible scope sections // пометка
+                u16 scope : 12; // 2^12 possible scope sections // пометка
                 u16 silencer : 5; // 2^5 possible sections
                 u16 launcher : 5;
                 u16 laser : 5;

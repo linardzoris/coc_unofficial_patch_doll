@@ -94,9 +94,9 @@ void CSE_ALifeObject::spawn_supplies(LPCSTR ini_string)
                         bLauncher = (nullptr != strstr(V, "launcher"));
                         bLaser = (nullptr != strstr(V, "laser"));
                         if (nullptr != strstr(V, "scope="))
-                            cur_scope = atoi(strstr(V, "scope=") + 6);
+                            cur_scope = atoi(strstr(V, "scope=") + 12);
                         if (nullptr != strstr(V, "scope = "))
-                            cur_scope = atoi(strstr(V, "scope = ") + 6);
+                            cur_scope = atoi(strstr(V, "scope = ") + 12);
                         if (nullptr != strstr(V, "ammo_type="))
                             i_ammo_type = atoi(strstr(V, "ammo_type=") + 10);
                     }
@@ -190,9 +190,9 @@ void CSE_ALifeObject::spawn_supplies(LPCSTR ini_string)
                     if (nullptr != strstr(V, "cond="))
                         f_cond = static_cast<float>(atof(strstr(V, "cond=") + 5));
                     if (nullptr != strstr(V, "scope="))
-                        cur_scope = atoi(strstr(V, "scope=") + 6);
+                        cur_scope = atoi(strstr(V, "scope=") + 12);
                     if (nullptr != strstr(V, "scope = "))
-                        cur_scope = atoi(strstr(V, "scope = ") + 6);
+                        cur_scope = atoi(strstr(V, "scope = ") + 12);
                 }
                 for (u32 i = 0; i < j; ++i)
                 {
