@@ -718,7 +718,7 @@ void CCC_Register()
     CMD3(CCC_Mask, "rs_stats", &psDeviceFlags, rsStatistic);
     CMD3(CCC_Mask, "rs_fps", &psDeviceFlags, rsShowFPS);
     CMD4(CCC_Float, "rs_vis_distance", &psVisDistance, 0.4f, 1.0f);
-    CMD4(CCC_Float, "r_viewport_near", &VIEWPORT_NEAR, 0.05f, 1.f);
+    CMD4(CCC_Float, "r_viewport_near", &VIEWPORT_NEAR, 0.01f, 1.f);
 
 	CMD4(CCC_Vector4,	"ssfx_grass_interactive",				&ps_ssfx_grass_interactive, Fvector4().set(0, 0, 0, 0), Fvector4().set(1, 15, 5000, 1));
 	CMD4(CCC_Vector4,	"ssfx_int_grass_params_1",				&ps_ssfx_int_grass_params_1, Fvector4().set(0, 0, 0, 0), Fvector4().set(5, 5, 5, 5));
