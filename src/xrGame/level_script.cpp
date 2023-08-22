@@ -43,6 +43,7 @@
 #include "GamePersistent.h"
 #include "player_hud.h"
 #include "../xrPhysics/ElevatorState.h"
+#include "../xrEngine/Rain.h"
 
 using namespace luabind;
 using namespace luabind::policy;
@@ -221,7 +222,42 @@ float low_cover_in_direction(u32 level_vertex_id, const Fvector& direction)
     return (ai().level_graph().low_cover_in_direction(y, level_vertex_id));
 }
 
-float rain_factor() { return (g_pGamePersistent->Environment().CurrentEnv->rain_density); }
+float rain_factor() 
+{ 
+    return (g_pGamePersistent->Environment().CurrentEnv->rain_density); 
+}
+
+float rain_wetness() 
+{ 
+    return (g_pGamePersistent->Environment().wetness_accum); 
+}
+
+float rain_hemi()
+{
+    CEffect_Rain* rain = g_pGamePersistent->pEnvironment->eff_Rain;
+
+    if (rain)
+    {
+        return rain->GetRainHemi();
+    }
+    else
+    {
+        IGameObject* E = g_pGameLevel->CurrentViewEntity();
+        if (E && E->renderable_ROS())
+        {
+            float* hemi_cube = E->renderable_ROS()->get_luminocity_hemi_cube();
+            float hemi_val = _max(hemi_cube[0], hemi_cube[1]);
+            hemi_val = _max(hemi_val, hemi_cube[2]);
+            hemi_val = _max(hemi_val, hemi_cube[3]);
+            hemi_val = _max(hemi_val, hemi_cube[5]);
+
+            return hemi_val;
+        }
+
+        return 0.f;
+    }
+}
+
 u32 vertex_in_direction(u32 level_vertex_id, Fvector direction, float max_distance)
 {
     direction.normalize_safe();
@@ -901,6 +937,9 @@ IC static void CLevel_Export(lua_State* luaState)
         def("prefetch_sound", prefetch_sound),
 
         def("client_spawn_manager", get_client_spawn_manager),
+
+		def("rain_wetness",	rain_wetness),
+		def("rain_hemi", rain_hemi),
 
         def("map_add_object_spot_ser", map_add_object_spot_ser),
         def("map_add_object_spot", map_add_object_spot),

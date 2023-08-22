@@ -212,6 +212,21 @@ class cl_rain_params : public R_constant_setup
 };
 static cl_rain_params binder_rain_params;
 
+class pp_image_corrections : public R_constant_setup
+{
+    virtual void setup(R_constant* C) override
+    {
+        RCache.set_c(C, ps_r2_img_exposure, ps_r2_img_gamma, ps_r2_img_saturation, 1.f);
+    }
+};
+static pp_image_corrections binder_image_corrections;
+
+class pp_color_grading : public R_constant_setup
+{
+    virtual void setup(R_constant* C) override { RCache.set_c(C, ps_r2_img_cg.x, ps_r2_img_cg.y, ps_r2_img_cg.z, 1.f); }
+};
+static pp_color_grading binder_color_grading;
+
 class cl_sky_color : public R_constant_setup
 {
     virtual void setup(R_constant* C)
@@ -526,6 +541,11 @@ static class cl_inv_v : public R_constant_setup
     }
 } binder_inv_v;
 
+// Ascii1457's Screen Space Shaders
+extern ENGINE_API Fvector4 ps_ssfx_hud_drops_1;
+extern ENGINE_API Fvector4 ps_ssfx_hud_drops_2;
+extern ENGINE_API Fvector4 ps_ssfx_blood_decals;
+
 static class ssfx_wpn_dof_1 : public R_constant_setup
 {
     virtual void setup(R_constant* C)
@@ -541,6 +561,33 @@ static class ssfx_wpn_dof_2 : public R_constant_setup
         RCache.set_c(C, ps_ssfx_wpn_dof_2, 0, 0, 0); 
     }
 } ssfx_wpn_dof_2;
+
+class ssfx_blood_decals : public R_constant_setup
+{
+	virtual void setup(R_constant* C)
+	{
+		RCache.set_c(C, ps_ssfx_blood_decals);
+	}
+};
+static ssfx_blood_decals binder_ssfx_blood_decals;
+
+class ssfx_hud_drops_1 : public R_constant_setup
+{
+	virtual void setup(R_constant* C)
+	{
+		RCache.set_c(C, ps_ssfx_hud_drops_1);
+	}
+};
+static ssfx_hud_drops_1 binder_ssfx_hud_drops_1;
+
+class ssfx_hud_drops_2 : public R_constant_setup
+{
+	virtual void setup(R_constant* C)
+	{
+		RCache.set_c(C, ps_ssfx_hud_drops_2);
+	}
+};
+static ssfx_hud_drops_2 binder_ssfx_hud_drops_2;
 
 // Standart constant-binding
 void CBlender_Compile::SetMapping()
@@ -631,9 +678,15 @@ void CBlender_Compile::SetMapping()
     r_Constant("shader_param_7", &dev_param_7);
     r_Constant("shader_param_8", &dev_param_8);
 
-	// SSS DoF
+	// SSS
     r_Constant("ssfx_wpn_dof_1", &ssfx_wpn_dof_1);
     r_Constant("ssfx_wpn_dof_2", &ssfx_wpn_dof_2);
+	r_Constant("ssfx_blood_decals",	&binder_ssfx_blood_decals);
+    r_Constant("ssfx_hud_drops_1",	&binder_ssfx_hud_drops_1);
+    r_Constant("ssfx_hud_drops_2",	&binder_ssfx_hud_drops_2);
+
+	r_Constant("pp_img_corrections", &binder_image_corrections);
+    r_Constant("pp_img_cg", &binder_color_grading);
 
     // detail
     // if (bDetail  && detail_scaler)

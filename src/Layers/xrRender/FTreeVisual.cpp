@@ -18,9 +18,6 @@ shared_str c_c_sun;
 shared_str c_c_BendersPos;
 shared_str c_c_BendersSetup;
 
-ENGINE_API extern Fvector4 ps_ssfx_grass_interactive;
-ENGINE_API extern Fvector4 ps_ssfx_int_grass_params_1;
-
 FTreeVisual::FTreeVisual(void) {}
 FTreeVisual::~FTreeVisual(void) {}
 void FTreeVisual::Release() { dxRender_Visual::Release(); }
@@ -165,7 +162,7 @@ void FTreeVisual::Render(float /*LOD*/)
         // Grass benders data ( Player + Characters )
         IGame_Persistent::grass_data& GData = g_pGamePersistent->grass_shader_data;
         Fvector4 player_pos = {0, 0, 0, 0};
-        int BendersQty = _min(16, ps_ssfx_grass_interactive.y + 1);
+        int BendersQty = _min(16, (int)(ps_ssfx_grass_interactive.y + 1));
 
         // Add Player?
         if (ps_ssfx_grass_interactive.x > 0)
@@ -176,11 +173,10 @@ void FTreeVisual::Render(float /*LOD*/)
         Fvector4* c_grass;
         {
             void* GrassData;
-            RCache.get_ConstantDirect(c_c_BendersPos, BendersQty * sizeof(Fvector4), &GrassData, 0, 0);
+            RCache.get_ConstantDirect(c_c_BendersPos, BendersQty * sizeof(Fvector4) * 2, &GrassData, 0, 0);
 
             c_grass = (Fvector4*)GrassData;
         }
-        VERIFY(c_grass);
 
         if (c_grass)
         {

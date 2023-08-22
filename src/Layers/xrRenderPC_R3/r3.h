@@ -102,6 +102,12 @@ public:
         u32 forcegloss : 1;
         u32 forceskinw : 1;
         float forcegloss_v;
+
+		// Ascii - Screen Space Shaders
+        u32 ssfx_branches : 1;
+        u32 ssfx_blood : 1;
+        u32 ssfx_rain : 1;
+        u32 ssfx_hud_raindrops : 1;
     } o;
     struct RenderR3Statistics
     {
@@ -181,6 +187,8 @@ public:
 
     bool m_bMakeAsyncSS;
     bool m_bFirstFrameAfterReset; // Determines weather the frame is the first after resetting device.
+    void init_cascades();
+
     xr_vector<sun::cascade> m_sun_cascades;
 
 private:

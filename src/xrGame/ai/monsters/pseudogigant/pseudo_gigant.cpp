@@ -17,6 +17,8 @@
 #include "ai/monsters/control_path_builder_base.h"
 #include "Inventory.h"
 
+extern ENGINE_API Fvector4 ps_ssfx_grass_interactive;
+
 CPseudoGigant::CPseudoGigant()
 {
     CControlled::init_external(this);
@@ -318,7 +320,6 @@ void CPseudoGigant::on_threaten_execute()
     m_sound_threaten_hit.play_at_pos(this, pos);
 
 	// Interactive Grass FX
-	ENGINE_API extern Fvector4 ps_ssfx_grass_interactive;
 	g_pGamePersistent->GrassBendersAddExplosion(ID(), pos, Fvector().set(0, -99, 0), 1.33f, 5.0f, ps_ssfx_grass_interactive.w, 20);
 
     // играть партиклы

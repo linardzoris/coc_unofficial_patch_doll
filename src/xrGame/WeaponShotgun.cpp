@@ -121,7 +121,7 @@ void CWeaponShotgun::TriStateReload()
 {
     if (isHUDAnimationExist("anm_reload_misfire"))
     {
-        if (IsMisfire() && m_ammoElapsed.type1 == 0 || !IsMisfire())
+        if (HaveCartridgeInInventory(1) && (IsMisfire() && m_ammoElapsed.type1 == 0 || !IsMisfire()))
         {
             CWeapon::Reload();
             m_sub_state = eSubstateReloadBegin;
@@ -138,7 +138,7 @@ void CWeaponShotgun::TriStateReload()
     if (m_magazine.size() == (u32)iMagazineSize || !HaveCartridgeInInventory(1))
         return;
 
-    if (!isHUDAnimationExist("anm_reload_misfire"))
+    if (!isHUDAnimationExist("anm_reload_misfire") && HaveCartridgeInInventory(1))
     {
         CWeapon::Reload();
         m_sub_state = eSubstateReloadBegin;

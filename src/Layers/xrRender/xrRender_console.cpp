@@ -123,14 +123,12 @@ int ps_r__LightSleepFrames = 10;
 
 // Цветокоррекция
 
-float ps_rcol = 1;
-float ps_gcol = 1;
-float ps_bcol = 1;
-float ps_saturation = 0;
-//float ps_r2_tnmp_exposure   = 7.0f; // r2-only
-//float ps_r2_tnmp_gamma      = .25f; // r2-only
-//float ps_r2_img_exposure    = 1.0f; // r2-only
-//float ps_r2_img_gamma       = 1.0f; // r2-only
+float ps_r2_img_exposure = 1.0f;
+float ps_r2_img_gamma = 1.0f;
+float ps_r2_img_saturation = 1.0f;
+Fvector ps_r2_img_cg = READ_IF_EXISTS(pSettings, r_fvector3, "environment", "color_grading_es", Fvector3().set(0.5f, 0.5f, 0.5f));
+
+Fvector4 ps_color_grading = {1.0f, 1.0f, 1.0f, 0.0f};
 
 // Дождь на худе
 
@@ -201,8 +199,18 @@ float ps_r2_ssaLOD_A = 64.f;
 float ps_r2_ssaLOD_B = 48.f;
 float ps_r2_tf_Mipbias = 0.0f;
 
-Fvector3 ps_ssfx_shadow_cascades = Fvector3().set(20, 40, 160);
-Fvector4 ps_ssfx_grass_shadows = Fvector4().set(.0f, .35f, 30.0f, .0f);
+// Ascii1457's Screen Space Shaders
+extern ENGINE_API Fvector3 ps_ssfx_shadow_cascades;
+extern ENGINE_API Fvector4 ps_ssfx_grass_shadows;
+extern ENGINE_API Fvector4 ps_ssfx_grass_interactive;
+extern ENGINE_API Fvector4 ps_ssfx_int_grass_params_1;
+extern ENGINE_API Fvector4 ps_ssfx_int_grass_params_2;
+extern ENGINE_API Fvector4 ps_ssfx_hud_drops_1;
+extern ENGINE_API Fvector4 ps_ssfx_hud_drops_2;
+extern ENGINE_API Fvector4 ps_ssfx_blood_decals;
+extern ENGINE_API Fvector4 ps_ssfx_rain_1;
+extern ENGINE_API Fvector4 ps_ssfx_rain_2;
+extern ENGINE_API Fvector4 ps_ssfx_rain_3;
 
 // R2-specific
 Flags32 ps_r2_ls_flags = {R2FLAG_SUN
@@ -214,8 +222,7 @@ Flags32 ps_r2_ls_flags = {R2FLAG_SUN
     | R3FLAG_GBUFFER_OPT | R2FLAG_DETAIL_BUMP | R2FLAG_DOF | R2FLAG_SOFT_PARTICLES | R2FLAG_SOFT_WATER |
     R2FLAG_STEEP_PARALLAX | R2FLAG_SUN_FOCUS | R2FLAG_SUN_TSM | R2FLAG_TONEMAP | R2FLAG_VOLUMETRIC_LIGHTS}; // r2-only
 
-Flags32 ps_r2_ls_flags_ext = {
-    /*R2FLAGEXT_SSAO_OPT_DATA |*/ R2FLAGEXT_SSAO_HALF_DATA | R2FLAGEXT_ENABLE_TESSELLATION};
+Flags32 ps_r2_ls_flags_ext = {/*R2FLAGEXT_SSAO_OPT_DATA |*/ R2FLAGEXT_SSAO_HALF_DATA | R2FLAGEXT_ENABLE_TESSELLATION | R4FLAGEXT_NEW_SHADER_SUPPORT};
 
 BOOL ps_clear_models_on_unload = 0; // Alundaio
 BOOL ps_use_precompiled_shaders = 0; // Alundaio
@@ -250,6 +257,11 @@ float ps_r2_sun_tsm_projection = 0.3f; // 0.18f
 float ps_r2_sun_tsm_bias = -0.01f; //
 float ps_r2_sun_near = 20.f; // 12.0f
 
+float r2_tonemap_middlegray_modifier = 0.75f;
+float r2_tonemap_low_lum_modifier = 0.697f;
+float r2_sun_lumscale_modifier = 2.0f;
+float r2_sun_lumscale_amb_modifier = 0.5f;
+
 extern float OLES_SUN_LIMIT_27_01_07; //    actually sun_far
 
 float ps_r2_sun_near_border = 0.75f; // 1.0f
@@ -258,7 +270,7 @@ float ps_r2_sun_depth_far_bias = -0.00002f; // -0.0000f
 float ps_r2_sun_depth_near_scale = 1.0000f; // 1.00001f
 float ps_r2_sun_depth_near_bias = 0.00001f; // -0.00005f
 float ps_r2_sun_lumscale = 1.0f; // 1.0f
-float ps_r2_sun_lumscale_hemi = 1.0f; // 1.0f
+float ps_r2_sun_lumscale_hemi = 1.5f; // 1.0f
 float ps_r2_sun_lumscale_amb = 1.0f;
 float ps_r2_gmaterial = 2.2f; //
 float ps_r2_zfill = 0.25f; // .1f
@@ -339,12 +351,10 @@ public:
     void apply()
     {
 #if defined(USE_DX10) || defined(USE_DX11)
-        RImplementation.init_cacades();
+        RImplementation.init_cascades();
 #endif
     }
-
-    CCC_ssfx_cascades(LPCSTR N, Fvector3* V, const Fvector3 _min, const Fvector3 _max)
-        : CCC_Vector3(N, V, _min, _max){};
+    CCC_ssfx_cascades(LPCSTR N, Fvector3* V, const Fvector3 _min, const Fvector3 _max) : CCC_Vector3(N, V, _min, _max){};
 
     virtual void Execute(LPCSTR args)
     {
@@ -352,7 +362,7 @@ public:
         apply();
     }
 
-    virtual void Status(TStatus& S)
+    virtual void GetStatus(TStatus& S)
     {
         CCC_Vector3::Status(S);
         apply();
@@ -875,8 +885,24 @@ void xrRender_initconsole()
 	// Screen Space Shaders
     CMD4(CCC_Vector4, "ssfx_wpn_dof_1", &ps_ssfx_wpn_dof_1, tw2_min, tw2_max);
     CMD4(CCC_Float, "ssfx_wpn_dof_2", &ps_ssfx_wpn_dof_2, 0.0f, 1.0f);
-	CMD4(CCC_Vector4,		"ssfx_grass_shadows",			&ps_ssfx_grass_shadows,		Fvector4().set(0, 0, 0, 0), Fvector4().set(3, 1, 100, 100));
-	CMD4(CCC_ssfx_cascades, "ssfx_shadow_cascades",			&ps_ssfx_shadow_cascades,	Fvector3().set(1.0f, 1.0f, 1.0f), Fvector3().set(300, 300, 300));
+
+	// Anomaly
+    CMD4(CCC_Float, "r__exposure", &ps_r2_img_exposure, 0.5f, 4.0f);
+    CMD4(CCC_Float, "r__gamma", &ps_r2_img_gamma, 0.5f, 2.2f);
+
+    // Screen Space Shaders
+    CMD3(CCC_Mask,			"r4_new_shader_support",		&ps_r2_ls_flags_ext,		R4FLAGEXT_NEW_SHADER_SUPPORT);
+    CMD4(CCC_Vector4,		"ssfx_grass_shadows",			&ps_ssfx_grass_shadows,		Fvector4().set(0, 0, 0, 0), Fvector4().set(3, 1, 100, 100));
+    CMD4(CCC_ssfx_cascades, "ssfx_shadow_cascades",			&ps_ssfx_shadow_cascades,	Fvector3().set(1.0f, 1.0f, 1.0f), Fvector3().set(300, 300, 300));
+    CMD4(CCC_Vector4,		"ssfx_grass_interactive",		&ps_ssfx_grass_interactive, Fvector4().set(0, 0, 0, 0), Fvector4().set(1, 15, 5000, 1));
+    CMD4(CCC_Vector4,		"ssfx_int_grass_params_1",		&ps_ssfx_int_grass_params_1, Fvector4().set(0, 0, 0, 0), Fvector4().set(5, 5, 5, 60));
+    CMD4(CCC_Vector4,		"ssfx_int_grass_params_2",		&ps_ssfx_int_grass_params_2, Fvector4().set(0, 0, 0, 0), Fvector4().set(5, 20, 1, 5));
+	CMD4(CCC_Vector4,		"ssfx_hud_drops_1",				&ps_ssfx_hud_drops_1,		Fvector4().set(0, 0, 0, 0), Fvector4().set(100000, 100, 100, 100));
+    CMD4(CCC_Vector4,		"ssfx_hud_drops_2",				&ps_ssfx_hud_drops_2,		Fvector4().set(0, 0, 0, 0), tw2_max);
+    CMD4(CCC_Vector4,		"ssfx_blood_decals",			&ps_ssfx_blood_decals,		Fvector4().set(0, 0, 0, 0), Fvector4().set(5, 5, 0, 0));
+    CMD4(CCC_Vector4,		"ssfx_rain_1",					&ps_ssfx_rain_1,			Fvector4().set(0, 0, 0, 0), Fvector4().set(10, 5, 5, 2));
+    CMD4(CCC_Vector4,		"ssfx_rain_2",					&ps_ssfx_rain_2,			Fvector4().set(0, 0, 0, 0), Fvector4().set(1, 10, 10, 10));
+    CMD4(CCC_Vector4,		"ssfx_rain_3",					&ps_ssfx_rain_3,			Fvector4().set(0, 0, 0, 0), Fvector4().set(1, 10, 10, 10));
 
     CMD3(CCC_Preset, "_preset", &ps_Preset, qpreset_token);
 
@@ -1083,12 +1109,16 @@ void xrRender_initconsole()
     CMD3(CCC_Token, "r2_smap_size", &ps_r2_smap_size, qsmap_size_token);
 
     // Цветокоррекция
-	CMD4(CCC_Float, "r_color_r",    &ps_rcol, 0.0f, 2.55f);
-    CMD4(CCC_Float, "r_color_g",    &ps_gcol, 0.0f, 2.55f);
-    CMD4(CCC_Float, "r_color_b",    &ps_bcol, 0.0f, 2.55f);
-    CMD4(CCC_Float, "r_saturation", &ps_saturation, -1.0f, +1.0f);
-//    CMD4(CCC_Float, "r__exposure",  &ps_r2_img_exposure, 0.5f, 4.0f);
-//    CMD4(CCC_Float, "r__gamma",     &ps_r2_img_gamma, 0.5f, 2.2f);
+    CMD4(CCC_Float, "r_color_r", &ps_color_grading.x, 0.0f, 2.55f);
+    CMD4(CCC_Float, "r_color_g", &ps_color_grading.y, 0.0f, 2.55f);
+    CMD4(CCC_Float, "r_color_b", &ps_color_grading.z, 0.0f, 2.55f);
+    CMD4(CCC_Float, "r_saturation", &ps_color_grading.w, -1.0f, +1.0f);
+    //    CMD4(CCC_Float, "r__exposure",  &ps_r2_img_exposure, 0.5f, 4.0f);
+    //    CMD4(CCC_Float, "r__gamma",     &ps_r2_img_gamma, 0.5f, 2.2f);
+
+	Fvector4 clr_drag_min = {0.f, 0.f, 0.f, -1.0f};
+    Fvector4 clr_drag_max = {2.55f, 2.55f, 2.55f, 1.f};
+    CMD4(CCC_Vector4, "r_color_grading", &ps_color_grading, clr_drag_min, clr_drag_max);
 
     // Дождь на худе
     CMD3(CCC_Mask, "r2_raindrops", &ps_r2_rain_drops_flags, R2FLAG_RAIN_DROPS);

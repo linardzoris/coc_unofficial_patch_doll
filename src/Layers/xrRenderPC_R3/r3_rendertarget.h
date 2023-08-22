@@ -129,6 +129,9 @@ public:
     ID3DTexture2D* t_noise_surf_mipped;
     ref_texture t_noise_mipped;
 
+	// Anomaly
+    resptr_core<CRT, resptrcode_crt> rt_Generic_temp;
+
 private:
     // OCCq
     ref_shader s_occq;

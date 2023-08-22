@@ -113,13 +113,10 @@ void CDetailManager::hw_Render_dump(
 	static shared_str strPos("benders_pos");
     static shared_str strGrassSetup("benders_setup");
 
-    ENGINE_API extern Fvector4 ps_ssfx_grass_interactive;
-    ENGINE_API extern Fvector4 ps_ssfx_int_grass_params_1;
-
     // Grass benders data
     IGame_Persistent::grass_data& GData = g_pGamePersistent->grass_shader_data;
     Fvector4 player_pos = {0, 0, 0, 0};
-    int BendersQty = _min(16, ps_ssfx_grass_interactive.y + 1);
+    int BendersQty = _min(16, (int)(ps_ssfx_grass_interactive.y + 1));
 
     // Add Player?
     if (ps_ssfx_grass_interactive.x > 0)
@@ -171,7 +168,6 @@ void CDetailManager::hw_Render_dump(
                         RCache.get_ConstantDirect(strPos, BendersQty * sizeof(Fvector4), &GrassData, 0, 0);
                         c_grass = (Fvector4*)GrassData;
                     }
-                    VERIFY(c_grass);
 
                     if (c_grass)
                     {
@@ -289,6 +285,16 @@ void CDetailManager::hw_Render_dump(
                 // flush if necessary
                 if (dwBatch)
                 {
+					// TODO: add phase to RImplementation
+					if (ps_ssfx_grass_shadows.x <= 0)
+					{
+						//auto& dsgraph = RImplementation.get_context(CHW::IMM_CTX_ID);
+						if (!ps_r2_ls_flags.test(R2FLAG_SUN_DETAILS) || ((ps_r2_ls_flags.test(R2FLAG_SUN_DETAILS) && (RImplementation.PHASE_SMAP == RImplementation.phase)) || (ps_r2_ls_flags.test(R2FLAG_SUN_DETAILS) && (RImplementation.PHASE_NORMAL == RImplementation.phase) && (!RImplementation.o_sun)) || (!ps_r2_ls_flags.test(R2FLAG_SUN_DETAILS) && (RImplementation.PHASE_NORMAL == RImplementation.phase))))
+						{
+							vis.erase(vis.begin(), vis.end());
+						}
+					}
+
                     RImplementation.BasicStats.DetailCount += dwBatch;
                     u32 dwCNT_verts = dwBatch * Object.number_vertices;
                     u32 dwCNT_prims = (dwBatch * Object.number_indices) / 3;

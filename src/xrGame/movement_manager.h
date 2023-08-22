@@ -66,10 +66,6 @@ class CDetailPathBuilder;
 
 class CMovementManager
 {
-public:
-    u8  grassbender_id;
-    u32 grassbender_frame;
-
 private:
     friend class CLevelPathBuilder;
     friend class CDetailPathBuilder;
@@ -248,6 +244,8 @@ public:
         const float& prediction_speed) const;
     Fvector predict_position(const float& time_delta) const;
     Fvector target_position() const;
+    u8 grassbender_id{};
+    u32 grassbender_frame;
 };
 
 #include "movement_manager_inline.h"

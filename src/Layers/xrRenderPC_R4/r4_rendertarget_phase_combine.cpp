@@ -385,6 +385,18 @@ void CRenderTarget::phase_combine()
         phase_dlaa();
     }
 
+	if (ps_r2_ls_flags_ext.test(R4FLAGEXT_NEW_SHADER_SUPPORT))
+    {
+        // Compute blur textures
+        phase_blur();
+
+        // Compute bloom (new)
+        // phase_pp_bloom();
+
+        if (ps_r2_ls_flags.test(R2FLAG_DOF))
+            phase_dof();
+    }
+
 	// Hud Effects & Hud Mask
     if (!_menu_pp && g_pGamePersistent->GetActor() && g_pGamePersistent->IsCamFirstEye())
     {
@@ -411,15 +423,6 @@ void CRenderTarget::phase_combine()
         if (IsActorAlive && NightVisionEnabled && NightVisionType > 0 && ps_r__ShaderNVG == 1)
             phase_nightvision();
     }
-
-	// Compute blur textures
-    phase_blur();
-
-	// Compute bloom (new)
-    // phase_pp_bloom();
-
-	if (ps_r2_ls_flags.test(R2FLAG_DOF))
-        phase_dof();
 
     // PP enabled ?
     //	Render to RT texture to be able to copy RT even in windowed mode.
@@ -548,7 +551,7 @@ void CRenderTarget::phase_combine()
         RCache.set_c("m_current", m_current);
         RCache.set_c("m_previous", m_previous);
         RCache.set_c("m_blur", m_blur_scale.x, m_blur_scale.y, 0, 0);
-        RCache.set_c("r_color_drag", ps_rcol, ps_gcol, ps_bcol, ps_saturation);
+        RCache.set_c("r_color_drag", ps_color_grading.x, ps_color_grading.y, ps_color_grading.z, ps_color_grading.w);
         Fvector3 dof;
         g_pGamePersistent->GetCurrentDof(dof);
         RCache.set_c("dof_params", dof.x, dof.y, dof.z, dof_sky);

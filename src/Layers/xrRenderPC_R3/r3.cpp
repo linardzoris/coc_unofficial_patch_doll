@@ -18,8 +18,6 @@
 
 CRender RImplementation;
 
-ENGINE_API extern Fvector4 ps_ssfx_grass_interactive;
-
 //////////////////////////////////////////////////////////////////////////
 class CGlow : public IRender_Glow
 {
@@ -398,6 +396,18 @@ void CRender::create()
         }
     }
 
+	// Ascii's Screen Space Shaders - Check if SSS shaders exist
+    string_path fn;
+    o.ssfx_rain = FS.exist(fn, "$game_shaders$", "r3\\effects_rain_splash", ".ps") ? 1 : 0;
+    o.ssfx_blood = FS.exist(fn, "$game_shaders$", "r3\\effects_wallmark_blood", ".ps") ? 1 : 0;
+    o.ssfx_branches = FS.exist(fn, "$game_shaders$", "r3\\deffer_tree_branch_bump-hq", ".vs") ? 1 : 0;
+    o.ssfx_hud_raindrops = FS.exist(fn, "$game_shaders$", "r3\\deffer_base_hud_bump", ".ps") ? 1 : 0;
+
+    Msg("- SSS HUD RAINDROPS SHADER INSTALLED %i", o.ssfx_hud_raindrops);
+    Msg("- SSS RAIN SHADER INSTALLED %i", o.ssfx_rain);
+    Msg("- SSS BLOOD SHADER INSTALLED %i", o.ssfx_blood);
+    Msg("- SSS BRANCHES SHADER INSTALLED %i", o.ssfx_branches);
+
     // constants
     RImplementation.Resources->RegisterConstantSetup("parallax", &binder_parallax);
     RImplementation.Resources->RegisterConstantSetup("water_intensity", &binder_water_intensity);
@@ -514,7 +524,7 @@ void CRender::OnFrame()
         Device.seqParallel.insert(Device.seqParallel.begin(), fastdelegate::FastDelegate0<>(&HOM, &CHOM::MT_RENDER));
     }
     if (Details)
-        g_pGamePersistent->GrassBendersUpdateExplosions();
+        g_pGamePersistent->GrassBendersUpdateAnimations();
 }
 
 // Implementation
@@ -891,6 +901,7 @@ HRESULT CRender::shader_compile(LPCSTR name, IReader* fs, LPCSTR pFunctionName, 
     char c_sun_quality[32];
     // Screen Space Shaders
     char c_inter_grass[32];
+    char c_rain_quality[32];
 
     char sh_name[MAX_PATH] = "";
     u32 len = 0;
@@ -1285,7 +1296,22 @@ HRESULT CRender::shader_compile(LPCSTR name, IReader* fs, LPCSTR pFunctionName, 
     sh_name[len] = '0' + char(o.dx10_minmax_sm != 0);
     ++len;
 
-	if (ps_ssfx_grass_interactive.y > 0)
+	if (ps_ssfx_rain_1.w > 0)
+    {
+        xr_sprintf(c_rain_quality, "%d", u8(ps_ssfx_rain_1.w));
+        defines[def_it].Name = "SSFX_RAIN_QUALITY";
+        defines[def_it].Definition = c_rain_quality;
+        def_it++;
+        xr_strcat(sh_name, c_rain_quality);
+        len += xr_strlen(c_rain_quality);
+    }
+    else
+    {
+        sh_name[len] = '0';
+        ++len;
+    }
+
+    if (ps_ssfx_grass_interactive.y > 0)
     {
         xr_sprintf(c_inter_grass, "%d", u8(ps_ssfx_grass_interactive.y));
         defines[def_it].Name = "SSFX_INT_GRASS";
@@ -1299,6 +1325,12 @@ HRESULT CRender::shader_compile(LPCSTR name, IReader* fs, LPCSTR pFunctionName, 
         sh_name[len] = '0';
         ++len;
     }
+
+    defines[def_it].Name = "SSFX_MODEXE";
+    defines[def_it].Definition = "1";
+    def_it++;
+    sh_name[len] = '1';
+    ++len;
 
     // Be carefull!!!!! this should be at the end to correctly generate
     // compiled shader name;
