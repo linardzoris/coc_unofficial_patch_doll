@@ -239,6 +239,7 @@ public:
     bool IsSilencerAttached() const;
     bool IsLaserAttached() const;
     bool bGrenadeLauncherNSilencer;
+    bool HaveCartridgeInInventory(u8 cnt);
 
     virtual bool GrenadeLauncherAttachable();
     virtual bool ScopeAttachable();
