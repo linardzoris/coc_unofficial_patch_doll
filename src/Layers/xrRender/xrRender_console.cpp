@@ -211,6 +211,7 @@ extern ENGINE_API Fvector4 ps_ssfx_blood_decals;
 extern ENGINE_API Fvector4 ps_ssfx_rain_1;
 extern ENGINE_API Fvector4 ps_ssfx_rain_2;
 extern ENGINE_API Fvector4 ps_ssfx_rain_3;
+int ps_r4_ss_grass_collision = 1;
 
 // R2-specific
 Flags32 ps_r2_ls_flags = {R2FLAG_SUN
@@ -903,6 +904,7 @@ void xrRender_initconsole()
     CMD4(CCC_Vector4,		"ssfx_rain_1",					&ps_ssfx_rain_1,			Fvector4().set(0, 0, 0, 0), Fvector4().set(10, 5, 5, 2));
     CMD4(CCC_Vector4,		"ssfx_rain_2",					&ps_ssfx_rain_2,			Fvector4().set(0, 0, 0, 0), Fvector4().set(1, 10, 10, 10));
     CMD4(CCC_Vector4,		"ssfx_rain_3",					&ps_ssfx_rain_3,			Fvector4().set(0, 0, 0, 0), Fvector4().set(1, 10, 10, 10));
+    CMD4(CCC_Integer,       "r4_ss_grass_collision",        &ps_r4_ss_grass_collision,  0, 1); // Screen Space Grass Shaders Collision
 
     CMD3(CCC_Preset, "_preset", &ps_Preset, qpreset_token);
 

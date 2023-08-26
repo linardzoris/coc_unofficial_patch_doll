@@ -141,9 +141,9 @@ void CEatableItem::OnH_B_Independent(bool just_before_destroy)
     inherited::OnH_B_Independent(just_before_destroy);
 }
 
-void CEatableItem::UpdateInRuck(void) 
+void CEatableItem::UpdateInRuck(CActor* actor) 
 { 
-    UpdateUseAnim(); 
+    UpdateUseAnim(actor); 
 }
 
 void CEatableItem::HideWeapon()
@@ -205,18 +205,18 @@ void CEatableItem::StartAnimation()
     }
 }
 
-void CEatableItem::UpdateUseAnim()
+void CEatableItem::UpdateUseAnim(CActor* actor)
 {
     if (!psActorFlags.test(AF_ITEM_ANIMATIONS_ENABLE) || !m_bHasAnimation)
         return;
 
-    CCustomDetector* pDet = smart_cast<CCustomDetector*>(Actor()->inventory().ItemFromSlot(DETECTOR_SLOT));
-    CFlashlight* pFlight = smart_cast<CFlashlight*>(Actor()->inventory().ItemFromSlot(DETECTOR_SLOT));
-    CEffectorCam* effector = Actor()->Cameras().GetCamEffector((ECamEffectorType)effUseItem);
+    CCustomDetector* pDet = smart_cast<CCustomDetector*>(actor->inventory().ItemFromSlot(DETECTOR_SLOT));
+    CFlashlight* pFlight = smart_cast<CFlashlight*>(actor->inventory().ItemFromSlot(DETECTOR_SLOT));
+    CEffectorCam* effector = actor->Cameras().GetCamEffector((ECamEffectorType)effUseItem);
 
     bool IsActorAlive = g_pGamePersistent->GetActorAliveStatus();
 
-    if (m_bItmStartAnim && Actor()->inventory().GetActiveSlot() == NO_ACTIVE_SLOT) // Тут вылетало
+    if (m_bItmStartAnim && actor->inventory().GetActiveSlot() == NO_ACTIVE_SLOT) // Тут вылетало
         if (!pDet && !pFlight || pDet && pDet->IsHidden() || pFlight && pFlight->IsHidden())
             StartAnimation();
 
@@ -229,7 +229,7 @@ void CEatableItem::UpdateUseAnim()
         {
             if (!strstr(Core.Params, "-dev") || !strstr(Core.Params, "-dbg"))
             {
-                Actor()->SetWeaponHideState(INV_STATE_BLOCK_ALL, false);
+                actor->SetWeaponHideState(INV_STATE_BLOCK_ALL, false);
             }
 
             m_iAnimLength = Device.dwTimeGlobal;
@@ -238,7 +238,7 @@ void CEatableItem::UpdateUseAnim()
             g_actor_allow_ladder = true;
 
             if (effector)
-                RemoveEffector(Actor(), effUseItem);
+                RemoveEffector(actor, effUseItem);
 
             if (psActorFlags.test(AF_SSFX_DOF))
             {
@@ -247,7 +247,7 @@ void CEatableItem::UpdateUseAnim()
             }
 
 			if (IsActorAlive)
-                Actor()->inventory().Eat(this);
+                actor->inventory().Eat(this);
         }
     }
 }
