@@ -266,6 +266,8 @@ void CWeaponMagazined::FireStart()
 
         if (smart_cast<CActor*>(this->H_Parent()) && (Level().CurrentViewEntity() == H_Parent()) && !m_sounds.FindSoundItem("sndWpnJam", false))
             CurrentGameUI()->AddCustomStatic("gun_jammed", true);
+        else if (m_sounds.FindSoundItem("sndWpnJam", false))
+            PlaySound("sndWpnJam", get_LastFP());
 
         OnEmptyClick();
     }
@@ -912,14 +914,7 @@ void CWeaponMagazined::OnShot()
 
 void CWeaponMagazined::OnEmptyClick() 
 { 
-    float random_voice;
-    random_voice = Random.randF(0.0f, 1.0f);
-
-    PlaySound("sndEmptyClick", get_LastFP()); // Рычаг спуска вхолостую
-
-    if (m_sounds.FindSoundItem("sndWpnJam", false) && bMisfire) // С шансом в 30% играем фразу при клине оружия
-        if (random_voice > 0.7f)
-            PlaySound("sndWpnJam", get_LastFP());
+    PlaySound("sndEmptyClick", get_LastFP()); 
 
 	if (empty_click_layer)
         PlayBlendAnm(empty_click_layer, empty_click_speed, empty_click_power);
