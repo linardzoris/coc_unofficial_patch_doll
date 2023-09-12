@@ -511,9 +511,6 @@ void CRender::Render()
         Target->phase_combine();
     }
 
-	if (Details)
-        Details->details_clear();
-
     VERIFY(0 == mapDistort.size());
 }
 

@@ -660,11 +660,6 @@ int sheduler_smoother_frame_size        = 100;
 
 ENGINE_API int ps_r__ShaderNVG = 0;
 
-// Screen Space Shaders Stuff
-ENGINE_API Fvector4 ps_ssfx_grass_interactive = Fvector4().set(.0f, .0f, 1000.0f, 1.0f); // player 1-0, inter_grass_max_entities 0-??, maxdist 0-????, monsters 0-1
-ENGINE_API Fvector4 ps_ssfx_int_grass_params_1 = Fvector4().set(1.0f, 1.0f, 1.0f, 1.0f); // radius, x, y, anomalies 1-0
-ENGINE_API Fvector4 ps_ssfx_int_grass_params_2 = Fvector4().set(1.0f, 5.0f, 1.0f, 1.0f); // explodes 1-0, expl speed, shooting 1-0, shooting range
-
 void CCC_Register()
 {
     // General
@@ -719,10 +714,6 @@ void CCC_Register()
     CMD3(CCC_Mask, "rs_fps", &psDeviceFlags, rsShowFPS);
     CMD4(CCC_Float, "rs_vis_distance", &psVisDistance, 0.4f, 1.0f);
     CMD4(CCC_Float, "r_viewport_near", &VIEWPORT_NEAR, 0.01f, 1.f);
-
-	CMD4(CCC_Vector4,	"ssfx_grass_interactive",				&ps_ssfx_grass_interactive, Fvector4().set(0, 0, 0, 0), Fvector4().set(1, 15, 5000, 1));
-	CMD4(CCC_Vector4,	"ssfx_int_grass_params_1",				&ps_ssfx_int_grass_params_1, Fvector4().set(0, 0, 0, 0), Fvector4().set(5, 5, 5, 5));
-	CMD4(CCC_Vector4,	"ssfx_int_grass_params_2",				&ps_ssfx_int_grass_params_2, Fvector4().set(0, 0, 0, 0), Fvector4().set(5, 20, 1, 5));
 
     CMD3(CCC_Mask, "rs_cam_pos", &psDeviceFlags, rsCameraPos);
 #ifdef DEBUG

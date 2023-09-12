@@ -201,9 +201,6 @@ float ps_r2_ssaLOD_A = 64.f;
 float ps_r2_ssaLOD_B = 48.f;
 float ps_r2_tf_Mipbias = 0.0f;
 
-Fvector3 ps_ssfx_shadow_cascades = Fvector3().set(20, 40, 160);
-Fvector4 ps_ssfx_grass_shadows = Fvector4().set(.0f, .35f, 30.0f, .0f);
-
 // R2-specific
 Flags32 ps_r2_ls_flags = {R2FLAG_SUN
     //| R2FLAG_SUN_IGNORE_PORTALS
@@ -332,32 +329,6 @@ Flags32 ps_actor_shadow_flags = {0};
 #endif // USE_DX10
 
 //-----------------------------------------------------------------------
-
-class CCC_ssfx_cascades : public CCC_Vector3
-{
-public:
-    void apply()
-    {
-#if defined(USE_DX10) || defined(USE_DX11)
-        RImplementation.init_cacades();
-#endif
-    }
-
-    CCC_ssfx_cascades(LPCSTR N, Fvector3* V, const Fvector3 _min, const Fvector3 _max)
-        : CCC_Vector3(N, V, _min, _max){};
-
-    virtual void Execute(LPCSTR args)
-    {
-        CCC_Vector3::Execute(args);
-        apply();
-    }
-
-    virtual void Status(TStatus& S)
-    {
-        CCC_Vector3::Status(S);
-        apply();
-    }
-};
 
 // AVO: detail draw radius
 #ifdef DETAIL_RADIUS
@@ -808,6 +779,67 @@ public:
     }
 };
 
+class CCC_Vector4 : public IConsole_Command
+{
+protected:
+    Fvector4* value;
+    Fvector4 min, max;
+
+public:
+    CCC_Vector4(LPCSTR N, Fvector4* V, const Fvector4 _min, const Fvector4 _max) : IConsole_Command(N), value(V)
+    {
+        min.set(_min);
+        max.set(_max);
+    };
+    const Fvector4 GetValue() const { return *value; };
+    Fvector4* GetValuePtr() const { return value; };
+
+    virtual void Execute(LPCSTR args)
+    {
+        Fvector4 v;
+        if (4 != sscanf(args, "%f,%f,%f,%f", &v.x, &v.y, &v.z, &v.w))
+        {
+            if (4 != sscanf(args, "(%f,%f,%f,%f)", &v.x, &v.y, &v.z, &v.w))
+            {
+                InvalidSyntax();
+                return;
+            }
+        }
+
+        if (v.x < min.x || v.y < min.y || v.z < min.z || v.w < min.w)
+        {
+            InvalidSyntax();
+            return;
+        }
+        if (v.x > max.x || v.y > max.y || v.z > max.z || v.w > max.w)
+        {
+            InvalidSyntax();
+            return;
+        }
+        value->set(v);
+    }
+
+    virtual void Status(TStatus& S)
+    {
+        xr_sprintf(S, sizeof(S), "(%f, %f, %f, %f)", value->x, value->y, value->z, value->w);
+    }
+
+    virtual void Info(TInfo& I)
+    {
+        xr_sprintf(I, sizeof(I), "vector4 in range [%e,%e,%e,%e]-[%e,%e,%e,%e]", min.x, min.y, min.z, min.w, max.x,
+            max.y, max.z, max.w);
+    }
+
+    virtual void fill_tips(vecTips& tips, u32 mode)
+    {
+        TStatus str;
+        xr_sprintf(str, sizeof(str), "(%e, %e, %e, %e) (current) [(%e,%e,%e,%e)-(%e,%e,%e,%e)]", value->x, value->y,
+            value->z, value->w, min.x, min.y, min.z, min.w, max.x, max.y, max.z, max.w);
+        tips.push_back(str);
+        IConsole_Command::fill_tips(tips, mode);
+    }
+};
+
 class CCC_DumpResources : public IConsole_Command
 {
 public:
@@ -875,8 +907,6 @@ void xrRender_initconsole()
 	// Screen Space Shaders
     CMD4(CCC_Vector4, "ssfx_wpn_dof_1", &ps_ssfx_wpn_dof_1, tw2_min, tw2_max);
     CMD4(CCC_Float, "ssfx_wpn_dof_2", &ps_ssfx_wpn_dof_2, 0.0f, 1.0f);
-	CMD4(CCC_Vector4,		"ssfx_grass_shadows",			&ps_ssfx_grass_shadows,		Fvector4().set(0, 0, 0, 0), Fvector4().set(3, 1, 100, 100));
-	CMD4(CCC_ssfx_cascades, "ssfx_shadow_cascades",			&ps_ssfx_shadow_cascades,	Fvector3().set(1.0f, 1.0f, 1.0f), Fvector3().set(300, 300, 300));
 
     CMD3(CCC_Preset, "_preset", &ps_Preset, qpreset_token);
 

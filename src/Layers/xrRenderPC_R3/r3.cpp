@@ -18,8 +18,6 @@
 
 CRender RImplementation;
 
-ENGINE_API extern Fvector4 ps_ssfx_grass_interactive;
-
 //////////////////////////////////////////////////////////////////////////
 class CGlow : public IRender_Glow
 {
@@ -513,8 +511,6 @@ void CRender::OnFrame()
         // MT-HOM (@front)
         Device.seqParallel.insert(Device.seqParallel.begin(), fastdelegate::FastDelegate0<>(&HOM, &CHOM::MT_RENDER));
     }
-    if (Details)
-        g_pGamePersistent->GrassBendersUpdateExplosions();
 }
 
 // Implementation
@@ -889,8 +885,6 @@ HRESULT CRender::shader_compile(LPCSTR name, IReader* fs, LPCSTR pFunctionName, 
     char c_sun_shafts[32];
     char c_ssao[32];
     char c_sun_quality[32];
-    // Screen Space Shaders
-    char c_inter_grass[32];
 
     char sh_name[MAX_PATH] = "";
     u32 len = 0;
@@ -1284,21 +1278,6 @@ HRESULT CRender::shader_compile(LPCSTR name, IReader* fs, LPCSTR pFunctionName, 
     }
     sh_name[len] = '0' + char(o.dx10_minmax_sm != 0);
     ++len;
-
-	if (ps_ssfx_grass_interactive.y > 0)
-    {
-        xr_sprintf(c_inter_grass, "%d", u8(ps_ssfx_grass_interactive.y));
-        defines[def_it].Name = "SSFX_INT_GRASS";
-        defines[def_it].Definition = c_inter_grass;
-        def_it++;
-        xr_strcat(sh_name, c_inter_grass);
-        len += xr_strlen(c_inter_grass);
-    }
-    else
-    {
-        sh_name[len] = '0';
-        ++len;
-    }
 
     // Be carefull!!!!! this should be at the end to correctly generate
     // compiled shader name;

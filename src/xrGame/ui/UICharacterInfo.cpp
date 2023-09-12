@@ -315,12 +315,9 @@ void CUICharacterInfo::Update()
         if (m_icons[eIcon])
         {
             CSE_ALifeCreatureAbstract* pCreature = smart_cast<CSE_ALifeCreatureAbstract*>(T);
-            if (pCreature)
+            if (pCreature && !pCreature->g_Alive())
             {
-                if (!pCreature->g_Alive())
-                    m_icons[eIcon]->SetTextureColor(m_deadbody_color);
-                else
-                    m_icons[eIcon]->SetTextureColor(color_argb(255, 255, 255, 255));
+                m_icons[eIcon]->SetTextureColor(m_deadbody_color);
             }
         }
     }
