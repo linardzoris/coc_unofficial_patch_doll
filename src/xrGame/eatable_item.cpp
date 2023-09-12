@@ -152,7 +152,8 @@ void CEatableItem::HideWeapon()
     CCustomDetector* pDet = smart_cast<CCustomDetector*>(Actor()->inventory().ItemFromSlot(DETECTOR_SLOT));
     CFlashlight* pFlight = smart_cast<CFlashlight*>(Actor()->inventory().ItemFromSlot(DETECTOR_SLOT));
 
-    Actor()->SetWeaponHideState(INV_STATE_BLOCK_ALL, true);
+    if (!strstr(Core.Params, "-dev") || !strstr(Core.Params, "-dbg"))
+        Actor()->SetWeaponHideState(INV_STATE_BLOCK_ALL, true);
 
 	if (pDet)
         pDet->HideDetector(true);
@@ -175,9 +176,8 @@ void CEatableItem::StartAnimation()
         m_iAnimHandsCnt = pSettings->r_u32(anim_sect, "single_handed_anim");
 
     m_bItmStartAnim = false;
+    g_block_all_except_movement = true;
     g_actor_allow_ladder = false;
-    if (!strstr(Core.Params, "-dev") || !strstr(Core.Params, "-dbg"))
-        g_block_all_except_movement = true;
 
     if (pSettings->line_exist(anim_sect, "anm_use"))
     {
@@ -227,7 +227,10 @@ void CEatableItem::UpdateUseAnim(CActor* actor)
     {
         if (m_iAnimLength <= Device.dwTimeGlobal || !IsActorAlive)
         {
-            actor->SetWeaponHideState(INV_STATE_BLOCK_ALL, false);
+            if (!strstr(Core.Params, "-dev") || !strstr(Core.Params, "-dbg"))
+            {
+                actor->SetWeaponHideState(INV_STATE_BLOCK_ALL, false);
+            }
 
             m_iAnimLength = Device.dwTimeGlobal;
             m_bActivated = false;
