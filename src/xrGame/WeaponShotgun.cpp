@@ -271,31 +271,6 @@ void CWeaponShotgun::PlayAnimUnMisfire()
         PlayHUDMotion("anm_add_cartridge", FALSE, this, GetState());
 }
 
-bool CWeaponShotgun::HaveCartridgeInInventory(u8 cnt)
-{
-    if (unlimited_ammo())
-        return true;
-    if (!m_pInventory)
-        return false;
-
-    u32 ac = GetAmmoCount(m_ammoType.type1);
-    if (ac < cnt)
-    {
-        for (u8 i = 0; i < u8(m_ammoTypes.size()); ++i)
-        {
-            if (m_ammoType.type1 == i)
-                continue;
-            ac += GetAmmoCount(i);
-            if (ac >= cnt)
-            {
-                m_ammoType.type1 = i;
-                break;
-            }
-        }
-    }
-    return ac >= cnt;
-}
-
 u8 CWeaponShotgun::AddCartridge(u8 cnt)
 {
     if (IsMisfire())

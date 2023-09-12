@@ -246,3 +246,15 @@ void IGame_Persistent::DumpStatistics(IGameFont& font, IPerformanceAlert* alert)
     font.OutNext("- destroying: %u", stats.Destroying);
     stats.FrameStart();
 }
+
+bool IGame_Persistent::IsActorInHideout()
+{
+    if (Device.dwTimeGlobal > m_last_ray_pick_time)
+    {
+        m_last_ray_pick_time = Device.dwTimeGlobal + 1000;
+        collide::rq_result RQ;
+        m_isInHideout = !!g_pGameLevel->ObjectSpace.RayPick(Device.vCameraPosition, Fvector{0.f, 1.f, 0.f}, 50.f,
+            collide::rqtBoth, RQ, g_pGameLevel->CurrentViewEntity());
+    }
+    return m_isInHideout;
+}

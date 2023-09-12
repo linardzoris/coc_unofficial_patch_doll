@@ -1279,7 +1279,7 @@ void CWeapon::UpdateCL()
         m_zoomtype = 0;
 
     // Для винтовок типа трёхлинейки. Позволяет заряжать её обоймами и по одному патрону одновременно.
-    if (m_bTriStateReload && m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_reload_empty") && bScopeSupportClipReload)
+if (m_bTriStateReload && m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_reload_empty") && bScopeSupportClipReload && HaveCartridgeInInventory(iMagazineSize))
         m_bTriStateReload = false;
     else if (m_ammoElapsed.type1 > 0 && isHUDAnimationExist("anm_add_cartridge") && isHUDAnimationExist("anm_reload_empty"))
         m_bTriStateReload = true;
@@ -3040,6 +3040,31 @@ u8 CWeapon::GetCurrentHudOffsetIdx()
 void CWeapon::render_hud_mode() { RenderLight(); }
 bool CWeapon::MovingAnimAllowedNow() { return !IsZoomed(); }
 bool CWeapon::IsHudModeNow() { return (HudItemData() != nullptr); }
+
+bool CWeapon::HaveCartridgeInInventory(u8 cnt)
+{
+    if (unlimited_ammo())
+        return true;
+    if (!m_pInventory)
+        return false;
+
+    u32 ac = GetAmmoCount(m_ammoType.type1);
+    if (ac < cnt)
+    {
+        for (u8 i = 0; i < u8(m_ammoTypes.size()); ++i)
+        {
+            if (m_ammoType.type1 == i)
+                continue;
+            ac += GetAmmoCount(i);
+            if (ac >= cnt)
+            {
+                m_ammoType.type1 = i;
+                break;
+            }
+        }
+    }
+    return ac >= cnt;
+}
 
 u32 CWeapon::Cost() const
 {

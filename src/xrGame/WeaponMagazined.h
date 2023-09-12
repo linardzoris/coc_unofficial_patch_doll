@@ -33,6 +33,7 @@ protected:
     ESoundTypes m_eSoundHideEmpty;
     ESoundTypes m_eSoundReloadEmpty;
     ESoundTypes m_eSoundReloadMisfire;
+    ESoundTypes m_eSoundReflect;
 
     bool m_sounds_enabled;
     // General

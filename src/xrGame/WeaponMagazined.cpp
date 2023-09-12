@@ -105,6 +105,7 @@ void CWeaponMagazined::Load(LPCSTR section)
 
     m_sounds.LoadSound(section, "snd_empty", "sndEmptyClick", false, m_eSoundEmptyClick);
     m_sounds.LoadSound(section, "snd_reload", "sndReload", true, m_eSoundReload);
+    m_sounds.LoadSound(section, "snd_reflect", "sndReflect", true, m_eSoundReflect);
 
 	if (WeaponSoundExist(section, "snd_ammo_check"))
         m_sounds.LoadSound(section, "snd_ammo_check", "sndAmmoCheck", false, m_eSoundEmptyClick);
@@ -265,8 +266,6 @@ void CWeaponMagazined::FireStart()
 
         if (smart_cast<CActor*>(this->H_Parent()) && (Level().CurrentViewEntity() == H_Parent()) && !m_sounds.FindSoundItem("sndWpnJam", false))
             CurrentGameUI()->AddCustomStatic("gun_jammed", true);
-        else if (m_sounds.FindSoundItem("sndWpnJam", false))
-            PlaySound("sndWpnJam", get_LastFP());
 
         OnEmptyClick();
     }
@@ -879,7 +878,29 @@ void CWeaponMagazined::OnShot()
     ForceUpdateFireParticles();
     StartSmokeParticles(get_LastFP(), vel);
 
-// Эффект сдвига (отдача)
+	if (IsSilencerAttached() == false)
+    {
+        bool bIndoor = false;
+        if (H_Parent() != nullptr)
+        {
+            bIndoor = H_Parent()->renderable_ROS()->get_luminocity_hemi() < WEAPON_INDOOR_HEMI_FACTOR;
+        }
+
+        if (bIndoor && m_sounds.FindSoundItem("sndReflect", false))
+        {
+            if (IsHudModeNow())
+            {
+                HUD_SOUND_ITEM::SetHudSndGlobalVolumeFactor(WEAPON_SND_REFLECTION_HUD_FACTOR);
+            }
+            PlaySound("sndReflect", get_LastFP());
+            // m_sSndShotCurrent = "sndReflect";
+            HUD_SOUND_ITEM::SetHudSndGlobalVolumeFactor(1.0f);
+        }
+        // else
+        // m_sSndShotCurrent = "sndShot";
+    }
+
+    // Эффект сдвига (отдача)
     AddHUDShootingEffect();
 
 #ifdef EXTENDED_WEAPON_CALLBACKS
@@ -891,7 +912,14 @@ void CWeaponMagazined::OnShot()
 
 void CWeaponMagazined::OnEmptyClick() 
 { 
-    PlaySound("sndEmptyClick", get_LastFP()); 
+    float random_voice;
+    random_voice = Random.randF(0.0f, 1.0f);
+
+    PlaySound("sndEmptyClick", get_LastFP()); // Рычаг спуска вхолостую
+
+    if (m_sounds.FindSoundItem("sndWpnJam", false) && bMisfire) // С шансом в 30% играем фразу при клине оружия
+        if (random_voice > 0.7f)
+            PlaySound("sndWpnJam", get_LastFP());
 
 	if (empty_click_layer)
         PlayBlendAnm(empty_click_layer, empty_click_speed, empty_click_power);
@@ -2377,6 +2405,13 @@ bool CWeaponMagazined::install_upgrade_impl(LPCSTR section, bool test)
     if (result2 && !test)
     {
         m_sounds.LoadSound(section, "snd_reload", "sndReload", true, m_eSoundReload);
+    }
+    result |= result2;
+
+	result2 = process_if_exists_set(section, "snd_reflect", &CInifile::r_string, str, test);
+    if (result2 && !test)
+    {
+        m_sounds.LoadSound(section, "snd_reflect", "sndReflect", false, m_eSoundReflect);
     }
     result |= result2;
 
