@@ -310,7 +310,8 @@ void IGame_Persistent::GrassBendersUpdate(u16 id, u8& data_idx, u32& data_frame,
         if (grass_shader_data.id[idx] == 0)
         {
             data_idx = idx;
-            GrassBendersSet(idx, id, position, Fvector3().set(0, -99, 0), 0, 0, 0.0f, init_radius, BENDER_ANIM_DEFAULT, true);
+            GrassBendersSet(
+                idx, id, position, Fvector3().set(0, -99, 0), 0, 0, 0.0f, init_radius, BENDER_ANIM_DEFAULT, true);
 
             grass_shader_data.str_target[idx] = init_str;
             grass_shader_data.radius_curr[idx] = init_radius;
@@ -539,18 +540,6 @@ void IGame_Persistent::GrassBendersSet(u8 idx, u16 id, Fvector position, Fvector
         grass_shader_data.radius_curr[idx] = 0.01f;
         grass_shader_data.time[idx] = 0;
     }
-}
-
-bool IGame_Persistent::IsActorInHideout()
-{
-    if (Device.dwTimeGlobal > m_last_ray_pick_time)
-    {
-        m_last_ray_pick_time = Device.dwTimeGlobal + 1000;
-        collide::rq_result RQ;
-        m_isInHideout = !!g_pGameLevel->ObjectSpace.RayPick(Device.vCameraPosition, Fvector{0.f, 1.f, 0.f}, 50.f,
-            collide::rqtBoth, RQ, g_pGameLevel->CurrentViewEntity());
-    }
-    return m_isInHideout;
 }
 
 float IGame_Persistent::GrassBenderToValue(float& current, float go_to, float intensity, bool use_easing)

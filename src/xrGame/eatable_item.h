@@ -4,7 +4,6 @@
 
 class CPhysicItem;
 class CEntityAlive;
-class CActor;
 
 class CEatableItem : public CInventoryItem
 {
@@ -37,8 +36,8 @@ public:
     virtual void OnH_A_Independent();
     virtual bool UseBy(CEntityAlive* npc);
 
-	void UpdateInRuck(CActor* actor);
-    void UpdateUseAnim(CActor* actor);
+	void UpdateInRuck();
+	void UpdateUseAnim();
     void HideWeapon();
     void StartAnimation();
     bool m_bHasAnimation;

@@ -1937,7 +1937,7 @@ void CActor::UpdateInventoryItems()
     {
         const auto current_eatable = smart_cast<CEatableItem*>(it);
         if (current_eatable)
-            current_eatable->UpdateInRuck(this);
+            current_eatable->UpdateInRuck();
     }
 }
 

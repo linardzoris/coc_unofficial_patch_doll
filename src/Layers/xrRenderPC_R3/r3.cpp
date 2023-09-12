@@ -1095,15 +1095,6 @@ HRESULT CRender::shader_compile(LPCSTR name, IReader* fs, LPCSTR pFunctionName, 
     sh_name[len] = '0' + char(o.dx10_winter_mode);
     ++len;
 
-	if (ps_r4_ss_grass_collision)
-    {
-        defines[def_it].Name = "SSFX_INTER_GRASS";
-        defines[def_it].Definition = "1";
-        def_it++;
-    }
-    sh_name[len] = '0' + char(ps_r4_ss_grass_collision);
-    ++len;
-
     if (o.ssao_opt_data)
     {
         defines[def_it].Name = "SSAO_OPT_DATA";

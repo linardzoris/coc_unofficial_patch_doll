@@ -594,7 +594,7 @@ void CActorCondition::UpdateSleepeness()
 
     if (m_fSleepeness < 1.0f)
     {
-        if (Actor()->HasInfo("actor_is_sleeping")) // Есть в скриптах, по какой-то причине не работает (local sleepeness_v_sleep)
+        if (Actor()->HasInfo("actor_is_sleeping"))
             m_fSleepeness -= m_fSleepeness_V_Sleep * m_fDeltaTime;
         else
             m_fSleepeness += m_fV_Sleepeness * m_fDeltaTime;
