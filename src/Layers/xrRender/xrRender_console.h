@@ -148,6 +148,13 @@ extern ECORE_API int ps_r3_dyn_wet_surf_sm_res; // 256
 
 extern Ivector ps_r2_details_opt;
 
+// Цветокоррекция
+
+extern ECORE_API float ps_rcol;       // Красный
+extern ECORE_API float ps_gcol;       // Зелёный
+extern ECORE_API float ps_bcol;       // Синий
+extern ECORE_API float ps_saturation; // Насыщенность
+
 // Дождь на худе
 
 extern ECORE_API float ps_r2_rain_drops_intensity; // Интенсивность капель
@@ -157,19 +164,6 @@ extern ECORE_API float ps_r2_rain_drops_speed;     // Скорость капель
 
 extern ECORE_API int opt_static;
 extern ECORE_API int opt_dynamic;
-
-// Anomaly
-extern ECORE_API Fvector4 ps_color_grading;
-
-extern ECORE_API float ps_r2_img_exposure;
-extern ECORE_API float ps_r2_img_gamma;
-extern ECORE_API float ps_r2_img_saturation;
-extern ECORE_API Fvector ps_r2_img_cg;
-
-extern ECORE_API float r2_tonemap_middlegray_modifier; // r2-only
-extern ECORE_API float r2_tonemap_low_lum_modifier; // r2-only
-extern ECORE_API float r2_sun_lumscale_modifier; // r2-only
-extern ECORE_API float r2_sun_lumscale_amb_modifier; // r2-only
 
 enum
 {
@@ -213,8 +207,7 @@ enum
     R3FLAG_MSAA_OPT = (1 << 29),
     R3FLAG_GBUFFER_OPT = (1 << 30),
     R3FLAG_USE_DX10_1 = (1 << 31),
-    R4FLAGEXT_NEW_SHADER_SUPPORT = (1<<32),
-    // R3FLAG_MSAA_ALPHATEST		= (1<<33),
+    // R3FLAG_MSAA_ALPHATEST		= (1<<31),
 };
 
 enum
@@ -263,5 +256,9 @@ enum
 extern void xrRender_initconsole();
 extern BOOL xrRender_test_hw();
 extern void xrRender_apply_tf();
+
+// Screen Space Shaders
+extern ECORE_API Fvector4 ps_ssfx_grass_shadows;
+extern ECORE_API Fvector3 ps_ssfx_shadow_cascades;
 
 #endif

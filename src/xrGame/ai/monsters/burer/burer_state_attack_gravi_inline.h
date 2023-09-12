@@ -124,8 +124,6 @@ void CStateBurerAttackGravi<Object>::ExecuteGraviContinue()
     }
 }
 
-extern ENGINE_API Fvector4 ps_ssfx_grass_interactive;
-
 template <typename Object>
 void CStateBurerAttackGravi<Object>::ExecuteGraviFire()
 {
@@ -141,5 +139,6 @@ void CStateBurerAttackGravi<Object>::ExecuteGraviFire()
     this->object->sound().play(CBurer::eMonsterSoundGraviAttack);
 
 	// Interactive Grass FX
-	g_pGamePersistent->GrassBendersAddExplosion(this->object->ID(), from_pos, this->object->Direction(), 1.33f, 3.0f, ps_ssfx_grass_interactive.w, 13.0f);
+	ENGINE_API extern Fvector4 ps_ssfx_grass_interactive;
+	g_pGamePersistent->GrassBendersAddExplosion(object->ID(), from_pos, object->Direction(), 1.33f, 3.0f, ps_ssfx_grass_interactive.w, 13.0f);
 }

@@ -44,8 +44,6 @@ const float exp_dist_extinction_factor = 3.f; //(>1.f, 1.f -means no dist change
 // m_fBlastRadius exp. wave effect in exp_dist_extinction_factor times less
 // than maximum
 
-extern ENGINE_API Fvector4 ps_ssfx_int_grass_params_2;
-
 CExplosive::CExplosive(void)
 {
     m_fBlastHit = 50.0f;
@@ -358,10 +356,6 @@ void CExplosive::Explode()
 
     Fvector& pos = m_vExplodePos;
     Fvector& dir = m_vExplodeDir;
-
-	// Interactive Grass FX
-	g_pGamePersistent->GrassBendersAddExplosion(cast_game_object()->ID(), pos, Fvector().set(0, -99, 0), 1.33f, ps_ssfx_int_grass_params_2.y, ps_ssfx_int_grass_params_2.x, m_fBlastRadius * 2.0f);
-
 #ifdef DEBUG
     if (ph_dbg_draw_mask.test(phDbgDrawExplosions))
     {
@@ -369,6 +363,10 @@ void CExplosive::Explode()
         DBG_DrawPoint(pos, 0.3f, color_xrgb(255, 0, 0));
     }
 #endif
+
+	// Interactive Grass FX
+	ENGINE_API extern Fvector4 ps_ssfx_int_grass_params_2;
+	g_pGamePersistent->GrassBendersAddExplosion(cast_game_object()->ID(), pos, Fvector().set(0, -99, 0), 1.33f, ps_ssfx_int_grass_params_2.y, ps_ssfx_int_grass_params_2.x, m_fBlastRadius * 2.0f);
 
     //	Msg("---------CExplosive Explode [%d] frame[%d]",cast_game_object()->ID(), Device.dwFrame);
     OnBeforeExplosion();

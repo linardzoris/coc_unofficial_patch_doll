@@ -25,8 +25,7 @@ public:
     bool bDetail_Diffuse;
     bool bDetail_Bump;
     BOOL bUseSteepParallax;
-    int  iElement;
-    bool HudElement = false;
+    int iElement;
 
 public:
     CSimulator RS;
