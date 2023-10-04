@@ -993,12 +993,14 @@ void CWeaponMagazined::OnAnimationEnd(u32 state)
 
         if (smart_cast<CActor*>(this->H_Parent()) && (Level().CurrentViewEntity() == H_Parent()))
         {
-            if (m_ammoElapsed.type1 == iMagazineSize)
+            if (m_ammoElapsed.type1 >= iMagazineSize)
                 CurrentGameUI()->AddCustomStatic("weapon_ammo_check_full", true);
+            else if (m_ammoElapsed.type1 >= iMagazineSize / 2)
+                CurrentGameUI()->AddCustomStatic("weapon_ammo_check_over_half", true);
+            else if (m_ammoElapsed.type1 != 0 && (m_ammoElapsed.type1 < iMagazineSize / 2))
+                CurrentGameUI()->AddCustomStatic("weapon_ammo_check_under_half", true);
             else if (m_ammoElapsed.type1 == 0)
                 CurrentGameUI()->AddCustomStatic("weapon_ammo_check_empty", true);    
-            else
-                CurrentGameUI()->AddCustomStatic("weapon_ammo_check", true);  
         }
 
         break;
