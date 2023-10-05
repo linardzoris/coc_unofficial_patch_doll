@@ -288,7 +288,6 @@ public:
     ~player_hud();
     void load(const shared_str& model_name);
     void load_default() { load("actor_hud_without_outfit"); };
-    void load_default_exo() { load("actor_hud_without_outfit_exo"); };
     void update(const Fmatrix& trans);
     void StopScriptAnim();
     void updateMovementLayerState();

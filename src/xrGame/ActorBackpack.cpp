@@ -4,7 +4,6 @@
 #include "Inventory.h"
 #include "BoneProtections.h"
 #include "Include/xrRender/Kinematics.h"
-#include "player_hud.h"
 
 CBackpack::CBackpack()
 {
@@ -89,7 +88,6 @@ void CBackpack::Load(LPCSTR section)
 
     m_flags.set(FUsingCondition, READ_IF_EXISTS(pSettings, r_bool, section, "use_condition", TRUE));
 	m_bShowStats = READ_IF_EXISTS(pSettings, r_bool, section, "show_protect_stats", FALSE); // Показывать outfit_info?
-    bIsExoskeleton = READ_IF_EXISTS(pSettings, r_bool, section, "is_exoskeleton", false); // Это экзоскелет?
 }
 
 void CBackpack::ReloadBonesProtection()
@@ -210,49 +208,11 @@ BOOL CBackpack::BonePassBullet(int boneID)
 void CBackpack::OnMoveToSlot(const SInvItemPlace& previous_place)
 {
     inherited::OnMoveToSlot(previous_place);
-
-	// Меняем худ рук, если в слоте рюкзака есть экза
-    // Обновляем инфу о руках
-    CCustomOutfit* outfit = smart_cast<CCustomOutfit*>(Actor()->inventory().ItemFromSlot(OUTFIT_SLOT));
-    if (bIsExoskeleton)
-    {
-        if (m_pInventory)
-        {
-            CActor* pActor = smart_cast<CActor*>(H_Parent());
-            if (pActor && outfit)
-            {
-                outfit->ApplySkinModel(pActor, true, false);
-            }
-            else
-            {
-                g_player_hud->load_default_exo();
-            }
-        }
-    }
 }
 
 void CBackpack::OnMoveToRuck(const SInvItemPlace& previous_place)
 {
     inherited::OnMoveToRuck(previous_place);
-
-	// Меняем худ рук, если в слоте рюкзака есть экза
-    // Обновляем инфу о руках
-    CCustomOutfit* outfit = smart_cast<CCustomOutfit*>(Actor()->inventory().ItemFromSlot(OUTFIT_SLOT));
-    if (bIsExoskeleton)
-    {
-        if (m_pInventory)
-        {
-            CActor* pActor = smart_cast<CActor*>(H_Parent());
-            if (pActor && outfit)
-            {
-                outfit->ApplySkinModel(pActor, true, false);
-            }
-            else
-            {
-                g_player_hud->load_default();
-            }
-        }
-    }
 }
 
 bool CBackpack::install_upgrade_impl(LPCSTR section, bool test)

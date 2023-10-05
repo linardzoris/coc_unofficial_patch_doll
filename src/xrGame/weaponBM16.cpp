@@ -49,24 +49,9 @@ void CWeaponBM16::PlayAnimBore()
 {
     switch (m_magazine.size())
     {
-    case 0: 
-        {
-        if (isHUDAnimationExist("anm_bore_0"))
-            PlayHUDMotion("anm_bore_0", TRUE, this, GetState()); 
-        }
-        break;
-    case 1: 
-        {
-        if (isHUDAnimationExist("anm_bore_1"))
-            PlayHUDMotion("anm_bore_1", TRUE, this, GetState()); 
-        }
-        break;
-    case 2: 
-        {
-        if (isHUDAnimationExist("anm_bore_2"))
-            PlayHUDMotion("anm_bore_2", TRUE, this, GetState()); 
-        }
-        break;
+        case 0: PlayHUDMotion("anm_bore_0", TRUE, this, GetState()); break;
+        case 1: PlayHUDMotion("anm_bore_1", TRUE, this, GetState()); break;
+        case 2: PlayHUDMotion("anm_bore_2", TRUE, this, GetState()); break;
     }
 }
 
@@ -76,8 +61,7 @@ void CWeaponBM16::PlayAnimReload()
 
     VERIFY(GetState() == eReload);
 
-    if ((m_magazine.size() == 1 || !b_both) &&
-        (m_set_next_ammoType_on_reload == undefined_ammo_type || m_ammoType.type1 == m_set_next_ammoType_on_reload))
+    if ((m_magazine.size() == 1 || !b_both) && (m_set_next_ammoType_on_reload == undefined_ammo_type || m_ammoType.type1 == m_set_next_ammoType_on_reload))
         PlayHUDMotion("anm_reload_1", TRUE, this, GetState());
     else
         PlayHUDMotion("anm_reload_2", TRUE, this, GetState());
