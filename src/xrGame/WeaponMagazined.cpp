@@ -113,8 +113,6 @@ void CWeaponMagazined::Load(LPCSTR section)
         m_sounds.LoadSound(section, "snd_ammo_check_empty", "sndAmmoCheckEmpty", false, m_eSoundEmptyClick);
     if (WeaponSoundExist(section, "snd_ammo_check_jammed"))
         m_sounds.LoadSound(section, "snd_ammo_check_jammed", "sndAmmoCheckJammed", false, m_eSoundEmptyClick);
-    if (WeaponSoundExist(section, "snd_ammo_check_empty_jammed"))
-        m_sounds.LoadSound(section, "snd_ammo_check_empty_jammed", "sndAmmoCheckEmptyJammed", false, m_eSoundEmptyClick);
 	if (WeaponSoundExist(section, "snd_weapon_jam"))
         m_sounds.LoadSound(section, "snd_weapon_jam", "sndWpnJam", false, m_eSoundEmptyClick);
 	if (WeaponSoundExist(section, "snd_changefiremode"))
@@ -225,8 +223,8 @@ bool CWeaponMagazined::UseScopeTexture()
 
 void CWeaponMagazined::FireStart()
 {
-    if (!IsMisfire())
-    {
+    if (!IsMisfire() && (!strstr(Core.Params, "-dev") || !strstr(Core.Params, "-dbg") && GetCondition() > 0.0f))
+    { 
         if (IsValid())
         {
             if (!IsWorking() || AllowFireWhileWorking())
@@ -425,6 +423,12 @@ void CWeaponMagazined::UnloadMagazine(bool spawn_ammo)
         }
         if (l_it->second && !unlimited_ammo()) SpawnAmmo(l_it->second, l_it->first);
     }
+
+    //устранить осечку при разряжании при условии того, что это не ПГ
+    if (IsMisfire() && IsGrenadeLauncherAttached() && !m_bGrenadeMode)
+        bMisfire = false;
+    else if (IsMisfire() && !IsGrenadeLauncherAttached())
+        bMisfire = false;
 }
 
 int CWeaponMagazined::CheckAmmoBeforeReload(u8& v_ammoType)
@@ -1128,13 +1132,8 @@ void CWeaponMagazined::PlayAnimAmmoCheck()
 
         if (isHUDAnimationExist("anm_ammo_check_jammed") && !IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 > 0)
             PlayHUDMotion("anm_ammo_check_jammed", true, this, GetState());
-        if (isHUDAnimationExist("anm_ammo_check_empty_jammed") && !IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 == 0)
-            PlayHUDMotion("anm_ammo_check_empty_jammed", true, this, GetState());
-
         if (isHUDAnimationExist("anm_ammo_check_jammed_w_gl") && IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 > 0)
             PlayHUDMotion("anm_ammo_check_jammed_w_gl", true, this, GetState());
-        if (isHUDAnimationExist("anm_ammo_check_empty_jammed_w_gl") && IsGrenadeLauncherAttached() && IsMisfire() && m_ammoElapsed.type1 == 0)
-            PlayHUDMotion("anm_ammo_check_empty_jammed_w_gl", true, this, GetState());
     }
 }
 
@@ -2193,14 +2192,24 @@ void CWeaponMagazined::OnWeaponAmmoCheck()
 
     if (isHUDAnimationExist("anm_ammo_check"))
     {
-        if (!IsMisfire() && m_ammoElapsed.type1 > 0 || !m_sounds.FindSoundItem("snd_ammo_check_empty", false) && m_ammoElapsed.type1 == 0 || !m_sounds.FindSoundItem("snd_ammo_check_jammed", false) && IsMisfire() || !m_sounds.FindSoundItem("snd_ammo_check_empty_jammed", false) && IsMisfire() && m_ammoElapsed.type1 == 0)
+        if (!IsMisfire() && m_ammoElapsed.type1 > 0)
             PlaySound("sndAmmoCheck", get_LastFP());
+
         if (isHUDAnimationExist("anm_ammo_check_empty") && m_ammoElapsed.type1 == 0)
-            PlaySound("sndAmmoCheckEmpty", get_LastFP());
+        {
+           if (m_sounds.FindSoundItem("sndAmmoCheckEmpty", false))
+                PlaySound("sndAmmoCheckEmpty", get_LastFP());
+           else
+               PlaySound("sndAmmoCheck", get_LastFP());
+        }
+
         if (isHUDAnimationExist("anm_ammo_check_jammed") && IsMisfire())
-            PlaySound("sndAmmoCheckJammed", get_LastFP());
-        if (isHUDAnimationExist("anm_ammo_check_empty_jammed") && IsMisfire() && m_ammoElapsed.type1 == 0)
-            PlaySound("sndAmmoCheckEmptyJammed", get_LastFP());
+        {
+            if (m_sounds.FindSoundItem("sndAmmoCheckJammed", false))
+                PlaySound("sndAmmoCheckJammed", get_LastFP());
+            else
+                PlaySound("sndAmmoCheck", get_LastFP());
+        }
     }
 };
 
