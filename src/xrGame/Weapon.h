@@ -511,16 +511,17 @@ protected:
     //	float					misfireProbability;
     //	float					misfireConditionK;
     float misfireStartCondition; //изношенность, при которой появляется шанс осечки
-    float misfireEndCondition; //изношеность при которой шанс осечки становится константным
-    float misfireStartProbability; //шанс осечки при изношености больше чем misfireStartCondition
-    float misfireEndProbability; //шанс осечки при изношености больше чем misfireEndCondition
+    float misfireSecondCondition; //изношеность при которой шанс осечки становится константным
+
+    float fMisfireChance;
     float conditionDecreasePerQueueShot; //увеличение изношености при выстреле очередью
     float conditionDecreasePerShot; //увеличение изношености при одиночном выстреле
     float conditionDecreasePerShotOnHit; //увеличение изношености при ударе(выстреле) о поверхность
 
 public:
     float GetMisfireStartCondition() const { return misfireStartCondition; };
-    float GetMisfireEndCondition() const { return misfireEndCondition; };
+    float GetMisfireSecondCondition() const { return misfireSecondCondition; };
+
 protected:
     struct SPDM
     {

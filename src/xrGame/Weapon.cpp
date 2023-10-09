@@ -129,6 +129,10 @@ CWeapon::CWeapon()
     m_altAimPos = false;
     m_zoom_params.m_altAimPos = false;
     m_zoomtype = 0;
+
+    misfireStartCondition = ::Random.randF(0.5f, 0.65f);
+    misfireSecondCondition = ::Random.randF(0.2f, 0.35f);
+    fMisfireChance = ::Random.randF(0.1f, 0.3f);
 }
 
 CWeapon::~CWeapon()
@@ -517,10 +521,7 @@ void CWeapon::Load(LPCSTR section)
     // modified by Peacemaker [17.10.08]
     //	misfireProbability			  = pSettings->r_float(section,"misfire_probability");
     //	misfireConditionK			  = READ_IF_EXISTS(pSettings, r_float, section, "misfire_condition_k",	1.0f);
-    misfireStartCondition = pSettings->r_float(section, "misfire_start_condition");
-    misfireEndCondition = READ_IF_EXISTS(pSettings, r_float, section, "misfire_end_condition", 0.f);
-    misfireStartProbability = READ_IF_EXISTS(pSettings, r_float, section, "misfire_start_prob", 0.f);
-    misfireEndProbability = pSettings->r_float(section, "misfire_end_prob");
+    fMisfireChance = READ_IF_EXISTS(pSettings, r_float, section, "misfire_chance", 0.f);
     conditionDecreasePerShot = pSettings->r_float(section, "condition_shot_dec");
     conditionDecreasePerQueueShot = READ_IF_EXISTS(pSettings, r_float, section, "condition_queue_shot_dec", conditionDecreasePerShot);
     conditionDecreasePerShotOnHit = READ_IF_EXISTS(pSettings, r_float, section, "condition_shot_dec_on_hit", 0.f);
@@ -1652,22 +1653,18 @@ int CWeapon::GetAmmoCount_forType(shared_str const& ammo_type) const
 
 float CWeapon::GetConditionMisfireProbability() const
 {
-    // modified by Peacemaker [17.10.08]
-    //	if(GetCondition() > 0.95f)
-    //		return 0.0f;
+    float start_chance = fMisfireChance;
+    float second_chance = fMisfireChance * 2;
+
     if (GetCondition() > misfireStartCondition)
         return 0.0f;
-    if (GetCondition() < misfireEndCondition)
-        return misfireEndProbability;
-    //	float mis = misfireProbability+powf(1.f-GetCondition(), 3.f)*misfireConditionK;
-    float mis = misfireStartProbability +
-        ((misfireStartCondition - GetCondition()) * // condition goes from 1.f to 0.f
-            (misfireEndProbability - misfireStartProbability) / // probability goes from 0.f to 1.f
-            ((misfireStartCondition == misfireEndCondition) ? // !!!say "No" to devision by zero
-                    misfireStartCondition :
-                    (misfireStartCondition - misfireEndCondition)));
-    clamp(mis, 0.0f, 0.99f);
-    return mis;
+
+    if (GetCondition() <= misfireStartCondition && GetCondition() > misfireSecondCondition) // Первый порог, зелёное состояние
+        return start_chance;
+    else if (GetCondition() <= misfireSecondCondition && second_chance < 1.0f)
+        return second_chance;
+    else if (GetCondition() <= misfireSecondCondition && second_chance >= 1.0f)
+        return 0.8;
 }
 
 BOOL CWeapon::CheckForMisfire()
