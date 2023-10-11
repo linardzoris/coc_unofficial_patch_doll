@@ -2237,7 +2237,7 @@ float CWeaponMagazined::GetWeaponDeterioration()
     //	if (!m_bHasDifferentFireModes || m_iPrefferedFireMode == -1 || u32(GetCurrentFireMode()) <= u32(m_iPrefferedFireMode))
     //		return inherited::GetWeaponDeterioration();
     //	return m_iShotNum*conditionDecreasePerShot;
-    return (m_iShotNum == 1) ? conditionDecreasePerShot : conditionDecreasePerQueueShot;
+    return (m_iShotNum == 1) ? conditionDecreasePerShot : conditionDecreasePerShot * 1.5;
 };
 
 void CWeaponMagazined::save(NET_Packet& output_packet)

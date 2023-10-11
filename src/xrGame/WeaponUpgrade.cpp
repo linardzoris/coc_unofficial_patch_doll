@@ -118,7 +118,6 @@ bool CWeapon::install_upgrade_disp(LPCSTR section, bool test)
     //	result |= process_if_exists( section, "misfire_condition_k", &CInifile::r_float, misfireConditionK,        test
     //);
     result |= process_if_exists(section, "condition_shot_dec", &CInifile::r_float, conditionDecreasePerShot, test);
-    result |= process_if_exists(section, "condition_queue_shot_dec", &CInifile::r_float, conditionDecreasePerQueueShot, test);
 
     bool value = m_zoom_params.m_bZoomEnabled;
     bool result2 = process_if_exists_set(section, "zoom_enabled", &CInifile::r_bool, value, test);

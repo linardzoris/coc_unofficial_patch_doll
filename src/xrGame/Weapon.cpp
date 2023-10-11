@@ -523,7 +523,6 @@ void CWeapon::Load(LPCSTR section)
     //	misfireConditionK			  = READ_IF_EXISTS(pSettings, r_float, section, "misfire_condition_k",	1.0f);
     fMisfireChance = READ_IF_EXISTS(pSettings, r_float, section, "misfire_chance", 0.f);
     conditionDecreasePerShot = pSettings->r_float(section, "condition_shot_dec");
-    conditionDecreasePerQueueShot = READ_IF_EXISTS(pSettings, r_float, section, "condition_queue_shot_dec", conditionDecreasePerShot);
     conditionDecreasePerShotOnHit = READ_IF_EXISTS(pSettings, r_float, section, "condition_shot_dec_on_hit", 0.f);
 
     vLoadedFirePoint = pSettings->r_fvector3(section, "fire_point");
@@ -1277,7 +1276,7 @@ void CWeapon::UpdateCL()
         m_zoomtype = 0;
 
     // Для винтовок типа трёхлинейки. Позволяет заряжать её обоймами и по одному патрону одновременно.
-if (m_bTriStateReload && m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_reload_empty") && bScopeSupportClipReload && HaveCartridgeInInventory(iMagazineSize))
+    if (m_bTriStateReload && m_ammoElapsed.type1 == 0 && isHUDAnimationExist("anm_reload_empty") && bScopeSupportClipReload && HaveCartridgeInInventory(iMagazineSize))
         m_bTriStateReload = false;
     else if (m_ammoElapsed.type1 > 0 && isHUDAnimationExist("anm_add_cartridge") && isHUDAnimationExist("anm_reload_empty"))
         m_bTriStateReload = true;
@@ -3142,6 +3141,13 @@ void CWeapon::OnBulletHit()
     if (!fis_zero(conditionDecreasePerShotOnHit))
         ChangeCondition(-conditionDecreasePerShotOnHit);
 }
+
+/* Сколько выстрелов надо сделать прежде чем сломать оружие
+float CWeapon::GetShotsToConditionLoss() const // 
+{
+    return GetCondition() / conditionDecreasePerShotOnHit;
+}
+*/
 
 // Mortan scope system
 
