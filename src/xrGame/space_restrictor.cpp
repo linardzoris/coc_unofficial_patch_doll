@@ -24,6 +24,7 @@
 //Alundaio
 #include "RadioactiveZone.h"
 #include "ZoneCampfire.h"
+BOOL g_ai_die_in_anomaly = 0;
 //-Alundaio 
 
 CSpaceRestrictor::~CSpaceRestrictor() {}
@@ -68,7 +69,7 @@ BOOL CSpaceRestrictor::net_Spawn(CSE_Abstract* data)
         return (FALSE);
 
     CCustomZone* zone = smart_cast<CCustomZone*>(this);
-    if (!zone || smart_cast<CRadioactiveZone*>(zone)  || smart_cast<CZoneCampfire*>(zone))
+    if (g_ai_die_in_anomaly == 0 || !zone || smart_cast<CRadioactiveZone*>(zone) || smart_cast<CZoneCampfire*>(zone))
         spatial.type &= ~STYPE_VISIBLEFORAI;
 
     setEnabled(FALSE);
