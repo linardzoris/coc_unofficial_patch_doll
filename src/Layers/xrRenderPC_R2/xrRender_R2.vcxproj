@@ -22,7 +22,7 @@
     <ProjectGuid>{963BA4E5-499A-454D-B002-1D5ECE0527A6}</ProjectGuid>
     <RootNamespace>xrRender_R2</RootNamespace>
     <Keyword>Win32Proj</Keyword>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <Import Project="$(SolutionDir)Common.props" />
@@ -33,7 +33,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Mixed_COC|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_COC|Win32'" Label="Configuration">
@@ -44,7 +44,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_COC|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
@@ -258,12 +258,12 @@
     <ClInclude Include="blender_deffer_aref.h" />
     <ClInclude Include="blender_deffer_flat.h" />
     <ClInclude Include="blender_deffer_model.h" />
-    <ClInclude Include="blender_fxaa.h" />	
+    <ClInclude Include="blender_fxaa.h" />
     <ClInclude Include="blender_hud_bleeding.h" />
     <ClInclude Include="blender_hud_blood.h" />
-    <ClInclude Include="blender_hud_intoxication.h" />	
-    <ClInclude Include="blender_hud_stamina.h" />	
-    <ClInclude Include="blender_hud_mask.h" />	
+    <ClInclude Include="blender_hud_intoxication.h" />
+    <ClInclude Include="blender_hud_stamina.h" />
+    <ClInclude Include="blender_hud_mask.h" />
     <ClInclude Include="blender_light_direct.h" />
     <ClInclude Include="blender_light_direct_cascade.h" />
     <ClInclude Include="blender_light_mask.h" />
@@ -353,10 +353,10 @@
     <ClCompile Include="..\xrRender\ParticleEffectDef.cpp" />
     <ClCompile Include="..\xrRender\ParticleGroup.cpp" />
     <ClCompile Include="..\xrRender\PSLibrary.cpp" />
-    <ClCompile Include="..\xrRender\rendertarget_phase_dlaa.cpp" />	
-    <ClCompile Include="..\xrRender\rendertarget_raindrops.cpp" />	
-    <ClCompile Include="..\xrRender\rendertarget_phase_hud_effects.cpp" />	
-    <ClCompile Include="..\xrRender\rendertarget_phase_hud_mask.cpp" />	
+    <ClCompile Include="..\xrRender\rendertarget_phase_dlaa.cpp" />
+    <ClCompile Include="..\xrRender\rendertarget_raindrops.cpp" />
+    <ClCompile Include="..\xrRender\rendertarget_phase_hud_effects.cpp" />
+    <ClCompile Include="..\xrRender\rendertarget_phase_hud_mask.cpp" />
     <ClCompile Include="..\xrRender\ResourceManager.cpp" />
     <ClCompile Include="..\xrRender\ResourceManager_Loader.cpp" />
     <ClCompile Include="..\xrRender\ResourceManager_Reset.cpp" />
@@ -403,12 +403,12 @@
     <ClCompile Include="blender_deffer_aref.cpp" />
     <ClCompile Include="blender_deffer_flat.cpp" />
     <ClCompile Include="blender_deffer_model.cpp" />
-    <ClCompile Include="blender_fxaa.cpp" />	
+    <ClCompile Include="blender_fxaa.cpp" />
     <ClCompile Include="blender_hud_bleeding.cpp" />
     <ClCompile Include="blender_hud_blood.cpp" />
-    <ClCompile Include="blender_hud_intoxication.cpp" />	
-    <ClCompile Include="blender_hud_stamina.cpp" />	
-    <ClCompile Include="blender_hud_mask.cpp" />	
+    <ClCompile Include="blender_hud_intoxication.cpp" />
+    <ClCompile Include="blender_hud_stamina.cpp" />
+    <ClCompile Include="blender_hud_mask.cpp" />
     <ClCompile Include="blender_light_direct.cpp" />
     <ClCompile Include="blender_light_direct_cascade.cpp" />
     <ClCompile Include="blender_light_mask.cpp" />
@@ -439,7 +439,7 @@
     <ClCompile Include="r2_rendertarget_phase_accumulator.cpp" />
     <ClCompile Include="r2_rendertarget_phase_bloom.cpp" />
     <ClCompile Include="r2_rendertarget_phase_combine.cpp" />
-    <ClCompile Include="r2_rendertarget_phase_FXAA.cpp" />	
+    <ClCompile Include="r2_rendertarget_phase_FXAA.cpp" />
     <ClCompile Include="r2_rendertarget_phase_luminance.cpp" />
     <ClCompile Include="r2_rendertarget_phase_occq.cpp" />
     <ClCompile Include="r2_rendertarget_phase_PP.cpp" />

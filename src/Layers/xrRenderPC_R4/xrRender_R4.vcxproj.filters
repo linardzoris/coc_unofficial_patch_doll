@@ -175,7 +175,7 @@
     <Filter Include="3DFluid">
       <UniqueIdentifier>{dbf14a7f-83de-4240-b3b6-0965c460a1c6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Debug">
+    <Filter Include="Core\Debug">
       <UniqueIdentifier>{8d6caf5d-f49d-40f7-b1ae-f1fd5c4f0d58}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -323,34 +323,31 @@
     </ClInclude>
     <ClInclude Include="blender_fxaa.h">
       <Filter>Shading templates</Filter>
-    </ClInclude>	
+    </ClInclude>
     <ClInclude Include="blender_hud_mask.h">
       <Filter>Shading templates</Filter>
-    </ClInclude>	
-   <ClInclude Include="blender_hud_blood.h">
+    </ClInclude>
+    <ClInclude Include="blender_hud_blood.h">
       <Filter>Shading templates</Filter>
     </ClInclude>
-	<ClInclude Include="blender_hud_intoxication.h">
+    <ClInclude Include="blender_hud_intoxication.h">
       <Filter>Shading templates</Filter>
-    </ClInclude>		
+    </ClInclude>
     <ClInclude Include="blender_hud_stamina.h">
       <Filter>Shading templates</Filter>
     </ClInclude>
     <ClInclude Include="blender_hud_bleeding.h">
       <Filter>Shading templates</Filter>
     </ClInclude>
-    <ClCompile Include="blender_blur.h">
-      <Filter>Shading templates</Filter>
-    </ClCompile>	
     <ClInclude Include="blender_nightvision.h">
       <Filter>Shading templates</Filter>
     </ClInclude>
     <ClInclude Include="blender_pp_bloom.h">
       <Filter>Shading templates</Filter>
-    </ClInclude>	
+    </ClInclude>
     <ClInclude Include="blender_dof.h">
       <Filter>Shading templates</Filter>
-    </ClInclude>	
+    </ClInclude>
     <ClInclude Include="..\xrRender\Blender_detail_still.h">
       <Filter>Shading templates\R1</Filter>
     </ClInclude>
@@ -733,7 +730,7 @@
       <Filter>3DFluid</Filter>
     </ClInclude>
     <ClInclude Include="..\xrRender\Debug\dxPixEventWrapper.h">
-      <Filter>Debug</Filter>
+      <Filter>Core\Debug</Filter>
     </ClInclude>
     <ClInclude Include="..\xrRender\DetailFormat.h">
       <Filter>Details</Filter>
@@ -747,6 +744,7 @@
     <ClInclude Include="..\xrRender\KinematicsAddBoneTransform.hpp">
       <Filter>Refactored\Execution &amp; 3D\Visuals\Skeleton</Filter>
     </ClInclude>
+    <ClInclude Include="blender_blur.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -934,10 +932,10 @@
     </ClCompile>
     <ClCompile Include="blender_fxaa.cpp">
       <Filter>Shading templates</Filter>
-    </ClCompile>	
+    </ClCompile>
     <ClCompile Include="blender_hud_mask.cpp">
       <Filter>Shading templates</Filter>
-    </ClCompile>	
+    </ClCompile>
     <ClCompile Include="..\xrRender\Blender_detail_still.cpp">
       <Filter>Shading templates\R1</Filter>
     </ClCompile>
@@ -1081,13 +1079,13 @@
     </ClCompile>
     <ClCompile Include="..\xrRender\rendertarget_raindrops.cpp">
       <Filter>Core_Target</Filter>
-    </ClCompile>	
+    </ClCompile>
     <ClCompile Include="..\xrRender\rendertarget_phase_hud_mask.cpp">
       <Filter>Core_Target</Filter>
-    </ClCompile>	
+    </ClCompile>
     <ClCompile Include="r4_rendertarget_phase_FXAA.cpp">
       <Filter>Core_Target</Filter>
-    </ClCompile>	
+    </ClCompile>
     <ClCompile Include="..\xrRender\ColorMapManager.cpp">
       <Filter>Core_Target\ColorMap</Filter>
     </ClCompile>
@@ -1297,25 +1295,25 @@
     </ClCompile>
     <ClCompile Include="..\xrRender\rendertarget_phase_blur.cpp">
       <Filter>Core_Target</Filter>
-    </ClCompile>	
+    </ClCompile>
     <ClCompile Include="..\xrRender\rendertarget_phase_nightvision.cpp">
       <Filter>Core_Target</Filter>
-    </ClCompile>	
+    </ClCompile>
     <ClCompile Include="..\xrRender\rendertarget_phase_pp_bloom.cpp">
       <Filter>Core_Target</Filter>
-    </ClCompile>	
+    </ClCompile>
     <ClCompile Include="blender_dof.cpp">
       <Filter>Shading templates</Filter>
     </ClCompile>
     <ClCompile Include="..\xrRender\rendertarget_phase_dof.cpp">
       <Filter>Core_Target</Filter>
-    </ClCompile>			
-   <ClCompile Include="blender_hud_blood.cpp">
+    </ClCompile>
+    <ClCompile Include="blender_hud_blood.cpp">
       <Filter>Shading templates</Filter>
     </ClCompile>
-   <ClCompile Include="blender_hud_intoxication.cpp">
+    <ClCompile Include="blender_hud_intoxication.cpp">
       <Filter>Shading templates</Filter>
-    </ClCompile>		
+    </ClCompile>
     <ClCompile Include="..\xrRender\rendertarget_phase_hud_effects.cpp">
       <Filter>Core_Target</Filter>
     </ClCompile>
@@ -1324,16 +1322,16 @@
     </ClCompile>
     <ClCompile Include="blender_hud_bleeding.cpp">
       <Filter>Shading templates</Filter>
-    </ClCompile>	
+    </ClCompile>
     <ClCompile Include="blender_blur.cpp">
       <Filter>Shading templates</Filter>
-    </ClCompile>	
+    </ClCompile>
     <ClCompile Include="blender_nightvision.cpp">
       <Filter>Shading templates</Filter>
     </ClCompile>
     <ClCompile Include="blender_pp_bloom.cpp">
       <Filter>Shading templates</Filter>
-    </ClCompile>	
+    </ClCompile>
     <ClCompile Include="..\xrRenderDX10\MSAA\dx10MSAABlender.cpp">
       <Filter>Interfase implementations\MSAARender</Filter>
     </ClCompile>
@@ -1383,7 +1381,7 @@
       <Filter>3DFluid</Filter>
     </ClCompile>
     <ClCompile Include="..\xrRender\Debug\dxPixEventWrapper.cpp">
-      <Filter>Debug</Filter>
+      <Filter>Core\Debug</Filter>
     </ClCompile>
     <ClCompile Include="r4_R_sun.cpp">
       <Filter>Core</Filter>

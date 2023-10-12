@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{200652A6-043E-4634-8837-87983B3BD5E0}</ProjectGuid>
     <RootNamespace>xrGame</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <Import Project="$(SolutionDir)Common.props" />
@@ -33,7 +33,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_COC|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <PreferredToolArchitecture>x64</PreferredToolArchitecture>
@@ -45,7 +45,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Mixed_COC|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -196,7 +196,7 @@
     <ClInclude Include="Actor.h" />
     <ClInclude Include="ActorAnimation.h" />
     <ClInclude Include="ActorBackpack.h" />
-    <ClInclude Include="ActorUnvest.h" />	
+    <ClInclude Include="ActorUnvest.h" />
     <ClInclude Include="ActorCondition.h" />
     <ClInclude Include="ActorEffector.h" />
     <ClInclude Include="ActorHelmet.h" />
@@ -209,7 +209,7 @@
     <ClInclude Include="actor_statistic_defs.h" />
     <ClInclude Include="actor_statistic_mgr.h" />
     <ClInclude Include="AdvancedDetector.h" />
-	<ClInclude Include="XrayGameConstants.h" />	
+    <ClInclude Include="XrayGameConstants.h" />
     <ClInclude Include="agent_corpse_manager.h" />
     <ClInclude Include="agent_corpse_manager_inline.h" />
     <ClInclude Include="agent_enemy_manager.h" />
@@ -725,7 +725,7 @@
     <ClInclude Include="doors_manager.h" />
     <ClInclude Include="DummyArtifact.h" />
     <ClInclude Include="DynamicHeightMap.h" />
-    <ClInclude Include="DynamicHudGlass.h" />	
+    <ClInclude Include="DynamicHudGlass.h" />
     <ClInclude Include="dynamic_obstacles_avoider.h" />
     <ClInclude Include="dynamic_obstacles_avoider_inline.h" />
     <ClInclude Include="eatable_item.h" />
@@ -1332,7 +1332,7 @@
     <ClInclude Include="WeaponRevolver.h" />
     <ClInclude Include="WeaponRG6.h" />
     <ClInclude Include="WeaponRPG7.h" />
-    <ClInclude Include="WeaponRPG26.h" />	
+    <ClInclude Include="WeaponRPG26.h" />
     <ClInclude Include="WeaponShotgun.h" />
     <ClInclude Include="WeaponStatMgun.h" />
     <ClInclude Include="HolderEntityObject.h" />
@@ -1504,7 +1504,7 @@
     </ClCompile>
     <ClCompile Include="ActorAnimation.cpp" />
     <ClCompile Include="ActorBackpack.cpp" />
-    <ClCompile Include="ActorUnvest.cpp" />	
+    <ClCompile Include="ActorUnvest.cpp" />
     <ClCompile Include="ActorCameras.cpp" />
     <ClCompile Include="ActorCondition.cpp">
       <PrecompiledHeaderFile>pch_script.h</PrecompiledHeaderFile>
@@ -1539,7 +1539,7 @@
     <ClCompile Include="actor_statistic_mgr.cpp" />
     <ClCompile Include="Actor_Weapon.cpp" />
     <ClCompile Include="AdvancedDetector.cpp" />
-	<ClCompile Include="XrayGameConstants.cpp" />
+    <ClCompile Include="XrayGameConstants.cpp" />
     <ClCompile Include="agent_corpse_manager.cpp" />
     <ClCompile Include="agent_enemy_manager.cpp">
       <PrecompiledHeaderFile>pch_script.h</PrecompiledHeaderFile>
@@ -2027,7 +2027,7 @@
     <ClCompile Include="DynamicHeightMap.cpp">
       <ExcludedFromBuild>true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="DynamicHudGlass.cpp" />	
+    <ClCompile Include="DynamicHudGlass.cpp" />
     <ClCompile Include="dynamic_obstacles_avoider.cpp" />
     <ClCompile Include="eatable_item.cpp" />
     <ClCompile Include="eatable_item_object.cpp" />

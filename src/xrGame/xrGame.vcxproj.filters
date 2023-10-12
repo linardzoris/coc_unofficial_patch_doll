@@ -4884,9 +4884,6 @@
     <ClInclude Include="WeaponRPG7.h">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\RPG7</Filter>
     </ClInclude>
-    <ClInclude Include="WeaponRPG26.h">
-      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\RPG26</Filter>
-    </ClInclude>
     <ClInclude Include="F1.h">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\Grenade F1</Filter>
     </ClInclude>
@@ -5691,16 +5688,16 @@
     </ClInclude>
     <ClInclude Include="XrayGameConstants.h">
       <Filter>Core</Filter>
-    </ClInclude>		
+    </ClInclude>
     <ClInclude Include="ActorBackpack.h">
       <Filter>Core\Client\Objects\items &amp; weapons\Outfit</Filter>
     </ClInclude>
     <ClInclude Include="ActorUnvest.h">
       <Filter>Core\Client\Objects\items &amp; weapons\Outfit</Filter>
-    </ClInclude>	
+    </ClInclude>
     <ClInclude Include="DynamicHudGlass.h">
       <Filter>Core\Client\Objects\items &amp; weapons\Outfit</Filter>
-    </ClInclude>	
+    </ClInclude>
     <ClInclude Include="ui\UILoadingScreen.h">
       <Filter>UI\Common\LoadingScreen</Filter>
     </ClInclude>
@@ -5740,6 +5737,7 @@
     <ClInclude Include="game_cl_base.h">
       <Filter>Core\Server\Games\client</Filter>
     </ClInclude>
+    <ClInclude Include="WeaponRPG26.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="damage_manager.cpp">
@@ -7503,9 +7501,6 @@
     <ClCompile Include="WeaponRPG7.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\RPG7</Filter>
     </ClCompile>
-    <ClCompile Include="WeaponRPG26.cpp">
-      <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\RPG26</Filter>
-    </ClCompile>
     <ClCompile Include="WeaponSVD.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Weapons\Various weapons\SVD</Filter>
     </ClCompile>
@@ -8398,18 +8393,18 @@
     <ClCompile Include="ui\UIPdaSpot.cpp">
       <Filter>UI\Common\PDA\PDA Spot</Filter>
     </ClCompile>
-	<ClCompile Include="XrayGameConstants.cpp">
+    <ClCompile Include="XrayGameConstants.cpp">
       <Filter>Core</Filter>
-    </ClCompile>	
+    </ClCompile>
     <ClCompile Include="ActorBackpack.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Outfit</Filter>
     </ClCompile>
     <ClCompile Include="ActorUnvest.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Outfit</Filter>
-    </ClCompile>	
+    </ClCompile>
     <ClCompile Include="DynamicHudGlass.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Outfit</Filter>
-    </ClCompile>	
+    </ClCompile>
     <ClCompile Include="CustomOutfit_script.cpp">
       <Filter>Core\Client\Objects\items &amp; weapons\Outfit</Filter>
     </ClCompile>
@@ -8485,7 +8480,8 @@
     <ClCompile Include="game_cl_base.cpp">
       <Filter>Core\Server\Games\client</Filter>
     </ClCompile>
-	<ClCompile Include="DumpLuaBindUserdata.cpp" />
+    <ClCompile Include="DumpLuaBindUserdata.cpp" />
+    <ClCompile Include="WeaponRPG26.cpp" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="ai\monsters\chimera\chimera_attack_state.h">
