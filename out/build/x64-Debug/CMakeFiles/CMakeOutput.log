@@ -1,0 +1,681 @@
+The system is: Windows - 10.0.22621 - AMD64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/cl.exe 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+用于 x64 的 Microsoft (R) C/C++ 优化编译器 19.29.30152 版
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+CMakeCCompilerId.c
+Microsoft (R) Incremental Linker Version 14.29.30152.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/out:CMakeCCompilerId.exe 
+CMakeCCompilerId.obj 
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.exe"
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.obj"
+
+The C compiler identification is MSVC, found in "C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/3.20.21032501-MSVC_2/CompilerIdC/CMakeCCompilerId.exe"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.29.30133/bin/Hostx64/x64/cl.exe 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+用于 x64 的 Microsoft (R) C/C++ 优化编译器 19.29.30152 版
+版权所有(C) Microsoft Corporation。保留所有权利。
+
+CMakeCXXCompilerId.cpp
+Microsoft (R) Incremental Linker Version 14.29.30152.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/out:CMakeCXXCompilerId.exe 
+CMakeCXXCompilerId.obj 
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.exe"
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.obj"
+
+The CXX compiler identification is MSVC, found in "C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/3.20.21032501-MSVC_2/CompilerIdCXX/CMakeCXXCompilerId.exe"
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_ea090 && [1/2] Building C object CMakeFiles\cmTC_ea090.dir\CMakeCCompilerABI.c.obj
+[2/2] Linking C executable cmTC_ea090.exe
+
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_c8280 && [1/2] Building CXX object CMakeFiles\cmTC_c8280.dir\CMakeCXXCompilerABI.cpp.obj
+[2/2] Linking CXX executable cmTC_c8280.exe
+
+
+
+Determining if the include file assert.h exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_7a84e && [1/2] Building C object CMakeFiles\cmTC_7a84e.dir\CheckIncludeFile.c.obj
+[2/2] Linking C executable cmTC_7a84e.exe
+
+
+
+Determining if the include file ctype.h exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_e0fa3 && [1/2] Building C object CMakeFiles\cmTC_e0fa3.dir\CheckIncludeFile.c.obj
+[2/2] Linking C executable cmTC_e0fa3.exe
+
+
+
+Determining if the include file errno.h exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_3a22a && [1/2] Building C object CMakeFiles\cmTC_3a22a.dir\CheckIncludeFile.c.obj
+[2/2] Linking C executable cmTC_3a22a.exe
+
+
+
+Determining if the include file fcntl.h exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_e9469 && [1/2] Building C object CMakeFiles\cmTC_e9469.dir\CheckIncludeFile.c.obj
+[2/2] Linking C executable cmTC_e9469.exe
+
+
+
+Determining if the include file float.h exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_2147e && [1/2] Building C object CMakeFiles\cmTC_2147e.dir\CheckIncludeFile.c.obj
+[2/2] Linking C executable cmTC_2147e.exe
+
+
+
+Determining if the include file limits.h exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_5f901 && [1/2] Building C object CMakeFiles\cmTC_5f901.dir\CheckIncludeFile.c.obj
+[2/2] Linking C executable cmTC_5f901.exe
+
+
+
+Determining if the include file malloc.h exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_eb0c3 && [1/2] Building C object CMakeFiles\cmTC_eb0c3.dir\CheckIncludeFile.c.obj
+[2/2] Linking C executable cmTC_eb0c3.exe
+
+
+
+Determining if the include file memory.h exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_7d867 && [1/2] Building C object CMakeFiles\cmTC_7d867.dir\CheckIncludeFile.c.obj
+[2/2] Linking C executable cmTC_7d867.exe
+
+
+
+Determining if the include file setjmp.h exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_f1eb2 && [1/2] Building C object CMakeFiles\cmTC_f1eb2.dir\CheckIncludeFile.c.obj
+[2/2] Linking C executable cmTC_f1eb2.exe
+
+
+
+Determining if the include file signal.h exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_21692 && [1/2] Building C object CMakeFiles\cmTC_21692.dir\CheckIncludeFile.c.obj
+[2/2] Linking C executable cmTC_21692.exe
+
+
+
+Determining if the include file stdarg.h exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_8ce0c && [1/2] Building C object CMakeFiles\cmTC_8ce0c.dir\CheckIncludeFile.c.obj
+[2/2] Linking C executable cmTC_8ce0c.exe
+
+
+
+Determining if the include file stddef.h exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_ac7b6 && [1/2] Building C object CMakeFiles\cmTC_ac7b6.dir\CheckIncludeFile.c.obj
+[2/2] Linking C executable cmTC_ac7b6.exe
+
+
+
+Determining if the include file stdint.h exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_9842a && [1/2] Building C object CMakeFiles\cmTC_9842a.dir\CheckIncludeFile.c.obj
+[2/2] Linking C executable cmTC_9842a.exe
+
+
+
+Determining if the include file stdio.h exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_fc206 && [1/2] Building C object CMakeFiles\cmTC_fc206.dir\CheckIncludeFile.c.obj
+[2/2] Linking C executable cmTC_fc206.exe
+
+
+
+Determining if the include file stdlib.h exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_30243 && [1/2] Building C object CMakeFiles\cmTC_30243.dir\CheckIncludeFile.c.obj
+[2/2] Linking C executable cmTC_30243.exe
+
+
+
+Determining if the include file string.h exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_d7569 && [1/2] Building C object CMakeFiles\cmTC_d7569.dir\CheckIncludeFile.c.obj
+[2/2] Linking C executable cmTC_d7569.exe
+
+
+
+Determining if the include file time.h exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_639d9 && [1/2] Building C object CMakeFiles\cmTC_639d9.dir\CheckIncludeFile.c.obj
+[2/2] Linking C executable cmTC_639d9.exe
+
+
+
+Determining if the include file sys/stat.h exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_8a602 && [1/2] Building C object CMakeFiles\cmTC_8a602.dir\CheckIncludeFile.c.obj
+[2/2] Linking C executable cmTC_8a602.exe
+
+
+
+Determining if the include file sys/types.h exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_89354 && [1/2] Building C object CMakeFiles\cmTC_89354.dir\CheckIncludeFile.c.obj
+[2/2] Linking C executable cmTC_89354.exe
+
+
+
+Determining if the include file sys/types.h exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_58da7 && [1/2] Building C object CMakeFiles\cmTC_58da7.dir\CheckIncludeFile.c.obj
+[2/2] Linking C executable cmTC_58da7.exe
+
+
+
+Determining if the include file stdint.h exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_72e80 && [1/2] Building C object CMakeFiles\cmTC_72e80.dir\CheckIncludeFile.c.obj
+[2/2] Linking C executable cmTC_72e80.exe
+
+
+
+Determining if the include file stddef.h exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_3ea2b && [1/2] Building C object CMakeFiles\cmTC_3ea2b.dir\CheckIncludeFile.c.obj
+[2/2] Linking C executable cmTC_3ea2b.exe
+
+
+
+Determining size of short passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_6e621 && [1/2] Building C object CMakeFiles\cmTC_6e621.dir\mfx_SIZEOF_SHORT.c.obj
+[2/2] Linking C executable cmTC_6e621.exe
+
+
+
+Determining size of int passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_2732b && [1/2] Building C object CMakeFiles\cmTC_2732b.dir\mfx_SIZEOF_INT.c.obj
+[2/2] Linking C executable cmTC_2732b.exe
+
+
+
+Determining size of long passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_515d7 && [1/2] Building C object CMakeFiles\cmTC_515d7.dir\mfx_SIZEOF_LONG.c.obj
+[2/2] Linking C executable cmTC_515d7.exe
+
+
+
+Determining size of long long passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_90ddc && [1/2] Building C object CMakeFiles\cmTC_90ddc.dir\mfx_SIZEOF_LONG_LONG.c.obj
+[2/2] Linking C executable cmTC_90ddc.exe
+
+
+
+Determining size of __int16 passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_53f0c && [1/2] Building C object CMakeFiles\cmTC_53f0c.dir\mfx_SIZEOF___INT16.c.obj
+[2/2] Linking C executable cmTC_53f0c.exe
+
+
+
+Determining size of __int32 passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_518c8 && [1/2] Building C object CMakeFiles\cmTC_518c8.dir\mfx_SIZEOF___INT32.c.obj
+[2/2] Linking C executable cmTC_518c8.exe
+
+
+
+Determining size of __int64 passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_e11b5 && [1/2] Building C object CMakeFiles\cmTC_e11b5.dir\mfx_SIZEOF___INT64.c.obj
+[2/2] Linking C executable cmTC_e11b5.exe
+
+
+
+Determining size of void * passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_790ec && [1/2] Building C object CMakeFiles\cmTC_790ec.dir\mfx_SIZEOF_VOID_P.c.obj
+[2/2] Linking C executable cmTC_790ec.exe
+
+
+
+Determining size of size_t passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_35f50 && [1/2] Building C object CMakeFiles\cmTC_35f50.dir\mfx_SIZEOF_SIZE_T.c.obj
+[2/2] Linking C executable cmTC_35f50.exe
+
+
+
+Determining size of ptrdiff_t passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_62240 && [1/2] Building C object CMakeFiles\cmTC_62240.dir\mfx_SIZEOF_PTRDIFF_T.c.obj
+[2/2] Linking C executable cmTC_62240.exe
+
+
+
+Determining size of intmax_t passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_3e957 && [1/2] Building C object CMakeFiles\cmTC_3e957.dir\mfx_SIZEOF_INTMAX_T.c.obj
+[2/2] Linking C executable cmTC_3e957.exe
+
+
+
+Determining size of uintmax_t passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_9f891 && [1/2] Building C object CMakeFiles\cmTC_9f891.dir\mfx_SIZEOF_UINTMAX_T.c.obj
+[2/2] Linking C executable cmTC_9f891.exe
+
+
+
+Determining size of intptr_t passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_45c0f && [1/2] Building C object CMakeFiles\cmTC_45c0f.dir\mfx_SIZEOF_INTPTR_T.c.obj
+[2/2] Linking C executable cmTC_45c0f.exe
+
+
+
+Determining size of uintptr_t passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_8280f && [1/2] Building C object CMakeFiles\cmTC_8280f.dir\mfx_SIZEOF_UINTPTR_T.c.obj
+[2/2] Linking C executable cmTC_8280f.exe
+
+
+
+Determining size of float passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_cd15d && [1/2] Building C object CMakeFiles\cmTC_cd15d.dir\mfx_SIZEOF_FLOAT.c.obj
+[2/2] Linking C executable cmTC_cd15d.exe
+
+
+
+Determining size of double passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_705e1 && [1/2] Building C object CMakeFiles\cmTC_705e1.dir\mfx_SIZEOF_DOUBLE.c.obj
+[2/2] Linking C executable cmTC_705e1.exe
+
+
+
+Determining size of long double passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_e78e9 && [1/2] Building C object CMakeFiles\cmTC_e78e9.dir\mfx_SIZEOF_LONG_DOUBLE.c.obj
+[2/2] Linking C executable cmTC_e78e9.exe
+
+
+
+Determining size of dev_t passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_3ba0b && [1/2] Building C object CMakeFiles\cmTC_3ba0b.dir\mfx_SIZEOF_DEV_T.c.obj
+[2/2] Linking C executable cmTC_3ba0b.exe
+
+
+
+Determining size of off_t passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_beabf && [1/2] Building C object CMakeFiles\cmTC_beabf.dir\mfx_SIZEOF_OFF_T.c.obj
+[2/2] Linking C executable cmTC_beabf.exe
+
+
+
+Determining size of time_t passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_d9a6c && [1/2] Building C object CMakeFiles\cmTC_d9a6c.dir\mfx_SIZEOF_TIME_T.c.obj
+[2/2] Linking C executable cmTC_d9a6c.exe
+
+
+
+Determining if the function access exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_e3f26 && [1/2] Building C object CMakeFiles\cmTC_e3f26.dir\CheckFunctionExists.c.obj
+[2/2] Linking C executable cmTC_e3f26.exe
+
+
+
+Determining if the function atexit exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_1c438 && [1/2] Building C object CMakeFiles\cmTC_1c438.dir\CheckFunctionExists.c.obj
+[2/2] Linking C executable cmTC_1c438.exe
+
+
+
+Determining if the function atoi exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_d675e && [1/2] Building C object CMakeFiles\cmTC_d675e.dir\CheckFunctionExists.c.obj
+[2/2] Linking C executable cmTC_d675e.exe
+
+
+
+Determining if the function atol exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_1d744 && [1/2] Building C object CMakeFiles\cmTC_1d744.dir\CheckFunctionExists.c.obj
+[2/2] Linking C executable cmTC_1d744.exe
+
+
+
+Determining if the function chmod exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_90c36 && [1/2] Building C object CMakeFiles\cmTC_90c36.dir\CheckFunctionExists.c.obj
+[2/2] Linking C executable cmTC_90c36.exe
+
+
+
+Determining if the function ctime exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_bc3eb && [1/2] Building C object CMakeFiles\cmTC_bc3eb.dir\CheckFunctionExists.c.obj
+[2/2] Linking C executable cmTC_bc3eb.exe
+
+
+
+Determining if the function difftime exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_a8f49 && [1/2] Building C object CMakeFiles\cmTC_a8f49.dir\CheckFunctionExists.c.obj
+[2/2] Linking C executable cmTC_a8f49.exe
+
+
+
+Determining if the function fstat exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_b56f9 && [1/2] Building C object CMakeFiles\cmTC_b56f9.dir\CheckFunctionExists.c.obj
+[2/2] Linking C executable cmTC_b56f9.exe
+
+
+
+Determining if the function getenv exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_a0129 && [1/2] Building C object CMakeFiles\cmTC_a0129.dir\CheckFunctionExists.c.obj
+[2/2] Linking C executable cmTC_a0129.exe
+
+
+
+Determining if the function gmtime exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_e3d06 && [1/2] Building C object CMakeFiles\cmTC_e3d06.dir\CheckFunctionExists.c.obj
+[2/2] Linking C executable cmTC_e3d06.exe
+
+
+
+Determining if the function isatty exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_046f5 && [1/2] Building C object CMakeFiles\cmTC_046f5.dir\CheckFunctionExists.c.obj
+[2/2] Linking C executable cmTC_046f5.exe
+
+
+
+Determining if the function localtime exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_d23cc && [1/2] Building C object CMakeFiles\cmTC_d23cc.dir\CheckFunctionExists.c.obj
+[2/2] Linking C executable cmTC_d23cc.exe
+
+
+
+Determining if the function longjmp exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_334a6 && [1/2] Building C object CMakeFiles\cmTC_334a6.dir\CheckFunctionExists.c.obj
+[2/2] Linking C executable cmTC_334a6.exe
+
+
+
+Determining if the function memcmp exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_c2f08 && [1/2] Building C object CMakeFiles\cmTC_c2f08.dir\CheckFunctionExists.c.obj
+[2/2] Linking C executable cmTC_c2f08.exe
+
+
+
+Determining if the function memcpy exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_f6841 && [1/2] Building C object CMakeFiles\cmTC_f6841.dir\CheckFunctionExists.c.obj
+[2/2] Linking C executable cmTC_f6841.exe
+
+
+
+Determining if the function memmove exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_3a9d5 && [1/2] Building C object CMakeFiles\cmTC_3a9d5.dir\CheckFunctionExists.c.obj
+[2/2] Linking C executable cmTC_3a9d5.exe
+
+
+
+Determining if the function memset exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_f489b && [1/2] Building C object CMakeFiles\cmTC_f489b.dir\CheckFunctionExists.c.obj
+[2/2] Linking C executable cmTC_f489b.exe
+
+
+
+Determining if the function mkdir exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_ed096 && [1/2] Building C object CMakeFiles\cmTC_ed096.dir\CheckFunctionExists.c.obj
+[2/2] Linking C executable cmTC_ed096.exe
+
+
+
+Determining if the function mktime exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_1755c && [1/2] Building C object CMakeFiles\cmTC_1755c.dir\CheckFunctionExists.c.obj
+[2/2] Linking C executable cmTC_1755c.exe
+
+
+
+Determining if the function qsort exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_b08fe && [1/2] Building C object CMakeFiles\cmTC_b08fe.dir\CheckFunctionExists.c.obj
+[2/2] Linking C executable cmTC_b08fe.exe
+
+
+
+Determining if the function raise exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_014b8 && [1/2] Building C object CMakeFiles\cmTC_014b8.dir\CheckFunctionExists.c.obj
+[2/2] Linking C executable cmTC_014b8.exe
+
+
+
+Determining if the function rmdir exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_754bc && [1/2] Building C object CMakeFiles\cmTC_754bc.dir\CheckFunctionExists.c.obj
+[2/2] Linking C executable cmTC_754bc.exe
+
+
+
+Determining if the function setjmp exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_f23e1 && [1/2] Building C object CMakeFiles\cmTC_f23e1.dir\CheckFunctionExists.c.obj
+[2/2] Linking C executable cmTC_f23e1.exe
+
+
+
+Determining if the function signal exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_ae4d1 && [1/2] Building C object CMakeFiles\cmTC_ae4d1.dir\CheckFunctionExists.c.obj
+[2/2] Linking C executable cmTC_ae4d1.exe
+
+
+
+Determining if the function strchr exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_c9679 && [1/2] Building C object CMakeFiles\cmTC_c9679.dir\CheckFunctionExists.c.obj
+[2/2] Linking C executable cmTC_c9679.exe
+
+
+
+Determining if the function strdup exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_a6a1d && [1/2] Building C object CMakeFiles\cmTC_a6a1d.dir\CheckFunctionExists.c.obj
+[2/2] Linking C executable cmTC_a6a1d.exe
+
+
+
+Determining if the function strerror exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_0c4be && [1/2] Building C object CMakeFiles\cmTC_0c4be.dir\CheckFunctionExists.c.obj
+[2/2] Linking C executable cmTC_0c4be.exe
+
+
+
+Determining if the function strftime exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_d4814 && [1/2] Building C object CMakeFiles\cmTC_d4814.dir\CheckFunctionExists.c.obj
+[2/2] Linking C executable cmTC_d4814.exe
+
+
+
+Determining if the function stricmp exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_f0a41 && [1/2] Building C object CMakeFiles\cmTC_f0a41.dir\CheckFunctionExists.c.obj
+[2/2] Linking C executable cmTC_f0a41.exe
+
+
+
+Determining if the function strnicmp exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_57079 && [1/2] Building C object CMakeFiles\cmTC_57079.dir\CheckFunctionExists.c.obj
+[2/2] Linking C executable cmTC_57079.exe
+
+
+
+Determining if the function strrchr exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_64cdf && [1/2] Building C object CMakeFiles\cmTC_64cdf.dir\CheckFunctionExists.c.obj
+[2/2] Linking C executable cmTC_64cdf.exe
+
+
+
+Determining if the function strstr exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_dcab6 && [1/2] Building C object CMakeFiles\cmTC_dcab6.dir\CheckFunctionExists.c.obj
+[2/2] Linking C executable cmTC_dcab6.exe
+
+
+
+Determining if the function time exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_ef070 && [1/2] Building C object CMakeFiles\cmTC_ef070.dir\CheckFunctionExists.c.obj
+[2/2] Linking C executable cmTC_ef070.exe
+
+
+
+Determining if the function umask exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_92b2e && [1/2] Building C object CMakeFiles\cmTC_92b2e.dir\CheckFunctionExists.c.obj
+[2/2] Linking C executable cmTC_92b2e.exe
+
+
+
+Determining if the function utime exists passed with the following output:
+Change Dir: C:/Users/16359/Desktop/Urax740/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_d44b4 && [1/2] Building C object CMakeFiles\cmTC_d44b4.dir\CheckFunctionExists.c.obj
+[2/2] Linking C executable cmTC_d44b4.exe
+
+
+

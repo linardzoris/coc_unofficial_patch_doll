@@ -180,7 +180,7 @@ void FTreeVisual::Render(float /*LOD*/)
 
             c_grass = (Fvector4*)GrassData;
         }
-        VERIFY(c_grass);
+        //VERIFY(c_grass);
 
         if (c_grass)
         {
