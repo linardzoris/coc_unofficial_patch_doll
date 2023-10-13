@@ -85,7 +85,7 @@
       <EnableFiberSafeOptimizations Condition="'$(Configuration)|$(Platform)'=='Release_COC|x64'">true</EnableFiberSafeOptimizations>
       <OmitFramePointers Condition="'$(Configuration)|$(Platform)'=='Release_COC|x64'">false</OmitFramePointers>
       <IntrinsicFunctions Condition="'$(Configuration)|$(Platform)'=='Release_COC|x64'">false</IntrinsicFunctions>
-      <EnableEnhancedInstructionSet Condition="'$(Configuration)|$(Platform)'=='Release_COC|x64'">AdvancedVectorExtensions512</EnableEnhancedInstructionSet>
+      <EnableEnhancedInstructionSet Condition="'$(Configuration)|$(Platform)'=='Release_COC|x64'">NotSet</EnableEnhancedInstructionSet>
     </ClCompile>
     <Link>
       <ProgramDatabaseFile>$(OutDir)$(ProjectName).pdb</ProgramDatabaseFile>
