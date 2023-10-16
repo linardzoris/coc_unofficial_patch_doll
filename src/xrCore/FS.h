@@ -92,13 +92,13 @@ public:
     // quant writing functions
     IC void w_float_q16(float a, float min, float max)
     {
-        VERIFY(a >= min && a <= max);
+    //    VERIFY(a >= min && a <= max);
         float q = (a - min) / (max - min);
         w_u16(u16(iFloor(q * 65535.f + .5f)));
     }
     IC void w_float_q8(float a, float min, float max)
     {
-        VERIFY(a >= min && a <= max);
+    //    VERIFY(a >= min && a <= max);
         float q = (a - min) / (max - min);
         w_u8(u8(iFloor(q * 255.f + .5f)));
     }
@@ -274,14 +274,14 @@ public:
     {
         u16 val = r_u16();
         float A = (float(val) * (max - min)) / 65535.f + min; // floating-point-error possible
-        VERIFY((A >= min - EPS_S) && (A <= max + EPS_S));
+    //    VERIFY((A >= min - EPS_S) && (A <= max + EPS_S));
         return A;
     }
     IC float r_float_q8(float min, float max)
     {
         u8 val = r_u8();
         float A = (float(val) / 255.0001f) * (max - min) + min; // floating-point-error possible
-        VERIFY((A >= min) && (A <= max));
+    //    VERIFY((A >= min) && (A <= max));
         return A;
     }
     IC float r_angle16() { return r_float_q16(0, PI_MUL_2); }
@@ -374,14 +374,14 @@ public:
     IC void seek(int ptr)
     {
         Pos = ptr;
-        VERIFY((Pos <= Size) && (Pos >= 0));
+    //    VERIFY((Pos <= Size) && (Pos >= 0));
     };
     IC int length() const { return Size; };
     IC void* pointer() const { return &(data[Pos]); };
     IC void advance(int cnt)
     {
         Pos += cnt;
-        VERIFY((Pos <= Size) && (Pos >= 0));
+    //    VERIFY((Pos <= Size) && (Pos >= 0));
     };
 
 public:

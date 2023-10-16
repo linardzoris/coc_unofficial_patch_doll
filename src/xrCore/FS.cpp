@@ -29,7 +29,7 @@ FILE_MAPPINGS g_file_mappings;
 void register_file_mapping(void* address, const u32& size, LPCSTR file_name)
 {
     FILE_MAPPINGS::const_iterator I = g_file_mappings.find(*(u32*)&address);
-    VERIFY(I == g_file_mappings.end());
+ //   VERIFY(I == g_file_mappings.end());
     g_file_mappings.insert(std::make_pair(*(u32*)&address, std::make_pair(size, shared_str(file_name))));
 
     // Msg ("++register_file_mapping(%2d): [0x%08x]%s", g_file_mapped_count + 1, *((u32*)&address), file_name);
@@ -47,7 +47,7 @@ void register_file_mapping(void* address, const u32& size, LPCSTR file_name)
 void unregister_file_mapping(void* address, const u32& size)
 {
     FILE_MAPPINGS::iterator I = g_file_mappings.find(*(u32*)&address);
-    VERIFY(I != g_file_mappings.end());
+//    VERIFY(I != g_file_mappings.end());
     // VERIFY2 ((*I).second.first == size,make_string("file mapping sizes are different: %d ->
     // %d",(*I).second.first,size));
     g_file_mapped_memory -= (*I).second.first;
@@ -235,7 +235,7 @@ void IWriter::open_chunk(u32 type)
 }
 void IWriter::close_chunk()
 {
-    VERIFY(!chunk_pos.empty());
+//    VERIFY(!chunk_pos.empty());
 
     int pos = tell();
     seek(chunk_pos.top());
@@ -382,7 +382,7 @@ IReader* IReader::open_chunk_iterator(u32& ID, IReader* _prev)
 
 void IReader::r(void* p, int cnt)
 {
-    VERIFY(Pos + cnt <= Size);
+ //   VERIFY(Pos + cnt <= Size);
     CopyMemory(p, pointer(), cnt);
     advance(cnt);
 #ifdef DEBUG

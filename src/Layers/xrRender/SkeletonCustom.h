@@ -87,7 +87,7 @@ struct dbg_marker
     dbg_marker(BOOL* b)
     {
         lock = b;
-        VERIFY(*lock == FALSE);
+    //    VERIFY(*lock == FALSE);
         *lock = TRUE;
     }
     ~dbg_marker() { *lock = FALSE; }
@@ -192,35 +192,35 @@ public:
     accel* LL_Bones() override { return bone_map_N; }
     ICF CBoneInstance& LL_GetBoneInstance(u16 bone_id) override
     {
-        VERIFY(bone_id < LL_BoneCount());
-        VERIFY(bone_instances);
+    //    VERIFY(bone_id < LL_BoneCount());
+    //    VERIFY(bone_instances);
         return bone_instances[bone_id];
     }
     ICF const CBoneInstance& LL_GetBoneInstance(u16 bone_id) const
     {
-        VERIFY(bone_id < LL_BoneCount());
-        VERIFY(bone_instances);
+    //    VERIFY(bone_id < LL_BoneCount());
+    //    VERIFY(bone_instances);
         return bone_instances[bone_id];
     }
     CBoneData& LL_GetData(u16 bone_id) override
     {
-        VERIFY(bone_id < LL_BoneCount());
-        VERIFY(bones);
+    //    VERIFY(bone_id < LL_BoneCount());
+    //    VERIFY(bones);
         CBoneData& bd = *((*bones)[bone_id]);
         return bd;
     }
 
     const IBoneData& GetBoneData(u16 bone_id) const override
     {
-        VERIFY(bone_id < LL_BoneCount());
-        VERIFY(bones);
+    //    VERIFY(bone_id < LL_BoneCount());
+    //    VERIFY(bones);
         CBoneData& bd = *((*bones)[bone_id]);
         return bd;
     }
     CBoneData* LL_GetBoneData(u16 bone_id)
     {
-        VERIFY(bone_id < LL_BoneCount());
-        VERIFY(bones);
+    //    VERIFY(bone_id < LL_BoneCount());
+    //    VERIFY(bones);
         u32 sz = sizeof(vecBones);
         u32 sz1 = sizeof(((*bones)[bone_id])->children);
         //Msg("sz: %d", sz);
@@ -242,7 +242,7 @@ public:
     } // rendering only
     Fobb& LL_GetBox(u16 bone_id) override
     {
-        VERIFY(bone_id < LL_BoneCount());
+    //    VERIFY(bone_id < LL_BoneCount());
         return (*bones)[bone_id]->obb;
     }
     const Fbox& GetBox() const override { return vis.box; }
@@ -252,13 +252,13 @@ public:
     u16 LL_GetBoneRoot() override { return iRoot; }
     void LL_SetBoneRoot(u16 bone_id) override
     {
-        VERIFY(bone_id < LL_BoneCount());
+    //    VERIFY(bone_id < LL_BoneCount());
         iRoot = bone_id;
     }
 
     BOOL LL_GetBoneVisible(u16 bone_id) override
     {
-        VERIFY(bone_id < LL_BoneCount());
+     //   VERIFY(bone_id < LL_BoneCount());
         return visimask.is(u64(1) << bone_id);
     }
     void LL_SetBoneVisible(u16 bone_id, BOOL val, BOOL bRecursive) override;

@@ -51,7 +51,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Mixed_COC|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -81,8 +81,8 @@
       <EnableEnhancedInstructionSet Condition="'$(Configuration)|$(Platform)'=='Release_COC|Win32'">StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
       <BufferSecurityCheck Condition="'$(Configuration)|$(Platform)'=='Release_COC|Win32'">false</BufferSecurityCheck>
       <ControlFlowGuard Condition="'$(Configuration)|$(Platform)'=='Release_COC|Win32'">false</ControlFlowGuard>
-      <FavorSizeOrSpeed Condition="'$(Configuration)|$(Platform)'=='Release_COC|x64'">Speed</FavorSizeOrSpeed>
-      <EnableFiberSafeOptimizations Condition="'$(Configuration)|$(Platform)'=='Release_COC|x64'">true</EnableFiberSafeOptimizations>
+      <FavorSizeOrSpeed Condition="'$(Configuration)|$(Platform)'=='Release_COC|x64'">Neither</FavorSizeOrSpeed>
+      <EnableFiberSafeOptimizations Condition="'$(Configuration)|$(Platform)'=='Release_COC|x64'">false</EnableFiberSafeOptimizations>
       <OmitFramePointers Condition="'$(Configuration)|$(Platform)'=='Release_COC|x64'">false</OmitFramePointers>
       <IntrinsicFunctions Condition="'$(Configuration)|$(Platform)'=='Release_COC|x64'">false</IntrinsicFunctions>
       <EnableEnhancedInstructionSet Condition="'$(Configuration)|$(Platform)'=='Release_COC|x64'">NotSet</EnableEnhancedInstructionSet>
