@@ -20,3 +20,4 @@ Externals/LuaJIT-proj/lj_vm_x64.obj
 *.bak
 res/gamedata/Описание.docx
 res/gamedata/~$исание.docx
+Externals/LuaJIT
